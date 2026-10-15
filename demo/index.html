@@ -295,7 +295,7 @@ input:focus { outline: 3px solid var(--latte); outline-offset: 1px; }
       <div class="steps">
         <div class="step"><span class="k">PASO 1</span><h3>Compra el eje que necesitas</h3><p>Cada eje se paga por separado e incluye todas sus guías. Pagas solo lo que vas a practicar.</p></div>
         <div class="step"><span class="k">PASO 2</span><h3>Responde y envía tu hoja</h3><p>Descarga la guía, resuélvela con calma y marca tus respuestas en el formulario de esa guía, con las mismas preguntas en el mismo orden.</p></div>
-        <div class="step"><span class="k">PASO 3</span><h3>Recibe tu informe</h3><p>En 72 horas hábiles te llega tu puntaje, la explicación de cada error y una guía de refuerzo con preguntas parecidas a las que fallaste.</p></div>
+        <div class="step"><span class="k">PASO 3</span><h3>Recibe tu informe</h3><p>En 72 horas hábiles te llega un PDF a tu nombre con tu puntaje, la explicación de cada error y una guía de refuerzo con preguntas parecidas a las que fallaste. Lo puedes imprimir o abrir en GoodNotes.</p></div>
       </div>
     </div>
   </section>
@@ -324,8 +324,8 @@ input:focus { outline: 3px solid var(--latte); outline-offset: 1px; }
           <ul>
             <li>La guía en PDF, descargable e imprimible, con un código QR por pregunta que abre su solución paso a paso.</li>
             <li>Revisión personal de tu hoja de respuestas.</li>
-            <li>Informe con tu puntaje y la explicación de cada error.</li>
-            <li>Guía de refuerzo con preguntas parecidas a las que fallaste.</li>
+            <li>Informe personal a tu nombre, en PDF, con tu puntaje y la explicación de cada error.</li>
+            <li>Guía de refuerzo en PDF, armada con preguntas parecidas a las que fallaste.</li>
           </ul>
           <p class="muted" style="font-size:15px">El precio de cada eje es la suma de sus guías. Las guías que se agreguen después a un eje que ya compraste se cobran aparte.</p>
         </div>
@@ -344,7 +344,7 @@ input:focus { outline: 3px solid var(--latte); outline-offset: 1px; }
         <details class="q"><summary>¿Es material oficial del DEMRE?</summary><p>No. Es material de práctica independiente, hecho a partir del temario oficial publicado por el DEMRE. No tiene relación con el DEMRE ni con ninguna universidad.</p></details>
         <details class="q"><summary>¿Quién revisa mis respuestas?</summary><p>Una persona del equipo TS Zenit. El informe no es una corrección automática: explica por qué elegiste cada alternativa incorrecta y cómo corregir esa idea.</p></details>
         <details class="q"><summary>¿Soy menor de edad, puedo usarlo?</summary><p>Sí, con la autorización de tu madre, padre o apoderado. El formulario te pide su nombre y correo, y tu apoderado recibe una copia del informe.</p></details>
-        <details class="q"><summary>¿Puedo descargar e imprimir las guías?</summary><p>Sí. Las guías se descargan en PDF y puedes imprimirlas las veces que quieras. Lo que es personal es la revisión: cada compra incluye el informe de tu propia hoja de respuestas.</p></details>
+        <details class="q"><summary>¿Puedo descargar e imprimir las guías?</summary><p>Sí. Las guías se descargan en PDF y puedes imprimirlas las veces que quieras. Lo mismo con tu informe y tu guía de refuerzo: llegan en PDF para imprimir o usar en GoodNotes, Notability o cualquier app de notas. Lo que es personal es la revisión: el informe va a tu nombre y está hecho a partir de tus errores.</p></details>
       </div>
     </div>
   </section>
@@ -628,7 +628,7 @@ function openForm(code) {
       <div class="done">
         <div class="tick" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F2F4F9" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></div>
         <p style="font-family:var(--f-display);font-size:18px;font-weight:600">Recibimos tus ${g.n - blanks.length} respuestas, ${esc(name.split(" ")[0])}</p>
-        <p class="muted" style="max-width:30em">Tu informe y tu guía de refuerzo llegarán a <b style="color:var(--ink)">${esc(mail)}</b>${minor ? " y a tu apoderado" : ""} dentro de 72 horas hábiles.</p>
+        <p class="muted" style="max-width:30em">Tu informe y tu guía de refuerzo, en PDF y a tu nombre, llegarán a <b style="color:var(--ink)">${esc(mail)}</b>${minor ? " y a tu apoderado" : ""} dentro de 72 horas hábiles.</p>
         <span class="receipt">Folio ${folio}</span>
         <button class="btn btn-ghost x" style="width:auto;height:auto">Volver a los ejes</button>
       </div>`;
