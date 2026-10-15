@@ -146,7 +146,12 @@ section.band.deep { background: var(--bg-deep); border-block: 1px solid #13284a;
 @media (max-width: 520px) { .guia { grid-template-columns: 1fr; } .guia .ga { justify-content: flex-start; } }
 
 /* ---- precios ---- */
-.pricing { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; align-items: stretch; }
+.pricing { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
+.pcard.wide { grid-column: 1 / -1; }
+.pcard.best { border-color: var(--latte); box-shadow: 0 0 0 1px rgba(216, 168, 120, .35) inset; }
+.pcard .tag { align-self: flex-start; font-family: var(--f-display); font-weight: 600; font-size: 12px; letter-spacing: .04em; color: var(--black); background: var(--latte); border-radius: 999px; padding: 4px 10px; }
+.pcard h3.pt { font-size: 18px; margin: 0; }
+.eje-meta .price small.inc { display: block; margin-top: 4px; max-width: 34ch; }
 @media (max-width: 820px) { .pricing { grid-template-columns: 1fr; } }
 .pcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 24px; display: flex; flex-direction: column; gap: 12px; }
 .pcard .big { font-family: var(--f-display); font-weight: 700; font-size: 44px; line-height: 1; }
@@ -276,7 +281,7 @@ input:focus { outline: 3px solid var(--latte); outline-offset: 1px; }
           <a class="btn btn-ghost" href="#como">Cómo funciona</a>
         </div>
         <div class="facts">
-          <div><b>$5.000</b>por guía revisada</div>
+          <div><b>$5.000</b>por guía · eje completo $40.000</div>
           <div><b>72 h</b>hábiles para tu informe</div>
           <div><b>Temario</b>oficial DEMRE 2027</div>
         </div>
@@ -320,10 +325,11 @@ input:focus { outline: 3px solid var(--latte); outline-offset: 1px; }
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Precios</p>
-        <h2>Pagas por guía revisada, agrupada por eje</h2>
+        <h2>Compra una guía suelta o el eje completo</h2>
       </div>
       <div class="pricing">
         <div class="pcard">
+          <h3 class="pt">Guía suelta</h3>
           <div class="big">$5.000 <small>por guía</small></div>
           <ul>
             <li>La guía en PDF, descargable e imprimible, con un código QR por pregunta que abre su solución paso a paso.</li>
@@ -331,11 +337,21 @@ input:focus { outline: 3px solid var(--latte); outline-offset: 1px; }
             <li>Informe personal a tu nombre, en PDF, con tu puntaje y la explicación de cada error.</li>
             <li>Guía de refuerzo en PDF, armada con preguntas parecidas a las que fallaste.</li>
           </ul>
-          <p class="muted" style="font-size:15px">El precio de cada eje es la suma de sus guías. Las guías que se agreguen después a un eje que ya compraste se cobran aparte.</p>
         </div>
-        <div class="pcard">
+        <div class="pcard best">
+          <span class="tag">Recomendado</span>
+          <h3 class="pt">Eje completo</h3>
+          <div class="big">$40.000 <small>por eje</small></div>
+          <ul>
+            <li>Todas las guías del eje: la normal y la avanzada ★ de cada tema.</li>
+            <li>El ensayo final del eje, que mezcla todos sus temas.</li>
+            <li>Las guías que se publiquen después en ese eje, sin costo extra.</li>
+            <li>Revisión, informe personal y guía de refuerzo de cada una.</li>
+          </ul>
+        </div>
+        <div class="pcard wide">
           <h3 style="font-size:17px">Ejes con guías hoy</h3>
-          <div style="overflow-x:auto"><table class="ptab" id="priceTable"><thead><tr><th>Eje</th><th class="r">Guías</th><th class="r">Precio</th></tr></thead><tbody></tbody></table></div>
+          <div style="overflow-x:auto"><table class="ptab" id="priceTable"><thead><tr><th>Eje</th><th class="r">Guías publicadas</th><th class="r">Guía suelta</th><th class="r">Eje completo</th></tr></thead><tbody></tbody></table></div>
         </div>
       </div>
     </div>
@@ -384,7 +400,7 @@ input:focus { outline: 3px solid var(--latte); outline-offset: 1px; }
           <div class="sect" id="p-terceros"><h3>Con quién se comparten</h3><p>Solo con los servicios necesarios para funcionar: el alojamiento del sitio, el formulario y la planilla donde se guardan las respuestas (<span class="ph">[SERVICIO, por ejemplo Google]</span>) y el procesador de pagos (<span class="ph">[Webpay o Mercado Pago]</span>). Si TS Zenit trabaja con un colegio, el colegio solo recibe los resultados de sus propios alumnos y con la autorización correspondiente.</p></div>
           <div class="sect" id="p-derechos"><h3>Tus derechos</h3><p>Puedes pedir acceso a tus datos, corregirlos, eliminarlos u oponerte a su uso escribiendo a <span class="ph">[CORREO DE CONTACTO]</span>. Respondemos en un máximo de <span class="ph">[15]</span> días hábiles. Esta política se rige por la Ley 19.628 sobre protección de la vida privada y, desde su entrada en vigencia, por la Ley 21.719.</p></div>
           <div class="sect" id="p-terminos"><h3>Términos de compra</h3><ul>
-            <li>Cada eje se compra por separado; el precio es de $5.000 por guía e incluye la revisión de una hoja de respuestas por guía.</li>
+            <li>Puedes comprar una guía suelta ($5.000) o un eje completo ($40.000). El eje completo incluye todas sus guías y su ensayo final, también las que se publiquen después en ese eje. Cada guía incluye la revisión de una hoja de respuestas.</li>
             <li>Puedes descargar e imprimir las guías para tu estudio. No está permitido revenderlas ni publicarlas como material propio.</li>
             <li>El informe se envía dentro de 72 horas hábiles desde que recibimos tu hoja de respuestas.</li>
             <li>Retracto: <span class="ph">[CONDICIONES DE RETRACTO, revisar con abogado]</span>.</li>
@@ -410,6 +426,7 @@ input:focus { outline: 3px solid var(--latte); outline-offset: 1px; }
 <script>
 const GUIAS = {"TSZ-M2-ALG-G01": {"titulo": "Guía Función cuadrática", "tipo": "guia", "n": 30, "tiempo": null, "q": [[4, "Intersección con el eje Y", 0], [4, "Efecto del parámetro a (concavidad)", 0], [4, "Ceros de la función cuadrática", 0], [4, "Vértice de la parábola", 0], [4, "Discriminante y número de ceros", 0], [4, "Gráfico y forma factorizada", 0], [4, "Valor máximo en contexto", 0], [4, "Efecto de los parámetros h y k", 0], [4, "Ecuación de 2° grado incompleta", 0], [4, "Eje de simetría", 0], [4, "Discriminante con parámetro", 0], [4, "Forma canónica: vértice, ceros e intersecciones", 0], [4, "Suma y producto de soluciones", 0], [4, "Optimización: área máxima", 0], [4, "Ecuación desde vértice y un punto", 0], [4, "Intersección parábola–recta", 0], [5, "Suficiencia de datos: coeficientes", 1], [4, "Fórmula general de la ecuación de 2° grado", 0], [4, "Recorrido a partir del vértice", 0], [4, "Signos de los parámetros a partir del gráfico", 0], [4, "Valor máximo en contexto económico", 0], [4, "Discriminante con parámetro (inecuación)", 0], [5, "Suficiencia de datos: forma factorizada", 1], [4, "Ecuación de 2° grado en contexto", 0], [5, "Suficiencia de datos: discriminante", 1], [5, "Suficiencia de datos: modelo de altura", 1], [4, "Parábola siempre positiva (concavidad y discriminante)", 0], [4, "Traslación de parábolas", 0], [4, "Relación entre soluciones y coeficientes", 0], [4, "Modelamiento con parábola (forma factorizada)", 0]]}, "TSZ-FIS-ELE-G01": {"titulo": "Guía Electricidad", "tipo": "guia", "n": 30, "tiempo": null, "q": [[4, "Corriente eléctrica: I = q/t", 0], [4, "Corriente como flujo de cargas", 0], [4, "Ley de Ohm", 0], [4, "Unidades de las magnitudes eléctricas", 0], [4, "Ley de Ohm en circuito en serie", 0], [4, "Circuito en paralelo", 0], [4, "Potencia eléctrica", 0], [4, "Instalación eléctrica domiciliaria", 0], [4, "Energía eléctrica en kWh", 0], [4, "Resistencia equivalente en paralelo", 0], [4, "Circuito mixto: ley de Ohm", 0], [4, "Ley de Ohm: análisis de datos", 0], [4, "Potencia y resistencia", 0], [4, "Consumo energético y costo", 0], [4, "Eficiencia energética", 0], [4, "Instalación eléctrica domiciliaria", 0], [4, "Diseño experimental en circuitos", 0], [4, "Instrumentos de medición en circuitos", 0], [4, "Potencia en serie y en paralelo", 0], [4, "Corriente y número de portadores de carga", 0], [4, "Potencia de artefactos y protección de la instalación", 0], [4, "Energía a partir de un gráfico P–t", 0], [4, "Eficiencia y consumo energético", 0], [4, "Instalación eléctrica domiciliaria y seguridad", 0], [4, "Circuito mixto: brillo de ampolletas", 0], [4, "Circuito mixto: corriente en una rama", 0], [4, "Potencia en serie y en paralelo", 0], [4, "Elementos no óhmicos: análisis de datos", 0], [4, "Consumo y eficiencia energética", 0], [4, "Cortocircuito y potencia", 0]]}, "TSZ-FIS-ELE-G02": {"titulo": "Guía avanzada · Electricidad", "nivel": "avanzada", "tipo": "guia", "n": 30, "tiempo": null, "q": [[4, "Valores nominales y circuito en serie", 0], [4, "Potencia y voltaje con resistencia constante", 0], [4, "Consumo energético en la vivienda", 0], [4, "Resistencia equivalente en circuitos mixtos", 0], [4, "Potencia máxima en resistores en serie", 0], [4, "Potencia según el tipo de conexión", 0], [4, "Divisor de voltaje con carga", 0], [4, "Circuito mixto: resistencia desconocida", 0], [4, "Circuito mixto: potencia en una rama", 0], [4, "Valores nominales en conexión en serie", 0], [4, "Instalación domiciliaria: sobrecarga de alargadores", 0], [4, "Elementos óhmicos y no óhmicos en serie", 0], [4, "Circuito mixto: comparación de brillos", 0], [4, "Circuito mixto: efecto de agregar una rama", 0], [4, "Carga eléctrica, energía y eficiencia", 0], [4, "Diseño experimental: elementos óhmicos", 0], [4, "Potencia y resistencia: análisis de datos", 0], [4, "Componentes de la instalación domiciliaria", 0], [4, "Seguridad eléctrica: automático, diferencial y tierra", 0], [4, "Circuito mixto: efecto de cambiar una resistencia", 0], [4, "Diseño experimental: control de variables", 0], [4, "Consumo energético con tarifa por tramos", 0], [4, "Circuito mixto con interruptor: potencia", 0], [4, "Puente equilibrado: circuito mixto", 0], [4, "Red en escalera: reducción sucesiva", 0], [4, "Valores nominales en serie: reparto de potencia", 0], [4, "Ley de Ohm y potencia: problema inverso", 0], [4, "Diseño de circuitos para una potencia dada", 0], [4, "Reparto de la potencia en un circuito mixto", 0], [4, "Serie y paralelo: problema inverso", 0]]}, "TSZ-M2-GEO-01": {"titulo": "Miniensayo avanzado de geometría", "nivel": "ensayo", "tipo": "ensayo", "n": 40, "tiempo": 100, "q": [[4, "Teorema de Pitágoras y productos notables", 0], [4, "Semejanza: razón de áreas", 0], [4, "Razones trigonométricas: dos ángulos de elevación", 0], [4, "Ángulos inscritos en la circunferencia", 0], [4, "Rectas perpendiculares en el plano", 0], [4, "Rotación y traslación en el plano", 0], [4, "Volumen de la esfera y del cilindro", 0], [4, "Teorema de Pitágoras en el espacio", 0], [4, "Homotecia: perímetros y áreas", 0], [5, "Suficiencia de datos: trigonometría y área", 1], [4, "Semejanza en el triángulo rectángulo", 0], [4, "Cuerdas en la circunferencia y Pitágoras", 0], [4, "Razones trigonométricas en triángulos encadenados", 0], [4, "Modelos a escala: áreas", 0], [4, "Áreas de regiones circulares", 0], [4, "Distancia entre puntos y razones trigonométricas", 0], [4, "Ángulos exteriores a la circunferencia", 0], [5, "Suficiencia de datos: ángulos en la circunferencia", 1], [4, "Área del trapecio con Pitágoras", 0], [4, "Teorema de Thales y ecuación de 2° grado", 0], [4, "Volumen de la esfera y razón de semejanza", 0], [4, "Rombo, Pitágoras y razones trigonométricas", 0], [4, "Posiciones relativas de rectas en el plano", 0], [4, "Volumen de cuerpos compuestos", 0], [5, "Suficiencia de datos: cuadrado y semejanza", 1], [4, "Teorema de Pitágoras encadenado", 0], [4, "Razones trigonométricas y Pitágoras", 0], [4, "Composición de transformaciones isométricas", 0], [4, "Semejanza: razón de volúmenes", 0], [4, "Polígonos inscritos y razones trigonométricas", 0], [5, "Suficiencia de datos: área y volumen de la esfera", 1], [4, "Semejanza de triángulos en contexto", 0], [4, "Ángulos de depresión", 0], [4, "Distancia entre puntos en el plano", 0], [5, "Suficiencia de datos: triángulos isósceles", 1], [4, "Tangente a la circunferencia y Pitágoras", 0], [4, "Vectores en el plano", 0], [4, "Volumen del cubo y del cilindro", 0], [4, "Volumen de la esfera y del cilindro", 0], [5, "Suficiencia de datos: cubo", 1]]}};
 const PRECIO = 5000;
+const PACK = 40000;
 const PRUEBAS = [
   { id: "M1", nombre: "Matemática M1", ejes: [
     { id: "M1-NUM", nombre: "Números", desc: "Enteros y racionales, porcentaje, potencias y raíces.", guias: [] },
@@ -439,7 +456,8 @@ const PRUEBAS = [
 
 const $ = (s, el = document) => el.querySelector(s);
 const fmt = n => "$" + n.toLocaleString("es-CL");
-const unlocked = new Set();
+const unlocked = new Set();      // ejes completos comprados
+const unlockedG = new Set();     // guías sueltas compradas
 let current = "M2";
 
 function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
@@ -477,7 +495,7 @@ function guiaRow(code, open) {
   const meta = `${tipoTxt(g)} · ${g.n} preguntas${sd ? ` · ${sd} de Suficiencia de Datos` : ""}${g.tiempo ? ` · ${g.tiempo} min` : ""}`;
   const actions = open
     ? `<button class="btn btn-ghost btn-sm" data-pdf="${code}">Descargar PDF</button><button class="btn btn-cafe btn-sm" data-form="${code}">Enviar respuestas</button>`
-    : `<span class="chip lock">Bloqueada</span>`;
+    : `<button class="btn btn-ghost btn-sm" data-buyg="${code}">Comprar · ${fmt(PRECIO)}</button>`;
   return `<div class="guia ${open ? "" : "locked"}"><div><div class="gt">${esc(g.titulo)} ${nivelChip(g)}</div><div class="gm"><span class="mono">${code}</span> · ${meta}</div></div><div class="ga">${actions}</div></div>`;
 }
 function renderEjes() {
@@ -487,20 +505,20 @@ function renderEjes() {
       return `<article class="eje soon"><div class="eje-top"><div><h3>${esc(e.nombre)}</h3><p class="desc">${esc(e.desc)}</p></div><span class="chip soon">En preparación</span></div></article>`;
     }
     const open = unlocked.has(e.id);
-    const price = e.guias.length * PRECIO;
+    const owned = e.guias.filter(c => unlockedG.has(c)).length;
     return `<article class="eje" id="eje-${e.id}">
       <div class="eje-top"><div><h3>${esc(e.nombre)}</h3><p class="desc">${esc(e.desc)}</p></div>
-      <span class="chip ${open ? "open" : "lock"}">${open ? "Desbloqueado" : "Bloqueado"}</span></div>
-      <div class="guias">${e.guias.map(c => guiaRow(c, open)).join("")}</div>
+      <span class="chip ${open || owned ? "open" : "lock"}">${open ? "Eje completo" : owned ? `${owned} de ${e.guias.length}` : "Bloqueado"}</span></div>
+      <div class="guias">${e.guias.map(c => guiaRow(c, open || unlockedG.has(c))).join("")}</div>
       <div class="eje-meta">${open
-        ? `<span class="muted" style="font-family:var(--f-display);font-size:14px">Tienes acceso a ${e.guias.length === 1 ? "la guía" : `las ${e.guias.length} guías`} de este eje.</span>`
-        : `<span class="price">${fmt(price)}<small>${e.guias.length} ${e.guias.length === 1 ? "guía" : "guías"} × ${fmt(PRECIO)}</small></span><button class="btn btn-cafe" data-buy="${e.id}">Comprar eje</button>`}
+        ? `<span class="muted" style="font-family:var(--f-display);font-size:14px">Tienes el eje completo, incluidas las guías que se publiquen después.</span>`
+        : `<span class="price">${fmt(PACK)}<small class="inc">Eje completo: ${e.guias.length === 1 ? "la guía publicada" : `las ${e.guias.length} guías publicadas`} y todas las que vengan, con su ensayo final.</small></span><button class="btn btn-cafe" data-buy="${e.id}">Comprar eje completo</button>`}
       </div></article>`;
   }).join("");
 }
 function renderPrices() {
   const rows = [];
-  PRUEBAS.forEach(p => p.ejes.forEach(e => { if (e.guias.length) rows.push(`<tr><td>${esc(p.nombre)} · ${esc(e.nombre)}</td><td class="r">${e.guias.length}</td><td class="r">${fmt(e.guias.length * PRECIO)}</td></tr>`); }));
+  PRUEBAS.forEach(p => p.ejes.forEach(e => { if (e.guias.length) rows.push(`<tr><td>${esc(p.nombre)} · ${esc(e.nombre)}</td><td class="r">${e.guias.length}</td><td class="r">${fmt(PRECIO)} c/u</td><td class="r">${fmt(PACK)}</td></tr>`); }));
   $("#priceTable tbody").innerHTML = rows.join("");
 }
 $("#tabs").addEventListener("click", ev => {
@@ -515,6 +533,7 @@ $("#tabs").addEventListener("keydown", ev => {
 });
 $("#ejesGrid").addEventListener("click", ev => {
   const buy = ev.target.closest("[data-buy]"); if (buy) return openPay(buy.dataset.buy);
+  const bg = ev.target.closest("[data-buyg]"); if (bg) return openPay(null, bg.dataset.buyg);
   const f = ev.target.closest("[data-form]"); if (f) return openForm(f.dataset.form);
   const pdf = ev.target.closest("[data-pdf]"); if (pdf) return toast("En la versión real, aquí se descarga " + pdf.dataset.pdf + ".pdf");
 });
@@ -534,13 +553,19 @@ layer.addEventListener("keydown", ev => { if (ev.key === "Escape") closeLayer();
 function findEje(id) { for (const p of PRUEBAS) for (const e of p.ejes) if (e.id === id) return { p, e }; }
 
 /* ---------- pago (simulado) ---------- */
-function openPay(id) {
-  const { p, e } = findEje(id);
-  const price = e.guias.length * PRECIO;
+function findGuia(code) { for (const p of PRUEBAS) for (const e of p.ejes) if (e.guias.includes(code)) return { p, e }; }
+function openPay(id, code) {
+  const { p, e } = code ? findGuia(code) : findEje(id);
+  id = e.id;
+  const price = code ? PRECIO : PACK;
+  const title = code ? GUIAS[code].titulo : `${e.nombre} · eje completo`;
+  const resumen = code
+    ? `<div class="sumrow"><span>${esc(GUIAS[code].titulo)}</span><span>${fmt(PRECIO)}</span></div>`
+    : `${e.guias.map(c => `<div class="sumrow"><span>${esc(GUIAS[c].titulo)}</span><span>incluida</span></div>`).join("")}<div class="sumrow"><span>Guías y ensayo final que se publiquen después</span><span>incluidas</span></div>`;
   showLayer(`<div class="panel narrow" role="dialog" aria-modal="true" aria-labelledby="payT">
-    <div class="panel-head"><div><h3 id="payT">Comprar ${esc(e.nombre)}</h3><div class="sub">${esc(p.nombre)} · pago simulado</div></div><button class="x" aria-label="Cerrar">×</button></div>
+    <div class="panel-head"><div><h3 id="payT">Comprar ${esc(title)}</h3><div class="sub">${esc(p.nombre)} · pago simulado</div></div><button class="x" aria-label="Cerrar">×</button></div>
     <form class="panel-body" id="payForm" novalidate>
-      <div>${e.guias.map(c => `<div class="sumrow"><span>${esc(GUIAS[c].titulo)}</span><span>${fmt(PRECIO)}</span></div>`).join("")}<div class="sumrow"><span>Total</span><span>${fmt(price)}</span></div></div>
+      <div>${resumen}<div class="sumrow"><span>Total</span><span>${fmt(price)}</span></div></div>
       <div class="field"><label for="payMail">Correo para tu acceso y la boleta</label><input type="email" id="payMail" autocomplete="email" placeholder="tu@correo.cl" required></div>
       <fieldset style="border:0;padding:0;margin:0" class="field"><legend class="legend" style="margin-bottom:6px">Medio de pago</legend>
         <div class="pay-opts"><label><input type="radio" name="medio" value="webpay" checked> Webpay</label><label><input type="radio" name="medio" value="mp"> Mercado Pago</label></div></fieldset>
@@ -554,8 +579,9 @@ function openPay(id) {
     const err = $("#payErr");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) { err.textContent = "Escribe un correo válido para recibir tu acceso."; err.hidden = false; return; }
     if (!$("#payTerms").checked) { err.textContent = "Para comprar tienes que aceptar los términos y la política de privacidad."; err.hidden = false; return; }
-    unlocked.add(id); closeLayer(); renderEjes();
-    toast(`Pago simulado aprobado: ${e.nombre} desbloqueado`);
+    if (code) unlockedG.add(code); else unlocked.add(id);
+    closeLayer(); renderEjes();
+    toast(`Pago simulado aprobado: ${code ? GUIAS[code].titulo : e.nombre + " (eje completo)"} desbloqueado`);
     const card = $("#eje-" + id); if (card) card.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   });
   layer.querySelectorAll("[data-close]").forEach(a => a.addEventListener("click", closeLayer));
