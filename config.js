@@ -12,5 +12,5 @@ window.TSZ_CONFIG = {
     60000: "https://mpago.la/2cQftwK"    // eje de 13 guías: M1 Álgebra y funciones
   },
   contacto: "trabajotszenit@gmail.com",    // correo de contacto visible para los compradores
-  clientId: ""    // ID de cliente de Google para «Iniciar sesión» (termina en .apps.googleusercontent.com)
+  clientId: "646234191968-dfi7md4dmfiqgrqmksd7i0lh22t2o4mv.apps.googleusercontent.com"    // ID de cliente de Google para «Iniciar sesión» (termina en .apps.googleusercontent.com)
 };
