@@ -17,6 +17,7 @@ window.TSZ_CONFIG = {
     50000: "https://mpago.la/2qjd5z5",   // eje de 11 guías: M2 Geometría
     54000: "https://mpago.la/1QHYrKJ",   // eje de 13 guías con código promocional (−10 %)
     60000: "https://mpago.la/2cQftwK",   // eje de 13 guías: M1 Álgebra y funciones
+    63000: "https://mpago.la/126JsRu",   // eje de 15 guías con código promocional (−10 %)
     70000: "https://mpago.la/22WggkU"    // eje de 15 guías: Precálculo (Universidad)
   },
   contacto: "trabajotszenit@gmail.com",    // correo de contacto visible para los compradores
