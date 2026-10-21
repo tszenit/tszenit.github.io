@@ -13,6 +13,7 @@ window.TSZ_CONFIG = {
     30000: "https://mpago.la/14iiQi4",   // ejes de 7 guías: M1 Números, M1 Probabilidad, M2 Números, M2 Álgebra, Física Ondas, Física Mecánica, Biología Procesos y funciones, Biología Herencia y evolución, Química Reacciones
     36000: "https://mpago.la/2no5LqT",   // ejes de 9 guías con código promocional (−10 %)
     40000: "https://mpago.la/2JeGNME",   // ejes de 9 guías: M1 Geometría, M2 Probabilidad y estadística, Cálculo 1
+    45000: "https://mpago.la/1MGVX6m",   // eje de 11 guías con código promocional (−10 %)
     50000: "https://mpago.la/2qjd5z5",   // eje de 11 guías: M2 Geometría
     60000: "https://mpago.la/2cQftwK",   // eje de 13 guías: M1 Álgebra y funciones
     70000: "https://mpago.la/22WggkU"    // eje de 15 guías: Precálculo (Universidad)
