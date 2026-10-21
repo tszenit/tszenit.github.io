@@ -7,6 +7,7 @@ window.TSZ_CONFIG = {
     5000:  "https://mpago.la/1Xxykhf",   // guía suelta
     9000:  "https://mpago.la/2MbCK3Y",   // ejes de 3 guías con código promocional (−10 %)
     10000: "https://mpago.la/17kAoK7",   // ejes de 3 guías: Física Energía y Tierra, Física Electricidad, Biología Organización celular, Biología Organismo y ambiente
+    18000: "https://mpago.la/2ZWgtWK",   // ejes de 5 guías con código promocional (−10 %)
     20000: "https://mpago.la/2Zb951C",   // ejes de 5 guías: Química Estructura atómica, Química orgánica
     30000: "https://mpago.la/14iiQi4",   // ejes de 7 guías: M1 Números, M1 Probabilidad, M2 Números, M2 Álgebra, Física Ondas, Física Mecánica, Biología Procesos y funciones, Biología Herencia y evolución, Química Reacciones
     40000: "https://mpago.la/2JeGNME",   // ejes de 9 guías: M1 Geometría, M2 Probabilidad y estadística
