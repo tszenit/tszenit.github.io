@@ -3,6 +3,7 @@ window.TSZ_CONFIG = {
   endpoint: "https://script.google.com/macros/s/AKfycbwG59Ku572mY50i_sVUutfwPNSenXgwNDkgtKsy2TvpQpHTfQkFd9oy9kYlP9W89L-I/exec",   // URL de la aplicación web de Google Apps Script (termina en /exec)
   // Links de pago de Mercado Pago, uno por monto (el eje completo cuesta $5.000 menos que sus guías sueltas)
   mp: {
+    4500:  "https://mpago.la/2TDqr3U",   // guía suelta con código promocional (−10 %)
     5000:  "https://mpago.la/1Xxykhf",   // guía suelta
     10000: "https://mpago.la/17kAoK7",   // ejes de 3 guías: Física Energía y Tierra, Física Electricidad, Biología Organización celular, Biología Organismo y ambiente
     20000: "https://mpago.la/2Zb951C",   // ejes de 5 guías: Química Estructura atómica, Química orgánica
