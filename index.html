@@ -265,11 +265,45 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 @media (max-width: 640px) { nav.main a.nav-uni .u-full { display: none; } header.top nav.main { flex-wrap: wrap !important; overflow: visible !important; justify-content: flex-start !important; row-gap: 6px; } }
 #universidad .uni-badge { width: fit-content; display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-display); font-weight: 600; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--latte); border: 1px solid rgba(216,168,120,.5); border-radius: 999px; padding: 6px 12px; }
 #universidad .ejes { margin-top: 8px; }
-.uni-clase { margin-top: 22px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 20px; align-items: center; background: linear-gradient(135deg, var(--cafe), #4A2E1B); border: 1px solid var(--latte); border-radius: var(--r); padding: 24px 28px; }
-.uni-clase h3 { font-size: 22px; }
-.uni-clase p { color: #F3E3CF; margin-top: 8px; max-width: 52ch; }
-.uni-clase .cta-c { display: flex; justify-content: flex-end; }
-@media (max-width: 820px) { .uni-clase { grid-template-columns: minmax(0, 1fr); padding: 20px; } .uni-clase .cta-c { justify-content: flex-start; } }
+#universidad { scroll-margin-top: 56px; }
+/* ---- elegir tutor ---- */
+.lb .tutor-box { width: min(100%, 560px); max-height: calc(100dvh - 80px); overflow-y: auto; }
+.tsel h2 { font-size: 24px; text-align: center; }
+.tsel > p { text-align: center; color: var(--muted); margin-top: 6px; }
+.tsel .tlist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.tbtn { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; background: var(--surface); border: 1.5px solid var(--line); border-radius: 18px; padding: 18px 12px; color: var(--ink); cursor: pointer; font: inherit; min-height: 44px; }
+.tbtn:hover, .tbtn:focus-visible { border-color: var(--gold); outline: none; background: var(--surface-2); }
+.tbtn .av { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #6B4429, #3B2416); border: 2px solid var(--gold); font: 700 22px var(--f-display); color: #F3E3CF; }
+.tbtn b { font: 600 16px/1.25 var(--f-display); }
+.tbtn small { color: var(--muted); font-size: 13.5px; line-height: 1.35; }
+.tbtn .go { font: 600 13px var(--f-display); color: var(--gold); }
+.tcard { border-radius: 22px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+.tcard .tc-top { background: radial-gradient(120% 90% at 50% 20%, #5A3A26, #2E1D12); border: 2px solid #D4A84B; border-radius: 22px; padding: 22px 22px 24px; text-align: center; }
+.tcard .tc-pill { display: inline-flex; align-items: center; gap: 8px; background: #F3EBDD; color: #241A12; border-radius: 999px; padding: 7px 16px; font: 700 12.5px var(--f-display); letter-spacing: .18em; text-transform: uppercase; }
+.tcard .tc-pill i { width: 8px; height: 8px; border-radius: 50%; background: #C8102E; }
+.tcard .tc-brand { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 16px; }
+.tcard .tc-brand svg { width: 64px; height: auto; }
+.tcard .tc-brand b { display: block; font: 700 30px/1 var(--f-display); letter-spacing: .04em; color: #F3EBDD; text-align: left; }
+.tcard .tc-brand small { display: block; font: 700 11px var(--f-display); letter-spacing: .3em; color: #E8A33D; margin-top: 6px; text-align: left; }
+.tcard .tc-line { width: 48px; height: 2px; background: #D4A84B; margin: 16px auto 12px; }
+.tcard .tc-role { font: 700 12px var(--f-display); letter-spacing: .3em; color: #E8A33D; }
+.tcard .tc-name { font-family: var(--f-body); font-size: clamp(28px, 7vw, 38px); line-height: 1.1; color: #F3EBDD; margin-top: 6px; }
+.tcard .tc-bot { background: #F3EFE6; color: #172238; border-radius: 22px; margin-top: 10px; padding: 20px 20px 18px; text-align: center; }
+.tcard .tc-kicker { font: 700 12px var(--f-display); letter-spacing: .3em; color: #C8102E; }
+.tcard .tc-sub { font-family: var(--f-body); font-size: 24px; margin-top: 4px; color: #172238; }
+.tcard .tc-stats { display: flex; justify-content: center; align-items: flex-start; gap: 18px; margin-top: 12px; }
+.tcard .tc-stat b { display: block; font: 700 clamp(40px, 11vw, 60px)/1 var(--f-body); color: #172238; }
+.tcard .tc-stat b.gold { color: #B8892A; }
+.tcard .tc-stat span { display: block; font: 500 15px var(--f-display); color: #3A4A6B; margin-top: 4px; }
+.tcard .tc-stat em { display: block; font: 700 11px var(--f-display); font-style: normal; letter-spacing: .2em; color: #C8102E; margin-top: 4px; }
+.tcard .tc-sep { width: 2px; align-self: stretch; background: #E3C98F; }
+.tcard .tc-extra { margin-top: 12px; font: 600 14.5px/1.4 var(--f-display); color: #172238; }
+.tcard .tc-extra span { display: inline-block; background: #E9E2D3; border-radius: 999px; padding: 6px 12px; margin: 3px; }
+.tcard .tc-cta { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #111A2E; border-radius: 999px; padding: 8px 8px 8px 20px; margin-top: 14px; }
+.tcard .tc-cta span { font: 600 15px var(--f-display); color: #F3EBDD; }
+.tcard .tc-cta a { background: #D4A84B; color: #111A2E; border-radius: 999px; padding: 10px 16px; font: 700 15px var(--f-display); text-decoration: none; white-space: nowrap; }
+.tback { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 10px; background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: 8px 14px; font: 600 14px var(--f-display); cursor: pointer; min-height: 40px; }
+@media (max-width: 420px) { .tsel .tlist { gap: 8px; } .tbtn { padding: 14px 8px; } .tbtn .av { width: 52px; height: 52px; font-size: 18px; } .tcard .tc-cta { flex-direction: column; border-radius: 18px; padding: 12px; } }
 .clases { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 28px; }
 .clases h2 { font-size: clamp(24px, 3.4vw, 32px); }
 .clases p { color: var(--muted); margin-top: 10px; max-width: 46ch; }
@@ -373,13 +407,13 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
         <p>Para tu primer año de universidad, con el mismo sistema: compra una guía suelta o el eje completo, resuélvela y recibe un informe personal con cada error explicado. Las guías se habilitan a medida que se publican.</p>
       </div>
       <div class="ejes" id="uniGrid"></div>
-      <div class="uni-clase">
+      <div class="clases" style="margin-top:22px">
         <div>
-          <p class="eyebrow" style="color:#F3D7B4">Clases particulares universitarias</p>
-          <h3 style="margin-top:6px">Clases de Precálculo y Cálculo 1</h3>
-          <p>Límites, derivadas, funciones y todo lo que te cueste del ramo, a tu ritmo y con ejercicios explicados paso a paso.</p>
+          <p class="eyebrow">Clases particulares universitarias</p>
+          <h2 style="margin-top:8px">Clases de Precálculo y Cálculo 1</h2>
+          <p>Límites, derivadas, funciones y todo lo que te cueste del ramo. Repasamos a tu ritmo, con ejercicios explicados paso a paso.</p>
         </div>
-        <div class="cta-c"><button class="btn btn-cafe" type="button" data-clase style="background:var(--gold);color:#1b1305">Agenda tu clase</button></div>
+        <div class="cta-c"><button class="btn btn-cafe" type="button" data-clase="uni">Agenda tu clase</button></div>
       </div>
     </div>
   </section>
@@ -485,9 +519,9 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
   </div>
 </footer>
 
-<div class="lb" id="lbClase" hidden role="dialog" aria-modal="true" aria-label="Agenda tu clase">
+<div class="lb" id="lbClase" hidden role="dialog" aria-modal="true" aria-label="Elige a tu tutor">
   <button class="lbx" type="button" aria-label="Cerrar">×</button>
-  <img alt="Clases particulares de matemáticas: información para agendar" src="" data-src="clases.jpg">
+  <div class="tutor-box" id="tutorBox"></div>
 </div>
 <div class="layer" id="layer" hidden></div>
 <div class="toast" id="toast" role="status" hidden></div>
@@ -933,9 +967,41 @@ renderTabs(); renderEjes(); renderPrices();
 /* ---------- clases particulares ---------- */
 const lb = $("#lbClase");
 let lbFocus = null;
-function openClase() { const im = lb.querySelector("img"); if (!im.getAttribute("src")) im.src = im.dataset.src; lbFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; lb.querySelector(".lbx").focus(); }
+const TUTORES = [
+  { id: "jas", nombre: "José Antonio Schulz", ini: "JS", tel: "+56 9 7434 5004", wa: "56974345004", corto: "1000 en M1 · 876 en M2",
+    stats: [{ n: "1000", t: "puntos en M1", d: "★ Puntaje máximo", gold: true }, { n: "876", t: "puntos en M2" }],
+    extra: ["Estudiante de Ingeniería", "Promedio sobre 6"] },
+  { id: "bo", nombre: "Borja Orive", ini: "BO", tel: "+56 9 3433 6635", wa: "56934336635", corto: "850 en Ciencias",
+    stats: [{ n: "850", t: "puntos en Ciencias", gold: true }],
+    extra: ["Estudiante de Ingeniería", "Promedio sobre 6,5"] } ];
+const CTX = { paes: { pill: "Matemática", sub: "Matemática · 8° básico a IV medio" }, uni: { pill: "Universidad", sub: "Precálculo y Cálculo 1" } };
+let ctxClase = "paes";
+const ICONO = '<svg viewBox="0 0 108 92" aria-hidden="true"><path d="M10 86 A44 44 0 0 1 98 86" fill="none" stroke="#F3EBDD" stroke-width="7"/><rect x="33" y="70" width="9" height="16" rx="1.5" fill="#C9A98A"/><rect x="49.5" y="60" width="9" height="26" rx="1.5" fill="#E6D3BC"/><rect x="66" y="56" width="9" height="30" rx="1.5" fill="#F3EBDD"/><path d="M54 4 L58.6 19.4 L74 24 L58.6 28.6 L54 44 L49.4 28.6 L34 24 L49.4 19.4 Z" fill="#F5A524"/><rect x="2" y="86" width="104" height="5" rx="2.2" fill="#F3EBDD"/></svg>';
+function verTutores() {
+  $("#tutorBox").innerHTML = `<div class="tsel"><h2>Elige a tu tutor</h2><p>Clases de ${esc(CTX[ctxClase].sub)}</p><div class="tlist">${TUTORES.map(t =>
+    `<button class="tbtn" type="button" data-tutor="${t.id}"><span class="av">${t.ini}</span><b>${esc(t.nombre)}</b><small>${esc(t.corto)}<br>${esc(t.extra.join(" · "))}</small><span class="go">Ver perfil →</span></button>`).join("")}</div></div>`;
+  const f = $("#tutorBox .tbtn"); if (f) f.focus();
+}
+function verTutor(id) {
+  const t = TUTORES.find(x => x.id === id), c = CTX[ctxClase];
+  const msg = encodeURIComponent(`Hola ${t.nombre.split(" ")[0]}, vi tu perfil en TS Zenit y quiero agendar una clase de ${c.sub}.`);
+  const stats = t.stats.map((s, i) => `${i ? '<span class="tc-sep"></span>' : ""}<div class="tc-stat"><b class="${s.gold ? "gold" : ""}">${s.n}</b><span>${esc(s.t)}</span>${s.d ? `<em>${esc(s.d)}</em>` : ""}</div>`).join("");
+  $("#tutorBox").innerHTML = `<button class="tback" type="button" data-volver>← Elegir otro tutor</button>
+    <article class="tcard" aria-label="Perfil de ${esc(t.nombre)}">
+      <div class="tc-top"><span class="tc-pill"><i></i>${esc(c.pill)}</span>
+        <div class="tc-brand">${ICONO}<div><b>TS ZENIT</b><small>HAZLO REALIDAD</small></div></div>
+        <div class="tc-line"></div><div class="tc-role">PROFESOR PARTICULAR</div><div class="tc-name">${esc(t.nombre)}</div></div>
+      <div class="tc-bot"><div class="tc-kicker">CLASES PARTICULARES</div><div class="tc-sub">${esc(c.sub)}</div>
+        <div class="tc-stats">${stats}</div>
+        <div class="tc-extra">${t.extra.map(x => `<span>${esc(x)}</span>`).join("")}</div>
+        <div class="tc-cta"><span>Agenda tu clase</span><a href="https://wa.me/${t.wa}?text=${msg}" target="_blank" rel="noopener">${esc(t.tel)}</a></div></div>
+    </article>`;
+  $("#tutorBox [data-volver]").focus();
+}
+function openClase(ctx) { ctxClase = ctx === "uni" ? "uni" : "paes"; verTutores(); lbFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; const f = $("#tutorBox .tbtn"); if (f) f.focus(); }
 function closeClase() { lb.hidden = true; document.body.style.overflow = ""; if (lbFocus) lbFocus.focus(); }
-document.querySelectorAll("[data-clase]").forEach(b => b.addEventListener("click", ev => { ev.preventDefault(); openClase(); }));
+document.querySelectorAll("[data-clase]").forEach(b => b.addEventListener("click", ev => { ev.preventDefault(); openClase(b.dataset.clase); }));
+$("#tutorBox").addEventListener("click", ev => { const t = ev.target.closest("[data-tutor]"); if (t) return verTutor(t.dataset.tutor); if (ev.target.closest("[data-volver]")) verTutores(); });
 lb.addEventListener("click", ev => { if (ev.target === lb || ev.target.closest(".lbx")) closeClase(); });
 document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !lb.hidden) closeClase(); });
 
