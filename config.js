@@ -9,7 +9,8 @@ window.TSZ_CONFIG = {
     30000: "https://mpago.la/14iiQi4",   // ejes de 7 guías: M1 Números, M1 Probabilidad, M2 Números, M2 Álgebra, Física Ondas, Física Mecánica, Biología Procesos y funciones, Biología Herencia y evolución, Química Reacciones
     40000: "https://mpago.la/2JeGNME",   // ejes de 9 guías: M1 Geometría, M2 Probabilidad y estadística
     50000: "https://mpago.la/2qjd5z5",   // eje de 11 guías: M2 Geometría
-    60000: "https://mpago.la/2cQftwK"    // eje de 13 guías: M1 Álgebra y funciones
+    60000: "https://mpago.la/2cQftwK",   // eje de 13 guías: M1 Álgebra y funciones
+    70000: "https://mpago.la/22WggkU"    // eje de 15 guías: Precálculo (Universidad)
   },
   contacto: "trabajotszenit@gmail.com",    // correo de contacto visible para los compradores
   clientId: "646234191968-dfi7md4dmfiqgrqmksd7i0lh22t2o4mv.apps.googleusercontent.com"    // ID de cliente de Google para «Iniciar sesión» (termina en .apps.googleusercontent.com)
