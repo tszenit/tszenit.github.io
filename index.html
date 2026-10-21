@@ -784,24 +784,30 @@ function findEje(id) { for (const p of PRUEBAS) for (const e of p.ejes) if (e.id
 function findGuia(code) { for (const p of PRUEBAS) for (const e of p.ejes) if (e.guias.includes(code)) return { p, e }; }
 function openPay(id, code) {
   const { p, e } = code ? findGuia(code) : findEje(id);
-  const price = code ? PRECIO : packOf(e);
+  const lista = code ? PRECIO : packOf(e);
+  let price = lista, promo = null;   // promo: { c: código, d: % de descuento }
   const prod = code || e.id;
   const title = code ? GUIAS[code].titulo : `${e.nombre} · eje completo`;
-  const link = (CFG.mp || {})[price] || (code ? CFG.mpGuia : "");
+  const linkDe = v => (CFG.mp || {})[v] || (code && v === PRECIO ? CFG.mpGuia : "");
+  const totalHtml = () => (promo ? `<div class="sumrow"><span>Código ${esc(promo.c)} (−${promo.d}%)</span><span>−${fmt(lista - price)}</span></div>` : "") + `<div class="sumrow"><span>Total</span><span>${fmt(price)}</span></div>`;
+  const pasoHtml = () => { const link = linkDe(price); return `<p style="font-family:var(--f-display);font-size:14px"><b>1.</b> Paga ${fmt(price)} con Mercado Pago.${promo ? "" : ` <span class="muted">¿Tienes un código promocional? Escríbelo abajo antes de pagar.</span>`}</p>
+        ${link ? `<a class="btn btn-cafe" href="${esc(link)}" target="_blank" rel="noopener" style="margin-top:10px">Pagar ${fmt(price)} con Mercado Pago</a>`
+               : `<p class="muted" style="font-size:14px;margin-top:6px">${promo ? "El pago en línea con descuento se habilita pronto" : "El pago en línea se habilita pronto"}${CFG.contacto ? `; mientras tanto escríbenos a <a href="mailto:${esc(CFG.contacto)}">${esc(CFG.contacto)}</a>` : ""}.</p>`}`; };
   const resumen = code
     ? `<div class="sumrow"><span>${esc(GUIAS[code].titulo)}</span><span>${fmt(PRECIO)}</span></div>`
     : `${e.guias.map(c => `<div class="sumrow"><span>${esc(GUIAS[c].titulo)}</span><span>incluida</span></div>`).join("")}<div class="sumrow"><span>Guías y ensayo final que se publiquen después</span><span>incluidas</span></div>`;
   showLayer(`<div class="panel narrow" role="dialog" aria-modal="true" aria-labelledby="payT">
     <div class="panel-head"><div><h3 id="payT">Comprar ${esc(title)}</h3><div class="sub">${esc(p.nombre)} · <span class="mono">${esc(prod)}</span></div></div><button class="x" aria-label="Cerrar">×</button></div>
     <form class="panel-body" id="payForm" novalidate>
-      <div>${resumen}<div class="sumrow"><span>Total</span><span>${fmt(price)}</span></div></div>
-      <div class="box"><p style="font-family:var(--f-display);font-size:14px"><b>1.</b> Paga ${fmt(price)} con Mercado Pago.</p>
-        ${link ? `<a class="btn btn-cafe" href="${esc(link)}" target="_blank" rel="noopener" style="margin-top:10px">Pagar ${fmt(price)} con Mercado Pago</a>`
-               : `<p class="muted" style="font-size:14px;margin-top:6px">El pago en línea se habilita pronto${CFG.contacto ? `; mientras tanto escríbenos a <a href="mailto:${esc(CFG.contacto)}">${esc(CFG.contacto)}</a>` : ""}.</p>`}</div>
+      <div>${resumen}<div id="payTot">${totalHtml()}</div></div>
+      <div class="box" id="payStep">${pasoHtml()}</div>
       <p style="font-family:var(--f-display);font-size:14px"><b>2.</b> Avísanos tu pago y te enviaremos tu código de acceso por correo.</p>
       <div class="field"><label for="payName">Nombre de quien pagó</label><input type="text" id="payName" autocomplete="name" required></div>
       <div class="field"><label for="payMail">Correo para recibir tu código</label><input type="email" id="payMail" autocomplete="email" placeholder="tu@correo.cl" required></div>
       <div class="field"><label for="payOp">N.º de operación de Mercado Pago <span class="muted">(opcional)</span></label><input type="text" id="payOp" inputmode="numeric"></div>
+      <div class="field"><label for="payPromo">Código promocional <span class="muted">(opcional)</span></label>
+        <div style="display:flex;gap:8px;align-items:stretch"><input type="text" id="payPromo" autocomplete="off" autocapitalize="characters" spellcheck="false" style="flex:1;min-width:0;text-transform:uppercase"><button type="button" class="btn btn-ghost" id="payPromoGo" style="width:auto;flex:none">Aplicar</button></div>
+        <p id="payPromoMsg" role="status" style="font-family:var(--f-display);font-size:13px;margin-top:6px" hidden></p></div>
       <input type="text" id="payHp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
       <label class="check"><input type="checkbox" id="payTerms" required><span>Acepto los <a href="#p-terminos" data-close>términos de compra</a> y la <a href="#privacidad" data-close>política de privacidad</a>.</span></label>
       <p class="err" id="payErr" hidden></p>
@@ -810,6 +816,25 @@ function openPay(id, code) {
     </form></div>`);
   $("#payHave").addEventListener("click", () => openCode());
   if (ses && ses.e) $("#payMail").value = ses.e;
+  const normP = v => String(v || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const pintar = () => { $("#payTot").innerHTML = totalHtml(); $("#payStep").innerHTML = pasoHtml(); };
+  const msgP = (t, bien) => { const m = $("#payPromoMsg"); m.textContent = t; m.style.color = bien ? "var(--latte)" : "var(--muted)"; m.hidden = !t; };
+  async function aplicarPromo() {
+    const c = normP($("#payPromo").value), b = $("#payPromoGo");
+    if (!c) { promo = null; price = lista; pintar(); msgP(""); return true; }
+    if (promo && promo.c === c) return true;
+    b.disabled = true; b.textContent = "Revisando…";
+    try {
+      const j = await api({ tipo: "promo", codigo: c });
+      if (j.valido) { promo = { c: j.codigo || c, d: Number(j.descuento) || 10 }; price = Math.round(lista * (100 - promo.d) / 100); msgP(`Código aplicado: ${promo.d}% de descuento. Ahora pagas ${fmt(price)} con el botón de arriba.`, true); }
+      else { promo = null; price = lista; msgP("Ese código no existe o ya no está activo."); }
+      pintar(); return !!promo;
+    } catch (e) { msgP(e.message === "sin_endpoint" ? "Los códigos promocionales se habilitan pronto." : "No se pudo revisar el código. Revisa tu conexión e inténtalo de nuevo."); return false; }
+    finally { b.disabled = false; b.textContent = "Aplicar"; }
+  }
+  $("#payPromoGo").addEventListener("click", aplicarPromo);
+  $("#payPromo").addEventListener("keydown", ev => { if (ev.key === "Enter") { ev.preventDefault(); aplicarPromo(); } });
+  $("#payPromo").addEventListener("input", () => { if (promo && normP($("#payPromo").value) !== promo.c) { promo = null; price = lista; pintar(); msgP(""); } });
   $("#payForm").addEventListener("submit", async ev => {
     ev.preventDefault();
     const name = $("#payName").value.trim(), mail = $("#payMail").value.trim(), err = $("#payErr");
@@ -819,9 +844,11 @@ function openPay(id, code) {
     if (!mailOk(mail)) return fail("Escribe un correo válido para recibir tu código.", $("#payMail"));
     if (!$("#payTerms").checked) return fail("Para comprar tienes que aceptar los términos y la política de privacidad.", $("#payTerms"));
     if ($("#payHp").value) return;
+    if (normP($("#payPromo").value) && !(promo && promo.c === normP($("#payPromo").value)) && !(await aplicarPromo()))
+      return fail("Revisa el código promocional o bórralo para enviar el aviso.", $("#payPromo"));
     const btn = $("#paySend"); btn.disabled = true; btn.textContent = "Enviando…";
     try {
-      await enviar({ tipo: "pago", producto: prod, titulo: title, precio: price, nombre: name, correo: mail, operacion: $("#payOp").value.trim() });
+      await enviar({ tipo: "pago", producto: prod, titulo: title, precio: price, precioLista: lista, promo: promo ? promo.c : "", nombre: name, correo: mail, operacion: $("#payOp").value.trim() });
       layer.querySelector(".panel").innerHTML = `<div class="panel-head"><div><h3>Aviso enviado</h3><div class="sub">${esc(title)}</div></div><button class="x" aria-label="Cerrar">×</button></div>
         <div class="done"><p style="font-family:var(--f-display);font-size:18px;font-weight:600">Gracias, ${esc(name.split(" ")[0])}</p>
         <p class="muted" style="max-width:30em">Cuando verifiquemos tu pago te enviaremos el código de acceso a <b style="color:var(--ink)">${esc(mail)}</b>. Luego ingrésalo en «Tengo un código».</p>
