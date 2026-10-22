@@ -345,6 +345,101 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .eje.soon { border-style: dashed; }
 .eje.soon .eje-art { filter: saturate(.55); opacity: .75; }
 @media (max-width: 520px) { .eje-art { height: 92px; padding: 10px 12px 6px 14px; } .eje-art .eje-n { font-size: 28px; } }
+
+/* ---- temas del eje y ventana de nivel ---- */
+.tema { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 8px 12px; width: 100%; text-align: left; cursor: pointer; padding: 13px 14px; border-radius: 12px; background: var(--bg-deep); border: 1px solid var(--ax-l, var(--line)); color: var(--ink); font: inherit; transition: border-color .15s, background .15s, transform .15s; }
+.tema:hover, .tema:focus-visible { border-color: var(--ax); background: linear-gradient(90deg, var(--ax-b), var(--bg-deep)); }
+.tema .tn { font: 600 15px/1.3 var(--f-display); min-width: 0; }
+.tema.ens .tn { color: var(--ax); }
+.tema .tls { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.tema .tl { font: 600 11.5px var(--f-display); border-radius: 999px; padding: 4px 9px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.tema .tl-avanzada { color: var(--ax); border-color: var(--ax-l); background: var(--ax-b); }
+.tema .tl-ensayo { color: var(--ink); border-color: var(--ax-l); }
+.tema .tl.own { color: var(--ok); border-color: #3E7A5E; background: rgba(63, 122, 94, .16); }
+.tema .tar { font: 600 22px/1 var(--f-display); color: var(--ax); transition: transform .15s; }
+.tema:hover .tar { transform: translateX(3px); }
+@media (max-width: 520px) { .tema { grid-template-columns: minmax(0, 1fr) auto; } .tema .tls { grid-column: 1; grid-row: 2; justify-content: flex-start; } .tema .tar { grid-row: 1 / span 2; grid-column: 2; } }
+.panel.tema-p { width: min(760px, 100%); border-color: var(--ax-l); }
+.tema-head { position: relative; display: flex; align-items: flex-start; gap: 14px; padding: 22px 22px 20px; overflow: hidden;
+  background: radial-gradient(120% 180% at 100% 0%, var(--ax-a), transparent 60%), linear-gradient(180deg, var(--ax-b), transparent); border-bottom: 1px solid var(--ax-l); }
+.tema-head::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: var(--ax); }
+.tema-head .th-art { position: absolute; right: 64px; top: 10px; bottom: 6px; width: min(52%, 330px); color: var(--ax); opacity: .38; pointer-events: none; }
+.tema-head .th-art svg { width: 100%; height: 100%; }
+.tema-head .th-txt { position: relative; flex: 1; min-width: 0; }
+.tema-head .th-eb { font: 700 11.5px var(--f-display); letter-spacing: .14em; text-transform: uppercase; color: var(--ax); }
+.tema-head h3 { font-size: clamp(21px, 4.4vw, 27px); font-weight: 700; margin-top: 6px; text-wrap: balance; }
+.tema-head .th-sub { color: var(--muted); font-family: var(--f-display); font-size: 14px; margin-top: 4px; }
+.tema-head .x { position: relative; }
+.niveles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 22px; }
+.niveles.uno { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 580px) { .niveles { grid-template-columns: minmax(0, 1fr); padding: 16px; } }
+.nvc { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 10px; padding: 20px; border-radius: 16px; min-width: 0; }
+.nvc h4 { font: 700 22px var(--f-display); margin: 0; }
+.nvc .nvc-d { color: var(--muted); font-size: 15px; line-height: 1.5; margin: 0; flex: 1; }
+.nvc .nvc-meta { font: 500 13px var(--f-display); color: var(--muted); margin: 0; }
+.nvc .tuya { color: var(--ok); }
+.nvc-top { display: flex; align-items: center; justify-content: space-between; }
+.nvc-ic { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 14px; }
+.nvc-ic svg { width: 28px; height: 28px; }
+.nvc-bars { display: flex; gap: 4px; } .nvc-bars i { width: 22px; height: 6px; border-radius: 4px; background: var(--line); } .nvc-bars i.on { background: var(--ax); }
+.nvc-acts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.nvc-buy { width: 100%; }
+.nvc-normal { background: var(--bg-deep); border: 1px solid var(--ax-l); }
+.nvc-normal .nvc-ic { color: var(--ax); border: 1.5px solid var(--ax-l); }
+.nvc-avanzada { background: linear-gradient(155deg, var(--ax-a), rgba(8, 20, 40, .55) 72%), var(--surface); border: 1.5px solid var(--ax); box-shadow: 0 18px 46px -22px var(--ax-g); }
+.nvc-avanzada h4 { color: var(--ax); } .nvc-avanzada h4 .st { color: var(--ax); }
+.nvc-avanzada .nvc-ic { color: #0B1A33; background: var(--ax); box-shadow: 0 0 0 4px var(--ax-b); }
+.nvc-avanzada .nvc-d { color: var(--ink); }
+.nvc-avanzada .nvc-buy { background: var(--ax); color: #0B1A33; border-color: transparent; }
+.nvc-avanzada .nvc-buy .was { color: rgba(11, 26, 51, .65); text-decoration-color: #B4232A; }
+.nvc-wm { position: absolute; right: -12px; bottom: 58px; width: 78%; color: var(--ax); opacity: .13; pointer-events: none; }
+.nvc-wm svg { width: 100%; height: auto; }
+.nvc > :not(.nvc-wm) { position: relative; }
+.nvc-ensayo { background: var(--bg-deep); border: 1.5px dashed var(--ax); }
+.nvc-ensayo .nvc-ic { color: var(--ax); border: 1.5px solid var(--ax-l); }
+.tema-foot { margin: 0; padding: 0 22px 22px; color: var(--muted); font: 500 14px var(--f-display); }
+.tema-foot .lnk { background: none; border: 0; padding: 0; color: var(--ax); font: 700 14px var(--f-display); text-decoration: underline; cursor: pointer; }
+
+/* ---- ensayo final: fila destacada y ventana morada ---- */
+.tema.ens { grid-template-columns: auto minmax(0, 1fr) auto; min-height: 84px; padding: 16px 18px; margin-top: 4px; border: 1px solid rgba(167, 139, 250, .55);
+  background: radial-gradient(130% 180% at 0% 0%, rgba(139, 92, 246, .38), transparent 60%), linear-gradient(120deg, #1E1440, #120E2E 70%); box-shadow: inset 0 0 0 1px rgba(196, 181, 253, .08); }
+.tema.ens:hover, .tema.ens:focus-visible { border-color: #C4B5FD; background: radial-gradient(130% 180% at 0% 0%, rgba(139, 92, 246, .5), transparent 62%), linear-gradient(120deg, #24184D, #140F33 70%); }
+.tema.ens .ens-ic { grid-column: 1; grid-row: 1; } .tema.ens .ens-tx { grid-column: 2; grid-row: 1; } .tema.ens .tar { grid-column: 3; grid-row: 1; }
+.tema.ens .ens-ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; color: #1A1036; background: linear-gradient(145deg, #C4B5FD, #8B5CF6); box-shadow: 0 6px 18px -6px rgba(139, 92, 246, .8); }
+.tema.ens .ens-ic svg { width: 26px; height: 26px; }
+.tema.ens .ens-tx { display: grid; gap: 3px; min-width: 0; }
+.tema.ens .tn { font: 700 17px/1.2 var(--f-display); color: #EDE9FE; }
+.tema.ens .ens-sub { font: 500 13px var(--f-display); color: #C4B5FD; }
+.tema.ens .tar { color: #C4B5FD; }
+.panel.ens-p { position: relative; overflow: hidden; width: min(540px, 100%); border: 1px solid rgba(167, 139, 250, .55);
+  background: radial-gradient(90% 60% at 50% 0%, rgba(139, 92, 246, .42), transparent 70%), radial-gradient(70% 50% at 100% 100%, rgba(91, 33, 182, .35), transparent 70%), linear-gradient(180deg, #1B1240, #0E0B26); box-shadow: 0 30px 90px -20px rgba(91, 33, 182, .7); }
+.ens-p .ens-stars { position: absolute; inset: 0; pointer-events: none; opacity: .8;
+  background-image: radial-gradient(1.6px 1.6px at 9% 14%, #EDE9FE, transparent), radial-gradient(1.2px 1.2px at 24% 38%, #DDD6FE, transparent), radial-gradient(1.8px 1.8px at 86% 11%, #fff, transparent), radial-gradient(1.2px 1.2px at 72% 30%, #C4B5FD, transparent), radial-gradient(1.4px 1.4px at 93% 52%, #EDE9FE, transparent), radial-gradient(1.1px 1.1px at 6% 61%, #C4B5FD, transparent), radial-gradient(1.5px 1.5px at 15% 88%, #DDD6FE, transparent), radial-gradient(1.2px 1.2px at 80% 84%, #EDE9FE, transparent), radial-gradient(1.6px 1.6px at 56% 6%, #fff, transparent), radial-gradient(1px 1px at 40% 94%, #C4B5FD, transparent), radial-gradient(1.3px 1.3px at 97% 73%, #DDD6FE, transparent), radial-gradient(1px 1px at 31% 8%, #EDE9FE, transparent); }
+.ens-p .ens-wm { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); width: 88%; color: #A78BFA; opacity: .14; pointer-events: none; }
+.ens-p .ens-wm svg { width: 100%; height: auto; }
+.ens-p .x { position: absolute; top: 14px; right: 14px; z-index: 2; }
+.ens-body { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 34px 26px 26px; }
+.ens-badge { width: 72px; height: 72px; border-radius: 22px; display: grid; place-items: center; color: #1A1036; background: linear-gradient(145deg, #DDD6FE, #8B5CF6 70%); box-shadow: 0 0 0 6px rgba(139, 92, 246, .18), 0 14px 34px -10px rgba(139, 92, 246, .9); }
+.ens-badge svg { width: 40px; height: 40px; }
+.ens-eb { margin: 6px 0 0; font: 700 11.5px var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: #C4B5FD; }
+.ens-body h3 { margin: 0; font: 700 clamp(26px, 6vw, 34px)/1.1 var(--f-display); color: #F5F3FF; letter-spacing: -.01em; }
+.ens-lead { margin: 0; max-width: 40ch; color: #DDD6FE; font-size: 16px; line-height: 1.55; }
+.ens-lead b { color: #fff; }
+.ens-stats { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 4px 0; }
+.ens-stats div { min-width: 92px; padding: 10px 14px; border-radius: 14px; background: rgba(139, 92, 246, .14); border: 1px solid rgba(167, 139, 250, .35); }
+.ens-stats b { display: block; font: 700 24px/1 var(--f-display); color: #fff; }
+.ens-stats span { font: 500 12.5px var(--f-display); color: #C4B5FD; }
+.ens-h { margin: 6px 0 0; font: 700 12px var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: #A78BFA; }
+.ens-temas { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.ens-temas li { font: 600 13.5px var(--f-display); color: #EDE9FE; padding: 7px 12px; border-radius: 999px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(196, 181, 253, .3); }
+.ens-note { margin: 4px 0 0; max-width: 44ch; color: #B8AEDB; font-family: var(--f-display); font-size: 13.5px; line-height: 1.5; }
+.ens-acts { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%; margin-top: 6px; }
+.btn.ens-btn { flex: 1 1 260px; max-width: 360px; background: linear-gradient(135deg, #A78BFA, #7C3AED); color: #fff; border: 0; box-shadow: 0 10px 26px -10px rgba(124, 58, 237, .9); }
+.btn.ens-btn:hover { background: linear-gradient(135deg, #B9A2FB, #8B5CF6); }
+.btn.ens-btn .was { color: rgba(255, 255, 255, .7); text-decoration-color: #FCA5A5; }
+.ens-foot { margin: 0; font: 500 13.5px var(--f-display); color: #B8AEDB; }
+.ens-foot .lnk { background: none; border: 0; padding: 0; color: #C4B5FD; font: 700 13.5px var(--f-display); text-decoration: underline; cursor: pointer; }
+@media (max-width: 520px) { .tema.ens { grid-template-columns: auto minmax(0, 1fr) auto; } .ens-body { padding: 30px 18px 22px; } }
 .pricing{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}@media (max-width:820px){.pricing{grid-template-columns:minmax(0,1fr)}}.pcard{min-width:0}@media (max-width:640px){header.top .wrap{flex-wrap:wrap;row-gap:2px}nav.main{width:100%;justify-content:space-between;align-items:center;gap:6px}nav.main a[href='#ejes']{display:none}nav.main{overflow-x:auto;scrollbar-width:none}nav.main a,nav.main .btn{white-space:nowrap;font-size:12.5px;padding:8px 9px;min-height:40px;flex:none}}
 </style>
 </head><body>
@@ -718,7 +813,7 @@ const abiertos = new Set();   // ejes desplegados
 
 function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 function tipoTxt(g) { return g.tipo === "ensayo" ? "Ensayo del eje completo" : "Guía"; }
-const NIVEL = { normal: "Normal", avanzada: "Avanzada ★", ensayo: "Ensayo final" };
+const NIVEL = { normal: "Básica", avanzada: "Avanzada ★", ensayo: "Ensayo final" };
 function nivelChip(g) { const n = g.nivel || "normal"; return `<span class="chip nv nv-${n}">${NIVEL[n]}</span>`; }
 function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 3200); }
 
@@ -760,6 +855,97 @@ const TIPO_EJE = { NUM: "NUM", ALG: "ALG", GEO: "GEO", PRO: "PRO", MET: "MET", O
 const arteDe = id => ARTE[TIPO_EJE[id.split("-")[1]]];
 const ejeEstilo = id => { const a = arteDe(id); return a ? ` style="--ax:${a.c};--ax-a:${a.a};--ax-b:${a.b};--ax-l:${a.l};--ax-g:${a.g}"` : ""; };
 const ejeArte = (id, i) => { const a = arteDe(id); return a ? `<div class="eje-art"><span class="eje-n">${String((i || 0) + 1).padStart(2, "0")}</span>${a.svg}</div>` : ""; };
+
+/* ---------- temas del eje y elección de nivel (Básica / Avanzada ★) ---------- */
+const tengoGuia = c => hasG(c);
+const ejeAbierto = id => hasEje(id);
+const temaNombre = t => t.replace(/^Guía( avanzada)?\s*/, "").replace(/^(Precálculo|Cálculo 1)\s*·\s*/, "").replace(/^·\s*/, "").replace(/\s*·\s*(Física|Química|Biología)$/, "");
+function temasDe(e) {
+  const T = [], ix = {};
+  e.guias.forEach(c => {
+    const g = GUIAS[c], ens = g.tipo === "ensayo", k = ens ? "\u0000ens" : temaNombre(g.titulo);
+    if (!(k in ix)) { ix[k] = T.length; T.push({ nombre: ens ? "Ensayo final" : k, ens, codes: [] }); }
+    T[ix[k]].codes.push(c);
+  });
+  T.forEach(t => t.codes.sort((a, b) => ["normal", "avanzada", "ensayo"].indexOf(GUIAS[a].nivel || "normal") - ["normal", "avanzada", "ensayo"].indexOf(GUIAS[b].nivel || "normal")));
+  return T;
+}
+function temasTxt(e) {
+  const T = temasDe(e), n = T.filter(t => !t.ens).length, ens = T.some(t => t.ens);
+  return `${n} ${n === 1 ? "tema" : "temas"}${ens ? " y ensayo final" : ""}`;
+}
+function temaRows(e, open) {
+  return temasDe(e).map((t, k) => {
+    const lv = t.codes.map(c => {
+      const g = GUIAS[c], n = g.nivel || "normal", own = open || tengoGuia(c);
+      const txt = n === "avanzada" ? "Avanzada ★" : n === "ensayo" ? `${g.n} preguntas${g.tiempo ? ` · ${g.tiempo} min` : ""}` : "Básica";
+      return `<span class="tl tl-${n}${own ? " own" : ""}">${txt}${own ? " ✓" : ""}</span>`;
+    }).join("");
+    if (t.ens) {
+      const g = GUIAS[t.codes[0]], own = open || tengoGuia(t.codes[0]);
+      return `<button class="tema ens" type="button" data-tema="${e.id}" data-k="${k}"><span class="ens-ic" aria-hidden="true">${ENS_IC}</span><span class="ens-tx"><span class="tn">Ensayo final</span><span class="ens-sub">Todos los temas del eje · ${g.n} preguntas${g.tiempo ? ` · ${g.tiempo} min` : ""}${own ? " · ✓ Ya lo tienes" : ""}</span></span><span class="tar" aria-hidden="true">›</span></button>`;
+    }
+    return `<button class="tema" type="button" data-tema="${e.id}" data-k="${k}"><span class="tn">${esc(t.nombre)}</span><span class="tls">${lv}</span><span class="tar" aria-hidden="true">›</span></button>`;
+  }).join("");
+}
+const NV_INFO = {
+  normal: { t: "Básica", d: "Para aprender el tema desde la base: preguntas directas y progresivas, con la solución paso a paso en cada QR.", b: 1 },
+  avanzada: { t: "Avanzada", d: "Para subir puntaje: problemas exigentes y de varios pasos, del nivel más alto de la prueba.", b: 2 },
+  ensayo: { t: "Ensayo final", d: "Mezcla todos los temas del eje, con tiempo, como en la prueba real.", b: 0 } };
+const NV_IC = {
+  normal: '<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" stroke-width="3"/><path d="M17 25l5 5 10-11" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  avanzada: '<svg viewBox="0 0 48 48"><path d="M24 5l5.6 12.3 13.4 1.4-10 9.1 2.8 13.2L24 34.3 12.2 41l2.8-13.2-10-9.1 13.4-1.4z" fill="currentColor"/></svg>',
+  ensayo: '<svg viewBox="0 0 48 48"><circle cx="24" cy="26" r="16" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 26V16M19 5h10M24 5v5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>' };
+function nivelCard(c, own, a) {
+  const g = GUIAS[c], n = g.nivel || "normal", I = NV_INFO[n], sd = g.q.filter(q => q[2]).length;
+  const meta = [`${g.n} preguntas`, sd ? `${sd} de Suficiencia de Datos` : "", g.tiempo ? `${g.tiempo} minutos` : ""].filter(Boolean).join(" · ");
+  const acts = own
+    ? `<button class="btn btn-ghost btn-sm" data-pdf="${c}">Descargar PDF</button><button class="btn btn-cafe btn-sm" data-form="${c}">Enviar respuestas</button>`
+    : `<button class="btn btn-cafe nvc-buy" data-buyg="${c}">Comprar · ${OFERTA ? `<s class="was">${fmt(NORMAL_GUIA)}</s>` : ""}${fmt(PRECIO)}</button>`;
+  const bars = I.b ? `<span class="nvc-bars" aria-label="Dificultad ${I.b} de 2"><i class="on"></i><i${I.b > 1 ? ' class="on"' : ""}></i></span>` : "";
+  return `<article class="nvc nvc-${n}">${n === "avanzada" && a ? `<div class="nvc-wm" aria-hidden="true">${a.svg}</div>` : ""}
+    <div class="nvc-top"><span class="nvc-ic" aria-hidden="true">${NV_IC[n]}</span>${bars}</div>
+    <h4>${I.t}${n === "avanzada" ? ' <span class="st">★</span>' : ""}</h4>
+    <p class="nvc-d">${I.d}</p>
+    <p class="nvc-meta">${meta}${own ? ' · <b class="tuya">✓ Ya la tienes</b>' : ""}</p>
+    <div class="nvc-acts">${acts}</div></article>`;
+}
+const ENS_IC = '<svg viewBox="0 0 48 48"><path d="M14 6h20M14 42h20M16 6c0 9 8 12 8 18s-8 9-8 18M32 6c0 9-8 12-8 18s8 9 8 18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 38c1.5-3 3.5-4.5 5-4.5s3.5 1.5 5 4.5z" fill="currentColor"/><path d="M38 10l1.2 2.6 2.8.3-2.1 1.9.6 2.8L38 16.2l-2.5 1.4.6-2.8-2.1-1.9 2.8-.3z" fill="currentColor" opacity=".8"/></svg>';
+function openEnsayo(eid, t) {
+  const { p, e } = findEje(eid), c = t.codes[0], g = GUIAS[c], a = arteDe(eid), own = ejeAbierto(eid) || tengoGuia(c);
+  const temas = temasDe(e).filter(x => !x.ens).map(x => x.nombre);
+  const acts = own
+    ? `<button class="btn btn-ghost" data-pdf="${c}">Descargar PDF</button><button class="btn ens-btn" data-form="${c}">Enviar respuestas</button>`
+    : `<button class="btn ens-btn" data-buyg="${c}">Comprar ensayo · ${OFERTA ? `<s class="was">${fmt(NORMAL_GUIA)}</s>` : ""}${fmt(PRECIO)}</button>`;
+  showLayer(`<div class="panel ens-p" role="dialog" aria-modal="true" aria-labelledby="ensT">
+    <div class="ens-stars" aria-hidden="true"></div>
+    ${a ? `<div class="ens-wm" aria-hidden="true">${a.svg}</div>` : ""}
+    <button class="x" type="button" aria-label="Cerrar">×</button>
+    <div class="ens-body">
+      <span class="ens-badge" aria-hidden="true">${ENS_IC}</span>
+      <p class="ens-eb">${esc(p.nombre)} · ${esc(e.nombre)}</p>
+      <h3 id="ensT">Ensayo final</h3>
+      <p class="ens-lead">Un examen de <b>${g.n} preguntas</b> que mezcla todos los temas de ${esc(e.nombre)}${g.tiempo ? `, con <b>${g.tiempo} minutos</b>` : ""}, como en la prueba real. Es la mejor forma de saber si dominas el eje completo.</p>
+      <div class="ens-stats"><div><b>${g.n}</b><span>preguntas</span></div>${g.tiempo ? `<div><b>${g.tiempo}</b><span>minutos</span></div>` : ""}<div><b>${temas.length}</b><span>${temas.length === 1 ? "tema" : "temas"}</span></div></div>
+      <p class="ens-h">Qué evalúa</p>
+      <ul class="ens-temas">${temas.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <p class="ens-note">Al terminar envías tus respuestas y recibes un informe personal con tu puntaje y la explicación de cada error. Cada pregunta trae su QR con la solución paso a paso.</p>
+      <div class="ens-acts">${acts}</div>
+      ${ejeAbierto(eid) || e.guias.length < 2 ? "" : `<p class="ens-foot">También viene incluido en el <button type="button" class="lnk" data-buy="${eid}">eje completo</button>.</p>`}
+    </div>
+  </div>`);
+}
+function openTema(eid, k) {
+  const { p, e } = findEje(eid), t = temasDe(e)[k], a = arteDe(eid), open = ejeAbierto(eid);
+  if (t.ens) return openEnsayo(eid, t);
+  showLayer(`<div class="panel tema-p" role="dialog" aria-modal="true" aria-labelledby="temaT"${ejeEstilo(eid)}>
+    <div class="tema-head">${a ? `<div class="th-art" aria-hidden="true">${a.svg}</div>` : ""}
+      <div class="th-txt"><p class="th-eb">${esc(p.nombre)} · ${esc(e.nombre)}</p><h3 id="temaT">${esc(t.nombre)}</h3><p class="th-sub">${t.ens ? "Pon a prueba todo el eje" : "Elige tu nivel"}</p></div>
+      <button class="x" type="button" aria-label="Cerrar">×</button></div>
+    <div class="niveles${t.codes.length === 1 ? " uno" : ""}">${t.codes.map(c => nivelCard(c, open || tengoGuia(c), a)).join("")}</div>
+    ${open || e.guias.length < 2 ? "" : `<p class="tema-foot">¿Quieres todo el eje? <button type="button" class="lnk" data-buy="${eid}">Compra el eje completo</button>: incluye las ${e.guias.length} guías y las que vengan.</p>`}
+  </div>`);
+}
 function renderEjes() {
   const p = PAES().find(x => x.id === current) || PAES()[0];
   $("#ejesGrid").innerHTML = p.ejes.map(ejeCard).join("");
@@ -773,9 +959,9 @@ function ejeCard(e, i) { {
     const owned = e.guias.filter(c => hasG(c)).length;
     const exp = abiertos.has(e.id);
     return `<article class="eje" id="eje-${e.id}"${ejeEstilo(e.id)}>${ejeArte(e.id, i)}
-      <button class="eje-top tg" type="button" data-tg="${e.id}" aria-expanded="${exp}" aria-controls="g-${e.id}"><div><h3>${esc(e.nombre)}</h3><p class="desc">${esc(e.desc)}</p><p class="count">${e.guias.length} ${e.guias.length === 1 ? "guía" : "guías"} · ${exp ? "ocultar" : "ver guías"}</p></div>
+      <button class="eje-top tg" type="button" data-tg="${e.id}" aria-expanded="${exp}" aria-controls="g-${e.id}"><div><h3>${esc(e.nombre)}</h3><p class="desc">${esc(e.desc)}</p><p class="count">${temasTxt(e)} · ${exp ? "ocultar" : "ver temas"}</p></div>
       <span class="side"><span class="chip ${open || owned ? "open" : "lock"}">${open ? "Eje completo" : owned ? `${owned} de ${e.guias.length}` : "Bloqueado"}</span><span class="chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></button>
-      <div class="guias" id="g-${e.id}"${exp ? "" : " hidden"}>${e.guias.map(c => guiaRow(c, open || hasG(c))).join("")}</div>
+      <div class="guias" id="g-${e.id}"${exp ? "" : " hidden"}>${temaRows(e, open)}</div>
       <div class="eje-meta">${open
         ? `<span class="muted" style="font-family:var(--f-display);font-size:14px">Tienes el eje completo, incluidas las guías que se publiquen después.</span>`
         : e.guias.length < 2 ? "" : `<span class="price">${was(normalEje(e))}${fmt(packOf(e))}${OFERTA ? `<span class="sale">Fin de año</span>` : ""}<small class="inc">${OFERTA ? `Precio de fin de año; desde el 1 de enero de 2027 cuesta ${fmt(normalEje(e))}. ` : ""}Eje completo: ${e.guias.length === 1 ? "la guía publicada" : `las ${e.guias.length} guías publicadas`} y todas las que vengan, con su ensayo final. Ahorras ${fmt(e.guias.length * PRECIO - packOf(e))}.</small></span><button class="btn btn-cafe" data-buy="${e.id}">Comprar eje completo</button>`}
@@ -807,11 +993,15 @@ $("#tabs").addEventListener("keydown", ev => {
 ["#ejesGrid", "#uniGrid"].forEach(sel => $(sel) && $(sel).addEventListener("click", ev => {
   const tg = ev.target.closest("[data-tg]");
   if (tg) { const id = tg.dataset.tg; abiertos.has(id) ? abiertos.delete(id) : abiertos.add(id); renderEjes(); const b = document.querySelector(`[data-tg="${id}"]`); if (b) b.focus(); return; }
+  const tm = ev.target.closest("[data-tema]"); if (tm) return openTema(tm.dataset.tema, +tm.dataset.k);
+  accionGuia(ev);
+}));
+function accionGuia(ev) {
   const buy = ev.target.closest("[data-buy]"); if (buy) return openPay(buy.dataset.buy);
   const bg = ev.target.closest("[data-buyg]"); if (bg) return openPay(null, bg.dataset.buyg);
   const f = ev.target.closest("[data-form]"); if (f) return conLogin("Inicia sesión para enviar tus respuestas.", () => openForm(f.dataset.form));
   const pdf = ev.target.closest("[data-pdf]"); if (pdf) return descargar(pdf.dataset.pdf, pdf);
-}));
+}
 
 /* ---------- capas ---------- */
 const layer = $("#layer");
@@ -823,7 +1013,7 @@ function showLayer(html) {
   if (first) first.focus();
 }
 function closeLayer() { const w = esperando; esperando = []; w.forEach(f => f.no(new Error("cancelado"))); layer.hidden = true; layer.innerHTML = ""; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
-layer.addEventListener("click", ev => { if (ev.target === layer || ev.target.closest(".x")) closeLayer(); });
+layer.addEventListener("click", ev => { if (ev.target === layer || ev.target.closest(".x")) return closeLayer(); if (ev.target.closest(".tema-p, .ens-p")) accionGuia(ev); });
 layer.addEventListener("keydown", ev => { if (ev.key === "Escape") closeLayer(); });
 function findEje(id) { for (const p of PRUEBAS) for (const e of p.ejes) if (e.id === id) return { p, e }; }
 
