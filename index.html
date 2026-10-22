@@ -318,6 +318,12 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .cl-prices { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: baseline; }
 .cl-prices div { font-family: var(--f-display); color: var(--muted); font-size: 14px; }
 .cl-prices b { display: block; font-size: 26px; color: var(--ink); }
+.clases .cprice .cgrupo { font-size: 14px; color: var(--muted); }
+.clases .cprice .cgrupo b { font-size: 16px; color: var(--ink); margin: 0; }
+.tbtn .av.mi { font-size: 26px; }
+.tbtn .mprice { font: 500 13.5px/1.4 var(--f-display); color: var(--muted); }
+.tbtn .mprice b { display: block; font: 700 22px var(--f-display); color: var(--ink); }
+.tbtn .mprice .tot { font-size: 12.5px; }
 .tcard .tc-price { margin-top: 12px; font: 600 15px var(--f-display); color: #3A4A6B; }
 .tcard .tc-price b { font: 700 26px var(--f-body); color: #172238; margin-right: 4px; }
 @media (max-width: 820px) { .clases { grid-template-columns: minmax(0, 1fr); padding: 20px; } .clases .cta-c { align-items: flex-start; } }
@@ -378,7 +384,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <h2 style="margin-top:8px">Clases particulares de matemáticas</h2>
           <p>Clases de matemática para estudiantes de <b>8° básico a IV medio</b>, y clases universitarias de <b>Precálculo y Cálculo 1</b>. Repasamos lo que te cuesta, a tu ritmo, con ejercicios explicados paso a paso.</p>
         </div>
-        <div class="cta-c"><p class="cprice"><b>$20.000</b> por clase</p><button class="btn btn-cafe" type="button" data-clase>Agenda tu clase</button></div>
+        <div class="cta-c"><p class="cprice"><b>$20.000</b> por clase individual<br><span class="cgrupo">Grupal (5 personas): <b>$18.000</b> c/u</span></p><button class="btn btn-cafe" type="button" data-clase>Agenda tu clase</button></div>
       </div>
     </div>
   </section>
@@ -424,7 +430,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <h2 style="margin-top:8px">Clases de Precálculo y Cálculo 1</h2>
           <p>Límites, derivadas, funciones y todo lo que te cueste del ramo. Repasamos a tu ritmo, con ejercicios explicados paso a paso.</p>
         </div>
-        <div class="cta-c"><p class="cprice"><b>$25.000</b> por clase</p><button class="btn btn-cafe" type="button" data-clase="uni">Agenda tu clase</button></div>
+        <div class="cta-c"><p class="cprice"><b>$25.000</b> por clase individual<br><span class="cgrupo">Grupal (5 personas): <b>$22.500</b> c/u</span></p><button class="btn btn-cafe" type="button" data-clase="uni">Agenda tu clase</button></div>
       </div>
     </div>
   </section>
@@ -465,7 +471,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
         </div>
         <div class="pcard wide">
           <h3 style="font-size:17px">Clases particulares</h3>
-          <div class="cl-prices"><div><b>$20.000</b>por clase · 8° básico a IV medio</div><div><b>$25.000</b>por clase · universitarias (Precálculo y Cálculo 1)</div></div>
+          <div class="cl-prices"><div><b>$20.000</b>clase individual · 8° básico a IV medio</div><div><b>$18.000</b>por persona · clase grupal de 5 ($90.000 la clase)</div><div><b>$25.000</b>clase individual · universitaria (Precálculo y Cálculo 1)</div><div><b>$22.500</b>por persona · clase grupal de 5 ($112.500 la clase)</div></div>
         </div>
       </div>
     </div>
@@ -1032,35 +1038,51 @@ const TUTORES = [
   { id: "bo", nombre: "Borja Orive", ini: "BO", tel: "+56 9 3433 6635", wa: "56934336635", corto: "850 en Ciencias",
     stats: [{ n: "850", t: "puntos en Ciencias", gold: true }],
     extra: ["Estudiante UC", "Promedio sobre 6,5"] } ];
-const CTX = { paes: { pill: "Matemática", sub: "Matemática · 8° básico a IV medio", precio: "$20.000" }, uni: { pill: "Universidad", sub: "Precálculo y Cálculo 1", precio: "$25.000" } };
-let ctxClase = "paes";
+const CTX = { paes: { pill: "Matemática", sub: "Matemática · 8° básico a IV medio", precio: "$20.000", grupo: "$18.000", grupoTotal: "$90.000" },
+  uni: { pill: "Universidad", sub: "Precálculo y Cálculo 1", precio: "$25.000", grupo: "$22.500", grupoTotal: "$112.500" } };
+const GRUPO = 5;   // personas por clase grupal
+let ctxClase = "paes", modo = "ind";   // modo: "ind" (individual) o "grupo"
+function verModalidad() {
+  const c = CTX[ctxClase];
+  $("#tutorBox").innerHTML = `<div class="tsel"><h2>¿Cómo quieres tu clase?</h2><p>Clases de ${esc(c.sub)}</p><div class="tlist modos">
+    <button class="tbtn" type="button" data-modo="ind"><span class="av mi" aria-hidden="true">1</span><b>Clase individual</b><small>Solo tú con el tutor, al ritmo y con los temas que necesites.</small><span class="mprice"><b>${c.precio}</b> por clase</span><span class="go">Elegir →</span></button>
+    <button class="tbtn" type="button" data-modo="grupo"><span class="av mi" aria-hidden="true">${GRUPO}</span><b>Clase grupal</b><small>Grupos de ${GRUPO} personas. Te sumamos a un grupo de tu nivel y coordinamos el horario cuando se completa. ¿Ya tienes tu grupo de ${GRUPO}? Reserva la clase completa.</small><span class="mprice"><b>${c.grupo}</b> por persona<br><span class="tot">${c.grupoTotal} la clase completa</span></span><span class="go">Elegir →</span></button>
+  </div></div>`;
+  const f = $("#tutorBox .tbtn"); if (f) f.focus();
+}
+const precioModo = c => modo === "grupo" ? `<b>${c.grupo}</b> por persona · clase grupal de ${GRUPO} (${c.grupoTotal} la clase completa)` : `<b>${c.precio}</b> por clase individual`;
 const ICONO = '<svg viewBox="0 0 108 92" aria-hidden="true"><path d="M10 86 A44 44 0 0 1 98 86" fill="none" stroke="#F3EBDD" stroke-width="7"/><rect x="33" y="70" width="9" height="16" rx="1.5" fill="#C9A98A"/><rect x="49.5" y="60" width="9" height="26" rx="1.5" fill="#E6D3BC"/><rect x="66" y="56" width="9" height="30" rx="1.5" fill="#F3EBDD"/><path d="M54 4 L58.6 19.4 L74 24 L58.6 28.6 L54 44 L49.4 28.6 L34 24 L49.4 19.4 Z" fill="#F5A524"/><rect x="2" y="86" width="104" height="5" rx="2.2" fill="#F3EBDD"/></svg>';
 function verTutores() {
-  $("#tutorBox").innerHTML = `<div class="tsel"><h2>Elige a tu tutor</h2><p>Clases de ${esc(CTX[ctxClase].sub)} · <b>${CTX[ctxClase].precio}</b> por clase</p><div class="tlist">${TUTORES.map(t =>
+  $("#tutorBox").innerHTML = `<button class="tback" type="button" data-modos>← Cambiar modalidad</button><div class="tsel"><h2>Elige a tu tutor</h2><p>${modo === "grupo" ? "Clase grupal" : "Clase individual"} de ${esc(CTX[ctxClase].sub)} · ${precioModo(CTX[ctxClase])}</p><div class="tlist">${TUTORES.map(t =>
     `<button class="tbtn" type="button" data-tutor="${t.id}"><span class="av">${t.ini}</span><b>${esc(t.nombre)}</b><small>${esc(t.corto)}<br>${esc(t.extra.join(" · "))}</small><span class="go">Ver perfil →</span></button>`).join("")}</div></div>`;
   const f = $("#tutorBox .tbtn"); if (f) f.focus();
 }
 function verTutor(id) {
   const t = TUTORES.find(x => x.id === id), c = CTX[ctxClase];
-  const msg = encodeURIComponent(`Hola ${t.nombre.split(" ")[0]}, vi tu perfil en TS Zenit y quiero agendar una clase de ${c.sub}.`);
+  const msg = encodeURIComponent(modo === "grupo"
+    ? `Hola ${t.nombre.split(" ")[0]}, vi tu perfil en TS Zenit y quiero inscribirme en una clase grupal (grupo de ${GRUPO}) de ${c.sub}.`
+    : `Hola ${t.nombre.split(" ")[0]}, vi tu perfil en TS Zenit y quiero agendar una clase individual de ${c.sub}.`);
   const stats = t.stats.map((s, i) => `${i ? '<span class="tc-sep"></span>' : ""}<div class="tc-stat"><b class="${s.gold ? "gold" : ""}">${s.n}</b><span>${esc(s.t)}</span>${s.d ? `<em>${esc(s.d)}</em>` : ""}</div>`).join("");
   $("#tutorBox").innerHTML = `<button class="tback" type="button" data-volver>← Elegir otro tutor</button>
     <article class="tcard" aria-label="Perfil de ${esc(t.nombre)}">
       <div class="tc-top"><span class="tc-pill"><i></i>${esc(c.pill)}</span>
         <div class="tc-brand">${ICONO}<div><b>TS ZENIT</b><small>HAZLO REALIDAD</small></div></div>
         <div class="tc-line"></div><div class="tc-role">PROFESOR PARTICULAR</div><div class="tc-name">${esc(t.nombre)}</div></div>
-      <div class="tc-bot"><div class="tc-kicker">CLASES PARTICULARES</div><div class="tc-sub">${esc(c.sub)}</div>
+      <div class="tc-bot"><div class="tc-kicker">${modo === "grupo" ? "CLASE GRUPAL" : "CLASE INDIVIDUAL"}</div><div class="tc-sub">${esc(c.sub)}</div>
         <div class="tc-stats">${stats}</div>
         <div class="tc-extra">${t.extra.map(x => `<span>${esc(x)}</span>`).join("")}</div>
-        <div class="tc-price"><b>${c.precio}</b> por clase</div>
-        <div class="tc-cta"><span>Agenda tu clase</span><a href="https://wa.me/${t.wa}?text=${msg}" target="_blank" rel="noopener">${esc(t.tel)}</a></div></div>
+        <div class="tc-price">${precioModo(c)}</div>
+        <div class="tc-cta"><span>${modo === "grupo" ? "Inscríbete" : "Agenda tu clase"}</span><a href="https://wa.me/${t.wa}?text=${msg}" target="_blank" rel="noopener">${esc(t.tel)}</a></div></div>
     </article>`;
   $("#tutorBox [data-volver]").focus();
 }
-function openClase(ctx) { ctxClase = ctx === "uni" ? "uni" : "paes"; verTutores(); lbFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; const f = $("#tutorBox .tbtn"); if (f) f.focus(); }
+function openClase(ctx) { ctxClase = ctx === "uni" ? "uni" : "paes"; modo = "ind"; verModalidad(); lbFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; const f = $("#tutorBox .tbtn"); if (f) f.focus(); }
 function closeClase() { lb.hidden = true; document.body.style.overflow = ""; if (lbFocus) lbFocus.focus(); }
 document.querySelectorAll("[data-clase]").forEach(b => b.addEventListener("click", ev => { ev.preventDefault(); openClase(b.dataset.clase); }));
-$("#tutorBox").addEventListener("click", ev => { const t = ev.target.closest("[data-tutor]"); if (t) return verTutor(t.dataset.tutor); if (ev.target.closest("[data-volver]")) verTutores(); });
+$("#tutorBox").addEventListener("click", ev => {
+  const m = ev.target.closest("[data-modo]"); if (m) { modo = m.dataset.modo; return verTutores(); }
+  if (ev.target.closest("[data-modos]")) return verModalidad();
+  const t = ev.target.closest("[data-tutor]"); if (t) return verTutor(t.dataset.tutor); if (ev.target.closest("[data-volver]")) verTutores(); });
 lb.addEventListener("click", ev => { if (ev.target === lb || ev.target.closest(".lbx")) closeClase(); });
 document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !lb.hidden) closeClase(); });
 
