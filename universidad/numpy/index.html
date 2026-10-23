@@ -648,6 +648,168 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 .u-pnav{display:flex;flex-wrap:wrap;gap:8px}
 .u-pnav .btn:disabled{opacity:.45;cursor:default}
 @media (min-width:700px){.u-judge[data-vista="normal"] #prevP,.u-judge[data-vista="normal"] #nextP{display:none}}
+
+/* ================= estética general ================= */
+:root{--ix:#F87171;--ix-2:#EF4444;--ix-3:#B91C1C;--ix-ink:#FEE2E2;--ix-mute:#FCA5A5;--ix-dim:#D9A3A8;--ix-line:rgba(248,113,113,.5);--ix-soft:rgba(239,68,68,.14)}
+.btn-lg{min-height:52px;padding:12px 22px;font-size:16px}
+.btn-cafe{box-shadow:0 10px 24px -12px rgba(216,168,120,.55)}
+
+/* presentación */
+.u-hero{position:relative;overflow:hidden;padding-block:64px 44px}
+.u-hero::before{content:"";position:absolute;inset:-20% -10% auto;height:120%;pointer-events:none;
+  background:radial-gradient(40% 50% at 78% 38%,rgba(163,171,245,.16),transparent 70%),radial-gradient(35% 45% at 12% 20%,rgba(216,168,120,.13),transparent 70%)}
+.u-hero-in{position:relative}
+.u-hero .lead{font-size:18.5px;color:var(--muted);max-width:36em}
+.u-hstats{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.u-hstats li{display:flex;align-items:baseline;gap:7px;padding:9px 14px;border-radius:12px;background:rgba(17,38,75,.7);border:1px solid var(--line);font:500 13.5px var(--f-display);color:var(--muted)}
+.u-hstats b{font:700 19px/1 var(--f-display);color:var(--ink)}
+.u-hstats li:last-child{border-color:var(--ix-line);background:rgba(127,29,29,.22)} .u-hstats li:last-child b{color:var(--ix-mute)}
+.u-hero-vis{position:relative}
+.u-plane{box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(163,171,245,.08);background:linear-gradient(180deg,#060A12,#03050A)}
+.u-float{position:absolute;left:-26px;bottom:-22px;display:grid;gap:3px;padding:12px 16px;border-radius:14px;background:rgba(5,8,15,.92);border:1px solid #23406e;box-shadow:0 18px 40px -12px rgba(0,0,0,.8);font:13px/1.5 var(--f-mono);backdrop-filter:blur(6px)}
+.u-float .t-in{color:#9DB0D6} .u-float .t-in::before{content:">>> ";color:var(--latte)} .u-float .t-rep{color:#F3D9BD}
+@media (max-width:860px){.u-float{position:static;margin-top:12px;width:fit-content}}
+
+.u-feat{position:relative;overflow:hidden;padding:22px;background:linear-gradient(180deg,rgba(23,49,92,.9),rgba(17,38,75,.9));transition:transform .2s,border-color .2s,box-shadow .2s}
+.u-feat:hover{transform:translateY(-3px);border-color:#3c5f96;box-shadow:0 18px 40px -22px rgba(0,0,0,.8)}
+.u-feat .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:6px;color:var(--latte);background:var(--accent-soft);border:1px solid rgba(216,168,120,.3)}
+.u-feat .ic svg{width:24px;height:24px}
+.u-feat.ix{border-color:var(--ix-line);background:radial-gradient(120% 90% at 0% 0%,rgba(239,68,68,.22),transparent 60%),linear-gradient(160deg,#2B0F17,#170A10)}
+.u-feat.ix .ic{color:#2B0F17;background:linear-gradient(145deg,#FECACA,#EF4444);border:0;box-shadow:0 8px 20px -8px rgba(239,68,68,.8)}
+.u-feat.ix .k{color:var(--ix-mute)} .u-feat.ix p{color:var(--ix-dim)}
+@media (prefers-reduced-motion:reduce){.u-feat,.u-feat:hover{transition:none;transform:none}}
+
+.u-path{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:none}
+@media (max-width:860px){.u-path{grid-template-columns:minmax(0,1fr)}}
+.u-path li{position:relative;display:grid;gap:8px;align-content:start;padding:22px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.u-path h3{margin:0;font-size:20px} .u-path p{margin:0;color:var(--muted);font-size:16px}
+.u-pn{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 15px var(--f-display);color:var(--black)}
+.u-path .s1 .u-pn{background:var(--latte)} .u-path .s2 .u-pn{background:var(--vk)} .u-path .s3 .u-pn{background:linear-gradient(145deg,#FECACA,#EF4444)}
+.u-path .s3{border-color:var(--ix-line);background:linear-gradient(160deg,#2B0F17,#170A10)} .u-path .s3 p{color:var(--ix-dim)}
+.u-mini{margin-top:6px;border-radius:12px;background:#050911;border:1px solid #16294d;padding:12px 14px;display:grid;gap:8px;font:13px var(--f-mono)}
+.u-path .s3 .u-mini{background:#12070b;border-color:#4a1a22}
+.u-mini code{color:var(--code-ink);background:none;padding:0} .u-mini u{text-decoration:underline dotted var(--latte);text-underline-offset:3px;color:#F5C177}
+.u-mini .c-np{color:var(--c-np)}
+.u-mini-tip{font:13px/1.45 var(--f-display);color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.u-mini-row{display:flex;gap:6px} .u-mini-row i{width:26px;height:26px;border-radius:8px;border:1.5px solid #2c4774}
+.u-mini-row i.ok{background:var(--good-soft);border-color:#3E7A5E;position:relative} .u-mini-row i.ok::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:var(--good);font:700 13px var(--f-display)}
+.u-mini-lab{font:500 12px var(--f-display);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.u-path .s3 .u-mini-lab{color:var(--ix-dim)}
+.u-mini-bubs{display:flex;gap:6px} .u-mini-bubs i{width:28px;height:28px;border-radius:50%;border:1.5px solid #6b2a33;display:grid;place-items:center;font:600 12px var(--f-display);font-style:normal;color:var(--ix-dim)}
+.u-mini-bubs i.on{background:linear-gradient(145deg,#F87171,#DC2626);border-color:transparent;color:#fff}
+
+.u-prog-card{gap:10px}
+.u-syl-h{margin:8px 0 0;font:700 11.5px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.u-syl li{border-bottom-color:rgba(42,71,117,.6)}
+.u-syl-sets .n{color:var(--vk)} .u-syl-sets small{display:block;font-size:12.5px;color:var(--muted)}
+.u-ixrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;margin-top:10px;padding:14px 16px;border-radius:14px;border:1px solid var(--ix-line);
+  background:radial-gradient(130% 180% at 0% 0%,rgba(239,68,68,.32),transparent 60%),linear-gradient(120deg,#2B0F17,#170A10 70%)}
+.u-ixrow .ix-ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#2B0F17;background:linear-gradient(145deg,#FECACA,#EF4444);box-shadow:0 6px 18px -6px rgba(239,68,68,.8)}
+.u-ixrow .ix-ic svg{width:24px;height:24px}
+.u-ixrow b{display:block;font:700 16px var(--f-display);color:#FFF1F1} .u-ixrow small{font:500 13px var(--f-display);color:var(--ix-mute)}
+.u-ixrow .pill.lock{color:var(--ix-mute);border-color:var(--ix-line);background:rgba(127,29,29,.3)}
+.u-pcard{background:radial-gradient(100% 60% at 50% 0%,rgba(216,168,120,.14),transparent 70%),var(--surface);box-shadow:0 0 0 1px rgba(216,168,120,.3) inset,0 30px 70px -30px rgba(216,168,120,.35)}
+
+/* encabezado del curso y pestañas */
+.u-chead{position:relative;overflow:hidden;background:radial-gradient(60% 120% at 90% 0%,rgba(163,171,245,.12),transparent 70%),radial-gradient(40% 90% at 0% 0%,rgba(216,168,120,.10),transparent 70%),rgba(8,20,40,.75)}
+.u-chead::after{content:"";position:absolute;right:-40px;top:-30px;width:260px;height:260px;opacity:.07;pointer-events:none;
+  background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D8A878' stroke-width='.6' stroke-linejoin='round'%3E%3Cpath d='M12 2.5 20.5 7v10L12 21.5 3.5 17V7z'/%3E%3Cpath d='M3.5 7 12 11.5 20.5 7M12 11.5v10M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12'/%3E%3C/svg%3E")}
+.u-chead .wrap{position:relative;z-index:1}
+.u-cprog .bar{height:8px;background:rgba(42,71,117,.8)}
+.u-cprog .bar i{background:linear-gradient(90deg,var(--latte),var(--gold));box-shadow:0 0 12px rgba(245,165,36,.5)}
+.u-ctab{display:inline-flex;align-items:center;gap:8px}
+.u-ctab svg{width:18px;height:18px;opacity:.8}
+.u-ctab[aria-selected="true"] svg{color:var(--latte);opacity:1}
+.u-ctab[data-ix] svg{color:var(--ix)}
+.u-ctab[data-ix][aria-selected="true"]{border-bottom-color:var(--ix)}
+.u-mods button{position:relative}
+.u-mods button.on{background:linear-gradient(90deg,rgba(216,168,120,.2),rgba(216,168,120,.05))}
+.u-mods button.on::before{content:"";position:absolute;left:0;top:7px;bottom:7px;width:3px;border-radius:3px;background:var(--latte)}
+.u-ej{background:linear-gradient(180deg,rgba(23,49,92,.85),rgba(17,38,75,.85));box-shadow:0 20px 50px -30px rgba(0,0,0,.8)}
+
+/* ================= interrogación evaluada (roja) ================= */
+.ix-card,.panel.ix-p,.ix-rhead{position:relative;overflow:hidden;isolation:isolate}
+.ix-card{border-radius:22px;border:1px solid var(--ix-line);
+  background:radial-gradient(80% 60% at 50% 0%,rgba(239,68,68,.40),transparent 70%),radial-gradient(60% 50% at 100% 100%,rgba(153,27,27,.38),transparent 70%),linear-gradient(180deg,#2A0E16,#140810);
+  box-shadow:0 30px 90px -30px rgba(185,28,28,.6),inset 0 0 0 1px rgba(254,202,202,.06)}
+.panel.ix-p{width:min(560px,100%);border:1px solid var(--ix-line);
+  background:radial-gradient(90% 60% at 50% 0%,rgba(239,68,68,.42),transparent 70%),radial-gradient(70% 50% at 100% 100%,rgba(153,27,27,.38),transparent 70%),linear-gradient(180deg,#2A0E16,#130710);
+  box-shadow:0 30px 90px -20px rgba(185,28,28,.7)}
+.ix-dots{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;
+  background-image:radial-gradient(rgba(254,202,202,.22) 1px,transparent 1.4px);background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 30%,#000,transparent 75%);mask-image:radial-gradient(70% 70% at 50% 30%,#000,transparent 75%)}
+.ix-wm{position:absolute;z-index:-1;right:-6%;top:50%;transform:translateY(-50%);width:min(380px,55%);color:#F87171;opacity:.10;pointer-events:none}
+.ix-wm svg{width:100%;height:auto}
+.ix-glyphs{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.ix-glyphs span{position:absolute;transform:translate(-50%,-50%);font:500 14px var(--f-mono);color:#FCA5A5;opacity:.28}
+.ix-glyphs span:nth-child(3n){font-size:18px;opacity:.2} .ix-glyphs span:nth-child(4n){font-size:12px;opacity:.35}
+.ix-p .x{position:absolute;top:14px;right:14px;z-index:2;color:var(--ix-ink)}
+.ix-body{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:38px 26px 30px;max-width:720px;margin:0 auto}
+.ix-badge{width:76px;height:76px;border-radius:22px;display:grid;place-items:center;color:#2A0E16;background:linear-gradient(145deg,#FEE2E2,#EF4444 70%);
+  box-shadow:0 0 0 6px rgba(239,68,68,.18),0 14px 34px -10px rgba(239,68,68,.9)}
+.ix-badge svg{width:44px;height:44px}
+.ix-badge.sm{width:46px;height:46px;border-radius:14px;box-shadow:0 0 0 4px rgba(239,68,68,.16)} .ix-badge.sm svg{width:28px;height:28px}
+.ix-eb{margin:6px 0 0;font:700 11.5px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--ix-mute)}
+.ix-body h3{margin:0;font:700 clamp(28px,5vw,38px)/1.1 var(--f-display);color:#FFF5F5;letter-spacing:-.01em}
+.ix-sub{margin:-4px 0 0;font:600 17px var(--f-display);color:var(--ix-ink)}
+.ix-lead{margin:0;max-width:46ch;color:#F6D3D3;font-size:16.5px;line-height:1.55} .ix-lead b{color:#fff}
+.ix-stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:4px 0}
+.ix-stats div{min-width:96px;padding:11px 14px;border-radius:14px;background:rgba(239,68,68,.13);border:1px solid rgba(248,113,113,.35)}
+.ix-stats b{display:block;font:700 26px/1 var(--f-display);color:#fff}
+.ix-stats span{font:500 12.5px var(--f-display);color:var(--ix-mute)}
+.ix-h{margin:8px 0 0;font:700 12px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--ix)}
+.ix-temas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.ix-temas li{display:inline-flex;align-items:center;gap:8px;font:600 13.5px var(--f-display);color:var(--ix-ink);padding:6px 12px 6px 6px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(254,202,202,.25)}
+.ix-temas li span{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font:700 11.5px var(--f-mono);background:rgba(239,68,68,.25);color:#fff}
+.ix-rules{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px;font:500 14px/1.5 var(--f-display);color:var(--ix-dim)}
+.ix-rules li::before{content:"·";color:var(--ix);font-weight:700;margin-right:8px}
+.ix-note{margin:2px 0 0;max-width:44ch;color:var(--ix-dim);font:500 13.5px/1.5 var(--f-display)}
+.ix-acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%;margin-top:8px}
+.btn.ix-btn{background:linear-gradient(135deg,#F87171,#DC2626);border:0;color:#fff;box-shadow:0 12px 28px -12px rgba(220,38,38,.95)}
+.btn.ix-btn:hover{background:linear-gradient(135deg,#FB8A8A,#EF4444);color:#fff}
+.ix-acts .ix-btn{flex:1 1 240px;max-width:360px;min-height:52px;font-size:16px}
+.btn.btn-ghost-ix{border-color:rgba(254,202,202,.35);color:var(--ix-ink)} .btn.btn-ghost-ix:hover{background:rgba(239,68,68,.12);border-color:var(--ix)}
+@media (max-width:520px){.ix-body{padding:32px 18px 24px}.ix-stats div{min-width:76px}}
+
+/* durante la interrogación */
+.u-timer.ix-timer{border-color:var(--ix-line);background:radial-gradient(80% 140% at 0% 0%,rgba(239,68,68,.32),transparent 60%),linear-gradient(120deg,#2A0E16,#140810);box-shadow:0 14px 34px -12px rgba(185,28,28,.6)}
+.ix-timer .tt{color:var(--ix-mute)} .ix-timer .clock{color:#FFE4E4}
+.ix-timer.low .clock{color:#FF8A8A;animation:ix-pulse 1s ease-in-out infinite}
+@keyframes ix-pulse{50%{opacity:.55}}
+@media (prefers-reduced-motion:reduce){.ix-timer.low .clock{animation:none}}
+.ix-timer .btn:not(.ix-btn){border-color:rgba(254,202,202,.3)}
+.ix-on .u-sheet{border-color:rgba(248,113,113,.3)}
+.ix-on .u-sheet h4,.ix-on .u-arow .n{color:var(--ix-mute)}
+.ix-on .u-arow{border-bottom-color:rgba(127,29,29,.45)}
+.ix-on .u-bubs button{border-color:#7a3540}
+.ix-on .u-bubs button:hover{border-color:var(--ix);color:#fff}
+.ix-on .u-bubs button[aria-pressed="true"]{background:linear-gradient(145deg,#F87171,#DC2626);border-color:transparent;color:#fff;box-shadow:0 6px 16px -6px rgba(220,38,38,.9)}
+.ix-on .u-bprob{border-color:rgba(248,113,113,.28)} .ix-on .u-bprob .eyebrow{color:var(--ix-mute)}
+.ix-on .ix-end{justify-content:center}
+
+/* informe */
+.ix-rhead{border-color:var(--ix-line)!important;background:radial-gradient(70% 140% at 0% 0%,rgba(239,68,68,.3),transparent 60%),linear-gradient(120deg,#2A0E16,#140810)!important}
+.ix-rhead .ix-wm{width:min(260px,40%);right:-3%}
+.ix-rhead h2{color:#FFF5F5}
+.ix-rhead .pill{border-color:rgba(254,202,202,.28);color:var(--ix-ink)}
+.ix-rhead .u-nota{background:rgba(5,7,11,.45)}
+.ix-rhead .ix-glyphs,.ix-rhead .ix-dots{display:none}
+.u-land-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.u-float{bottom:auto;top:-18px}
+.ix-sm{display:none}
+@media (max-width:600px){
+  .ix-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(64px,1fr));width:100%}
+  .ix-stats div{min-width:0;padding:10px 6px} .ix-stats b{font-size:22px}
+  .u-timer.ix-timer{flex-wrap:nowrap;gap:10px;padding:10px 12px}
+  .ix-timer .ix-badge,.ix-timer .tt{display:none}
+  .ix-timer .clock{font-size:24px}
+  .ix-timer .acts{flex-wrap:nowrap;gap:6px}
+  .ix-timer .btn{min-height:42px;padding:8px 11px;font-size:13.5px}
+  .ix-lg{display:none} .ix-sm{display:inline}
+}
+@media (max-width:560px){.u-crumbs a,.u-crumbs .sep{display:none}}
+@media (max-width:860px){.u-hero-vis{max-width:520px}}
+@media (max-width:560px){.u-topin{flex-wrap:nowrap;gap:10px}.u-crumbs{flex:1 1 auto}}
 </style></head><body>
 <header class="u-top">
   <div class="wrap u-topin">
@@ -661,29 +823,51 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <!-- ============ PRESENTACIÓN DEL CURSO (sin acceso) ============ -->
 <section id="vLanding">
   <div class="u-hero"><div class="wrap u-hero-in">
-    <div>
+    <div class="u-hero-tx">
       <p class="eyebrow">TS Zenit Universidad · Python científico · Curso 1</p>
       <h1>NumPy para ciencia e <em>investigación</em></h1>
-      <p class="lead">Arrays, vectores, matrices, transformaciones, sistemas y señales. Con Python funcionando en tu navegador, código comentado línea por línea, un juez que corrige tus programas e interrogaciones con informe.</p>
-      <div class="u-actions" style="margin-top:22px"><button class="btn btn-cafe" type="button" data-buy>Comprar el curso</button><button class="btn" type="button" data-code>Tengo un código</button></div>
+      <p class="lead">Arrays, vectores, matrices, transformaciones, sistemas y señales. Con Python funcionando en tu navegador, código comentado línea por línea, un juez que corrige tus programas y una interrogación evaluada con informe.</p>
+      <div class="u-actions" style="margin-top:22px"><button class="btn btn-cafe btn-lg" type="button" data-buy>Comprar el curso · $39.990</button><button class="btn btn-lg" type="button" data-code>Tengo un código</button></div>
       <div id="landMsg" style="margin-top:14px"></div>
+      <ul class="u-hstats" aria-label="El curso en números"><li><b>11</b>módulos</li><li><b>24</b>problemas con juez</li><li><b>3</b>ejemplos resueltos</li><li><b>1</b>interrogación evaluada</li></ul>
     </div>
-    <figure class="u-plane"><svg viewBox="0 0 420 300" role="img" aria-label="Plano cartesiano transformado por una matriz, con los vectores base i y j" xmlns="http://www.w3.org/2000/svg"><rect width="420" height="300" fill="#05070B"/><g stroke="#1E3358" stroke-width="1"><line x1="12" y1="0" x2="12" y2="300"/><line x1="58" y1="0" x2="58" y2="300"/><line x1="104" y1="0" x2="104" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="196" y1="0" x2="196" y2="300"/><line x1="242" y1="0" x2="242" y2="300"/><line x1="288" y1="0" x2="288" y2="300"/><line x1="334" y1="0" x2="334" y2="300"/><line x1="380" y1="0" x2="380" y2="300"/><line x1="0" y1="256" x2="420" y2="256"/><line x1="0" y1="210" x2="420" y2="210"/><line x1="0" y1="164" x2="420" y2="164"/><line x1="0" y1="118" x2="420" y2="118"/><line x1="0" y1="72" x2="420" y2="72"/><line x1="0" y1="26" x2="420" y2="26"/></g><g stroke="#D8A878" stroke-opacity=".28" stroke-width="1"><line x1="-678.0" y1="762.0" x2="-126.0" y2="-66.0"/><line x1="-678.0" y1="762.0" x2="426.0" y2="486.0"/><line x1="-586.0" y1="739.0" x2="-34.0" y2="-89.0"/><line x1="-632.0" y1="693.0" x2="472.0" y2="417.0"/><line x1="-494.0" y1="716.0" x2="58.0" y2="-112.0"/><line x1="-586.0" y1="624.0" x2="518.0" y2="348.0"/><line x1="-402.0" y1="693.0" x2="150.0" y2="-135.0"/><line x1="-540.0" y1="555.0" x2="564.0" y2="279.0"/><line x1="-310.0" y1="670.0" x2="242.0" y2="-158.0"/><line x1="-494.0" y1="486.0" x2="610.0" y2="210.0"/><line x1="-218.0" y1="647.0" x2="334.0" y2="-181.0"/><line x1="-448.0" y1="417.0" x2="656.0" y2="141.0"/><line x1="-126.0" y1="624.0" x2="426.0" y2="-204.0"/><line x1="-402.0" y1="348.0" x2="702.0" y2="72.0"/><line x1="-34.0" y1="601.0" x2="518.0" y2="-227.0"/><line x1="-356.0" y1="279.0" x2="748.0" y2="3.0"/><line x1="58.0" y1="578.0" x2="610.0" y2="-250.0"/><line x1="-310.0" y1="210.0" x2="794.0" y2="-66.0"/><line x1="150.0" y1="555.0" x2="702.0" y2="-273.0"/><line x1="-264.0" y1="141.0" x2="840.0" y2="-135.0"/><line x1="242.0" y1="532.0" x2="794.0" y2="-296.0"/><line x1="-218.0" y1="72.0" x2="886.0" y2="-204.0"/><line x1="334.0" y1="509.0" x2="886.0" y2="-319.0"/><line x1="-172.0" y1="3.0" x2="932.0" y2="-273.0"/><line x1="426.0" y1="486.0" x2="978.0" y2="-342.0"/><line x1="-126.0" y1="-66.0" x2="978.0" y2="-342.0"/></g><line x1="0" y1="210" x2="420" y2="210" stroke="#5D6F95" stroke-width="1.4"/><line x1="150" y1="0" x2="150" y2="300" stroke="#5D6F95" stroke-width="1.4"/><polygon points="150.0,210.0 242.0,187.0 288.0,118.0 196.0,141.0" fill="#6FD6B5" fill-opacity=".18" stroke="#6FD6B5" stroke-width="1.5"/><text x="219.0" y="168.0" text-anchor="middle" fill="#6FD6B5" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600">área 2.5</text><line x1="150" y1="210" x2="235.0" y2="188.7" stroke="#A3ABF5" stroke-width="3.2" stroke-linecap="round"/><polygon points="242.0,187.0 231.8,195.7 228.9,184.1" fill="#A3ABF5"/><line x1="150" y1="210" x2="192.0" y2="147.0" stroke="#F5A524" stroke-width="3.2" stroke-linecap="round"/><polygon points="196.0,141.0 194.3,154.3 184.4,147.7" fill="#F5A524"/><text x="248.0" y="205.0" fill="#A3ABF5" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600">î</text><text x="204.0" y="135.0" fill="#F5A524" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600">ĵ</text></svg><figcaption><span>M = [[2, 1], [0.5, 1.5]]</span><span>det(M) = 2.5</span></figcaption></figure>
+    <div class="u-hero-vis">
+      <figure class="u-plane"><svg viewBox="0 0 420 300" role="img" aria-label="Plano cartesiano transformado por una matriz, con los vectores base i y j" xmlns="http://www.w3.org/2000/svg"><rect width="420" height="300" fill="#05070B"/><g stroke="#1E3358" stroke-width="1"><line x1="12" y1="0" x2="12" y2="300"/><line x1="58" y1="0" x2="58" y2="300"/><line x1="104" y1="0" x2="104" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="196" y1="0" x2="196" y2="300"/><line x1="242" y1="0" x2="242" y2="300"/><line x1="288" y1="0" x2="288" y2="300"/><line x1="334" y1="0" x2="334" y2="300"/><line x1="380" y1="0" x2="380" y2="300"/><line x1="0" y1="256" x2="420" y2="256"/><line x1="0" y1="210" x2="420" y2="210"/><line x1="0" y1="164" x2="420" y2="164"/><line x1="0" y1="118" x2="420" y2="118"/><line x1="0" y1="72" x2="420" y2="72"/><line x1="0" y1="26" x2="420" y2="26"/></g><g stroke="#D8A878" stroke-opacity=".28" stroke-width="1"><line x1="-678.0" y1="762.0" x2="-126.0" y2="-66.0"/><line x1="-678.0" y1="762.0" x2="426.0" y2="486.0"/><line x1="-586.0" y1="739.0" x2="-34.0" y2="-89.0"/><line x1="-632.0" y1="693.0" x2="472.0" y2="417.0"/><line x1="-494.0" y1="716.0" x2="58.0" y2="-112.0"/><line x1="-586.0" y1="624.0" x2="518.0" y2="348.0"/><line x1="-402.0" y1="693.0" x2="150.0" y2="-135.0"/><line x1="-540.0" y1="555.0" x2="564.0" y2="279.0"/><line x1="-310.0" y1="670.0" x2="242.0" y2="-158.0"/><line x1="-494.0" y1="486.0" x2="610.0" y2="210.0"/><line x1="-218.0" y1="647.0" x2="334.0" y2="-181.0"/><line x1="-448.0" y1="417.0" x2="656.0" y2="141.0"/><line x1="-126.0" y1="624.0" x2="426.0" y2="-204.0"/><line x1="-402.0" y1="348.0" x2="702.0" y2="72.0"/><line x1="-34.0" y1="601.0" x2="518.0" y2="-227.0"/><line x1="-356.0" y1="279.0" x2="748.0" y2="3.0"/><line x1="58.0" y1="578.0" x2="610.0" y2="-250.0"/><line x1="-310.0" y1="210.0" x2="794.0" y2="-66.0"/><line x1="150.0" y1="555.0" x2="702.0" y2="-273.0"/><line x1="-264.0" y1="141.0" x2="840.0" y2="-135.0"/><line x1="242.0" y1="532.0" x2="794.0" y2="-296.0"/><line x1="-218.0" y1="72.0" x2="886.0" y2="-204.0"/><line x1="334.0" y1="509.0" x2="886.0" y2="-319.0"/><line x1="-172.0" y1="3.0" x2="932.0" y2="-273.0"/><line x1="426.0" y1="486.0" x2="978.0" y2="-342.0"/><line x1="-126.0" y1="-66.0" x2="978.0" y2="-342.0"/></g><line x1="0" y1="210" x2="420" y2="210" stroke="#5D6F95" stroke-width="1.4"/><line x1="150" y1="0" x2="150" y2="300" stroke="#5D6F95" stroke-width="1.4"/><polygon points="150.0,210.0 242.0,187.0 288.0,118.0 196.0,141.0" fill="#6FD6B5" fill-opacity=".18" stroke="#6FD6B5" stroke-width="1.5"/><text x="219.0" y="168.0" text-anchor="middle" fill="#6FD6B5" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600">área 2.5</text><line x1="150" y1="210" x2="235.0" y2="188.7" stroke="#A3ABF5" stroke-width="3.2" stroke-linecap="round"/><polygon points="242.0,187.0 231.8,195.7 228.9,184.1" fill="#A3ABF5"/><line x1="150" y1="210" x2="192.0" y2="147.0" stroke="#F5A524" stroke-width="3.2" stroke-linecap="round"/><polygon points="196.0,141.0 194.3,154.3 184.4,147.7" fill="#F5A524"/><text x="248.0" y="205.0" fill="#A3ABF5" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600">î</text><text x="204.0" y="135.0" fill="#F5A524" font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600">ĵ</text></svg><figcaption><span>M = [[2, 1], [0.5, 1.5]]</span><span>det(M) = 2.5</span></figcaption></figure>
+      <div class="u-float" aria-hidden="true"><span class="t-in">M @ np.array([1, 1])</span><span class="t-rep">array([3. , 2. ])</span></div>
+    </div>
   </div></div>
-  <div class="wrap u-band" style="padding-top:12px">
+
+  <div class="wrap u-band" style="padding-top:20px">
     <div class="sec-head"><p class="eyebrow">Qué incluye</p><h2>Todo para aprender NumPy en serio</h2></div>
     <div class="u-land-grid">
-      <div class="u-feat"><span class="k">Aprender</span><h3>11 módulos con simulaciones</h3><p>Vectores que se arrastran, matrices que deforman el plano, broadcasting visual y una señal ECG que filtras tú.</p></div>
-      <div class="u-feat"><span class="k">Código comentado</span><h3>Toca cualquier línea</h3><p>Cada módulo trae un programa de ejemplo. Toca una línea o una palabra y ves qué hace; después lo ejecutas.</p></div>
-      <div class="u-feat"><span class="k">Consola</span><h3>Python real en el navegador</h3><p>Python 3.12 con NumPy, sin instalar nada. Prueba ideas, revisa errores y guarda variables entre ejecuciones.</p></div>
-      <div class="u-feat"><span class="k">Juez</span><h3>Problemas con casos de prueba</h3><p>Tu función se ejecuta con casos visibles y ocultos. Si falla, te dice dónde y cuál es el error típico que cometiste.</p></div>
-      <div class="u-feat"><span class="k">Interrogaciones</span><h3>Con cronómetro e informe</h3><p>Descargas la interrogación, respondes contra el tiempo y recibes tu nota, la explicación de cada error y qué repasar.</p></div>
-      <div class="u-feat"><span class="k">Acceso</span><h3>Tuyo para siempre</h3><p>Pago único. Los módulos, sets e interrogaciones que se agreguen al curso quedan incluidos.</p></div>
+      <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z"/><path d="M12 6v13.5"/></svg></span><span class="k">Aprender</span><h3>11 módulos con simulaciones</h3><p>Vectores que se arrastran, matrices que deforman el plano, broadcasting visual y una señal ECG que filtras tú.</p></div>
+      <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></span><span class="k">Código comentado</span><h3>Toca cualquier línea</h3><p>Cada módulo trae un programa de ejemplo. Toca una línea o una palabra y ves qué hace; después lo ejecutas.</p></div>
+      <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="m7 9.5 3 2.5-3 2.5M12.5 15H17"/></svg></span><span class="k">Consola</span><h3>Python real en el navegador</h3><p>Python 3.12 con NumPy, sin instalar nada. Prueba ideas, revisa errores y guarda variables entre ejecuciones.</p></div>
+      <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.3 2.6 2.6 5-5.4"/></svg></span><span class="k">Juez</span><h3>Problemas con casos de prueba</h3><p>Tu función se ejecuta con casos visibles y ocultos. Si falla, te dice dónde y cuál es el error típico que cometiste.</p></div>
+      <div class="u-feat ix"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span><span class="k">Interrogación evaluada</span><h3>Nota e informe personal</h3><p>Demuestra lo aprendido: recibes tu nota, la explicación de cada error y qué repasar.</p></div>
+      <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10.2V5.5L12 3l7 2.5v5.3C19 16.6 12 21 12 21z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span><span class="k">Acceso</span><h3>Tuyo para siempre</h3><p>Pago único. Los módulos, sets e interrogaciones que se agreguen al curso quedan incluidos.</p></div>
     </div>
   </div>
+
+  <div class="wrap u-band" style="padding-top:0">
+    <div class="sec-head"><p class="eyebrow">Cómo se aprende</p><h2>Aprende, practica y demuéstralo</h2></div>
+    <ol class="u-path">
+      <li class="s1"><span class="u-pn">1</span><h3>Aprende</h3><p>Lee el módulo, mueve la simulación y toca el código comentado.</p>
+        <div class="u-mini" aria-hidden="true"><code><span class="c-np">np</span>.<u>zeros</u>((3, 4))</code><span class="u-mini-tip">Crea un array de 3 filas y 4 columnas lleno de ceros.</span></div></li>
+      <li class="s2"><span class="u-pn">2</span><h3>Practica</h3><p>Resuelve los problemas del juez. Envía las veces que quieras.</p>
+        <div class="u-mini" aria-hidden="true"><span class="u-mini-row"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i></i></span><span class="u-mini-lab">casos de prueba</span></div></li>
+      <li class="s3"><span class="u-pn">3</span><h3>Demuéstralo</h3><p>Rinde la interrogación evaluada y recibe tu informe.</p>
+        <div class="u-mini" aria-hidden="true"><span class="u-mini-bubs"><i>A</i><i class="on">B</i><i>C</i><i>D</i></span><span class="u-mini-lab">hoja de respuestas</span></div></li>
+    </ol>
+  </div>
+
   <div class="wrap u-band" style="padding-top:0">
     <div class="u-over">
-      <div class="u-card"><h3>Programa</h3><ol class="u-syl" id="syllabus"></ol></div>
+      <div class="u-card u-prog-card"><h3>Programa</h3>
+        <p class="u-syl-h">Módulos</p><ol class="u-syl" id="syllabus"></ol>
+        <p class="u-syl-h">Práctica</p><ul class="u-syl u-syl-sets" id="sylSets"></ul>
+        <div class="u-ixrow"><span class="ix-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span><span class="ix-tx"><b>Interrogación evaluada</b><small>Arrays, indexación y broadcasting · módulos 0 a 4</small></span><span class="pill lock" id="ixLock"></span></div>
+      </div>
       <aside class="u-card u-pcard" id="priceCard">
         <span class="eyebrow">Curso completo</span>
         <div class="big">$39.990 <small>pago único</small></div>
@@ -735,7 +919,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202610230750"></script>
+<script src="/config.js?v=202610230805"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -1760,10 +1944,20 @@ const CFG = Object.assign({ endpoint: "", mp: {}, contacto: "", clientId: "", mp
 const PRECIO = 39990;
 const PAGO = CFG.mpNumpy || (CFG.mp || {})[PRECIO] || "";
 const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
-const VER = "202610230750";
+const VER = "202610230805";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
+const CUBE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg>';
+const TICO = {
+  tAprender: '<path d="M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z"/><path d="M12 6v13.5"/>',
+  tConsola: '<rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="m7 9.5 3 2.5-3 2.5M12.5 15H17"/>',
+  tJuez: '<circle cx="12" cy="12" r="9"/><path d="m8.2 12.3 2.6 2.6 5-5.4"/>',
+  tPruebas: '<path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/>',
+  tEnvios: '<path d="M21 3 10.5 13.5M21 3l-6.5 18-4-7.5L3 9.5z"/>',
+  tProgreso: '<path d="M4 20V11M10 20V5M16 20v-6M2.5 20.5h19"/>'
+};
+const tIco = id => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${TICO[id]}</svg>`;
 const LOCK = '<svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M5 7V5a3 3 0 1 1 6 0v2h.5A1.5 1.5 0 0 1 13 8.5v5A1.5 1.5 0 0 1 11.5 15h-7A1.5 1.5 0 0 1 3 13.5v-5A1.5 1.5 0 0 1 4.5 7H5Zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2Z"/></svg>';
 const PRINT_LOGO = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 100\" role=\"img\" aria-label=\"TS Zenit\"><g><path d=\"M10 86 A44 44 0 0 1 98 86\" fill=\"none\" stroke=\"#1B1F5E\" stroke-width=\"6\"/><rect x=\"33\" y=\"70\" width=\"9\" height=\"16\" rx=\"1.5\" fill=\"#6C74C9\"/><rect x=\"49.5\" y=\"60\" width=\"9\" height=\"26\" rx=\"1.5\" fill=\"#3E4596\"/><rect x=\"66\" y=\"56\" width=\"9\" height=\"30\" rx=\"1.5\" fill=\"#1B1F5E\"/><path d=\"M54 4 L58.6 19.4 L74 24 L58.6 28.6 L54 44 L49.4 28.6 L34 24 L49.4 19.4 Z\" fill=\"#F5A524\"/><rect x=\"2\" y=\"86\" width=\"104\" height=\"4.5\" rx=\"2.2\" fill=\"#1B1F5E\"/></g><text x=\"122\" y=\"61\" font-family=\"Poppins, Montserrat, 'TeX Gyre Adventor', 'DejaVu Sans', sans-serif\" font-size=\"46\" letter-spacing=\"2.5\" fill=\"#1B1F5E\"><tspan font-weight=\"500\">TS</tspan><tspan font-weight=\"700\" dx=\"10\">ZENIT</tspan></text><text x=\"124\" y=\"87\" font-family=\"Poppins, Montserrat, 'TeX Gyre Adventor', 'DejaVu Sans', sans-serif\" font-weight=\"600\" font-size=\"14.5\" letter-spacing=\"5.0\" fill=\"#E08E0B\">HAZLO REALIDAD</text></svg>";
 const MODT = [["m0", "Antes de partir"], ["m1", "Vectores"], ["m2", "Crear arrays"], ["m3", "Indexación y slicing"], ["m4", "Operaciones y broadcasting"], ["m5", "Producto punto y norma"], ["m6", "Multiplicación de matrices"], ["m7", "Matrices como transformaciones"], ["m8", "Sistemas lineales e inversa"], ["m9", "Agregaciones y axis"], ["m10", "Proyecto: señal ECG"]];
@@ -1957,8 +2151,9 @@ async function arrancar() {
 function mostrarLanding(msg, neutro) {
   $("#vLanding").hidden = false; $("#vApp").hidden = true;
   $("#landMsg").innerHTML = msg ? `<div class="u-msg ${neutro ? "" : "bad"}">${msg}</div>` : "";
-  $("#syllabus").innerHTML = MODT.map(([id, t]) => `<li><span class="n">${id.slice(1)}</span><span>${esc(t)}</span><span class="pill lock">${LOCK}</span></li>`).join("")
-    + `<li><span class="n">+</span><span>Juez · Set 1 · Fundamentos (8 problemas)</span><span></span></li><li><span class="n">+</span><span>Juez · Set 2 · Álgebra lineal (8 problemas)</span><span></span></li><li><span class="n">+</span><span>Juez · Set 3 · Datos y señales (8 problemas)</span><span></span></li><li><span class="n">+</span><span>Interrogación 1 · Arrays, indexación y broadcasting</span><span></span></li>`;
+  $("#syllabus").innerHTML = MODT.map(([id, t]) => `<li><span class="n">${id.slice(1)}</span><span>${esc(t)}</span><span class="pill lock">${LOCK}</span></li>`).join("");
+  $("#sylSets").innerHTML = [["1", "Fundamentos"], ["2", "Álgebra lineal"], ["3", "Datos y señales"]].map(([n, t]) => `<li><span class="n">S${n}</span><span>Set ${n} · ${t}<small>Ejemplo resuelto y 8 problemas con juez</small></span><span class="pill lock">${LOCK}</span></li>`).join("");
+  $("#ixLock").innerHTML = LOCK;
 }
 
 /* ---------- datos del alumno (por cuenta) ---------- */
@@ -1999,7 +2194,7 @@ function paintHead() {
   $("#cTxt").textContent = `${nd} de ${NMOD} módulos · juez ${puntaje()} de ${B.probs.length * 100} puntos`;
 }
 function paintCourse() {
-  $("#ctabs").innerHTML = TABS.map(([id, l]) => `<button class="u-ctab" role="tab" type="button" aria-selected="${id === cur.tab}" data-tab="${id}">${l}</button>`).join("");
+  $("#ctabs").innerHTML = TABS.map(([id, l]) => `<button class="u-ctab" role="tab" type="button" aria-selected="${id === cur.tab}" data-tab="${id}"${id === "tPruebas" ? ' data-ix' : ""}>${tIco(id)}<span>${l}</span></button>`).join("");
   TABS.forEach(([id]) => ($("#" + id).hidden = id !== cur.tab));
   paintHead();
   if (cur.tab === "tAprender") renderMods();
@@ -2472,24 +2667,37 @@ function renderPruebas() {
   B.tests.forEach(t => { const s = tst(t.id); if (s && s.entregada && !s.res && !entregando[t.id]) entregar(t, s.auto, true); else wirePrueba(t); });
   paintPy();
 }
+const GLYPHS = [["np.", 7, 12], ["@", 91, 11], ["Σ", 5, 68], ["∂", 95, 56], ["[ ]", 91, 90], ["μ", 4, 38], ["σ", 74, 5], ["λ", 8, 93], ["∇", 96, 31], ["x̄", 27, 5]];
+const ixFondo = () => `<div class="ix-dots" aria-hidden="true"></div><div class="ix-wm" aria-hidden="true">${CUBE}</div><div class="ix-glyphs" aria-hidden="true">${GLYPHS.map(([g, x, y]) => `<span style="left:${x}%;top:${y}%">${g}</span>`).join("")}</div>`;
+const modTit = m => (MODT.find(x => x[0] === m) || [m, m])[1];
 function tarjetaHTML(t) {
-  return `<div class="u-testcard" data-t="${t.id}"><span class="eyebrow">${esc(t.titulo)} · Módulos ${t.modulos[0].slice(1)} a ${t.modulos[t.modulos.length - 1].slice(1)}</span><h3>${esc(t.sub)}</h3>
-    <div class="u-rules"><div><b>${t.minutos} min</b>desde que la activas</div><div><b>${t.A.length} + ${t.B.length}</b>alternativas y problemas de código</div><div><b>${totalPts(t)} puntos</b>nota con 60 % de exigencia</div><div><b>1 intento</b>con informe al entregar</div></div>
-    <ul class="u-list"><li>Al activarla empieza el cronómetro y no se puede pausar. Si cierras la página, el tiempo sigue corriendo.</li><li>Descarga el enunciado en PDF y marca tus respuestas en la hoja de esta página. Los problemas de código se escriben aquí y puedes probarlos con los ejemplos.</li><li>Cuando se acaba el tiempo, se entrega sola con lo que hayas respondido.</li></ul>
-    <div class="u-actions"><button class="btn btn-cafe" type="button" data-act="${t.id}">Activar ${esc(t.titulo.toLowerCase())}</button></div></div>`;
+  const nq = t.A.length + t.B.length;
+  return `<article class="ix-card" data-t="${t.id}" aria-labelledby="ixT-${t.id}">${ixFondo()}
+    <div class="ix-body">
+      <span class="ix-badge">${CUBE}</span>
+      <p class="ix-eb">Python científico · NumPy · Interrogación evaluada</p>
+      <h3 id="ixT-${t.id}">${esc(t.titulo)}</h3>
+      <p class="ix-sub">${esc(t.sub)}</p>
+      <p class="ix-lead">Una interrogación evaluada de <b>${nq} preguntas</b>: ${t.A.length} de alternativas y ${t.B.length} problemas de código que escribes y pruebas aquí. Al entregarla recibes tu <b>nota y un informe</b> con cada error explicado.</p>
+      <div class="ix-stats"><div><b>${nq}</b><span>preguntas</span></div><div><b>${t.minutos}</b><span>minutos</span></div><div><b>${totalPts(t)}</b><span>puntos</span></div><div><b>1</b><span>intento</span></div></div>
+      <p class="ix-h">Qué evalúa</p>
+      <ul class="ix-temas">${t.modulos.map(m => `<li><span>${m.slice(1)}</span>${esc(modTit(m))}</li>`).join("")}</ul>
+      <ul class="ix-rules"><li>Los ${t.minutos} minutos parten al activarla y no se pueden pausar.</li><li>Descargas el enunciado en PDF y marcas tus respuestas en esta página.</li><li>Nota de 1,0 a 7,0 con 60 % de exigencia.</li></ul>
+      <div class="ix-acts"><button class="btn ix-btn" type="button" data-act="${t.id}">Activar ${esc(t.titulo.toLowerCase())}</button></div>
+    </div></article>`;
 }
 function activaHTML(t, s) {
   const N = NUM(t);
-  return `<div class="u-tests" data-t="${t.id}">
-    <div class="u-timer" id="timer-${t.id}"><div><div class="tt">${esc(t.titulo)} · tiempo restante</div><div class="clock" id="clock-${t.id}">${mmss(s.fin - Date.now())}</div></div>
-      <div class="acts"><button class="btn" type="button" data-pdf="${t.id}">Descargar enunciado (PDF)</button><button class="btn btn-cafe" type="button" data-ent="${t.id}">Entregar</button></div></div>
+  return `<div class="u-tests ix-on" data-t="${t.id}">
+    <div class="u-timer ix-timer" id="timer-${t.id}"><span class="ix-badge sm">${CUBE}</span><div><div class="tt">${esc(t.titulo)} · ${esc(t.sub)}</div><div class="clock" id="clock-${t.id}" role="timer" aria-label="Tiempo restante">${mmss(s.fin - Date.now())}</div></div>
+      <div class="acts"><button class="btn" type="button" data-pdf="${t.id}"><span class="ix-lg">Descargar enunciado</span><span class="ix-sm">Enunciado</span> (PDF)</button><button class="btn ix-btn" type="button" data-ent="${t.id}">Entregar</button></div></div>
     <details class="fold"><summary>Ver las preguntas en pantalla<span class="chev">›</span></summary><div class="fold-body u-qview">${t.A.map(q => `<div class="q"><b>${N[q.id]}. </b>${q.q}${q.code ? `<pre class="py">${esc(q.code)}</pre>` : ""}<ol type="A" style="margin:0;padding-left:22px">${q.opts.map(o => `<li><code>${esc(o)}</code></li>`).join("")}</ol></div>`).join("")}</div></details>
     <div class="u-sheet"><h4>Parte A · Hoja de respuestas <span class="hint">(1 punto cada una)</span></h4>${t.A.map(q => `<div class="u-arow"><span class="n">${N[q.id]}</span><div class="u-bubs" role="group" aria-label="Pregunta ${N[q.id]}">${"ABCD".split("").map(L => `<button type="button" data-ans="${t.id}|${q.id}|${L}" aria-pressed="${(s.resp || {})[q.id] === L}">${L}</button>`).join("")}</div></div>`).join("")}</div>
     <h3 class="sub" style="margin:4px 0 0">Parte B · Problemas de código</h3>
     ${t.B.map(q => `<div class="u-bprob"><span class="eyebrow">Pregunta ${N[q.id]} · ${q.pts} puntos</span><h4>${esc(q.titulo)}</h4><div class="u-enun">${q.enun}</div><dl class="u-task"><dt>Función</dt><dd><code>${esc(q.firma)}</code></dd></dl>${tablaEjemplos(q.fn, q.casos)}
       <textarea class="u-editor" data-tcode="${t.id}|${q.id}" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" style="min-height:170px">${esc((s.code || {})[q.id] != null ? s.code[q.id] : `import numpy as np\n\ndef ${q.firma}:\n    # escribe tu solución aquí\n    pass\n`)}</textarea>
       <div class="u-actions"><button class="btn" type="button" data-tryq="${t.id}|${q.id}">Probar con los ejemplos</button><span class="u-pystat pill"><i></i><span></span></span></div><div data-tres="${q.id}"></div></div>`).join("")}
-    <div class="u-actions"><button class="btn btn-cafe" type="button" data-ent="${t.id}">Entregar ${esc(t.titulo.toLowerCase())}</button></div></div>`;
+    <div class="u-actions ix-end"><button class="btn ix-btn" type="button" data-ent="${t.id}">Entregar ${esc(t.titulo.toLowerCase())}</button></div></div>`;
 }
 function wirePrueba(t) {
   const root = $(`[data-t="${t.id}"]`); if (!root) return;
@@ -2497,9 +2705,16 @@ function wirePrueba(t) {
   const s = tst(t.id);
   const act = $(`[data-act="${t.id}"]`, root);
   if (act) act.addEventListener("click", () => {
-    showLayer(`<div class="panel narrow" role="dialog" aria-modal="true" aria-labelledby="acT"><div class="panel-head"><div><h3 id="acT">¿Activar ${esc(t.titulo.toLowerCase())}?</h3><div class="sub">${t.minutos} minutos · un solo intento</div></div><button class="x" type="button" data-close aria-label="Cerrar">×</button></div>
-      <div class="panel-body"><p>Al activarla empieza el cronómetro de <b>${t.minutos} minutos</b>. No se puede pausar y sigue corriendo aunque cierres la página.</p><p class="muted" style="font-size:15px">Ten a mano un lugar tranquilo y el tiempo completo antes de empezar.</p></div>
-      <div class="panel-foot"><button class="btn" type="button" data-close>Todavía no</button><button class="btn btn-cafe" type="button" id="acGo">Activar y empezar</button></div></div>`);
+    showLayer(`<div class="panel ix-p" role="dialog" aria-modal="true" aria-labelledby="acT">${ixFondo()}<button class="x" type="button" data-close aria-label="Cerrar">×</button>
+      <div class="ix-body">
+        <span class="ix-badge">${CUBE}</span>
+        <p class="ix-eb">${esc(t.titulo)} · ${esc(t.sub)}</p>
+        <h3 id="acT">¿Empezamos?</h3>
+        <p class="ix-lead">Al activarla parten los <b>${t.minutos} minutos</b>. No se pueden pausar y siguen corriendo aunque cierres la página. Se descargará el enunciado en PDF.</p>
+        <div class="ix-stats"><div><b>${t.A.length + t.B.length}</b><span>preguntas</span></div><div><b>${t.minutos}</b><span>minutos</span></div><div><b>1</b><span>intento</span></div></div>
+        <p class="ix-note">Busca un lugar tranquilo y ten el tiempo completo antes de empezar.</p>
+        <div class="ix-acts"><button class="btn btn-ghost-ix" type="button" data-close>Todavía no</button><button class="btn ix-btn" type="button" id="acGo">Activar y empezar</button></div>
+      </div></div>`);
     $("#acGo").addEventListener("click", () => { const now = Date.now(); U.tests[t.id] = { inicio: now, fin: now + t.minutos * 60000, resp: {}, code: {} }; saveU(); closeLayer(); renderPruebas(); descargarPDF(t); PYR.start().catch(() => {}); });
   });
   if (!s || s.entregada) {
@@ -2525,9 +2740,16 @@ function wirePrueba(t) {
   }));
   $$("[data-ent]", root).forEach(b => b.addEventListener("click", () => {
     const quedan = s.fin - Date.now(), sinResp = t.A.filter(q => !(s.resp || {})[q.id]).length;
-    showLayer(`<div class="panel narrow" role="dialog" aria-modal="true" aria-labelledby="enT"><div class="panel-head"><div><h3 id="enT">¿Entregar ahora?</h3><div class="sub">Te quedan ${mmss(quedan)}</div></div><button class="x" type="button" data-close aria-label="Cerrar">×</button></div>
-      <div class="panel-body"><p>Después de entregar no podrás cambiar tus respuestas.${sinResp ? ` <b>Tienes ${sinResp} ${sinResp === 1 ? "pregunta" : "preguntas"} de la parte A sin responder.</b>` : ""}</p></div>
-      <div class="panel-foot"><button class="btn" type="button" data-close>Seguir respondiendo</button><button class="btn btn-cafe" type="button" id="enGo">Entregar</button></div></div>`);
+    const resp = t.A.length - sinResp;
+    showLayer(`<div class="panel ix-p" role="dialog" aria-modal="true" aria-labelledby="enT">${ixFondo()}<button class="x" type="button" data-close aria-label="Cerrar">×</button>
+      <div class="ix-body">
+        <span class="ix-badge">${CUBE}</span>
+        <p class="ix-eb">${esc(t.titulo)} · te quedan ${mmss(quedan)}</p>
+        <h3 id="enT">¿Entregar ahora?</h3>
+        <p class="ix-lead">Después de entregar no podrás cambiar tus respuestas.${sinResp ? ` <b>Tienes ${sinResp} ${sinResp === 1 ? "pregunta" : "preguntas"} de alternativas sin responder.</b>` : ""}</p>
+        <div class="ix-stats"><div><b>${resp}/${t.A.length}</b><span>alternativas</span></div><div><b>${t.B.filter(q => { const c = (s.code || {})[q.id] || ""; return c.trim() && !/^\s*pass\s*$/m.test(c); }).length}/${t.B.length}</b><span>con código</span></div></div>
+        <div class="ix-acts"><button class="btn btn-ghost-ix" type="button" data-close>Seguir respondiendo</button><button class="btn ix-btn" type="button" id="enGo">Entregar</button></div>
+      </div></div>`);
     $("#enGo").addEventListener("click", () => { closeLayer(); entregar(t, false); });
   }));
 }
@@ -2590,10 +2812,10 @@ function informeHTML(t, s) {
   const r = s.res; if (!r) return `<div class="u-loading" data-t="${t.id}"><span class="u-dots"><i></i><i></i><i></i></span>Corrigiendo…</div>`;
   const N = NUM(t), cls = r.nota >= 5.5 ? "ok" : r.nota < 4 ? "bad" : "";
   return `<div class="u-report" data-t="${t.id}">
-    <div class="u-rhead"><div class="u-nota ${cls}"><div><b>${coma(r.nota.toFixed(1))}</b><small>nota</small></div></div>
-      <div style="display:grid;gap:10px"><span class="eyebrow">${esc(t.titulo)} · Informe</span><h2 style="margin:0;font-size:clamp(22px,3vw,30px)">${esc(t.sub)}</h2>
+    <div class="u-rhead ix-rhead">${ixFondo()}<div class="u-nota ${cls}"><div><b>${coma(r.nota.toFixed(1))}</b><small>nota</small></div></div>
+      <div style="display:grid;gap:10px"><span class="ix-eb" style="margin:0">${esc(t.titulo)} · Informe de la interrogación evaluada</span><h2 style="margin:0;font-size:clamp(22px,3vw,30px)">${esc(t.sub)}</h2>
       <div class="u-meta"><span class="pill">${coma(r.pts)} de ${r.P} puntos</span><span class="pill">Tiempo usado: ${mmss(r.usado)}</span><span class="pill">Entregada ${fecha(s.entregada)}${s.auto ? " · por tiempo" : ""}</span></div>
-      <div class="u-actions"><button class="btn btn-cafe btn-sm" type="button" data-print>Descargar informe (PDF)</button><button class="btn btn-sm" type="button" data-pdf>Descargar enunciado</button>${r.sinPython ? '<button class="btn btn-sm" type="button" data-regrade>Corregir de nuevo la parte B</button>' : ""}</div></div></div>
+      <div class="u-actions"><button class="btn ix-btn btn-sm" type="button" data-print>Descargar informe (PDF)</button><button class="btn btn-sm" type="button" data-pdf>Descargar enunciado</button>${r.sinPython ? '<button class="btn btn-sm" type="button" data-regrade>Corregir de nuevo la parte B</button>' : ""}</div></div></div>
     <div class="u-card"><h3 style="margin:0;font-size:18px">Logro por contenido</h3>${Object.entries(r.porMod).map(([m, v]) => { const pct = Math.round(100 * v.p / v.max); return `<div class="u-row"><span>Módulo ${m.slice(1)} · ${esc((MODT.find(x => x[0] === m) || [m, m])[1])}</span><div class="u-meter ${pct >= 60 ? "ok" : ""}"><i style="width:${pct}%"></i></div><span style="justify-self:end">${pct} %</span></div>`; }).join("")}</div>
     <div class="u-rep"><span class="lab">Qué hacer ahora</span><ul class="u-rec">${recomendaciones(t, r).join("")}</ul></div>
     <h3 class="sub" style="margin:0">Parte A · Pregunta por pregunta</h3>
