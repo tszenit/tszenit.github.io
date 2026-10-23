@@ -320,20 +320,33 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .cl-prices b { display: block; font-size: 26px; color: var(--ink); }
 .clases .cprice .cgrupo { font-size: 14px; color: var(--muted); }
 .clases .cprice .cgrupo b { font-size: 16px; color: var(--ink); margin: 0; }
-/* Python científico (TS Zenit Universidad) */
-.py-ruta { margin-top: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 24px 32px; align-items: start; }
-.py-ruta h2 { font-size: clamp(24px, 3.4vw, 32px); margin-top: 8px; }
-.py-ruta .py-intro p { color: var(--muted); margin-top: 10px; max-width: 46ch; }
+/* Python científico (TS Zenit Universidad): estética roja */
+.py-ruta { position: relative; overflow: hidden; isolation: isolate; margin-top: 22px; border-radius: 22px; border: 1px solid rgba(248, 113, 113, .5); padding: 30px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 24px 34px; align-items: center;
+  background: radial-gradient(80% 90% at 0% 0%, rgba(239, 68, 68, .36), transparent 62%), radial-gradient(60% 70% at 100% 100%, rgba(153, 27, 27, .38), transparent 70%), linear-gradient(160deg, #2A0E16, #140810);
+  box-shadow: 0 30px 80px -34px rgba(185, 28, 28, .65), inset 0 0 0 1px rgba(254, 202, 202, .05); }
+.py-ruta::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5; background-image: radial-gradient(rgba(254, 202, 202, .22) 1px, transparent 1.4px); background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(70% 80% at 20% 30%, #000, transparent 75%); mask-image: radial-gradient(70% 80% at 20% 30%, #000, transparent 75%); }
+.py-ruta::after { content: ""; position: absolute; z-index: -1; right: -60px; bottom: -70px; width: 300px; height: 300px; opacity: .09; pointer-events: none;
+  background: no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F87171' stroke-width='.6' stroke-linejoin='round'%3E%3Cpath d='M12 2.5 20.5 7v10L12 21.5 3.5 17V7z'/%3E%3Cpath d='M3.5 7 12 11.5 20.5 7M12 11.5v10M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12'/%3E%3C/svg%3E"); }
+.py-ruta .py-badge { width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; color: #2A0E16; background: linear-gradient(145deg, #FEE2E2, #EF4444 70%); box-shadow: 0 0 0 5px rgba(239, 68, 68, .18), 0 12px 30px -10px rgba(239, 68, 68, .9); margin-bottom: 14px; }
+.py-ruta .py-badge svg { width: 34px; height: 34px; }
+.py-ruta .eyebrow { color: #FCA5A5; }
+.py-ruta h2 { font-size: clamp(24px, 3.4vw, 34px); margin-top: 8px; color: #FFF5F5; }
+.py-ruta .py-intro p { color: #F2C9C9; margin-top: 10px; max-width: 46ch; }
+.py-ruta .py-chips { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.py-ruta .py-chips li { font: 600 13px var(--f-display); color: #FEE2E2; padding: 6px 12px; border-radius: 999px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(254, 202, 202, .25); }
 .py-cursos { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.py-curso { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 12px; border: 1px dashed var(--line); color: var(--muted); text-decoration: none; font-family: var(--f-display); }
-.py-curso .n { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-weight: 700; }
-.py-curso b { display: block; color: var(--ink); font-weight: 600; font-size: 16px; }
+.py-curso { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 14px; border: 1px dashed rgba(248, 113, 113, .3); color: #D9A3A8; text-decoration: none; font-family: var(--f-display); background: rgba(20, 8, 16, .45); }
+.py-curso .n { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid rgba(248, 113, 113, .4); display: grid; place-items: center; font-weight: 700; color: #FCA5A5; }
+.py-curso b { display: block; color: #FFF1F1; font-weight: 600; font-size: 16px; }
 .py-curso small { font-size: 13px; }
-.py-curso.on { border-style: solid; border-color: #8A5B3C; background: var(--bg-deep); }
-.py-curso.on .n { border-color: var(--latte); color: var(--latte); }
-.py-curso.on:hover { border-color: var(--latte); }
-.py-curso .pp { font-weight: 700; color: var(--ink); font-size: 18px; white-space: nowrap; }
-.py-curso .pp small { display: block; font-weight: 500; color: var(--latte); font-size: 12.5px; text-align: right; }
+.py-curso.on { border-style: solid; border-color: rgba(248, 113, 113, .65); background: radial-gradient(130% 180% at 0% 0%, rgba(239, 68, 68, .34), transparent 60%), linear-gradient(120deg, #2E0F18, #180A11 70%); box-shadow: 0 14px 34px -18px rgba(239, 68, 68, .9); transition: transform .2s, border-color .2s; }
+.py-curso.on .n { border: 0; color: #fff; background: linear-gradient(145deg, #F87171, #DC2626); box-shadow: 0 6px 16px -6px rgba(220, 38, 38, .9); }
+.py-curso.on:hover { border-color: #FCA5A5; transform: translateY(-2px); }
+.py-curso.on small { color: #FCA5A5; }
+.py-curso .pp { font-weight: 700; color: #fff; font-size: 18px; white-space: nowrap; }
+.py-curso .pp small { display: block; font-weight: 600; color: #FCA5A5; font-size: 12.5px; text-align: right; }
+@media (prefers-reduced-motion: reduce) { .py-curso.on, .py-curso.on:hover { transition: none; transform: none; } }
 @media (max-width: 820px) { .py-ruta { grid-template-columns: minmax(0, 1fr); padding: 22px; } }
 .tbtn .av.mi { font-size: 26px; }
 .tbtn .mprice { font: 500 13.5px/1.4 var(--f-display); color: var(--muted); }
@@ -551,9 +564,11 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
       <div class="ejes" id="uniGrid"></div>
       <div class="py-ruta" id="python">
         <div class="py-intro">
+          <span class="py-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span>
           <p class="eyebrow">Ruta · Python científico</p>
           <h2>Python para ciencia e investigación</h2>
           <p>Cursos interactivos con Python funcionando en tu navegador: código comentado línea por línea, un juez que corrige tus programas e interrogación evaluada.</p>
+          <ul class="py-chips" aria-label="Incluye"><li>Python en el navegador</li><li>Código comentado</li><li>Juez</li><li>Interrogación evaluada</li></ul>
         </div>
         <ul class="py-cursos">
           <li><a class="py-curso on" href="/universidad/numpy/"><span class="n">1</span><span><b>NumPy y álgebra lineal</b><small>11 módulos · consola · juez · interrogación evaluada</small></span><span class="pp">$39.990<small>Ver curso →</small></span></a></li>

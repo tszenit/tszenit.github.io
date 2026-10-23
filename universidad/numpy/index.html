@@ -862,6 +862,32 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
   table.u-io:not(:has(th.r)) td{display:block;border:0;padding:0}
   table.u-io:not(:has(th.r)) td::before{content:attr(data-l);display:block;font:700 11px var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 }
+
+/* presentación del curso (antes de comprar): estética roja de Python científico */
+#vLanding .eyebrow{color:var(--ix-mute)}
+#vLanding .u-hero::before{background:radial-gradient(42% 55% at 80% 40%,rgba(239,68,68,.22),transparent 70%),radial-gradient(38% 50% at 8% 15%,rgba(185,28,28,.24),transparent 70%)}
+#vLanding .u-hero h1 em{background:linear-gradient(120deg,#FECACA,#F87171 45%,#DC2626);-webkit-background-clip:text;background-clip:text;color:transparent}
+#vLanding .u-hero-tx .u-badge-ix{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:16px;color:#2A0E16;background:linear-gradient(145deg,#FEE2E2,#EF4444 70%);box-shadow:0 0 0 5px rgba(239,68,68,.16),0 12px 28px -10px rgba(239,68,68,.9);margin-bottom:12px}
+#vLanding .u-hero-tx .u-badge-ix svg{width:30px;height:30px}
+#vLanding .btn-cafe{background:linear-gradient(135deg,#F87171,#DC2626);border:0;color:#fff;box-shadow:0 12px 28px -12px rgba(220,38,38,.95)}
+#vLanding .btn-cafe:hover{background:linear-gradient(135deg,#FB8A8A,#EF4444)}
+#vLanding .btn:not(.btn-cafe):hover{border-color:var(--ix)}
+#vLanding .u-hstats li{background:rgba(42,14,22,.55);border-color:rgba(248,113,113,.28)}
+#vLanding .u-hstats b{color:#FFE4E4}
+#vLanding .u-plane{border-color:rgba(248,113,113,.35);box-shadow:0 30px 80px -24px rgba(185,28,28,.55),0 0 0 1px rgba(248,113,113,.08)}
+#vLanding .u-float{border-color:rgba(248,113,113,.4)} #vLanding .u-float .t-in::before{color:var(--ix)}
+#vLanding .u-feat .ic{color:var(--ix-mute);background:var(--ix-soft);border-color:rgba(248,113,113,.3)}
+#vLanding .u-feat .k{color:var(--ix-mute)}
+#vLanding .u-feat:hover{border-color:rgba(248,113,113,.55)}
+#vLanding .u-path .s1 .u-pn{background:#FECACA} #vLanding .u-path .s2 .u-pn{background:#F87171}
+#vLanding .u-mini u{text-decoration-color:var(--ix);color:#FECACA}
+#vLanding .u-syl .n{color:var(--ix-mute)}
+#vLanding .u-syl .pill.lock{color:var(--ix-mute);border-color:rgba(248,113,113,.4);background:rgba(127,29,29,.25)}
+#vLanding .u-pcard{border-color:var(--ix-line);background:radial-gradient(100% 60% at 50% 0%,rgba(239,68,68,.22),transparent 70%),linear-gradient(180deg,#24101A,#140810);box-shadow:0 0 0 1px rgba(248,113,113,.18) inset,0 30px 70px -30px rgba(220,38,38,.55)}
+#vLanding .u-pcard .big{color:#FFF5F5}
+#vLanding .u-steps4 li::before{border-color:var(--ix);color:var(--ix-mute)}
+#vLanding .u-steps4 small{color:var(--ix-dim)}
+.u-mini-bubs{flex-wrap:wrap}
 </style></head><body>
 <header class="u-top">
   <div class="wrap u-topin">
@@ -876,6 +902,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <section id="vLanding">
   <div class="u-hero"><div class="wrap u-hero-in">
     <div class="u-hero-tx">
+      <span class="u-badge-ix" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span>
       <p class="eyebrow">TS Zenit Universidad · Python científico · Curso 1</p>
       <h1>NumPy para ciencia e <em>investigación</em></h1>
       <p class="lead">Arrays, vectores, matrices, transformaciones, sistemas y señales. Con Python funcionando en tu navegador, código comentado línea por línea, un juez que corrige tus programas y una interrogación evaluada con informe.</p>
@@ -908,8 +935,8 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
         <div class="u-mini" aria-hidden="true"><code><span class="c-np">np</span>.<u>zeros</u>((3, 4))</code><span class="u-mini-tip">Crea un array de 3 filas y 4 columnas lleno de ceros.</span></div></li>
       <li class="s2"><span class="u-pn">2</span><h3>Practica</h3><p>Resuelve los problemas del juez. Envía las veces que quieras.</p>
         <div class="u-mini" aria-hidden="true"><span class="u-mini-row"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i></i></span><span class="u-mini-lab">casos de prueba</span></div></li>
-      <li class="s3"><span class="u-pn">3</span><h3>Demuéstralo</h3><p>Rinde la interrogación evaluada y recibe tu informe.</p>
-        <div class="u-mini" aria-hidden="true"><span class="u-mini-bubs"><i>A</i><i class="on">B</i><i>C</i><i>D</i></span><span class="u-mini-lab">hoja de respuestas</span></div></li>
+      <li class="s3"><span class="u-pn">3</span><h3>Demuéstralo</h3><p>Rinde la interrogación evaluada: 8 problemas de programación, con nota e informe.</p>
+        <div class="u-mini" aria-hidden="true"><span class="u-mini-bubs"><i class="on">1</i><i class="on">2</i><i class="on">3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></span><span class="u-mini-lab">8 problemas · nota e informe</span></div></li>
     </ol>
   </div>
 
@@ -971,7 +998,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202610230850"></script>
+<script src="/config.js?v=202610230857"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -1996,7 +2023,7 @@ const CFG = Object.assign({ endpoint: "", mp: {}, contacto: "", clientId: "", mp
 const PRECIO = 39990;
 const PAGO = CFG.mpNumpy || (CFG.mp || {})[PRECIO] || "";
 const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
-const VER = "202610230850";
+const VER = "202610230857";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
