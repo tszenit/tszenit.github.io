@@ -20,6 +20,7 @@ window.TSZ_CONFIG = {
     63000: "https://mpago.la/126JsRu",   // eje de 15 guías con código promocional (−10 %)
     70000: "https://mpago.la/22WggkU"    // eje de 15 guías: Precálculo (Universidad)
   },
+  mpNumpy: "",   // link de pago de Mercado Pago del curso NumPy y álgebra lineal ($39.990)
   contacto: "trabajotszenit@gmail.com",    // correo de contacto visible para los compradores
   clientId: "646234191968-dfi7md4dmfiqgrqmksd7i0lh22t2o4mv.apps.googleusercontent.com"    // ID de cliente de Google para «Iniciar sesión» (termina en .apps.googleusercontent.com)
 };

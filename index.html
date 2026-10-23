@@ -320,6 +320,21 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .cl-prices b { display: block; font-size: 26px; color: var(--ink); }
 .clases .cprice .cgrupo { font-size: 14px; color: var(--muted); }
 .clases .cprice .cgrupo b { font-size: 16px; color: var(--ink); margin: 0; }
+/* Python científico (TS Zenit Universidad) */
+.py-ruta { margin-top: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 24px 32px; align-items: start; }
+.py-ruta h2 { font-size: clamp(24px, 3.4vw, 32px); margin-top: 8px; }
+.py-ruta .py-intro p { color: var(--muted); margin-top: 10px; max-width: 46ch; }
+.py-cursos { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.py-curso { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 12px; border: 1px dashed var(--line); color: var(--muted); text-decoration: none; font-family: var(--f-display); }
+.py-curso .n { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-weight: 700; }
+.py-curso b { display: block; color: var(--ink); font-weight: 600; font-size: 16px; }
+.py-curso small { font-size: 13px; }
+.py-curso.on { border-style: solid; border-color: #8A5B3C; background: var(--bg-deep); }
+.py-curso.on .n { border-color: var(--latte); color: var(--latte); }
+.py-curso.on:hover { border-color: var(--latte); }
+.py-curso .pp { font-weight: 700; color: var(--ink); font-size: 18px; white-space: nowrap; }
+.py-curso .pp small { display: block; font-weight: 500; color: var(--latte); font-size: 12.5px; text-align: right; }
+@media (max-width: 820px) { .py-ruta { grid-template-columns: minmax(0, 1fr); padding: 22px; } }
 .tbtn .av.mi { font-size: 26px; }
 .tbtn .mprice { font: 500 13.5px/1.4 var(--f-display); color: var(--muted); }
 .tbtn .mprice b { display: block; font: 700 22px var(--f-display); color: var(--ink); }
@@ -534,6 +549,19 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
         <p>Para tu primer año de universidad, con el mismo sistema: compra una guía suelta o el eje completo, resuélvela y recibe un informe personal con cada error explicado. Cada tema tiene una guía <b>normal</b> y una <b>avanzada ★</b>, con 20 preguntas de alternativas y 3 de desarrollo, y cada curso cierra con un <b>ensayo final</b>.</p>
       </div>
       <div class="ejes" id="uniGrid"></div>
+      <div class="py-ruta" id="python">
+        <div class="py-intro">
+          <p class="eyebrow">Ruta · Python científico</p>
+          <h2>Python para ciencia e investigación</h2>
+          <p>Cursos interactivos con Python funcionando en tu navegador: código comentado línea por línea, un juez que corrige tus programas e interrogaciones con cronómetro e informe.</p>
+        </div>
+        <ul class="py-cursos">
+          <li><a class="py-curso on" href="/universidad/numpy/"><span class="n">1</span><span><b>NumPy y álgebra lineal</b><small>11 módulos · consola · juez · interrogaciones</small></span><span class="pp">$39.990<small>Ver curso →</small></span></a></li>
+          <li><div class="py-curso"><span class="n">2</span><span><b>matplotlib</b><small>Próximamente</small></span></div></li>
+          <li><div class="py-curso"><span class="n">3</span><span><b>SciPy</b><small>Próximamente</small></span></div></li>
+          <li><div class="py-curso"><span class="n">4</span><span><b>PyTorch</b><small>Próximamente</small></span></div></li>
+        </ul>
+      </div>
       <div class="clases" style="margin-top:22px">
         <div>
           <p class="eyebrow">Clases particulares universitarias</p>
