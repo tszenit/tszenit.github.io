@@ -828,6 +828,40 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 .py-str{color:#E5A07F}
 .py-num{color:#B5CEA8}
 .py-com{color:#7FA36B;font-style:italic}
+
+/* tablas Input / Output */
+.u-io pre.out{white-space:pre-wrap;word-break:break-word;margin:0}
+.u-io pre.in{color:#DCE6F7}
+.u-io td{vertical-align:top}
+
+/* interrogación como set */
+.ix-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,128px),1fr));gap:8px}
+.ix-nav button{display:grid;grid-template-columns:30px minmax(0,1fr);grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;padding:10px 12px;border-radius:12px;cursor:pointer;
+  background:rgba(23,10,16,.7);border:1px solid rgba(248,113,113,.25);color:var(--ix-ink);font:600 13.5px/1.25 var(--f-display);min-height:56px}
+.ix-nav button:hover{border-color:var(--ix)}
+.ix-nav .n{grid-row:1 / 3;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 14px var(--f-display);border:1.5px solid #7a3540;color:var(--ix-mute)}
+.ix-nav .tt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ix-nav .pp{font:500 12px var(--f-mono);color:var(--ix-dim)}
+.ix-nav button.esc .n{border-color:var(--warn);color:var(--warn)}
+.ix-nav button.ok .n{background:var(--good-soft);border-color:#3E7A5E;color:var(--good)}
+.ix-nav button.on{background:linear-gradient(135deg,rgba(239,68,68,.32),rgba(127,29,29,.35));border-color:var(--ix);box-shadow:0 8px 22px -12px rgba(239,68,68,.9)}
+.ix-nav button.on .n{background:linear-gradient(145deg,#F87171,#DC2626);border-color:transparent;color:#fff}
+@media (max-width:700px){.ix-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.ix-nav button{grid-template-columns:1fr;justify-items:center;padding:8px 4px;min-height:0}.ix-nav .n{grid-row:auto}.ix-nav .tt{display:none}.ix-nav .pp{font-size:11px}}
+.u-judge.ix-judge{grid-template-columns:minmax(0,1fr)}
+.ix-judge h2{margin:2px 0 0;font-size:clamp(22px,3vw,28px)}
+@media (min-width:700px){
+  .ix-judge[data-vista="split"] .u-pane{top:calc(env(safe-area-inset-top,0px) + 150px);max-height:calc(100vh - 170px)}
+  .ix-judge[data-vista="normal"] .u-pnav{display:none}
+}
+.ix-judge .u-pbar .seg button.on{background:linear-gradient(135deg,#F87171,#DC2626);color:#fff}
+.ix-judge .u-pane-code{border-radius:16px}
+@media (min-width:900px){.ix-nav{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:600px){
+  table.u-io:not(:has(th.r)) thead{display:none}
+  table.u-io:not(:has(th.r)) tr{display:grid;gap:6px;padding:10px 0;border-bottom:1px solid var(--line)}
+  table.u-io:not(:has(th.r)) td{display:block;border:0;padding:0}
+  table.u-io:not(:has(th.r)) td::before{content:attr(data-l);display:block;font:700 11px var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+}
 </style></head><body>
 <header class="u-top">
   <div class="wrap u-topin">
@@ -884,7 +918,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
       <div class="u-card u-prog-card"><h3>Programa</h3>
         <p class="u-syl-h">Módulos</p><ol class="u-syl" id="syllabus"></ol>
         <p class="u-syl-h">Práctica</p><ul class="u-syl u-syl-sets" id="sylSets"></ul>
-        <div class="u-ixrow"><span class="ix-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span><span class="ix-tx"><b>Interrogación evaluada</b><small>Examen integrador de todo el curso · 8 preguntas de nivel universitario</small></span><span class="pill lock" id="ixLock"></span></div>
+        <div class="u-ixrow"><span class="ix-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span><span class="ix-tx"><b>Interrogación evaluada</b><small>Examen integrador de todo el curso · 8 problemas de programación</small></span><span class="pill lock" id="ixLock"></span></div>
       </div>
       <aside class="u-card u-pcard" id="priceCard">
         <span class="eyebrow">Curso completo</span>
@@ -937,7 +971,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202610230840"></script>
+<script src="/config.js?v=202610230850"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -1962,7 +1996,7 @@ const CFG = Object.assign({ endpoint: "", mp: {}, contacto: "", clientId: "", mp
 const PRECIO = 39990;
 const PAGO = CFG.mpNumpy || (CFG.mp || {})[PRECIO] || "";
 const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
-const VER = "202610230840";
+const VER = "202610230850";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
@@ -2186,6 +2220,7 @@ let MODS = [];
 function entrar() {
   if (!B.probs) B.probs = B.sets.flatMap(s => s.probs.map(p => Object.assign(p, { set: s.id })));
   U = cargarU();
+  limpiarVersiones();
   $("#vLanding").hidden = true; $("#vApp").hidden = false;
   $("#whoPill").textContent = correo();
   if (!iniciado) {
@@ -2615,7 +2650,22 @@ function paintPList() {
     + S.probs.map(p => { const s = U.juez[p.id]; return `<li><button type="button" data-prob="${p.id}" class="${p.id === cur.prob ? "on" : ""}">${bubFor(s)}<span><b>${p.id}</b> · ${esc(p.titulo)}</span><span class="pts">${Math.round(100 * ((s && s.best) || 0))}</span></button></li>`; }).join("");
   $$("#pList [data-prob]").forEach(b => b.addEventListener("click", () => { cur.prob = b.dataset.prob; paintPList(); renderProb(cur.prob); if (window.innerWidth < 900) $("#pView").scrollIntoView({ block: "start" }); }));
 }
-function tablaEjemplos(fn, casos) { return `<div class="u-twrap"><table class="u-table u-ex"><thead><tr><th>Llamada</th><th>Resultado esperado</th></tr></thead><tbody>${casos.filter(c => c.vis).map(c => `<tr><td><code>${esc(fn)}(${esc(c.args)})</code></td><td><pre class="out">${esc(c.espRepr)}</pre></td></tr>`).join("")}</tbody></table></div>`; }
+function partirArgs(s) {
+  const out = []; let d = 0, q = null, cur = "";
+  for (const ch of String(s)) {
+    if (q) { cur += ch; if (ch === q) q = null; continue; }
+    if (ch === '"' || ch === "'") { q = ch; cur += ch; continue; }
+    if ("([{".includes(ch)) d++; else if (")]}".includes(ch)) d--;
+    if (ch === "," && d === 0) { out.push(cur.trim()); cur = ""; } else cur += ch;
+  }
+  if (cur.trim()) out.push(cur.trim());
+  return out;
+}
+function inputDe(p, args) {
+  const nom = ((p.firma || "").match(/\((.*)\)/) || [, ""])[1].split(",").map(x => x.trim()).filter(Boolean);
+  return partirArgs(args).map((v, i) => `${nom[i] || "arg" + (i + 1)} = ${v}`).join("\n");
+}
+function tablaEjemplos(p, casos) { return `<div class="u-twrap"><table class="u-table u-ex u-io"><thead><tr><th>Input</th><th>Output esperado</th></tr></thead><tbody>${casos.filter(c => c.vis).map(c => `<tr><td data-l="Input"><pre class="out in">${esc(inputDe(p, c.args))}</pre></td><td data-l="Output esperado"><pre class="out">${esc(c.espRepr)}</pre></td></tr>`).join("")}</tbody></table></div><p class="hint" style="margin-top:6px">Tu función recibe el input como parámetros y debe <b>retornar</b> (con <code>return</code>) el output.</p>`; }
 function metaProb(p, s) { return `<span class="pill">${esc(p.dif)}</span><span class="pill">${p.casos.length} casos de prueba</span><span class="pill ${s.ac ? "ok" : ""}">Mejor puntaje: ${Math.round(100 * s.best)} / 100</span><span class="pill">Envíos: ${s.intentos} · ilimitados</span>`; }
 let jconHist = "";
 function consolaPane() {
@@ -2685,7 +2735,7 @@ function renderProb(pid) {
       <div class="u-meta" id="pMeta">${metaProb(p, s)}</div>
       <div class="u-enun">${p.enun}</div>
       <dl class="u-task"><dt>Función</dt><dd><code>${esc(p.firma)}</code></dd><dt>Entrada</dt><dd>${p.entrada}</dd><dt>Salida</dt><dd>${p.salida}</dd></dl>
-      <div><h3 style="margin:0 0 8px;font-size:17px">Ejemplos</h3>${tablaEjemplos(p.fn, p.casos)}<p class="hint" style="margin-top:6px">Además hay ${oc} casos ocultos que se revisan al enviar.</p></div>
+      <div><h3 style="margin:0 0 8px;font-size:17px">Ejemplos</h3>${tablaEjemplos(p, p.casos)}<p class="hint" style="margin-top:6px">Además hay ${oc} casos ocultos que se revisan al enviar.</p></div>
       <div class="u-help">
         <div class="u-card"><span class="eyebrow">Pistas</span><div id="hints" style="display:grid;gap:8px"></div><div class="u-actions"><button class="btn btn-sm" type="button" id="hintBtn"></button></div></div>
         <div class="u-card"><span class="eyebrow">Si te quedas pegado</span><ul class="u-list" style="font-size:15.5px"><li>Mira el <b>ejemplo resuelto</b> del set y vuelve al <b>módulo ${p.modulo.slice(1)}</b>. <button class="btn btn-sm" type="button" data-gomod="${p.modulo}">Ir al módulo</button></li><li>Prueba tus ideas por partes en la <b>consola</b> de al lado: imprime el <code>.shape</code> de cada array.</li><li>Investiga por tu cuenta: la documentación de NumPy (numpy.org/doc), buscadores o asistentes de IA. Puedes enviar las veces que quieras.</li></ul></div>
@@ -2717,12 +2767,12 @@ function paintHelp(p) {
   const hb = $("#hintBtn"); hb.disabled = s.pistas >= p.pistas.length; hb.textContent = s.pistas >= p.pistas.length ? "No quedan pistas" : `Ver pista ${s.pistas + 1} de ${p.pistas.length}`;
 }
 function filasCasos(p, env, casos) {
-  return env.casos.map((c, i) => { const k = casos[i]; return `<tr><td class="r">${i + 1}</td><td>${k.vis ? `<code>${esc(p.fn)}(${esc(k.args)})</code>` : '<span class="muted">Caso oculto</span>'}</td><td>${k.vis ? `<pre class="out">${esc(k.espRepr)}</pre>` : '<span class="muted">—</span>'}</td><td>${(k.vis || c.v === "RE") && c.ob ? `<pre class="out">${esc(c.ob)}</pre>` : '<span class="muted">—</span>'}</td><td><span class="pill ${c.v === "AC" ? "ok" : c.v === "WA" ? "bad" : "warn"}">${VERD[c.v]}</span></td></tr>`; }).join("");
+  return env.casos.map((c, i) => { const k = casos[i]; return `<tr><td class="r">${i + 1}</td><td>${k.vis ? `<pre class="out in">${esc(inputDe(p, k.args))}</pre>` : '<span class="muted">Caso oculto</span>'}</td><td>${k.vis ? `<pre class="out">${esc(k.espRepr)}</pre>` : '<span class="muted">—</span>'}</td><td>${(k.vis || c.v === "RE") && c.ob ? `<pre class="out">${esc(c.ob)}</pre>` : '<span class="muted">—</span>'}</td><td><span class="pill ${c.v === "AC" ? "ok" : c.v === "WA" ? "bad" : "warn"}">${VERD[c.v]}</span></td></tr>`; }).join("");
 }
 function resultHTML(p, env, casos = p.casos, prueba = false, enPrueba = false) {
   const bubs = env.casos.map((c, i) => `<span class="bub ${c.v === "AC" ? "on" : "bad"}" title="Caso ${i + 1}: ${VERD[c.v]}">${c.v === "AC" ? "✓" : i + 1}</span>`).join("");
   return `<div class="u-verdict ${env.verd === "TLE" ? "RE" : env.verd}"><b>${VERD[env.verd]}</b><span>${env.ok} de ${env.tot} casos${prueba ? " visibles · no cuenta como envío" : enPrueba ? "" : ` · ${Math.round(100 * env.ok / env.tot)} puntos`}</span><span class="bubs">${bubs}</span></div>
-    ${env.casos.length && env.verd !== "CE" ? `<div class="u-twrap"><table class="u-table u-ex"><thead><tr><th class="r">Caso</th><th>Llamada</th><th>Esperado</th><th>Obtenido</th><th>Estado</th></tr></thead><tbody>${filasCasos(p, env, casos)}</tbody></table></div>` : ""}
+    ${env.casos.length && env.verd !== "CE" ? `<div class="u-twrap"><table class="u-table u-ex"><thead><tr><th class="r">Caso</th><th>Input</th><th>Output esperado</th><th>Tu output</th><th>Estado</th></tr></thead><tbody>${filasCasos(p, env, casos)}</tbody></table></div>` : ""}
     <div class="u-rep"><span class="lab">Informe de la corrección${env.linea ? ` · revisa la línea ${env.linea}` : ""}</span><p>${esc(env.informe)}</p></div>
     ${env.out ? `<details class="fold"><summary>Lo que imprimió tu código<span class="chev">›</span></summary><div class="fold-body"><pre class="out">${esc(env.out.slice(0, 3000))}</pre></div></details>` : ""}
     ${!prueba && !enPrueba && env.verd !== "AC" ? '<p class="hint">Corrige tu código y vuelve a enviarlo: puedes recorregir las veces que quieras. Tu puntaje es el mejor de tus envíos.</p>' : ""}`;
@@ -2748,14 +2798,14 @@ async function enviar(p, soloVisibles) {
 }
 
 /* ---------- interrogaciones ---------- */
-const NUM = t => Object.fromEntries([...t.A.map((q, i) => [q.id, i + 1]), ...t.B.map((q, i) => [q.id, t.A.length + i + 1])]);
-const ptsA = q => q.pts || 1;
-const totalPts = t => t.A.reduce((s, q) => s + ptsA(q), 0) + t.B.reduce((s, q) => s + q.pts, 0);
+const NUM = t => Object.fromEntries(t.B.map((q, i) => [q.id, i + 1]));
+const totalPts = t => t.B.reduce((s, q) => s + q.pts, 0);
 function nota(p, P) { const e = 0.6 * P; const n = p < e ? 1 + 3 * p / e : 4 + 3 * (p - e) / (P - e); return Math.round(Math.min(7, Math.max(1, n)) * 10) / 10; }
 const tst = id => U.tests[id];
+function limpiarVersiones() { (B.tests || []).forEach(t => { const s = U.tests[t.id]; if (s && (s.ver || 1) !== (t.ver || 1)) { delete U.tests[t.id]; saveU(); } }); }
 function renderPruebas() {
   const host = $("#tPruebas");
-  B.tests.forEach(t => { const s = U.tests[t.id]; if (s && (s.ver || 1) !== (t.ver || 1)) { delete U.tests[t.id]; saveU(); } });
+  limpiarVersiones();
   host.innerHTML = `<div class="u-tests">${B.tests.map(t => { const s = tst(t.id); return s && s.entregada ? informeHTML(t, s) : s ? activaHTML(t, s) : tarjetaHTML(t); }).join("")}</div>`;
   B.tests.forEach(t => { const s = tst(t.id); if (s && s.entregada && !s.res && !entregando[t.id]) entregar(t, s.auto, true); else wirePrueba(t); });
   paintPy();
@@ -2763,34 +2813,88 @@ function renderPruebas() {
 const GLYPHS = [["np.", 7, 12], ["@", 91, 11], ["Σ", 5, 68], ["∂", 95, 56], ["[ ]", 91, 90], ["μ", 4, 38], ["σ", 74, 5], ["λ", 8, 93], ["∇", 96, 31], ["x̄", 27, 5]];
 const ixFondo = () => `<div class="ix-dots" aria-hidden="true"></div><div class="ix-wm" aria-hidden="true">${CUBE}</div><div class="ix-glyphs" aria-hidden="true">${GLYPHS.map(([g, x, y]) => `<span style="left:${x}%;top:${y}%">${g}</span>`).join("")}</div>`;
 const modTit = m => (MODT.find(x => x[0] === m) || [m, m])[1];
+const plantillaDe = q => `import numpy as np\n\ndef ${q.firma}:\n    # escribe tu solución aquí\n    pass\n`;
+const codigoDe = (s, q) => (s.code || {})[q.id] != null ? s.code[q.id] : plantillaDe(q);
+const escrito = (s, q) => { const c = (s.code || {})[q.id]; return !!(c && c.trim() && c.trim() !== plantillaDe(q).trim() && !/^\s*pass\s*$/m.test(c)); };
 function tarjetaHTML(t) {
-  const nq = t.A.length + t.B.length;
   return `<article class="ix-card" data-t="${t.id}" aria-labelledby="ixT-${t.id}">${ixFondo()}
     <div class="ix-body">
       <span class="ix-badge">${CUBE}</span>
       <p class="ix-eb">Python científico · NumPy · Interrogación evaluada</p>
       <h3 id="ixT-${t.id}">${esc(t.titulo)}</h3>
       <p class="ix-sub">${esc(t.sub)}</p>
-      <p class="ix-lead">Una interrogación evaluada de <b>${nq} preguntas</b>: ${t.A.length} de alternativas y ${t.B.length} problemas de código que escribes y pruebas aquí. Al entregarla recibes tu <b>nota y un informe</b> con cada error explicado.</p>
-      <div class="ix-stats"><div><b>${nq}</b><span>preguntas</span></div><div><b>${t.minutos}</b><span>minutos</span></div><div><b>${totalPts(t)}</b><span>puntos</span></div><div><b>1</b><span>intento</span></div></div>
+      <p class="ix-lead">Un set de <b>${t.B.length} problemas de programación</b> que integran todo el curso. Escribes cada función aquí y la pruebas con los ejemplos las veces que quieras. Al entregar, se corrige con todos los casos de prueba, incluidos los ocultos, y recibes tu <b>nota y un informe</b> con cada error explicado.</p>
+      <div class="ix-stats"><div><b>${t.B.length}</b><span>problemas</span></div><div><b>${t.minutos}</b><span>minutos</span></div><div><b>${totalPts(t)}</b><span>puntos</span></div><div><b>1</b><span>entrega</span></div></div>
       <p class="ix-h">Qué evalúa</p>
       <ul class="ix-temas">${t.modulos.map(m => `<li><span>${m.slice(1)}</span>${esc(modTit(m))}</li>`).join("")}</ul>
-      <ul class="ix-rules"><li>Los ${t.minutos} minutos parten al activarla y no se pueden pausar.</li><li>Descargas el enunciado en PDF y marcas tus respuestas en esta página.</li><li>Nota de 1,0 a 7,0 con 60 % de exigencia.</li></ul>
+      <ul class="ix-rules"><li>Los ${t.minutos} minutos parten al activarla y no se pueden pausar.</li><li>Cada problema da puntaje según los casos de prueba que pase tu función.</li><li>Se corrige solo el resultado: cualquier código correcto sirve.</li><li>Nota de 1,0 a 7,0 con 60 % de exigencia.</li></ul>
       <div class="ix-acts"><button class="btn ix-btn" type="button" data-act="${t.id}">Activar ${esc(t.titulo.toLowerCase())}</button></div>
     </div></article>`;
 }
+const ixCur = {}, ixRes = {};
+const vistaIx = () => U.vistaIx || (window.innerWidth >= 1100 ? "split" : "normal");
+function navItem(t, s, q, i) {
+  const pr = (s.prueba || {})[q.id], ok = pr && pr.ok === pr.tot, st = ok ? "ok" : escrito(s, q) ? "esc" : "";
+  const lab = ok ? "ejemplos correctos" : escrito(s, q) ? "con código" : "sin empezar";
+  return `<button type="button" role="tab" data-ixp="${q.id}" class="${st} ${ixCur[t.id] === q.id ? "on" : ""}" aria-selected="${ixCur[t.id] === q.id}" title="Problema ${i + 1} · ${esc(q.titulo)} · ${lab}"><span class="n">${ok ? "✓" : i + 1}</span><span class="tt">${esc(q.titulo)}</span><span class="pp">${q.pts} pts</span></button>`;
+}
 function activaHTML(t, s) {
-  const N = NUM(t);
+  if (!ixCur[t.id] || !t.B.some(q => q.id === ixCur[t.id])) ixCur[t.id] = t.B[0].id;
   return `<div class="u-tests ix-on" data-t="${t.id}">
     <div class="u-timer ix-timer" id="timer-${t.id}"><span class="ix-badge sm">${CUBE}</span><div><div class="tt">${esc(t.titulo)} · ${esc(t.sub)}</div><div class="clock" id="clock-${t.id}" role="timer" aria-label="Tiempo restante">${mmss(s.fin - Date.now())}</div></div>
       <div class="acts"><button class="btn" type="button" data-pdf="${t.id}"><span class="ix-lg">Descargar enunciado</span><span class="ix-sm">Enunciado</span> (PDF)</button><button class="btn ix-btn" type="button" data-ent="${t.id}">Entregar</button></div></div>
-    <details class="fold"><summary>Ver las preguntas en pantalla<span class="chev">›</span></summary><div class="fold-body u-qview">${t.A.map(q => `<div class="q"><b>${N[q.id]}. </b>${q.q}${q.code ? `<pre class="py">${esc(q.code)}</pre>` : ""}<ol type="A" style="margin:0;padding-left:22px">${q.opts.map(o => `<li><code>${esc(o)}</code></li>`).join("")}</ol></div>`).join("")}</div></details>
-    <div class="u-sheet"><h4>Parte A · Hoja de respuestas <span class="hint">(${t.A.map(ptsA).every(x => x === ptsA(t.A[0])) ? `${ptsA(t.A[0])} ${ptsA(t.A[0]) === 1 ? "punto" : "puntos"} cada una` : `${t.A.reduce((x, q) => x + ptsA(q), 0)} puntos`})</span></h4>${t.A.map(q => `<div class="u-arow"><span class="n">${N[q.id]}</span><div class="u-bubs" role="group" aria-label="Pregunta ${N[q.id]}">${"ABCD".split("").map(L => `<button type="button" data-ans="${t.id}|${q.id}|${L}" aria-pressed="${(s.resp || {})[q.id] === L}">${L}</button>`).join("")}</div></div>`).join("")}</div>
-    <h3 class="sub" style="margin:4px 0 0">Parte B · Problemas de código</h3>
-    ${t.B.map(q => `<div class="u-bprob"><span class="eyebrow">Pregunta ${N[q.id]} · ${q.pts} puntos</span><h4>${esc(q.titulo)}</h4><div class="u-enun">${q.enun}</div><dl class="u-task"><dt>Función</dt><dd><code>${esc(q.firma)}</code></dd></dl>${tablaEjemplos(q.fn, q.casos)}
-      <textarea class="u-editor" data-tcode="${t.id}|${q.id}" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" style="min-height:170px">${esc((s.code || {})[q.id] != null ? s.code[q.id] : `import numpy as np\n\ndef ${q.firma}:\n    # escribe tu solución aquí\n    pass\n`)}</textarea>
-      <div class="u-actions"><button class="btn" type="button" data-tryq="${t.id}|${q.id}">Probar con los ejemplos</button><span class="u-pystat pill"><i></i><span></span></span></div><div data-tres="${q.id}"></div></div>`).join("")}
+    <nav class="ix-nav" role="tablist" aria-label="Problemas de la interrogación" id="ixNav-${t.id}">${t.B.map((q, i) => navItem(t, s, q, i)).join("")}</nav>
+    <div class="u-judge ix-judge" id="ixJudge" data-vista="${vistaIx()}">
+      <div class="u-prob"><div class="u-pbar" role="toolbar" aria-label="Vista del problema">
+        <div class="u-pnav"><button class="btn btn-sm" type="button" data-ixmove="-1">‹ Anterior</button><button class="btn btn-sm" type="button" data-ixmove="1">Siguiente ›</button></div>
+        <div class="seg" role="group" aria-label="Vista">${VISTAS.map(([v, l]) => `<button type="button" data-ixv="${v}">${l}</button>`).join("")}</div></div>
+        <div id="ixView"></div></div>
+    </div>
     <div class="u-actions ix-end"><button class="btn ix-btn" type="button" data-ent="${t.id}">Entregar ${esc(t.titulo.toLowerCase())}</button></div></div>`;
+}
+function pintarNav(t) { const s = tst(t.id), nav = $(`#ixNav-${t.id}`); if (!nav) return; nav.innerHTML = t.B.map((q, i) => navItem(t, s, q, i)).join(""); }
+function setVistaIx(v, guardar = true) {
+  const J = $("#ixJudge"); if (!J) return;
+  J.dataset.vista = v;
+  $$("[data-ixv]").forEach(b => { b.classList.toggle("on", b.dataset.ixv === v); b.setAttribute("aria-pressed", b.dataset.ixv === v); });
+  if (guardar) { U.vistaIx = v; saveU(); }
+}
+function renderIxProb(t) {
+  const s = tst(t.id), N = NUM(t), q = t.B.find(x => x.id === ixCur[t.id]), i = N[q.id];
+  const oc = q.casos.filter(c => !c.vis).length;
+  $("#ixView").innerHTML = `<div class="u-pgrid">
+    <div class="u-pane u-pane-enun">
+      <div><span class="ix-eb" style="margin:0">Problema ${i} de ${t.B.length} · ${q.pts} puntos · Módulo ${q.mod.slice(1)} · ${esc(modTit(q.mod))}</span><h2>${esc(q.titulo)}</h2></div>
+      <div class="u-enun">${q.enun}</div>
+      <dl class="u-task"><dt>Función</dt><dd><code>${esc(q.firma)}</code></dd></dl>
+      <div><h3 style="margin:0 0 8px;font-size:17px">Ejemplos</h3>${tablaEjemplos(q, q.casos)}<p class="hint" style="margin-top:6px">Al entregar se revisan además ${oc} casos ocultos.</p></div>
+    </div>
+    <div class="u-pane u-pane-code">
+      <div class="u-codehead"><b>${i} · ${esc(q.titulo)}</b><code>${esc(q.firma)}</code><span class="u-pystat pill"><i></i><span></span></span></div>
+      <div class="u-edwrap"><textarea class="u-editor" data-tcode="${t.id}|${q.id}" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" aria-label="Tu código para el problema ${i}">${esc(codigoDe(s, q))}</textarea></div>
+      <div class="u-actions"><button class="btn ix-btn" type="button" data-tryq="${q.id}">Probar con los ejemplos</button><button class="btn" type="button" data-tpl="${q.id}">Restaurar plantilla</button></div>
+      <p class="hint">Ctrl + Enter prueba tu código. Se guarda solo. Para probar ideas sueltas usa la pestaña Consola.</p>
+      <div data-tres="${q.id}">${ixRes[q.id] || ""}</div>
+    </div></div>`;
+  paintPy();
+  const ed = $(`[data-tcode="${t.id}|${q.id}"]`);
+  tabEnEditor(ed);
+  let tm; ed.addEventListener("input", () => { clearTimeout(tm); tm = setTimeout(() => { s.code = s.code || {}; s.code[q.id] = ed.value; saveU(); pintarNav(t); }, 300); });
+  const probar = async () => {
+    const b = $(`[data-tryq="${q.id}"]`), out = $(`[data-tres="${q.id}"]`);
+    s.code = s.code || {}; s.code[q.id] = ed.value; saveU();
+    b.disabled = true; out.innerHTML = '<div class="u-loading"><span class="u-dots"><i></i><i></i><i></i></span>Probando…</div>';
+    const vis = q.casos.filter(c => c.vis), r = await corregir(q, ed.value, vis);
+    b.disabled = false;
+    ixRes[q.id] = r.sinPython ? '<div class="u-msg bad">No se pudo cargar Python. Revisa tu conexión.</div>' : resultHTML(q, r, vis, true);
+    if (!r.sinPython) { s.prueba = s.prueba || {}; s.prueba[q.id] = { ok: r.ok, tot: r.tot }; saveU(); pintarNav(t); }
+    const o = $(`[data-tres="${q.id}"]`); if (o) o.innerHTML = ixRes[q.id];
+  };
+  $(`[data-tryq="${q.id}"]`).addEventListener("click", probar);
+  ed.addEventListener("keydown", e => { if ((e.ctrlKey || e.metaKey) && e.key === "Enter") { e.preventDefault(); probar(); } });
+  $(`[data-tpl="${q.id}"]`).addEventListener("click", () => { ed.value = plantillaDe(q); s.code[q.id] = ed.value; saveU(); pintarNav(t); });
+  const ids = t.B.map(x => x.id), k = ids.indexOf(q.id);
+  $$("[data-ixmove]").forEach(b => (b.disabled = (b.dataset.ixmove === "-1" ? k <= 0 : k >= ids.length - 1)));
 }
 function wirePrueba(t) {
   const root = $(`[data-t="${t.id}"]`); if (!root) return;
@@ -2804,44 +2908,34 @@ function wirePrueba(t) {
         <p class="ix-eb">${esc(t.titulo)} · ${esc(t.sub)}</p>
         <h3 id="acT">¿Empezamos?</h3>
         <p class="ix-lead">Al activarla parten los <b>${t.minutos} minutos</b>. No se pueden pausar y siguen corriendo aunque cierres la página. Se descargará el enunciado en PDF.</p>
-        <div class="ix-stats"><div><b>${t.A.length + t.B.length}</b><span>preguntas</span></div><div><b>${t.minutos}</b><span>minutos</span></div><div><b>1</b><span>intento</span></div></div>
+        <div class="ix-stats"><div><b>${t.B.length}</b><span>problemas</span></div><div><b>${t.minutos}</b><span>minutos</span></div><div><b>${totalPts(t)}</b><span>puntos</span></div></div>
         <p class="ix-note">Busca un lugar tranquilo y ten el tiempo completo antes de empezar.</p>
         <div class="ix-acts"><button class="btn btn-ghost-ix" type="button" data-close>Todavía no</button><button class="btn ix-btn" type="button" id="acGo">Activar y empezar</button></div>
       </div></div>`);
-    $("#acGo").addEventListener("click", () => { const now = Date.now(); U.tests[t.id] = { ver: t.ver || 1, inicio: now, fin: now + t.minutos * 60000, resp: {}, code: {} }; saveU(); closeLayer(); renderPruebas(); descargarPDF(t); PYR.start().catch(() => {}); });
+    $("#acGo").addEventListener("click", () => { const now = Date.now(); U.tests[t.id] = { ver: t.ver || 1, inicio: now, fin: now + t.minutos * 60000, code: {}, prueba: {} }; saveU(); closeLayer(); renderPruebas(); descargarPDF(t); PYR.start().catch(() => {}); });
   });
+  $$("[data-pdf]", root).forEach(b => b.addEventListener("click", () => descargarPDF(t)));
   if (!s || s.entregada) {
-    $$("[data-pdf]", root).forEach(b => b.addEventListener("click", () => descargarPDF(t)));
     $$("[data-print]", root).forEach(b => b.addEventListener("click", () => imprimirInforme(t, s)));
     $$("[data-regrade]", root).forEach(b => b.addEventListener("click", () => entregar(t, true, true)));
     return;
   }
-  $$("[data-pdf]", root).forEach(b => b.addEventListener("click", () => descargarPDF(t)));
-  $$("[data-ans]", root).forEach(b => b.addEventListener("click", () => {
-    const [, qid, L] = b.dataset.ans.split("|"); s.resp = s.resp || {};
-    s.resp[qid] = s.resp[qid] === L ? undefined : L; saveU();
-    $$(`[data-ans^="${t.id}|${qid}|"]`, root).forEach(x => x.setAttribute("aria-pressed", s.resp[qid] === x.dataset.ans.split("|")[2]));
-  }));
-  $$("[data-tcode]", root).forEach(ed => { tabEnEditor(ed); let tm; ed.addEventListener("input", () => { clearTimeout(tm); tm = setTimeout(() => { const [, qid] = ed.dataset.tcode.split("|"); s.code = s.code || {}; s.code[qid] = ed.value; saveU(); }, 300); }); });
-  $$("[data-tryq]", root).forEach(b => b.addEventListener("click", async () => {
-    const [, qid] = b.dataset.tryq.split("|"), q = t.B.find(x => x.id === qid), out = $(`[data-tres="${qid}"]`, root);
-    const code = $(`[data-tcode="${t.id}|${qid}"]`, root).value; s.code[qid] = code; saveU();
-    b.disabled = true; out.innerHTML = '<div class="u-loading"><span class="u-dots"><i></i><i></i><i></i></span>Probando…</div>';
-    const vis = q.casos.filter(c => c.vis), r = await corregir(q, code, vis);
-    b.disabled = false;
-    out.innerHTML = r.sinPython ? '<div class="u-msg bad">No se pudo cargar Python. Revisa tu conexión.</div>' : resultHTML(q, r, vis, true);
-  }));
+  $(`#ixNav-${t.id}`).addEventListener("click", e => { const b = e.target.closest("[data-ixp]"); if (!b) return; ixCur[t.id] = b.dataset.ixp; pintarNav(t); renderIxProb(t); if (window.innerWidth < 900) $("#ixView").scrollIntoView({ block: "start" }); });
+  $$("[data-ixmove]", root).forEach(b => b.addEventListener("click", () => { const ids = t.B.map(x => x.id), k = ids.indexOf(ixCur[t.id]) + +b.dataset.ixmove; if (k < 0 || k >= ids.length) return; ixCur[t.id] = ids[k]; pintarNav(t); renderIxProb(t); }));
+  $$("[data-ixv]", root).forEach(b => b.addEventListener("click", () => setVistaIx(b.dataset.ixv)));
+  setVistaIx(vistaIx(), false);
+  renderIxProb(t);
   $$("[data-ent]", root).forEach(b => b.addEventListener("click", () => {
-    const quedan = s.fin - Date.now(), sinResp = t.A.filter(q => !(s.resp || {})[q.id]).length;
-    const resp = t.A.length - sinResp;
+    const ed = $(`[data-tcode^="${t.id}|"]`); if (ed) { const [, qid] = ed.dataset.tcode.split("|"); s.code[qid] = ed.value; saveU(); }
+    const quedan = s.fin - Date.now(), nEsc = t.B.filter(q => escrito(s, q)).length, nOk = t.B.filter(q => { const p = (s.prueba || {})[q.id]; return p && p.ok === p.tot; }).length;
     showLayer(`<div class="panel ix-p" role="dialog" aria-modal="true" aria-labelledby="enT">${ixFondo()}<button class="x" type="button" data-close aria-label="Cerrar">×</button>
       <div class="ix-body">
         <span class="ix-badge">${CUBE}</span>
         <p class="ix-eb">${esc(t.titulo)} · te quedan ${mmss(quedan)}</p>
         <h3 id="enT">¿Entregar ahora?</h3>
-        <p class="ix-lead">Después de entregar no podrás cambiar tus respuestas.${sinResp ? ` <b>Tienes ${sinResp} ${sinResp === 1 ? "pregunta" : "preguntas"} de alternativas sin responder.</b>` : ""}</p>
-        <div class="ix-stats"><div><b>${resp}/${t.A.length}</b><span>alternativas</span></div><div><b>${t.B.filter(q => { const c = (s.code || {})[q.id] || ""; return c.trim() && !/^\s*pass\s*$/m.test(c); }).length}/${t.B.length}</b><span>con código</span></div></div>
-        <div class="ix-acts"><button class="btn btn-ghost-ix" type="button" data-close>Seguir respondiendo</button><button class="btn ix-btn" type="button" id="enGo">Entregar</button></div>
+        <p class="ix-lead">Después de entregar no podrás cambiar tu código.${nEsc < t.B.length ? ` <b>Tienes ${t.B.length - nEsc} ${t.B.length - nEsc === 1 ? "problema" : "problemas"} sin código.</b>` : ""}</p>
+        <div class="ix-stats"><div><b>${nEsc}/${t.B.length}</b><span>con código</span></div><div><b>${nOk}/${t.B.length}</b><span>ejemplos correctos</span></div></div>
+        <div class="ix-acts"><button class="btn btn-ghost-ix" type="button" data-close>Seguir trabajando</button><button class="btn ix-btn" type="button" id="enGo">Entregar</button></div>
       </div></div>`);
     $("#enGo").addEventListener("click", () => { closeLayer(); entregar(t, false); });
   }));
@@ -2851,23 +2945,21 @@ async function entregar(t, auto, recorregir) {
   if (entregando[t.id]) return;
   const s = tst(t.id); if (!s) return;
   entregando[t.id] = true;
-  if (!recorregir) $$(`[data-tcode^="${t.id}|"]`).forEach(ed => { const [, qid] = ed.dataset.tcode.split("|"); s.code[qid] = ed.value; });
+  if (!recorregir) $$(`[data-tcode^="${t.id}|"]`).forEach(ed => { const [, qid] = ed.dataset.tcode.split("|"); s.code = s.code || {}; s.code[qid] = ed.value; });
   if (!s.entregada) { s.entregada = Math.min(Date.now(), s.fin); s.auto = !!auto; saveU(); }
   if (cur.tab === "tPruebas") $(`[data-t="${t.id}"]`).innerHTML = `<div class="u-loading"><span class="u-dots"><i></i><i></i><i></i></span>Corrigiendo tu ${esc(t.titulo.toLowerCase())}…</div>`;
-  const A = t.A.map(q => { const m = (s.resp || {})[q.id] || null; return { id: q.id, marcada: m, key: q.key, ok: m === q.key }; });
   const Bres = [];
   let sinPython = false;
   for (const q of t.B) {
     const code = (s.code || {})[q.id] || "";
-    const r = code.trim() ? await corregir(q, code, q.casos) : { verd: "CE", ok: 0, tot: q.casos.length, casos: q.casos.map(() => ({ v: "CE", ob: "" })), informe: "No escribiste una solución para esta pregunta." };
-    if (r.sinPython) { sinPython = true; Bres.push({ id: q.id, verd: "CE", ok: 0, tot: q.casos.length, casos: q.casos.map(() => ({ v: "CE", ob: "" })), informe: "No se pudo ejecutar Python para corregir esta pregunta. Usa «Corregir de nuevo la parte B» cuando tengas conexión.", pts: 0 }); continue; }
+    const r = escrito(s, q) ? await corregir(q, code, q.casos) : { verd: "CE", ok: 0, tot: q.casos.length, casos: q.casos.map(() => ({ v: "CE", ob: "" })), informe: "No escribiste una solución para este problema." };
+    if (r.sinPython) { sinPython = true; Bres.push({ id: q.id, verd: "CE", ok: 0, tot: q.casos.length, casos: q.casos.map(() => ({ v: "CE", ob: "" })), informe: "No se pudo ejecutar Python para corregir este problema. Usa «Corregir de nuevo» cuando tengas conexión.", pts: 0 }); continue; }
     Bres.push(Object.assign({ id: q.id, pts: Math.round(q.pts * r.ok / r.tot * 100) / 100 }, r));
   }
-  const pts = t.A.reduce((x, q, i) => x + (A[i].ok ? ptsA(q) : 0), 0) + Bres.reduce((x, b) => x + b.pts, 0), P = totalPts(t);
+  const pts = Bres.reduce((x, b) => x + b.pts, 0), P = totalPts(t);
   const porMod = {};
-  t.A.forEach((q, i) => { const m = porMod[q.mod] || (porMod[q.mod] = { p: 0, max: 0 }); m.max += ptsA(q); m.p += A[i].ok ? ptsA(q) : 0; });
   t.B.forEach((q, i) => { const m = porMod[q.mod] || (porMod[q.mod] = { p: 0, max: 0 }); m.max += q.pts; m.p += Bres[i].pts; });
-  s.res = { A, B: Bres, pts: Math.round(pts * 100) / 100, P, nota: nota(pts, P), porMod, sinPython, usado: s.entregada - s.inicio };
+  s.res = { B: Bres, pts: Math.round(pts * 100) / 100, P, nota: nota(pts, P), porMod, sinPython, usado: s.entregada - s.inicio };
   saveU();
   entregando[t.id] = false;
   if (cur.tab === "tPruebas") renderPruebas();
@@ -2889,16 +2981,16 @@ function descargarPDF(t) {
     const url = URL.createObjectURL(new Blob([u], { type: "application/pdf" }));
     const a = document.createElement("a"); a.href = url; a.download = `TSZ-NUMPY-${t.id}.pdf`; document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 60000);
-  } catch (e) { toast("No se pudo descargar el PDF. Usa «Ver las preguntas en pantalla»."); }
+  } catch (e) { toast("No se pudo descargar el PDF. El enunciado de cada problema está en esta página."); }
 }
 function recomendaciones(t, r) {
-  const rec = [], RELP = {}; B.probs.forEach(p => { if (!RELP[p.modulo]) RELP[p.modulo] = p.id; });
+  const rec = [], RELP = {}, N = NUM(t); B.probs.forEach(p => { if (!RELP[p.modulo]) RELP[p.modulo] = p.id; });
   Object.entries(r.porMod).sort((a, b) => a[1].p / a[1].max - b[1].p / b[1].max).forEach(([m, v]) => {
-    const pct = v.p / v.max, tit = (MODT.find(x => x[0] === m) || [m, m])[1];
-    if (pct < 0.6) rec.push(`<li>Repasa el <b>módulo ${m.slice(1)} · ${esc(tit)}</b> (lograste ${Math.round(100 * pct)} %): vuelve a su simulación y a su ejemplo comentado.${RELP[m] ? ` Después resuelve el problema <b>${RELP[m]}</b> del juez.` : ""} <button class="btn btn-sm" type="button" data-gomod="${m}">Ir al módulo</button></li>`);
+    const pct = v.p / v.max;
+    if (pct < 0.6) rec.push(`<li>Repasa el <b>módulo ${m.slice(1)} · ${esc(modTit(m))}</b> (lograste ${Math.round(100 * pct)} %): vuelve a su simulación y a su ejemplo comentado.${RELP[m] ? ` Después resuelve el problema <b>${RELP[m]}</b> del juez.` : ""} <button class="btn btn-sm" type="button" data-gomod="${m}">Ir al módulo</button></li>`);
   });
   if (!rec.length) rec.push(`<li>Lograste al menos 60 % en todos los contenidos evaluados. Sigue con los problemas del juez que te falten.</li>`);
-  r.B.forEach((b, i) => { if (b.verd !== "AC") rec.push(`<li>En la pregunta ${t.A.length + i + 1} tu código no pasó todos los casos. Vuelve a escribirlo en la consola y pruébalo con los casos visibles hasta que funcione.</li>`); });
+  r.B.forEach((b, i) => { if (b.verd !== "AC") rec.push(`<li>En el problema ${N[t.B[i].id]} tu código no pasó todos los casos. Vuelve a escribirlo en la consola y pruébalo hasta que funcione.</li>`); });
   return rec;
 }
 function informeHTML(t, s) {
@@ -2907,16 +2999,13 @@ function informeHTML(t, s) {
   return `<div class="u-report" data-t="${t.id}">
     <div class="u-rhead ix-rhead">${ixFondo()}<div class="u-nota ${cls}"><div><b>${coma(r.nota.toFixed(1))}</b><small>nota</small></div></div>
       <div style="display:grid;gap:10px"><span class="ix-eb" style="margin:0">${esc(t.titulo)} · Informe de la interrogación evaluada</span><h2 style="margin:0;font-size:clamp(22px,3vw,30px)">${esc(t.sub)}</h2>
-      <div class="u-meta"><span class="pill">${coma(r.pts)} de ${r.P} puntos</span><span class="pill">Tiempo usado: ${mmss(r.usado)}</span><span class="pill">Entregada ${fecha(s.entregada)}${s.auto ? " · por tiempo" : ""}</span></div>
-      <div class="u-actions"><button class="btn ix-btn btn-sm" type="button" data-print>Descargar informe (PDF)</button><button class="btn btn-sm" type="button" data-pdf>Descargar enunciado</button>${r.sinPython ? '<button class="btn btn-sm" type="button" data-regrade>Corregir de nuevo la parte B</button>' : ""}</div></div></div>
-    <div class="u-card"><h3 style="margin:0;font-size:18px">Logro por contenido</h3>${Object.entries(r.porMod).map(([m, v]) => { const pct = Math.round(100 * v.p / v.max); return `<div class="u-row"><span>Módulo ${m.slice(1)} · ${esc((MODT.find(x => x[0] === m) || [m, m])[1])}</span><div class="u-meter ${pct >= 60 ? "ok" : ""}"><i style="width:${pct}%"></i></div><span style="justify-self:end">${pct} %</span></div>`; }).join("")}</div>
+      <div class="u-meta"><span class="pill">${coma(r.pts)} de ${r.P} puntos</span><span class="pill">${r.B.filter(b => b.verd === "AC").length} de ${t.B.length} problemas completos</span><span class="pill">Tiempo usado: ${mmss(r.usado)}</span><span class="pill">Entregada ${fecha(s.entregada)}${s.auto ? " · por tiempo" : ""}</span></div>
+      <div class="u-actions"><button class="btn ix-btn btn-sm" type="button" data-print>Descargar informe (PDF)</button><button class="btn btn-sm" type="button" data-pdf>Descargar enunciado</button>${r.sinPython ? '<button class="btn btn-sm" type="button" data-regrade>Corregir de nuevo</button>' : ""}</div></div></div>
+    <div class="u-card"><h3 style="margin:0;font-size:18px">Logro por contenido</h3>${Object.entries(r.porMod).map(([m, v]) => { const pct = Math.round(100 * v.p / v.max); return `<div class="u-row"><span>Módulo ${m.slice(1)} · ${esc(modTit(m))}</span><div class="u-meter ${pct >= 60 ? "ok" : ""}"><i style="width:${pct}%"></i></div><span style="justify-self:end">${pct} %</span></div>`; }).join("")}</div>
     <div class="u-rep"><span class="lab">Qué hacer ahora</span><ul class="u-rec">${recomendaciones(t, r).join("")}</ul></div>
-    <h3 class="sub" style="margin:0">Parte A · Pregunta por pregunta</h3>
-    ${t.A.map((q, i) => { const a = r.A[i]; return `<div class="u-qfb"><div class="top"><b>${N[q.id]}.</b><span class="pill ${a.ok ? "ok" : "bad"}">${a.ok ? "Correcta" : a.marcada ? "Incorrecta" : "Sin responder"} · ${a.ok ? ptsA(q) : 0} de ${ptsA(q)} puntos</span><span>Marcaste <b>${a.marcada || "—"}</b> · correcta <b>${q.key}</b></span></div><div>${q.q}</div>${q.code ? `<pre class="py">${esc(q.code)}</pre>` : ""}
-      ${!a.ok && a.marcada && q.why[a.marcada] ? `<p><b>Por qué no la ${a.marcada}:</b> ${esc(q.why[a.marcada])}</p>` : ""}<p><b>La correcta (${q.key}) es <code>${esc(q.opts["ABCD".indexOf(q.key)])}</code>:</b> ${esc(q.ok)}</p></div>`; }).join("")}
-    <h3 class="sub" style="margin:0">Parte B · Problemas de código</h3>
+    <h3 class="sub" style="margin:0">Problema por problema</h3>
     ${t.B.map((q, i) => { const b = r.B[i]; return `<div class="u-qfb"><div class="top"><b>${N[q.id]}. ${esc(q.titulo)}</b><span class="pill ${b.verd === "AC" ? "ok" : "bad"}">${coma(b.pts)} de ${q.pts} puntos</span></div>${resultHTML(q, b, q.casos, false, true)}
-      <details class="fold"><summary>Tu código y la solución<span class="chev">›</span></summary><div class="fold-body"><span class="lab">Tu código</span><pre class="py">${esc((s.code || {})[q.id] || "")}</pre><span class="lab">Una solución</span><pre class="py">${esc(q.sol)}</pre></div></details></div>`; }).join("")}
+      <details class="fold"><summary>Tu código y una solución<span class="chev">›</span></summary><div class="fold-body"><span class="lab">Tu código</span><pre class="py">${esc((s.code || {})[q.id] || "")}</pre><span class="lab">Una solución</span><pre class="py">${esc(q.sol)}</pre></div></details></div>`; }).join("")}
   </div>`;
 }
 function imprimirInforme(t, s) {
@@ -2924,10 +3013,9 @@ function imprimirInforme(t, s) {
   $("#printArea").innerHTML = `<div class="pl">${PRINT_LOGO}<div style="text-align:right;font:10pt Arial,sans-serif">TS Zenit Universidad · Curso NumPy<br>${esc(correo())}</div></div>
     <h1 style="font-size:20pt;margin:0 0 2mm">${esc(t.titulo)} · ${esc(t.sub)}</h1>
     <p>Nota <b style="font-size:16pt">${coma(r.nota.toFixed(1))}</b> · ${coma(r.pts)} de ${r.P} puntos · tiempo usado ${mmss(r.usado)} · entregada ${fecha(s.entregada)}</p>
-    <h2 style="font-size:13pt">Logro por contenido</h2><table><tr><th>Contenido</th><th>Puntos</th><th>Logro</th></tr>${Object.entries(r.porMod).map(([m, v]) => `<tr><td>Módulo ${m.slice(1)} · ${esc((MODT.find(x => x[0] === m) || [m, m])[1])}</td><td>${coma(Math.round(v.p * 100) / 100)} de ${v.max}</td><td>${Math.round(100 * v.p / v.max)} %</td></tr>`).join("")}</table>
+    <h2 style="font-size:13pt">Logro por contenido</h2><table><tr><th>Contenido</th><th>Puntos</th><th>Logro</th></tr>${Object.entries(r.porMod).map(([m, v]) => `<tr><td>Módulo ${m.slice(1)} · ${esc(modTit(m))}</td><td>${coma(Math.round(v.p * 100) / 100)} de ${v.max}</td><td>${Math.round(100 * v.p / v.max)} %</td></tr>`).join("")}</table>
     <div class="box"><b>Qué hacer ahora</b><ul>${recomendaciones(t, r).map(x => x.replace(/<button[\s\S]*?<\/button>/g, "")).join("")}</ul></div>
-    <h2 style="font-size:13pt">Parte A</h2>${t.A.map((q, i) => { const a = r.A[i]; return `<div class="q"><b>${N[q.id]}.</b> ${a.ok ? "Correcta" : a.marcada ? "Incorrecta" : "Sin responder"} · marcaste ${a.marcada || "—"} · correcta ${q.key}<br>${!a.ok && a.marcada && q.why[a.marcada] ? `Por qué no la ${a.marcada}: ${esc(q.why[a.marcada])}<br>` : ""}${esc(q.ok)}</div>`; }).join("")}
-    <h2 style="font-size:13pt">Parte B</h2>${t.B.map((q, i) => { const b = r.B[i]; return `<div class="q"><b>${N[q.id]}. ${esc(q.titulo)}</b> · ${coma(b.pts)} de ${q.pts} puntos · ${b.ok} de ${b.tot} casos<br>${esc(b.informe)}<pre>${esc((s.code || {})[q.id] || "")}</pre></div>`; }).join("")}`;
+    <h2 style="font-size:13pt">Problema por problema</h2>${t.B.map((q, i) => { const b = r.B[i]; return `<div class="q"><b>${N[q.id]}. ${esc(q.titulo)}</b> · ${coma(b.pts)} de ${q.pts} puntos · ${b.ok} de ${b.tot} casos<br>${esc(b.informe)}<pre>${esc((s.code || {})[q.id] || "")}</pre></div>`; }).join("")}`;
   window.print();
 }
 document.addEventListener("click", e => { const b = e.target.closest("[data-gomod]"); if (b) { cur.mod = b.dataset.gomod; openTab("tAprender"); } });
