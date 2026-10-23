@@ -39,6 +39,7 @@ self.onmessage = async ({ data }) => {
   let out = "";
   py.setStdout({ batched: s => { out += s + "\n"; } });
   py.setStderr({ batched: s => { out += s + "\n"; } });
+  try { await py.loadPackagesFromImports(data.fuente || code, { messageCallback: () => {}, errorCallback: () => {} }); } catch (e) {}
   const ns = modo === "consola" ? CONSOLA : NUEVO();
   try {
     const rep = RUN(code, ns, modo === "consola" ? "<consola>" : "<celda>");

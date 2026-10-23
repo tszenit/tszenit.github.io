@@ -217,7 +217,7 @@ footer.u-foot{display:block;padding:0;gap:0}
   --accent:#D8A878; --accent-soft:rgba(216,168,120,.14); --on-accent:#05070B;
   --vi:#A3ABF5; --vi-soft:rgba(163,171,245,.15); --vj:#F5A524; --vj-soft:rgba(245,165,36,.15); --vk:#6FD6B5; --vk-soft:rgba(111,214,181,.14);
   --good:#7FD4A8; --good-soft:rgba(127,212,168,.14); --bad:#FF907C; --bad-soft:rgba(255,144,124,.13); --warn:#F2C46D; --warn-soft:rgba(242,196,109,.13);
-  --code-bg:#071225; --code-ink:#E6EAF4; --c-kw:#C3B6FF; --c-str:#9ED9B9; --c-num:#F5C177; --c-com:#7387AE; --c-np:#E3B98E;
+  --code-bg:#071225; --code-ink:#E6EAF4; --c-kw:#5EA8FF; --c-str:#9ED9B9; --c-num:#F5C177; --c-com:#7387AE; --c-np:#E3B98E;
   --f-display:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;
   --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
@@ -810,6 +810,24 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 @media (max-width:560px){.u-crumbs a,.u-crumbs .sep{display:none}}
 @media (max-width:860px){.u-hero-vis{max-width:520px}}
 @media (max-width:560px){.u-topin{flex-wrap:nowrap;gap:10px}.u-crumbs{flex:1 1 auto}}
+.u-ex td code{word-break:break-word;white-space:normal}
+.ix-on .u-bprob .u-enun ul,.ix-on .u-bprob .u-enun ol{margin:0 0 8px;padding-left:22px}
+
+/* editor de Python con colores (estilo Clearn) */
+.u-cedit{position:relative;min-width:0}
+.u-cedit>.u-chl{position:absolute;inset:0;margin:0;overflow:hidden;pointer-events:none;font:14px/1.6 var(--f-mono);padding:12px 14px;border:1px solid transparent;border-radius:12px;
+  background:var(--code-bg);color:#F2F4F9;white-space:pre;tab-size:4;font-variant-ligatures:none;letter-spacing:normal}
+.u-cedit>textarea.u-editor{position:relative;z-index:1;display:block;background:transparent;color:transparent;-webkit-text-fill-color:transparent;caret-color:#FFFFFF;font-variant-ligatures:none;letter-spacing:normal}
+.u-cedit>textarea.u-editor::placeholder{color:#5D6F95;-webkit-text-fill-color:#5D6F95}
+.u-cedit>textarea.u-editor::selection{background:rgba(108,182,255,.32);-webkit-text-fill-color:transparent}
+.u-cedit>textarea.u-editor:focus{outline:none;border-color:var(--latte);box-shadow:0 0 0 3px rgba(216,168,120,.25)}
+.py-kw{color:#5EA8FF}
+.py-bi{color:#DCDCAA}
+.py-fn{color:#E9D98C}
+.py-mod{color:#4EC9B0}
+.py-str{color:#E5A07F}
+.py-num{color:#B5CEA8}
+.py-com{color:#7FA36B;font-style:italic}
 </style></head><body>
 <header class="u-top">
   <div class="wrap u-topin">
@@ -866,7 +884,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
       <div class="u-card u-prog-card"><h3>Programa</h3>
         <p class="u-syl-h">Módulos</p><ol class="u-syl" id="syllabus"></ol>
         <p class="u-syl-h">Práctica</p><ul class="u-syl u-syl-sets" id="sylSets"></ul>
-        <div class="u-ixrow"><span class="ix-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span><span class="ix-tx"><b>Interrogación evaluada</b><small>Arrays, indexación y broadcasting · módulos 0 a 4</small></span><span class="pill lock" id="ixLock"></span></div>
+        <div class="u-ixrow"><span class="ix-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span><span class="ix-tx"><b>Interrogación evaluada</b><small>Examen integrador de todo el curso · 8 preguntas de nivel universitario</small></span><span class="pill lock" id="ixLock"></span></div>
       </div>
       <aside class="u-card u-pcard" id="priceCard">
         <span class="eyebrow">Curso completo</span>
@@ -919,7 +937,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202610230805"></script>
+<script src="/config.js?v=202610230840"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -1944,7 +1962,7 @@ const CFG = Object.assign({ endpoint: "", mp: {}, contacto: "", clientId: "", mp
 const PRECIO = 39990;
 const PAGO = CFG.mpNumpy || (CFG.mp || {})[PRECIO] || "";
 const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
-const VER = "202610230805";
+const VER = "202610230840";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
@@ -2134,7 +2152,7 @@ async function arrancar() {
     if (!correo()) { mostrarLanding("Inicia sesión con la cuenta de Google con la que compraste para activar tu código."); pedirSesion("Inicia sesión con la cuenta de Google con la que compraste el curso.").then(arrancar, () => {}); return; }
     const c = pendiente; pendiente = null;
     mostrarLanding('<span class="u-loading" style="padding:0;border:0;background:none"><span class="u-dots"><i></i><i></i><i></i></span>Activando tu curso…</span>', true);
-    try { B = await activar(c); toast("Curso activado"); return entrar(); } catch (e) { return mostrarLanding(errCodigo(e)); }
+    try { B = await activar(c); toast("Curso activado"); return entrar(); } catch (e) { console.warn(e); return mostrarLanding(errCodigo(e)); }
   }
   const L = lics(), mail = correo();
   if (mail && L[mail]) {
@@ -2294,7 +2312,7 @@ const PYR = (() => {
     return new Promise(res => {
       const t = setTimeout(() => { pend.delete(id); reiniciarDuro(); res({ ok: false, timeout: true, out: "", error: `Tiempo límite excedido (${ms / 1000} s). Revisa si hay un ciclo que nunca termina. Python se reinició.` }); }, ms);
       pend.set(id, { res: m => { clearTimeout(t); res(m); } });
-      w.postMessage({ id, code, modo: opts.modo || "celda", devolver: opts.devolver || null });
+      w.postMessage({ id, code, fuente: opts.fuente || null, modo: opts.modo || "celda", devolver: opts.devolver || null });
     });
   }
   return { start, run, reiniciar: () => run("", { modo: "reiniciar" }), get state() { return state; } };
@@ -2345,11 +2363,82 @@ async function correrConsola() {
   const t = $("#term"); t.innerHTML = conHist; t.scrollTop = t.scrollHeight;
   btn.disabled = false;
 }
-function tabEnEditor(ed) {
+/* ---------- editor de Python: colores y sangría automática ---------- */
+const PY_KW = new Set("False None True and as assert async await break class continue def del elif else except finally for from global if import in is lambda nonlocal not or pass raise return try while with yield match case".split(" "));
+const PY_BI = new Set("abs all any bin bool bytes callable chr dict dir divmod enumerate eval filter float format frozenset getattr hasattr hash help hex id input int isinstance issubclass iter len list map max min next object oct open ord pow print range repr reversed round set setattr slice sorted str sum super tuple type vars zip ValueError TypeError IndexError KeyError ZeroDivisionError Exception".split(" "));
+const PY_MOD = new Set("np numpy random math statistics scipy pandas pd plt matplotlib time collections itertools functools os sys re json datetime".split(" "));
+const PY_TOK = /(#[^\n]*)|([rRbBfFuU]{0,2}(?:"""[\s\S]*?(?:"""|$)|'''[\s\S]*?(?:'''|$)|"(?:\\.|[^"\\\n])*"?|'(?:\\.|[^'\\\n])*'?))|(\b\d[\d_]*(?:\.\d*)?(?:[eE][+-]?\d+)?j?\b|\.\d+(?:[eE][+-]?\d+)?\b)|([A-Za-z_]\w*)|(\s+|[^\sA-Za-z_\d#"']+)/g;
+function pintarPy(src) {
+  let out = "", p1 = "", p2 = "", m;
+  PY_TOK.lastIndex = 0;
+  while ((m = PY_TOK.exec(src)) !== null) {
+    if (m[0] === "") { PY_TOK.lastIndex++; continue; }
+    const t = m[0];
+    let c = null;
+    if (m[1]) c = "com";
+    else if (m[2]) c = "str";
+    else if (m[3]) c = "num";
+    else if (m[4]) {
+      const llama = /^\s*\(/.test(src.slice(PY_TOK.lastIndex));
+      if (p1 === "def" || p1 === "class") c = "fn";
+      else if (p1.endsWith(".")) c = llama || (p1 === "." && PY_MOD.has(p2)) ? "fn" : null;
+      else if (PY_KW.has(t)) c = "kw";
+      else if (PY_MOD.has(t)) c = "mod";
+      else if (PY_BI.has(t)) c = "bi";
+    }
+    out += c ? `<span class="py-${c}">${esc(t)}</span>` : esc(t);
+    if (!/^\s+$/.test(t)) { p2 = p1; p1 = t; }
+  }
+  return out;
+}
+const SANGRIA = "    ";
+function insertarTexto(ed, txt) {
+  ed.focus();
+  let ok = false;
+  try { ok = document.execCommand("insertText", false, txt); } catch (e) {}
+  if (!ok) { ed.setRangeText(txt, ed.selectionStart, ed.selectionEnd, "end"); ed.dispatchEvent(new Event("input", { bubbles: true })); }
+}
+function editorPy(ed) {
+  if (ed._py) return; ed._py = true;
+  const caja = document.createElement("div"); caja.className = "u-cedit";
+  const pre = document.createElement("pre"); pre.className = "u-chl"; pre.setAttribute("aria-hidden", "true");
+  ed.parentNode.insertBefore(caja, ed); caja.append(pre, ed);
+  let raf = 0;
+  const pintar = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { pre.innerHTML = pintarPy(ed.value) + "\n "; pre.scrollTop = ed.scrollTop; pre.scrollLeft = ed.scrollLeft; }); };
+  const d = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value");
+  Object.defineProperty(ed, "value", { configurable: true, get() { return d.get.call(this); }, set(v) { d.set.call(this, v); pintar(); } });
+  ed.addEventListener("input", pintar);
+  ed.addEventListener("scroll", () => { pre.scrollTop = ed.scrollTop; pre.scrollLeft = ed.scrollLeft; });
+  pintar();
   ed.addEventListener("keydown", ev => {
-    if (ev.key === "Tab" && !ev.shiftKey && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); const a = ed.selectionStart, b = ed.selectionEnd; ed.value = ed.value.slice(0, a) + "    " + ed.value.slice(b); ed.selectionStart = ed.selectionEnd = a + 4; ed.dispatchEvent(new Event("input")); }
+    if (ev.ctrlKey || ev.metaKey || ev.altKey || ev.isComposing) return;
+    const v = ed.value, a = ed.selectionStart, b = ed.selectionEnd;
+    const ini = v.lastIndexOf("\n", a - 1) + 1, linea = v.slice(ini, a);
+    if (ev.key === "Enter") {
+      ev.preventDefault();
+      let s = (linea.match(/^[ \t]*/) || [""])[0].replace(/\t/g, SANGRIA);
+      const codigo = linea.replace(/#.*$/, "").trimEnd();
+      if (/:$/.test(codigo)) s += SANGRIA;
+      else if (/^\s*(return|pass|break|continue|raise)\b/.test(codigo)) s = s.slice(SANGRIA.length);
+      insertarTexto(ed, "\n" + s);
+    } else if (ev.key === "Tab") {
+      ev.preventDefault();
+      if (a !== b && v.slice(a, b).includes("\n") || ev.shiftKey) {
+        const fin = v.indexOf("\n", b - (b > a && v[b - 1] === "\n" ? 1 : 0)), f = fin < 0 ? v.length : fin;
+        const bloque = v.slice(ini, f).split("\n");
+        const nuevo = bloque.map(l => ev.shiftKey ? l.replace(/^ {1,4}|^\t/, "") : SANGRIA + l).join("\n");
+        ed.setSelectionRange(ini, f); insertarTexto(ed, nuevo); ed.setSelectionRange(ini, ini + nuevo.length);
+      } else insertarTexto(ed, SANGRIA);
+    } else if (ev.key === "Backspace" && a === b && linea.length && /^ +$/.test(linea)) {
+      ev.preventDefault();
+      const n = linea.length % 4 || 4;
+      ed.setSelectionRange(a - n, a);
+      let ok = false; try { ok = document.execCommand("delete"); } catch (e) {}
+      if (!ok) { ed.setRangeText("", a - n, a, "end"); ed.dispatchEvent(new Event("input", { bubbles: true })); }
+    }
   });
 }
+const tabEnEditor = editorPy;
 
 /* ---------- globo de explicación ---------- */
 let tipFor = null;
@@ -2409,8 +2498,10 @@ function harnessJuez(fn, code, casos) {
     "        try:",
     "            _x = np.asarray(_r, dtype=float)",
     "            _y = np.asarray(_flat, dtype=float).reshape(_shape)",
-    "            _ok = _x.shape == _y.shape and bool(np.allclose(_x, _y))",
-    "            _f = [float(v) for v in _x.ravel()] if _x.size <= 400 else None",
+    "            if _x.shape != _y.shape and _x.size == _y.size and np.squeeze(_x).shape == np.squeeze(_y).shape:",
+    "                _x = _x.reshape(_y.shape)",
+    "            _ok = _x.shape == _y.shape and bool(np.allclose(_x, _y, rtol=1e-5, atol=1e-6))",
+    "            _f = [float(v) if np.isfinite(v) else str(float(v)) for v in _x.ravel()] if _x.size <= 400 else None",
     "            _s = list(_x.shape)",
     "        except Exception:",
     "            _ok, _f, _s = False, None, None",
@@ -2443,11 +2534,11 @@ function coincide(res, casos) {
     const c = casos[i];
     if (r.err) return c.v === "RE" && String(c.ob).startsWith(r.err);
     if (!c.flat || !c.shape) return false;
-    return r.shape.join(",") === c.shape.join(",") && r.flat.length === c.flat.length && r.flat.every((v, k) => Math.abs(v - c.flat[k]) <= 1e-6 + 1e-5 * Math.abs(v));
+    return r.shape.join(",") === c.shape.join(",") && r.flat.length === c.flat.length && r.flat.every((v, k) => { const w = c.flat[k]; return typeof v === "string" || typeof w === "string" ? v === w : Math.abs(v - w) <= 1e-6 + 1e-5 * Math.abs(v); });
   });
 }
 async function corregir(p, code, casos) {
-  const r = await PYR.run(harnessJuez(p.fn, code, casos), { modo: "celda", devolver: "_RESULT", timeout: 15000 });
+  const r = await PYR.run(harnessJuez(p.fn, code, casos), { modo: "celda", devolver: "_RESULT", timeout: 15000, fuente: code });
   if (r.cargaFallida) return { sinPython: true };
   if (r.timeout) return { verd: "TLE", ok: 0, tot: casos.length, casos: casos.map(() => ({ v: "TLE", ob: "" })), informe: "Tu código tardó más de 15 segundos. Revisa si hay un ciclo que nunca termina.", out: "" };
   if (!r.ok || !r.val) return { verd: "RE", ok: 0, tot: casos.length, casos: casos.map(() => ({ v: "RE", ob: "" })), informe: "No se pudo ejecutar tu código: " + (r.error || ""), out: r.out || "" };
@@ -2658,11 +2749,13 @@ async function enviar(p, soloVisibles) {
 
 /* ---------- interrogaciones ---------- */
 const NUM = t => Object.fromEntries([...t.A.map((q, i) => [q.id, i + 1]), ...t.B.map((q, i) => [q.id, t.A.length + i + 1])]);
-const totalPts = t => t.A.length + t.B.reduce((s, q) => s + q.pts, 0);
+const ptsA = q => q.pts || 1;
+const totalPts = t => t.A.reduce((s, q) => s + ptsA(q), 0) + t.B.reduce((s, q) => s + q.pts, 0);
 function nota(p, P) { const e = 0.6 * P; const n = p < e ? 1 + 3 * p / e : 4 + 3 * (p - e) / (P - e); return Math.round(Math.min(7, Math.max(1, n)) * 10) / 10; }
 const tst = id => U.tests[id];
 function renderPruebas() {
   const host = $("#tPruebas");
+  B.tests.forEach(t => { const s = U.tests[t.id]; if (s && (s.ver || 1) !== (t.ver || 1)) { delete U.tests[t.id]; saveU(); } });
   host.innerHTML = `<div class="u-tests">${B.tests.map(t => { const s = tst(t.id); return s && s.entregada ? informeHTML(t, s) : s ? activaHTML(t, s) : tarjetaHTML(t); }).join("")}</div>`;
   B.tests.forEach(t => { const s = tst(t.id); if (s && s.entregada && !s.res && !entregando[t.id]) entregar(t, s.auto, true); else wirePrueba(t); });
   paintPy();
@@ -2692,7 +2785,7 @@ function activaHTML(t, s) {
     <div class="u-timer ix-timer" id="timer-${t.id}"><span class="ix-badge sm">${CUBE}</span><div><div class="tt">${esc(t.titulo)} · ${esc(t.sub)}</div><div class="clock" id="clock-${t.id}" role="timer" aria-label="Tiempo restante">${mmss(s.fin - Date.now())}</div></div>
       <div class="acts"><button class="btn" type="button" data-pdf="${t.id}"><span class="ix-lg">Descargar enunciado</span><span class="ix-sm">Enunciado</span> (PDF)</button><button class="btn ix-btn" type="button" data-ent="${t.id}">Entregar</button></div></div>
     <details class="fold"><summary>Ver las preguntas en pantalla<span class="chev">›</span></summary><div class="fold-body u-qview">${t.A.map(q => `<div class="q"><b>${N[q.id]}. </b>${q.q}${q.code ? `<pre class="py">${esc(q.code)}</pre>` : ""}<ol type="A" style="margin:0;padding-left:22px">${q.opts.map(o => `<li><code>${esc(o)}</code></li>`).join("")}</ol></div>`).join("")}</div></details>
-    <div class="u-sheet"><h4>Parte A · Hoja de respuestas <span class="hint">(1 punto cada una)</span></h4>${t.A.map(q => `<div class="u-arow"><span class="n">${N[q.id]}</span><div class="u-bubs" role="group" aria-label="Pregunta ${N[q.id]}">${"ABCD".split("").map(L => `<button type="button" data-ans="${t.id}|${q.id}|${L}" aria-pressed="${(s.resp || {})[q.id] === L}">${L}</button>`).join("")}</div></div>`).join("")}</div>
+    <div class="u-sheet"><h4>Parte A · Hoja de respuestas <span class="hint">(${t.A.map(ptsA).every(x => x === ptsA(t.A[0])) ? `${ptsA(t.A[0])} ${ptsA(t.A[0]) === 1 ? "punto" : "puntos"} cada una` : `${t.A.reduce((x, q) => x + ptsA(q), 0)} puntos`})</span></h4>${t.A.map(q => `<div class="u-arow"><span class="n">${N[q.id]}</span><div class="u-bubs" role="group" aria-label="Pregunta ${N[q.id]}">${"ABCD".split("").map(L => `<button type="button" data-ans="${t.id}|${q.id}|${L}" aria-pressed="${(s.resp || {})[q.id] === L}">${L}</button>`).join("")}</div></div>`).join("")}</div>
     <h3 class="sub" style="margin:4px 0 0">Parte B · Problemas de código</h3>
     ${t.B.map(q => `<div class="u-bprob"><span class="eyebrow">Pregunta ${N[q.id]} · ${q.pts} puntos</span><h4>${esc(q.titulo)}</h4><div class="u-enun">${q.enun}</div><dl class="u-task"><dt>Función</dt><dd><code>${esc(q.firma)}</code></dd></dl>${tablaEjemplos(q.fn, q.casos)}
       <textarea class="u-editor" data-tcode="${t.id}|${q.id}" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off" style="min-height:170px">${esc((s.code || {})[q.id] != null ? s.code[q.id] : `import numpy as np\n\ndef ${q.firma}:\n    # escribe tu solución aquí\n    pass\n`)}</textarea>
@@ -2715,7 +2808,7 @@ function wirePrueba(t) {
         <p class="ix-note">Busca un lugar tranquilo y ten el tiempo completo antes de empezar.</p>
         <div class="ix-acts"><button class="btn btn-ghost-ix" type="button" data-close>Todavía no</button><button class="btn ix-btn" type="button" id="acGo">Activar y empezar</button></div>
       </div></div>`);
-    $("#acGo").addEventListener("click", () => { const now = Date.now(); U.tests[t.id] = { inicio: now, fin: now + t.minutos * 60000, resp: {}, code: {} }; saveU(); closeLayer(); renderPruebas(); descargarPDF(t); PYR.start().catch(() => {}); });
+    $("#acGo").addEventListener("click", () => { const now = Date.now(); U.tests[t.id] = { ver: t.ver || 1, inicio: now, fin: now + t.minutos * 60000, resp: {}, code: {} }; saveU(); closeLayer(); renderPruebas(); descargarPDF(t); PYR.start().catch(() => {}); });
   });
   if (!s || s.entregada) {
     $$("[data-pdf]", root).forEach(b => b.addEventListener("click", () => descargarPDF(t)));
@@ -2770,9 +2863,9 @@ async function entregar(t, auto, recorregir) {
     if (r.sinPython) { sinPython = true; Bres.push({ id: q.id, verd: "CE", ok: 0, tot: q.casos.length, casos: q.casos.map(() => ({ v: "CE", ob: "" })), informe: "No se pudo ejecutar Python para corregir esta pregunta. Usa «Corregir de nuevo la parte B» cuando tengas conexión.", pts: 0 }); continue; }
     Bres.push(Object.assign({ id: q.id, pts: Math.round(q.pts * r.ok / r.tot * 100) / 100 }, r));
   }
-  const pts = A.filter(a => a.ok).length + Bres.reduce((x, b) => x + b.pts, 0), P = totalPts(t);
+  const pts = t.A.reduce((x, q, i) => x + (A[i].ok ? ptsA(q) : 0), 0) + Bres.reduce((x, b) => x + b.pts, 0), P = totalPts(t);
   const porMod = {};
-  t.A.forEach((q, i) => { const m = porMod[q.mod] || (porMod[q.mod] = { p: 0, max: 0 }); m.max += 1; m.p += A[i].ok ? 1 : 0; });
+  t.A.forEach((q, i) => { const m = porMod[q.mod] || (porMod[q.mod] = { p: 0, max: 0 }); m.max += ptsA(q); m.p += A[i].ok ? ptsA(q) : 0; });
   t.B.forEach((q, i) => { const m = porMod[q.mod] || (porMod[q.mod] = { p: 0, max: 0 }); m.max += q.pts; m.p += Bres[i].pts; });
   s.res = { A, B: Bres, pts: Math.round(pts * 100) / 100, P, nota: nota(pts, P), porMod, sinPython, usado: s.entregada - s.inicio };
   saveU();
@@ -2804,7 +2897,7 @@ function recomendaciones(t, r) {
     const pct = v.p / v.max, tit = (MODT.find(x => x[0] === m) || [m, m])[1];
     if (pct < 0.6) rec.push(`<li>Repasa el <b>módulo ${m.slice(1)} · ${esc(tit)}</b> (lograste ${Math.round(100 * pct)} %): vuelve a su simulación y a su ejemplo comentado.${RELP[m] ? ` Después resuelve el problema <b>${RELP[m]}</b> del juez.` : ""} <button class="btn btn-sm" type="button" data-gomod="${m}">Ir al módulo</button></li>`);
   });
-  if (!rec.length) rec.push(`<li>Lograste al menos 60 % en todos los contenidos. Sigue con el <b>módulo 5 · Producto punto y norma</b> y los problemas del juez que te falten.</li>`);
+  if (!rec.length) rec.push(`<li>Lograste al menos 60 % en todos los contenidos evaluados. Sigue con los problemas del juez que te falten.</li>`);
   r.B.forEach((b, i) => { if (b.verd !== "AC") rec.push(`<li>En la pregunta ${t.A.length + i + 1} tu código no pasó todos los casos. Vuelve a escribirlo en la consola y pruébalo con los casos visibles hasta que funcione.</li>`); });
   return rec;
 }
@@ -2819,7 +2912,7 @@ function informeHTML(t, s) {
     <div class="u-card"><h3 style="margin:0;font-size:18px">Logro por contenido</h3>${Object.entries(r.porMod).map(([m, v]) => { const pct = Math.round(100 * v.p / v.max); return `<div class="u-row"><span>Módulo ${m.slice(1)} · ${esc((MODT.find(x => x[0] === m) || [m, m])[1])}</span><div class="u-meter ${pct >= 60 ? "ok" : ""}"><i style="width:${pct}%"></i></div><span style="justify-self:end">${pct} %</span></div>`; }).join("")}</div>
     <div class="u-rep"><span class="lab">Qué hacer ahora</span><ul class="u-rec">${recomendaciones(t, r).join("")}</ul></div>
     <h3 class="sub" style="margin:0">Parte A · Pregunta por pregunta</h3>
-    ${t.A.map((q, i) => { const a = r.A[i]; return `<div class="u-qfb"><div class="top"><b>${N[q.id]}.</b><span class="pill ${a.ok ? "ok" : "bad"}">${a.ok ? "Correcta" : a.marcada ? "Incorrecta" : "Sin responder"}</span><span>Marcaste <b>${a.marcada || "—"}</b> · correcta <b>${q.key}</b></span></div><div>${q.q}</div>${q.code ? `<pre class="py">${esc(q.code)}</pre>` : ""}
+    ${t.A.map((q, i) => { const a = r.A[i]; return `<div class="u-qfb"><div class="top"><b>${N[q.id]}.</b><span class="pill ${a.ok ? "ok" : "bad"}">${a.ok ? "Correcta" : a.marcada ? "Incorrecta" : "Sin responder"} · ${a.ok ? ptsA(q) : 0} de ${ptsA(q)} puntos</span><span>Marcaste <b>${a.marcada || "—"}</b> · correcta <b>${q.key}</b></span></div><div>${q.q}</div>${q.code ? `<pre class="py">${esc(q.code)}</pre>` : ""}
       ${!a.ok && a.marcada && q.why[a.marcada] ? `<p><b>Por qué no la ${a.marcada}:</b> ${esc(q.why[a.marcada])}</p>` : ""}<p><b>La correcta (${q.key}) es <code>${esc(q.opts["ABCD".indexOf(q.key)])}</code>:</b> ${esc(q.ok)}</p></div>`; }).join("")}
     <h3 class="sub" style="margin:0">Parte B · Problemas de código</h3>
     ${t.B.map((q, i) => { const b = r.B[i]; return `<div class="u-qfb"><div class="top"><b>${N[q.id]}. ${esc(q.titulo)}</b><span class="pill ${b.verd === "AC" ? "ok" : "bad"}">${coma(b.pts)} de ${q.pts} puntos</span></div>${resultHTML(q, b, q.casos, false, true)}
