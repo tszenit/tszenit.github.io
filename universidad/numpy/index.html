@@ -423,7 +423,7 @@ pre .tk:hover,.u-lcode .tk:hover,.tk.on{background:rgba(216,168,120,.18)}
 .u-plist{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);background:var(--black);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:12px}
 @media (max-width:900px){.u-plist{position:static}}
 .u-sethead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid #22314f;padding-bottom:10px}
-.u-sethead b{font:700 20px var(--f-display)}
+.u-sethead b{font:700 20px var(--f-display);white-space:nowrap}
 .u-plist ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .u-plist li button{width:100%;display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;background:none;border:1px solid transparent;border-radius:10px;padding:9px 10px;color:var(--ink);font:14px/1.3 var(--f-display);cursor:pointer;min-height:44px}
 .u-plist li button:hover{background:var(--surface)}
@@ -701,7 +701,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202610222330"></script>
+<script src="/config.js?v=202610230742"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -778,6 +778,13 @@ const DICT = {
   "np.vstack": ["np.vstack", "Apila arrays como filas de una matriz.", "np.vstack([a, b])"],
   "np.hstack": ["np.hstack", "Une arrays uno al lado del otro.", "np.hstack([a, b])"],
   "np.random.default_rng": ["np.random.default_rng", "Crea un generador de números aleatorios. Con una semilla (por ejemplo 0) siempre salen los mismos números, así tus resultados se pueden repetir.", "rng = np.random.default_rng(0)"],
+  "np.clip": ["np.clip", "Acota cada valor entre un mínimo y un máximo: lo que queda bajo el mínimo pasa a ser el mínimo y lo que supera el máximo pasa a ser el máximo.", "np.clip([-5, 3, 20], 0, 10)  # [0, 3, 10]"],
+  "np.argsort": ["np.argsort", "Entrega el orden de las posiciones que ordenaría el array de menor a mayor. Sirve para reordenar otras cosas (por ejemplo, filas completas) según esos valores.", "np.argsort([30, 10, 20])  # [1, 2, 0]"],
+  ".argsort": [".argsort", "Las posiciones que ordenarían el array de menor a mayor.", ""],
+  "np.sort": ["np.sort", "Devuelve una copia ordenada. En una matriz ordena cada fila o columna por separado.", "np.sort([3, 1, 2])  # [1, 2, 3]"],
+  "np.bincount": ["np.bincount", "Cuenta cuántas veces aparece cada entero no negativo: la posición v del resultado dice cuántas veces aparece v.", "np.bincount([1, 3, 3])  # [0, 1, 0, 2]"],
+  "np.indices": ["np.indices", "Entrega las coordenadas de fila y de columna de cada casilla de una matriz del tamaño pedido.", "i, j = np.indices((2, 3))"],
+  "np.outer": ["np.outer", "Producto externo: una matriz con el producto de cada par de elementos de dos vectores.", "np.outer([1, 2], [3, 4])  # [[3, 4], [6, 8]]"],
   "np.linalg.norm": ["np.linalg.norm", "Largo (norma) de un vector: la raíz de la suma de los cuadrados. Con una diferencia, np.linalg.norm(p - q), da la distancia entre dos puntos.", "np.linalg.norm([3, 4])  # 5.0"],
   "np.linalg.solve": ["np.linalg.solve", "Resuelve el sistema A x = b. Es más rápido y preciso que calcular la inversa. Falla si A es singular (det = 0).", "np.linalg.solve(A, b)"],
   "np.linalg.inv": ["np.linalg.inv", "Matriz inversa: deshace la transformación A. Solo existe si det(A) ≠ 0.", "A @ np.linalg.inv(A)  # ≈ identidad"],
@@ -1718,7 +1725,7 @@ const CFG = Object.assign({ endpoint: "", mp: {}, contacto: "", clientId: "", mp
 const PRECIO = 39990;
 const PAGO = CFG.mpNumpy || (CFG.mp || {})[PRECIO] || "";
 const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
-const VER = "202610222330";
+const VER = "202610230742";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
@@ -1916,7 +1923,7 @@ function mostrarLanding(msg, neutro) {
   $("#vLanding").hidden = false; $("#vApp").hidden = true;
   $("#landMsg").innerHTML = msg ? `<div class="u-msg ${neutro ? "" : "bad"}">${msg}</div>` : "";
   $("#syllabus").innerHTML = MODT.map(([id, t]) => `<li><span class="n">${id.slice(1)}</span><span>${esc(t)}</span><span class="pill lock">${LOCK}</span></li>`).join("")
-    + `<li><span class="n">+</span><span>Juez · Set de práctica 1 (5 problemas)</span><span></span></li><li><span class="n">+</span><span>Interrogación 1 · Arrays, indexación y broadcasting</span><span></span></li>`;
+    + `<li><span class="n">+</span><span>Juez · Set 1 · Fundamentos (8 problemas)</span><span></span></li><li><span class="n">+</span><span>Juez · Set 2 · Álgebra lineal (8 problemas)</span><span></span></li><li><span class="n">+</span><span>Juez · Set 3 · Datos y señales (8 problemas)</span><span></span></li><li><span class="n">+</span><span>Interrogación 1 · Arrays, indexación y broadcasting</span><span></span></li>`;
 }
 
 /* ---------- datos del alumno (por cuenta) ---------- */
@@ -1926,9 +1933,10 @@ const saveU = () => store.set(UK(), U);
 
 /* ---------- curso ---------- */
 const TABS = [["tAprender", "Aprender"], ["tConsola", "Consola"], ["tJuez", "Juez"], ["tPruebas", "Interrogaciones"], ["tEnvios", "Mis envíos"], ["tProgreso", "Progreso"]];
-const cur = { tab: "tAprender", mod: "m0", prob: "P1" };
+const cur = { tab: "tAprender", mod: "m0", set: "S1", prob: "1.1" };
 let MODS = [];
 function entrar() {
+  if (!B.probs) B.probs = B.sets.flatMap(s => s.probs.map(p => Object.assign(p, { set: s.id })));
   U = cargarU();
   $("#vLanding").hidden = true; $("#vApp").hidden = false;
   $("#whoPill").textContent = correo();
@@ -2185,7 +2193,7 @@ function harnessJuez(fn, code, casos) {
 
 /* ---------- juez ---------- */
 const VERD = { AC: "Aceptado", WA: "Respuesta incorrecta", RE: "Error de ejecución", CE: "Error de compilación", TLE: "Tiempo límite excedido" };
-function jst(pid) { return U.juez[pid] || (U.juez[pid] = { best: 0, intentos: 0, ac: false, sol: false, pistas: 0 }); }
+function jst(pid) { return U.juez[pid] || (U.juez[pid] = { best: 0, intentos: 0, ac: false, pistas: 0 }); }
 function pistaError(s) {
   s = String(s || "");
   if (/broadcast/.test(s)) return "Las formas de tus arrays no son compatibles. Imprime el .shape de cada uno y revisa la regla del módulo 4.";
@@ -2230,25 +2238,38 @@ async function corregir(p, code, casos) {
   const verd = ok === tot ? "AC" : cs.some(c => c.v === "RE") ? "RE" : "WA";
   return { verd, ok, tot, casos: cs.map(c => ({ v: c.v, ob: c.ob })), informe, linea: (cs.find(c => c.linea) || {}).linea || null, out: r.out || "" };
 }
-function bubFor(s) { if (!s || !s.intentos) return '<span class="bub" aria-label="Sin intentos"></span>'; if (s.ac) return '<span class="bub on" aria-label="Aceptado">✓</span>'; if (s.sol) return '<span class="bub sol" aria-label="Viste la solución">S</span>'; return s.best > 0 ? '<span class="bub half" aria-label="Parcial"></span>' : '<span class="bub bad" aria-label="Incorrecto">✗</span>'; }
+function bubFor(s) { if (!s || !s.intentos) return '<span class="bub" aria-label="Sin intentos"></span>'; if (s.ac) return '<span class="bub on" aria-label="Aceptado">✓</span>'; return s.best > 0 ? '<span class="bub half" aria-label="Parcial"></span>' : '<span class="bub bad" aria-label="Incorrecto">✗</span>'; }
+const setDe = id => B.sets.find(s => s.id === id);
+const puntajeSet = s => s.probs.reduce((x, p) => x + Math.round(100 * ((U.juez[p.id] || {}).best || 0)), 0);
 function renderJudge() {
-  $("#tJuez").innerHTML = `<div class="u-judge"><aside class="u-plist"><div class="u-sethead"><div><span class="eyebrow">Set de práctica 1</span><div class="hint">${B.probs.length} problemas · 100 puntos cada uno</div></div><b id="setScore"></b></div><ol id="pList"></ol>
-    <div class="u-plegend"><span><span class="bub on">✓</span>Aceptado</span><span><span class="bub half"></span>Algunos casos correctos</span><span><span class="bub bad">✗</span>Ningún caso correcto</span><span><span class="bub sol">S</span>Resuelto viendo la solución</span></div></aside>
+  $("#tJuez").innerHTML = `<div class="u-judge"><aside class="u-plist">
+    <div class="seg" role="tablist" aria-label="Sets de práctica" style="display:grid;grid-template-columns:repeat(${B.sets.length},1fr)">${B.sets.map(s => `<button type="button" role="tab" data-set="${s.id}" class="${s.id === cur.set ? "on" : ""}" aria-selected="${s.id === cur.set}">Set ${s.n}</button>`).join("")}</div>
+    <div class="u-sethead"><div><span class="eyebrow" id="setTit"></span><div class="hint" id="setDesc"></div></div><b id="setScore"></b></div><ol id="pList"></ol>
+    <div class="u-plegend"><span><span class="bub on">✓</span>Aceptado</span><span><span class="bub half"></span>Algunos casos correctos</span><span><span class="bub bad">✗</span>Ningún caso correcto</span></div></aside>
     <div class="u-prob" id="pView"></div></div>`;
+  $$("[data-set]", $("#tJuez")).forEach(b => b.addEventListener("click", () => {
+    cur.set = b.dataset.set; cur.prob = setDe(cur.set).probs[0].id;
+    $$("[data-set]", $("#tJuez")).forEach(x => { x.classList.toggle("on", x === b); x.setAttribute("aria-selected", x === b); });
+    paintPList(); renderProb(cur.prob);
+  }));
+  if (!B.probs.some(p => p.id === cur.prob && p.set === cur.set)) cur.prob = setDe(cur.set).probs[0].id;
   paintPList(); renderProb(cur.prob); PYR.start().catch(() => {});
 }
 function paintPList() {
-  $("#setScore").textContent = `${puntaje()} / ${B.probs.length * 100}`;
-  $("#pList").innerHTML = B.probs.map(p => { const s = U.juez[p.id]; return `<li><button type="button" data-prob="${p.id}" class="${p.id === cur.prob ? "on" : ""}">${bubFor(s)}<span><b>${p.id}</b> · ${esc(p.titulo)}</span><span class="pts">${Math.round(100 * ((s && s.best) || 0))}</span></button></li>`; }).join("");
+  const S = setDe(cur.set);
+  $("#setTit").textContent = `Set ${S.n} · ${S.titulo}`;
+  $("#setDesc").textContent = `${S.mods} · ${S.probs.length} problemas · 100 puntos cada uno`;
+  $("#setScore").textContent = `${puntajeSet(S)} / ${S.probs.length * 100}`;
+  $("#pList").innerHTML = S.probs.map(p => { const s = U.juez[p.id]; return `<li><button type="button" data-prob="${p.id}" class="${p.id === cur.prob ? "on" : ""}">${bubFor(s)}<span><b>${p.id}</b> · ${esc(p.titulo)}</span><span class="pts">${Math.round(100 * ((s && s.best) || 0))}</span></button></li>`; }).join("");
   $$("#pList [data-prob]").forEach(b => b.addEventListener("click", () => { cur.prob = b.dataset.prob; paintPList(); renderProb(cur.prob); }));
 }
 function tablaEjemplos(fn, casos) { return `<div class="u-twrap"><table class="u-table u-ex"><thead><tr><th>Llamada</th><th>Resultado esperado</th></tr></thead><tbody>${casos.filter(c => c.vis).map(c => `<tr><td><code>${esc(fn)}(${esc(c.args)})</code></td><td><pre class="out">${esc(c.espRepr)}</pre></td></tr>`).join("")}</tbody></table></div>`; }
-function metaProb(p, s) { return `<span class="pill">${esc(p.dif)}</span><span class="pill">${p.casos.length} casos de prueba</span><span class="pill ${s.ac ? "ok" : ""}">Mejor puntaje: ${Math.round(100 * s.best)} / 100</span><span class="pill">Envíos: ${s.intentos}</span>`; }
+function metaProb(p, s) { return `<span class="pill">${esc(p.dif)}</span><span class="pill">${p.casos.length} casos de prueba</span><span class="pill ${s.ac ? "ok" : ""}">Mejor puntaje: ${Math.round(100 * s.best)} / 100</span><span class="pill">Envíos: ${s.intentos} · ilimitados</span>`; }
 function renderProb(pid) {
   const p = B.probs.find(x => x.id === pid), s = jst(pid);
   const oc = p.casos.filter(c => !c.vis).length, last = U.envios.find(e => e.pid === pid);
   $("#pView").innerHTML = `
-    <div><span class="eyebrow">${p.id} · Módulo ${p.modulo.slice(1)} · ${esc(p.modTitulo)}</span><h2>${esc(p.titulo)}</h2></div>
+    <div><span class="eyebrow">Problema ${p.id} · Módulo ${p.modulo.slice(1)} · ${esc(p.modTitulo)}</span><h2>${esc(p.titulo)}</h2></div>
     <div class="u-meta" id="pMeta">${metaProb(p, s)}</div>
     <div class="u-enun">${p.enun}</div>
     <dl class="u-task"><dt>Función</dt><dd><code>${esc(p.firma)}</code></dd><dt>Entrada</dt><dd>${p.entrada}</dd><dt>Salida</dt><dd>${p.salida}</dd></dl>
@@ -2259,7 +2280,7 @@ function renderProb(pid) {
     <div class="u-res" id="pRes">${last ? resultHTML(p, last) : ""}</div>
     <div class="u-help">
       <div class="u-card"><span class="eyebrow">Pistas</span><div id="hints" style="display:grid;gap:8px"></div><div class="u-actions"><button class="btn btn-sm" type="button" id="hintBtn"></button></div></div>
-      <div class="u-card"><span class="eyebrow">Solución explicada</span><div id="solBox"></div></div>
+      <div class="u-card"><span class="eyebrow">Si te quedas pegado</span><ul class="u-list" style="font-size:15.5px"><li>Vuelve al <b>módulo ${p.modulo.slice(1)}</b> y a su ejemplo comentado. <button class="btn btn-sm" type="button" data-gomod="${p.modulo}">Ir al módulo</button></li><li>Prueba tus ideas por partes en la <b>consola</b>: imprime el <code>.shape</code> de cada array.</li><li>Investiga por tu cuenta: la documentación de NumPy (numpy.org/doc), buscadores o asistentes de IA. Puedes enviar las veces que quieras.</li></ul></div>
     </div>`;
   paintPy(); paintHelp(p);
   const ed = $("#ed"); let tmr;
@@ -2274,13 +2295,6 @@ function paintHelp(p) {
   const s = jst(p.id);
   $("#hints").innerHTML = s.pistas ? p.pistas.slice(0, s.pistas).map((h, i) => `<div class="u-hint"><b>Pista ${i + 1}.</b> ${esc(h)}</div>`).join("") : '<p class="muted" style="font-size:15px">Las pistas van de lo general a lo concreto. Pide una solo si te quedas en blanco.</p>';
   const hb = $("#hintBtn"); hb.disabled = s.pistas >= p.pistas.length; hb.textContent = s.pistas >= p.pistas.length ? "No quedan pistas" : `Ver pista ${s.pistas + 1} de ${p.pistas.length}`;
-  const can = s.ac || s.intentos >= 3;
-  $("#solBox").innerHTML = (s.ac || s.sol)
-    ? `<pre class="py">${esc(p.sol)}</pre><p>${esc(p.solExp)}</p>`
-    : can ? `<p class="muted" style="font-size:15px">Si la ves antes de resolverlo, el problema queda marcado como «resuelto viendo la solución».</p><button class="btn btn-sm" type="button" id="solBtn">Ver la solución</button>`
-      : `<p class="muted" style="font-size:15px">Se habilita después de 3 envíos o cuando tu código sea aceptado. Te ${3 - s.intentos === 1 ? "queda 1 envío" : `quedan ${3 - s.intentos} envíos`}.</p>`;
-  wireCode($("#solBox"));
-  const sb = $("#solBtn"); if (sb) sb.addEventListener("click", () => { s.sol = true; saveU(); paintHelp(p); paintPList(); });
 }
 function filasCasos(p, env, casos) {
   return env.casos.map((c, i) => { const k = casos[i]; return `<tr><td class="r">${i + 1}</td><td>${k.vis ? `<code>${esc(p.fn)}(${esc(k.args)})</code>` : '<span class="muted">Caso oculto</span>'}</td><td>${k.vis ? `<pre class="out">${esc(k.espRepr)}</pre>` : '<span class="muted">—</span>'}</td><td>${(k.vis || c.v === "RE") && c.ob ? `<pre class="out">${esc(c.ob)}</pre>` : '<span class="muted">—</span>'}</td><td><span class="pill ${c.v === "AC" ? "ok" : c.v === "WA" ? "bad" : "warn"}">${VERD[c.v]}</span></td></tr>`; }).join("");
@@ -2428,7 +2442,7 @@ function descargarPDF(t) {
   } catch (e) { toast("No se pudo descargar el PDF. Usa «Ver las preguntas en pantalla»."); }
 }
 function recomendaciones(t, r) {
-  const rec = [], RELP = { m1: "P1", m3: "P3", m4: "P2", m8: "P5", m9: "P4" };
+  const rec = [], RELP = {}; B.probs.forEach(p => { if (!RELP[p.modulo]) RELP[p.modulo] = p.id; });
   Object.entries(r.porMod).sort((a, b) => a[1].p / a[1].max - b[1].p / b[1].max).forEach(([m, v]) => {
     const pct = v.p / v.max, tit = (MODT.find(x => x[0] === m) || [m, m])[1];
     if (pct < 0.6) rec.push(`<li>Repasa el <b>módulo ${m.slice(1)} · ${esc(tit)}</b> (lograste ${Math.round(100 * pct)} %): vuelve a su simulación y a su ejemplo comentado.${RELP[m] ? ` Después resuelve el problema <b>${RELP[m]}</b> del juez.` : ""} <button class="btn btn-sm" type="button" data-gomod="${m}">Ir al módulo</button></li>`);
@@ -2496,7 +2510,7 @@ function renderProg() {
     ${next ? `<div class="u-rep"><span class="lab">Siguiente paso</span><p>Continúa con el módulo ${next[0].slice(1)}: ${esc(next[1])}.</p><div class="u-actions"><button class="btn btn-cafe btn-sm" type="button" data-gomod="${next[0]}">Ir al módulo</button></div></div>` : ""}
     <div class="u-card"><h3 style="margin:0;font-size:18px">Interrogaciones</h3>${B.tests.map(t => { const s = tst(t.id); return `<div class="u-row"><span>${esc(t.titulo)} · ${esc(t.sub)}</span><div class="u-meter ${s && s.res && s.res.nota >= 4 ? "ok" : ""}"><i style="width:${s && s.res ? Math.round(100 * s.res.pts / s.res.P) : 0}%"></i></div><span style="justify-self:end">${s && s.res ? coma(s.res.nota.toFixed(1)) : s ? "En curso" : "—"}</span></div>`; }).join("")}</div>
     <div class="u-card"><h3 style="margin:0;font-size:18px">Módulos</h3><div>${MODT.map(([id, t]) => { const d = U.done.includes(id); return `<div class="u-row"><span>${id.slice(1)} · ${esc(t)}</span><div class="u-meter ok"><i style="width:${d ? 100 : 0}%"></i></div><span class="pill ${d ? "ok" : ""}" style="justify-self:end">${d ? "Listo" : "Pendiente"}</span></div>`; }).join("")}</div></div>
-    <div class="u-card"><h3 style="margin:0;font-size:18px">Juez · Set de práctica 1</h3><div>${B.probs.map(p => { const s = U.juez[p.id] || {}; const v = Math.round(100 * (s.best || 0)); return `<div class="u-row"><span>${p.id} · ${esc(p.titulo)}${s.sol && !s.ac ? ' <span class="pill">con solución</span>' : ""}</span><div class="u-meter ${s.ac ? "ok" : ""}"><i style="width:${v}%"></i></div><span style="justify-self:end;font-variant-numeric:tabular-nums">${v}</span></div>`; }).join("")}</div></div>
+    ${B.sets.map(S => `<div class="u-card"><h3 style="margin:0;font-size:18px">Juez · Set ${S.n} · ${esc(S.titulo)} <span class="pill">${puntajeSet(S)} / ${S.probs.length * 100}</span></h3><div>${S.probs.map(p => { const s = U.juez[p.id] || {}; const v = Math.round(100 * (s.best || 0)); return `<div class="u-row"><span>${p.id} · ${esc(p.titulo)}</span><div class="u-meter ${s.ac ? "ok" : ""}"><i style="width:${v}%"></i></div><span style="justify-self:end;font-variant-numeric:tabular-nums">${v}</span></div>`; }).join("")}</div></div>`).join("")}
   </div>`;
 }
 
