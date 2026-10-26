@@ -556,9 +556,19 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .mat-k { font: 600 11.5px var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: var(--ax); margin: 0; }
 .mat-body h3 { font-size: 26px; letter-spacing: -.02em; }
 .mat-sum { color: var(--muted); font-size: 15px; margin: 0; }
-.mat-items { display: grid; gap: 10px; margin-top: 4px; }
+.mat-items { display: grid; gap: 10px; margin: 4px 0 0; padding: 0; list-style: none; }
+.mat-aula { position: relative; display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 16px; align-items: center; margin-top: 18px; padding: 20px 24px; border-radius: 22px; text-decoration: none; color: var(--ink);
+  border: 1.5px solid rgba(var(--gc), .55); background: linear-gradient(100deg, rgba(var(--gc), .20), rgba(var(--gc), .06) 55%, rgba(17, 38, 75, .7)); box-shadow: 0 24px 60px -30px rgba(var(--gc), .55); transition: transform .15s, border-color .15s, box-shadow .15s; }
+.mat-aula:hover { transform: translateY(-2px); border-color: rgba(var(--gc), .9); box-shadow: 0 28px 70px -28px rgba(var(--gc), .7); color: var(--ink); }
+.mat-aula .ma-ic { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; background: rgba(var(--gc), .18); color: rgb(var(--gc)); border: 1px solid rgba(var(--gc), .45); }
+.mat-aula .ma-ic svg { width: 26px; height: 26px; }
+.mat-aula b { display: block; font: 700 21px/1.2 var(--f-display); letter-spacing: -.01em; }
+.mat-aula small { display: block; margin-top: 4px; color: var(--muted); font: 500 14px/1.45 var(--f-display); }
+.mat-aula .ma-go { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: rgb(var(--gc)); color: #0B1A33; }
+.mat-aula .ma-go svg { width: 20px; height: 20px; }
+@media (max-width: 560px) { .mat-aula { grid-template-columns: 44px minmax(0, 1fr); padding: 16px; gap: 12px; } .mat-aula .ma-ic { width: 44px; height: 44px; border-radius: 12px; } .mat-aula .ma-go { display: none; } .mat-aula b { font-size: 18px; } }
 .mat-it { display: grid; grid-template-columns: 42px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-align: left; width: 100%; padding: 12px 12px 12px 12px; border-radius: 16px; border: 1px solid var(--line); background: rgba(8, 20, 40, .45); color: var(--ink); cursor: pointer; font: inherit; transition: border-color .15s, background-color .15s, transform .15s; }
-.mat-it:hover { border-color: var(--ax-l); background: rgba(17, 38, 75, .8); }
+.mat-it { cursor: default; border-color: transparent !important; background: none !important; padding: 2px 0 !important; }
 .mat-it:active { transform: translateY(1px); }
 .mat-it:disabled { opacity: .7; cursor: progress; }
 .mat-ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--ax-a); color: var(--ax); }
@@ -726,8 +736,8 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías de M1 y M2</b>Normales, avanzadas ★ y ensayos finales de cada eje, con la solución paso a paso en un QR. También las que se publiquen después.</span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Clases online en vivo y videos</b>Clases en vivo con los tutores de TS Zenit y videos de material PAES con los tutores y el tutor virtual. <em>Durante el Intensivo.</em></span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Los 5 ensayos PAES</b>M1 (65 preguntas), M2 (55) y Ciencias con mención Física, Química y Biología (80 c/u), con puntaje y respuestas correctas al enviar, informe personal y ensayo de refuerzo. <em>Durante el Intensivo se suman más.</em></span></li>
-            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>5 revisiones personalizadas</b>Informe con tutor virtual y guía de refuerzo en las 5 guías de M1 o M2 que tú elijas.</span></li>
-            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Material exclusivo de M1 y M2</b>Apuntes interactivos y slides de cada eje. <a href="#material">Ver el material ↓</a></span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>6 revisiones personalizadas</b>Informe con tutor virtual y guía de refuerzo en 3 guías de M1 y 3 de M2 que tú elijas.</span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Aula online de Matemática</b>Apuntes interactivos y slides de M1 y M2, tus revisiones, las clases en vivo y los videos, en un solo lugar. <a href="#material">Ver el material ↓</a></span></li>
           </ul>
           <div class="int-acts"><button class="btn int-btn" type="button" data-int="TSZ-INT-MAT">Quiero el Intensivo Matemática</button><p class="int-fine">No acumulable con códigos promocionales.</p></div>
         </article>
@@ -741,8 +751,8 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Videos de clases</b>Clases grabadas de material PAES con los tutores de TS Zenit y el tutor virtual. <em>Durante el Intensivo.</em></span></li>
             <li class="no"><span class="int-ic" aria-hidden="true">–</span><span><b>Sin clases en vivo</b>Las clases online en vivo son parte del Intensivo Matemática.</span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Los 5 ensayos PAES</b>Ciencias con mención Física, Química y Biología (80 c/u), M1 (65) y M2 (55), con puntaje y respuestas correctas al enviar, informe personal y ensayo de refuerzo. <em>Durante el Intensivo se suman más.</em></span></li>
-            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>5 revisiones personalizadas</b>Informe con tutor virtual y guía de refuerzo en las 5 guías de Ciencias que tú elijas.</span></li>
-            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Material exclusivo de Ciencias</b>Apuntes interactivos con simuladores y slides de Física, Química y Biología. <a href="#material">Ver el material ↓</a></span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>9 revisiones personalizadas</b>Informe con tutor virtual y guía de refuerzo en 9 guías de Ciencias: repártelas como quieras entre Física, Química y Biología.</span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Aula online de Ciencias</b>Apuntes interactivos con simuladores y slides de Física, Química y Biología, tus revisiones y los videos, en un solo lugar. <a href="#material">Ver el material ↓</a></span></li>
           </ul>
           <div class="int-acts"><button class="btn int-btn" type="button" data-int="TSZ-INT-CIE">Quiero el Intensivo Ciencias</button><p class="int-fine">No acumulable con códigos promocionales.</p></div>
         </article>
@@ -755,7 +765,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
       <div class="sec-head">
         <p class="eyebrow mat-eb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Material PAES · Exclusivo Intensivo</p>
         <h2>Estudia con material hecho para la PAES</h2>
-        <p>Apuntes interactivos y slides para repasar lo esencial de cada asignatura. Cada material se abre con tu cuenta del Intensivo que lo incluye: <b>Matemática</b> para M1 y M2, <b>Ciencias</b> para Física, Química y Biología.</p>
+        <p>Apuntes interactivos y slides para repasar lo esencial de cada asignatura. Se abren en el aula de tu Intensivo, junto con tus revisiones, las clases y los videos: <b>Matemática</b> para M1 y M2, <b>Ciencias</b> para Física, Química y Biología.</p>
       </div>
       <div id="matGrid"></div>
       <div class="mat-foot"><p><b>Durante los Intensivos se suma más material.</b> Todo queda en tu cuenta: entras con Google y lo abres en cualquier dispositivo.</p><a class="btn int-btn" href="#intensivo">Ver los Intensivos</a></div>
@@ -912,7 +922,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <div class="sect" id="p-terminos"><h3>Términos de compra</h3><ul>
             <li>Puedes comprar una guía suelta o un eje completo. Hasta el 31 de diciembre de 2026 rige el precio de fin de año: guía suelta $5.000 y eje completo $5.000 menos que la suma de sus guías publicadas al momento de la compra. Desde el 1 de enero de 2027: guía suelta $10.000 y eje completo $10.000 más que su precio de fin de año. El precio que pagas es el que muestra la tienda al momento de la compra. El eje completo incluye todas sus guías y su ensayo final, también las que se publiquen después en ese eje. Cada guía incluye la revisión de una hoja de respuestas.</li>
             <li>Puedes descargar e imprimir las guías para tu estudio. No está permitido revenderlas ni publicarlas como material propio.</li>
-            <li>Hay dos Intensivos que se compran por separado, cada uno a $99.990 y con acceso hasta la PAES de admisión 2027: el Intensivo Matemática (guías de M1 y M2, clases online en vivo, videos, 5 revisiones y su material) y el Intensivo Ciencias (guías de Física, Química y Biología, videos de clases grabadas sin clases en vivo, 5 revisiones y su material). Ambos incluyen los 5 ensayos PAES (M1, M2 y Ciencias con mención Física, Química y Biología); enviar un ensayo no descuenta revisiones. No admiten códigos promocionales.</li>
+            <li>Hay dos Intensivos que se compran por separado, cada uno a $99.990 y con acceso hasta la PAES de admisión 2027: el Intensivo Matemática (guías de M1 y M2, clases online en vivo, videos, 6 revisiones —3 de M1 y 3 de M2— y su aula con material) y el Intensivo Ciencias (guías de Física, Química y Biología, videos de clases grabadas sin clases en vivo, 9 revisiones repartidas como quieras entre las tres asignaturas y su aula con material). Ambos incluyen los 5 ensayos PAES (M1, M2 y Ciencias con mención Física, Química y Biología); enviar un ensayo no descuenta revisiones. No admiten códigos promocionales.</li>
             <li>El material de cada Intensivo (apuntes interactivos y slides) es de uso personal y se abre solo con la cuenta de Google que tiene ese Intensivo. No está permitido compartir la cuenta ni copiar o distribuir el material.</li>
             <li>El informe se envía dentro de 72 horas hábiles desde que recibimos tu hoja de respuestas.</li>
             <li>Si tienes cualquier problema con tu compra, escríbenos a trabajotszenit@gmail.com y lo resolvemos contigo.</li>
@@ -958,8 +968,8 @@ const IC_OPEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 const IC_LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
 const PRECIO_INT = 99990, INT_ID = "TSZ-INT-MAT";   // Intensivos (no admiten códigos promocionales)
 const INTENSIVOS = {
-  "TSZ-INT-MAT": { area: "MAT", nombre: "Intensivo Matemática", sub: "M1 + M2", res: ["Todas las guías de M1 y M2, también las que se publiquen", "Clases online en vivo y videos con tutores y tutor virtual", "Los 5 ensayos PAES (M1, M2 y Ciencias), con informe y ensayo de refuerzo", "5 revisiones personalizadas con tutor virtual", "Material exclusivo de M1 y M2"] },
-  "TSZ-INT-CIE": { area: "CIE", nombre: "Intensivo Ciencias", sub: "Física · Química · Biología", res: ["Todas las guías de Física, Química y Biología, también las que se publiquen", "Videos de clases grabadas (sin clases en vivo)", "Los 5 ensayos PAES (Ciencias, M1 y M2), con informe y ensayo de refuerzo", "5 revisiones personalizadas con tutor virtual", "Material exclusivo de Ciencias"] }
+  "TSZ-INT-MAT": { area: "MAT", nombre: "Intensivo Matemática", sub: "M1 + M2", res: ["Todas las guías de M1 y M2, también las que se publiquen", "Clases online en vivo y videos con tutores y tutor virtual", "Los 5 ensayos PAES (M1, M2 y Ciencias), con informe y ensayo de refuerzo", "6 revisiones personalizadas con tutor virtual: 3 guías de M1 y 3 de M2", "Aula online con material exclusivo de M1 y M2"] },
+  "TSZ-INT-CIE": { area: "CIE", nombre: "Intensivo Ciencias", sub: "Física · Química · Biología", res: ["Todas las guías de Física, Química y Biología, también las que se publiquen", "Videos de clases grabadas (sin clases en vivo)", "Los 5 ensayos PAES (Ciencias, M1 y M2), con informe y ensayo de refuerzo", "9 revisiones personalizadas con tutor virtual, repartidas como quieras entre Física, Química y Biología", "Aula online con material exclusivo de Ciencias"] }
 };
 const areaDe = x => /^(TSZ-|MAT-)?M[12]-/.test(x) ? "MAT" : /^(TSZ-|MAT-)?(FIS|QUI|BIO)-/.test(x) ? "CIE" : "";
 const intDeArea = a => Object.keys(INTENSIVOS).find(k => INTENSIVOS[k].area === a);
@@ -1452,7 +1462,7 @@ function openCode() {
     try {
       const p = await canjear($("#codeIn").value);
       closeLayer();
-      if (INTENSIVOS[p]) { renderEjes(); return felicidades(INTENSIVOS[p].nombre, "el Intensivo", "Ver material", () => { const m = $("#material"); if (m) m.scrollIntoView({ block: "start" }); }); }
+      if (INTENSIVOS[p]) { renderEjes(); return felicidades(INTENSIVOS[p].nombre, "el Intensivo", "Entrar al aula", () => { location.href = AULA[INTENSIVOS[p].area]; }); }
       const g = GUIAS[p], ej = g ? findGuia(p) : findEje(p);
       current = ej.p.id; abiertos.add(ej.e.id); renderTabs(); renderEjes();
       const ver = () => { const card = $("#eje-" + ej.e.id); if (card) card.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); };
@@ -1563,7 +1573,7 @@ function openForm(code) {
     } catch (e2) {
       sendBtn.disabled = false; sendBtn.textContent = "Enviar hoja de respuestas";
       const M = { repetida: "Ya enviaste una hoja de respuestas de esta guía con tu cuenta. Cada guía incluye una sola revisión; si necesitas otra, escríbenos.",
-        limite_int: "Ya usaste las 5 revisiones personalizadas de tu Intensivo. Para revisar esta guía, cómprala por separado o escríbenos.",
+        limite_int: "Ya usaste las revisiones de tu Intensivo para esta prueba (3 de M1 y 3 de M2 en Matemática; 9 en Ciencias). Para revisar esta guía, cómprala por separado o escríbenos.",
         sin_acceso: "Tu cuenta no tiene acceso a esta guía. Activa tu código en «Tengo un código».", sin_endpoint: `Aún no recibimos hojas en línea${CFG.contacto ? `; escríbenos a ${CFG.contacto}` : ""}.`,
         red: "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.", cancelado: "Para enviar tus respuestas tienes que iniciar sesión." };
       return fail(M[e2.message] || "No se pudo enviar. Inténtalo de nuevo o escríbenos.");
@@ -1719,19 +1729,22 @@ const matDe = id => { for (const a of MAT) for (const it of a.items) if (it.id =
 const IC_GO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
 const IC_MAT = { ap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 12h5"/></svg>',
   sl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8M7 12l3-3 2 2 4-4"/></svg>' };
+const AULA = { MAT: "/intensivo/matematica/", CIE: "/intensivo/ciencias/" };
 const matAbierto = area => { try { return typeof tieneInt === "function" && tieneInt(area); } catch (e) { return false; } };
 function matCard(a) {
   const x = ARTE[a.art], open = matAbierto(a.area);
   return `<article class="mat-card" style="--ax:${x.c};--ax-a:${x.a};--ax-b:${x.b};--ax-l:${x.l};--ax-g:${x.g}">
       <div class="mat-art">${x.svg}<span class="mat-badge${open ? " ok" : ""}">${open ? "✓ Desbloqueado" : IC_LOCK + INTENSIVOS[intDeArea(a.area)].nombre}</span></div>
       <div class="mat-body"><p class="mat-k">${esc(a.k)}</p><h3>${esc(a.asig)}</h3><p class="mat-sum">${esc(a.sum)}</p>
-        <div class="mat-items">${a.items.map(it => `<button class="mat-it${open ? " open" : ""}" type="button" data-mat="${it.id}" aria-label="${esc(a.asig + " · " + it.t + (open ? "" : " (exclusivo del " + INTENSIVOS[intDeArea(a.area)].nombre + ")"))}"><span class="mat-ic">${IC_MAT[it.ic]}</span><span><b>${esc(it.t)}</b><small>${esc(it.d)}</small></span><span class="mat-go">${open ? IC_GO : IC_LOCK}</span></button>`).join("")}</div></div>
+        <ul class="mat-items">${a.items.map(it => `<li class="mat-it"><span class="mat-ic">${IC_MAT[it.ic]}</span><span><b>${esc(it.t)}</b><small>${esc(it.d)}</small></span></li>`).join("")}</ul></div>
     </article>`;
 }
 function renderMat() {
   const g = $("#matGrid"); if (!g) return;
   g.innerHTML = ["MAT", "CIE"].map(ar => { const I = INTENSIVOS[intDeArea(ar)], L = MAT.filter(a => a.area === ar);
-    return `<div class="mat-group"><h3 class="mat-gh">${esc(I.nombre)} <span>${esc(I.sub)}</span>${matAbierto(ar) ? "" : `<a href="#intensivo">Ver el ${esc(I.nombre)} →</a>`}</h3><div class="mat-grid${L.length === 2 ? " dos" : ""}">${L.map(matCard).join("")}</div></div>`; }).join("");
+    const ok = matAbierto(ar), quien = ar === "MAT" ? "M1 y M2" : "Física, Química y Biología";
+    return `<div class="mat-group" style="--gc:${ar === "MAT" ? "245, 165, 36" : "94, 234, 212"}"><h3 class="mat-gh">${esc(I.nombre)} <span>${esc(I.sub)}</span>${ok ? "" : `<a href="#intensivo">Ver el ${esc(I.nombre)} →</a>`}</h3><div class="mat-grid${L.length === 2 ? " dos" : ""}">${L.map(matCard).join("")}</div>
+      <a class="mat-aula${ok ? " ok" : ""}" href="${AULA[ar]}"><span class="ma-ic" aria-hidden="true">${ok ? IC_OPEN : IC_LOCK}</span><span class="ma-tx"><b>${ok ? "Entrar al aula" : "Abrir el aula"} de ${ar === "MAT" ? "Matemática" : "Ciencias"}</b><small>Apuntes y slides de ${quien} · ${ar === "MAT" ? "3 + 3 revisiones · clases en vivo" : "9 revisiones"} · videos${ok ? "" : ` · exclusivo del ${esc(I.nombre)}`}</small></span><span class="ma-go" aria-hidden="true">${IC_GO}</span></a></div>`; }).join("");
 }
 /* Intensivos: si la cuenta lo tiene, la tarjeta muestra el candado abierto y sin precio */
 function pintarIntensivos() {
@@ -1742,7 +1755,7 @@ function pintarIntensivos() {
     let bd = pr.querySelector(".int-open");
     if (!bd) { bd = document.createElement("div"); bd.className = "int-open"; bd.hidden = true; pr.appendChild(bd); }
     let go = ac.querySelector(".int-go");
-    if (!go) { go = document.createElement("a"); go.className = "btn btn-ghost int-go"; go.href = "#material"; go.textContent = "Ir al material ↓"; go.hidden = true; ac.appendChild(go); }
+    if (!go) { go = document.createElement("a"); go.className = "btn btn-ghost int-go"; go.href = AULA[a]; go.textContent = "Entrar al aula →"; go.hidden = true; ac.appendChild(go); }
     [...pr.children].forEach(k => { if (k !== bd) k.hidden = ok; });
     [...ac.children].forEach(k => { if (k !== go) k.hidden = ok; });
     bd.hidden = !ok; go.hidden = !ok;
@@ -1804,7 +1817,6 @@ function cerrarMaterial(desdeHistorial) {
 $("#mvX").addEventListener("click", () => cerrarMaterial(false));
 window.addEventListener("popstate", () => cerrarMaterial(true));
 document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !$("#mv").hidden) cerrarMaterial(false); });
-$("#matGrid").addEventListener("click", ev => { const b = ev.target.closest("[data-mat]"); if (b) abrirMaterial(b.dataset.mat, b); });
 renderMat();
 document.querySelectorAll("[data-clase]").forEach(b => b.addEventListener("click", ev => { ev.preventDefault(); openClase(b.dataset.clase); }));
 $("#tutorBox").addEventListener("click", ev => {
