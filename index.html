@@ -468,6 +468,68 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .ens-foot { margin: 0; font: 500 13.5px var(--f-display); color: #B8AEDB; }
 .ens-foot .lnk { background: none; border: 0; padding: 0; color: #C4B5FD; font: 700 13.5px var(--f-display); text-decoration: underline; cursor: pointer; }
 @media (max-width: 520px) { .tema.ens { grid-template-columns: auto minmax(0, 1fr) auto; } .ens-body { padding: 30px 18px 22px; } }
+
+/* ---- informe real (tutor virtual) ---- */
+.inf-show { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 8px; }
+@media (max-width: 860px) { .inf-show { grid-template-columns: minmax(0, 1fr); } }
+.inf-shot { margin: 0; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.inf-frame { border-radius: 16px; overflow: hidden; background: #F5F6FB; border: 1px solid #2A4775; box-shadow: 0 24px 60px -24px rgba(0, 0, 0, .7); }
+.inf-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #E4E7F2; border-bottom: 1px solid #D3D8E8; }
+.inf-bar i { width: 10px; height: 10px; border-radius: 50%; background: #C9CEDF; }
+.inf-bar i:first-child { background: #F2A0A0; } .inf-bar i:nth-child(2) { background: #F3D48A; } .inf-bar i:nth-child(3) { background: #9FD8B5; }
+.inf-bar span { margin-left: 8px; font: 600 12px var(--f-display); color: #4A5578; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.inf-frame img { display: block; width: 100%; height: auto; }
+.inf-shot figcaption { display: flex; gap: 12px; align-items: flex-start; color: var(--muted); font-size: 15px; line-height: 1.5; }
+.inf-shot figcaption b { display: block; color: var(--ink); font: 700 16px var(--f-display); margin-bottom: 2px; }
+.inf-n { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: #1b1305; font: 700 14px var(--f-display); }
+.inf-pasos { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 26px 0 0; padding: 0; }
+.inf-pasos li { display: inline-flex; align-items: center; gap: 8px; font: 600 14px var(--f-display); color: var(--ink); padding: 7px 14px 7px 7px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
+.inf-pasos b { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; background: var(--surface-2); color: var(--gold); }
+/* ---- Intensivo PAES ---- */
+.int-card { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; align-items: center; padding: 34px; border-radius: 24px; border: 1px solid rgba(245, 165, 36, .45);
+  background: radial-gradient(80% 120% at 0% 0%, rgba(245, 165, 36, .22), transparent 60%), radial-gradient(70% 90% at 100% 100%, rgba(107, 68, 41, .55), transparent 70%), linear-gradient(135deg, #142A52, #0B1A33); box-shadow: 0 30px 80px -30px rgba(245, 165, 36, .35); }
+@media (max-width: 860px) { .int-card { grid-template-columns: minmax(0, 1fr); padding: 26px 20px; } }
+.int-eb { display: inline-flex; align-items: center; gap: 8px; font: 700 12px var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin: 0; }
+.int-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px rgba(245, 165, 36, .2); }
+.int-left h2 { font-size: clamp(32px, 6vw, 46px); margin: 10px 0 6px; letter-spacing: -.01em; }
+.int-lead { color: var(--muted); font-size: 17px; margin: 0; max-width: 34ch; }
+.int-price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 20px 0 16px; }
+.int-price b { font: 700 clamp(36px, 7vw, 48px)/1 var(--f-display); color: var(--ink); }
+.int-price span { font: 500 14px var(--f-display); color: var(--muted); max-width: 22ch; }
+.btn.int-btn { background: linear-gradient(135deg, #F7B84A, #E08E0B); color: #1b1305; border: 0; font-weight: 700; padding-inline: 26px; box-shadow: 0 12px 28px -12px rgba(245, 165, 36, .8); }
+.btn.int-btn:hover { background: linear-gradient(135deg, #F9C66A, #EB9A17); }
+.int-fine { margin: 10px 0 0; font: 500 12.5px var(--f-display); color: var(--muted); }
+.int-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.int-list li { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; border-radius: 16px; background: rgba(8, 20, 40, .45); border: 1px solid rgba(255, 255, 255, .08); color: var(--muted); font-size: 15px; line-height: 1.5; }
+.int-list li b { display: block; color: var(--ink); font: 700 16px var(--f-display); margin-bottom: 2px; }
+.int-list li em { color: var(--gold); font-style: normal; font-weight: 600; }
+.int-ic { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: rgba(245, 165, 36, .16); color: var(--gold); font: 700 14px var(--f-display); }
+/* ---- agenda de clases ---- */
+.tbtn .av.lv { font-size: 18px; }
+.hz-sub { text-align: center; color: var(--muted); margin-top: 6px; }
+.hz-days { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 8px; margin-top: 16px; scrollbar-width: thin; }
+.hz-day { flex: none; display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 76px; padding: 10px 12px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font: inherit; }
+.hz-day small { font: 600 11.5px var(--f-display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.hz-day b { font: 700 22px/1 var(--f-display); }
+.hz-day span { font: 500 12px var(--f-display); color: var(--muted); }
+.hz-day[aria-pressed="true"] { border-color: var(--gold); background: rgba(245, 165, 36, .14); }
+.hz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 10px; margin-top: 14px; }
+.hz-slot { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 12px 8px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--bg-deep); color: var(--ink); cursor: pointer; font: inherit; min-height: 64px; justify-content: center; }
+.hz-slot b { font: 700 18px var(--f-display); }
+.hz-slot span { font: 600 11.5px var(--f-display); color: var(--ok); }
+.hz-slot.grupo span { color: var(--gold); }
+.hz-slot:hover:not(:disabled) { border-color: var(--latte); }
+.hz-slot[aria-pressed="true"] { border-color: var(--gold); background: rgba(245, 165, 36, .16); box-shadow: 0 0 0 3px rgba(245, 165, 36, .15); }
+.hz-slot:disabled { cursor: not-allowed; opacity: .45; }
+.hz-slot:disabled span { color: var(--muted); }
+.hz-note { text-align: center; color: var(--muted); font: 500 13px var(--f-display); margin-top: 12px; }
+.hz-sum { margin-top: 16px; border-radius: 18px; padding: 16px; background: #F3EFE6; color: #172238; text-align: center; }
+.hz-sum p { margin: 0; font: 600 15px/1.45 var(--f-display); }
+.tsel.hz { background: var(--bg); border: 1px solid var(--line); border-radius: 22px; padding: 20px 18px; }
+.hz-sum .tc-cta { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #111A2E; border-radius: 999px; padding: 8px 8px 8px 20px; margin-top: 12px; }
+.hz-sum .tc-cta span { font: 600 15px var(--f-display); color: #F3EBDD; }
+.hz-sum .tc-cta a { background: #D4A84B; color: #111A2E; border-radius: 999px; padding: 10px 16px; font: 700 15px var(--f-display); text-decoration: none; white-space: nowrap; }
+@media (max-width: 420px) { .hz-sum .tc-cta { flex-direction: column; border-radius: 18px; padding: 12px; } .tsel.hz { padding: 16px 12px; } }
 .pricing{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}@media (max-width:820px){.pricing{grid-template-columns:minmax(0,1fr)}}.pcard{min-width:0}@media (max-width:640px){header.top .wrap{flex-wrap:wrap;row-gap:2px}nav.main{width:100%;justify-content:space-between;align-items:center;gap:6px}nav.main a[href='#ejes']{display:none}nav.main{overflow-x:auto;scrollbar-width:none}nav.main a,nav.main .btn{white-space:nowrap;font-size:12.5px;padding:8px 9px;min-height:40px;flex:none}}
 </style>
 </head><body>
@@ -495,7 +557,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
       <div>
         <p class="eyebrow">PAES · Admisión 2027</p>
         <h1 style="margin-top:12px">Guías PAES con <em>feedback personal</em> de cada error</h1>
-        <p class="lead">Descarga la guía, imprímela y respóndela. Envía tu hoja de respuestas y recibe un informe personal que explica qué falló en cada pregunta, más una guía de refuerzo armada para ti.</p>
+        <p class="lead">Descarga la guía, imprímela y respóndela. Envía tu hoja de respuestas y recibe un informe personal con un tutor virtual que explica qué falló en cada pregunta, más una guía de refuerzo armada para ti.</p>
         <div class="cta">
           <a class="btn btn-cafe" href="#ejes">Ver ejes disponibles</a>
           <a class="btn btn-ghost" href="#como">Cómo funciona</a>
@@ -523,6 +585,52 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <p>Clases de matemática para estudiantes de <b>8° básico a IV medio</b>, y clases universitarias de <b>Precálculo y Cálculo 1</b>. Repasamos lo que te cuesta, a tu ritmo, con ejercicios explicados paso a paso.</p>
         </div>
         <div class="cta-c"><p class="cprice"><b>$20.000</b> por clase individual<br><span class="cgrupo">Grupal (5 personas): <b>$18.000</b> c/u</span></p><button class="btn btn-cafe" type="button" data-clase>Agenda tu clase</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band deep" id="informe">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Tutor virtual</p>
+        <h2>Así se ve una corrección real</h2>
+        <p>Este es un informe real hecho con el tutor virtual de TS Zenit, de la guía de Números reales (M2). Muestra tu resultado, cómo te fue en cada habilidad y, en cada error, qué pasó y cómo corregirlo.</p>
+      </div>
+      <div class="inf-show">
+        <figure class="inf-shot">
+          <div class="inf-frame"><div class="inf-bar" aria-hidden="true"><i></i><i></i><i></i><span>Tu informe · Números reales M2</span></div>
+            <img src="img/informe-resumen.jpg" width="1080" height="709" loading="lazy" alt="Informe real: 10 de 30 respuestas correctas, 20 para trabajar y desempeño por habilidad: Argumentar 3 de 8, Resolver problemas 7 de 18, Representar 0 de 4."></div>
+          <figcaption><span class="inf-n">1</span><span><b>Tu resultado y tus habilidades</b>Puntaje, preguntas por trabajar y en qué habilidades fallaste más: argumentar, resolver problemas o representar.</span></figcaption>
+        </figure>
+        <figure class="inf-shot">
+          <div class="inf-frame"><div class="inf-bar" aria-hidden="true"><i></i><i></i><i></i><span>Pregunta 6 · Qué pasó</span></div>
+            <img src="img/informe-error.jpg" width="1080" height="645" loading="lazy" alt="Análisis real de un error: qué parte falló (sumó los cuadrados 5 + 4), por qué parecía razonable, lo que hay que tener claro (suma por su diferencia), la diferencia clave y una señal para la próxima vez."></div>
+          <figcaption><span class="inf-n">2</span><span><b>Qué pasó en cada error</b>Según la alternativa que marcaste: qué parte falló, por qué parecía razonable y la señal para no repetirlo.</span></figcaption>
+        </figure>
+      </div>
+      <ol class="inf-pasos" aria-label="Etapas del tutor virtual en cada error">
+        <li><b>1</b>Tu razonamiento</li><li><b>2</b>Qué pasó</li><li><b>3</b>Resolución guiada</li><li><b>4</b>Comprobación</li><li><b>5</b>Práctica nueva</li><li><b>6</b>Transferencia</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" id="intensivo">
+    <div class="wrap">
+      <div class="int-card">
+        <div class="int-left">
+          <p class="int-eb"><span class="int-dot" aria-hidden="true"></span>Suscripción</p>
+          <h2>Intensivo PAES</h2>
+          <p class="int-lead">Todo TS Zenit para preparar la PAES, en un solo pago y hasta el día de la prueba.</p>
+          <div class="int-price"><b>$99.990</b><span>pago único · acceso hasta la PAES de admisión 2027</span></div>
+          <button class="btn int-btn" type="button" data-int>Quiero el Intensivo</button>
+          <p class="int-fine">No acumulable con códigos promocionales.</p>
+        </div>
+        <ul class="int-list">
+          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías PAES</b>M1, M2 y Ciencias: normales, avanzadas ★ y ensayos finales, también las que se publiquen después.</span></li>
+          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>5 revisiones personalizadas</b>Informe con tutor virtual y guía de refuerzo en las 5 guías que tú elijas.</span></li>
+          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Material PAES exclusivo</b>Presentaciones y resúmenes para preparar cada eje, solo para el Intensivo. <em>Se publica durante el Intensivo.</em></span></li>
+          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Soluciones paso a paso</b>Cada pregunta trae un código QR con su solución.</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -712,6 +820,7 @@ const DESC_EJE = 5000;   // en fin de año, el eje completo cuesta $5.000 menos 
 const baseEje = e => Math.max(5000, e.guias.length * 5000 - DESC_EJE);
 const PRECIO = 5000 + (OFERTA ? 0 : ALZA_GUIA);
 const packOf = e => baseEje(e) + (OFERTA ? 0 : ALZA_EJE);
+const PRECIO_INT = 99990, INT_ID = "TSZ-INT";   // suscripción Intensivo PAES (no admite códigos promocionales)
 const NORMAL_GUIA = 5000 + ALZA_GUIA, normalEje = e => baseEje(e) + ALZA_EJE;
 const was = v => OFERTA ? `<s class="was" title="Precio normal desde el 1 de enero de 2027">${fmt(v)}</s>` : "";
 const PRUEBAS = [
@@ -757,8 +866,10 @@ try { ses = JSON.parse(localStorage.getItem(LS) || "null"); } catch (e) { ses = 
 try { localStorage.removeItem("tsz_accesos"); } catch (e) {}
 function saveSes() { try { ses ? localStorage.setItem(LS, JSON.stringify(ses)) : localStorage.removeItem(LS); } catch (e) {} }
 const prods = () => (ses && ses.p) || [];
-const hasEje = id => prods().includes(id);
-const hasG = code => prods().includes(code);
+const esPaes = x => !/^(UNI-|TSZ-PRE|TSZ-CAL)/.test(x);   // el Intensivo PAES incluye las guías PAES, no las universitarias
+const hasInt = () => prods().includes("TSZ-INT");
+const hasEje = id => prods().includes(id) || (hasInt() && esPaes(id));
+const hasG = code => prods().includes(code) || (hasInt() && esPaes(code));
 const vivo = () => !!(ses && ses.t && ses.exp > Date.now() + 90000);
 const mailOk = m => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m);
 const borrador = {};
@@ -1063,17 +1174,20 @@ function findEje(id) { for (const p of PRUEBAS) for (const e of p.ejes) if (e.id
 /* ---------- compra ---------- */
 function findGuia(code) { for (const p of PRUEBAS) for (const e of p.ejes) if (e.guias.includes(code)) return { p, e }; }
 function openPay(id, code) {
-  const { p, e } = code ? findGuia(code) : findEje(id);
-  const lista = code ? PRECIO : packOf(e);
+  const INT = !code && id === INT_ID;
+  const { p, e } = INT ? { p: { nombre: "TS Zenit" }, e: { id: INT_ID, nombre: "Intensivo PAES", guias: [] } } : code ? findGuia(code) : findEje(id);
+  const lista = INT ? PRECIO_INT : code ? PRECIO : packOf(e);
   let price = lista, promo = null;   // promo: { c: código, d: % de descuento }
   const prod = code || e.id;
-  const title = code ? GUIAS[code].titulo : `${e.nombre} · eje completo`;
+  const title = INT ? "Intensivo PAES" : code ? GUIAS[code].titulo : `${e.nombre} · eje completo`;
   const linkDe = v => (CFG.mp || {})[v] || (code && v === PRECIO ? CFG.mpGuia : "");
-  const totalHtml = () => (OFERTA ? `<div class="sumrow"><span>Precio normal desde el 1 de enero de 2027</span><span><s class="was">${fmt(code ? NORMAL_GUIA : normalEje(e))}</s></span></div><div class="sumrow"><span>Precio de fin de año <span class="sale">Oferta</span></span><span>${fmt(lista)}</span></div>` : "") + (promo ? `<div class="sumrow"><span>Código ${esc(promo.c)} (−${promo.d}%)</span><span>−${fmt(lista - price)}</span></div>` : "") + `<div class="sumrow"><span>Total</span><span>${fmt(price)}</span></div>`;
-  const pasoHtml = () => { const link = linkDe(price); return `<p style="font-family:var(--f-display);font-size:14px"><b>1.</b> Paga ${fmt(price)} con Mercado Pago.${promo ? "" : ` <span class="muted">¿Tienes un código promocional? Escríbelo abajo antes de pagar.</span>`}</p>
+  const totalHtml = () => (OFERTA && !INT ? `<div class="sumrow"><span>Precio normal desde el 1 de enero de 2027</span><span><s class="was">${fmt(code ? NORMAL_GUIA : normalEje(e))}</s></span></div><div class="sumrow"><span>Precio de fin de año <span class="sale">Oferta</span></span><span>${fmt(lista)}</span></div>` : "") + (promo ? `<div class="sumrow"><span>Código ${esc(promo.c)} (−${promo.d}%)</span><span>−${fmt(lista - price)}</span></div>` : "") + `<div class="sumrow"><span>Total</span><span>${fmt(price)}</span></div>`;
+  const pasoHtml = () => { const link = linkDe(price); return `<p style="font-family:var(--f-display);font-size:14px"><b>1.</b> Paga ${fmt(price)} con Mercado Pago.${promo || INT ? "" : ` <span class="muted">¿Tienes un código promocional? Escríbelo abajo antes de pagar.</span>`}</p>
         ${link ? `<a class="btn btn-cafe" href="${esc(link)}" target="_blank" rel="noopener" style="margin-top:10px">Pagar ${fmt(price)} con Mercado Pago</a>`
                : `<p class="muted" style="font-size:14px;margin-top:6px">${promo ? "El pago en línea con descuento se habilita pronto" : "El pago en línea se habilita pronto"}${CFG.contacto ? `; mientras tanto escríbenos a <a href="mailto:${esc(CFG.contacto)}">${esc(CFG.contacto)}</a>` : ""}.</p>`}`; };
-  const resumen = code
+  const resumen = INT
+    ? `<div class="sumrow"><span>Todas las guías PAES (M1, M2 y Ciencias), también las que se publiquen</span><span>incluidas</span></div><div class="sumrow"><span>5 revisiones personalizadas con tutor virtual</span><span>incluidas</span></div><div class="sumrow"><span>Material PAES exclusivo</span><span>incluido</span></div><div class="sumrow"><span>Acceso hasta la PAES de admisión 2027</span><span></span></div>`
+    : code
     ? `<div class="sumrow"><span>${esc(GUIAS[code].titulo)}</span><span>${fmt(PRECIO)}</span></div>`
     : `${e.guias.map(c => `<div class="sumrow"><span>${esc(GUIAS[c].titulo)}</span><span>incluida</span></div>`).join("")}<div class="sumrow"><span>Guías y ensayo final que se publiquen después</span><span>incluidas</span></div>`;
   showLayer(`<div class="panel narrow" role="dialog" aria-modal="true" aria-labelledby="payT">
@@ -1085,9 +1199,9 @@ function openPay(id, code) {
       <div class="field"><label for="payName">Nombre de quien pagó</label><input type="text" id="payName" autocomplete="name" required></div>
       <div class="field"><label for="payMail">Correo para recibir tu código</label><input type="email" id="payMail" autocomplete="email" placeholder="tu@correo.cl" required></div>
       <div class="field"><label for="payOp">N.º de operación de Mercado Pago <span class="muted">(opcional)</span></label><input type="text" id="payOp" inputmode="numeric"></div>
-      <div class="field"><label for="payPromo">Código promocional <span class="muted">(opcional)</span></label>
+      ${INT ? "" : `<div class="field"><label for="payPromo">Código promocional <span class="muted">(opcional)</span></label>
         <div style="display:flex;gap:8px;align-items:stretch"><input type="text" id="payPromo" autocomplete="off" autocapitalize="characters" spellcheck="false" style="flex:1;min-width:0;text-transform:uppercase"><button type="button" class="btn btn-ghost" id="payPromoGo" style="width:auto;flex:none">Aplicar</button></div>
-        <p id="payPromoMsg" role="status" style="font-family:var(--f-display);font-size:13px;margin-top:6px" hidden></p></div>
+        <p id="payPromoMsg" role="status" style="font-family:var(--f-display);font-size:13px;margin-top:6px" hidden></p></div>`}
       <input type="text" id="payHp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
       <label class="check"><input type="checkbox" id="payTerms" required><span>Acepto los <a href="#p-terminos" data-close>términos de compra</a> y la <a href="#privacidad" data-close>política de privacidad</a>.</span></label>
       <p class="err" id="payErr" hidden></p>
@@ -1112,9 +1226,9 @@ function openPay(id, code) {
     } catch (e) { msgP(e.message === "sin_endpoint" ? "Los códigos promocionales se habilitan pronto." : "No se pudo revisar el código. Revisa tu conexión e inténtalo de nuevo."); return false; }
     finally { b.disabled = false; b.textContent = "Aplicar"; }
   }
-  $("#payPromoGo").addEventListener("click", aplicarPromo);
-  $("#payPromo").addEventListener("keydown", ev => { if (ev.key === "Enter") { ev.preventDefault(); aplicarPromo(); } });
-  $("#payPromo").addEventListener("input", () => { if (promo && normP($("#payPromo").value) !== promo.c) { promo = null; price = lista; pintar(); msgP(""); } });
+  if (!INT) $("#payPromoGo").addEventListener("click", aplicarPromo);
+  if (!INT) $("#payPromo").addEventListener("keydown", ev => { if (ev.key === "Enter") { ev.preventDefault(); aplicarPromo(); } });
+  if (!INT) $("#payPromo").addEventListener("input", () => { if (promo && normP($("#payPromo").value) !== promo.c) { promo = null; price = lista; pintar(); msgP(""); } });
   $("#payForm").addEventListener("submit", async ev => {
     ev.preventDefault();
     const name = $("#payName").value.trim(), mail = $("#payMail").value.trim(), err = $("#payErr");
@@ -1124,7 +1238,7 @@ function openPay(id, code) {
     if (!mailOk(mail)) return fail("Escribe un correo válido para recibir tu código.", $("#payMail"));
     if (!$("#payTerms").checked) return fail("Para comprar tienes que aceptar los términos y la política de privacidad.", $("#payTerms"));
     if ($("#payHp").value) return;
-    if (normP($("#payPromo").value) && !(promo && promo.c === normP($("#payPromo").value)) && !(await aplicarPromo()))
+    if (!INT && normP($("#payPromo").value) && !(promo && promo.c === normP($("#payPromo").value)) && !(await aplicarPromo()))
       return fail("Revisa el código promocional o bórralo para enviar el aviso.", $("#payPromo"));
     const btn = $("#paySend"); btn.disabled = true; btn.textContent = "Enviando…";
     try {
@@ -1263,6 +1377,7 @@ function openForm(code) {
     } catch (e2) {
       sendBtn.disabled = false; sendBtn.textContent = "Enviar hoja de respuestas";
       const M = { repetida: "Ya enviaste una hoja de respuestas de esta guía con tu cuenta. Cada guía incluye una sola revisión; si necesitas otra, escríbenos.",
+        limite_int: "Ya usaste las 5 revisiones personalizadas de tu Intensivo PAES. Para revisar esta guía, cómprala por separado o escríbenos.",
         sin_acceso: "Tu cuenta no tiene acceso a esta guía. Activa tu código en «Tengo un código».", sin_endpoint: `Aún no recibimos hojas en línea${CFG.contacto ? `; escríbenos a ${CFG.contacto}` : ""}.`,
         red: "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.", cancelado: "Para enviar tus respuestas tienes que iniciar sesión." };
       return fail(M[e2.message] || "No se pudo enviar. Inténtalo de nuevo o escríbenos.");
@@ -1292,30 +1407,92 @@ const TUTORES = [
   { id: "bo", nombre: "Borja Orive", ini: "BO", tel: "+56 9 3433 6635", wa: "56934336635", corto: "850 en Ciencias",
     stats: [{ n: "850", t: "puntos en Ciencias", gold: true }],
     extra: ["Estudiante UC", "Promedio sobre 6,5"] } ];
-const CTX = { paes: { pill: "Matemática", sub: "Matemática · 8° básico a IV medio", precio: "$20.000", grupo: "$18.000" },
-  uni: { pill: "Universidad", sub: "Precálculo y Cálculo 1", precio: "$25.000", grupo: "$22.500" } };
+const CTX = {
+  paes: { pill: "Matemática", sub: "Matemática PAES · 8° básico a IV medio", corto: "PAES", precio: "$20.000", grupo: "$18.000" },
+  pre: { pill: "Universidad", sub: "Precálculo", corto: "Precálculo", precio: "$25.000", grupo: "$22.500" },
+  cal: { pill: "Universidad", sub: "Cálculo 1", corto: "Cálculo 1", precio: "$25.000", grupo: "$22.500" } };
 const GRUPO = 5;   // personas por clase grupal
-let ctxClase = "paes", modo = "ind";   // modo: "ind" (individual) o "grupo"
+const HORAS = { 6: ["12:00", "14:00", "16:00", "18:00", "20:00"], 0: ["12:00", "14:00", "16:00", "18:00"] };   // sábado y domingo
+const SEMANAS = 3;   // fines de semana que se muestran para agendar
+let ctxClase = "paes", modo = "ind", tutorSel = null, diaSel = null, horaSel = null, agenda = null;   // modo: "ind" (individual) o "grupo"
+const back = (attr, txt) => `<button class="tback" type="button" ${attr}>← ${txt}</button>`;
 function verModalidad() {
-  const c = CTX[ctxClase];
-  $("#tutorBox").innerHTML = `<div class="tsel"><h2>¿Cómo quieres tu clase?</h2><p>Clases de ${esc(c.sub)}</p><div class="tlist modos">
-    <button class="tbtn" type="button" data-modo="ind"><span class="av mi" aria-hidden="true">1</span><b>Clase individual</b><small>Solo tú con el tutor, al ritmo y con los temas que necesites.</small><span class="mprice"><b>${c.precio}</b> por clase</span><span class="go">Elegir →</span></button>
-    <button class="tbtn" type="button" data-modo="grupo"><span class="av mi" aria-hidden="true">${GRUPO}</span><b>Clase grupal</b><small>Grupos de ${GRUPO} personas. Te sumamos a un grupo de tu nivel y coordinamos el horario cuando se completa. ¿Ya tienes tu grupo de ${GRUPO}? Reserva la clase completa.</small><span class="mprice"><b>${c.grupo}</b> por persona</span><span class="go">Elegir →</span></button>
+  $("#tutorBox").innerHTML = `<div class="tsel"><h2>¿Cómo quieres tu clase?</h2><p>Clases de matemática PAES y universitarias</p><div class="tlist modos">
+    <button class="tbtn" type="button" data-modo="ind"><span class="av mi" aria-hidden="true">1</span><b>Clase individual</b><small>Solo tú con el tutor, al ritmo y con los temas que necesites.</small><span class="mprice"><b>$20.000</b> PAES · $25.000 universitaria</span><span class="go">Elegir →</span></button>
+    <button class="tbtn" type="button" data-modo="grupo"><span class="av mi" aria-hidden="true">${GRUPO}</span><b>Clase grupal</b><small>Grupos de ${GRUPO} personas. Te sumamos a un grupo de tu nivel; si ya tienes tu grupo de ${GRUPO}, reserva la clase completa.</small><span class="mprice"><b>$18.000</b> PAES · $22.500 universitaria, por persona</span><span class="go">Elegir →</span></button>
+  </div></div>`;
+  const f = $("#tutorBox .tbtn"); if (f) f.focus();
+}
+function verNivel() {
+  $("#tutorBox").innerHTML = `${back("data-modos", "Cambiar modalidad")}<div class="tsel"><h2>¿Qué clase necesitas?</h2><p>${modo === "grupo" ? "Clase grupal" : "Clase individual"}</p><div class="tlist">
+    <button class="tbtn" type="button" data-nivel="paes"><span class="av lv" aria-hidden="true">PAES</span><b>PAES y colegio</b><small>Matemática de 8° básico a IV medio y preparación PAES (M1 y M2).</small><span class="mprice"><b>${modo === "grupo" ? CTX.paes.grupo : CTX.paes.precio}</b> ${modo === "grupo" ? "por persona" : "por clase"}</span><span class="go">Elegir →</span></button>
+    <button class="tbtn" type="button" data-nivel="uni"><span class="av lv" aria-hidden="true">U</span><b>Universitaria</b><small>Precálculo o Cálculo 1 para tu primer año de universidad.</small><span class="mprice"><b>${modo === "grupo" ? CTX.pre.grupo : CTX.pre.precio}</b> ${modo === "grupo" ? "por persona" : "por clase"}</span><span class="go">Elegir →</span></button>
+  </div></div>`;
+  const f = $("#tutorBox .tbtn"); if (f) f.focus();
+}
+function verMateria() {
+  $("#tutorBox").innerHTML = `${back("data-niveles", "Cambiar tipo de clase")}<div class="tsel"><h2>¿Qué ramo?</h2><p>Clase universitaria ${modo === "grupo" ? "grupal" : "individual"}</p><div class="tlist">
+    <button class="tbtn" type="button" data-nivel="pre"><span class="av lv" aria-hidden="true">f(x)</span><b>Precálculo</b><small>Ecuaciones, inecuaciones, funciones, trigonometría, exponenciales y logaritmos.</small><span class="go">Elegir →</span></button>
+    <button class="tbtn" type="button" data-nivel="cal"><span class="av lv" aria-hidden="true">∫</span><b>Cálculo 1</b><small>Límites, derivadas y sus aplicaciones, e integración.</small><span class="go">Elegir →</span></button>
   </div></div>`;
   const f = $("#tutorBox .tbtn"); if (f) f.focus();
 }
 const precioModo = c => modo === "grupo" ? `<b>${c.grupo}</b> por persona · clase grupal de ${GRUPO}` : `<b>${c.precio}</b> por clase individual`;
+const dosDig = n => String(n).padStart(2, "0");
+const isoDia = d => `${d.getFullYear()}-${dosDig(d.getMonth() + 1)}-${dosDig(d.getDate())}`;
+function diasClase() {
+  const out = [], hoy = new Date(), now = hoy.getHours() * 60 + hoy.getMinutes();
+  for (let i = 0; i < SEMANAS * 7 + 1; i++) {
+    const d = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + i), H = HORAS[d.getDay()];
+    if (!H) continue;
+    const horas = i === 0 ? H.filter(h => +h.slice(0, 2) * 60 > now + 60) : H;
+    if (horas.length) out.push({ iso: isoDia(d), d, horas });
+  }
+  return out.slice(0, SEMANAS * 2);
+}
+async function cargarAgenda() {
+  try {
+    const ep = (window.TSZ_CONFIG || {}).endpoint; if (!ep) return (agenda = []);
+    const r = await fetch(ep, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ tipo: "agenda" }) });
+    const j = await r.json(); agenda = j.ok && Array.isArray(j.clases) ? j.clases : [];
+  } catch (e) { agenda = []; }
+  return agenda;
+}
+function estadoSlot(iso, h) {
+  const c = (agenda || []).find(x => x.f === iso && x.h === h && x.t === tutorSel);
+  if (!c) return { ok: true, txt: "Disponible" };
+  if (c.tipo === "grupo" && modo === "grupo" && c.nivel === ctxClase && (+c.n || 0) < GRUPO) return { ok: true, grupo: true, txt: `Grupo ${c.n}/${GRUPO}` };
+  return { ok: false, txt: "Ocupado" };
+}
+function verHorario() {
+  const t = TUTORES.find(x => x.id === tutorSel), c = CTX[ctxClase], dias = diasClase();
+  if (!diaSel || !dias.some(d => d.iso === diaSel)) diaSel = dias.length ? dias[0].iso : null;
+  const dia = dias.find(d => d.iso === diaSel);
+  const fmtD = d => d.toLocaleDateString("es-CL", { weekday: "long", day: "numeric", month: "long" }).replace(",", "");
+  const slots = dia ? dia.horas.map(h => { const e = estadoSlot(dia.iso, h); return `<button class="hz-slot${e.grupo ? " grupo" : ""}" type="button" data-hora="${h}" aria-pressed="${horaSel === h}"${e.ok ? "" : " disabled"}><b>${h}</b><span>${e.txt}</span></button>`; }).join("") : "";
+  let sum = "";
+  if (dia && horaSel && estadoSlot(dia.iso, horaSel).ok) {
+    const cuando = `el ${fmtD(dia.d)} a las ${horaSel}`;
+    const msg = encodeURIComponent(modo === "grupo"
+      ? `Hola ${t.nombre.split(" ")[0]}, vi tu perfil en TS Zenit y quiero inscribirme en una clase grupal (grupo de ${GRUPO}) de ${c.sub} ${cuando}.`
+      : `Hola ${t.nombre.split(" ")[0]}, vi tu perfil en TS Zenit y quiero agendar una clase individual de ${c.sub} ${cuando}.`);
+    sum = `<div class="hz-sum"><p>${modo === "grupo" ? "Clase grupal" : "Clase individual"} de ${esc(c.corto)} con ${esc(t.nombre.split(" ")[0])}<br>${esc(fmtD(dia.d))} · ${horaSel}</p>
+      <div class="tc-cta"><span>${modo === "grupo" ? "Inscríbete" : "Agenda tu clase"}</span><a href="https://wa.me/${t.wa}?text=${msg}" target="_blank" rel="noopener">Confirmar por WhatsApp</a></div></div>`;
+  }
+  $("#tutorBox").innerHTML = `${back("data-volver-perfil", "Volver al perfil")}<div class="tsel hz"><h2>Elige tu horario</h2>
+    <p class="hz-sub">${esc(t.nombre)} · ${modo === "grupo" ? "Clase grupal" : "Clase individual"} de ${esc(c.corto)} · ${precioModo(c)}</p>
+    <div class="hz-days" role="group" aria-label="Día">${dias.map(d => `<button class="hz-day" type="button" data-dia="${d.iso}" aria-pressed="${d.iso === diaSel}"><small>${d.d.toLocaleDateString("es-CL", { weekday: "short" }).replace(".", "")}</small><b>${d.d.getDate()}</b><span>${d.d.toLocaleDateString("es-CL", { month: "short" }).replace(".", "")}</span></button>`).join("")}</div>
+    <div class="hz-grid" role="group" aria-label="Hora">${slots}</div>
+    <p class="hz-note">${agenda === null ? "Cargando horarios…" : "Sábados y domingos. La clase queda agendada cuando tu tutor la confirma por WhatsApp."}</p>${sum}</div>`;
+}
 const ICONO = '<svg viewBox="0 0 108 92" aria-hidden="true"><path d="M10 86 A44 44 0 0 1 98 86" fill="none" stroke="#F3EBDD" stroke-width="7"/><rect x="33" y="70" width="9" height="16" rx="1.5" fill="#C9A98A"/><rect x="49.5" y="60" width="9" height="26" rx="1.5" fill="#E6D3BC"/><rect x="66" y="56" width="9" height="30" rx="1.5" fill="#F3EBDD"/><path d="M54 4 L58.6 19.4 L74 24 L58.6 28.6 L54 44 L49.4 28.6 L34 24 L49.4 19.4 Z" fill="#F5A524"/><rect x="2" y="86" width="104" height="5" rx="2.2" fill="#F3EBDD"/></svg>';
 function verTutores() {
-  $("#tutorBox").innerHTML = `<button class="tback" type="button" data-modos>← Cambiar modalidad</button><div class="tsel"><h2>Elige a tu tutor</h2><p>${modo === "grupo" ? "Clase grupal" : "Clase individual"} de ${esc(CTX[ctxClase].sub)} · ${precioModo(CTX[ctxClase])}</p><div class="tlist">${TUTORES.map(t =>
+  $("#tutorBox").innerHTML = `<button class="tback" type="button" data-niveles>← Cambiar tipo de clase</button><div class="tsel"><h2>Elige a tu tutor</h2><p>${modo === "grupo" ? "Clase grupal" : "Clase individual"} de ${esc(CTX[ctxClase].sub)} · ${precioModo(CTX[ctxClase])}</p><div class="tlist">${TUTORES.map(t =>
     `<button class="tbtn" type="button" data-tutor="${t.id}"><span class="av">${t.ini}</span><b>${esc(t.nombre)}</b><small>${esc(t.corto)}<br>${esc(t.extra.join(" · "))}</small><span class="go">Ver perfil →</span></button>`).join("")}</div></div>`;
   const f = $("#tutorBox .tbtn"); if (f) f.focus();
 }
 function verTutor(id) {
-  const t = TUTORES.find(x => x.id === id), c = CTX[ctxClase];
-  const msg = encodeURIComponent(modo === "grupo"
-    ? `Hola ${t.nombre.split(" ")[0]}, vi tu perfil en TS Zenit y quiero inscribirme en una clase grupal (grupo de ${GRUPO}) de ${c.sub}.`
-    : `Hola ${t.nombre.split(" ")[0]}, vi tu perfil en TS Zenit y quiero agendar una clase individual de ${c.sub}.`);
+  tutorSel = id; const t = TUTORES.find(x => x.id === id), c = CTX[ctxClase];
   const stats = t.stats.map((s, i) => `${i ? '<span class="tc-sep"></span>' : ""}<div class="tc-stat"><b class="${s.gold ? "gold" : ""}">${s.n}</b><span>${esc(s.t)}</span>${s.d ? `<em>${esc(s.d)}</em>` : ""}</div>`).join("");
   $("#tutorBox").innerHTML = `<button class="tback" type="button" data-volver>← Elegir otro tutor</button>
     <article class="tcard" aria-label="Perfil de ${esc(t.nombre)}">
@@ -1326,16 +1503,23 @@ function verTutor(id) {
         <div class="tc-stats">${stats}</div>
         <div class="tc-extra">${t.extra.map(x => `<span>${esc(x)}</span>`).join("")}</div>
         <div class="tc-price">${precioModo(c)}</div>
-        <div class="tc-cta"><span>${modo === "grupo" ? "Inscríbete" : "Agenda tu clase"}</span><a href="https://wa.me/${t.wa}?text=${msg}" target="_blank" rel="noopener">${esc(t.tel)}</a></div></div>
+        <div class="tc-cta"><span>${modo === "grupo" ? "Inscríbete" : "Agenda tu clase"}</span><a href="#" data-horario role="button">Elegir horario →</a></div></div>
     </article>`;
   $("#tutorBox [data-volver]").focus();
 }
-function openClase(ctx) { ctxClase = ctx === "uni" ? "uni" : "paes"; modo = "ind"; verModalidad(); lbFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; const f = $("#tutorBox .tbtn"); if (f) f.focus(); }
+function openClase() { ctxClase = "paes"; modo = "ind"; tutorSel = diaSel = horaSel = null; agenda = null; cargarAgenda().then(() => { if (!lb.hidden && $("#tutorBox .hz-grid")) verHorario(); }); verModalidad(); lbFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; const f = $("#tutorBox .tbtn"); if (f) f.focus(); }
 function closeClase() { lb.hidden = true; document.body.style.overflow = ""; if (lbFocus) lbFocus.focus(); }
+document.querySelectorAll("[data-int]").forEach(b => b.addEventListener("click", () => { try { openPay(INT_ID); } catch (e) { toast("Pronto podrás comprar el Intensivo PAES aquí."); } }));
 document.querySelectorAll("[data-clase]").forEach(b => b.addEventListener("click", ev => { ev.preventDefault(); openClase(b.dataset.clase); }));
 $("#tutorBox").addEventListener("click", ev => {
-  const m = ev.target.closest("[data-modo]"); if (m) { modo = m.dataset.modo; return verTutores(); }
+  const m = ev.target.closest("[data-modo]"); if (m) { modo = m.dataset.modo; return verNivel(); }
   if (ev.target.closest("[data-modos]")) return verModalidad();
+  if (ev.target.closest("[data-niveles]")) return verNivel();
+  const nv = ev.target.closest("[data-nivel]"); if (nv) { if (nv.dataset.nivel === "uni") return verMateria(); ctxClase = nv.dataset.nivel; horaSel = null; return verTutores(); }
+  if (ev.target.closest("[data-horario]")) { ev.preventDefault(); horaSel = null; return verHorario(); }
+  if (ev.target.closest("[data-volver-perfil]")) return verTutor(tutorSel);
+  const dd = ev.target.closest("[data-dia]"); if (dd) { diaSel = dd.dataset.dia; horaSel = null; return verHorario(); }
+  const hh = ev.target.closest("[data-hora]"); if (hh) { horaSel = hh.dataset.hora; verHorario(); const s = $("#tutorBox .hz-sum"); if (s) s.scrollIntoView({ block: "nearest", behavior: "smooth" }); return; }
   const t = ev.target.closest("[data-tutor]"); if (t) return verTutor(t.dataset.tutor); if (ev.target.closest("[data-volver]")) verTutores(); });
 lb.addEventListener("click", ev => { if (ev.target === lb || ev.target.closest(".lbx")) closeClase(); });
 document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !lb.hidden) closeClase(); });
