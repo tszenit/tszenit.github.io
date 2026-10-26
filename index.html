@@ -626,10 +626,11 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <p class="int-fine">No acumulable con códigos promocionales.</p>
         </div>
         <ul class="int-list">
-          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías PAES</b>M1, M2 y Ciencias: normales, avanzadas ★ y ensayos finales, también las que se publiquen después.</span></li>
+          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías PAES</b>M1, M2 y Ciencias: normales, avanzadas ★ y ensayos finales de cada eje, con la solución paso a paso en un QR. También las que se publiquen después.</span></li>
+          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Ensayos PAES</b>Ensayos completos tipo PAES para medir tu avance y llegar afinado a la prueba. <em>Se publican durante el Intensivo.</em></span></li>
+          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Clases online y videos</b>Clases en vivo y videos de material PAES impartidos por los tutores de TS Zenit y por el tutor virtual. <em>Durante el Intensivo.</em></span></li>
           <li><span class="int-ic" aria-hidden="true">✓</span><span><b>5 revisiones personalizadas</b>Informe con tutor virtual y guía de refuerzo en las 5 guías que tú elijas.</span></li>
           <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Material PAES exclusivo</b>Presentaciones y resúmenes para preparar cada eje, solo para el Intensivo. <em>Se publica durante el Intensivo.</em></span></li>
-          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Soluciones paso a paso</b>Cada pregunta trae un código QR con su solución.</span></li>
         </ul>
       </div>
     </div>
@@ -1186,7 +1187,7 @@ function openPay(id, code) {
         ${link ? `<a class="btn btn-cafe" href="${esc(link)}" target="_blank" rel="noopener" style="margin-top:10px">Pagar ${fmt(price)} con Mercado Pago</a>`
                : `<p class="muted" style="font-size:14px;margin-top:6px">${promo ? "El pago en línea con descuento se habilita pronto" : "El pago en línea se habilita pronto"}${CFG.contacto ? `; mientras tanto escríbenos a <a href="mailto:${esc(CFG.contacto)}">${esc(CFG.contacto)}</a>` : ""}.</p>`}`; };
   const resumen = INT
-    ? `<div class="sumrow"><span>Todas las guías PAES (M1, M2 y Ciencias), también las que se publiquen</span><span>incluidas</span></div><div class="sumrow"><span>5 revisiones personalizadas con tutor virtual</span><span>incluidas</span></div><div class="sumrow"><span>Material PAES exclusivo</span><span>incluido</span></div><div class="sumrow"><span>Acceso hasta la PAES de admisión 2027</span><span></span></div>`
+    ? `<div class="sumrow"><span>Todas las guías PAES (M1, M2 y Ciencias), también las que se publiquen</span><span>incluidas</span></div><div class="sumrow"><span>Ensayos PAES (se publican durante el Intensivo)</span><span>incluidos</span></div><div class="sumrow"><span>Clases online y videos con tutores y tutor virtual</span><span>incluidos</span></div><div class="sumrow"><span>5 revisiones personalizadas con tutor virtual</span><span>incluidas</span></div><div class="sumrow"><span>Material PAES exclusivo</span><span>incluido</span></div><div class="sumrow"><span>Acceso hasta la PAES de admisión 2027</span><span></span></div>`
     : code
     ? `<div class="sumrow"><span>${esc(GUIAS[code].titulo)}</span><span>${fmt(PRECIO)}</span></div>`
     : `${e.guias.map(c => `<div class="sumrow"><span>${esc(GUIAS[c].titulo)}</span><span>incluida</span></div>`).join("")}<div class="sumrow"><span>Guías y ensayo final que se publiquen después</span><span>incluidas</span></div>`;
