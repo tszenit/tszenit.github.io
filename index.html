@@ -485,25 +485,39 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .inf-pasos { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 26px 0 0; padding: 0; }
 .inf-pasos li { display: inline-flex; align-items: center; gap: 8px; font: 600 14px var(--f-display); color: var(--ink); padding: 7px 14px 7px 7px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
 .inf-pasos b { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; background: var(--surface-2); color: var(--gold); }
-/* ---- Intensivo PAES ---- */
-.int-card { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; align-items: center; padding: 34px; border-radius: 24px; border: 1px solid rgba(245, 165, 36, .45);
-  background: radial-gradient(80% 120% at 0% 0%, rgba(245, 165, 36, .22), transparent 60%), radial-gradient(70% 90% at 100% 100%, rgba(107, 68, 41, .55), transparent 70%), linear-gradient(135deg, #142A52, #0B1A33); box-shadow: 0 30px 80px -30px rgba(245, 165, 36, .35); }
-@media (max-width: 860px) { .int-card { grid-template-columns: minmax(0, 1fr); padding: 26px 20px; } }
-.int-eb { display: inline-flex; align-items: center; gap: 8px; font: 700 12px var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin: 0; }
-.int-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px rgba(245, 165, 36, .2); }
-.int-left h2 { font-size: clamp(32px, 6vw, 46px); margin: 10px 0 6px; letter-spacing: -.01em; }
-.int-lead { color: var(--muted); font-size: 17px; margin: 0; max-width: 34ch; }
-.int-price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 20px 0 16px; }
-.int-price b { font: 700 clamp(36px, 7vw, 48px)/1 var(--f-display); color: var(--ink); }
-.int-price span { font: 500 14px var(--f-display); color: var(--muted); max-width: 22ch; }
+/* ---- Intensivos PAES ---- */
+.int-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 28px; align-items: stretch; }
+@media (max-width: 900px) { .int-grid { grid-template-columns: minmax(0, 1fr); max-width: 620px; } }
+.int-card { --ic: 245, 165, 36; position: relative; overflow: hidden; display: grid; grid-template-rows: auto auto auto auto 1fr auto; gap: 0; padding: 30px 28px 26px; border-radius: 24px; border: 1px solid rgba(var(--ic), .45);
+  background: radial-gradient(80% 70% at 0% 0%, rgba(var(--ic), .2), transparent 60%), radial-gradient(70% 90% at 100% 100%, rgba(107, 68, 41, .45), transparent 70%), linear-gradient(160deg, #142A52, #0B1A33); box-shadow: 0 30px 80px -34px rgba(var(--ic), .4); }
+.int-card.int-cie { --ic: 94, 234, 212; }
+@media (max-width: 560px) { .int-card { padding: 24px 18px 22px; } }
+.int-eb { display: inline-flex; align-items: center; gap: 8px; font: 700 12px var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: rgb(var(--ic)); margin: 0; }
+.int-dot { width: 8px; height: 8px; border-radius: 50%; background: rgb(var(--ic)); box-shadow: 0 0 0 4px rgba(var(--ic), .2); }
+.int-card h3 { font-size: clamp(28px, 4.4vw, 38px); margin: 10px 0 6px; letter-spacing: -.015em; }
+.int-lead { color: var(--muted); font-size: 16.5px; margin: 0; }
+.int-price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 18px 0 18px; }
+.int-price b { font: 700 clamp(34px, 6vw, 44px)/1 var(--f-display); color: var(--ink); }
+.int-price span { font: 500 14px var(--f-display); color: var(--muted); max-width: 24ch; }
 .btn.int-btn { background: linear-gradient(135deg, #F7B84A, #E08E0B); color: #1b1305; border: 0; font-weight: 700; padding-inline: 26px; box-shadow: 0 12px 28px -12px rgba(245, 165, 36, .8); }
 .btn.int-btn:hover { background: linear-gradient(135deg, #F9C66A, #EB9A17); }
-.int-fine { margin: 10px 0 0; font: 500 12.5px var(--f-display); color: var(--muted); }
-.int-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.int-list li { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; border-radius: 16px; background: rgba(8, 20, 40, .45); border: 1px solid rgba(255, 255, 255, .08); color: var(--muted); font-size: 15px; line-height: 1.5; }
-.int-list li b { display: block; color: var(--ink); font: 700 16px var(--f-display); margin-bottom: 2px; }
-.int-list li em { color: var(--gold); font-style: normal; font-weight: 600; }
-.int-ic { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: rgba(245, 165, 36, .16); color: var(--gold); font: 700 14px var(--f-display); }
+.int-cie .btn.int-btn { background: linear-gradient(135deg, #7DF0DC, #2BB8A3); color: #04201b; box-shadow: 0 12px 28px -12px rgba(94, 234, 212, .7); }
+.int-cie .btn.int-btn:hover { background: linear-gradient(135deg, #9AF5E6, #36C9B3); }
+.int-acts { margin-top: 20px; display: grid; gap: 8px; }
+.int-fine { margin: 0; font: 500 12.5px var(--f-display); color: var(--muted); }
+.int-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; align-content: start; }
+.int-list li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: rgba(8, 20, 40, .45); border: 1px solid rgba(255, 255, 255, .08); color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+.int-list li b { display: block; color: var(--ink); font: 700 15.5px var(--f-display); margin-bottom: 2px; }
+.int-list li em { color: rgb(var(--ic)); font-style: normal; font-weight: 600; }
+.int-list li.no { opacity: .8; }
+.int-ic { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: rgba(var(--ic), .16); color: rgb(var(--ic)); font: 700 13px var(--f-display); }
+.int-both { margin-top: 18px; text-align: center; color: var(--muted); font: 500 14.5px var(--f-display); }
+.mat-group + .mat-group { margin-top: 34px; }
+.mat-gh { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; font-size: 22px; margin: 26px 0 0; }
+.mat-gh span { font: 600 12px var(--f-display); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.mat-gh a { margin-left: auto; font: 600 14px var(--f-display); }
+.mat-grid.dos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 980px) { .mat-grid.dos { grid-template-columns: minmax(0, 1fr); } }
 /* ---- Material PAES (exclusivo Intensivo) ---- */
 #material { background: radial-gradient(60% 50% at 100% 0%, rgba(245, 165, 36, .07), transparent 70%), radial-gradient(50% 60% at 0% 100%, rgba(107, 68, 41, .25), transparent 70%), var(--bg); }
 .mat-eb { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); }
@@ -676,22 +690,41 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 
   <section class="band" id="intensivo">
     <div class="wrap">
-      <div class="int-card">
-        <div class="int-left">
-          <p class="int-eb"><span class="int-dot" aria-hidden="true"></span>Suscripción</p>
-          <h2>Intensivo PAES</h2>
-          <p class="int-lead">Todo TS Zenit para preparar la PAES, en un solo pago y hasta el día de la prueba.</p>
+      <div class="sec-head">
+        <p class="eyebrow">Suscripciones · hasta la PAES</p>
+        <h2>Intensivos PAES</h2>
+        <p>Dos Intensivos que se compran por separado: Matemática (M1 y M2) y Ciencias. Elige el que necesitas o toma los dos.</p>
+      </div>
+      <div class="int-grid">
+        <article class="int-card int-mat">
+          <p class="int-eb"><span class="int-dot" aria-hidden="true"></span>Intensivo · M1 + M2</p>
+          <h3>Intensivo Matemática</h3>
+          <p class="int-lead">Todo TS Zenit para M1 y M2, con clases en vivo, en un solo pago y hasta el día de la prueba.</p>
           <div class="int-price"><b>$99.990</b><span>pago único · acceso hasta la PAES de admisión 2027</span></div>
-          <button class="btn int-btn" type="button" data-int>Quiero el Intensivo</button>
-          <p class="int-fine">No acumulable con códigos promocionales.</p>
-        </div>
-        <ul class="int-list">
-          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías PAES</b>M1, M2 y Ciencias: normales, avanzadas ★ y ensayos finales de cada eje, con la solución paso a paso en un QR. También las que se publiquen después.</span></li>
-          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Ensayos PAES</b>Ensayos completos tipo PAES para medir tu avance y llegar afinado a la prueba. <em>Se publican durante el Intensivo.</em></span></li>
-          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Clases online y videos</b>Clases en vivo y videos de material PAES impartidos por los tutores de TS Zenit y por el tutor virtual. <em>Durante el Intensivo.</em></span></li>
-          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>5 revisiones personalizadas</b>Informe con tutor virtual y guía de refuerzo en las 5 guías que tú elijas.</span></li>
-          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Material PAES exclusivo</b>Apuntes interactivos con simuladores y slides de Física, Química y Biología, solo para el Intensivo. Durante el Intensivo se suma más material. <a href="#material">Ver el material ↓</a></span></li>
-        </ul>
+          <ul class="int-list">
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías de M1 y M2</b>Normales, avanzadas ★ y ensayos finales de cada eje, con la solución paso a paso en un QR. También las que se publiquen después.</span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Clases online en vivo y videos</b>Clases en vivo con los tutores de TS Zenit y videos de material PAES con los tutores y el tutor virtual. <em>Durante el Intensivo.</em></span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Ensayos PAES de M1 y M2</b>Ensayos completos tipo PAES para medir tu avance. <em>Se publican durante el Intensivo.</em></span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>5 revisiones personalizadas</b>Informe con tutor virtual y guía de refuerzo en las 5 guías de M1 o M2 que tú elijas.</span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Material exclusivo de M1 y M2</b>Apuntes ultra interactivos y slides de cada eje. <a href="#material">Ver el material ↓</a></span></li>
+          </ul>
+          <div class="int-acts"><button class="btn int-btn" type="button" data-int="TSZ-INT-MAT">Quiero el Intensivo Matemática</button><p class="int-fine">No acumulable con códigos promocionales.</p></div>
+        </article>
+        <article class="int-card int-cie">
+          <p class="int-eb"><span class="int-dot" aria-hidden="true"></span>Intensivo · Ciencias</p>
+          <h3>Intensivo Ciencias</h3>
+          <p class="int-lead">Física, Química y Biología para la PAES de Ciencias, en un solo pago y hasta el día de la prueba.</p>
+          <div class="int-price"><b>$99.990</b><span>pago único · acceso hasta la PAES de admisión 2027</span></div>
+          <ul class="int-list">
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías de Ciencias</b>Física, Química y Biología: normales, avanzadas ★ y ensayos finales de cada eje, con la solución paso a paso en un QR. También las que se publiquen después.</span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Videos de clases</b>Clases grabadas de material PAES con los tutores de TS Zenit y el tutor virtual. <em>Durante el Intensivo.</em></span></li>
+            <li class="no"><span class="int-ic" aria-hidden="true">–</span><span><b>Sin clases en vivo</b>Las clases online en vivo son parte del Intensivo Matemática.</span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Ensayos PAES de Ciencias</b>Ensayos completos tipo PAES para medir tu avance. <em>Se publican durante el Intensivo.</em></span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>5 revisiones personalizadas</b>Informe con tutor virtual y guía de refuerzo en las 5 guías de Ciencias que tú elijas.</span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Material exclusivo de Ciencias</b>Apuntes interactivos con simuladores y slides de Física, Química y Biología. <a href="#material">Ver el material ↓</a></span></li>
+          </ul>
+          <div class="int-acts"><button class="btn int-btn" type="button" data-int="TSZ-INT-CIE">Quiero el Intensivo Ciencias</button><p class="int-fine">No acumulable con códigos promocionales.</p></div>
+        </article>
       </div>
     </div>
   </section>
@@ -701,10 +734,10 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
       <div class="sec-head">
         <p class="eyebrow mat-eb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Material PAES · Exclusivo Intensivo</p>
         <h2>Estudia con material hecho para la PAES</h2>
-        <p>Apuntes interactivos con simuladores y preguntas tipo PAES explicadas, y slides para repasar lo esencial de cada asignatura. Se abre con tu cuenta del <b>Intensivo PAES</b>.</p>
+        <p>Apuntes interactivos y slides para repasar lo esencial de cada asignatura. Cada material se abre con tu cuenta del Intensivo que lo incluye: <b>Matemática</b> para M1 y M2, <b>Ciencias</b> para Física, Química y Biología.</p>
       </div>
-      <div class="mat-grid" id="matGrid"></div>
-      <div class="mat-foot"><p><b>Durante el Intensivo se suma más material.</b> Todo queda en tu cuenta: entras con Google y lo abres en cualquier dispositivo.</p><button class="btn int-btn" type="button" data-int>Quiero el Intensivo</button></div>
+      <div id="matGrid"></div>
+      <div class="mat-foot"><p><b>Durante los Intensivos se suma más material.</b> Todo queda en tu cuenta: entras con Google y lo abres en cualquier dispositivo.</p><a class="btn int-btn" href="#intensivo">Ver los Intensivos</a></div>
     </div>
   </section>
 
@@ -858,7 +891,8 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <div class="sect" id="p-terminos"><h3>Términos de compra</h3><ul>
             <li>Puedes comprar una guía suelta o un eje completo. Hasta el 31 de diciembre de 2026 rige el precio de fin de año: guía suelta $5.000 y eje completo $5.000 menos que la suma de sus guías publicadas al momento de la compra. Desde el 1 de enero de 2027: guía suelta $10.000 y eje completo $10.000 más que su precio de fin de año. El precio que pagas es el que muestra la tienda al momento de la compra. El eje completo incluye todas sus guías y su ensayo final, también las que se publiquen después en ese eje. Cada guía incluye la revisión de una hoja de respuestas.</li>
             <li>Puedes descargar e imprimir las guías para tu estudio. No está permitido revenderlas ni publicarlas como material propio.</li>
-            <li>El material del Intensivo PAES (apuntes interactivos y slides) es de uso personal y se abre solo con la cuenta de Google que tiene el Intensivo. No está permitido compartir la cuenta ni copiar o distribuir el material.</li>
+            <li>Hay dos Intensivos que se compran por separado, cada uno a $99.990 y con acceso hasta la PAES de admisión 2027: el Intensivo Matemática (guías de M1 y M2, clases online en vivo, videos, ensayos, 5 revisiones y su material) y el Intensivo Ciencias (guías de Física, Química y Biología, videos de clases grabadas sin clases en vivo, ensayos, 5 revisiones y su material). No admiten códigos promocionales.</li>
+            <li>El material de cada Intensivo (apuntes interactivos y slides) es de uso personal y se abre solo con la cuenta de Google que tiene ese Intensivo. No está permitido compartir la cuenta ni copiar o distribuir el material.</li>
             <li>El informe se envía dentro de 72 horas hábiles desde que recibimos tu hoja de respuestas.</li>
             <li>Si tienes cualquier problema con tu compra, escríbenos a trabajotszenit@gmail.com y lo resolvemos contigo.</li>
             <li>Material de práctica independiente, sin relación con el DEMRE.</li>
@@ -884,8 +918,8 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 <div class="toast" id="toast" role="status" hidden></div>
 <div class="mv" id="mv" hidden role="dialog" aria-modal="true" aria-labelledby="mvT">
   <div class="mv-top"><button class="mv-back" type="button" id="mvX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Volver</button>
-    <div class="mv-t"><b id="mvT">Material</b><small id="mvS">Intensivo PAES</small></div></div>
-  <iframe id="mvF" title="Material del Intensivo PAES" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="fullscreen"></iframe>
+    <div class="mv-t"><b id="mvT">Material</b><small id="mvS">Intensivo</small></div></div>
+  <iframe id="mvF" title="Material del Intensivo" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="fullscreen"></iframe>
 </div>
 
 <script src="config.js"></script>
@@ -899,7 +933,13 @@ const DESC_EJE = 5000;   // en fin de año, el eje completo cuesta $5.000 menos 
 const baseEje = e => Math.max(5000, e.guias.length * 5000 - DESC_EJE);
 const PRECIO = 5000 + (OFERTA ? 0 : ALZA_GUIA);
 const packOf = e => baseEje(e) + (OFERTA ? 0 : ALZA_EJE);
-const PRECIO_INT = 99990, INT_ID = "TSZ-INT";   // suscripción Intensivo PAES (no admite códigos promocionales)
+const PRECIO_INT = 99990, INT_ID = "TSZ-INT-MAT";   // Intensivos (no admiten códigos promocionales)
+const INTENSIVOS = {
+  "TSZ-INT-MAT": { area: "MAT", nombre: "Intensivo Matemática", sub: "M1 + M2", res: ["Todas las guías de M1 y M2, también las que se publiquen", "Clases online en vivo y videos con tutores y tutor virtual", "Ensayos PAES de M1 y M2 (se publican durante el Intensivo)", "5 revisiones personalizadas con tutor virtual", "Material exclusivo de M1 y M2"] },
+  "TSZ-INT-CIE": { area: "CIE", nombre: "Intensivo Ciencias", sub: "Física · Química · Biología", res: ["Todas las guías de Física, Química y Biología, también las que se publiquen", "Videos de clases grabadas (sin clases en vivo)", "Ensayos PAES de Ciencias (se publican durante el Intensivo)", "5 revisiones personalizadas con tutor virtual", "Material exclusivo de Ciencias"] }
+};
+const areaDe = x => /^(TSZ-|MAT-)?M[12]-/.test(x) ? "MAT" : /^(TSZ-|MAT-)?(FIS|QUI|BIO)-/.test(x) ? "CIE" : "";
+const intDeArea = a => Object.keys(INTENSIVOS).find(k => INTENSIVOS[k].area === a);
 const NORMAL_GUIA = 5000 + ALZA_GUIA, normalEje = e => baseEje(e) + ALZA_EJE;
 const was = v => OFERTA ? `<s class="was" title="Precio normal desde el 1 de enero de 2027">${fmt(v)}</s>` : "";
 const PRUEBAS = [
@@ -945,10 +985,11 @@ try { ses = JSON.parse(localStorage.getItem(LS) || "null"); } catch (e) { ses = 
 try { localStorage.removeItem("tsz_accesos"); } catch (e) {}
 function saveSes() { try { ses ? localStorage.setItem(LS, JSON.stringify(ses)) : localStorage.removeItem(LS); } catch (e) {} }
 const prods = () => (ses && ses.p) || [];
-const esPaes = x => !/^(UNI-|TSZ-PRE|TSZ-CAL)/.test(x);   // el Intensivo PAES incluye las guías PAES, no las universitarias
-const hasInt = () => prods().includes("TSZ-INT");
-const hasEje = id => prods().includes(id) || (hasInt() && esPaes(id));
-const hasG = code => prods().includes(code) || (hasInt() && esPaes(code));
+const INTS = { "TSZ-INT-MAT": "MAT", "TSZ-INT-CIE": "CIE", "TSZ-INT": "*" };   // TSZ-INT: Intensivo antiguo (ambas áreas)
+const tieneInt = a => !!a && prods().some(p => INTS[p] === "*" || INTS[p] === a);
+const hasInt = () => prods().some(p => INTS[p]);
+const hasEje = id => prods().includes(id) || tieneInt(areaDe(id));
+const hasG = code => prods().includes(code) || tieneInt(areaDe(code));
 const vivo = () => !!(ses && ses.t && ses.exp > Date.now() + 90000);
 const mailOk = m => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m);
 const borrador = {};
@@ -1254,19 +1295,19 @@ function findEje(id) { for (const p of PRUEBAS) for (const e of p.ejes) if (e.id
 /* ---------- compra ---------- */
 function findGuia(code) { for (const p of PRUEBAS) for (const e of p.ejes) if (e.guias.includes(code)) return { p, e }; }
 function openPay(id, code) {
-  const INT = !code && id === INT_ID;
-  const { p, e } = INT ? { p: { nombre: "TS Zenit" }, e: { id: INT_ID, nombre: "Intensivo PAES", guias: [] } } : code ? findGuia(code) : findEje(id);
+  const INT = !code && !!INTENSIVOS[id], IN = INT ? INTENSIVOS[id] : null;
+  const { p, e } = INT ? { p: { nombre: "TS Zenit · " + IN.sub }, e: { id: id, nombre: IN.nombre, guias: [] } } : code ? findGuia(code) : findEje(id);
   const lista = INT ? PRECIO_INT : code ? PRECIO : packOf(e);
   let price = lista, promo = null;   // promo: { c: código, d: % de descuento }
   const prod = code || e.id;
-  const title = INT ? "Intensivo PAES" : code ? GUIAS[code].titulo : `${e.nombre} · eje completo`;
+  const title = INT ? IN.nombre : code ? GUIAS[code].titulo : `${e.nombre} · eje completo`;
   const linkDe = v => (CFG.mp || {})[v] || (code && v === PRECIO ? CFG.mpGuia : "");
   const totalHtml = () => (OFERTA && !INT ? `<div class="sumrow"><span>Precio normal desde el 1 de enero de 2027</span><span><s class="was">${fmt(code ? NORMAL_GUIA : normalEje(e))}</s></span></div><div class="sumrow"><span>Precio de fin de año <span class="sale">Oferta</span></span><span>${fmt(lista)}</span></div>` : "") + (promo ? `<div class="sumrow"><span>Código ${esc(promo.c)} (−${promo.d}%)</span><span>−${fmt(lista - price)}</span></div>` : "") + `<div class="sumrow"><span>Total</span><span>${fmt(price)}</span></div>`;
   const pasoHtml = () => { const link = linkDe(price); return `<p style="font-family:var(--f-display);font-size:14px"><b>1.</b> Paga ${fmt(price)} con Mercado Pago.${promo || INT ? "" : ` <span class="muted">¿Tienes un código promocional? Escríbelo abajo antes de pagar.</span>`}</p>
         ${link ? `<a class="btn btn-cafe" href="${esc(link)}" target="_blank" rel="noopener" style="margin-top:10px">Pagar ${fmt(price)} con Mercado Pago</a>`
                : `<p class="muted" style="font-size:14px;margin-top:6px">${promo ? "El pago en línea con descuento se habilita pronto" : "El pago en línea se habilita pronto"}${CFG.contacto ? `; mientras tanto escríbenos a <a href="mailto:${esc(CFG.contacto)}">${esc(CFG.contacto)}</a>` : ""}.</p>`}`; };
   const resumen = INT
-    ? `<div class="sumrow"><span>Todas las guías PAES (M1, M2 y Ciencias), también las que se publiquen</span><span>incluidas</span></div><div class="sumrow"><span>Ensayos PAES (se publican durante el Intensivo)</span><span>incluidos</span></div><div class="sumrow"><span>Clases online y videos con tutores y tutor virtual</span><span>incluidos</span></div><div class="sumrow"><span>5 revisiones personalizadas con tutor virtual</span><span>incluidas</span></div><div class="sumrow"><span>Material PAES exclusivo</span><span>incluido</span></div><div class="sumrow"><span>Acceso hasta la PAES de admisión 2027</span><span></span></div>`
+    ? IN.res.map(r => `<div class="sumrow"><span>${esc(r)}</span><span>incluido</span></div>`).join("") + `<div class="sumrow"><span>Acceso hasta la PAES de admisión 2027</span><span></span></div>`
     : code
     ? `<div class="sumrow"><span>${esc(GUIAS[code].titulo)}</span><span>${fmt(PRECIO)}</span></div>`
     : `${e.guias.map(c => `<div class="sumrow"><span>${esc(GUIAS[c].titulo)}</span><span>incluida</span></div>`).join("")}<div class="sumrow"><span>Guías y ensayo final que se publiquen después</span><span>incluidas</span></div>`;
@@ -1457,7 +1498,7 @@ function openForm(code) {
     } catch (e2) {
       sendBtn.disabled = false; sendBtn.textContent = "Enviar hoja de respuestas";
       const M = { repetida: "Ya enviaste una hoja de respuestas de esta guía con tu cuenta. Cada guía incluye una sola revisión; si necesitas otra, escríbenos.",
-        limite_int: "Ya usaste las 5 revisiones personalizadas de tu Intensivo PAES. Para revisar esta guía, cómprala por separado o escríbenos.",
+        limite_int: "Ya usaste las 5 revisiones personalizadas de tu Intensivo. Para revisar esta guía, cómprala por separado o escríbenos.",
         sin_acceso: "Tu cuenta no tiene acceso a esta guía. Activa tu código en «Tengo un código».", sin_endpoint: `Aún no recibimos hojas en línea${CFG.contacto ? `; escríbenos a ${CFG.contacto}` : ""}.`,
         red: "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.", cancelado: "Para enviar tus respuestas tienes que iniciar sesión." };
       return fail(M[e2.message] || "No se pudo enviar. Inténtalo de nuevo o escríbenos.");
@@ -1589,17 +1630,23 @@ function verTutor(id) {
 }
 function openClase() { ctxClase = "paes"; modo = "ind"; tutorSel = diaSel = horaSel = null; agenda = null; cargarAgenda().then(() => { if (!lb.hidden && $("#tutorBox .hz-grid")) verHorario(); }); verModalidad(); lbFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; const f = $("#tutorBox .tbtn"); if (f) f.focus(); }
 function closeClase() { lb.hidden = true; document.body.style.overflow = ""; if (lbFocus) lbFocus.focus(); }
-document.querySelectorAll("[data-int]").forEach(b => b.addEventListener("click", () => { try { openPay(INT_ID); } catch (e) { toast("Pronto podrás comprar el Intensivo PAES aquí."); } }));
+document.querySelectorAll("[data-int]").forEach(b => b.addEventListener("click", () => { try { openPay(b.dataset.int || INT_ID); } catch (e) { toast("Pronto podrás comprar el Intensivo aquí."); } }));
 /* ---------- Material PAES (exclusivo Intensivo) ---------- */
 const MAT = [
-  { asig: "Física", k: "Ciencias · Módulo común", art: "OND", sum: "Ondas, óptica, mecánica, universo, Tierra y electricidad.", items: [
-    { id: "MAT-FIS-AP", t: "Apunte interactivo", d: "8 temas con simuladores y 76 preguntas tipo PAES explicadas", ic: "ap" },
+  { asig: "Matemática M1", k: "Competencia Matemática 1", art: "NUM", area: "MAT", sum: "Números, álgebra y funciones, geometría, datos y azar.", items: [
+    { id: "MAT-M1-AP", t: "Apunte ultra interactivo", d: "6 ejes con 17 herramientas: mueve, cambia valores y mira qué pasa", ic: "ap" },
+    { id: "MAT-M1-SL", t: "Slides", d: "18 slides: fórmulas, atajos y trampas PAES", ic: "sl" }] },
+  { asig: "Matemática M2", k: "Competencia Matemática 2", art: "ALG", area: "MAT", sum: "Logaritmos, finanzas, funciones, trigonometría, circunferencia, combinatoria, modelos y suficiencia de datos.", items: [
+    { id: "MAT-M2-AP", t: "Apunte ultra interactivo", d: "7 temas con 13 herramientas interactivas", ic: "ap" },
+    { id: "MAT-M2-SL", t: "Slides", d: "17 slides: lo que M2 agrega sobre M1", ic: "sl" }] },
+  { asig: "Física", k: "Ciencias · Módulo común", art: "OND", area: "CIE", sum: "Ondas, óptica, mecánica, universo, Tierra y electricidad.", items: [
+    { id: "MAT-FIS-AP", t: "Apunte interactivo", d: "8 temas con simuladores y herramientas", ic: "ap" },
     { id: "MAT-FIS-SL", t: "Slides", d: "18 slides: ideas clave, fórmulas y trampas PAES", ic: "sl" }] },
-  { asig: "Química", k: "Ciencias · Módulo Química", art: "ATO", sum: "Materia y átomo, química orgánica, estequiometría y soluciones.", items: [
-    { id: "MAT-QUI-AP", t: "Apunte interactivo", d: "5 temas con herramientas y 68 preguntas tipo PAES explicadas", ic: "ap" },
+  { asig: "Química", k: "Ciencias · Módulo Química", art: "ATO", area: "CIE", sum: "Materia y átomo, química orgánica, estequiometría y soluciones.", items: [
+    { id: "MAT-QUI-AP", t: "Apunte interactivo", d: "5 temas con herramientas interactivas", ic: "ap" },
     { id: "MAT-QUI-SL", t: "Slides", d: "18 slides: ideas clave, cálculos y trampas PAES", ic: "sl" }] },
-  { asig: "Biología", k: "Ciencias · Módulo común", art: "CEL", sum: "Célula, sistema nervioso, reproducción, división celular, evolución y fotosíntesis.", items: [
-    { id: "MAT-BIO-AP", t: "Apunte interactivo", d: "7 temas con simuladores y 68 preguntas tipo PAES explicadas", ic: "ap" },
+  { asig: "Biología", k: "Ciencias · Módulo común", art: "CEL", area: "CIE", sum: "Célula, sistema nervioso, reproducción, división celular, evolución y fotosíntesis.", items: [
+    { id: "MAT-BIO-AP", t: "Apunte interactivo", d: "7 temas con simuladores y herramientas", ic: "ap" },
     { id: "MAT-BIO-SL", t: "Slides", d: "20 slides: ideas clave, procesos y trampas PAES", ic: "sl" }] }
 ];
 const matDe = id => { for (const a of MAT) for (const it of a.items) if (it.id === id) return { a, it }; };
@@ -1607,43 +1654,46 @@ const IC_LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 const IC_GO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
 const IC_MAT = { ap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 12h5"/></svg>',
   sl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8M7 12l3-3 2 2 4-4"/></svg>' };
-const matAbierto = () => { try { return typeof hasInt === "function" && hasInt(); } catch (e) { return false; } };
+const matAbierto = area => { try { return typeof tieneInt === "function" && tieneInt(area); } catch (e) { return false; } };
+function matCard(a) {
+  const x = ARTE[a.art], open = matAbierto(a.area);
+  return `<article class="mat-card" style="--ax:${x.c};--ax-a:${x.a};--ax-b:${x.b};--ax-l:${x.l};--ax-g:${x.g}">
+      <div class="mat-art">${x.svg}<span class="mat-badge${open ? " ok" : ""}">${open ? "✓ Desbloqueado" : IC_LOCK + INTENSIVOS[intDeArea(a.area)].nombre}</span></div>
+      <div class="mat-body"><p class="mat-k">${esc(a.k)}</p><h3>${esc(a.asig)}</h3><p class="mat-sum">${esc(a.sum)}</p>
+        <div class="mat-items">${a.items.map(it => `<button class="mat-it${open ? " open" : ""}" type="button" data-mat="${it.id}" aria-label="${esc(a.asig + " · " + it.t + (open ? "" : " (exclusivo del " + INTENSIVOS[intDeArea(a.area)].nombre + ")"))}"><span class="mat-ic">${IC_MAT[it.ic]}</span><span><b>${esc(it.t)}</b><small>${esc(it.d)}</small></span><span class="mat-go">${open ? IC_GO : IC_LOCK}</span></button>`).join("")}</div></div>
+    </article>`;
+}
 function renderMat() {
   const g = $("#matGrid"); if (!g) return;
-  const open = matAbierto();
-  g.innerHTML = MAT.map(a => { const x = ARTE[a.art]; return `<article class="mat-card" style="--ax:${x.c};--ax-a:${x.a};--ax-b:${x.b};--ax-l:${x.l};--ax-g:${x.g}">
-      <div class="mat-art">${x.svg}<span class="mat-badge${open ? " ok" : ""}">${open ? "✓ Desbloqueado" : IC_LOCK + "Exclusivo Intensivo"}</span></div>
-      <div class="mat-body"><p class="mat-k">${esc(a.k)}</p><h3>${esc(a.asig)}</h3><p class="mat-sum">${esc(a.sum)}</p>
-        <div class="mat-items">${a.items.map(it => `<button class="mat-it${open ? " open" : ""}" type="button" data-mat="${it.id}" aria-label="${esc(a.asig + " · " + it.t + (open ? "" : " (exclusivo del Intensivo PAES)"))}"><span class="mat-ic">${IC_MAT[it.ic]}</span><span><b>${esc(it.t)}</b><small>${esc(it.d)}</small></span><span class="mat-go">${open ? IC_GO : IC_LOCK}</span></button>`).join("")}</div></div>
-    </article>`; }).join("");
+  g.innerHTML = ["MAT", "CIE"].map(ar => { const I = INTENSIVOS[intDeArea(ar)], L = MAT.filter(a => a.area === ar);
+    return `<div class="mat-group"><h3 class="mat-gh">${esc(I.nombre)} <span>${esc(I.sub)}</span>${matAbierto(ar) ? "" : `<a href="#intensivo">Ver el ${esc(I.nombre)} →</a>`}</h3><div class="mat-grid${L.length === 2 ? " dos" : ""}">${L.map(matCard).join("")}</div></div>`; }).join("");
 }
 function matBloqueado(id) {
   const m = matDe(id); if (!m) return;
+  const pid = intDeArea(m.a.area), I = INTENSIVOS[pid];
   const conCuenta = typeof ses !== "undefined" && ses && ses.e;
   showLayer(`<div class="panel narrow mat-modal" role="dialog" aria-modal="true" aria-labelledby="mlT">
-    <div class="panel-head"><div><h3 id="mlT">${esc(m.a.asig)} · ${esc(m.it.t)}</h3><div class="sub">Material exclusivo del Intensivo PAES</div></div><button class="x" aria-label="Cerrar">×</button></div>
+    <div class="panel-head"><div><h3 id="mlT">${esc(m.a.asig)} · ${esc(m.it.t)}</h3><div class="sub">Material exclusivo del ${esc(I.nombre)}</div></div><button class="x" aria-label="Cerrar">×</button></div>
     <div class="panel-body">
-      <div class="ml-top"><span class="ml-lock">${IC_LOCK}</span><p>Este material se abre <b>solo con el Intensivo PAES</b> activado en tu cuenta de Google.${conCuenta ? ` Tu cuenta ${esc(ses.e)} aún no lo tiene.` : ""}</p></div>
-      <ul class="ml-list"><li><span><b>Apuntes interactivos y slides</b> de Física, Química y Biología, y más material durante el Intensivo</span></li>
-        <li><span><b>Todas las guías PAES</b> con su solución paso a paso</span></li><li><span><b>5 revisiones personalizadas</b> con informe y tutor virtual</span></li>
-        <li><span><b>Ensayos PAES y clases online</b> durante el Intensivo</span></li></ul>
+      <div class="ml-top"><span class="ml-lock">${IC_LOCK}</span><p>Este material se abre <b>solo con el ${esc(I.nombre)}</b> activado en tu cuenta de Google.${conCuenta ? ` Tu cuenta ${esc(ses.e)} aún no lo tiene.` : ""}</p></div>
+      <ul class="ml-list">${I.res.map(r => `<li><span>${esc(r)}</span></li>`).join("")}</ul>
       <div class="ml-price"><b>${fmt(PRECIO_INT)}</b><span>pago único · hasta la PAES de admisión 2027</span></div>
-      <div class="ml-acts"><button class="btn int-btn" type="button" data-ml-buy>Quiero el Intensivo</button><button class="btn btn-ghost" type="button" data-ml-tengo="${id}">${conCuenta ? "Tengo un código" : "Ya tengo el Intensivo"}</button></div>
+      <div class="ml-acts"><button class="btn int-btn" type="button" data-ml-buy>Quiero el ${esc(I.nombre)}</button><button class="btn btn-ghost" type="button" data-ml-tengo="${id}">${conCuenta ? "Tengo un código" : "Ya lo tengo"}</button></div>
     </div></div>`);
-  layer.querySelector("[data-ml-buy]").addEventListener("click", () => { closeLayer(); try { openPay(INT_ID); } catch (e) { toast("Pronto podrás comprar el Intensivo PAES aquí."); } });
+  layer.querySelector("[data-ml-buy]").addEventListener("click", () => { closeLayer(); try { openPay(pid); } catch (e) { toast("Pronto podrás comprar el Intensivo aquí."); } });
   layer.querySelector("[data-ml-tengo]").addEventListener("click", () => matTengo(id));
 }
 /* MATERIAL-VIEW-INI */
 function matTengo(id) {
   closeLayer();
-  if (!vivo()) return conLogin("Entra con la cuenta que tiene el Intensivo PAES.", () => abrirMaterial(id));
-  api({ tipo: "mis", idToken: ses.t }).then(j => { ses.p = j.productos || []; saveSes(); renderEjes(); hasInt() ? abrirMaterial(id) : openCode(); }, () => openCode());
+  if (!vivo()) return conLogin("Entra con la cuenta que tiene el Intensivo.", () => abrirMaterial(id));
+  api({ tipo: "mis", idToken: ses.t }).then(j => { ses.p = j.productos || []; saveSes(); renderEjes(); tieneInt(areaDe(id)) ? abrirMaterial(id) : openCode(); }, () => openCode());
 }
 async function abrirMaterial(id, btn) {
-  if (!hasInt()) return matBloqueado(id);
+  if (!tieneInt(areaDe(id))) return matBloqueado(id);
   if (btn) btn.disabled = true;
   try {
-    const j = await conSesion({ tipo: "material", m: id }, "Inicia sesión para abrir el material del Intensivo.");
+    const j = await conSesion({ tipo: "material", m: id }, "Inicia sesión para abrir el material de tu Intensivo.");
     const key = await crypto.subtle.importKey("raw", b64(j.k), "AES-GCM", false, ["decrypt"]);
     const r = await fetch("tienda/m/" + id + ".bin"); if (!r.ok) throw new Error("red");
     const buf = new Uint8Array(await r.arrayBuffer());
@@ -1651,7 +1701,7 @@ async function abrirMaterial(id, btn) {
     verMaterial(id, html.split("{{LIC}}").join(esc(ses.e)));
   } catch (e) {
     if (e.message === "cancelado") return;
-    if (e.message === "sin_intensivo") { ses.p = (ses.p || []).filter(x => x !== INT_ID); saveSes(); renderEjes(); return matBloqueado(id); }
+    if (e.message === "sin_intensivo") { const a = areaDe(id); ses.p = (ses.p || []).filter(x => !(INTS[x] === a || INTS[x] === "*")); saveSes(); renderEjes(); return matBloqueado(id); }
     toast(e.message === "red" ? "No se pudo abrir el material. Revisa tu conexión e inténtalo de nuevo." : "No se pudo abrir el material. Inténtalo de nuevo o escríbenos.");
   } finally { if (btn) btn.disabled = false; }
 }
@@ -1659,7 +1709,7 @@ async function abrirMaterial(id, btn) {
 let mvFocus = null;
 function verMaterial(id, html) {
   const m = matDe(id); mvFocus = document.activeElement;
-  $("#mvT").textContent = m.a.asig + " · " + m.it.t; $("#mvS").textContent = "Intensivo PAES · " + m.a.k;
+  $("#mvT").textContent = m.a.asig + " · " + m.it.t; $("#mvS").textContent = INTENSIVOS[intDeArea(m.a.area)].nombre + " · " + m.a.k;
   $("#mvF").srcdoc = html; $("#mv").hidden = false; document.body.style.overflow = "hidden";
   try { history.pushState({ mv: id }, "", location.pathname + location.search + "#material"); } catch (e) {}
   $("#mvX").focus();
