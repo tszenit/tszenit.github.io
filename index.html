@@ -504,6 +504,66 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .int-list li b { display: block; color: var(--ink); font: 700 16px var(--f-display); margin-bottom: 2px; }
 .int-list li em { color: var(--gold); font-style: normal; font-weight: 600; }
 .int-ic { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: rgba(245, 165, 36, .16); color: var(--gold); font: 700 14px var(--f-display); }
+/* ---- Material PAES (exclusivo Intensivo) ---- */
+#material { background: radial-gradient(60% 50% at 100% 0%, rgba(245, 165, 36, .07), transparent 70%), radial-gradient(50% 60% at 0% 100%, rgba(107, 68, 41, .25), transparent 70%), var(--bg); }
+.mat-eb { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); }
+.mat-eb svg { width: 14px; height: 14px; }
+.mat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 28px; }
+@media (max-width: 980px) { .mat-grid { grid-template-columns: minmax(0, 1fr); max-width: 560px; } }
+.mat-card { position: relative; display: grid; grid-template-rows: auto 1fr; border-radius: 22px; overflow: hidden; border: 1px solid var(--ax-l); background: linear-gradient(180deg, #12284F, #0D1F3E); box-shadow: 0 24px 60px -34px var(--ax-g); }
+.mat-art { position: relative; height: 128px; color: var(--ax); padding: 14px 18px 0; display: flex; align-items: center;
+  background: radial-gradient(120% 170% at 100% 0%, var(--ax-a), transparent 62%), linear-gradient(180deg, var(--ax-b), transparent 90%); border-bottom: 1px solid var(--ax-l); }
+.mat-art svg { width: 100%; height: 100%; opacity: .9; }
+.mat-badge { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 6px; font: 700 10.5px/1 var(--f-display); letter-spacing: .14em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; color: var(--gold); background: rgba(8, 20, 40, .78); border: 1px solid rgba(245, 165, 36, .45); }
+.mat-badge svg { width: 12px; height: 12px; }
+.mat-badge.ok { color: var(--ok); border-color: rgba(127, 212, 168, .5); }
+.mat-body { padding: 18px 18px 20px; display: grid; gap: 12px; align-content: start; }
+.mat-k { font: 600 11.5px var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: var(--ax); margin: 0; }
+.mat-body h3 { font-size: 26px; letter-spacing: -.02em; }
+.mat-sum { color: var(--muted); font-size: 15px; margin: 0; }
+.mat-items { display: grid; gap: 10px; margin-top: 4px; }
+.mat-it { display: grid; grid-template-columns: 42px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-align: left; width: 100%; padding: 12px 12px 12px 12px; border-radius: 16px; border: 1px solid var(--line); background: rgba(8, 20, 40, .45); color: var(--ink); cursor: pointer; font: inherit; transition: border-color .15s, background-color .15s, transform .15s; }
+.mat-it:hover { border-color: var(--ax-l); background: rgba(17, 38, 75, .8); }
+.mat-it:active { transform: translateY(1px); }
+.mat-it:disabled { opacity: .7; cursor: progress; }
+.mat-ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--ax-a); color: var(--ax); }
+.mat-ic svg { width: 21px; height: 21px; }
+.mat-it b { display: block; font: 700 15.5px/1.25 var(--f-display); }
+.mat-it small { display: block; color: var(--muted); font-size: 13.5px; line-height: 1.4; margin-top: 2px; }
+.mat-go { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line); color: var(--muted); }
+.mat-go svg { width: 15px; height: 15px; }
+.mat-it.open .mat-go { color: var(--ax); border-color: var(--ax-l); }
+.mat-foot { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; justify-content: space-between; padding: 16px 18px; border-radius: 18px; border: 1px dashed rgba(245, 165, 36, .35); background: rgba(8, 20, 40, .35); }
+.mat-foot p { margin: 0; color: var(--muted); font-size: 15px; max-width: 62ch; }
+.mat-foot p b { color: var(--ink); }
+/* aviso de material bloqueado */
+.mat-modal .panel-body { display: grid; gap: 16px; }
+.ml-top { display: flex; gap: 14px; align-items: flex-start; }
+.ml-lock { flex: none; width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; color: #1b1305; background: linear-gradient(135deg, #F7B84A, #E08E0B); box-shadow: 0 12px 26px -12px rgba(245, 165, 36, .8); }
+.ml-lock svg { width: 24px; height: 24px; }
+.ml-top p { margin: 0; color: var(--muted); font-size: 15.5px; }
+.ml-top p b { color: var(--ink); }
+.ml-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ml-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--muted); }
+.ml-list li::before { content: "✓"; flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: rgba(245, 165, 36, .16); color: var(--gold); font: 700 12px var(--f-display); }
+.ml-list li b { color: var(--ink); font-weight: 600; }
+.ml-price { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.ml-price b { font: 700 32px/1 var(--f-display); }
+.ml-price span { font: 500 13.5px var(--f-display); color: var(--muted); }
+.ml-acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.ml-acts .btn { flex: 1 1 200px; justify-content: center; }
+/* visor de material */
+.mv { position: fixed; inset: 0; z-index: 80; display: grid; grid-template-rows: auto 1fr; background: #0B1A33; }
+.mv-top { display: flex; align-items: center; gap: 12px; padding: 10px max(14px, env(safe-area-inset-right, 0px)) 10px max(14px, env(safe-area-inset-left, 0px)); padding-top: max(10px, env(safe-area-inset-top, 0px)); background: #081428; border-bottom: 1px solid var(--line); }
+.mv-back { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 8px 14px 8px 10px; font: 600 14px var(--f-display); cursor: pointer; }
+.mv-back:hover { border-color: var(--latte); }
+.mv-back svg { width: 16px; height: 16px; }
+.mv-t { min-width: 0; flex: 1; display: grid; }
+.mv-t b { font: 700 15px/1.2 var(--f-display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mv-t small { font: 500 12px var(--f-display); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mv-pill { flex: none; font: 700 10.5px/1 var(--f-display); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(245, 165, 36, .45); border-radius: 999px; padding: 7px 10px; }
+@media (max-width: 520px) { .mv-pill { display: none; } }
+.mv iframe { width: 100%; height: 100%; border: 0; display: block; background: #0B1A33; }
 /* ---- agenda de clases ---- */
 .tbtn .av.lv { font-size: 18px; }
 .hz-sub { text-align: center; color: var(--muted); margin-top: 6px; }
@@ -630,9 +690,21 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Ensayos PAES</b>Ensayos completos tipo PAES para medir tu avance y llegar afinado a la prueba. <em>Se publican durante el Intensivo.</em></span></li>
           <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Clases online y videos</b>Clases en vivo y videos de material PAES impartidos por los tutores de TS Zenit y por el tutor virtual. <em>Durante el Intensivo.</em></span></li>
           <li><span class="int-ic" aria-hidden="true">✓</span><span><b>5 revisiones personalizadas</b>Informe con tutor virtual y guía de refuerzo en las 5 guías que tú elijas.</span></li>
-          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Material PAES exclusivo</b>Presentaciones y resúmenes para preparar cada eje, solo para el Intensivo. <em>Se publica durante el Intensivo.</em></span></li>
+          <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Material PAES exclusivo</b>Apuntes interactivos con simuladores y slides de Física, Química y Biología, solo para el Intensivo. Durante el Intensivo se suma más material. <a href="#material">Ver el material ↓</a></span></li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="band" id="material">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow mat-eb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Material PAES · Exclusivo Intensivo</p>
+        <h2>Estudia con material hecho para la PAES</h2>
+        <p>Apuntes interactivos con simuladores y preguntas tipo PAES explicadas, y slides para repasar lo esencial de cada asignatura. Se abre con tu cuenta del <b>Intensivo PAES</b>.</p>
+      </div>
+      <div class="mat-grid" id="matGrid"></div>
+      <div class="mat-foot"><p><b>Durante el Intensivo se suma más material.</b> Todo queda en tu cuenta: entras con Google y lo abres en cualquier dispositivo.</p><button class="btn int-btn" type="button" data-int>Quiero el Intensivo</button></div>
     </div>
   </section>
 
@@ -786,6 +858,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <div class="sect" id="p-terminos"><h3>Términos de compra</h3><ul>
             <li>Puedes comprar una guía suelta o un eje completo. Hasta el 31 de diciembre de 2026 rige el precio de fin de año: guía suelta $5.000 y eje completo $5.000 menos que la suma de sus guías publicadas al momento de la compra. Desde el 1 de enero de 2027: guía suelta $10.000 y eje completo $10.000 más que su precio de fin de año. El precio que pagas es el que muestra la tienda al momento de la compra. El eje completo incluye todas sus guías y su ensayo final, también las que se publiquen después en ese eje. Cada guía incluye la revisión de una hoja de respuestas.</li>
             <li>Puedes descargar e imprimir las guías para tu estudio. No está permitido revenderlas ni publicarlas como material propio.</li>
+            <li>El material del Intensivo PAES (apuntes interactivos y slides) es de uso personal y se abre solo con la cuenta de Google que tiene el Intensivo. No está permitido compartir la cuenta ni copiar o distribuir el material.</li>
             <li>El informe se envía dentro de 72 horas hábiles desde que recibimos tu hoja de respuestas.</li>
             <li>Si tienes cualquier problema con tu compra, escríbenos a trabajotszenit@gmail.com y lo resolvemos contigo.</li>
             <li>Material de práctica independiente, sin relación con el DEMRE.</li>
@@ -809,6 +882,11 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 </div>
 <div class="layer" id="layer" hidden></div>
 <div class="toast" id="toast" role="status" hidden></div>
+<div class="mv" id="mv" hidden role="dialog" aria-modal="true" aria-labelledby="mvT">
+  <div class="mv-top"><button class="mv-back" type="button" id="mvX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Volver</button>
+    <div class="mv-t"><b id="mvT">Material</b><small id="mvS">Intensivo PAES</small></div></div>
+  <iframe id="mvF" title="Material del Intensivo PAES" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="fullscreen"></iframe>
+</div>
 
 <script src="config.js"></script>
 <script>
@@ -1105,6 +1183,7 @@ function renderEjes() {
   const p = PAES().find(x => x.id === current) || PAES()[0];
   $("#ejesGrid").innerHTML = p.ejes.map(ejeCard).join("");
   const u = PRUEBAS.find(x => x.uni); if ($("#uniGrid") && u) $("#uniGrid").innerHTML = u.ejes.map(ejeCard).join("");
+  try { renderMat(); } catch (e) {}   // al cargar, MAT aún no existe: renderMat() se llama de nuevo más abajo
 }
 function ejeCard(e, i) { {
     if (!e.guias.length) {
@@ -1511,6 +1590,91 @@ function verTutor(id) {
 function openClase() { ctxClase = "paes"; modo = "ind"; tutorSel = diaSel = horaSel = null; agenda = null; cargarAgenda().then(() => { if (!lb.hidden && $("#tutorBox .hz-grid")) verHorario(); }); verModalidad(); lbFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; const f = $("#tutorBox .tbtn"); if (f) f.focus(); }
 function closeClase() { lb.hidden = true; document.body.style.overflow = ""; if (lbFocus) lbFocus.focus(); }
 document.querySelectorAll("[data-int]").forEach(b => b.addEventListener("click", () => { try { openPay(INT_ID); } catch (e) { toast("Pronto podrás comprar el Intensivo PAES aquí."); } }));
+/* ---------- Material PAES (exclusivo Intensivo) ---------- */
+const MAT = [
+  { asig: "Física", k: "Ciencias · Módulo común", art: "OND", sum: "Ondas, óptica, mecánica, universo, Tierra y electricidad.", items: [
+    { id: "MAT-FIS-AP", t: "Apunte interactivo", d: "8 temas con simuladores y 76 preguntas tipo PAES explicadas", ic: "ap" },
+    { id: "MAT-FIS-SL", t: "Slides", d: "18 slides: ideas clave, fórmulas y trampas PAES", ic: "sl" }] },
+  { asig: "Química", k: "Ciencias · Módulo Química", art: "ATO", sum: "Materia y átomo, química orgánica, estequiometría y soluciones.", items: [
+    { id: "MAT-QUI-AP", t: "Apunte interactivo", d: "5 temas con herramientas y 68 preguntas tipo PAES explicadas", ic: "ap" },
+    { id: "MAT-QUI-SL", t: "Slides", d: "18 slides: ideas clave, cálculos y trampas PAES", ic: "sl" }] },
+  { asig: "Biología", k: "Ciencias · Módulo común", art: "CEL", sum: "Célula, sistema nervioso, reproducción, división celular, evolución y fotosíntesis.", items: [
+    { id: "MAT-BIO-AP", t: "Apunte interactivo", d: "7 temas con simuladores y 68 preguntas tipo PAES explicadas", ic: "ap" },
+    { id: "MAT-BIO-SL", t: "Slides", d: "20 slides: ideas clave, procesos y trampas PAES", ic: "sl" }] }
+];
+const matDe = id => { for (const a of MAT) for (const it of a.items) if (it.id === id) return { a, it }; };
+const IC_LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+const IC_GO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+const IC_MAT = { ap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 12h5"/></svg>',
+  sl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8M7 12l3-3 2 2 4-4"/></svg>' };
+const matAbierto = () => { try { return typeof hasInt === "function" && hasInt(); } catch (e) { return false; } };
+function renderMat() {
+  const g = $("#matGrid"); if (!g) return;
+  const open = matAbierto();
+  g.innerHTML = MAT.map(a => { const x = ARTE[a.art]; return `<article class="mat-card" style="--ax:${x.c};--ax-a:${x.a};--ax-b:${x.b};--ax-l:${x.l};--ax-g:${x.g}">
+      <div class="mat-art">${x.svg}<span class="mat-badge${open ? " ok" : ""}">${open ? "✓ Desbloqueado" : IC_LOCK + "Exclusivo Intensivo"}</span></div>
+      <div class="mat-body"><p class="mat-k">${esc(a.k)}</p><h3>${esc(a.asig)}</h3><p class="mat-sum">${esc(a.sum)}</p>
+        <div class="mat-items">${a.items.map(it => `<button class="mat-it${open ? " open" : ""}" type="button" data-mat="${it.id}" aria-label="${esc(a.asig + " · " + it.t + (open ? "" : " (exclusivo del Intensivo PAES)"))}"><span class="mat-ic">${IC_MAT[it.ic]}</span><span><b>${esc(it.t)}</b><small>${esc(it.d)}</small></span><span class="mat-go">${open ? IC_GO : IC_LOCK}</span></button>`).join("")}</div></div>
+    </article>`; }).join("");
+}
+function matBloqueado(id) {
+  const m = matDe(id); if (!m) return;
+  const conCuenta = typeof ses !== "undefined" && ses && ses.e;
+  showLayer(`<div class="panel narrow mat-modal" role="dialog" aria-modal="true" aria-labelledby="mlT">
+    <div class="panel-head"><div><h3 id="mlT">${esc(m.a.asig)} · ${esc(m.it.t)}</h3><div class="sub">Material exclusivo del Intensivo PAES</div></div><button class="x" aria-label="Cerrar">×</button></div>
+    <div class="panel-body">
+      <div class="ml-top"><span class="ml-lock">${IC_LOCK}</span><p>Este material se abre <b>solo con el Intensivo PAES</b> activado en tu cuenta de Google.${conCuenta ? ` Tu cuenta ${esc(ses.e)} aún no lo tiene.` : ""}</p></div>
+      <ul class="ml-list"><li><span><b>Apuntes interactivos y slides</b> de Física, Química y Biología, y más material durante el Intensivo</span></li>
+        <li><span><b>Todas las guías PAES</b> con su solución paso a paso</span></li><li><span><b>5 revisiones personalizadas</b> con informe y tutor virtual</span></li>
+        <li><span><b>Ensayos PAES y clases online</b> durante el Intensivo</span></li></ul>
+      <div class="ml-price"><b>${fmt(PRECIO_INT)}</b><span>pago único · hasta la PAES de admisión 2027</span></div>
+      <div class="ml-acts"><button class="btn int-btn" type="button" data-ml-buy>Quiero el Intensivo</button><button class="btn btn-ghost" type="button" data-ml-tengo="${id}">${conCuenta ? "Tengo un código" : "Ya tengo el Intensivo"}</button></div>
+    </div></div>`);
+  layer.querySelector("[data-ml-buy]").addEventListener("click", () => { closeLayer(); try { openPay(INT_ID); } catch (e) { toast("Pronto podrás comprar el Intensivo PAES aquí."); } });
+  layer.querySelector("[data-ml-tengo]").addEventListener("click", () => matTengo(id));
+}
+/* MATERIAL-VIEW-INI */
+function matTengo(id) {
+  closeLayer();
+  if (!vivo()) return conLogin("Entra con la cuenta que tiene el Intensivo PAES.", () => abrirMaterial(id));
+  api({ tipo: "mis", idToken: ses.t }).then(j => { ses.p = j.productos || []; saveSes(); renderEjes(); hasInt() ? abrirMaterial(id) : openCode(); }, () => openCode());
+}
+async function abrirMaterial(id, btn) {
+  if (!hasInt()) return matBloqueado(id);
+  if (btn) btn.disabled = true;
+  try {
+    const j = await conSesion({ tipo: "material", m: id }, "Inicia sesión para abrir el material del Intensivo.");
+    const key = await crypto.subtle.importKey("raw", b64(j.k), "AES-GCM", false, ["decrypt"]);
+    const r = await fetch("tienda/m/" + id + ".bin"); if (!r.ok) throw new Error("red");
+    const buf = new Uint8Array(await r.arrayBuffer());
+    const html = new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: buf.slice(0, 12) }, key, buf.slice(12)));
+    verMaterial(id, html.split("{{LIC}}").join(esc(ses.e)));
+  } catch (e) {
+    if (e.message === "cancelado") return;
+    if (e.message === "sin_intensivo") { ses.p = (ses.p || []).filter(x => x !== INT_ID); saveSes(); renderEjes(); return matBloqueado(id); }
+    toast(e.message === "red" ? "No se pudo abrir el material. Revisa tu conexión e inténtalo de nuevo." : "No se pudo abrir el material. Inténtalo de nuevo o escríbenos.");
+  } finally { if (btn) btn.disabled = false; }
+}
+/* MATERIAL-VIEW-FIN */
+let mvFocus = null;
+function verMaterial(id, html) {
+  const m = matDe(id); mvFocus = document.activeElement;
+  $("#mvT").textContent = m.a.asig + " · " + m.it.t; $("#mvS").textContent = "Intensivo PAES · " + m.a.k;
+  $("#mvF").srcdoc = html; $("#mv").hidden = false; document.body.style.overflow = "hidden";
+  try { history.pushState({ mv: id }, "", location.pathname + location.search + "#material"); } catch (e) {}
+  $("#mvX").focus();
+}
+function cerrarMaterial(desdeHistorial) {
+  if ($("#mv").hidden) return;
+  $("#mv").hidden = true; $("#mvF").srcdoc = ""; document.body.style.overflow = "";
+  if (!desdeHistorial) { try { if (history.state && history.state.mv) history.back(); } catch (e) {} }
+  if (mvFocus) mvFocus.focus();
+}
+$("#mvX").addEventListener("click", () => cerrarMaterial(false));
+window.addEventListener("popstate", () => cerrarMaterial(true));
+document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !$("#mv").hidden) cerrarMaterial(false); });
+$("#matGrid").addEventListener("click", ev => { const b = ev.target.closest("[data-mat]"); if (b) abrirMaterial(b.dataset.mat, b); });
+renderMat();
 document.querySelectorAll("[data-clase]").forEach(b => b.addEventListener("click", ev => { ev.preventDefault(); openClase(b.dataset.clase); }));
 $("#tutorBox").addEventListener("click", ev => {
   const m = ev.target.closest("[data-modo]"); if (m) { modo = m.dataset.modo; return verNivel(); }
