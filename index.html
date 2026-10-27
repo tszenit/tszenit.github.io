@@ -689,7 +689,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <h2 style="margin-top:8px">Clases particulares de matemáticas</h2>
           <p>Clases de matemática para estudiantes de <b>8° básico a IV medio</b>, y clases universitarias de <b>Precálculo y Cálculo 1</b>. Repasamos lo que te cuesta, a tu ritmo, con ejercicios explicados paso a paso.</p>
         </div>
-        <div class="cta-c"><p class="cprice"><b>$9.990</b> por clase individual<br><span class="cgrupo">Grupal (5 personas): <b>$8.990</b> c/u</span></p><button class="btn btn-cafe" type="button" data-clase>Agenda tu clase</button></div>
+        <div class="cta-c"><p class="cprice"><b>$20.000</b> por clase individual<br><span class="cgrupo">Grupal (5 personas): <b>$18.000</b> c/u</span></p><button class="btn btn-cafe" type="button" data-clase>Agenda tu clase</button></div>
       </div>
     </div>
   </section>
@@ -828,7 +828,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <h2 style="margin-top:8px">Clases de Precálculo y Cálculo 1</h2>
           <p>Límites, derivadas, funciones y todo lo que te cueste del ramo. Repasamos a tu ritmo, con ejercicios explicados paso a paso.</p>
         </div>
-        <div class="cta-c"><p class="cprice"><b>$12.490</b> por clase individual<br><span class="cgrupo">Grupal (5 personas): <b>$11.240</b> c/u</span></p><button class="btn btn-cafe" type="button" data-clase="uni">Agenda tu clase</button></div>
+        <div class="cta-c"><p class="cprice"><b>$25.000</b> por clase individual<br><span class="cgrupo">Grupal (5 personas): <b>$22.500</b> c/u</span></p><button class="btn btn-cafe" type="button" data-clase="uni">Agenda tu clase</button></div>
       </div>
     </div>
   </section>
@@ -869,7 +869,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
         </div>
         <div class="pcard wide">
           <h3 style="font-size:17px">Clases particulares</h3>
-          <div class="cl-prices"><div><b>$9.990</b>clase individual · 8° básico a IV medio</div><div><b>$8.990</b>por persona · clase grupal de 5</div><div><b>$12.490</b>clase individual · universitaria (Precálculo y Cálculo 1)</div><div><b>$11.240</b>por persona · clase grupal de 5</div></div>
+          <div class="cl-prices"><div><b>$20.000</b>clase individual · 8° básico a IV medio</div><div><b>$18.000</b>por persona · clase grupal de 5</div><div><b>$25.000</b>clase individual · universitaria (Precálculo y Cálculo 1)</div><div><b>$22.500</b>por persona · clase grupal de 5</div></div>
         </div>
       </div>
     </div>
@@ -1606,9 +1606,9 @@ const TUTORES = [
     stats: [{ n: "850", t: "puntos en Ciencias", gold: true }],
     extra: ["Estudiante UC", "Promedio universitario sobre 6,5"] } ];
 const CTX = {
-  paes: { pill: "Matemática", sub: "Matemática PAES · 8° básico a IV medio", corto: "PAES", precio: "$9.990", grupo: "$8.990" },
-  pre: { pill: "Universidad", sub: "Precálculo", corto: "Precálculo", precio: "$12.490", grupo: "$11.240" },
-  cal: { pill: "Universidad", sub: "Cálculo 1", corto: "Cálculo 1", precio: "$12.490", grupo: "$11.240" } };
+  paes: { pill: "Matemática", sub: "Matemática PAES · 8° básico a IV medio", corto: "PAES", precio: "$20.000", grupo: "$18.000" },
+  pre: { pill: "Universidad", sub: "Precálculo", corto: "Precálculo", precio: "$25.000", grupo: "$22.500" },
+  cal: { pill: "Universidad", sub: "Cálculo 1", corto: "Cálculo 1", precio: "$25.000", grupo: "$22.500" } };
 const GRUPO = 5;   // personas por clase grupal
 const HORAS = { 6: ["12:00", "14:00", "16:00", "18:00", "20:00"], 0: ["12:00", "14:00", "16:00", "18:00"] };   // sábado y domingo
 const SEMANAS = 3;   // fines de semana que se muestran para agendar
@@ -1616,8 +1616,8 @@ let ctxClase = "paes", modo = "ind", tutorSel = null, diaSel = null, horaSel = n
 const back = (attr, txt) => `<button class="tback" type="button" ${attr}>← ${txt}</button>`;
 function verModalidad() {
   $("#tutorBox").innerHTML = `<div class="tsel"><h2>¿Cómo quieres tu clase?</h2><p>Clases de matemática PAES y universitarias</p><div class="tlist modos">
-    <button class="tbtn" type="button" data-modo="ind"><span class="av mi" aria-hidden="true">1</span><b>Clase individual</b><small>Solo tú con el tutor, al ritmo y con los temas que necesites.</small><span class="mprice"><b>$9.990</b> PAES · $12.490 universitaria</span><span class="go">Elegir →</span></button>
-    <button class="tbtn" type="button" data-modo="grupo"><span class="av mi" aria-hidden="true">${GRUPO}</span><b>Clase grupal</b><small>Grupos de ${GRUPO} personas. Te sumamos a un grupo de tu nivel; si ya tienes tu grupo de ${GRUPO}, reserva la clase completa.</small><span class="mprice"><b>$8.990</b> PAES · $11.240 universitaria, por persona</span><span class="go">Elegir →</span></button>
+    <button class="tbtn" type="button" data-modo="ind"><span class="av mi" aria-hidden="true">1</span><b>Clase individual</b><small>Solo tú con el tutor, al ritmo y con los temas que necesites.</small><span class="mprice"><b>$20.000</b> PAES · $25.000 universitaria</span><span class="go">Elegir →</span></button>
+    <button class="tbtn" type="button" data-modo="grupo"><span class="av mi" aria-hidden="true">${GRUPO}</span><b>Clase grupal</b><small>Grupos de ${GRUPO} personas. Te sumamos a un grupo de tu nivel; si ya tienes tu grupo de ${GRUPO}, reserva la clase completa.</small><span class="mprice"><b>$18.000</b> PAES · $22.500 universitaria, por persona</span><span class="go">Elegir →</span></button>
   </div></div>`;
   const f = $("#tutorBox .tbtn"); if (f) f.focus();
 }
