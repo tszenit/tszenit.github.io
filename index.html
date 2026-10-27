@@ -1175,9 +1175,9 @@ const tengoGuia = c => hasG(c);
 const ejeAbierto = id => hasEje(id);
 const temaNombre = t => t.replace(/^Guía( avanzada)?\s*/, "").replace(/^(Precálculo|Cálculo 1)\s*·\s*/, "").replace(/^·\s*/, "").replace(/\s*·\s*(Física|Química|Biología)$/, "");
 function temasDe(e) {
-  const T = [], ix = {};
+  const T = [], ix = {}, PA = esPAES(e.id);
   e.guias.forEach(c => {
-    const g = GUIAS[c], ens = g.tipo === "ensayo", k = ens ? "\u0000ens" : temaNombre(g.titulo);
+    const g = GUIAS[c], ens = g.tipo === "ensayo", k = ens ? (PA ? "\u0000ens" + c : "\u0000ens") : temaNombre(g.titulo);
     if (!(k in ix)) { ix[k] = T.length; T.push({ nombre: ens ? "Ensayo final" : k, ens, codes: [] }); }
     T[ix[k]].codes.push(c);
   });
@@ -1185,7 +1185,7 @@ function temasDe(e) {
   return T;
 }
 function temasTxt(e) {
-  if (esPAES(e.id)) { const g = GUIAS[e.guias[0]]; return g ? `Ensayo completo · ${g.n} preguntas${g.tiempo ? ` · ${g.tiempo} min` : ""}` : "Ensayo completo"; }
+  if (esPAES(e.id)) { const g = GUIAS[e.guias[0]], m = e.guias.length; return g ? `${m > 1 ? `${m} ensayos completos` : "Ensayo completo"} · ${g.n} preguntas${g.tiempo ? ` · ${g.tiempo} min` : ""}${m > 1 ? " c/u" : ""}` : "Ensayo completo"; }
   const T = temasDe(e), n = T.filter(t => !t.ens).length, ens = T.some(t => t.ens);
   return `${n} ${n === 1 ? "tema" : "temas"}${ens ? " y ensayo final" : ""}`;
 }
@@ -1260,7 +1260,7 @@ function openTema(eid, k) {
       <div class="th-txt"><p class="th-eb">${esc(p.nombre)} · ${esc(e.nombre)}</p><h3 id="temaT">${esc(t.nombre)}</h3><p class="th-sub">${t.ens ? "Pon a prueba todo el eje" : "Elige tu nivel"}</p></div>
       <button class="x" type="button" aria-label="Cerrar">×</button></div>
     <div class="niveles${t.codes.length === 1 ? " uno" : ""}">${t.codes.map(c => nivelCard(c, open || tengoGuia(c), a)).join("")}</div>
-    ${open || e.guias.length < 2 ? "" : `<p class="tema-foot">¿Quieres todo el eje? <button type="button" class="lnk" data-buy="${eid}">Compra el eje completo</button>: incluye las ${e.guias.length} guías y las que vengan.</p>`}
+    ${open || e.guias.length < 2 ? "" : `<p class="tema-foot">¿Quieres todo el eje? <button type="button" class="lnk" data-buy="${eid}">Compra el eje completo</button>: incluye ${esPAES(eid) ? `los ${e.guias.length} ensayos y los que vengan` : `las ${e.guias.length} guías y las que vengan`}.</p>`}
   </div>`);
 }
 function renderEjes() {
@@ -1283,7 +1283,7 @@ function ejeCard(e, i) { {
       <div class="guias" id="g-${e.id}"${exp ? "" : " hidden"}>${temaRows(e, open)}</div>
       <div class="eje-meta">${open
         ? `<span class="muted" style="font-family:var(--f-display);font-size:14px">Tienes el eje completo, incluidas las guías que se publiquen después.</span>`
-        : e.guias.length < 2 ? "" : `<span class="price">${was(normalEje(e))}${fmt(packOf(e))}${OFERTA ? `<span class="sale">Fin de año</span>` : ""}<small class="inc">${OFERTA ? `Precio de fin de año; desde el 1 de enero de 2027 cuesta ${fmt(normalEje(e))}. ` : ""}Eje completo: ${e.guias.length === 1 ? "la guía publicada" : `las ${e.guias.length} guías publicadas`} y todas las que vengan, con su ensayo final. Ahorras ${fmt(e.guias.length * PRECIO - packOf(e))}.</small></span><button class="btn btn-cafe" data-buy="${e.id}">Comprar eje completo</button>`}
+        : e.guias.length < 2 ? "" : `<span class="price">${was(normalEje(e))}${fmt(packOf(e))}${OFERTA ? `<span class="sale">Fin de año</span>` : ""}<small class="inc">${OFERTA ? `Precio de fin de año; desde el 1 de enero de 2027 cuesta ${fmt(normalEje(e))}. ` : ""}${esPAES(e.id) ? `Eje completo: los ${e.guias.length} ensayos publicados y todos los que vengan.` : `Eje completo: ${e.guias.length === 1 ? "la guía publicada" : `las ${e.guias.length} guías publicadas`} y todas las que vengan, con su ensayo final.`} Ahorras ${fmt(e.guias.length * PRECIO - packOf(e))}.</small></span><button class="btn btn-cafe" data-buy="${e.id}">Comprar eje completo</button>`}
       </div></article>`;
   } }
 function pintarOferta() {
