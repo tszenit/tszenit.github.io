@@ -920,7 +920,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <div class="sect" id="p-terceros"><h3>Con quién se comparten</h3><p>Solo con los servicios necesarios para funcionar: el alojamiento del sitio (GitHub Pages), el inicio de sesión, el envío de correos y la planilla donde se guardan las respuestas (Google) y el procesador de pagos (Mercado Pago). Si TS Zenit trabaja con un colegio, el colegio solo recibe los resultados de sus propios alumnos y con la autorización correspondiente.</p></div>
           <div class="sect" id="p-derechos"><h3>Tus derechos</h3><p>Puedes pedir acceso a tus datos, corregirlos, eliminarlos u oponerte a su uso escribiendo a trabajotszenit@gmail.com. Respondemos en un máximo de 15 días hábiles. Esta política se rige por la Ley 19.628 sobre protección de la vida privada y, desde su entrada en vigencia, por la Ley 21.719.</p></div>
           <div class="sect" id="p-terminos"><h3>Términos de compra</h3><ul>
-            <li>Puedes comprar una guía suelta o un eje completo. El precio normal es: guía suelta $5.000 y eje completo $5.000 menos que la suma de sus guías publicadas al momento de la compra; el eje Ensayo PAES cuesta lo mismo que sus ensayos por separado. Hasta el 31 de diciembre de 2026 rige la rebaja de fin de año: la mitad del precio normal menos $10 (guía suelta $2.490). El precio que pagas es el que muestra la tienda al momento de la compra. El eje completo incluye todas sus guías y su ensayo final, también las que se publiquen después en ese eje. Cada guía incluye la revisión de una hoja de respuestas.</li>
+            <li>Puedes comprar una guía suelta o un eje completo. El precio normal es: guía suelta $5.000 y eje completo $5.000 menos que la suma de sus guías publicadas al momento de la compra; el eje Ensayo PAES cuesta 10 % menos que sus ensayos por separado. Hasta el 31 de diciembre de 2026 rige la rebaja de fin de año: la mitad del precio normal menos $10 (guía suelta $2.490). El precio que pagas es el que muestra la tienda al momento de la compra. El eje completo incluye todas sus guías y su ensayo final, también las que se publiquen después en ese eje. Cada guía incluye la revisión de una hoja de respuestas.</li>
             <li>Puedes descargar e imprimir las guías para tu estudio. No está permitido revenderlas ni publicarlas como material propio.</li>
             <li>Hay dos Intensivos que se compran por separado, cada uno a $49.990 y con acceso hasta la PAES de admisión 2027: el Intensivo Matemática (guías de M1 y M2, clases online en vivo, videos, 6 revisiones —3 de M1 y 3 de M2— y su aula con material) y el Intensivo Ciencias (guías de Física, Química y Biología, videos de clases grabadas sin clases en vivo, 9 revisiones repartidas como quieras entre las tres asignaturas y su aula con material). Ambos incluyen los 10 ensayos PAES (dos de M1, dos de M2 y dos de Ciencias por cada mención: Física, Química y Biología); enviar un ensayo no descuenta revisiones. No admiten códigos promocionales.</li>
             <li>El material de cada Intensivo (apuntes interactivos y slides) es de uso personal y se abre solo con la cuenta de Google que tiene ese Intensivo. No está permitido compartir la cuenta ni copiar o distribuir el material.</li>
@@ -963,7 +963,8 @@ const DESC_EJE = 5000;   // precio normal del eje: $5.000 menos que sus guías p
 const baseEje = e => Math.max(5000, e.guias.length * 5000 - DESC_EJE);
 const rebaja = v => v / 2 - 10;   // 50 % menos, terminado en 90 ($5.000 → $2.490)
 const PRECIO = OFERTA ? rebaja(5000) : 5000;
-const packOf = e => /-ENS$/.test(e.id) ? e.guias.length * PRECIO : OFERTA ? rebaja(baseEje(e)) : baseEje(e);   // eje Ensayo PAES: precio de un ensayo × cantidad de ensayos
+const ensEje = (e, p) => Math.round(e.guias.length * p * 0.9 / 100) * 100 - 10;   // eje Ensayo PAES: 10 % menos que sus ensayos por separado, terminado en 90
+const packOf = e => /-ENS$/.test(e.id) ? ensEje(e, PRECIO) : OFERTA ? rebaja(baseEje(e)) : baseEje(e);
 const IC_OPEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V7.5a4 4 0 0 1 7.6-1.7"/></svg>';
 const IC_LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
 const PRECIO_INT = 49990, INT_ID = "TSZ-INT-MAT";   // Intensivos (no admiten códigos promocionales)
@@ -973,7 +974,7 @@ const INTENSIVOS = {
 };
 const areaDe = x => /^(TSZ-|MAT-)?M[12]-/.test(x) ? "MAT" : /^(TSZ-|MAT-)?(FIS|QUI|BIO)-/.test(x) ? "CIE" : "";
 const intDeArea = a => Object.keys(INTENSIVOS).find(k => INTENSIVOS[k].area === a);
-const NORMAL_GUIA = 5000, normalEje = e => /-ENS$/.test(e.id) ? e.guias.length * NORMAL_GUIA : baseEje(e);
+const NORMAL_GUIA = 5000, normalEje = e => /-ENS$/.test(e.id) ? ensEje(e, NORMAL_GUIA) : baseEje(e);
 const was = v => OFERTA ? `<s class="was" title="Precio normal desde el 1 de enero de 2027">${fmt(v)}</s>` : "";
 const PRUEBAS = [
   { id: "M1", nombre: "Matemática M1", ejes: [
