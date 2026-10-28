@@ -22,6 +22,7 @@ window.TSZ_CONFIG = {
     29990: "https://mpago.la/1hiTbDR",   // eje de 13 guías
     31491: "https://mpago.la/2YJLm9W",   // eje de 15 guías con código promocional (−10 %)
     34990: "https://mpago.la/1He9rPW",   // eje de 15 guías
+    71991: "https://mpago.la/1azd4c2",   // eje Cálculo 1 con código promocional (−10 %)
     79990: "https://mpago.la/2wdUgNN",   // eje Cálculo 1 (33 guías)
     49990: "https://mpago.la/15G84w7",   // Intensivo Matemática o Ciencias
     // Precios normales (desde el 1-1-2027)
