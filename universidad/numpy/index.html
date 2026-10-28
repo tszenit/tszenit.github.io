@@ -965,6 +965,16 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 .ix-judge .u-enun .mision{border-left-color:#F87171;background:rgba(239,68,68,.09)}
 
 @container (max-width:600px){.tc-cols{grid-template-columns:minmax(0,1fr)}}
+/* errores estilo consola de Python */
+.tc-list button.err i{background:var(--warn);color:#1a1405}
+.tc-list button.err{border-color:rgba(232,184,74,.45)}
+.tc-bar i.err{background:var(--warn)}
+.tc-badge.err{background:var(--warn-soft);color:var(--warn)}
+.bub.warn{border-color:var(--warn);color:var(--warn);font-weight:800}
+.tc-errf summary{color:var(--warn)}
+.tc-tb{margin:6px 0 4px;padding:12px 14px;background:var(--code-bg);border:1px solid var(--line);border-radius:10px;font:13.5px/1.65 var(--f-mono);overflow-x:auto;white-space:pre;color:var(--ink)}
+.tc-tb .tb-k{color:var(--muted)} .tc-tb .tb-car{color:var(--bad)} .tc-tb .tb-exc{color:var(--bad);font-weight:700} .tc-tb .tb-msg{color:var(--ink)}
+.tc-det>*,.tc-fold,.tc-cmp{min-width:0;max-width:100%}
 </style></head><body>
 <header class="u-top">
   <div class="wrap u-topin">
@@ -1078,7 +1088,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202610280106"></script>
+<script src="/config.js?v=202610280927"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -2106,7 +2116,7 @@ const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
 // Hasta el domingo 25 de octubre de 2026 (00:00, Chile) el curso se reserva; desde entonces se compra.
 const RESERVA = Date.now() < Date.UTC(2026, 9, 25, 3, 0, 0);
 const VERBO = RESERVA ? "Reservar" : "Comprar";
-const VER = "202610280106";
+const VER = "202610280927";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
@@ -2543,6 +2553,11 @@ function insertarTexto(ed, txt) {
   try { ok = document.execCommand("insertText", false, txt); } catch (e) {}
   if (!ok) { ed.setRangeText(txt, ed.selectionStart, ed.selectionEnd, "end"); ed.dispatchEvent(new Event("input", { bubbles: true })); }
 }
+function borrarRango(ed, a, b) {
+  ed.focus(); ed.setSelectionRange(a, b);
+  let ok = false; try { ok = document.execCommand("delete"); } catch (e) {}
+  if (!ok || ed.selectionStart !== a) { ed.setRangeText("", a, b, "end"); ed._sinSangria = true; try { ed.dispatchEvent(new Event("input", { bubbles: true })); } finally { ed._sinSangria = false; } }
+}
 function editorPy(ed) {
   if (ed._py) return; ed._py = true;
   const caja = document.createElement("div"); caja.className = "u-cedit";
@@ -2555,18 +2570,58 @@ function editorPy(ed) {
   ed.addEventListener("input", pintar);
   ed.addEventListener("scroll", () => { pre.scrollTop = ed.scrollTop; pre.scrollLeft = ed.scrollLeft; });
   pintar();
+  ed.setAttribute("autocorrect", "off"); ed.setAttribute("autocapitalize", "off"); ed.spellcheck = false;
+  /* sangría de la línea nueva: la misma de la línea actual, +4 después de ":" y −4 después de return/pass/break/continue/raise */
+  const sangriaNueva = (v, a) => {
+    const linea = v.slice(v.lastIndexOf("\n", a - 1) + 1, a);
+    let sg = (linea.match(/^[ \t]*/) || [""])[0].replace(/\t/g, SANGRIA);
+    const codigo = linea.replace(/#.*$/, "").trimEnd();
+    if (/:$/.test(codigo)) sg += SANGRIA;
+    else if (/^\s*(return|pass|break|continue|raise)\b/.test(codigo)) sg = sg.slice(SANGRIA.length);
+    return sg;
+  };
+  let propio = false;
+  const insertar = t => { propio = true; try { insertarTexto(ed, t); } finally { propio = false; } };
+  /* Enter (teclado físico o del celular): el salto de línea llega como beforeinput, que se puede cancelar */
+  ed.addEventListener("beforeinput", ev => {
+    if (ev.inputType !== "insertLineBreak" && ev.inputType !== "insertParagraph") return;
+    ev.preventDefault();
+    insertar("\n" + sangriaNueva(ed.value, ed.selectionStart));
+  });
+  ed.addEventListener("input", ev => {
+    if (propio || ed._sinSangria) return;
+    const v = ed.value, a = ed.selectionStart;
+    /* respaldo: si el navegador insertó el salto sin dejar cancelarlo, se agrega la sangría después */
+    const it = ev.inputType || "";
+    if ((it === "insertLineBreak" || it === "insertParagraph" || ((it === "insertText" || it === "insertCompositionText" || !it) && (ev.data == null || /\n$/.test(ev.data)))) && a === ed.selectionEnd && v[a - 1] === "\n") {
+      const sg = sangriaNueva(v, a - 1);
+      if (sg && !v.slice(a).startsWith(sg)) insertar(sg);
+      return;
+    }
+    /* comillas tipográficas del celular → comillas de Python */
+    if (ev.data && /[“”„‘’‚]/.test(ev.data)) {
+      const nv = v.replace(/[“”„]/g, '"').replace(/[‘’‚]/g, "'");
+      if (nv !== v) { ed.setSelectionRange(a - ev.data.length, a); insertar(ev.data.replace(/[“”„]/g, '"').replace(/[‘’‚]/g, "'")); }
+      return;
+    }
+    /* else:, elif …:, except …: y finally: vuelven al nivel del if/try al escribir los dos puntos */
+    if (ev.data === ":") {
+      const ini = v.lastIndexOf("\n", a - 1) + 1, linea = v.slice(ini, a);
+      if (/^ +(else|elif\b.*|except\b.*|finally)\s*:$/.test(linea) && v.slice(a, (v.indexOf("\n", a) + 1 || v.length + 1) - 1).trim() === "") {
+        const prev = v.slice(0, ini - 1).split("\n").reverse().find(l => l.trim());
+        const sgL = linea.match(/^ */)[0].length, sgP = prev ? prev.match(/^ */)[0].length : 0;
+        if (prev && sgL === sgP && sgL >= SANGRIA.length && !/:\s*(#.*)?$/.test(prev)) {
+          propio = true; try { borrarRango(ed, ini, ini + SANGRIA.length); } finally { propio = false; }
+          ed.setSelectionRange(a - SANGRIA.length, a - SANGRIA.length);
+        }
+      }
+    }
+  });
   ed.addEventListener("keydown", ev => {
     if (ev.ctrlKey || ev.metaKey || ev.altKey || ev.isComposing) return;
     const v = ed.value, a = ed.selectionStart, b = ed.selectionEnd;
     const ini = v.lastIndexOf("\n", a - 1) + 1, linea = v.slice(ini, a);
-    if (ev.key === "Enter") {
-      ev.preventDefault();
-      let s = (linea.match(/^[ \t]*/) || [""])[0].replace(/\t/g, SANGRIA);
-      const codigo = linea.replace(/#.*$/, "").trimEnd();
-      if (/:$/.test(codigo)) s += SANGRIA;
-      else if (/^\s*(return|pass|break|continue|raise)\b/.test(codigo)) s = s.slice(SANGRIA.length);
-      insertarTexto(ed, "\n" + s);
-    } else if (ev.key === "Tab") {
+    if (ev.key === "Tab") {
       ev.preventDefault();
       if (a !== b && v.slice(a, b).includes("\n") || ev.shiftKey) {
         const fin = v.indexOf("\n", b - (b > a && v[b - 1] === "\n" ? 1 : 0)), f = fin < 0 ? v.length : fin;
@@ -2577,9 +2632,7 @@ function editorPy(ed) {
     } else if (ev.key === "Backspace" && a === b && linea.length && /^ +$/.test(linea)) {
       ev.preventDefault();
       const n = linea.length % 4 || 4;
-      ed.setSelectionRange(a - n, a);
-      let ok = false; try { ok = document.execCommand("delete"); } catch (e) {}
-      if (!ok) { ed.setRangeText("", a - n, a, "end"); ed.dispatchEvent(new Event("input", { bubbles: true })); }
+      borrarRango(ed, a - n, a);
     }
   });
 }
@@ -2612,13 +2665,28 @@ window.addEventListener("scroll", () => { if (tipFor) hideTip(); }, { passive: t
 function harnessJuez(fn, code, casos) {
   const data = JSON.stringify(casos.map(c => [c.args, c.espFlat, c.shape]));
   return [
-    "import json as _json, traceback as _tb",
+    "import json as _json, traceback as _tb, linecache as _lc",
     "import numpy as np",
     "_SRC = " + JSON.stringify(code),
     "_FN = " + JSON.stringify(fn),
     "_CASOS = _json.loads(" + JSON.stringify(data) + ")",
     "_R = {'compila': True, 'error': None, 'linea': None, 'casos': []}",
     "_g = {'np': np, '__name__': '__main__'}",
+    "_lc.cache['tu_codigo.py'] = (len(_SRC), None, _SRC.splitlines(True), 'tu_codigo.py')",
+    "def _traza(e, sintaxis=False):",
+    "    try:",
+    "        if sintaxis:",
+    "            if not getattr(e, 'text', None) and getattr(e, 'lineno', None):",
+    "                _ls = _SRC.splitlines()",
+    "                if 0 < e.lineno <= len(_ls):",
+    "                    e.text = _ls[e.lineno - 1] + '\\n'",
+    "            s = ''.join(_tb.format_exception_only(type(e), e))",
+    "        else:",
+    "            fr = [f for f in _tb.extract_tb(e.__traceback__) if f.filename == 'tu_codigo.py']",
+    "            s = 'Traceback (most recent call last):\\n' + ''.join(_tb.format_list(fr)) + ''.join(_tb.format_exception_only(type(e), e))",
+    "    except Exception:",
+    "        s = type(e).__name__ + ': ' + str(e)",
+    "    return s.rstrip()[-1500:]",
     "def _linea(e):",
     "    for f in reversed(_tb.extract_tb(e.__traceback__)):",
     "        if f.filename == 'tu_codigo.py':",
@@ -2627,18 +2695,18 @@ function harnessJuez(fn, code, casos) {
     "try:",
     "    exec(compile(_SRC, 'tu_codigo.py', 'exec'), _g)",
     "except SyntaxError as e:",
-    "    _R.update(compila=False, error=type(e).__name__ + ': ' + str(e.msg), linea=e.lineno)",
+    "    _R.update(compila=False, error=type(e).__name__ + ': ' + str(e.msg), linea=e.lineno, tb=_traza(e, True))",
     "except Exception as e:",
-    "    _R.update(compila=False, error=type(e).__name__ + ': ' + str(e), linea=_linea(e))",
+    "    _R.update(compila=False, error=type(e).__name__ + ': ' + str(e), linea=_linea(e), tb=_traza(e))",
     "if _R['compila'] and not callable(_g.get(_FN)):",
-    "    _R.update(compila=False, error='No se definió la función ' + _FN + '.')",
+    "    _R.update(compila=False, error='No se definió la función ' + _FN + '.', tb='NameError: no se definió la función ' + repr(_FN) + '. Revisa que el nombre sea exactamente el pedido.')",
     "if _R['compila']:",
     "    for _a, _flat, _shape in _CASOS:",
     "        try:",
     "            _args = eval('(' + _a + ',)', {'np': np})",
     "            _r = _g[_FN](*_args)",
     "        except Exception as e:",
-    "            _R['casos'].append({'v': 'RE', 'ob': (type(e).__name__ + ': ' + str(e))[:500], 'linea': _linea(e)})",
+    "            _R['casos'].append({'v': 'RE', 'ob': (type(e).__name__ + ': ' + str(e))[:500], 'linea': _linea(e), 'tb': _traza(e)})",
     "            continue",
     "        try:",
     "            _x = np.asarray(_r, dtype=float)",
@@ -2685,11 +2753,12 @@ function coincide(res, casos) {
 async function corregir(p, code, casos) {
   const r = await PYR.run(harnessJuez(p.fn, code, casos), { modo: "celda", devolver: "_RESULT", timeout: 15000, fuente: code });
   if (r.cargaFallida) return { sinPython: true };
-  if (r.timeout) return { verd: "TLE", ok: 0, tot: casos.length, casos: casos.map(() => ({ v: "TLE", ob: "" })), informe: "Tu código tardó más de 15 segundos. Revisa si hay un ciclo que nunca termina.", out: "" };
+  if (r.timeout) return { verd: "TLE", ok: 0, tot: casos.length, casos: casos.map(() => ({ v: "TLE", ob: "" })), tb: "TimeoutError: tu código tardó más de 15 segundos.\nRevisa si hay un ciclo (while o for) que nunca termina.", informe: "Tu código tardó más de 15 segundos. Revisa si hay un ciclo que nunca termina.", out: "" };
   if (!r.ok || !r.val) return { verd: "RE", ok: 0, tot: casos.length, casos: casos.map(() => ({ v: "RE", ob: "" })), informe: "No se pudo ejecutar tu código: " + (r.error || ""), out: r.out || "" };
   const R = JSON.parse(r.val);
-  if (!R.compila) return { verd: "CE", ok: 0, tot: casos.length, casos: casos.map(() => ({ v: "CE", ob: "" })), informe: `Tu código no se pudo ejecutar: ${R.error}${R.linea ? ` (línea ${R.linea})` : ""}. ${pistaError(R.error)}`, linea: R.linea, out: r.out || "" };
-  const cs = R.casos.map(c => ({ v: c.v, ob: c.ob, flat: c.flat, shape: c.shape, linea: c.linea }));
+  if (!R.compila) return { verd: "CE", ok: 0, tot: casos.length, casos: casos.map(() => ({ v: "CE", ob: "" })), tb: R.tb || R.error || "", informe: `Tu código no se pudo ejecutar: ${R.error}${R.linea ? ` (línea ${R.linea})` : ""}. ${pistaError(R.error)}`, linea: R.linea, out: r.out || "" };
+  const cs = R.casos.map(c => ({ v: c.v, ob: c.ob, flat: c.flat, shape: c.shape, linea: c.linea, tb: c.tb }));
+  const tbs = [], ti = t => { let k = tbs.indexOf(t); if (k < 0) { tbs.push(t); k = tbs.length - 1; } return k; };
   const ok = cs.filter(c => c.v === "AC").length, tot = cs.length;
   let informe;
   if (ok === tot) informe = "Todos los casos de prueba están correctos.";
@@ -2702,7 +2771,7 @@ async function corregir(p, code, casos) {
     else informe = `Tu función se ejecuta, pero entrega otro resultado en ${tot - ok} de ${tot} casos. Revisa la pestaña Test cases: ahí puedes comparar tu output con el esperado, caso por caso.`;
   }
   const verd = ok === tot ? "AC" : cs.some(c => c.v === "RE") ? "RE" : "WA";
-  return { verd, ok, tot, casos: cs.map(c => ({ v: c.v, ob: c.ob })), informe, linea: (cs.find(c => c.linea) || {}).linea || null, out: r.out || "" };
+  return { verd, ok, tot, casos: cs.map(c => c.v === "RE" && c.tb ? { v: c.v, ob: c.ob, ti: ti(c.tb) } : { v: c.v, ob: c.ob }), tbs, informe, linea: (cs.find(c => c.linea) || {}).linea || null, out: r.out || "" };
 }
 function bubFor(s) { if (!s || !s.intentos) return '<span class="bub" aria-label="Sin intentos"></span>'; if (s.ac) return '<span class="bub on" aria-label="Aceptado">✓</span>'; return s.best > 0 ? '<span class="bub half" aria-label="Parcial"></span>' : '<span class="bub bad" aria-label="Incorrecto">✗</span>'; }
 const setDe = id => B.sets.find(s => s.id === id);
@@ -2890,7 +2959,25 @@ const ICO_ET = {
   ayuda: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></svg>'
 };
 function limpiarOb(s) { return String(s == null ? "" : s).replace(/^np\.(?:float|int|uint|bool|complex)\w*\(([\s\S]*)\)$/, "$1"); }
-function tcMapDe(p, env, casos) { const m = {}; (env.casos || []).forEach((c, i) => { const k = p.casos.indexOf(casos[i]); if (k >= 0) m[k] = c; }); return m; }
+function tcMapDe(p, env, casos) {
+  const m = {};
+  (env.casos || []).forEach((c, i) => { const k = p.casos.indexOf(casos[i]); if (k >= 0) m[k] = Object.assign({}, c, { tb: c.ti != null ? (env.tbs || [])[c.ti] : (c.v === "CE" || c.v === "TLE") ? env.tb : (c.v === "RE" ? c.ob : null) }); });
+  return m;
+}
+const esErr = r => r && r.v !== "AC" && r.v !== "WA";
+/* traza de Python con colores, como en la consola de Clearn */
+function pintarTB(tb) {
+  const L = String(tb || "").split("\n");
+  return L.map((l, i) => {
+    let m;
+    if ((m = l.match(/^(\s*)File "([^"]*)", line (\d+)(, in (.*))?$/))) return `${m[1]}<span class="tb-k">File</span> <span class="py-str">"${esc(m[2])}"</span>, <span class="tb-k">line</span> <span class="py-num">${m[3]}</span>${m[4] ? `, <span class="tb-k">in</span> <span class="py-fn">${esc(m[5])}</span>` : ""}`;
+    if (/^Traceback/.test(l)) return `<span class="tb-k">${esc(l)}</span>`;
+    if (/^\s*[~^]+[\s~^]*$/.test(l)) return `<span class="tb-car">${esc(l)}</span>`;
+    if ((m = l.match(/^([A-Za-z_][\w.]*(?:Error|Exception|Warning|Exit|Interrupt))(:?)(.*)$/)) && i >= L.length - 3) return `<span class="tb-exc">${esc(m[1])}</span>${m[2]}<span class="tb-msg">${esc(m[3])}</span>`;
+    if (/^\s{4}/.test(l)) return pintarPy(l);
+    return esc(l);
+  }).join("\n");
+}
 function tcGrupos(p) { const pub = [], oc = []; p.casos.forEach((c, i) => (c.vis ? pub : oc).push(i)); return { pub, oc }; }
 const ESTADO_TC = { AC: ["ok", "Respuesta correcta"], WA: ["bad", "Respuesta incorrecta"], RE: ["warn", "Error de ejecución"], CE: ["warn", "Error de compilación"], TLE: ["warn", "Tiempo límite excedido"] };
 function etabsHTML(conAyuda) {
@@ -2907,14 +2994,15 @@ function tcDetHTML(p, i, r, enJuez) {
   const { pub, oc } = tcGrupos(p), c = p.casos[i], k = (c.vis ? pub : oc).indexOf(i) + 1;
   const [cl, st] = r ? (ESTADO_TC[r.v] || ESTADO_TC.RE) : ["", "Sin ejecutar"];
   const head = `<div class="tc-head"><h3>Test case ${c.vis ? "público" : "oculto"} #${k}</h3><span class="tc-st ${cl}">${st}</span></div>`;
+  const errHTML = esErr(r) ? `<details class="tc-fold tc-errf" open><summary>Error<span class="chev" aria-hidden="true">›</span></summary><pre class="tc-tb">${pintarTB(r.tb || r.ob || "Tu código lanzó un error.")}</pre></details>` : "";
   if (!c.vis) {
-    const err = r && r.v === "RE" && r.ob ? `<div class="tc-fold-in"><span class="tc-lab">Error</span><pre class="out">${esc(r.ob)}</pre></div>` : "";
+    const err = errHTML;
     return head + `<div class="tc-hid">${LOCK}<p>Este caso es oculto: su input y su output esperado no se muestran, para que tu solución funcione con cualquier dato y no solo con los ejemplos. ${enJuez ? "Se ejecuta cada vez que presionas <b>Enviar</b>." : "Se ejecuta cuando entregas la interrogación."}</p></div>${err}`;
   }
-  const esp = c.espRepr, tu = r ? (r.v === "CE" ? "Tu código no se pudo ejecutar." : r.v === "TLE" ? "Tu código tardó demasiado." : limpiarOb(r.ob)) : null;
+  const esp = c.espRepr, tu = r && !esErr(r) ? limpiarOb(r.ob) : null;
   const marcar = r && r.v === "WA";
-  const vacio = `<p class="tc-none">Ejecuta tu código con <b>Probar</b>${enJuez ? " o <b>Enviar</b>" : ""} para ver tu output aquí.</p>`;
-  return head + `<section class="tc-cmp"><h4>Comparación de outputs</h4>
+  const vacio = esErr(r) ? `<p class="tc-none">Sin output: tu código ${r.v === "TLE" ? "no terminó a tiempo" : r.v === "CE" ? "no se pudo ejecutar" : "lanzó un error en este caso"}.</p>` : `<p class="tc-none">Ejecuta tu código con <b>Probar</b>${enJuez ? " o <b>Enviar</b>" : ""} para ver tu output aquí.</p>`;
+  return head + errHTML + `<section class="tc-cmp"><h4>Comparación de outputs</h4>
       <div class="tc-cols"><div><span class="tc-lab">Output esperado</span>${lineasTC(esp, tu, marcar)}</div><div class="${marcar ? "mal" : ""}"><span class="tc-lab">Tu output</span>${tu != null ? lineasTC(tu, esp, marcar) : vacio}</div></div></section>
     <details class="tc-fold" open><summary>Input<span class="chev" aria-hidden="true">›</span></summary><pre class="out in">${esc(inputDe(p, c.args))}</pre></details>
     <details class="tc-fold"><summary>Tu output<span class="chev" aria-hidden="true">›</span></summary>${tu != null ? `<pre class="out">${esc(tu)}</pre>` : vacio}</details>
@@ -2922,12 +3010,12 @@ function tcDetHTML(p, i, r, enJuez) {
 }
 function tcHTML(p, run, sel, enJuez) {
   const { pub, oc } = tcGrupos(p), m = (run && run.map) || {}, n = p.casos.length;
-  const res = Object.values(m), okN = res.filter(c => c.v === "AC").length, malN = res.length - okN;
-  const btn = (i, k) => { const r = m[i], st = !r ? "" : r.v === "AC" ? "ok" : "bad", vis = p.casos[i].vis; return `<li><button type="button" data-tc="${i}" class="${st}${i === sel ? " on" : ""}" aria-pressed="${i === sel}" title="${vis ? "Público" : "Oculto"} #${k}${r ? " · " + (ESTADO_TC[r.v] || ESTADO_TC.RE)[1] : ""}">${vis ? "" : LOCK}<span>${String(k).padStart(3, "0")}</span><i aria-hidden="true">${!r ? "" : r.v === "AC" ? "✓" : "✗"}</i></button></li>`; };
+  const res = Object.values(m), okN = res.filter(c => c.v === "AC").length, errN = res.filter(esErr).length, malN = res.length - okN - errN;
+  const btn = (i, k) => { const r = m[i], st = !r ? "" : r.v === "AC" ? "ok" : esErr(r) ? "err" : "bad", vis = p.casos[i].vis; return `<li><button type="button" data-tc="${i}" class="${st}${i === sel ? " on" : ""}" aria-pressed="${i === sel}" title="${vis ? "Público" : "Oculto"} #${k}${r ? " · " + (ESTADO_TC[r.v] || ESTADO_TC.RE)[1] : ""}">${vis ? "" : LOCK}<span>${String(k).padStart(3, "0")}</span><i aria-hidden="true">${!r ? "" : r.v === "AC" ? "✓" : esErr(r) ? "!" : "✗"}</i></button></li>`; };
   const sum = run ? `<b>${okN} de ${res.length}</b> correctos · ${run.tipo === "envio" ? "último envío" : `última prueba con los ${pub.length} públicos`}${res.length < n ? ` · ${n - res.length} sin ejecutar` : ""}`
     : `Aún no ejecutas tu código. <b>Probar</b> corre los ${pub.length} casos públicos${enJuez ? `; <b>Enviar</b> corre los ${n}, incluidos los ${oc.length} ocultos` : ""}.`;
   return `<div class="tc">
-    <div class="tc-bar" role="img" aria-label="${okN} correctos y ${malN} incorrectos de ${n} casos"><i class="ok" style="width:${100 * okN / n}%"></i><i class="bad" style="width:${100 * malN / n}%"></i></div>
+    <div class="tc-bar" role="img" aria-label="${okN} correctos, ${malN} incorrectos y ${errN} con error, de ${n} casos"><i class="ok" style="width:${100 * okN / n}%"></i><i class="bad" style="width:${100 * malN / n}%"></i><i class="err" style="width:${100 * errN / n}%"></i></div>
     <p class="tc-sum">${sum}</p>
     <div class="tc-grid">
       <div class="tc-side"><span class="tc-lab">Públicos · ${pub.length}</span><ol class="tc-list">${pub.map((i, k) => btn(i, k + 1)).join("")}</ol>
@@ -2942,7 +3030,7 @@ function montarTC(root, p, key, getRun, enJuez) {
     if (tcSel[key] == null || !p.casos[tcSel[key]]) tcSel[key] = p.casos.findIndex(c => c.vis);
     const box = $('[data-epane="tc"]', root); if (box) box.innerHTML = tcHTML(p, run, tcSel[key], enJuez);
     const bd = $(".tc-badge", root), res = Object.values(m);
-    if (bd) { bd.hidden = !res.length; bd.textContent = `${res.filter(c => c.v === "AC").length}/${res.length}`; bd.className = "tc-badge " + (res.length && res.every(c => c.v === "AC") ? "ok" : "bad"); }
+    if (bd) { bd.hidden = !res.length; bd.textContent = `${res.filter(c => c.v === "AC").length}/${res.length}`; bd.className = "tc-badge " + (res.length && res.every(c => c.v === "AC") ? "ok" : res.some(esErr) ? "err" : "bad"); }
   };
   const tab = t => {
     eTab[key] = t;
@@ -2991,7 +3079,7 @@ function filasCasos(p, env, casos) {
   return env.casos.map((c, i) => { const k = casos[i]; return `<tr><td class="r">${i + 1}</td><td>${k.vis ? `<pre class="out in">${esc(inputDe(p, k.args))}</pre>` : '<span class="muted">Caso oculto</span>'}</td><td>${k.vis ? `<pre class="out">${esc(k.espRepr)}</pre>` : '<span class="muted">—</span>'}</td><td>${(k.vis || c.v === "RE") && c.ob ? `<pre class="out">${esc(c.ob)}</pre>` : '<span class="muted">—</span>'}</td><td><span class="pill ${c.v === "AC" ? "ok" : c.v === "WA" ? "bad" : "warn"}">${VERD[c.v]}</span></td></tr>`; }).join("");
 }
 function resultHTML(p, env, casos = p.casos, prueba = false, enPrueba = false, compacto = false) {
-  const bubs = env.casos.map((c, i) => { const k = p.casos.indexOf(casos[i]), t = `Caso ${i + 1}: ${VERD[c.v]}`; return compacto && k >= 0 ? `<button type="button" class="bub ${c.v === "AC" ? "on" : "bad"}" data-gotc="${k}" title="${t}" aria-label="${t}">${c.v === "AC" ? "✓" : "✗"}</button>` : `<span class="bub ${c.v === "AC" ? "on" : "bad"}" title="${t}">${c.v === "AC" ? "✓" : i + 1}</span>`; }).join("");
+  const bubs = env.casos.map((c, i) => { const k = p.casos.indexOf(casos[i]), t = `Caso ${i + 1}: ${VERD[c.v]}`; return compacto && k >= 0 ? `<button type="button" class="bub ${c.v === "AC" ? "on" : c.v === "WA" ? "bad" : "warn"}" data-gotc="${k}" title="${t}" aria-label="${t}">${c.v === "AC" ? "✓" : c.v === "WA" ? "✗" : "!"}</button>` : `<span class="bub ${c.v === "AC" ? "on" : "bad"}" title="${t}">${c.v === "AC" ? "✓" : i + 1}</span>`; }).join("");
   return `<div class="u-verdict ${env.verd === "TLE" ? "RE" : env.verd}"><b>${VERD[env.verd]}</b><span>${env.ok} de ${env.tot} casos${prueba ? " visibles · no cuenta como envío" : enPrueba ? "" : ` · ${Math.round(100 * env.ok / env.tot)} puntos`}</span><span class="bubs">${bubs}</span></div>
     ${compacto ? `<div class="u-actions"><button class="btn btn-sm" type="button" data-gotc="">Ver los test cases</button></div>` : ""}
     ${!compacto && env.casos.length && env.verd !== "CE" ? `<div class="u-twrap"><table class="u-table u-ex"><thead><tr><th class="r">Caso</th><th>Input</th><th>Output esperado</th><th>Tu output</th><th>Estado</th></tr></thead><tbody>${filasCasos(p, env, casos)}</tbody></table></div>` : ""}
