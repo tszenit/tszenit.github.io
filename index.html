@@ -764,13 +764,50 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .hz-sum .tc-cta a { background: #D4A84B; color: #111A2E; border-radius: 999px; padding: 10px 16px; font: 700 15px var(--f-display); text-decoration: none; white-space: nowrap; }
 @media (max-width: 420px) { .hz-sum .tc-cta { flex-direction: column; border-radius: 18px; padding: 12px; } .tsel.hz { padding: 16px 12px; } }
 .pricing{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}@media (max-width:820px){.pricing{grid-template-columns:minmax(0,1fr)}}.pcard{min-width:0}@media (max-width:640px){header.top .wrap{flex-wrap:wrap;row-gap:2px}nav.main{width:100%;justify-content:space-between;align-items:center;gap:6px}nav.main a[href='#ejes']{display:none}nav.main{overflow-x:auto;scrollbar-width:none}nav.main a,nav.main .btn{white-space:nowrap;font-size:12.5px;padding:8px 9px;min-height:40px;flex:none}}
+
+/* ---- menú de tres barras y «Mis productos» ---- */
+.brand { display: flex; align-items: center; gap: 10px; }
+.hamb { width: 42px; height: 42px; flex: none; display: grid; place-content: center; gap: 4px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); cursor: pointer; }
+.hamb span { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--ink); }
+.hamb:hover { background: rgba(255, 255, 255, .09); }
+.menu-bg { position: fixed; inset: 0; z-index: 60; background: rgba(3, 8, 18, .6); backdrop-filter: blur(2px); }
+.menu { position: fixed; top: 0; bottom: 0; left: 0; z-index: 61; width: min(340px, 88vw); overflow-y: auto; background: #0B1A33; border-right: 1px solid var(--line); box-shadow: 30px 0 80px -30px rgba(0, 0, 0, .8);
+  padding: max(14px, env(safe-area-inset-top, 0px)) 14px max(18px, env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 2px; animation: menuIn .18s ease-out; }
+@keyframes menuIn { from { transform: translateX(-24px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .menu { animation: none; } }
+.menu-top { display: flex; align-items: center; justify-content: space-between; padding: 2px 4px 10px; font: 700 16px var(--f-display); }
+.menu-top .x { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line); background: none; color: var(--ink); font-size: 22px; cursor: pointer; }
+.menu a { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 12px; color: var(--ink); text-decoration: none; font: 600 15px var(--f-display); }
+.menu a:hover, .menu a:focus-visible { background: rgba(255, 255, 255, .06); }
+.menu a svg { width: 19px; height: 19px; color: #D8A878; flex: none; }
+.menu a.menu-mis { margin-bottom: 8px; padding: 14px; border: 1px solid rgba(216, 168, 120, .45); background: linear-gradient(135deg, rgba(216, 168, 120, .16), rgba(216, 168, 120, .04)); }
+.menu-mis span { flex: 1; min-width: 0; } .menu-mis b { display: block; font-size: 16px; } .menu-mis small { display: block; font: 500 13px var(--f-display); color: var(--muted); margin-top: 2px; }
+.menu-mis i { font-style: normal; font-size: 24px; color: #D8A878; }
+.menu-k { margin: 6px 12px 4px; font: 700 11.5px var(--f-display); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.menu-acts { display: grid; gap: 8px; margin-top: 14px; padding: 14px 4px 0; border-top: 1px solid var(--line); }
+.mp-view { position: fixed; inset: 0; z-index: 55; overflow-y: auto; background: var(--bg-deep, #081428); }
+.mp-head { position: sticky; top: 0; z-index: 2; background: rgba(8, 20, 40, .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+.mp-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; }
+.mp-back { font: 700 15px var(--f-display); color: var(--ink); text-decoration: none; padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); }
+.mp-who { font: 500 13.5px var(--f-display); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mp-body { padding-block: 34px 70px; max-width: 900px; }
+.mp-body h1 { font-size: clamp(30px, 5vw, 42px); margin: 8px 0 22px; }
+.mp-g { margin-top: 26px; } .mp-g h2 { font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; font-family: var(--f-display); }
+.mp-it { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 14px 16px; margin-bottom: 10px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255, 255, 255, .03); }
+@media (max-width: 560px) { .mp-it { grid-template-columns: auto minmax(0, 1fr); } .mp-it .mp-a { grid-column: 1 / -1; justify-content: flex-start; } }
+.mp-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--c, #D8A878); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c, #D8A878) 25%, transparent); }
+.mp-it b { display: block; font: 700 16px/1.3 var(--f-display); } .mp-it small { display: block; font: 500 13.5px/1.4 var(--f-display); color: var(--muted); margin-top: 3px; }
+.mp-a { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.mp-empty { padding: 34px 24px; border-radius: 20px; border: 1px dashed rgba(216, 168, 120, .45); background: rgba(216, 168, 120, .05); text-align: center; }
+.mp-empty svg { width: 46px; height: 46px; color: #D8A878; } .mp-empty h2 { font-size: 22px; margin: 12px 0 6px; } .mp-empty p { color: var(--muted); margin: 0 auto 18px; max-width: 46ch; }
+.mp-empty .acts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 </style>
 </head><body>
 
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#inicio" aria-label="TS Zenit, inicio"><svg viewBox="0 0 400 100" role="img" aria-label="TS Zenit" xmlns="http://www.w3.org/2000/svg"><g><path d="M10 86 A44 44 0 0 1 98 86" fill="none" stroke="#F2F4F9" stroke-width="6"/><rect x="33" y="70" width="9" height="16" rx="1.5" fill="#8E96E0"/><rect x="49.5" y="60" width="9" height="26" rx="1.5" fill="#B9C0F2"/><rect x="66" y="56" width="9" height="30" rx="1.5" fill="#F2F4F9"/><path d="M54 4 L58.6 19.4 L74 24 L58.6 28.6 L54 44 L49.4 28.6 L34 24 L49.4 19.4 Z" fill="#F5A524"/><rect x="2" y="86" width="104" height="4.5" rx="2.2" fill="#F2F4F9"/></g><text x="122" y="61" font-family="Poppins, 'Avenir Next', 'Segoe UI', sans-serif" font-size="46" letter-spacing="2.5" fill="#F2F4F9"><tspan font-weight="500">TS</tspan><tspan font-weight="700" dx="10">ZENIT</tspan></text><text x="124" y="87" font-family="Poppins, 'Avenir Next', 'Segoe UI', sans-serif" font-weight="600" font-size="14.5" letter-spacing="5.0" fill="#D8A878">HAZLO REALIDAD</text></svg></a>
+    <div class="brand"><button class="hamb" id="navMenu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button><a class="logo" href="#inicio" aria-label="TS Zenit, inicio"><svg viewBox="0 0 400 100" role="img" aria-label="TS Zenit" xmlns="http://www.w3.org/2000/svg"><g><path d="M10 86 A44 44 0 0 1 98 86" fill="none" stroke="#F2F4F9" stroke-width="6"/><rect x="33" y="70" width="9" height="16" rx="1.5" fill="#8E96E0"/><rect x="49.5" y="60" width="9" height="26" rx="1.5" fill="#B9C0F2"/><rect x="66" y="56" width="9" height="30" rx="1.5" fill="#F2F4F9"/><path d="M54 4 L58.6 19.4 L74 24 L58.6 28.6 L54 44 L49.4 28.6 L34 24 L49.4 19.4 Z" fill="#F5A524"/><rect x="2" y="86" width="104" height="4.5" rx="2.2" fill="#F2F4F9"/></g><text x="122" y="61" font-family="Poppins, 'Avenir Next', 'Segoe UI', sans-serif" font-size="46" letter-spacing="2.5" fill="#F2F4F9"><tspan font-weight="500">TS</tspan><tspan font-weight="700" dx="10">ZENIT</tspan></text><text x="124" y="87" font-family="Poppins, 'Avenir Next', 'Segoe UI', sans-serif" font-weight="600" font-size="14.5" letter-spacing="5.0" fill="#D8A878">HAZLO REALIDAD</text></svg></a></div>
     <nav class="main" aria-label="Secciones">
       <a href="#clases" class="nav-clase" data-clase>Agenda tu clase</a>
       <a href="#universidad" class="nav-uni"><span class="u-full">TS Zenit&nbsp;</span>Universidad</a>
@@ -783,6 +820,23 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
     </nav>
   </div>
 </header>
+
+<div class="menu-bg" id="menuBg" hidden></div>
+<nav class="menu" id="menu" aria-label="Menú" hidden>
+  <div class="menu-top"><b>Menú</b><button class="x" type="button" id="menuX" aria-label="Cerrar menú">×</button></div>
+  <a class="menu-mis" href="#mis-productos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><span><b>Mis productos</b><small id="menuN">Lo que compraste en TS Zenit</small></span><i aria-hidden="true">›</i></a>
+  <p class="menu-k">Atajos</p>
+  <a href="#inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg>Inicio</a><a href="#universidad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg>TS Zenit Universidad</a><a href="#intensivo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Intensivos PAES</a><a href="#ejes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>Guías y ejes PAES</a><a href="#material"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/></svg>Material PAES</a><a href="#clases"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5 21.5 7v10l-6-3.5"/></svg>Clases particulares</a><a href="#como"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></svg>Cómo funciona</a><a href="#precios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12 12 20l-8-8V4h8z"/><path d="M8 8h.01"/></svg>Precios</a><a href="#faq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Preguntas frecuentes</a><a href="#privacidad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Privacidad</a>
+  <div class="menu-acts"><button class="btn btn-ghost btn-sm" type="button" id="menuCode">Tengo un código</button><button class="btn btn-ghost btn-sm" type="button" id="menuSes">Iniciar sesión</button></div>
+</nav>
+<section class="mp-view" id="misProd" hidden aria-labelledby="mpT">
+  <div class="mp-head"><div class="wrap"><a class="mp-back" href="#inicio">‹ Volver</a><span class="mp-who" id="mpWho"></span></div></div>
+  <div class="wrap mp-body">
+    <p class="eyebrow">Tu cuenta</p>
+    <h1 id="mpT">Mis productos</h1>
+    <div id="mpList" aria-live="polite"></div>
+  </div>
+</section>
 
 <main id="inicio">
   <section class="hero">
@@ -2120,6 +2174,73 @@ $("#tutorBox").addEventListener("click", ev => {
   const t = ev.target.closest("[data-tutor]"); if (t) return verTutor(t.dataset.tutor); if (ev.target.closest("[data-volver]")) verTutores(); });
 lb.addEventListener("click", ev => { if (ev.target === lb || ev.target.closest(".lbx")) closeClase(); });
 document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !lb.hidden) closeClase(); });
+
+/* ---------- menú de tres barras y página «Mis productos» (tszenit.cl/#mis-productos) ---------- */
+const menuEl = $("#menu"), menuBg = $("#menuBg"); let menuFoco = null;
+function abrirMenu() { menuFoco = document.activeElement; pintarMenu(); menuEl.hidden = false; menuBg.hidden = false; $("#navMenu").setAttribute("aria-expanded", "true"); document.body.style.overflow = "hidden"; const a = menuEl.querySelector("a"); if (a) a.focus(); }
+function cerrarMenu(volver) { if (menuEl.hidden) return; menuEl.hidden = true; menuBg.hidden = true; $("#navMenu").setAttribute("aria-expanded", "false"); if ($("#misProd").hidden) document.body.style.overflow = ""; if (volver && menuFoco) menuFoco.focus(); }
+function pintarMenu() {
+  const n = prods().length;
+  $("#menuN").textContent = !(ses && ses.e) ? "Inicia sesión para verlos" : n ? (n === 1 ? "1 producto en tu cuenta" : n + " productos en tu cuenta") : "Aún no tienes productos";
+  $("#menuSes").textContent = ses && ses.e ? "Cerrar sesión (" + ses.e + ")" : "Iniciar sesión";
+}
+$("#navMenu").addEventListener("click", abrirMenu);
+$("#menuX").addEventListener("click", () => cerrarMenu(true));
+menuBg.addEventListener("click", () => cerrarMenu(true));
+menuEl.addEventListener("click", ev => { if (ev.target.closest("a")) cerrarMenu(); });
+document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !menuEl.hidden) cerrarMenu(true); });
+$("#menuCode").addEventListener("click", () => { cerrarMenu(); openCode(); });
+$("#menuSes").addEventListener("click", () => {
+  cerrarMenu();
+  if (!(ses && ses.e)) return conLogin("Tus compras quedan guardadas en tu cuenta", () => { if (location.hash === "#mis-productos") pintarMis(); });
+  try { google.accounts.id.disableAutoSelect(); } catch (e) {} ses = null; saveSes(); pintarSesion(); renderEjes(); if (location.hash === "#mis-productos") pintarMis(); toast("Cerraste sesión");
+});
+function irAEje(id) {
+  const r = findEje(id); if (!r) return;
+  current = r.p.id; abiertos.add(id); renderTabs(); renderEjes(); location.hash = r.p.uni ? "#universidad" : "#ejes";
+  setTimeout(() => { const c = $("#eje-" + id); if (c) c.scrollIntoView({ block: "start" }); }, 60);
+}
+function itemMis(p) {
+  const A = (txt, attrs, cls) => `<${attrs.startsWith("href") ? "a" : "button type=\"button\""} class="btn btn-sm ${cls || "btn-ghost"}" ${attrs}>${txt}</${attrs.startsWith("href") ? "a" : "button"}>`;
+  if (PCAL[p]) { const P = PCAL[p], I = planDe(P);
+    return { g: "Cursos universitarios", c: P.c, t: P.nombre, d: P.sec === "*" ? "Semestre completo: " + ySecs(I.secs) : P.ev + " · " + P.t,
+      a: I.aula ? A("Entrar al aula", `href="${I.aula}${P.sec === "*" ? "" : "#" + P.sec.toLowerCase()}"`, "btn-cafe") : `<span class="muted" style="font:500 13px var(--f-display)">El aula abre pronto: te avisamos por correo</span>` }; }
+  if (INTENSIVOS[p]) { const N = INTENSIVOS[p];
+    return { g: "Intensivos PAES", c: "#F5A524", t: N.nombre, d: N.sub + " · acceso hasta la PAES de admisión 2027", a: AULA[N.area] ? A("Entrar al aula", `href="${AULA[N.area]}"`, "btn-cafe") : "" }; }
+  if (INTS[p] === "*") return { g: "Intensivos PAES", c: "#F5A524", t: "Intensivo PAES", d: "Matemática y Ciencias", a: A("Aula de Matemática", `href="${AULA.MAT}"`, "btn-cafe") + A("Aula de Ciencias", `href="${AULA.CIE}"`) };
+  if (GUIAS[p]) { const r = findGuia(p), uni = r && r.p.uni, plan = n => prods().some(x => PCAL[x] && (PCAL[x].plan || "") === n), aula = /^TSZ-CAL-/.test(p) && plan("") ? PCAL_AULA : /^TSZ-PRE-/.test(p) && plan("PRE") ? PLAN_INFO.PRE.aula : "";
+    return { g: "Guías", c: "#D8A878", t: GUIAS[p].titulo, d: r ? (uni ? "TS Zenit Universidad" : r.p.nombre || "PAES") + " · " + r.e.nombre : "Guía",
+      a: A("Descargar PDF", `data-mp-pdf="${p}"`, "btn-cafe") + (aula ? A("Ir al aula", `href="${aula}"`) : r ? A("Ver en su eje", `data-mp-eje="${r.e.id}"`) : "") }; }
+  const r = findEje(p);
+  if (r) return { g: "Ejes completos", c: "#8E96E0", t: r.e.nombre + " · eje completo", d: (r.p.uni ? "TS Zenit Universidad" : r.p.nombre || "PAES") + " · " + r.e.guias.length + (r.e.guias.length === 1 ? " guía" : " guías") + " y las que se publiquen", a: A("Ver guías", `data-mp-eje="${r.e.id}"`, "btn-cafe") };
+  return { g: "Otros", c: "#94A3B8", t: p, d: "Producto activado en tu cuenta", a: "" };
+}
+function pintarMis() {
+  const L = $("#mpList"); $("#mpWho").textContent = ses && ses.e ? ses.e : "";
+  const vacio = (h, p, acts) => `<div class="mp-empty">${IC_BOX}<h2>${h}</h2><p>${p}</p><div class="acts">${acts}</div></div>`;
+  if (!(ses && ses.e)) { L.innerHTML = vacio("Inicia sesión para ver tus productos", "Tus compras quedan guardadas en tu cuenta de Google. Entra con la misma cuenta con que activaste tus códigos.", '<button class="btn btn-cafe" type="button" data-mp-login>Iniciar sesión</button>'); return; }
+  const ps = prods();
+  if (!ps.length) { L.innerHTML = vacio("Aún no tienes ningún producto", "Cuando compres un curso, un Intensivo o una guía y actives tu código, aparecerá aquí.", '<a class="btn btn-cafe" href="#universidad">Ver cursos universitarios</a><a class="btn btn-ghost" href="#ejes">Ver guías PAES</a><button class="btn btn-ghost" type="button" data-mp-code>Tengo un código</button>'); return; }
+  const grupos = {}, orden = ["Cursos universitarios", "Intensivos PAES", "Ejes completos", "Guías", "Otros"];
+  ps.forEach(p => { const it = itemMis(p); (grupos[it.g] = grupos[it.g] || []).push(it); });
+  L.innerHTML = `<p class="muted" style="margin:0">${ps.length === 1 ? "Tienes 1 producto" : "Tienes " + ps.length + " productos"} en tu cuenta.</p>` + orden.filter(g => grupos[g]).map(g => `<div class="mp-g"><h2>${g}</h2>${grupos[g].map(it => `<div class="mp-it" style="--c:${it.c}"><span class="mp-dot" aria-hidden="true"></span><div><b>${esc(it.t)}</b><small>${esc(it.d)}</small></div><div class="mp-a">${it.a}</div></div>`).join("")}</div>`).join("")
+    + `<p style="margin-top:22px"><button class="btn btn-ghost btn-sm" type="button" data-mp-code>Activar otro código</button></p>`;
+}
+const IC_BOX = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>`;
+$("#mpList").addEventListener("click", ev => {
+  const pdf = ev.target.closest("[data-mp-pdf]"); if (pdf) return descargar(pdf.dataset.mpPdf, pdf);
+  const ej = ev.target.closest("[data-mp-eje]"); if (ej) return irAEje(ej.dataset.mpEje);
+  if (ev.target.closest("[data-mp-code]")) return openCode();
+  if (ev.target.closest("[data-mp-login]")) return conLogin("Inicia sesión para ver tus productos", ruta);
+});
+function ruta() {
+  const v = $("#misProd"), on = location.hash === "#mis-productos";
+  if (on) {
+    pintarMis(); v.hidden = false; document.body.style.overflow = "hidden"; v.scrollTop = 0;
+    if (vivo()) api({ tipo: "mis", idToken: ses.t }).then(j => { ses.p = j.productos || []; saveSes(); renderEjes(); if (location.hash === "#mis-productos") pintarMis(); }, () => {});
+  } else if (!v.hidden) { v.hidden = true; if (menuEl.hidden) document.body.style.overflow = ""; }
+}
+window.addEventListener("hashchange", ruta); ruta();
 
 </script>
 </body></html>
