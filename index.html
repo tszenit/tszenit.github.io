@@ -666,6 +666,9 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .int-price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 18px 0 18px; }
 .int-price b { font: 700 clamp(34px, 6vw, 44px)/1 var(--f-display); color: var(--ink); }
 .int-price span { font: 500 14px var(--f-display); color: var(--muted); max-width: 24ch; }
+.int-price .int-was { font: 600 22px/1 var(--f-display); color: var(--muted); text-decoration: line-through; text-decoration-color: #F0525A; text-decoration-thickness: 2px; }
+.int-price .int-dcto { font: 800 15px/1 var(--f-display); color: #1B0E00; background: #FF7A1A; border-radius: 999px; padding: 6px 11px; max-width: none; letter-spacing: .02em; }
+.dcto { display: inline-block; font: 800 13px/1 var(--f-display); color: #1B0E00; background: #FF7A1A; border-radius: 999px; padding: 5px 10px; vertical-align: middle; margin-left: 6px; }
 .btn.int-btn { background: linear-gradient(135deg, #F7B84A, #E08E0B); color: #1b1305; border: 0; font-weight: 700; padding-inline: 26px; box-shadow: 0 12px 28px -12px rgba(245, 165, 36, .8); }
 .btn.int-btn:hover { background: linear-gradient(135deg, #F9C66A, #EB9A17); }
 .int-cie .btn.int-btn { background: linear-gradient(135deg, #7DF0DC, #2BB8A3); color: #04201b; box-shadow: 0 12px 28px -12px rgba(94, 234, 212, .7); }
@@ -880,7 +883,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <a class="btn btn-ghost" href="#como">Cómo funciona</a>
         </div>
         <div class="facts">
-          <div><b>$19.990</b>Intensivo Matemática o Ciencias · hasta la PAES</div>
+          <div><b>−60%</b>Intensivos a $19.990 (antes $49.990)</div>
           <div><b>72 h</b>hábiles para tu informe</div>
           <div><b>Temario</b>oficial DEMRE 2027</div>
         </div>
@@ -936,14 +939,14 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
       <div class="sec-head">
         <p class="eyebrow">Suscripciones · hasta la PAES</p>
         <h2>Intensivos PAES</h2>
-        <p>Todas las guías de TS Zenit vienen en los Intensivos: Matemática (M1 y M2) y Ciencias, a $19.990 cada uno. Elige el que necesitas o toma los dos.</p>
+        <p>Todas las guías de TS Zenit vienen en los Intensivos: Matemática (M1 y M2) y Ciencias, a $19.990 cada uno: <b>60% de descuento</b> sobre su precio normal de $49.990. Elige el que necesitas o toma los dos.</p>
       </div>
       <div class="int-grid">
         <article class="int-card int-mat">
           <p class="int-eb"><span class="int-dot" aria-hidden="true"></span>Intensivo · M1 + M2</p>
           <h3>Intensivo Matemática</h3>
           <p class="int-lead">Todo TS Zenit para M1 y M2, con clases en vivo, en un solo pago y hasta el día de la prueba.</p>
-          <div class="int-price"><b>$19.990</b><span>pago único · acceso hasta la PAES de admisión 2027</span></div>
+          <div class="int-price"><s class="int-was">$49.990</s><b>$19.990</b><span class="int-dcto">−60%</span><span>pago único · acceso hasta la PAES de admisión 2027</span></div>
           <ul class="int-list">
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías de M1 y M2</b>Normales, avanzadas ★ y ensayos finales de cada eje, con la solución paso a paso en un QR. También las que se publiquen después.</span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Clases online en vivo y videos</b>Clases en vivo con los tutores de TS Zenit y videos de material PAES con los tutores y el tutor virtual. <em>Durante el Intensivo.</em></span></li>
@@ -958,7 +961,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <p class="int-eb"><span class="int-dot" aria-hidden="true"></span>Intensivo · Ciencias</p>
           <h3>Intensivo Ciencias</h3>
           <p class="int-lead">Física, Química y Biología para la PAES de Ciencias, en un solo pago y hasta el día de la prueba.</p>
-          <div class="int-price"><b>$19.990</b><span>pago único · acceso hasta la PAES de admisión 2027</span></div>
+          <div class="int-price"><s class="int-was">$49.990</s><b>$19.990</b><span class="int-dcto">−60%</span><span>pago único · acceso hasta la PAES de admisión 2027</span></div>
           <ul class="int-list">
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías de Ciencias</b>Física, Química y Biología: normales, avanzadas ★ y ensayos finales de cada eje, con la solución paso a paso en un QR. También las que se publiquen después.</span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Videos de clases</b>Clases grabadas de material PAES con los tutores de TS Zenit y el tutor virtual. <em>Durante el Intensivo.</em></span></li>
@@ -1094,13 +1097,13 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
       <div class="sec-head">
         <p class="eyebrow">Precios</p>
         <h2>Un Intensivo, todo lo que necesitas hasta la PAES</h2>
-        <p>Las guías PAES vienen en los Intensivos: ya no se venden ejes ni guías por separado.</p>
+        <p>Los Intensivos tienen <b>60% de descuento</b>: de $49.990 a $19.990 cada uno. Las guías PAES vienen en los Intensivos; ya no se venden ejes ni guías por separado.</p>
       </div>
       <div class="pricing">
         <div class="pcard best">
           <span class="tag">M1 + M2</span>
           <h3 class="pt">Intensivo Matemática</h3>
-          <div class="big">$19.990 <small>pago único</small></div>
+          <div class="big"><s class="was">$49.990</s>$19.990 <span class="dcto">−60%</span> <small>pago único</small></div>
           <ul>
             <li>Todas las guías de M1 y M2: normales, avanzadas ★ y ensayos finales, también las que se publiquen.</li>
             <li>Los 4 ensayos PAES de M1 y M2, con puntaje al enviar e informe personal.</li>
@@ -1112,7 +1115,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
         <div class="pcard">
           <span class="tag">Física · Química · Biología</span>
           <h3 class="pt">Intensivo Ciencias</h3>
-          <div class="big">$19.990 <small>pago único</small></div>
+          <div class="big"><s class="was">$49.990</s>$19.990 <span class="dcto">−60%</span> <small>pago único</small></div>
           <ul>
             <li>Todas las guías de Física, Química y Biología, también las que se publiquen.</li>
             <li>Los 6 ensayos PAES de Ciencias (dos por mención), con puntaje al enviar e informe personal.</li>
@@ -1175,7 +1178,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <div class="sect" id="p-terminos"><h3>Términos de compra</h3><ul>
             <li>Las guías PAES se venden solo dentro de los Intensivos; ya no se venden ejes ni guías sueltas. Quien compró antes un eje o una guía la conserva en su cuenta, con su revisión. El precio que pagas es el que muestra la tienda al momento de la compra.</li>
             <li>Puedes descargar e imprimir las guías para tu estudio. No está permitido revenderlas ni publicarlas como material propio.</li>
-            <li>Hay dos Intensivos que se compran por separado, cada uno a $19.990 y con acceso hasta la PAES de admisión 2027: el Intensivo Matemática (guías de M1 y M2, clases online en vivo, videos, 3 revisiones a elección entre M1 y M2 y su aula con material) y el Intensivo Ciencias (guías de Física, Química y Biología, videos de clases grabadas sin clases en vivo, 3 revisiones a elección entre las tres asignaturas y su aula con material). Las revisiones adicionales se compran desde el aula. Cada uno incluye los ensayos PAES de su área en su aula: el de Matemática, dos de M1 y dos de M2; el de Ciencias, dos por cada mención (Física, Química y Biología). Enviar un ensayo no descuenta revisiones. No admiten códigos promocionales.</li>
+            <li>Hay dos Intensivos que se compran por separado, cada uno a $19.990 (precio normal $49.990, con 60% de descuento) y con acceso hasta la PAES de admisión 2027: el Intensivo Matemática (guías de M1 y M2, clases online en vivo, videos, 3 revisiones a elección entre M1 y M2 y su aula con material) y el Intensivo Ciencias (guías de Física, Química y Biología, videos de clases grabadas sin clases en vivo, 3 revisiones a elección entre las tres asignaturas y su aula con material). Las revisiones adicionales se compran desde el aula. Cada uno incluye los ensayos PAES de su área en su aula: el de Matemática, dos de M1 y dos de M2; el de Ciencias, dos por cada mención (Física, Química y Biología). Enviar un ensayo no descuenta revisiones. No admiten códigos promocionales.</li>
             <li>El material de cada Intensivo (apuntes interactivos y slides) es de uso personal y se abre solo con la cuenta de Google que tiene ese Intensivo. No está permitido compartir la cuenta ni copiar o distribuir el material.</li>
             <li>El informe se envía dentro de 72 horas hábiles desde que recibimos tu hoja de respuestas.</li>
             <li>Si tienes cualquier problema con tu compra, escríbenos a trabajotszenit@gmail.com y lo resolvemos contigo.</li>
@@ -1726,7 +1729,7 @@ function openPay(id, code) {
   const prod = code || e.id;
   const title = INT ? IN.nombre : code ? GUIAS[code].titulo : `${e.nombre} · eje completo`;
   const linkDe = v => (CFG.mp || {})[v] || (code && v === PRECIO ? CFG.mpGuia : "");
-  const totalHtml = () => (OFERTA && !INT ? `<div class="sumrow"><span>Precio normal desde el 1 de enero de 2027</span><span><s class="was">${fmt(code ? NORMAL_GUIA : normalEje(e))}</s></span></div><div class="sumrow"><span>Precio de fin de año <span class="sale">Oferta</span></span><span>${fmt(lista)}</span></div>` : "") + (promo ? `<div class="sumrow"><span>Código ${esc(promo.c)} (−${promo.d}%)</span><span>−${fmt(lista - price)}</span></div>` : "") + `<div class="sumrow"><span>Total</span><span>${fmt(price)}</span></div>`;
+  const totalHtml = () => (INTENSIVOS[id] && !code ? `<div class="sumrow"><span>Precio normal</span><span><s class="was">${fmt(49990)}</s></span></div><div class="sumrow"><span>Descuento <span class="dcto">−60%</span></span><span>−${fmt(49990 - lista)}</span></div>` : "") + (OFERTA && !INT ? `<div class="sumrow"><span>Precio normal desde el 1 de enero de 2027</span><span><s class="was">${fmt(code ? NORMAL_GUIA : normalEje(e))}</s></span></div><div class="sumrow"><span>Precio de fin de año <span class="sale">Oferta</span></span><span>${fmt(lista)}</span></div>` : "") + (promo ? `<div class="sumrow"><span>Código ${esc(promo.c)} (−${promo.d}%)</span><span>−${fmt(lista - price)}</span></div>` : "") + `<div class="sumrow"><span>Total</span><span>${fmt(price)}</span></div>`;
   const pasoHtml = () => { const link = linkDe(price); return `<p style="font-family:var(--f-display);font-size:14px"><b>1.</b> Paga ${fmt(price)} con Mercado Pago.${promo || (INT && !PL) ? "" : ` <span class="muted">¿Tienes un código promocional? Escríbelo abajo antes de pagar.</span>`}</p>
         ${link ? `<a class="btn btn-cafe" href="${esc(link)}" target="_blank" rel="noopener" style="margin-top:10px">Pagar ${fmt(price)} con Mercado Pago</a>`
                : `<p class="muted" style="font-size:14px;margin-top:6px">${promo ? "El pago en línea con descuento se habilita pronto" : "El pago en línea se habilita pronto"}${CFG.contacto ? `; mientras tanto escríbenos a <a href="mailto:${esc(CFG.contacto)}">${esc(CFG.contacto)}</a>` : ""}.</p>`}`; };
