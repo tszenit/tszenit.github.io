@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aula Plan Contabilidad · TS Zenit</title>
+<meta name="description" content="Aula del Plan Contabilidad de TS Zenit Universidad (programa de la FEN, U. de Chile): apuntes interactivos, slides, guías, revisiones, clases en vivo y videos por certamen.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#081428">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cpath d=%22M50 8 L58 42 L92 50 L58 58 L50 92 L42 58 L8 50 L42 42 Z%22 fill=%22%23F4C267%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+[hidden]{display:none!important}
+:root{color-scheme:dark;--bg:#0B1A33;--bg-deep:#081428;--surface:#11264B;--surface-2:#17315C;--line:#2A4775;--cafe:#6B4429;--cafe-2:#84573A;--latte:#D8A878;--ink:#F2F4F9;--muted:#B7C3DA;--gold:#F5A524;--ok:#7FD4A8;--warn:#F2C46D;--bad:#F08A8A;
+--ac:244, 194, 103;--f-display:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;--f-body:"Source Serif 4",Georgia,serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--r:16px}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:17px/1.55 var(--f-body);-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg-deep);z-index:40}
+a{color:var(--latte)}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.15;text-wrap:balance}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid rgb(var(--ac));outline-offset:2px;border-radius:8px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.muted{color:var(--muted)}
+.eyebrow{font:700 12px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:rgb(var(--ac))}
+/* barra superior */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(8,20,40,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:14px;padding-block:10px}
+.logo{display:flex;flex:none}.logo svg{width:132px;height:auto;display:block}
+.crumbs{display:flex;align-items:center;gap:8px;min-width:0;flex:1;font:600 13.5px var(--f-display);color:var(--muted)}
+.crumbs a{color:var(--muted);text-decoration:none;white-space:nowrap}.crumbs a:hover{color:var(--ink)}
+.crumbs b{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumbs .sep{opacity:.5}
+.btn{font:600 15px var(--f-display);border-radius:12px;padding:11px 18px;min-height:46px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:background .15s,border-color .15s,transform .15s;color:var(--ink)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-ac{background:rgb(var(--ac));color:#0B1A33;border-color:rgb(var(--ac))}
+.btn-ac:hover{filter:brightness(1.06)}
+.btn-cafe{background:var(--cafe);border-color:#8A5B3C}.btn-cafe:hover{background:var(--cafe-2)}
+.btn-ghost{background:transparent;border-color:var(--line)}.btn-ghost:hover{background:var(--surface)}
+.btn-sm{min-height:40px;padding:8px 13px;font-size:14px;border-radius:10px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.ses{flex:none}
+@media (max-width:640px){.crumbs .hide-sm{display:none}.logo svg{width:112px}}
+/* presentación (sin acceso) */
+.land{padding-block:46px 70px}
+.land-in{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:36px;align-items:start}
+.land h1{font-size:clamp(34px,5vw,54px);font-weight:800;margin-top:10px}
+.land h1 em{font-style:normal;color:rgb(var(--ac))}
+.land .lead{margin-top:14px;font-size:19px;color:var(--muted);max-width:34em}
+.feats{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.feats li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:start}
+.feats .ck{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(var(--ac),.14);color:rgb(var(--ac));border:1px solid rgba(var(--ac),.4)}
+.feats .ck svg{width:16px;height:16px}
+.feats b{display:block;font:700 16px var(--f-display)}
+.feats span{color:var(--muted);font-size:15.5px}
+.gate{border:1px solid rgba(var(--ac),.45);background:linear-gradient(180deg,rgba(var(--ac),.10),rgba(17,38,75,.6));border-radius:22px;padding:26px;display:grid;gap:14px}
+.gate .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:rgba(var(--ac),.16);color:rgb(var(--ac))}
+.gate .ico svg{width:26px;height:26px}
+.gate h2{font-size:22px}
+.gate p{color:var(--muted);font-size:15.5px}
+.gate .acts{display:grid;gap:10px}
+.gate form{display:grid;gap:8px}
+.in{width:100%;background:var(--bg-deep);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:11px 12px;font:16px var(--f-display);min-height:46px}
+.in:focus{outline:none;border-color:rgb(var(--ac))}
+.err{color:var(--bad);font:600 14px var(--f-display)}
+@media (max-width:820px){.land-in{grid-template-columns:minmax(0,1fr)}}
+/* cabecera del aula */
+.ahead{background:linear-gradient(180deg,rgba(var(--ac),.10),rgba(8,20,40,0));border-bottom:1px solid var(--line)}
+.ahead .wrap{padding-block:26px 0;display:grid;gap:16px}
+.ahead-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 20px}
+.ahead h1{font-size:clamp(28px,4vw,40px);font-weight:800;margin-top:6px}
+.who{font:600 13px var(--f-display);color:var(--ok);border:1px solid #3E7A5E;background:rgba(63,122,94,.18);border-radius:999px;padding:6px 12px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mswitch{display:flex;gap:6px;padding:5px;border:1px solid var(--line);background:var(--bg-deep);border-radius:16px;width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.mswitch button{border:0;background:none;cursor:pointer;border-radius:12px;padding:10px 20px;font:700 15px var(--f-display);color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:8px;min-height:44px}
+.mswitch button i{width:9px;height:9px;border-radius:50%;background:var(--mc);opacity:.6}
+.mswitch button[aria-pressed=true]{background:var(--surface-2);color:var(--ink);box-shadow:inset 0 0 0 1px var(--mc)}
+.mswitch button[aria-pressed=true] i{opacity:1}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-top:4px}
+.tabs button{border:0;background:none;cursor:pointer;padding:12px 14px;font:600 15px var(--f-display);color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:rgb(var(--ac))}
+.tabs .n{font:600 11px var(--f-mono);background:var(--surface-2);border-radius:99px;padding:2px 7px;margin-left:6px;color:var(--muted)}
+main.body{padding-block:24px 80px}
+/* contador de revisiones */
+.cupos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:22px}
+.cupo{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:16px 18px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;align-items:center}
+.cupo.on{border-color:rgba(var(--ac),.55);box-shadow:0 0 0 1px rgba(var(--ac),.25) inset}
+.cupo .big{grid-row:span 2;font:800 40px/1 var(--f-display);color:rgb(var(--ac));font-variant-numeric:tabular-nums}
+.cupo .big small{font:600 16px var(--f-display);color:var(--muted)}
+.cupo b{font:700 15px var(--f-display)}
+.cupo span{font:500 13.5px var(--f-display);color:var(--muted)}
+.dots{display:flex;gap:5px;grid-column:1/-1;margin-top:8px;flex-wrap:wrap}
+.dots i{width:22px;height:8px;border-radius:99px;background:rgb(var(--ac))}
+.dots i.u{background:var(--line)}
+/* material */
+.mat2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.mcard{position:relative;overflow:hidden;border:1px solid var(--ml);border-radius:22px;background:linear-gradient(180deg,var(--ma),rgba(17,38,75,.75) 60%);display:grid;grid-template-rows:auto 1fr}
+.mcard .art{height:118px;color:var(--mc);display:grid;place-items:center;border-bottom:1px solid var(--ml);padding:8px 16px}
+.mcard .art svg{width:100%;max-width:340px;height:100%}
+.mcard .in2{padding:20px 22px 22px;display:grid;gap:10px;align-content:start}
+.mcard .k{font:700 11.5px var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--mc)}
+.mcard h3{font-size:24px}
+.mcard p{color:var(--muted);font-size:15.5px}
+.mcard .btn{margin-top:6px;justify-self:start}
+@media (max-width:720px){.mat2{grid-template-columns:minmax(0,1fr)}}
+.note{color:var(--muted);font:500 14px var(--f-display)}
+/* guías */
+.sec-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin:6px 0 14px}
+.sec-h h2{font-size:22px}
+.eje{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);margin-bottom:12px;overflow:hidden}
+.eje>summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;align-items:center;gap:12px}
+.eje>summary::-webkit-details-marker{display:none}
+.eje>summary h3{font-size:17px;flex:1;min-width:0}
+.eje>summary .c{font:600 12.5px var(--f-display);color:var(--muted);white-space:nowrap}
+.eje>summary .chev{width:18px;height:18px;transition:transform .2s;color:var(--muted);flex:none}
+.eje[open]>summary .chev{transform:rotate(90deg)}
+.eje .desc{padding:0 18px 10px;color:var(--muted);font-size:15px}
+.grow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 14px;align-items:center;padding:13px 18px;border-top:1px solid var(--line)}
+.grow .t{font:600 15.5px/1.3 var(--f-display)}
+.grow .m{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:5px;align-items:center}
+.chip{font:600 11.5px var(--f-display);letter-spacing:.03em;border-radius:999px;padding:3px 9px;white-space:nowrap;border:1px solid var(--line);color:var(--muted)}
+.chip.av{color:var(--warn);border-color:rgba(242,196,109,.45)}
+.chip.ens{color:rgb(var(--ac));border-color:rgba(var(--ac),.5)}
+.chip.ok{color:var(--ok);border-color:#3E7A5E;background:rgba(63,122,94,.16)}
+.chip.rv{color:var(--latte);border-color:#8A5B3C;background:rgba(107,68,41,.2)}
+.grow .acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+@media (max-width:600px){.grow{grid-template-columns:minmax(0,1fr)}.grow .acts{justify-content:flex-start}}
+/* clases */
+.clist{display:grid;gap:12px}
+.clase{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:16px;align-items:center;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:16px 18px}
+.clase.vivo{border-color:rgba(var(--ac),.7);box-shadow:0 0 0 1px rgba(var(--ac),.35) inset}
+.cal{border-radius:12px;background:var(--bg-deep);border:1px solid var(--line);text-align:center;padding:8px 4px;font-family:var(--f-display)}
+.cal small{display:block;font:700 11px var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:rgb(var(--ac))}
+.cal b{display:block;font:800 26px/1.1 var(--f-display)}
+.cal span{font:600 12px var(--f-display);color:var(--muted)}
+.clase h3{font-size:17px}
+.clase .m{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:6px;align-items:center;font:500 14px var(--f-display);color:var(--muted)}
+.live{display:inline-flex;align-items:center;gap:6px;color:rgb(var(--ac));font:700 12px var(--f-display);letter-spacing:.08em;text-transform:uppercase}
+.live i{width:8px;height:8px;border-radius:50%;background:rgb(var(--ac));animation:pul 1.4s infinite}
+@keyframes pul{50%{opacity:.3}}
+@media (prefers-reduced-motion:reduce){.live i{animation:none}}
+@media (max-width:640px){.clase{grid-template-columns:64px minmax(0,1fr)}.clase .go{grid-column:1/-1}.clase .go .btn{width:100%}}
+.empty{border:1px dashed var(--line);border-radius:var(--r);padding:28px 22px;text-align:center;color:var(--muted);font:500 15px var(--f-display)}
+.empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:4px}
+/* videos */
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.vcard{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);overflow:hidden;cursor:pointer;text-align:left;padding:0;display:grid;grid-template-rows:auto 1fr}
+.vcard:hover{border-color:rgba(var(--ac),.6)}
+.thumb{aspect-ratio:16/9;max-width:100%;position:relative;background:linear-gradient(135deg,var(--ma),var(--bg-deep));display:grid;place-items:center;overflow:hidden}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.thumb .pl{position:relative;width:54px;height:54px;border-radius:50%;background:rgba(5,7,11,.7);display:grid;place-items:center;border:1px solid rgba(255,255,255,.25)}
+.thumb .pl svg{width:22px;height:22px;margin-left:3px;color:#fff}
+.vcard .vt{padding:12px 14px 14px;display:grid;gap:4px}
+.vcard b{font:700 15.5px/1.3 var(--f-display)}
+.vcard span{font:500 13px var(--f-display);color:var(--muted)}
+/* capas */
+.layer{position:fixed;inset:0;z-index:50;background:rgba(3,8,18,.72);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:max(16px,env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) 16px max(12px,env(safe-area-inset-left,0px))}
+.panel{background:var(--bg);border:1px solid var(--line);border-radius:20px;width:min(760px,100%);margin-block:auto;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.panel.narrow{width:min(520px,100%)}
+.panel.wide{width:min(1000px,100%)}
+.ph{display:flex;align-items:flex-start;gap:12px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.ph h3{font-size:19px;flex:1;min-width:0}
+.ph .sub{font:500 13.5px var(--f-display);color:var(--muted);margin-top:3px}
+.x{flex:none;width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:none;cursor:pointer;font-size:22px;line-height:1;color:var(--ink)}
+.pb{padding:18px 20px;display:grid;gap:14px}
+.pf{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:14px 20px;border-top:1px solid var(--line)}
+.field{display:grid;gap:6px}
+.field label,.legend{font:600 14px var(--f-display)}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:560px){.row2{grid-template-columns:minmax(0,1fr)}}
+.box{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:14px;display:grid;gap:10px}
+.box.ac{border-color:rgba(var(--ac),.5);background:rgba(var(--ac),.07)}
+.check{display:flex;gap:10px;align-items:flex-start;font:500 14.5px var(--f-display);cursor:pointer}
+.check input{width:20px;height:20px;margin-top:1px;flex:none;accent-color:rgb(var(--ac))}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg label{cursor:pointer;position:relative}.seg input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;pointer-events:none}
+.seg span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font:600 14px var(--f-display)}
+.seg input:checked+span{border-color:rgb(var(--ac));background:rgba(var(--ac),.14)}
+.seg input:focus-visible+span{outline:2px solid rgb(var(--ac))}
+.qhead{display:flex;align-items:center;gap:12px}
+.prog{flex:1;height:6px;background:var(--line);border-radius:99px;overflow:hidden}.prog i{display:block;height:100%;width:0;background:rgb(var(--ac));transition:width .2s}
+.qlist{display:grid;gap:2px;max-height:min(52vh,560px);overflow-y:auto;border:1px solid var(--line);border-radius:12px;padding:6px}
+.qrow{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;padding:6px 8px;border-radius:8px}
+.qrow:nth-child(odd){background:rgba(17,38,75,.5)}
+.qn{font:600 13px var(--f-mono);color:var(--muted);text-align:right}
+.qc{font:500 13px var(--f-display);color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.opts{display:flex;gap:5px}
+.opt{position:relative}.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;pointer-events:none}
+.opt span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);font:700 13px var(--f-display);cursor:pointer}
+.opt input:checked+span{background:rgb(var(--ac));color:#0B1A33;border-color:rgb(var(--ac))}
+.opt input:focus-visible+span{outline:2px solid rgb(var(--ac));outline-offset:2px}
+@media (max-width:560px){.qrow{grid-template-columns:24px minmax(0,1fr)}.qrow .opts{grid-column:1/-1;justify-content:flex-end}.opt span{width:38px;height:38px}}
+.done{display:grid;justify-items:center;text-align:center;gap:12px;padding:30px 22px}
+.tick{width:58px;height:58px;border-radius:50%;background:rgba(63,122,94,.35);border:1px solid #3E7A5E;display:grid;place-items:center}
+.res-top{display:grid;gap:2px}.res-top b{font:800 34px var(--f-display);color:rgb(var(--ac))}.res-top span{font:500 14px var(--f-display);color:var(--muted)}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:6px}
+.res-it{border:1px solid var(--line);border-radius:8px;padding:5px 7px;display:flex;justify-content:space-between;font:600 12.5px var(--f-mono)}
+.res-it.ok{border-color:#3E7A5E;color:var(--ok)}.res-it.no{border-color:rgba(240,138,138,.5);color:var(--bad)}.res-it.om{color:var(--muted)}
+.player{position:relative;aspect-ratio:16/9;max-width:100%;background:#000;border-radius:12px;overflow:hidden}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+/* visor del material */
+.mv{position:fixed;inset:0;z-index:60;background:#05070B;display:flex;flex-direction:column}
+.mv-top{display:flex;align-items:center;gap:12px;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(14px,env(safe-area-inset-left,0px));padding-top:max(10px,env(safe-area-inset-top,0px));background:#081428;border-bottom:1px solid var(--line)}
+.mv-t{min-width:0;flex:1;display:grid}.mv-t b{font:700 15px/1.2 var(--f-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mv-t small{font:500 12px var(--f-display);color:var(--muted)}
+.mv iframe{flex:1;border:0;width:100%;background:#fff}
+.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font:600 14px var(--f-display);max-width:min(92vw,520px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.loading{display:grid;place-items:center;padding:80px 0;color:var(--muted);font:600 15px var(--f-display)}
+footer{border-top:1px solid var(--line);padding-block:26px;color:var(--muted);font:500 13.5px var(--f-display)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between}
+
+.mswitch button.lk{opacity:.72}.mswitch button.lk svg{width:14px;height:14px}
+.cupos.lkd{display:none}
+.lockbox{position:relative;overflow:hidden;border:1px solid var(--ml);border-radius:22px;background:linear-gradient(180deg,var(--ma),rgba(17,38,75,.75) 60%);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+.lockbox .art{color:var(--mc);display:grid;place-items:center;padding:16px;border-right:1px solid var(--ml)}.lockbox .art svg{width:100%;max-width:340px}
+.lockbox .in2{padding:24px;display:grid;gap:10px;align-content:start}
+.lockbox .ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--surface-2);color:var(--mc)}.lockbox .ico svg{width:22px;height:22px}
+.lockbox .k{font:700 11.5px var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--mc)}
+.lockbox h2{font-size:26px}.lockbox p{color:var(--muted);font-size:15.5px}.lockbox .btn{justify-self:start;margin-top:6px;color:#0B1A33}
+@media (max-width:720px){.lockbox{grid-template-columns:minmax(0,1fr)}.lockbox .art{border-right:0;border-bottom:1px solid var(--ml);height:118px}}
+.mswitch{max-width:calc(100vw - 32px)}@media (max-width:480px){.mswitch button{padding:10px 12px;font-size:14px;gap:6px}}</style>
+</head><body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/" aria-label="TS Zenit, inicio"><svg viewBox="0 0 400 100" role="img" aria-label="TS Zenit" xmlns="http://www.w3.org/2000/svg"><g><path d="M10 86 A44 44 0 0 1 98 86" fill="none" stroke="#F2F4F9" stroke-width="6"/><rect x="33" y="70" width="9" height="16" rx="1.5" fill="#8E96E0"/><rect x="49.5" y="60" width="9" height="26" rx="1.5" fill="#B9C0F2"/><rect x="66" y="56" width="9" height="30" rx="1.5" fill="#F2F4F9"/><path d="M54 4 L58.6 19.4 L74 24 L58.6 28.6 L54 44 L49.4 28.6 L34 24 L49.4 19.4 Z" fill="#F5A524"/><rect x="2" y="86" width="104" height="4.5" rx="2.2" fill="#F2F4F9"/></g><text x="122" y="61" font-family="Poppins, 'Avenir Next', 'Segoe UI', sans-serif" font-size="46" letter-spacing="2.5" fill="#F2F4F9"><tspan font-weight="500">TS</tspan><tspan font-weight="700" dx="10">ZENIT</tspan></text><text x="124" y="87" font-family="Poppins, 'Avenir Next', 'Segoe UI', sans-serif" font-weight="600" font-size="14.5" letter-spacing="5.0" fill="#D8A878">HAZLO REALIDAD</text></svg></a>
+  <nav class="crumbs" aria-label="Dónde estás"><a href="/#plan-contabilidad" class="hide-sm">TS Zenit Universidad</a><span class="sep hide-sm" aria-hidden="true">/</span><b>Aula Plan Contabilidad</b></nav>
+  <button class="btn btn-sm btn-cafe ses" type="button" id="sesBtn">Iniciar sesión</button>
+</div></header>
+
+<div id="vCarga" class="loading">Cargando tu aula…</div>
+
+<section id="vLand" hidden><div class="wrap land"><div class="land-in">
+  <div>
+    <p class="eyebrow">TS Zenit Universidad · Plan Contabilidad · FEN</p>
+    <h1>Aula del <em>Plan Contabilidad</em></h1>
+    <p class="lead">Tu material del Certamen 1, el Certamen 2 y el Examen, según el programa de Contabilidad de la FEN (U. de Chile), tus guías y revisiones, las clases en vivo y los videos, en un solo lugar.</p>
+    <ul class="feats"><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Apuntes interactivos y slides</b>Uno de cada evaluación: Certamen 1, Certamen 2 y Examen, con todo su temario.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Guías con revisión personal</b>Descárgalas en PDF y envía tus respuestas: informe y guía de refuerzo.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Clases en vivo por Zoom</b>Las próximas clases de tu sección, con su link para entrar.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Videos de las clases</b>Para repasar cuando quieras, antes de cada prueba.</span></li></ul>
+  </div>
+  <aside class="gate" id="gate"></aside>
+</div></div></section>
+
+<section id="vApp" hidden>
+  <div class="ahead"><div class="wrap">
+    <div class="ahead-row">
+      <div><p class="eyebrow">Plan Contabilidad · Aula</p><h1 id="aTit">Tu aula</h1></div>
+      <span class="who" id="who"></span>
+    </div>
+    <div class="mswitch" role="group" aria-label="Elige la evaluación" id="msw"></div>
+    <nav class="tabs" role="tablist" aria-label="Secciones del aula" id="tabs">
+      <button role="tab" data-t="material" aria-selected="true">Material</button>
+      <button role="tab" data-t="guias" aria-selected="false">Guías y revisiones</button>
+      <button role="tab" data-t="clases" aria-selected="false">Clases en vivo<span class="n" id="nCl" hidden></span></button>
+      <button role="tab" data-t="videos" aria-selected="false">Videos<span class="n" id="nVi" hidden></span></button>
+    </nav>
+  </div></div>
+  <main class="wrap body">
+    <div class="cupos" id="cupos" aria-live="polite"></div>
+    <div id="pMaterial" role="tabpanel"></div>
+    <div id="pGuias" role="tabpanel" hidden></div>
+    <div id="pClases" role="tabpanel" hidden></div>
+    <div id="pVideos" role="tabpanel" hidden></div>
+  </main>
+</section>
+
+<footer><div class="wrap"><span>TS Zenit · Hazlo realidad</span><a href="/">Volver a la página principal</a></div></footer>
+
+<div class="layer" id="layer" hidden></div>
+<div class="mv" id="mv" hidden role="dialog" aria-modal="true" aria-labelledby="mvT">
+  <div class="mv-top"><button class="btn btn-sm btn-ghost" type="button" id="mvX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Volver al aula</button>
+    <div class="mv-t"><b id="mvT">Material</b><small id="mvS"></small></div></div>
+  <iframe id="mvF" title="Material del Plan Contabilidad" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="fullscreen"></iframe>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="/config.js?v=202610272237"></script>
+<script>
+const A = {"area": "CON", "int": "TSZ-PCON", "nombre": "Plan Contabilidad", "sub": "Certamen 1 · Certamen 2 · Examen", "mats": [{"id": "C1", "corto": "Certamen 1", "nombre": "Certamen 1 · Fundamentos y proceso contable", "k": "Primer certamen", "sum": "Objetivo y usuarios, ecuación contable, cuentas, cargos y abonos, partida doble, Diario, Mayor, balance de comprobación, estado de situación y de resultados.", "c": "#F4C267", "a": "rgba(244, 194, 103, 0.22)", "l": "rgba(244, 194, 103, 0.38)", "prod": "TSZ-PCON-C1", "svg": "<svg viewBox=\"0 0 320 90\" preserveAspectRatio=\"xMidYMid meet\" aria-hidden=\"true\" focusable=\"false\"><line x1=\"20\" y1=\"6\" x2=\"20\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"40\" y1=\"6\" x2=\"40\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"60\" y1=\"6\" x2=\"60\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"80\" y1=\"6\" x2=\"80\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"100\" y1=\"6\" x2=\"100\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"120\" y1=\"6\" x2=\"120\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"140\" y1=\"6\" x2=\"140\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"160\" y1=\"6\" x2=\"160\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"180\" y1=\"6\" x2=\"180\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"200\" y1=\"6\" x2=\"200\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"220\" y1=\"6\" x2=\"220\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"240\" y1=\"6\" x2=\"240\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"260\" y1=\"6\" x2=\"260\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"280\" y1=\"6\" x2=\"280\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"300\" y1=\"6\" x2=\"300\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><path d=\"M40 22h110M95 22v56\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><path d=\"M52 38h30M52 52h24M52 66h34M108 38h30M108 54h22\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" opacity=\".7\"/><text x=\"67\" y=\"16\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\" opacity=\".7\" font-family=\"Georgia, serif\">Debe</text><text x=\"123\" y=\"16\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\" opacity=\".7\" font-family=\"Georgia, serif\">Haber</text><text x=\"240\" y=\"50\" font-size=\"13\" text-anchor=\"middle\" fill=\"currentColor\" opacity=\".8\" font-family=\"Georgia, serif\" font-style=\"italic\">A = P + Pat</text></svg>", "ap": {"id": "CON-C1-AP", "d": "6 temas con 6 herramientas interactivas, ejemplos resueltos y preguntas tipo certamen"}, "sl": {"id": "CON-C1-SL", "d": "23 slides: conceptos, métodos paso a paso y errores típicos"}, "ejes": [{"id": "UNI-CON", "nombre": "Fundamentos y proceso contable", "desc": "Una guía básica y una avanzada ★ de 15 preguntas cada una: 10 alternativas y 5 de desarrollo al estilo de la FEN (comentes y ejercicios de Diario, Mayor y estados financieros).", "guias": ["TSZ-CON-C1-N1", "TSZ-CON-C1-A1"]}]}, {"id": "C2", "corto": "Certamen 2", "nombre": "Certamen 2 · Ciclo contable y ajustes", "k": "Segundo certamen", "sum": "Compras, ventas y existencias, IVA débito y crédito, depreciación, devengados y diferidos, correcciones, balance de 8 columnas y estados formales.", "c": "#FDBA74", "a": "rgba(253, 186, 116, 0.22)", "l": "rgba(253, 186, 116, 0.38)", "prod": "TSZ-PCON-C2", "svg": "<svg viewBox=\"0 0 320 90\" preserveAspectRatio=\"xMidYMid meet\" aria-hidden=\"true\" focusable=\"false\"><line x1=\"20\" y1=\"6\" x2=\"20\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"40\" y1=\"6\" x2=\"40\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"60\" y1=\"6\" x2=\"60\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"80\" y1=\"6\" x2=\"80\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"100\" y1=\"6\" x2=\"100\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"120\" y1=\"6\" x2=\"120\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"140\" y1=\"6\" x2=\"140\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"160\" y1=\"6\" x2=\"160\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"180\" y1=\"6\" x2=\"180\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"200\" y1=\"6\" x2=\"200\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"220\" y1=\"6\" x2=\"220\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"240\" y1=\"6\" x2=\"240\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"260\" y1=\"6\" x2=\"260\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"280\" y1=\"6\" x2=\"280\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"300\" y1=\"6\" x2=\"300\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><rect x=\"30\" y=\"16\" width=\"150\" height=\"62\" rx=\"4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"/><line x1=\"48.75\" y1=\"16\" x2=\"48.75\" y2=\"78\" stroke=\"currentColor\" stroke-width=\"1.2\" opacity=\".55\"/><line x1=\"67.5\" y1=\"16\" x2=\"67.5\" y2=\"78\" stroke=\"currentColor\" stroke-width=\"1.2\" opacity=\".55\"/><line x1=\"86.25\" y1=\"16\" x2=\"86.25\" y2=\"78\" stroke=\"currentColor\" stroke-width=\"1.2\" opacity=\".55\"/><line x1=\"105.0\" y1=\"16\" x2=\"105.0\" y2=\"78\" stroke=\"currentColor\" stroke-width=\"1.2\" opacity=\".55\"/><line x1=\"123.75\" y1=\"16\" x2=\"123.75\" y2=\"78\" stroke=\"currentColor\" stroke-width=\"1.2\" opacity=\".55\"/><line x1=\"142.5\" y1=\"16\" x2=\"142.5\" y2=\"78\" stroke=\"currentColor\" stroke-width=\"1.2\" opacity=\".55\"/><line x1=\"161.25\" y1=\"16\" x2=\"161.25\" y2=\"78\" stroke=\"currentColor\" stroke-width=\"1.2\" opacity=\".55\"/><line x1=\"30\" y1=\"28.4\" x2=\"180\" y2=\"28.4\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".35\"/><line x1=\"30\" y1=\"40.8\" x2=\"180\" y2=\"40.8\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".35\"/><line x1=\"30\" y1=\"53.2\" x2=\"180\" y2=\"53.2\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".35\"/><line x1=\"30\" y1=\"65.6\" x2=\"180\" y2=\"65.6\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".35\"/><text x=\"252\" y=\"40\" font-size=\"13\" text-anchor=\"middle\" fill=\"currentColor\" opacity=\".8\" font-family=\"Georgia, serif\" font-style=\"italic\">8 columnas</text><text x=\"252\" y=\"62\" font-size=\"13\" text-anchor=\"middle\" fill=\"currentColor\" opacity=\".8\" font-family=\"Georgia, serif\" font-style=\"italic\">ajustes · IVA</text></svg>", "ap": {"id": "CON-C2-AP", "d": "7 temas con 5 herramientas interactivas, ejemplos resueltos y preguntas tipo certamen"}, "sl": {"id": "CON-C2-SL", "d": "21 slides: conceptos, métodos paso a paso y errores típicos"}, "ejes": [{"id": "UNI-CON", "nombre": "Ciclo contable y ajustes", "desc": "Una guía básica y una avanzada ★ de 15 preguntas cada una: 10 alternativas y 5 de desarrollo (comentes, IVA, ajustes, balance de 8 columnas y hoja de trabajo).", "guias": ["TSZ-CON-C2-N1", "TSZ-CON-C2-A1"]}]}, {"id": "EX", "corto": "Examen", "nombre": "Examen · NIIF y partidas del estado de situación", "k": "Examen", "sum": "Marco NIIF, efectivo y conciliación bancaria, deudores e incobrables, existencias (FIFO, PMP y VNR), propiedades, planta y equipo, patrimonio e introducción al estado de flujos de efectivo.", "c": "#FCD34D", "a": "rgba(252, 211, 77, 0.22)", "l": "rgba(252, 211, 77, 0.38)", "prod": "TSZ-PCON-EX", "svg": "<svg viewBox=\"0 0 320 90\" preserveAspectRatio=\"xMidYMid meet\" aria-hidden=\"true\" focusable=\"false\"><line x1=\"20\" y1=\"6\" x2=\"20\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"40\" y1=\"6\" x2=\"40\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"60\" y1=\"6\" x2=\"60\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"80\" y1=\"6\" x2=\"80\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"100\" y1=\"6\" x2=\"100\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"120\" y1=\"6\" x2=\"120\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"140\" y1=\"6\" x2=\"140\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"160\" y1=\"6\" x2=\"160\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"180\" y1=\"6\" x2=\"180\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"200\" y1=\"6\" x2=\"200\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"220\" y1=\"6\" x2=\"220\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"240\" y1=\"6\" x2=\"240\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"260\" y1=\"6\" x2=\"260\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"280\" y1=\"6\" x2=\"280\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><line x1=\"300\" y1=\"6\" x2=\"300\" y2=\"84\" stroke=\"currentColor\" stroke-width=\"1\" opacity=\".12\"/><path d=\"M36 78h140\" stroke=\"currentColor\" stroke-width=\"1.8\"/><rect x=\"44\" y=\"48\" width=\"16\" height=\"30\" rx=\"2\" fill=\"currentColor\" opacity=\"0.35\"/><rect x=\"70\" y=\"32\" width=\"16\" height=\"46\" rx=\"2\" fill=\"currentColor\" opacity=\"0.5\"/><rect x=\"96\" y=\"56\" width=\"16\" height=\"22\" rx=\"2\" fill=\"currentColor\" opacity=\"0.35\"/><rect x=\"122\" y=\"22\" width=\"16\" height=\"56\" rx=\"2\" fill=\"currentColor\" opacity=\"0.7\"/><rect x=\"148\" y=\"38\" width=\"16\" height=\"40\" rx=\"2\" fill=\"currentColor\" opacity=\"0.5\"/><text x=\"250\" y=\"40\" font-size=\"13\" text-anchor=\"middle\" fill=\"currentColor\" opacity=\".8\" font-family=\"Georgia, serif\" font-style=\"italic\">NIIF · EFE</text><text x=\"250\" y=\"62\" font-size=\"13\" text-anchor=\"middle\" fill=\"currentColor\" opacity=\".8\" font-family=\"Georgia, serif\" font-style=\"italic\">VNR · PPE</text></svg>", "ap": {"id": "CON-EX-AP", "d": "7 temas con 6 herramientas interactivas, ejemplos resueltos y preguntas tipo examen"}, "sl": {"id": "CON-EX-SL", "d": "21 slides: conceptos, métodos paso a paso y errores típicos"}, "ejes": [{"id": "UNI-CON", "nombre": "NIIF y partidas del estado de situación", "desc": "Una guía básica y una avanzada ★ de 15 preguntas cada una: 10 alternativas y 5 de desarrollo (conciliación bancaria, deudores, existencias, PPE y flujo de efectivo).", "guias": ["TSZ-CON-EX-N1", "TSZ-CON-EX-A1"]}]}]};
+const GUIAS = {"TSZ-CON-C1-N1": {"t": "Guía Contabilidad · Certamen 1: Fundamentos y proceso contable", "n": 10, "d": 5, "q": [[4, "Contabilidad financiera y sus usuarios", 0], [4, "Principio del devengado", 0], [4, "Elementos: activo y pasivo", 0], [4, "Principio de entidad", 0], [4, "Ecuación contable", 0], [4, "Análisis de transacciones", 0], [4, "Reglas del cargo y abono", 0], [4, "Asiento compuesto", 0], [4, "Balance de comprobación", 0], [4, "Clasificación corriente y no corriente", 0]], "nv": "normal"}, "TSZ-CON-C1-A1": {"t": "Guía avanzada Contabilidad · Certamen 1: Fundamentos y proceso contable", "n": 10, "d": 5, "q": [[4, "Características cualitativas", 0], [4, "Definición de activo", 0], [4, "Ecuación y variación del patrimonio", 0], [4, "Ecuación expandida", 0], [4, "Tipos de transacciones", 0], [4, "Saldo de una cuenta", 0], [4, "Efecto de errores", 0], [4, "Asiento compuesto y clasificación", 0], [4, "Descuadre del balance de comprobación", 0], [4, "Activo corriente", 0]], "nv": "avanzada"}, "TSZ-CON-C2-N1": {"t": "Guía Contabilidad · Certamen 2: Ciclo contable y ajustes", "n": 10, "d": 5, "q": [[4, "Costo de ventas (inventario periódico)", 0], [4, "IVA en boletas", 0], [4, "Liquidación mensual del IVA", 0], [4, "Gastos pagados por anticipado", 0], [4, "Ingresos cobrados por anticipado", 0], [4, "Intereses devengados", 0], [4, "Depreciación con fracción de año", 0], [4, "Balance de 8 columnas", 0], [4, "Corrección de errores", 0], [4, "Asientos de cierre", 0]], "nv": "normal"}, "TSZ-CON-C2-A1": {"t": "Guía avanzada Contabilidad · Certamen 2: Ciclo contable y ajustes", "n": 10, "d": 5, "q": [[4, "Errores en el inventario final", 0], [4, "Liquidación de IVA con notas de crédito", 0], [4, "Anticipados registrados como gasto", 0], [4, "Ingresos devengados no facturados", 0], [4, "Depreciación acumulada y valor libro", 0], [4, "Corrección de errores con depreciación", 0], [4, "Cuadratura del balance de 8 columnas", 0], [4, "Efecto de ajustes omitidos", 0], [4, "Errores de períodos anteriores (NIC 8)", 0], [4, "Estado de resultados por función", 0]], "nv": "avanzada"}, "TSZ-CON-EX-N1": {"t": "Guía Contabilidad · Examen: NIIF y partidas del estado de situación", "n": 10, "d": 5, "q": [[4, "Conciliación bancaria", 0], [4, "Partidas que requieren asiento", 0], [4, "Estimación de incobrables", 0], [4, "Castigo de deudores", 0], [4, "Valorización FIFO", 0], [4, "Valor neto realizable", 0], [4, "Costo de propiedades, planta y equipo", 0], [4, "Baja de activo fijo", 0], [4, "Dividendo mínimo", 0], [4, "Estado de flujos de efectivo", 0]], "nv": "normal"}, "TSZ-CON-EX-A1": {"t": "Guía avanzada Contabilidad · Examen: NIIF y partidas del estado de situación", "n": 10, "d": 5, "q": [[4, "Conciliación: saldo de la cartola", 0], [4, "Reversión del ajuste a VNR", 0], [4, "Estimación con saldo deudor", 0], [4, "FIFO frente a PMP periódico", 0], [4, "Costo de un edificio construido", 0], [4, "Cambio de estimación en la depreciación", 0], [4, "Venta de PPE con fracción de año", 0], [4, "Dividendo mínimo con pérdidas acumuladas", 0], [4, "Flujo operacional (método indirecto)", 0], [4, "Flujo operacional (método directo)", 0]], "nv": "avanzada"}};
+const IC_LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+const IC = {
+  ok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>',
+  chev: '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>',
+  play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>',
+  ap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M8 7.5h8M8 11h6"/></svg>',
+  sl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8M7 12l3-3 2 2 4-4"/></svg>',
+  zoom: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5 21.5 7v10l-6-3.5"/></svg>',
+  pdf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>',
+  env: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 20 4l-6 16-3-7z"/><path d="m11 13 9-9"/></svg>'
+};
+const CFG = Object.assign({ endpoint: "", clientId: "", contacto: "" }, window.TSZ_CONFIG || {});
+const $ = (s, el) => (el || document).querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+function toast(m) { const t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 4200); }
+const MATS = Object.fromEntries(A.mats.map(m => [m.id, m]));
+const secDeGuia = c => (A.mats.find(m => m.ejes.some(e => e.guias.includes(c))) || {}).id || "";
+const tieneSec = s => !!D && (D.secciones || []).includes(s);
+const planDe = s => !D ? "" : (D.planes || []).find(p => p === "TSZ-PCON-" + s) || ((D.planes || []).includes("TSZ-PCON") ? "TSZ-PCON" : "");
+const grupoDe = c => planDe(secDeGuia(c));   // producto cuyas revisiones usa la guía
+const matDeGuia = secDeGuia;
+const PRECIO_SEC = 9990, PRECIO_TODO = 19990;
+const PRECIO_GUIA = Date.now() < new Date("2027-01-01T00:00:00-03:00").getTime() ? 2490 : 5000;   // mismo precio que una guía suelta en la tienda
+const esENS = c => false;   // el Plan Contabilidad no tiene ensayos PAES
+
+/* ---------- sesión (la misma de la página principal) ---------- */
+const LS = "tsz_ses";
+let ses = null; try { ses = JSON.parse(localStorage.getItem(LS) || "null"); } catch (e) { ses = null; }
+function saveSes() { try { ses ? localStorage.setItem(LS, JSON.stringify(ses)) : localStorage.removeItem(LS); } catch (e) {} }
+const vivo = () => !!(ses && ses.t && ses.exp > Date.now() + 90000);
+async function api(datos) {
+  if (!CFG.endpoint) throw new Error("sin_endpoint");
+  let j; try { const r = await fetch(CFG.endpoint, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(datos) }); j = await r.json(); }
+  catch (e) { throw new Error("red"); }
+  if (!j.ok) throw new Error(j.error || "error");
+  return j;
+}
+let gis = null, esperando = [];
+function cargarGIS() {
+  return gis || (gis = new Promise((ok, no) => {
+    if (!CFG.clientId) { gis = null; return no(new Error("sin_google")); }
+    const sc = document.createElement("script"); sc.src = "https://accounts.google.com/gsi/client"; sc.async = true;
+    sc.onload = () => { google.accounts.id.initialize({ client_id: CFG.clientId, callback: alEntrar, ux_mode: "popup", auto_select: false, cancel_on_tap_outside: true }); ok(); };
+    sc.onerror = () => { gis = null; no(new Error("red")); };
+    document.head.appendChild(sc);
+  }));
+}
+function jwt(t) { const b = t.split(".")[1].replace(/-/g, "+").replace(/_/g, "/"); return JSON.parse(decodeURIComponent(escape(atob(b + "===".slice((b.length + 3) % 4))))); }
+function alEntrar(resp) {
+  const c = jwt(resp.credential), mail = String(c.email || "").toLowerCase();
+  ses = { t: resp.credential, e: mail, n: c.given_name || c.name || "", exp: c.exp * 1000, p: ses && ses.e === mail ? ses.p : [] };
+  saveSes(); pintarSes(); closeLayer(true);
+  const w = esperando; esperando = []; w.forEach(f => f.ok());
+  if (!w.length) cargar();
+}
+function botonGoogle(el) {
+  cargarGIS().then(() => google.accounts.id.renderButton(el, { theme: "filled_black", size: "large", text: "continue_with", shape: "pill", locale: "es", width: 280 }))
+    .catch(e => { el.innerHTML = `<p class="err">${e.message === "sin_google" ? "El inicio de sesión se habilita pronto." : "No se pudo cargar Google. Revisa tu conexión."}</p>`; });
+}
+function pedirSesion(motivo) {
+  return new Promise((ok, no) => {
+    esperando.push({ ok, no });
+    showLayer(`<div class="panel narrow" role="dialog" aria-modal="true" aria-labelledby="lgT"><div class="ph"><div style="flex:1"><h3 id="lgT">Inicia sesión</h3><div class="sub">${esc(motivo)}</div></div><button class="x" aria-label="Cerrar">×</button></div>
+      <div class="pb"><p class="muted" style="font-size:15px">Entra con la misma cuenta de Google con la que activaste tu Intensivo.</p><div id="gbtn" style="min-height:44px;display:flex;justify-content:center"></div></div></div>`);
+    botonGoogle($("#gbtn"));
+  });
+}
+async function conSesion(datos, motivo) {
+  if (!vivo()) await pedirSesion(motivo || "Tu sesión expiró. Vuelve a entrar para continuar.");
+  try { return await api(Object.assign({ idToken: ses.t }, datos)); }
+  catch (e) {
+    if (e.message !== "sesion") throw e;
+    ses.t = ""; saveSes(); await pedirSesion("Tu sesión expiró. Vuelve a entrar para continuar.");
+    return api(Object.assign({ idToken: ses.t }, datos));
+  }
+}
+function pintarSes() {
+  const b = $("#sesBtn");
+  if (ses && ses.e) { b.textContent = ses.n ? ses.n.split(" ")[0] : ses.e.split("@")[0]; b.className = "btn btn-sm btn-ghost ses"; b.title = ses.e; }
+  else { b.textContent = "Iniciar sesión"; b.className = "btn btn-sm btn-cafe ses"; b.title = ""; }
+}
+$("#sesBtn").addEventListener("click", () => {
+  if (!(ses && ses.e)) return pedirSesion("Para entrar a tu aula").then(cargar, () => {});
+  showLayer(`<div class="panel narrow" role="dialog" aria-modal="true" aria-labelledby="ssT"><div class="ph"><div style="flex:1"><h3 id="ssT">Tu cuenta</h3><div class="sub">${esc(ses.e)}</div></div><button class="x" aria-label="Cerrar">×</button></div>
+    <div class="pb"><a class="btn btn-ghost" href="/">Ir a la página principal</a><button class="btn btn-ghost" type="button" id="ssOut">Cerrar sesión</button></div></div>`);
+  $("#ssOut").addEventListener("click", () => { try { google.accounts.id.disableAutoSelect(); } catch (e) {} ses = null; saveSes(); pintarSes(); closeLayer(); D = null; vista("land"); gate("login"); });
+});
+
+/* ---------- capas ---------- */
+const layer = $("#layer"); let lFocus = null;
+function showLayer(html) { lFocus = document.activeElement; layer.innerHTML = html; layer.hidden = false; document.body.style.overflow = "hidden"; const f = layer.querySelector("input,button:not(.x),.x"); if (f) f.focus(); }
+function closeLayer(silencioso) {
+  const w = esperando; esperando = []; if (!silencioso) w.forEach(f => f.no(new Error("cancelado")));
+  layer.hidden = true; layer.innerHTML = ""; document.body.style.overflow = ""; if (lFocus && lFocus.focus) lFocus.focus();
+}
+layer.addEventListener("click", ev => { if (ev.target === layer || ev.target.closest(".x")) closeLayer(); });
+document.addEventListener("keydown", ev => { if (ev.key === "Escape") { if (!$("#mv").hidden) cerrarMaterial(); else if (!layer.hidden) closeLayer(); } });
+
+/* ---------- vistas ---------- */
+let D = null;        // respuesta del servidor: cupos, clases, videos, enviadas
+let mat = A.mats[0].id, tab = "material";
+try { const h = location.hash.replace("#", "").toUpperCase(); if (MATS[h]) try { sessionStorage.setItem("tsz_con_vio_" + h, "1"); } catch (e) {} const sv = localStorage.getItem("tsz_aula_" + A.area); if (MATS[h]) mat = h; else if (MATS[sv]) mat = sv; } catch (e) {}
+function vista(v) { $("#vCarga").hidden = v !== "carga"; $("#vLand").hidden = v !== "land"; $("#vApp").hidden = v !== "app"; }
+function gate(modo, extra) {
+  const g = $("#gate");
+  if (modo === "login") {
+    g.innerHTML = `<span class="ico" aria-hidden="true">${IC_LOCK}</span><h2>Entra a tu aula</h2><p>Inicia sesión con la cuenta de Google con la que activaste tu ${esc(A.nombre)}.</p><div id="gbtn2" style="min-height:44px"></div>
+      <p class="note">¿Aún no lo tienes? <a href="/#plan-contabilidad">Conoce el ${esc(A.nombre)}</a>.</p>`;
+    botonGoogle($("#gbtn2"));
+  } else if (modo === "sin") {
+    g.innerHTML = `<span class="ico" aria-hidden="true">${IC_LOCK}</span><h2>Tu cuenta aún no tiene el ${esc(A.nombre)}</h2><p>Entraste como <b style="color:var(--ink)">${esc(ses.e)}</b>. Si ya pagaste, activa aquí el código que te llegó por correo.</p>
+      <form id="cjForm" novalidate><label class="legend" for="cjIn">Código de acceso</label><input class="in" id="cjIn" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX" style="font-family:var(--f-mono);letter-spacing:.08em"><p class="err" id="cjErr" hidden></p><button class="btn btn-ac" type="submit" id="cjGo">Activar código</button></form>
+      <div class="acts"><a class="btn btn-ghost" href="/#plan-contabilidad">Ver el ${esc(A.nombre)}</a><button class="btn btn-ghost" type="button" id="otraCta">Entrar con otra cuenta</button></div>`;
+    $("#otraCta").addEventListener("click", () => { ses = null; saveSes(); pintarSes(); gate("login"); });
+    $("#cjForm").addEventListener("submit", async ev => {
+      ev.preventDefault(); const er = $("#cjErr"), b = $("#cjGo"), n = $("#cjIn").value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+      er.hidden = true; if (n.length !== 12) { er.textContent = "El código tiene 12 caracteres (letras y números)."; er.hidden = false; return; }
+      b.disabled = true; b.textContent = "Verificando…";
+      try { const j = await conSesion({ tipo: "canje", codigo: n }); ses.p = j.productos || []; saveSes(); cargar(); }
+      catch (e) { if (e.message === "cancelado") return; er.textContent = e.message === "otra_cuenta" ? "Este código ya está activado en otra cuenta de Google." : e.message === "red" ? "No se pudo verificar. Revisa tu conexión." : "Ese código no es válido. Revísalo o escríbenos."; er.hidden = false; }
+      finally { b.disabled = false; b.textContent = "Activar código"; }
+    });
+  } else {
+    g.innerHTML = `<span class="ico" aria-hidden="true">${IC_LOCK}</span><h2>No pudimos abrir tu aula</h2><p>${esc(extra || "Revisa tu conexión e inténtalo de nuevo.")}</p><button class="btn btn-ac" type="button" id="reint">Reintentar</button>`;
+    $("#reint").addEventListener("click", cargar);
+  }
+}
+async function cargar() {
+  pintarSes();
+  if (!vivo()) { vista("land"); return gate("login"); }
+  if (!D) vista("carga");
+  try {
+    D = await api({ tipo: "aula", idToken: ses.t, area: A.area });
+    vista("app"); render();
+  } catch (e) {
+    D = null; vista("land");
+    if (e.message === "sesion") { ses.t = ""; saveSes(); return gate("login"); }
+    if (e.message === "sin_intensivo" || e.message === "sin_plan") return gate("sin");
+    gate("error", e.message === "sin_endpoint" ? "El aula se habilita pronto." : "Revisa tu conexión e inténtalo de nuevo.");
+  }
+}
+
+/* ---------- aula ---------- */
+const fechaCorta = iso => { const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleDateString("es-CL", { day: "numeric", month: "short" }); };
+const inicioDe = c => new Date(c.f + "T" + c.h + ":00");
+function render() {
+  $("#aTit").textContent = "Tu aula de Contabilidad";
+  if (!tieneSec(mat) && (D.secciones || []).length && !sessionStorage.getItem("tsz_con_vio_" + mat)) mat = D.secciones[0];
+  $("#who").textContent = "✓ " + ses.e;
+  $("#msw").innerHTML = A.mats.map(m => `<button type="button" data-m="${m.id}" aria-pressed="${m.id === mat}" style="--mc:${m.c}"${tieneSec(m.id) ? "" : ' class="lk" title="Sección no incluida en tu plan"'}>${tieneSec(m.id) ? '<i aria-hidden="true"></i>' : IC_LOCK}${esc(m.corto)}</button>`).join("");
+  const nada = !tieneSec(mat); $("#cupos").classList.toggle("lkd", nada);
+  const cls = proximas(), vids = D.videos || [];
+  const nc = $("#nCl"), nv = $("#nVi"); nc.textContent = cls.length; nc.hidden = !cls.length; nv.textContent = vids.length; nv.hidden = !vids.length;
+  document.querySelectorAll("#tabs [data-t]").forEach(b => b.setAttribute("aria-selected", b.dataset.t === tab));
+  ["material", "guias", "clases", "videos"].forEach(t => $("#p" + t[0].toUpperCase() + t.slice(1)).hidden = t !== tab);
+  $("#cupos").hidden = !(tab === "material" || tab === "guias");
+  renderCupos(); renderMaterial(); renderGuias(); renderClases(); renderVideos();
+}
+function renderCupos() {
+  const C = D.cupos || {}, M = MATS[mat], p = planDe(mat);
+  const dots = c => `<div class="dots" aria-hidden="true">${Array.from({ length: c.total }, (_, i) => `<i class="${i < c.total - c.usadas ? "" : "u"}"></i>`).join("")}</div>`;
+  if (!p) { $("#cupos").innerHTML = ""; return; }
+  const c = C[p] || { total: 0, usadas: 0 }, q = Math.max(0, c.total - c.usadas), todo = p === "TSZ-PCON";
+  $("#cupos").innerHTML = `<div class="cupo on"><span class="big">${q}<small>/${c.total}</small></span><b>Revisiones ${todo ? "de tu plan completo" : "de " + esc(M.corto)} disponibles</b><span>${q ? `Puedes enviar ${q === 1 ? "1 guía más" : q + " guías más"} a corregir${todo ? ", de cualquier sección" : ""}, con informe y guía de refuerzo.` : `Ya usaste tus ${c.total} revisiones${todo ? " del plan" : " de " + esc(M.corto)}.`}</span>${dots(c)}</div>`;
+}
+function bloqueada() {
+  const m = MATS[mat];
+  return `<div class="lockbox" style="--mc:${m.c};--ma:${m.a};--ml:${m.l}"><div class="art">${m.svg}</div><div class="in2"><span class="ico" aria-hidden="true">${IC_LOCK}</span>
+    <p class="k">${esc(m.k)}</p><h2>${esc(m.nombre)}</h2><p>${esc(m.sum)}</p>
+    <p class="muted">Esta sección no está en tu plan. Agrégala por <b style="color:var(--ink)">$${PRECIO_SEC.toLocaleString("es-CL")}</b>, o toma el plan completo (Certamen 1, Certamen 2 y Examen) por <b style="color:var(--ink)">$${PRECIO_TODO.toLocaleString("es-CL")}</b>.</p>
+    <a class="btn btn-ac" href="/#plan-contabilidad" style="background:${m.c};border-color:${m.c}">Ver el Plan Contabilidad</a></div></div>`;
+}
+function renderMaterial() {
+  const m = MATS[mat];
+  if (!tieneSec(mat)) { $("#pMaterial").innerHTML = bloqueada(); return; }
+  $("#pMaterial").innerHTML = `<div class="sec-h"><h2>Material de ${esc(m.nombre)}</h2><span class="note">${esc(m.sum)}</span></div>
+    <div class="mat2" style="--mc:${m.c};--ma:${m.a};--ml:${m.l}">
+      ${[["ap", "Apunte interactivo", "Abrir apunte"], ["sl", "Slides", "Ver slides"]].map(([k, t, b]) => `<article class="mcard"><div class="art">${m.svg}</div><div class="in2">
+        <p class="k">${esc(m.k)}</p><h3>${t}</h3><p>${esc(m[k].d)}</p>
+        <button class="btn btn-ac" type="button" data-mat="${m[k].id}" style="background:${m.c};border-color:${m.c}">${IC[k]}${b}</button></div></article>`).join("")}
+    </div>
+    <p class="note" style="margin-top:14px">Cambia de evaluación arriba para ver el material de ${esc(A.mats.filter(x => x.id !== mat).map(x => x.corto).join(", ").replace(/, ([^,]*)$/, " o $1"))}.</p>`;
+}
+const NIVEL = { normal: "Básica", avanzada: "Avanzada ★", ensayo: "Ensayo final" };
+const ESTADO = { "Por revisar": "En revisión", "Enviado": "Informe enviado", "Repetida": "Repetida" };
+function enviadaDe(c) { return (D.enviadas || []).find(e => e.g === c); }
+function propia(c) { const p = (ses && ses.p) || []; if (p.includes(c)) return true; return A.mats.some(m => m.ejes.some(e => e.guias.includes(c) && p.includes(e.id))); }
+function cupoLibre(c) { if (esENS(c) || propia(c)) return true; const cu = (D.cupos || {})[grupoDe(c)]; return !cu || cu.usadas < cu.total; }
+function renderGuias() {
+  const m = MATS[mat], g = planDe(mat), cu = (D.cupos || {})[g] || { total: 0, usadas: 0 };
+  if (!tieneSec(mat)) { $("#pGuias").innerHTML = bloqueada(); return; }
+  const q = Math.max(0, cu.total - cu.usadas);
+  const fila = c => {
+    const G = GUIAS[c], env = enviadaDe(c), ens = esENS(c);
+    const st = env ? `<span class="chip ok">Enviada ${esc(fechaCorta(env.f))} · ${esc(ESTADO[env.e] || env.e)}</span>` : "";
+    const libre = cupoLibre(c);
+    return `<div class="grow"><div><div class="t">${esc(G.t)}</div><div class="m"><span class="chip${G.nv === "avanzada" ? " av" : ""}">${NIVEL[G.nv] || "Guía"}</span><span class="note">${G.n} alternativas${G.d ? " + " + G.d + " de desarrollo" : ""}</span>${st}</div></div>
+      <div class="acts"><button class="btn btn-sm btn-ghost" type="button" data-pdf="${c}">${IC.pdf}PDF</button>${env ? "" : libre ? `<button class="btn btn-sm btn-ac" type="button" data-env="${c}">${IC.env}${ens ? "Enviar y ver resultado" : "Enviar a corregir"}</button>` : `<a class="btn btn-sm btn-ac" href="/#comprar=${c}">Comprar · $${PRECIO_GUIA.toLocaleString("es-CL")}</a>`}</div></div>`;
+  };
+  $("#pGuias").innerHTML = `<div class="sec-h"><h2>Guías de ${esc(m.nombre)}</h2><span class="note">${q === 1 ? "Te queda" : "Te quedan"} ${q} de ${cu.total} revisiones${g === "TSZ-PCON" ? " de tu plan" : " de " + esc(m.corto)}. Cuando se te acaben, puedes comprar más guías de esta prueba a $${PRECIO_GUIA.toLocaleString("es-CL")} cada una; las que compras no usan revisiones.</span></div>
+    ${m.ejes.map((e, i) => `<details class="eje"${i < 1 ? " open" : ""}><summary>${IC.chev}<h3>${esc(e.nombre)}</h3><span class="c">${e.guias.length} ${e.guias.length === 1 ? "guía" : "guías"}</span></summary><p class="desc">${esc(e.desc)}</p>${e.guias.map(fila).join("")}</details>`).join("")}`;
+}
+function proximas() { const now = Date.now(); return (D.clases || []).filter(c => inicioDe(c).getTime() + (c.dur || 60) * 6e4 > now); }
+function renderClases() {
+  const now = Date.now(), L = proximas().filter(c => !c.m || c.m === mat), otras = proximas().length - L.length;
+  const card = c => {
+    const ini = inicioDe(c), fin = new Date(ini.getTime() + (c.dur || 60) * 6e4), enVivo = now >= ini - 10 * 6e4 && now < fin, pronto = !enVivo && ini - now < 36e5;
+    const hm = d => d.toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit", hour12: false });
+    return `<article class="clase${enVivo ? " vivo" : ""}"><div class="cal"><small>${esc(ini.toLocaleDateString("es-CL", { weekday: "short" }).replace(".", ""))}</small><b>${ini.getDate()}</b><span>${esc(ini.toLocaleDateString("es-CL", { month: "short" }).replace(".", ""))}</span></div>
+      <div style="min-width:0"><h3>${esc(c.t)}</h3><div class="m">${enVivo ? '<span class="live"><i></i>En vivo ahora</span>' : pronto ? '<span class="live" style="color:var(--warn)">Empieza pronto</span>' : ""}<span>${hm(ini)}–${hm(fin)} (hora de Chile)</span><span class="chip">${c.m ? esc(MATS[c.m] ? MATS[c.m].corto : c.m) : "Todo el curso"}</span></div></div>
+      <div class="go">${c.link ? `<a class="btn ${enVivo || pronto ? "btn-ac" : "btn-ghost"}" href="${esc(c.link)}" target="_blank" rel="noopener">${IC.zoom}Entrar a Zoom</a>` : '<span class="note">El link se publica antes de la clase</span>'}</div></article>`;
+  };
+  $("#pClases").innerHTML = `<div class="sec-h"><h2>Próximas clases</h2><span class="note">Entra con el botón a la hora de la clase. El link abre Zoom.</span></div>
+    ${L.length ? `<div class="clist">${L.map(card).join("")}</div>` : `<div class="empty"><b>No hay clases programadas de ${esc(MATS[mat].corto)}</b>${tieneSec(mat) ? "Cuando se programe una clase en vivo antes de la prueba, aparece aquí con su link de Zoom." : "Esta sección no está en tu plan: sus clases en vivo aparecen aquí cuando la agregues."}</div>`}
+    ${otras > 0 ? `<p class="note" style="margin-top:12px">Hay ${otras} ${otras === 1 ? "clase" : "clases"} de otra evaluación: cámbiala arriba para verla.</p>` : ""}`;
+}
+function ytId(u) { const m = /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([\w-]{11})/.exec(u); return m ? m[1] : ""; }
+function embedDe(u) {
+  const y = ytId(u); if (y) return "https://www.youtube-nocookie.com/embed/" + y + "?rel=0";
+  const v = /vimeo\.com\/(?:video\/)?(\d+)/.exec(u); if (v) return "https://player.vimeo.com/video/" + v[1];
+  const d = /drive\.google\.com\/(?:file\/d\/|open\?id=)([\w-]+)/.exec(u); if (d) return "https://drive.google.com/file/d/" + d[1] + "/preview";
+  return "";
+}
+function renderVideos() {
+  const L = (D.videos || []).filter(v => !v.m || v.m === mat), m = MATS[mat];
+  $("#pVideos").innerHTML = `<div class="sec-h"><h2>Videos de ${esc(m.nombre)}</h2><span class="note">${L.length ? L.length + (L.length === 1 ? " video" : " videos") : ""}</span></div>
+    ${L.length ? `<div class="vgrid" style="--ma:${m.a}">${L.map(v => { const y = ytId(v.url);
+      return `<button class="vcard" type="button" data-vid="${esc(v.id)}"><div class="thumb">${y ? `<img src="https://i.ytimg.com/vi/${y}/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">` : ""}<span class="pl">${IC.play}</span></div>
+        <div class="vt"><b>${esc(v.t)}</b><span>${v.m ? esc(MATS[v.m] ? MATS[v.m].corto : v.m) : "Todo el curso"}${v.f ? " · " + esc(fechaCorta(v.f + "T12:00:00")) : ""}</span>${v.d ? `<span>${esc(v.d)}</span>` : ""}</div></button>`; }).join("")}</div>`
+      : `<div class="empty"><b>Aún no hay videos de ${esc(m.corto)}</b>${tieneSec(mat) ? "Los videos de las clases aparecen aquí a medida que se suben." : "Esta sección no está en tu plan: sus videos aparecen aquí cuando la agregues."}</div>`}`;
+}
+function verVideo(id) {
+  const v = (D.videos || []).find(x => x.id === id); if (!v) return;
+  const e = embedDe(v.url);
+  if (!e) { window.open(v.url, "_blank", "noopener"); return; }
+  showLayer(`<div class="panel wide" role="dialog" aria-modal="true" aria-labelledby="vT"><div class="ph"><div style="flex:1;min-width:0"><h3 id="vT">${esc(v.t)}</h3>${v.d ? `<div class="sub">${esc(v.d)}</div>` : ""}</div><button class="x" aria-label="Cerrar">×</button></div>
+    <div class="pb"><div class="player"><iframe src="${esc(e)}" title="${esc(v.t)}" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe></div>
+    <p class="note">¿No carga? <a href="${esc(v.url)}" target="_blank" rel="noopener">Ábrelo en otra pestaña</a>.</p></div></div>`);
+}
+
+/* ---------- material, PDF y hoja de respuestas ---------- */
+const b64 = x => Uint8Array.from(atob(x), ch => ch.charCodeAt(0));
+async function descifrar(k, url) {
+  const key = await crypto.subtle.importKey("raw", b64(k), "AES-GCM", false, ["decrypt"]);
+  const r = await fetch(url); if (!r.ok) throw new Error("red");
+  const buf = new Uint8Array(await r.arrayBuffer());
+  return crypto.subtle.decrypt({ name: "AES-GCM", iv: buf.slice(0, 12) }, key, buf.slice(12));
+}
+async function abrirMaterial(id, btn) {
+  const m = A.mats.find(x => x.ap.id === id || x.sl.id === id), t = m.ap.id === id ? "Apunte interactivo" : "Slides";
+  const txt = btn.innerHTML; btn.disabled = true; btn.textContent = "Abriendo…";
+  try {
+    const j = await conSesion({ tipo: "material", m: id }, "Inicia sesión para abrir tu material.");
+    const html = new TextDecoder().decode(await descifrar(j.k, "/tienda/m/" + id + ".bin"));
+    $("#mvT").textContent = m.nombre + " · " + t; $("#mvS").textContent = A.nombre;
+    $("#mvF").srcdoc = html.split("{{LIC}}").join(esc(ses.e)); $("#mv").hidden = false; document.body.style.overflow = "hidden"; $("#mvX").focus();
+  } catch (e) { if (e.message !== "cancelado") toast(e.message === "sin_plan" || e.message === "sin_intensivo" ? "Tu plan no incluye esta sección." : "No se pudo abrir el material. Revisa tu conexión e inténtalo de nuevo."); }
+  finally { btn.disabled = false; btn.innerHTML = txt; }
+}
+function cerrarMaterial() { if ($("#mv").hidden) return; $("#mv").hidden = true; $("#mvF").srcdoc = ""; document.body.style.overflow = ""; }
+$("#mvX").addEventListener("click", cerrarMaterial);
+async function descargar(code, btn) {
+  const txt = btn.innerHTML; btn.disabled = true; btn.textContent = "Preparando…";
+  try {
+    const j = await conSesion({ tipo: "llave", guia: code }, "Inicia sesión para descargar tus guías.");
+    const url = URL.createObjectURL(new Blob([await descifrar(j.k, "/tienda/g/" + code + ".bin")], { type: "application/pdf" }));
+    const a = document.createElement("a"); a.href = url; a.download = code + ".pdf"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  } catch (e) { if (e.message !== "cancelado") toast(e.message === "red" ? "No se pudo descargar. Revisa tu conexión." : "No se pudo descargar la guía. Inténtalo de nuevo o escríbenos."); }
+  finally { btn.disabled = false; btn.innerHTML = txt; }
+}
+const borr = {};
+function openForm(code) {
+  const g = GUIAS[code], ens = esENS(code), gr = grupoDe(code), cu = (D.cupos || {})[gr], q = cu ? Math.max(0, cu.total - cu.usadas) : 0;
+  const usa = !ens && !propia(code);
+  const rows = g.q.map((x, i) => `<div class="qrow"><span class="qn">${i + 1}</span><span class="qc">${esc(x[1])}</span><div class="opts" role="radiogroup" aria-label="Pregunta ${i + 1}">${"ABCDE".slice(0, x[0]).split("").map(L => `<label class="opt"><input type="radio" name="q${i}" value="${L}" id="q${i}${L}" aria-label="Pregunta ${i + 1}, alternativa ${L}"><span>${L}</span></label>`).join("")}</div></div>`).join("");
+  showLayer(`<div class="panel" role="dialog" aria-modal="true" aria-labelledby="fT"><div class="ph"><div style="flex:1;min-width:0"><h3 id="fT">Hoja de respuestas · ${esc(g.t)}</h3><div class="sub">${g.d ? "Las " + g.n + " alternativas de la Parte I, en el mismo orden que la guía. Las " + g.d + " preguntas de desarrollo las corriges tú con su pauta y el QR de cada una." : g.n + " preguntas, en el mismo orden que la guía"}</div></div><button class="x" aria-label="Cerrar">×</button></div>
+    <form id="ansForm" novalidate><div class="pb">
+      <div class="box ac"><p style="font:600 14.5px var(--f-display)">${usa ? `Esta guía usa 1 de tus revisiones${gr === "TSZ-PCON" ? " del plan" : " de " + esc((MATS[secDeGuia(code)] || {}).corto || "")}: te quedan ${q} y después ${q - 1}.` : "Esta guía la compraste aparte: no usa revisiones del plan."}</p></div>
+      <div class="row2"><div class="field"><label for="fName">Nombre y apellido</label><input class="in" id="fName" autocomplete="name" value="${esc(ses.n || "")}"></div>
+        <div class="field"><label for="fSchool">Universidad y carrera <span class="muted">(opcional)</span></label><input class="in" id="fSchool" placeholder="Ej.: Ingeniería, primer año"></div></div>
+      <p class="note">El informe llega a <b style="color:var(--ink)">${esc(ses.e)}</b>.</p>
+      <fieldset class="field" style="border:0;padding:0;margin:0"><legend class="legend" style="margin-bottom:6px">¿Tienes 18 años o más?</legend>
+        <div class="seg"><label><input type="radio" name="adult" value="si" checked><span>Sí</span></label><label><input type="radio" name="adult" value="no"><span>No, soy menor de 18</span></label></div></fieldset>
+      <div class="box" id="guardBox" hidden><p style="font:500 14px var(--f-display)">Como eres menor de edad, necesitamos la autorización de tu madre, padre o apoderado. Le enviaremos una copia del informe.</p>
+        <div class="row2"><div class="field"><label for="gName">Nombre del apoderado</label><input class="in" id="gName"></div><div class="field"><label for="gMail">Correo del apoderado</label><input class="in" id="gMail" type="email"></div></div>
+        <label class="check"><input type="checkbox" id="gOk"><span>Mi apoderado autorizó que envíe mis respuestas y que TS Zenit trate mis datos según la política de privacidad.</span></label></div>
+      <div class="qhead"><span class="legend">Tus respuestas</span><div class="prog" aria-hidden="true"><i id="prog"></i></div><span class="note" id="qcount">0 de ${g.n}</span></div>
+      <div class="qlist">${rows}</div>
+      <label class="check"><input type="checkbox" id="fOk"><span>Leí y acepto la <a href="/#privacidad" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+      <p class="err" id="fErr" hidden></p>
+    </div><div class="pf"><span class="note">Las preguntas sin marcar cuentan como omitidas.</span><button class="btn btn-ac" type="submit" id="fSend">${IC.env}Enviar hoja de respuestas</button></div></form></div>`);
+  const form = $("#ansForm"), upd = () => { const n = form.querySelectorAll(".opts input:checked").length; $("#qcount").textContent = `${n} de ${g.n}`; $("#prog").style.width = (100 * n / g.n) + "%"; };
+  const bd = borr[code]; if (bd) { delete borr[code]; $("#fName").value = bd.n; $("#fSchool").value = bd.s; bd.ans.forEach((a, i) => { const r = $(`#q${i}${a}`); if (r) r.checked = true; }); upd(); }
+  form.addEventListener("change", ev => { if (ev.target.name === "adult") $("#guardBox").hidden = ev.target.value !== "no"; upd(); });
+  let blank = false;
+  form.addEventListener("submit", async ev => {
+    ev.preventDefault();
+    const err = $("#fErr"), fail = (m, el) => { err.textContent = m; err.hidden = false; if (el) el.focus(); }; err.hidden = true;
+    const name = $("#fName").value.trim(), minor = form.querySelector('input[name="adult"]:checked').value === "no";
+    if (!name) return fail("Escribe tu nombre para saber a quién enviar el informe.", $("#fName"));
+    if (minor) {
+      if (!$("#gName").value.trim()) return fail("Escribe el nombre de tu apoderado.", $("#gName"));
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("#gMail").value.trim())) return fail("Escribe un correo válido de tu apoderado.", $("#gMail"));
+      if (!$("#gOk").checked) return fail("Necesitamos que confirmes la autorización de tu apoderado.", $("#gOk"));
+    }
+    if (!$("#fOk").checked) return fail("Para enviar tienes que aceptar la política de privacidad.", $("#fOk"));
+    const ans = g.q.map((_, i) => (form.querySelector(`input[name="q${i}"]:checked`) || {}).value || "-");
+    const blanks = ans.map((a, i) => a === "-" ? i + 1 : 0).filter(Boolean);
+    if (blanks.length && !blank) { blank = true; $("#fSend").lastChild.textContent = "Enviar igual"; return fail(`Dejaste sin marcar ${blanks.length === 1 ? "la pregunta" : "las preguntas"} ${blanks.join(", ")}. Puedes completarlas o enviar igual: contarán como omitidas.`); }
+    if (!vivo()) { borr[code] = { n: name, s: $("#fSchool").value, ans }; try { await pedirSesion("Tu sesión expiró. Vuelve a entrar: tus respuestas quedan guardadas."); } catch (e) { return; } return openForm(code); }
+    const b = $("#fSend"); b.disabled = true; b.lastChild.textContent = "Enviando…";
+    const folio = code + "-" + String(Math.floor(1000 + Math.random() * 9000));
+    let r;
+    try {
+      r = await conSesion({ tipo: "hoja", guia: code, titulo: g.t, folio, nombre: name, correo: ses.e, colegio: $("#fSchool").value.trim(), menor: minor,
+        apoderado: minor ? $("#gName").value.trim() : "", apoderadoCorreo: minor ? $("#gMail").value.trim() : "", respuestas: ans.join("") });
+    } catch (e) {
+      b.disabled = false; b.lastChild.textContent = "Enviar hoja de respuestas";
+      const M = { repetida: "Ya enviaste esta guía con tu cuenta. Cada guía se revisa una sola vez.", limite_int: "Ya no te quedan revisiones.", limite_plan: "Ya no te quedan revisiones de esta sección en tu plan.", sin_acceso: "Tu cuenta no tiene acceso a esta guía.", red: "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.", cancelado: "Para enviar tienes que iniciar sesión." };
+      return fail(M[e.message] || "No se pudo enviar. Inténtalo de nuevo o escríbenos.");
+    }
+    cargar();
+    const panel = layer.querySelector(".panel");
+    if (r && r.ensayo) {
+      const tot = r.total || r.clave.length, pct = tot ? Math.round(100 * r.buenas / tot) : 0;
+      panel.innerHTML = `<div class="ph"><div style="flex:1"><h3>Tu resultado</h3><div class="sub">${esc(g.t)}</div></div><button class="x" aria-label="Cerrar">×</button></div>
+        <div class="pb"><div class="res-top"><b>${r.buenas} de ${tot}</b><span>respuestas correctas · ${pct} % · ${r.malas || 0} incorrectas · ${r.omit || 0} omitidas</span></div>
+        <p class="note">Cada casilla muestra tu respuesta; si fallaste, la flecha indica la correcta.</p>
+        <div class="res-grid">${r.clave.split("").map((k, i) => { const x = (r.resp || "")[i] || "-"; return `<div class="res-it ${x === k ? "ok" : x === "-" ? "om" : "no"}"><span>${i + 1}. ${x === "-" ? "—" : x}</span><i>${x === k ? "✓" : "→ " + k}</i></div>`; }).join("")}</div>
+        <p class="note">Te enviamos este resultado por correo. Tu informe y tu ensayo de refuerzo llegarán a ${esc(ses.e)}${minor ? " y a tu apoderado" : ""} dentro de 72 horas hábiles.</p></div>`;
+    } else {
+      panel.innerHTML = `<div class="ph"><div style="flex:1"><h3>Hoja enviada</h3><div class="sub">${esc(g.t)}</div></div><button class="x" aria-label="Cerrar">×</button></div>
+        <div class="done"><div class="tick" aria-hidden="true">${IC.ok.replace("<svg", '<svg width="28" height="28"')}</div><p style="font:600 18px var(--f-display)">Recibimos tus ${g.n - blanks.length} respuestas, ${esc(name.split(" ")[0])}</p>
+        <p class="muted" style="max-width:30em">Tu informe y tu guía de refuerzo llegarán a <b style="color:var(--ink)">${esc(ses.e)}</b>${minor ? " y a tu apoderado" : ""} dentro de 72 horas hábiles.</p><span class="note">Folio ${esc(folio)}</span>
+        <button class="btn btn-ghost x" type="button" style="width:auto;height:auto">Volver al aula</button></div>`;
+    }
+    const f = panel.querySelector(".x"); if (f) f.focus();
+  });
+}
+
+/* ---------- eventos ---------- */
+$("#msw").addEventListener("click", ev => { const b = ev.target.closest("[data-m]"); if (!b) return; mat = b.dataset.m; try { sessionStorage.setItem("tsz_con_vio_" + mat, "1"); localStorage.setItem("tsz_aula_" + A.area, mat); history.replaceState(null, "", "#" + mat.toLowerCase()); } catch (e) {} render(); });
+$("#tabs").addEventListener("click", ev => { const b = ev.target.closest("[data-t]"); if (!b) return; tab = b.dataset.t; render(); });
+$("#tabs").addEventListener("keydown", ev => { if (!/Arrow(Left|Right)/.test(ev.key)) return; const T = [...document.querySelectorAll("#tabs [data-t]")], i = T.findIndex(b => b.dataset.t === tab), n = T[(i + (ev.key === "ArrowRight" ? 1 : T.length - 1)) % T.length]; tab = n.dataset.t; render(); n.focus(); });
+$("#vApp").addEventListener("click", ev => {
+  const m = ev.target.closest("[data-mat]"); if (m) return abrirMaterial(m.dataset.mat, m);
+  const p = ev.target.closest("[data-pdf]"); if (p) return descargar(p.dataset.pdf, p);
+  const e = ev.target.closest("[data-env]"); if (e) return openForm(e.dataset.env);
+  const v = ev.target.closest("[data-vid]"); if (v) return verVideo(v.dataset.vid);
+});
+setInterval(() => { if (D && tab === "clases" && layer.hidden) renderClases(); }, 60000);
+cargar();
+</script>
+</body></html>
