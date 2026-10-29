@@ -1,0 +1,1126 @@
+<!doctype html><html lang="es" data-theme="dark"><head><meta name="robots" content="noindex"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vista previa · Apunte interactivo del Examen · Contabilidad (FEN) · TS Zenit</title>
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head><body>
+<style>
+
+/* Layout: una columna de lectura (máx. 46rem) con fila pegajosa de casillas tipo tabla periódica; acento naranjo de banco óptico */
+:root{--display:"Poppins",sans-serif;--body:"Source Serif 4",serif;--mono:"IBM Plex Mono",monospace;--c2:#FDE7B0;--sp-radio:#3A4553;--sp-micro:#46525F;--sp-ir:#6E4036;--sp-uv:#4E4270;--sp-x:#46506A;--sp-g:#5A6380}
+
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.55; -webkit-text-size-adjust:100%}
+.wrap{max-width:46rem; margin:0 auto; padding-inline:16px}
+h1,h2,h3{font-family:var(--display); font-weight:700; line-height:1.05; text-wrap:balance; margin:0}
+h1{font-size:2.6rem} h2{font-size:2.3rem} h3{font-size:1.45rem}
+p{margin:0}
+sub,sup{font-size:.72em; line-height:0}
+.f{font-family:var(--mono); font-size:.93em; white-space:nowrap}
+.muted{color:var(--muted)}
+.lab{font:600 .72rem/1.2 var(--body); letter-spacing:.08em; text-transform:uppercase}
+.intro{padding-block:1.4rem 1rem; display:grid; gap:.6rem}
+.intro .lab{color:var(--accent)}
+.intro p{max-width:62ch}
+.stats{display:flex; flex-wrap:wrap; gap:.5rem 1.2rem; font-size:.9rem; color:var(--muted)}
+.stats b{font-family:var(--mono); color:var(--ink); font-weight:500; font-variant-numeric:tabular-nums}
+.bar{position:sticky; top:env(safe-area-inset-top,0px); z-index:10; background:var(--bg); border-bottom:1px solid var(--line)}
+.tiles{display:flex; gap:.45rem; overflow-x:auto; padding-block:.6rem; scrollbar-width:none}
+.tiles::-webkit-scrollbar{display:none}
+.tile{flex:0 0 auto; width:4.4rem; height:4.7rem; display:grid; grid-template-rows:auto 1fr auto auto; gap:1px; padding:.28rem .38rem .3rem; text-align:left; border:1.5px solid var(--ink); border-radius:3px; background:var(--surface); color:var(--ink); cursor:pointer; font:inherit}
+.tile .z{font:500 .66rem/1 var(--mono)}
+.tile .sym{font:700 1.75rem/1 var(--display); align-self:center}
+.tile .nm{font:500 .58rem/1.1 var(--body); text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.tile .pg{height:3px; background:var(--surface-2); border-radius:2px; overflow:hidden}
+.tile .pg span{display:block; height:100%; width:0; background:var(--ok)}
+.tile[aria-selected="true"]{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.tile:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2.5px solid var(--sci); outline-offset:2px}
+main{padding-block:1.2rem 3rem}
+.panel{display:grid; gap:2.2rem}
+.phead{display:grid; gap:.5rem}
+.phead .lab{color:var(--muted)}
+.phead p{max-width:62ch}
+.sub{display:grid; gap:.9rem}
+.subh{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:.4rem .8rem; border-top:2px solid var(--ink); padding-top:.7rem}
+.dom{font:500 .78rem var(--body); border:1.5px solid var(--line); background:var(--surface); color:var(--muted); border-radius:999px; padding:.25rem .7rem; cursor:pointer}
+.dom[aria-pressed="true"]{background:var(--ok-soft); border-color:var(--ok); color:var(--ok)}
+.sub p,.sub li{max-width:66ch}
+ul.plain,ol.plain{margin:0; padding-left:1.2rem; display:grid; gap:.35rem}
+.note{padding:.8rem .95rem; border-radius:6px; background:var(--sci-soft); display:grid; gap:.35rem}
+.note .lab{color:var(--sci)}
+.note.trap{background:var(--warn-soft)} .note.trap .lab{color:var(--warn)}
+.note.key{background:var(--accent-soft)} .note.key .lab{color:var(--accent)}
+.tbl{overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:.9rem}
+th,td{padding:.5rem .65rem; text-align:left; vertical-align:top; border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{font:600 .7rem/1.2 var(--body); letter-spacing:.06em; text-transform:uppercase; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+td.n{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td b{font-weight:600}
+.flow{display:flex; flex-wrap:wrap; align-items:center; gap:.4rem; font-size:.88rem}
+.flow .box{border:1.5px solid var(--ink); border-radius:4px; padding:.3rem .6rem; background:var(--surface)}
+.flow .arr{color:var(--accent); font-weight:600; font-family:var(--mono)}
+.tool{border:1.5px solid var(--sci); border-radius:8px; background:var(--surface); padding:.9rem; display:grid; gap:.8rem}
+.tool>.lab{color:var(--sci)}
+.tool h4{margin:0; font:700 1.2rem/1.1 var(--display)}
+.fields{display:grid; grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr)); gap:.6rem}
+.field{display:grid; gap:.2rem; min-width:0}
+.field label{font-size:.78rem; color:var(--muted)}
+.field input,.field select{font:500 1rem var(--mono); padding:.45rem .55rem; border:1.5px solid var(--line); border-radius:5px; background:var(--bg); color:var(--ink); width:100%; min-width:0}
+.field select{font-family:var(--body); font-size:.95rem}
+.out{display:grid; gap:.35rem; font-size:.92rem}
+.big{font:700 1.5rem/1.1 var(--display)}
+.err{color:var(--bad); font-size:.88rem}
+.btn{font:600 .88rem var(--body); padding:.5rem .95rem; border-radius:5px; border:1.5px solid var(--ink); background:var(--ink); color:var(--bg); cursor:pointer}
+.btn.ghost{background:transparent; color:var(--ink)}
+.btn:disabled{opacity:.4; cursor:default}
+.btnrow{display:flex; flex-wrap:wrap; gap:.5rem}
+.res{display:grid; grid-template-columns:repeat(auto-fit,minmax(7.2rem,1fr)); gap:.5rem}
+.res div{background:var(--surface-2); border-radius:5px; padding:.45rem .6rem; min-width:0}
+.res span{display:block; font-size:.72rem; color:var(--muted)}
+.res b{font:600 1.02rem var(--mono); font-variant-numeric:tabular-nums}
+.seg{display:flex; flex-wrap:wrap; gap:.35rem}
+.sbtn{font:500 .84rem var(--body); padding:.32rem .75rem; border-radius:999px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer}
+.sbtn[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--bg)}
+.range{display:grid; gap:.2rem}
+.range label{font-size:.82rem; color:var(--muted)}
+.range input{width:100%; accent-color:var(--accent)}
+.verdict{padding:.6rem .75rem; border-radius:5px; font-size:.92rem; background:var(--surface-2); display:grid; gap:.3rem}
+svg.chart{width:100%; height:auto; display:block}
+.ax{stroke:var(--muted); stroke-width:1}
+.axis{stroke:var(--ink); stroke-width:1; stroke-dasharray:5 4; opacity:.6}
+.grid{stroke:var(--line); stroke-width:1}
+.tick{fill:var(--muted); font:500 10px var(--mono)}
+.axl{fill:var(--muted); font:500 10.5px var(--body)}
+.svl{fill:var(--ink); font:600 11px var(--mono)}
+.svs{fill:var(--muted); font:500 10px var(--body)}
+.ln{fill:none; stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round}
+.ln-ink{stroke:var(--ink)} .ln-a{stroke:var(--accent)} .ln-s{stroke:var(--sci)} .ln-c2{stroke:var(--c2)}
+.dash{stroke-dasharray:5 4}
+.thin{stroke-width:1.5}
+.area{fill:var(--accent-soft)}
+.pt{fill:var(--accent); stroke:var(--surface); stroke-width:2}
+.cur{stroke:var(--accent); stroke-width:1.5}
+.case{display:grid; gap:.6rem; border-top:1px dashed var(--line); padding-top:.7rem}
+.case:first-of-type{border-top:0; padding-top:0}
+.case p{font-size:.93rem}
+.item{display:grid; gap:.3rem; padding:.55rem .6rem; border-radius:5px; background:var(--surface-2)}
+.item .txt{font-size:.9rem}
+.item select{font:500 .92rem var(--body); padding:.4rem .5rem; border:1.5px solid var(--line); border-radius:5px; background:var(--bg); color:var(--ink); width:100%}
+.item.ok{background:var(--ok-soft)} .item.bad{background:var(--bad-soft)}
+.item .fb{font-size:.8rem; font-weight:600}
+.item.ok .fb{color:var(--ok)} .item.bad .fb{color:var(--bad)}
+.filters{display:flex; flex-wrap:wrap; gap:.4rem}
+.fbtn{font:500 .82rem var(--body); padding:.32rem .7rem; border-radius:999px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer}
+.fbtn[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--bg)}
+.qcard{background:var(--surface); border:1.5px solid var(--ink); border-radius:8px; padding:1rem; display:grid; gap:.85rem}
+.qmeta{display:flex; flex-wrap:wrap; justify-content:space-between; gap:.4rem; font:500 .78rem var(--mono); color:var(--muted)}
+.qmeta .tp{color:var(--accent)}
+.qstem{font-size:1.02rem; font-weight:500}
+.opts{display:grid; gap:.45rem}
+.opt{display:grid; grid-template-columns:1.9rem 1fr; gap:.55rem; align-items:start; text-align:left; font:inherit; font-size:.95rem; color:var(--ink); background:var(--bg); border:1.5px solid var(--line); border-radius:6px; padding:.55rem .6rem; cursor:pointer}
+.opt .lt{font:600 .85rem var(--mono); width:1.7rem; height:1.7rem; display:grid; place-items:center; border:1.5px solid var(--line); border-radius:4px}
+.opt.ok{background:var(--ok-soft); border-color:var(--ok)} .opt.ok .lt{border-color:var(--ok); color:var(--ok)}
+.opt.bad{background:var(--bad-soft); border-color:var(--bad)} .opt.bad .lt{border-color:var(--bad); color:var(--bad)}
+.opt:disabled{cursor:default}
+.expl{padding:.7rem .85rem; border-radius:6px; background:var(--surface-2); font-size:.92rem; display:grid; gap:.25rem}
+.expl .lab.ok{color:var(--ok)} .expl .lab.bad{color:var(--bad)}
+.dots{display:flex; flex-wrap:wrap; gap:4px}
+.dot{width:10px; height:10px; border-radius:2px; background:var(--surface-2); border:1px solid var(--line)}
+.dot.ok{background:var(--ok); border-color:var(--ok)} .dot.bad{background:var(--bad); border-color:var(--bad)} .dot.cur{outline:2px solid var(--accent); outline-offset:1px}
+.tstats{display:grid; grid-template-columns:repeat(auto-fit,minmax(7.2rem,1fr)); gap:.5rem}
+.tstats div{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:.5rem .65rem}
+.tstats span{display:block; font-size:.74rem; color:var(--muted)}
+.tstats b{font:600 1.05rem var(--mono); font-variant-numeric:tabular-nums}
+.specbar{height:10px; border-radius:2px; background:linear-gradient(90deg,var(--sp-radio) 0 22%,var(--sp-micro) 22% 44%,var(--sp-ir) 44% 63%,#E5484D 63%,#F59E0B 64%,#EAD22A 64.6%,#3FAE5A 65.2%,#2F7FD8 65.8%,#7A45C9 66.4% 66.9%,var(--sp-uv) 66.9% 78%,var(--sp-x) 78% 89%,var(--sp-g) 89%)}
+footer{font-size:.8rem; color:var(--muted); padding-block:1rem 2rem; border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:no-preference){ .tile,.opt,.dom,.fbtn,.sbtn{transition:background-color .15s, border-color .15s, color .15s} }
+@media (max-width:420px){ h1{font-size:2.2rem} h2{font-size:2rem} .tile{width:4rem; height:4.4rem} .tile .sym{font-size:1.55rem} }
+
+/* Preguntas con gráficos y tablas */
+.qfig{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:.7rem;overflow-x:auto}
+.qfig svg{width:100%;max-width:560px;height:auto;display:block;margin:0 auto}
+.qfig table{font-size:.86rem;margin:0 auto}
+.qf-cap{font-size:.8rem;color:var(--muted);margin:.4rem 0 0;text-align:center}
+.qf-leg{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1rem;font-size:.8rem;margin-top:.35rem}
+.qf-leg i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:.35rem}
+.qf-b1{background:var(--accent)} .qf-b2{background:var(--sci)} .qf-b3{background:var(--warn)} .qf-b4{background:var(--ok)}
+.qf-ax{stroke:var(--muted);stroke-width:1}
+.qf-gr{stroke:var(--line);stroke-width:1}
+.qf-tk{fill:var(--muted);font:500 10px var(--mono)}
+.qf-lb{fill:var(--muted);font:500 10.5px var(--body)}
+.qf-tx{fill:var(--ink);font:600 10.5px var(--mono)}
+.qf-ln{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.qf-s1{stroke:var(--accent)} .qf-s2{stroke:var(--sci)} .qf-s3{stroke:var(--warn)} .qf-s4{stroke:var(--ok)} .qf-sm{stroke:var(--muted)}
+.qf-f1{fill:var(--accent)} .qf-f2{fill:var(--sci)} .qf-f3{fill:var(--warn)} .qf-f4{fill:var(--ok)}
+.qf-dash{stroke-dasharray:5 4}
+.qf-pt{stroke:var(--surface);stroke-width:1.5}
+.qf-ink{stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round}
+.qf-at{fill:var(--ink);font:600 14px var(--mono)}
+.qf-mol{fill:var(--ink);font:600 22px var(--mono)}
+.qf-num{fill:var(--accent);font:600 13px var(--mono)}
+.qf-bg2{fill:var(--surface-2)}
+/* Herramientas interactivas agregadas */
+.x-stage{border:1px solid var(--line);border-radius:6px;background:var(--bg);padding:.5rem;overflow-x:auto}
+.x-svg{width:100%;height:auto;display:block;max-width:560px;margin:0 auto}
+.x-gr{stroke:var(--line);stroke-width:1}
+.x-ax{stroke:var(--muted);stroke-width:1}
+.x-tk{fill:var(--muted);font:500 10px var(--mono)}
+.x-lb{fill:var(--muted);font:500 10.5px var(--body)}
+.x-tx{fill:var(--ink);font:600 10.5px var(--mono)}
+.x-tb{fill:var(--ink);font:500 11px var(--body)}
+.x-tm{fill:var(--muted);font:500 10px var(--body)}
+.x-ln{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.x-l1{stroke:var(--accent)} .x-l2{stroke:var(--sci)} .x-l3{stroke:var(--warn)} .x-l4{stroke:var(--ok)} .x-l5{stroke:var(--bad)} .x-lm{stroke:var(--muted)} .x-li{stroke:var(--ink)}
+.x-f1{fill:var(--accent)} .x-f2{fill:var(--sci)} .x-f3{fill:var(--warn)} .x-f4{fill:var(--ok)} .x-f5{fill:var(--bad)} .x-fm{fill:var(--muted)} .x-fi{fill:var(--ink)} .x-fs{fill:var(--surface)} .x-fs2{fill:var(--surface-2)} .x-fl{fill:var(--line)}
+.x-fa{fill:var(--accent-soft)} .x-fb{fill:var(--sci-soft)} .x-fok{fill:var(--ok-soft)} .x-fw{fill:var(--warn-soft)}
+.x-head{stroke-width:1}
+polygon.x-l1{fill:var(--accent)} polygon.x-l2{fill:var(--sci)} polygon.x-l3{fill:var(--warn)} polygon.x-l4{fill:var(--ok)} polygon.x-l5{fill:var(--bad)} polygon.x-li{fill:var(--ink)} polygon.x-lm{fill:var(--muted)}
+.x-dash{stroke-dasharray:5 4}
+.x-pt{stroke:var(--surface);stroke-width:1.5}
+.x-o{fill:none;stroke:var(--ink);stroke-width:1.5}
+.x-om{fill:none;stroke:var(--muted);stroke-width:1.2}
+[data-part]{cursor:pointer}
+[data-part]:hover{opacity:.85}
+.x-on{stroke:var(--accent)!important;stroke-width:3!important}
+.x-hl{filter:drop-shadow(0 0 3px var(--accent))}
+.x-step{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem}
+.x-dots{display:flex;flex-wrap:wrap;gap:5px;flex:1;justify-content:center}
+.x-dot{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface-2);padding:0;cursor:pointer}
+.x-dot.on{background:var(--accent);border-color:var(--accent)}
+.x-card{border:1.5px solid var(--ink);border-radius:8px;padding:.8rem .9rem;background:var(--surface);display:grid;gap:.3rem}
+.x-card p{font-size:1.02rem;font-weight:500;margin:0}
+.x-prog{font:500 .75rem var(--mono);color:var(--muted)}
+.x-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:.45rem}
+.x-cat{font:600 .9rem var(--body);padding:.6rem .5rem;border-radius:6px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.x-cat.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)} .x-cat.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.x-cat:disabled{cursor:default}
+.x-title{font:600 .95rem var(--body)}
+.x-q{font-size:.95rem;margin:0}
+.x-chk{display:flex;align-items:flex-start;gap:.5rem;font-size:.9rem;cursor:pointer}
+.x-chk input{width:1.05rem;height:1.05rem;margin-top:.15rem;accent-color:var(--accent);flex:0 0 auto}
+.x-chks{display:grid;gap:.4rem}
+.x-meter{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:.3rem}
+.x-meter span{display:block;height:100%;background:var(--ok)}
+.x-meter.mid span{background:var(--warn)} .x-meter.low span{background:var(--bad)}
+.x-leg{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1rem;font-size:.8rem}
+.x-leg i{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:middle;margin-right:.35rem}
+.x-swatch{width:100%;height:56px;border-radius:6px;border:1px solid var(--line)}
+.x-grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.6rem}
+.x-big{font:700 1.5rem/1.1 var(--display)}
+.x-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.x-list{margin:0;padding-left:1.1rem;display:grid;gap:.25rem;font-size:.92rem}
+.x-tbl{overflow-x:auto}
+.verdict.sat{background:var(--ok-soft)} .verdict.sob{background:var(--warn-soft)} .verdict.ins{background:var(--sci-soft)}
+.verdict b{font-weight:600}
+.x-cls{display:grid;gap:.7rem}
+.tool>*{min-width:0}
+.x-stage>*{max-width:100%}
+.panel>*,.sub>*{min-width:0}
+li .f{white-space:normal}
+
+/* ===== Matemática: piezas propias ===== */
+.fr{display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; line-height:1.1; margin:0 .12em; font-family:var(--mono); font-size:.92em}
+.fr>span:last-child{border-top:1.5px solid currentColor; padding-top:1px; min-width:1.1em; text-align:center}
+.m{font-family:var(--mono); font-size:.95em; white-space:nowrap}
+.m.big{font-size:1.25rem; font-weight:600}
+.eq{display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:.4rem 1.4rem; padding:.85rem 1rem; border-radius:14px; background:#0A1830; border:1px solid var(--line); font:600 1.12rem/1.5 var(--mono); text-align:center}
+.eq em{font-style:normal; color:var(--accent)}
+.eq small{display:block; width:100%; font:500 .78rem var(--ui); color:var(--muted); letter-spacing:.03em}
+.steps{list-style:none; margin:0; padding:0; display:grid; gap:.4rem; counter-reset:st}
+.steps li{display:grid; grid-template-columns:1.8rem 1fr; gap:.55rem; align-items:start; font-size:.95rem}
+.steps li::before{counter-increment:st; content:counter(st); width:1.6rem; height:1.6rem; border-radius:50%; display:grid; place-items:center; font:600 .78rem var(--ui); color:var(--accent-ink); background:var(--accent)}
+.steps li.hl{color:var(--warn)}
+.two{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap:.8rem}
+.mini{border:1px solid var(--line); border-radius:14px; padding:.8rem .9rem; background:rgba(17,38,75,.55); display:grid; gap:.35rem; min-width:0}
+.mini h5{margin:0; font:600 .98rem var(--ui)}
+.mini p{font-size:.92rem}
+.range output{font:600 .9rem var(--mono); color:var(--accent); margin-left:.4rem}
+.range label{display:flex; justify-content:space-between; align-items:baseline}
+.ranges{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap:.6rem 1rem}
+.chips{display:flex; flex-wrap:wrap; gap:.35rem}
+.chip{font:500 .8rem var(--ui); border:1px solid var(--line); border-radius:999px; padding:.25rem .65rem; background:var(--surface-2)}
+.chip b{color:var(--accent); font-family:var(--mono)}
+.bad-t{color:var(--bad)} .ok-t{color:var(--ok)} .acc-t{color:var(--accent)} .lat-t{color:var(--sci)}
+.ln-ok{stroke:var(--ok)} .ln-bad{stroke:var(--bad)} .ln-w{stroke:var(--warn)} .ln-l{stroke:var(--sci)}
+.fa{fill:var(--accent)} .fs{fill:var(--sci)} .fok{fill:var(--ok)} .fbad{fill:var(--bad)} .fw{fill:var(--warn)} .fink{fill:var(--ink)} .fmut{fill:var(--muted)}
+.fa-s{fill:var(--accent-soft); stroke:var(--accent); stroke-width:1.5}
+.fs-s{fill:rgba(216,168,120,.16); stroke:var(--sci); stroke-width:1.5}
+.fok-s{fill:rgba(127,212,168,.16); stroke:var(--ok); stroke-width:1.5}
+.fw-s{fill:rgba(242,196,109,.14); stroke:var(--warn); stroke-width:1.5}
+.lbl{fill:var(--ink); font:600 12px var(--mono)}
+.lbl-a{fill:var(--accent); font:600 12px var(--mono)}
+.lbl-m{fill:var(--muted); font:500 11px var(--ui)}
+svg.chart{background:#0A1830; border:1px solid var(--line); border-radius:12px}
+.tbl.sm table{font-size:.86rem}
+.tbl td.hi,.tbl th.hi{background:var(--accent-soft)}
+.ex{display:grid; gap:.55rem}
+.ex .q{font-weight:600}
+.ex details{border:1px solid var(--line); border-radius:12px; background:rgba(8,20,40,.4); padding:.55rem .8rem}
+.ex summary{cursor:pointer; font:600 .9rem var(--ui); color:var(--accent)}
+.ex details[open] summary{margin-bottom:.5rem}
+.opts5{display:grid; gap:.35rem; font-size:.92rem}
+.opts5 span{display:block}
+textarea.data{width:100%; min-height:3.2rem; font:500 .95rem var(--mono); padding:.5rem .6rem; border:1px solid var(--line); border-radius:10px; background:var(--bg); color:var(--ink); resize:vertical}
+.bars{display:grid; gap:.3rem}
+.barrow{display:grid; grid-template-columns:6.5rem 1fr 3.8rem; gap:.5rem; align-items:center; font:500 .82rem var(--ui)}
+.barrow .tr{height:12px; border-radius:6px; background:var(--surface-2); position:relative; overflow:hidden}
+.barrow .tr i{position:absolute; left:0; top:0; bottom:0; border-radius:6px; background:var(--accent)}
+.barrow .tr b{position:absolute; top:-2px; bottom:-2px; width:2px; background:var(--ink)}
+.barrow span:last-child{font-family:var(--mono); text-align:right}
+.tool .verdict{display:block}
+.tool .out,.tool ul.plain,.two>.out{align-content:start}
+.tz-next{margin-top:.4rem; border:1px dashed rgba(244, 194, 103, 0.42); border-radius:16px; padding:1rem 1.1rem; display:grid; gap:.35rem; background:linear-gradient(90deg, rgba(244, 194, 103, 0.15), transparent)}
+.tz-next b{font:700 1.05rem var(--ui)}
+
+/* ===== TS Zenit · ambientación del Material Intensivo PAES ===== */
+:root[data-theme="dark"]{
+  --bg:#0B1A33; --surface:#11264B; --surface-2:#17315C; --ink:#F2F4F9; --muted:#B7C3DA; --line:#2A4775;
+  --accent:#F4C267; --accent-ink:#0B1A33; --accent-soft:rgba(244, 194, 103, 0.15);
+  --sci:#7DD3FC; --sci-soft:rgba(125, 211, 252, .12);
+  --ok:#7FD4A8; --ok-soft:rgba(127, 212, 168, .14); --bad:#F2867E; --bad-soft:rgba(242, 134, 126, .14); --warn:#F2C46D; --warn-soft:rgba(242, 196, 109, .12);
+  --display:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --ui:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+html{background:var(--bg)}
+body{font-size:17px; -webkit-font-smoothing:antialiased}
+.wrap{max-width:48rem; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3,h4{letter-spacing:-.015em}
+h2{font-size:1.9rem} h3{font-size:1.22rem; font-weight:600}
+.lab,.btn,.sbtn,.fbtn,.dom,.tile .nm,th,.x-cat,.x-title,.field label,.range label,.item .fb,.expl .lab{font-family:var(--ui)!important}
+.lab{font-weight:600; letter-spacing:.14em}
+a{color:var(--sci)}
+
+/* cabecera de marca */
+.tz-top{border-bottom:1px solid var(--line); background:linear-gradient(180deg,#081428,var(--bg))}
+.tz-top .wrap{display:flex; align-items:center; justify-content:space-between; gap:12px; padding-block:12px; flex-wrap:wrap}
+.tz-brand{display:flex; align-items:center; gap:9px; font:700 15px/1 var(--ui); color:var(--ink); letter-spacing:.01em}
+.tz-brand svg{width:20px; height:20px; color:#F5A524}
+.tz-brand span{color:var(--muted); font-weight:500}
+.tz-pill{font:600 11px/1 var(--ui); letter-spacing:.14em; text-transform:uppercase; color:var(--accent); border:1px solid rgba(244, 194, 103, 0.42); background:var(--accent-soft); border-radius:999px; padding:7px 11px; display:inline-flex; gap:7px; align-items:center}
+.tz-pill i{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(244, 194, 103, 0.15)}
+
+/* portada */
+.intro{position:relative; margin-top:18px; padding:30px 22px 22px; border:1px solid var(--line); border-radius:22px; overflow:hidden; isolation:isolate;
+  background:radial-gradient(120% 130% at 100% 0%, rgba(244, 194, 103, 0.26), transparent 58%), linear-gradient(180deg, var(--surface), #0D1F3E)}
+.intro>*{position:relative; z-index:1}
+.intro .tz-art{position:absolute; z-index:0; right:-6px; top:4px; width:min(360px,62%); color:var(--accent); opacity:.32; pointer-events:none}
+.intro .tz-art svg{width:100%; height:auto; display:block}
+.intro .lab{color:var(--accent)}
+.intro h1{font-size:clamp(2.3rem, 7vw, 3.4rem); letter-spacing:-.025em; line-height:1}
+.intro h1 em{font-style:normal; color:var(--accent); display:block; font-size:.5em; letter-spacing:.02em; margin-top:.35em}
+.intro p{color:#DCE3F0}
+.stats{gap:8px}
+.stats span{background:rgba(8,20,40,.55); border:1px solid var(--line); border-radius:999px; padding:6px 13px; font-family:var(--ui); font-size:.82rem}
+.stats b{color:var(--accent)}
+.specbar{border-radius:999px; height:8px; opacity:.9}
+
+/* barra de temas */
+.bar{background:rgba(11,26,51,.9); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); margin-top:18px}
+.tiles{gap:8px; padding-block:10px}
+.tile{border:1px solid var(--line); border-radius:12px; background:var(--surface); width:4.6rem}
+.tile .sym{font:700 1.45rem/1 var(--display); letter-spacing:-.02em}
+.tile .z{color:var(--muted)}
+.tile:hover{border-color:rgba(244, 194, 103, 0.42)}
+.tile[aria-selected="true"]{background:var(--accent); border-color:var(--accent); color:var(--accent-ink); box-shadow:0 6px 18px -8px var(--accent)}
+.tile[aria-selected="true"] .z{color:var(--accent-ink)}
+.tile[aria-selected="true"] .pg{background:rgba(11,26,51,.25)}
+.tile[aria-selected="true"] .pg span{background:var(--accent-ink)}
+
+/* contenido */
+.subh{border-top:1px solid var(--line); position:relative; padding-top:.9rem}
+.subh::before{content:""; position:absolute; left:0; top:-2px; width:56px; height:3px; border-radius:3px; background:var(--accent)}
+.dom{border:1px solid var(--line); background:var(--surface)}
+.dom[aria-pressed="true"]{border-color:var(--ok)}
+.note{border-radius:14px; border:1px solid rgba(216,168,120,.25); border-left:3px solid var(--sci); padding:.9rem 1rem}
+.note.trap{border-color:rgba(242,196,109,.25); border-left-color:var(--warn)}
+.note.key{border-color:rgba(244, 194, 103, 0.42); border-left-color:var(--accent)}
+.tbl{border-radius:14px}
+th{background:#0F2245; letter-spacing:.08em}
+.flow .box{border:1px solid var(--line); border-radius:10px; background:var(--surface)}
+.tool{border:1px solid rgba(216,168,120,.4); border-radius:18px; padding:1.05rem; background:linear-gradient(180deg, var(--surface), rgba(17,38,75,.55))}
+.tool h4{font-family:var(--display); font-weight:700}
+.field input,.field select,.item select{border:1px solid var(--line); border-radius:10px}
+.btn{font-weight:600; border-radius:999px; padding:.55rem 1.1rem; border:1px solid var(--accent); background:var(--accent); color:var(--accent-ink)}
+.btn.ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--accent)}
+.sbtn,.fbtn{border:1px solid var(--line)}
+.sbtn[aria-pressed="true"],.fbtn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.res div,.item,.verdict,.expl{border-radius:10px}
+.x-stage,.qfig{border-radius:12px; background:#0A1830}
+.x-card{border:1px solid var(--line); border-radius:14px}
+.x-cat{border:1px solid var(--line); border-radius:10px}
+.qcard{border:1px solid var(--line); border-radius:18px; padding:1.15rem; box-shadow:0 18px 40px -28px rgba(0,0,0,.8)}
+.opt{border:1px solid var(--line); border-radius:12px}
+.opt:not(:disabled):hover{border-color:rgba(244, 194, 103, 0.42)}
+.opt .lt{border:1px solid var(--line); border-radius:8px}
+.tstats div{border-radius:12px}
+.tstats span,.res span{font-family:var(--ui)}
+.note.key{background:linear-gradient(90deg, rgba(244, 194, 103, 0.15), rgba(17,38,75,.35))}
+.note{background:linear-gradient(90deg, rgba(216,168,120,.10), rgba(17,38,75,.35))}
+.note.trap{background:linear-gradient(90deg, rgba(242,196,109,.11), rgba(17,38,75,.35))}
+.dot{border-radius:3px}
+footer{border-top:1px solid var(--line); display:grid; gap:.5rem}
+.tz-lic{font-family:var(--ui); font-size:.74rem; letter-spacing:.02em; color:var(--muted); display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+.tz-lic svg{width:14px; height:14px; color:#F5A524}
+@media (max-width:520px){ .tz-brand span{display:none} }
+@media (max-width:420px){ .intro{padding:24px 16px 18px; border-radius:18px} .tile{width:4.2rem} .tile .sym{font-size:1.3rem} h2{font-size:1.65rem} }
+
+/* ---------- Cálculo 1: fórmulas MathML, tablas, botones y temario ---------- */
+math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math","Noto Sans Math",math;font-size:1.06em}
+.eq math[display="block"]{margin:0;font-size:1.12em}
+.eq{font-family:var(--body);font-weight:400;overflow-x:auto;max-width:100%}
+.eq .katex,.eq math{color:var(--ink)}
+p .katex{white-space:nowrap}
+.katex mo,.katex mi,.katex mn{color:inherit}
+.hole{fill:#0A1830;stroke:var(--accent);stroke-width:2.2}
+.bandA{fill:rgba(125,211,252,.13)}
+.bandB{fill:rgba(127,212,168,.13)}
+.bandC{fill:rgba(242,134,126,.16)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;max-width:100%}
+.tbl{border-collapse:collapse;width:100%;font:500 .82rem/1.35 var(--mono);font-variant-numeric:tabular-nums}
+.tbl th{font:600 .7rem var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.45rem .6rem;background:rgba(8,20,40,.55);border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:.38rem .6rem;border-bottom:1px solid rgba(42,71,117,.55);white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr.on td{background:var(--accent-soft);color:var(--ink)}
+.tbl tr.max td{background:rgba(127,212,168,.14)}
+.tbl tr.min td{background:rgba(242,134,126,.14)}
+.acts{display:flex;flex-wrap:wrap;gap:.5rem}
+.cbtn{font:600 .86rem var(--ui);padding:.5rem .95rem;border-radius:999px;border:1.5px solid var(--accent);background:var(--accent);color:#0B1A33;cursor:pointer;min-height:40px}
+.cbtn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.cbtn:disabled{opacity:.45;cursor:default}
+.okt{color:var(--ok)} .badt{color:var(--bad)} .okt b,.badt b{font-family:var(--ui)}
+.temario{margin-top:.4rem;border:1px solid var(--line);border-radius:14px;background:rgba(8,20,40,.45);padding:.7rem .95rem}
+.temario summary{cursor:pointer;font:600 .95rem var(--ui);color:var(--accent)}
+.temario[open] summary{margin-bottom:.6rem}
+.temario ol{margin:0;padding-left:1.25rem;display:grid;gap:.3rem}
+.temario .gu{font-size:.88rem;color:var(--muted);margin-top:.6rem}
+.ex.tipo{border:1px solid rgba(125,211,252,.35);border-radius:16px;padding:.9rem 1rem;background:linear-gradient(180deg,rgba(125,211,252,.08),rgba(17,38,75,.3))}
+.ex.tipo .tag{display:block;font:700 .68rem var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem}
+.pasos{margin:0;padding-left:1.25rem;display:grid;gap:.35rem}
+.ex details p+p,.ex details p+ol,.ex details ol+p,.ex details .eq+p,.ex details p+.eq{margin-top:.5rem}
+.ex details .eq{margin:.5rem 0}
+.stepbox{display:grid;gap:.5rem}
+.stepbox .st{border-left:3px solid var(--accent);padding:.45rem .75rem;background:rgba(8,20,40,.45);border-radius:0 10px 10px 0}
+.stepbox .st b.k{display:block;font:700 .7rem var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.15rem}
+.signo{display:grid;gap:.25rem;font:500 .8rem var(--mono)}
+.signo .r{display:grid;grid-template-columns:4.2rem 1fr;align-items:center;gap:.4rem}
+.signo .sbar{display:flex;height:1.7rem;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.signo .sbar i{display:grid;place-items:center;font-style:normal;font-weight:600;font-size:.78rem;border-right:1px solid rgba(11,26,51,.6)}
+.signo .sbar i.pos{background:rgba(127,212,168,.22);color:var(--ok)}
+.signo .sbar i.neg{background:rgba(242,134,126,.22);color:var(--bad)}
+.signo .ticks{display:flex;justify-content:space-between;color:var(--muted);font-size:.72rem;padding-left:4.6rem}
+.fbad{fill:var(--bad)}
+.fbad-s{fill:rgba(242,134,126,.18);stroke:var(--bad);stroke-width:1.5}
+.fok-a{fill:rgba(127,212,168,.22)} .fbad-a{fill:rgba(242,134,126,.22)}
+
+/* ---- Contabilidad ---- */
+.tbl td{font-family:var(--body); font-size:.92rem}
+.tbl td.n{font-family:var(--mono); font-size:.86rem}
+.tbl th{white-space:normal}
+.tbl th.r{text-align:right}
+.tbl td.n{text-align:right; white-space:nowrap}
+.tbl tr.tot td{border-top:2px solid var(--ink); font-weight:600}
+.tbl tr.ah td{background:var(--surface-2); font:600 .78rem/1.3 var(--ui); letter-spacing:.03em; color:var(--muted)}
+.as td.hab{padding-left:2.1rem}
+.as tr.gl td{font-style:italic; color:var(--muted); font-size:.84rem}
+.as select{font:500 .9rem var(--body); padding:.35rem .45rem; border:1.5px solid var(--line); border-radius:6px; background:var(--bg); color:var(--ink); max-width:100%}
+.taccs{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,13.5rem),1fr)); gap:.75rem}
+.tacc{border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:.55rem .7rem; font:500 .8rem var(--mono); min-width:0}
+.tacc .tn{font:700 .88rem var(--ui); text-align:center; padding-bottom:.35rem; border-bottom:2px solid var(--ink)}
+.tacc .tr{display:grid; grid-template-columns:1fr 1fr}
+.tacc .tr span{padding:.16rem .45rem; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.tacc .tr span:first-child{border-right:2px solid var(--ink)}
+.tacc .tr i{font-style:normal; color:var(--muted); font-size:.72rem}
+.tacc .th span{font:600 .62rem var(--ui); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-align:center}
+.tacc .tsum span{border-top:1px solid var(--line); font-weight:600}
+.tacc .ts{display:grid; grid-template-columns:1fr 1fr; font:600 .72rem var(--ui); color:var(--accent); text-align:right; padding-top:.3rem; gap:.4rem}
+.cases{display:grid; gap:.45rem}
+.item{grid-template-columns:minmax(0,1fr) minmax(9rem,13rem); align-items:center}
+.item .fb{grid-column:1/-1}
+@media (max-width:560px){.item{grid-template-columns:minmax(0,1fr)}}
+.crow{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+.crow .field[style]{grid-column:auto!important}
+.filters.trx{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}
+.filters.trx .fbtn{text-align:left; border-radius:10px; line-height:1.3}
+.filters.trx .fbtn:disabled{opacity:.55; cursor:default}
+.step{font:500 .9rem var(--ui); color:var(--muted)}
+.w8 th,.w8 td{padding:.32rem .38rem!important; font-size:.72rem!important}
+.w8 td:first-child{white-space:nowrap}
+.tbl input{font:500 .88rem var(--mono); padding:.3rem .45rem; border:1.5px solid var(--line); border-radius:5px; background:var(--bg); color:var(--ink); max-width:100%}
+.qstem{font-weight:600}
+.comente{border-left:3px solid var(--accent); padding:.2rem 0 .2rem .8rem; font-style:italic}
+.vf{display:inline-block; font:700 .72rem var(--ui); letter-spacing:.08em; padding:.15rem .5rem; border-radius:999px; margin-right:.35rem}
+.vf.v{background:var(--ok-soft); color:var(--ok)} .vf.f{background:var(--bad-soft); color:var(--bad)} .vf.i{background:var(--warn-soft); color:var(--warn)}
+</style>
+<header class="tz-top"><div class="wrap"><span class="tz-brand"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.6 6.3 6.8.5-5.2 4.4 1.6 6.6L12 16.8l-5.8 3.5 1.6-6.6-5.2-4.4 6.8-.5z" fill="currentColor"/></svg>TS Zenit <span>· Material Plan Contabilidad</span></span><span class="tz-pill"><i></i>Exclusivo Plan Contabilidad</span></div></header>
+<div class="wrap intro">
+  <div class="tz-art" aria-hidden="true"><svg viewBox="0 0 320 90" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M40 18h96M88 18v62" stroke-width="2.6"/><text x="50" y="34" fill="currentColor" stroke="none" font-family="IBM Plex Mono,monospace" font-size="10">DEBE</text><text x="96" y="34" fill="currentColor" stroke="none" font-family="IBM Plex Mono,monospace" font-size="10">HABER</text><path d="M48 46h30M48 58h22M98 46h28M98 62h18" opacity=".7"/><path d="M180 72V52M200 72V40M220 72V30M240 72V46M260 72V22" stroke-width="7" opacity=".55"/><path d="M168 72h108" /></g><text x="176" y="16" fill="currentColor" font-family="Poppins,sans-serif" font-size="12" opacity=".9">A = P + Pat</text></svg></div>
+  <span class="lab">Contabilidad · FEN U. de Chile · Examen · NIIF</span>
+  <h1>Valorización de cuentas y NIIF<em>Examen</em></h1>
+  <p>Vista previa: 2 de los 7 temas del apunte interactivo del Examen (conciliación bancaria y existencias), con sus herramientas interactivas y preguntas tipo solemne. El apunte completo de cada prueba está en el aula del Plan Contabilidad (FEN).</p>
+  <div class="stats"><span>Temas dominados <b id="stDom">0/7</b></span><span>Herramientas <b>2</b></span><span>Temas <b>2</b></span></div>
+  <details class="temario"><summary>Temario del Examen</summary><ol>
+<li><b>NIIF:</b> medición inicial y posterior, las normas del curso (NIC 1, 2, 7, 8, 16, NIIF 9 y 15), el ingreso en cinco pasos.</li><li><b>Efectivo:</b> efectivo y equivalentes, fondo fijo, conciliación bancaria y sus asientos.</li><li><b>Deudores comerciales:</b> clientes y documentos, protestos, estimación de incobrables (ventas y antigüedad), castigo y recuperación.</li><li><b>Existencias (NIC 2):</b> costo de adquisición, FIFO y costo promedio ponderado, tarjeta de existencias, valor neto realizable, errores de inventario.</li><li><b>Propiedades, planta y equipo (NIC 16):</b> costo inicial, desembolsos posteriores, métodos de depreciación, cambios de estimación, venta y baja.</li><li><b>Patrimonio:</b> tipos de sociedades, capital suscrito y pagado, reservas, dividendos provisorios y mínimos, retiros.</li><li><b>Estado de flujos de efectivo (NIC 7):</b> actividades de operación, inversión y financiamiento; métodos directo e indirecto.</li><li><b>Y toda la materia de la Solemne 1 y de la Solemne 2.</b></li>
+</ol><p class="gu">Guías para practicar: <b>Examen · básica</b> y <b>Examen · avanzada ★</b>.</p></details>
+</div>
+<nav class="bar" aria-label="Temas"><div class="wrap tiles" role="tablist"><button class="tile" role="tab" data-tab="efectivo" aria-selected="true"><span class="z">1</span><span class="sym">$</span><span class="nm">Efectivo</span><span class="pg"><span></span></span></button><button class="tile" role="tab" data-tab="existencias" aria-selected="false"><span class="z">2</span><span class="sym">Ex</span><span class="nm">Existencias</span><span class="pg"><span></span></span></button></div></nav>
+<main class="wrap">
+<section class="panel" id="efectivo" role="tabpanel">
+  <div class="phead"><span class="lab">Tema 1 de 2 · Examen · Valorización</span><h2>Efectivo y conciliación bancaria</h2><p>El activo más líquido, sus controles y cómo cuadrar los libros con la cartola.</p></div>
+  <div class="sub" data-sub="con-ex-efe"><div class="subh"><h3>Efectivo y equivalentes al efectivo</h3></div><div class="two"><div class="mini"><h5>Sí es efectivo o equivalente</h5><p>Billetes y monedas en caja, saldos en cuentas corrientes, fondo fijo, depósitos a plazo e inversiones muy líquidas con vencimiento de <b>3 meses o menos</b> desde su adquisición.</p></div><div class="mini"><h5>No lo es</h5><p>Cheques a fecha recibidos de clientes (son documentos por cobrar), depósitos a plazo a más de 3 meses, fondos con uso restringido, sobregiros que no forman parte de la gestión del efectivo.</p></div></div><div class="note key"><span class="lab">Idea clave</span><span>El efectivo es el activo más expuesto a robos y errores, por eso tiene controles: depósitos diarios, pagos con cheque o transferencia, arqueos sorpresivos y conciliaciones bancarias mensuales.</span></div></div><div class="sub" data-sub="con-ex-ff"><div class="subh"><h3>Fondo fijo</h3></div><p>El <b>fondo fijo</b> (caja chica) es un monto pequeño para gastos menores en efectivo. Se maneja con comprobantes y se repone cuando se gasta:</p><div class="tbl as"><table><thead><tr><th>Cuenta</th><th class="r">Debe</th><th class="r">Haber</th></tr></thead><tbody><tr class="ah"><td colspan="3"><b>Creación</b></td></tr><tr><td>Fondo fijo</td><td class="n">$300.000</td><td class="n"></td></tr><tr><td class="hab">Banco</td><td class="n"></td><td class="n">$300.000</td></tr><tr class="ah"><td colspan="3"><b>Reposición</b></td></tr><tr><td>Gastos de movilización</td><td class="n">$84.000</td><td class="n"></td></tr><tr><td>Gastos de oficina</td><td class="n">$126.000</td><td class="n"></td></tr><tr><td>Gastos varios</td><td class="n">$52.000</td><td class="n"></td></tr><tr><td>Faltante de caja</td><td class="n">$3.000</td><td class="n"></td></tr><tr><td class="hab">Banco</td><td class="n"></td><td class="n">$265.000</td></tr><tr class="gl"><td colspan="3">Comprobantes por $262.000; en caja quedan $35.000 (faltante de $3.000).</td></tr></tbody></table></div><div class="note trap"><span class="lab">Error típico</span><span>Cargar los gastos a la cuenta Fondo fijo. El saldo de Fondo fijo no cambia al reponer; solo cambia si se aumenta o disminuye el monto del fondo.</span></div></div><div class="sub" data-sub="con-ex-cb"><div class="subh"><h3>Conciliación bancaria</h3></div><p>El saldo de Banco en los libros casi nunca coincide con la cartola, por partidas que uno de los dos aún no registra. La conciliación explica la diferencia y llega al <b>saldo correcto</b>:</p><div class="tbl"><table><thead><tr><th>Partida</th><th>¿Quién no la tiene?</th><th>Se ajusta en</th></tr></thead><tbody><tr><td>Depósito en tránsito</td><td>El banco (se depositó al final del mes)</td><td>Saldo banco: + (sin asiento)</td></tr><tr><td>Cheque girado y no cobrado</td><td>El banco (el beneficiario no lo cobró)</td><td>Saldo banco: − (sin asiento)</td></tr><tr><td>Comisiones, mantención, intereses cobrados por el banco</td><td>La empresa</td><td>Saldo libros: − (asiento)</td></tr><tr><td>Cheque de cliente protestado</td><td>La empresa</td><td>Saldo libros: − (asiento: Clientes a Banco)</td></tr><tr><td>Transferencias de clientes, intereses ganados</td><td>La empresa</td><td>Saldo libros: + (asiento)</td></tr><tr><td>Errores de la empresa</td><td>—</td><td>Saldo libros (asiento de corrección)</td></tr><tr><td>Errores del banco</td><td>—</td><td>Saldo banco (se reclama al banco)</td></tr></tbody></table></div><div class="tool" data-tool="concilia"></div><div class="ex tipo"><p class="q"><span class="lab">Ejercicio tipo solemne</span>Al 31 de mayo, la cartola muestra $6.147.000 y la cuenta Banco $5.045.500. Hay: depósito del 31-05 por $850.000 que el banco no registra; cheques girados no cobrados por $1.240.000; comisión bancaria $18.500 no registrada; transferencia de un cliente por $640.000 no registrada; y un cheque emitido a un proveedor por $410.000 se registró por $500.000. Concilia y registra.</p><details><summary>Ver resolución completa</summary><div class="tbl"><table><thead><tr><th>Banco</th><th class="r">$</th></tr></thead><tbody><tr><td>Saldo según banco</td><td class="n">$6.147.000</td></tr><tr><td>+ Depósito en tránsito</td><td class="n">$850.000</td></tr><tr><td>− Cheques girados no cobrados</td><td class="n">($1.240.000)</td></tr><tr class="tot"><td><b>Saldo conciliado</b></td><td class="n"><b>$5.757.000</b></td></tr></tbody></table></div><div class="tbl"><table><thead><tr><th>Libros</th><th class="r">$</th></tr></thead><tbody><tr><td>Saldo según libros</td><td class="n">$5.045.500</td></tr><tr><td>− Comisión bancaria</td><td class="n">($18.500)</td></tr><tr><td>+ Transferencia de cliente</td><td class="n">$640.000</td></tr><tr><td>+ Error en cheque (se registró $90.000 de más)</td><td class="n">$90.000</td></tr><tr class="tot"><td><b>Saldo conciliado</b></td><td class="n"><b>$5.757.000</b></td></tr></tbody></table></div><div class="tbl as"><table><thead><tr><th>Cuenta</th><th class="r">Debe</th><th class="r">Haber</th></tr></thead><tbody><tr class="ah"><td colspan="3"><b>a</b></td></tr><tr><td>Gastos bancarios</td><td class="n">$18.500</td><td class="n"></td></tr><tr><td class="hab">Banco</td><td class="n"></td><td class="n">$18.500</td></tr><tr class="ah"><td colspan="3"><b>b</b></td></tr><tr><td>Banco</td><td class="n">$640.000</td><td class="n"></td></tr><tr><td class="hab">Clientes</td><td class="n"></td><td class="n">$640.000</td></tr><tr class="ah"><td colspan="3"><b>c</b></td></tr><tr><td>Banco</td><td class="n">$90.000</td><td class="n"></td></tr><tr><td class="hab">Proveedores</td><td class="n"></td><td class="n">$90.000</td></tr><tr class="gl"><td colspan="3">El pago fue de $410.000: se rebajó de más la deuda con el proveedor.</td></tr></tbody></table></div><p>El estado de situación muestra Banco por <b>$5.757.000</b>.</p></details></div></div>
+  <div class="tz-next"><b>Practica con las guías TS Zenit del Examen</b><span class="muted">Guía básica y avanzada ★ con todo el curso: alternativas, comentes y ejercicios largos de valorización, con la solución paso a paso en un QR. Envía tu hoja y recibe tu informe.</span></div>
+</section><section class="panel" id="existencias" role="tabpanel" hidden>
+  <div class="phead"><span class="lab">Tema 2 de 2 · Examen · Valorización</span><h2>Existencias (NIC 2)</h2><p>Cuánto cuesta lo que hay en bodega, qué costo sale con cada venta y cuándo hay que rebajarlo.</p></div>
+  <div class="sub" data-sub="con-ex-cos"><div class="subh"><h3>Costo de las existencias (NIC 2)</h3></div><div class="tbl"><table><thead><tr><th>Se incluye en el costo</th><th>No se incluye (es gasto del período)</th></tr></thead><tbody><tr><td>Precio de compra neto de descuentos comerciales</td><td>IVA recuperable (va a crédito fiscal)</td></tr><tr><td>Aranceles e impuestos no recuperables</td><td>Almacenamiento después de la compra (salvo que sea necesario en la producción)</td></tr><tr><td>Transporte y seguros hasta la bodega</td><td>Gastos de administración y de venta</td></tr><tr><td>Costos de transformación (en empresas industriales)</td><td>Mermas anormales de materiales, mano de obra u otros</td></tr></tbody></table></div><div class="ex"><p class="q">Se importan 1.000 unidades a USD 20 c/u (tipo de cambio $950), con arancel de 6%, flete y seguro hasta la bodega $1.100.000, IVA de importación $4.002.000 (recuperable) y bodegaje posterior de un mes $200.000. ¿Cuál es el costo unitario?</p><details><summary>Ver resolución</summary><p>Precio = 20.000 USD × 950 = $19.000.000. Arancel 6% = $1.140.000. Flete y seguro $1.100.000. Total = <b>$21.240.000</b> → <b>$21.240 por unidad</b>. El IVA es crédito fiscal y el bodegaje posterior es gasto.</p></details></div></div><div class="sub" data-sub="con-ex-met"><div class="subh"><h3>FIFO y costo promedio ponderado</h3></div><p>Cuando se compran unidades iguales a precios distintos, hay que decidir qué costo se asigna a lo vendido. La NIC 2 permite:</p><div class="two"><div class="mini"><h5>FIFO (PEPS)</h5><p>Primeras entradas, primeras salidas: lo vendido sale a los costos más antiguos y el inventario final queda a los más recientes.</p></div><div class="mini"><h5>Costo promedio ponderado</h5><p>Cada venta sale al costo promedio de lo que hay en bodega. En el sistema permanente el promedio se recalcula con cada compra (promedio móvil).</p></div></div><div class="tool" data-tool="kardex"></div><div class="note trap"><span class="lab">Error típico</span><span>Usar LIFO (UEPS): la NIC 2 lo <b>prohíbe</b>. Tampoco se puede cambiar de método cada año: rige la consistencia.</span></div><div class="ex tipo"><p class="q"><span class="lab">Comente tipo solemne</span><span class="comente">«En un período de inflación, FIFO muestra un costo de ventas más bajo y por lo tanto una mejor gestión de la empresa.»</span> Comente: ¿verdadero, falso o incierto? Justifique.</p><details><summary>Ver resolución completa</summary><p><span class="vf i">INCIERTO</span> Es cierto que, con precios al alza, FIFO asigna a lo vendido los costos antiguos (más bajos): menor costo de ventas, mayor utilidad y mayor inventario final. Pero eso no indica mejor gestión: es solo un efecto del método. La caja (sin considerar impuestos) y los hechos económicos son los mismos con cualquier método.</p></details></div></div><div class="sub" data-sub="con-ex-vnr"><div class="subh"><h3>Valor neto realizable</h3></div><div class="eq"><span>VNR = precio estimado de venta − costos estimados para terminar − costos estimados de venta</span></div><p>Si el VNR cae por debajo del costo (obsolescencia, daño, baja de precios), las existencias se rebajan al VNR. Se compara normalmente partida por partida:</p><div class="tbl"><table><thead><tr><th>Producto</th><th class="r">Costo</th><th class="r">Precio de venta</th><th class="r">Gastos de venta</th><th class="r">VNR</th><th class="r">Valor en balance</th></tr></thead><tbody><tr><td>A</td><td class="n">$4.000.000</td><td class="n">$5.200.000</td><td class="n">$400.000</td><td class="n">$4.800.000</td><td class="n">$4.000.000</td></tr><tr><td>B</td><td class="n">$2.500.000</td><td class="n">$2.600.000</td><td class="n">$300.000</td><td class="n">$2.300.000</td><td class="n">$2.300.000</td></tr><tr><td>C</td><td class="n">$1.800.000</td><td class="n">$1.500.000</td><td class="n">$150.000</td><td class="n">$1.350.000</td><td class="n">$1.350.000</td></tr><tr class="tot"><td><b>Total</b></td><td class="n">$8.300.000</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"><b>$7.650.000</b></td></tr></tbody></table></div><div class="tbl as"><table><thead><tr><th>Cuenta</th><th class="r">Debe</th><th class="r">Haber</th></tr></thead><tbody><tr><td>Pérdida por deterioro de existencias</td><td class="n">$650.000</td><td class="n"></td></tr><tr><td class="hab">Estimación por valor neto realizable</td><td class="n"></td><td class="n">$650.000</td></tr><tr class="gl"><td colspan="3">B: 200.000 + C: 450.000.</td></tr></tbody></table></div><div class="note key"><span class="lab">Idea clave</span><span>Si el VNR sube después, la rebaja se revierte, pero <b>nunca por sobre el costo</b> original.</span></div></div><div class="sub" data-sub="con-ex-err"><div class="subh"><h3>Errores en el inventario final</h3></div><p>Como el inventario final de un año es el inicial del siguiente, un error se compensa en dos años:</p><div class="tbl"><table><thead><tr><th>Si el inventario final está sobrestimado en $1.000.000</th><th>Año 1</th><th>Año 2</th></tr></thead><tbody><tr><td>Costo de ventas</td><td>Subestimado $1.000.000</td><td>Sobrestimado $1.000.000</td></tr><tr><td>Utilidad</td><td>Sobrestimada $1.000.000</td><td>Subestimada $1.000.000</td></tr><tr><td>Activo (existencias) al cierre</td><td>Sobrestimado $1.000.000</td><td>Correcto</td></tr><tr><td>Resultados acumulados al cierre</td><td>Sobrestimados $1.000.000</td><td>Correctos</td></tr></tbody></table></div><div class="note trap"><span class="lab">Error típico</span><span>Pensar que el error «se corrige solo» y no importa: los estados de ambos años quedan mal, y si es material hay que reexpresar (NIC 8).</span></div></div>
+  <div class="tz-next"><b>Practica con las guías TS Zenit del Examen</b><span class="muted">Guía básica y avanzada ★ con todo el curso: alternativas, comentes y ejercicios largos de valorización, con la solución paso a paso en un QR. Envía tu hoja y recibe tu informe.</span></div>
+</section>
+</main>
+<footer class="wrap"><p>Basado en NIC 1, NIC 2, NIC 7, NIC 8, NIC 16, NIIF 9, NIIF 15, la Ley 18.046 sobre Sociedades Anónimas y el programa de Contabilidad de primer año de Ingeniería Comercial de la FEN de la Universidad de Chile.</p><p class="tz-lic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.6 6.3 6.8.5-5.2 4.4 1.6 6.6L12 16.8l-5.8 3.5 1.6-6.6-5.2-4.4 6.8-.5z" fill="currentColor"/></svg>Material exclusivo del Plan Contabilidad de TS Zenit · Vista previa · Prohibida su copia o distribución.</p></footer>
+<script></script>
+<script>
+/* TS Zenit · herramientas de matemática (núcleo) */
+(function () {
+  "use strict";
+  var T = window.TZT = {};
+  var U = 0;
+  var Z = window.TZM = {};
+  Z.uid = function (p) { return (p || "t") + (++U); };
+  Z.num = function (v) { var x = parseFloat(String(v).replace(/\s/g, "").replace(",", ".").replace("−", "-")); return x; };
+  Z.ms = function (s) { return String(s).replace(/-/g, "−"); };
+  Z.fx = function (x, d) {
+    if (d == null) d = 3; if (!isFinite(x)) return "—";
+    if (Math.abs(x) < 1e-10) x = 0;
+    return Z.ms(x.toLocaleString("es-CL", { maximumFractionDigits: d }));
+  };
+  Z.gcd = function (a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = b; b = a % b; a = t; } return a || 1; };
+  Z.F = function (n, d) { if (d === 0) return null; if (d < 0) { n = -n; d = -d; } var g = Z.gcd(n, d); return { n: n / g, d: d / g }; };
+  Z.fh = function (f) {   // fracción en HTML
+    if (!f) return "—";
+    if (f.d === 1) return Z.ms(f.n);
+    return (f.n < 0 ? "−" : "") + '<span class="fr"><span>' + Math.abs(f.n) + "</span><span>" + f.d + "</span></span>";
+  };
+  Z.fp = function (f) { return f && f.n < 0 ? "(" + Z.fh(f) + ")" : Z.fh(f); };
+  Z.np = function (n) { return n < 0 ? "(" + Z.ms(n) + ")" : String(n); };
+  Z.ft = function (f) { return f ? (f.d === 1 ? Z.ms(f.n) : Z.ms(f.n) + "/" + f.d) : "—"; };
+  /* decimal → fracción de denominador chico (para mostrar resultados exactos cuando se puede) */
+  Z.rat = function (x, maxD) {
+    maxD = maxD || 100; if (!isFinite(x)) return null;
+    for (var d = 1; d <= maxD; d++) { var n = Math.round(x * d); if (Math.abs(n / d - x) < 1e-9) return Z.F(n, d); }
+    return null;
+  };
+  Z.nice = function (x, d) { var f = Z.rat(x, 24); return f ? Z.fh(f) : Z.fx(x, d == null ? 3 : d); };
+  Z.head = function (name, title) { return '<span class="lab">Herramienta · ' + name + "</span><h4>" + title + "</h4>"; };
+  Z.rng = function (id, label, min, max, step, val) {
+    return '<div class="range"><label for="' + id + '"><span>' + label + '</span><output id="' + id + 'o"></output></label><input type="range" id="' + id + '" min="' + min + '" max="' + max + '" step="' + step + '" value="' + val + '"></div>';
+  };
+  Z.fld = function (id, label, val) { return '<div class="field"><label for="' + id + '">' + label + '</label><input id="' + id + '" inputmode="decimal" autocomplete="off" value="' + val + '"></div>'; };
+  Z.seg = function (id, items, cur) {
+    return '<div class="seg" id="' + id + '" role="group">' + items.map(function (it) { return '<button type="button" class="sbtn" data-k="' + it[0] + '" aria-pressed="' + (String(it[0]) === String(cur)) + '">' + it[1] + "</button>"; }).join("") + "</div>";
+  };
+  Z.wireSeg = function (root, id, cb) {
+    var el = root.querySelector("#" + id);
+    el.addEventListener("click", function (e) {
+      var b = e.target.closest(".sbtn"); if (!b) return;
+      Array.prototype.forEach.call(el.querySelectorAll(".sbtn"), function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      cb(b.dataset.k);
+    });
+  };
+  Z.on = function (root, sel, fn) { Array.prototype.forEach.call(root.querySelectorAll(sel), function (el) { el.addEventListener("input", fn); el.addEventListener("change", fn); }); };
+  Z.val = function (root, id) { return Z.num(root.querySelector("#" + id).value); };
+  Z.out = function (root, id, txt) { var o = root.querySelector("#" + id + "o"); if (o) o.textContent = txt; };
+  Z.data = function (s) { return String(s).split(/[;\s]+|,(?=\s)|,(?=\S*,)/).map(function (x) { return Z.num(x); }).filter(function (x) { return isFinite(x); }); };
+  Z.lista = function (s) { return String(s).replace(/,(\d)/g, ".$1").split(/[;\s,]+/).map(Z.num).filter(function (x) { return isFinite(x); }); };
+  Z.fact = function (n) { var r = 1; for (var i = 2; i <= n; i++) r *= i; return r; };
+  Z.C = function (n, k) { if (k < 0 || k > n) return 0; var r = 1; for (var i = 1; i <= k; i++) r = r * (n - k + i) / i; return Math.round(r); };
+
+  /* ---------- plano cartesiano en SVG ---------- */
+  Z.Plot = function (o) {
+    var W = o.W || 560, H = o.H || 360, L = o.L == null ? 34 : o.L, R = o.R == null ? 14 : o.R, Tp = o.T == null ? 14 : o.T, B = o.B == null ? 28 : o.B;
+    var x0 = o.x0, x1 = o.x1, y0 = o.y0, y1 = o.y1, g = [], cid = Z.uid("clip");
+    var sx = function (x) { return L + (x - x0) / (x1 - x0) * (W - L - R); };
+    var sy = function (y) { return H - B - (y - y0) / (y1 - y0) * (H - Tp - B); };
+    var r1 = function (v) { return Math.round(v * 10) / 10; };
+    this.sx = sx; this.sy = sy; this.W = W; this.H = H; this.o = o;
+    this.grid = function (dx, dy, lab) {
+      var x, y, k;
+      for (k = Math.ceil(x0 / dx); k * dx <= x1 + 1e-9; k++) { x = k * dx; g.push('<line class="grid" x1="' + r1(sx(x)) + '" y1="' + Tp + '" x2="' + r1(sx(x)) + '" y2="' + (H - B) + '"/>'); }
+      for (k = Math.ceil(y0 / dy); k * dy <= y1 + 1e-9; k++) { y = k * dy; g.push('<line class="grid" x1="' + L + '" y1="' + r1(sy(y)) + '" x2="' + (W - R) + '" y2="' + r1(sy(y)) + '"/>'); }
+      var ax = (y0 <= 0 && y1 >= 0) ? sy(0) : H - B, ay = (x0 <= 0 && x1 >= 0) ? sx(0) : L;
+      g.push('<line class="ax" x1="' + L + '" y1="' + r1(ax) + '" x2="' + (W - R) + '" y2="' + r1(ax) + '"/><line class="ax" x1="' + r1(ay) + '" y1="' + Tp + '" x2="' + r1(ay) + '" y2="' + (H - B) + '"/>');
+      if (lab !== false) {
+        var lx = lab && lab.x || dx, ly = lab && lab.y || dy;
+        for (k = Math.ceil(x0 / lx); k * lx <= x1 + 1e-9; k++) { x = k * lx; if (Math.abs(x) < 1e-9 && x0 < 0) continue; g.push('<text class="tick" x="' + r1(sx(x)) + '" y="' + r1(Math.min(H - 4, ax + 14)) + '" text-anchor="middle">' + Z.fx(x, 2) + "</text>"); }
+        for (k = Math.ceil(y0 / ly); !o.noy && k * ly <= y1 + 1e-9; k++) { y = k * ly; if (Math.abs(y) < 1e-9 && y0 < 0) continue; g.push('<text class="tick" x="' + r1(Math.max(12, ay - 5)) + '" y="' + r1(sy(y) + 3.5) + '" text-anchor="end">' + Z.fx(y, 2) + "</text>"); }
+      }
+      return this;
+    };
+    this.f = function (fn, cls, a, b, n) {
+      a = a == null ? x0 : Math.max(a, x0); b = b == null ? x1 : Math.min(b, x1); n = n || 420;
+      var d = "", pen = false, span = (y1 - y0) * 4;
+      for (var i = 0; i <= n; i++) {
+        var x = a + (b - a) * i / n, y = fn(x);
+        if (!isFinite(y) || y > y1 + span || y < y0 - span) { pen = false; continue; }
+        d += (pen ? "L" : "M") + r1(sx(x)) + " " + r1(sy(y)); pen = true;
+      }
+      if (d) g.push('<path class="ln ' + (cls || "ln-a") + '" clip-path="url(#' + cid + ')" d="' + d + '"/>');
+      return this;
+    };
+    this.area = function (fn, a, b, cls) {
+      var n = 160, d = "M" + r1(sx(a)) + " " + r1(sy(0));
+      for (var i = 0; i <= n; i++) { var x = a + (b - a) * i / n; d += "L" + r1(sx(x)) + " " + r1(sy(fn(x))); }
+      d += "L" + r1(sx(b)) + " " + r1(sy(0)) + "Z";
+      g.push('<path class="' + (cls || "area") + '" clip-path="url(#' + cid + ')" d="' + d + '"/>'); return this;
+    };
+    this.seg = function (xa, ya, xb, yb, cls, w) { g.push('<line class="ln ' + (cls || "ln-a") + '" clip-path="url(#' + cid + ')" x1="' + r1(sx(xa)) + '" y1="' + r1(sy(ya)) + '" x2="' + r1(sx(xb)) + '" y2="' + r1(sy(yb)) + '"' + (w ? ' style="stroke-width:' + w + '"' : "") + "/>"); return this; };
+    this.arrow = function (xa, ya, xb, yb, cls) {
+      var X1 = sx(xa), Y1 = sy(ya), X2 = sx(xb), Y2 = sy(yb), dx = X2 - X1, dy = Y2 - Y1, Ln = Math.sqrt(dx * dx + dy * dy); if (Ln < 2) return this;
+      var ux = dx / Ln, uy = dy / Ln, hx = X2 - ux * 10, hy = Y2 - uy * 10;
+      g.push('<line class="ln ' + (cls || "ln-a") + '" x1="' + r1(X1) + '" y1="' + r1(Y1) + '" x2="' + r1(hx) + '" y2="' + r1(hy) + '"/><polygon class="' + (cls === "ln-l" ? "fs" : cls === "ln-ok" ? "fok" : "fa") + '" points="' + r1(X2) + "," + r1(Y2) + " " + r1(hx - uy * 5) + "," + r1(hy + ux * 5) + " " + r1(hx + uy * 5) + "," + r1(hy - ux * 5) + '"/>');
+      return this;
+    };
+    this.pt = function (x, y, cls, lab, dx, dy, lcls) {
+      if (!isFinite(x) || !isFinite(y) || x < x0 || x > x1 || y < y0 || y > y1) return this;
+      g.push('<circle class="pt ' + (cls || "") + '" cx="' + r1(sx(x)) + '" cy="' + r1(sy(y)) + '" r="5"/>');
+      if (lab) g.push('<text class="' + (lcls || "lbl") + '" x="' + r1(sx(x) + (dx == null ? 8 : dx)) + '" y="' + r1(sy(y) + (dy == null ? -8 : dy)) + '">' + lab + "</text>");
+      return this;
+    };
+    this.poly = function (pts, cls) { g.push('<polygon class="' + (cls || "fa-s") + '" clip-path="url(#' + cid + ')" points="' + pts.map(function (p) { return r1(sx(p[0])) + "," + r1(sy(p[1])); }).join(" ") + '"/>'); return this; };
+    this.text = function (x, y, t, cls, anchor) { g.push('<text class="' + (cls || "lbl") + '" x="' + r1(sx(x)) + '" y="' + r1(sy(y)) + '"' + (anchor ? ' text-anchor="' + anchor + '"' : "") + ">" + t + "</text>"); return this; };
+    this.raw = function (s) { g.push(s); return this; };
+    this.svg = function () { return '<svg class="chart" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' + (o.aria || "Gráfico") + '"><defs><clipPath id="' + cid + '"><rect x="' + L + '" y="' + Tp + '" width="' + (W - L - R) + '" height="' + (H - Tp - B) + '"/></clipPath></defs>' + g.join("") + "</svg>"; };
+  };
+})();
+
+/* TS Zenit · herramientas de Cálculo 1 · I1 Límites */
+(function () {
+  "use strict";
+  var T = window.TZT, Z = window.TZM;
+  /* utilidades propias de cálculo */
+  Z.f4 = function (x) { return Z.fx(x, 4); };
+  Z.f6 = function (x) { return Z.fx(x, 6); };
+  Z.btn = function (id, txt, cls) { return '<button type="button" class="cbtn' + (cls ? " " + cls : "") + '" id="' + id + '">' + txt + "</button>"; };
+  Z.tabla = function (cab, filas) { return '<div class="tw"><table class="tbl"><thead><tr>' + cab.map(function (c) { return "<th>" + c + "</th>"; }).join("") + "</tr></thead><tbody>" + filas.map(function (f) { return "<tr" + (f.cls ? ' class="' + f.cls + '"' : "") + ">" + (f.c || f).map(function (c) { return "<td>" + c + "</td>"; }).join("") + "</tr>"; }).join("") + "</tbody></table></div>"; };
+  Z.dentro = function (P, x, y) { var o = P.o; return isFinite(x) && isFinite(y) && x >= o.x0 && x <= o.x1 && y >= o.y0 && y <= o.y1; };
+  Z.hole = function (P, x, y) { if (!Z.dentro(P, x, y)) return P; return P.raw('<circle class="hole" cx="' + P.sx(x).toFixed(1) + '" cy="' + P.sy(y).toFixed(1) + '" r="5"/>'); };
+  Z.dot = function (P, x, y, cls) { if (!Z.dentro(P, x, y)) return P; return P.raw('<circle class="pt ' + (cls || "") + '" cx="' + P.sx(x).toFixed(1) + '" cy="' + P.sy(y).toFixed(1) + '" r="5"/>'); };
+  Z.vline = function (P, x, cls) { return P.seg(x, P.o.y0, x, P.o.y1, cls || "ln-w dash", 1.4); };
+  Z.hline = function (P, y, cls) { return P.seg(P.o.x0, y, P.o.x1, y, cls || "ln-w dash", 1.4); };
+  Z.band = function (P, a, b, horiz, cls) {   // franja vertical (x entre a y b) u horizontal (y entre a y b), recortada al área del gráfico
+    var o = P.o, X0 = horiz ? o.x0 : Math.max(o.x0, Math.min(a, b)), X1 = horiz ? o.x1 : Math.min(o.x1, Math.max(a, b)), Y0 = horiz ? Math.max(o.y0, Math.min(a, b)) : o.y0, Y1 = horiz ? Math.min(o.y1, Math.max(a, b)) : o.y1;
+    if (X1 <= X0 || Y1 <= Y0) return P;
+    return P.raw('<rect class="' + (cls || "bandA") + '" x="' + P.sx(X0).toFixed(1) + '" y="' + P.sy(Y1).toFixed(1) + '" width="' + (P.sx(X1) - P.sx(X0)).toFixed(1) + '" height="' + (P.sy(Y0) - P.sy(Y1)).toFixed(1) + '"/>');
+  };
+
+  
+
+  /* ================= TS Zenit · herramientas de Contabilidad ================= */
+  Z.m = function (x) { if (!isFinite(x)) return "—"; x = Math.round(x); return (x < 0 ? "−$" : "$") + Math.abs(x).toLocaleString("es-CL"); };
+  Z.n = function (x) { if (!isFinite(x)) return "—"; x = Math.round(x); return (x < 0 ? "−" : "") + Math.abs(x).toLocaleString("es-CL"); };
+  Z.p = function (x, d) { return Z.fx(x, d == null ? 1 : d) + "%"; };
+  Z.esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  Z.mon = function (id, label, val) { return '<div class="field"><label for="' + id + '">' + label + '</label><input id="' + id + '" inputmode="numeric" autocomplete="off" value="' + val + '"></div>'; };
+  Z.vm = function (root, id) { var v = String(root.querySelector("#" + id).value).replace(/\$|\s|\./g, "").replace(",", ".").replace("−", "-"); var x = parseFloat(v); return isFinite(x) ? x : 0; };
+  /* asiento: lineas [cuenta, debe, haber] */
+  Z.asiento = function (lineas, glosa) {
+    var td = 0, th = 0;
+    var rows = lineas.filter(function (l) { return l[1] || l[2]; }).map(function (l) { td += l[1] || 0; th += l[2] || 0; return '<tr><td' + (l[2] && !l[1] ? ' class="hab"' : "") + ">" + l[0] + '</td><td class="n">' + (l[1] ? Z.m(l[1]) : "") + '</td><td class="n">' + (l[2] ? Z.m(l[2]) : "") + "</td></tr>"; }).join("");
+    return '<div class="tbl as"><table><thead><tr><th>Cuenta</th><th class="r">Debe</th><th class="r">Haber</th></tr></thead><tbody>' + rows + (glosa ? '<tr class="gl"><td colspan="3">' + glosa + "</td></tr>" : "") + '<tr class="tot"><td>Totales</td><td class="n">' + Z.m(td) + '</td><td class="n">' + Z.m(th) + "</td></tr></tbody></table></div>";
+  };
+  Z.tab = function (cab, filas, num) {
+    num = num || []; return '<div class="tbl"><table><thead><tr>' + cab.map(function (c, i) { return "<th" + (num.indexOf(i) >= 0 ? ' class="r"' : "") + ">" + c + "</th>"; }).join("") + "</tr></thead><tbody>" +
+      filas.map(function (f) { var cells = f.c || f; return "<tr" + (f.cls ? ' class="' + f.cls + '"' : "") + ">" + cells.map(function (c, i) { return "<td" + (num.indexOf(i) >= 0 ? ' class="n"' : "") + ">" + c + "</td>"; }).join("") + "</tr>"; }).join("") + "</tbody></table></div>";
+  };
+  Z.tacc = function (nom, d, h) {
+    var rows = Math.max(d.length, h.length), s = 0, out = "";
+    for (var i = 0; i < rows; i++) out += '<div class="tr"><span>' + (i < d.length ? (d[i][0] ? '<i>' + d[i][0] + "</i> " : "") + Z.m(d[i][1]) : "") + "</span><span>" + (i < h.length ? (h[i][0] ? '<i>' + h[i][0] + "</i> " : "") + Z.m(h[i][1]) : "") + "</span></div>";
+    var sd = d.reduce(function (a, x) { return a + x[1]; }, 0), sh = h.reduce(function (a, x) { return a + x[1]; }, 0); s = sd - sh;
+    return '<div class="tacc"><div class="tn">' + nom + '</div><div class="tt"><div class="tr th"><span>Debe</span><span>Haber</span></div>' + out + '<div class="tr tsum"><span>' + Z.m(sd) + "</span><span>" + Z.m(sh) + '</span></div></div><div class="ts"><span>' + (s > 0 ? "S. deudor " + Z.m(s) : "") + "</span><span>" + (s < 0 ? "S. acreedor " + Z.m(-s) : (s === 0 && rows ? "Saldada" : "")) + "</span></div></div>";
+  };
+  Z.verd = function (ok, html) { return '<div class="verdict"><p class="' + (ok ? "okt" : "badt") + '"><b>' + (ok ? "✓ " : "✗ ") + "</b>" + html + "</p></div>"; };
+
+  /* ---------- 1. Clasifica: elementos de los estados financieros ---------- */
+  var CLAS = [
+    ["Mercaderías en bodega para vender", "A", "Recurso controlado que generará beneficios (se venderá): activo corriente."],
+    ["Préstamo bancario a pagar en 3 años", "P", "Obligación presente de entregar recursos: pasivo no corriente."],
+    ["Aporte en dinero que hicieron los socios", "Pt", "Lo que aportan los dueños es patrimonio (capital), no un ingreso."],
+    ["Sueldos del personal de este mes", "G", "Consumo de recursos para generar ingresos del período: gasto."],
+    ["Servicios prestados a clientes en el mes", "I", "Aumenta el patrimonio por la actividad de la empresa (no es aporte): ingreso."],
+    ["Dinero en la cuenta corriente del banco", "A", "Efectivo: el activo más líquido."],
+    ["Facturas que se deben a proveedores", "P", "Obligación con terceros por compras a crédito: pasivo corriente."],
+    ["Arriendo del local correspondiente a este mes", "G", "Se consumió en el período: gasto (si se pagara por adelantado meses futuros, esa parte sería activo)."],
+    ["Facturas que los clientes aún no pagan", "A", "Derecho a cobrar (Clientes o Deudores por venta): activo corriente."],
+    ["Intereses ganados en un depósito a plazo", "I", "Aumento de patrimonio no proveniente de los dueños: ingreso (no operacional)."],
+    ["Utilidades de años anteriores no repartidas", "Pt", "Resultados acumulados: parte del patrimonio."],
+    ["Retiro de dinero que hace el dueño para uso personal", "Pt−", "Disminuye el patrimonio, pero NO es gasto: es una distribución al dueño (Retiros o Dividendos)."]
+  ];
+  var CLN = { A: "Activo", P: "Pasivo", Pt: "Patrimonio", I: "Ingreso", G: "Gasto", "Pt−": "Disminución de patrimonio (retiro)" };
+  T.clasifica = function (r) {
+    r.innerHTML = Z.head("Clasifica", "¿Activo, pasivo, patrimonio, ingreso o gasto?") + '<div class="cases"></div><div class="acts">' + Z.btn(Z.uid("cr"), "Volver a empezar", "ghost") + '</div><p class="out"></p>';
+    var box = r.querySelector(".cases"), out = r.querySelector("p.out");
+    function draw() {
+      box.innerHTML = CLAS.map(function (c, i) { return '<div class="item" data-i="' + i + '"><span class="txt">' + c[0] + '</span><select aria-label="Clasificación de: ' + Z.esc(c[0]) + '"><option value="">Elige…</option>' + Object.keys(CLN).map(function (k) { return '<option value="' + k + '">' + CLN[k] + "</option>"; }).join("") + '</select><span class="fb"></span></div>'; }).join("");
+      score();
+    }
+    function score() {
+      var ok = 0, done = 0;
+      Array.prototype.forEach.call(box.querySelectorAll(".item"), function (it) {
+        var c = CLAS[+it.dataset.i], v = it.querySelector("select").value, fb = it.querySelector(".fb");
+        it.classList.remove("ok", "bad"); fb.textContent = "";
+        if (!v) return; done++;
+        if (v === c[1]) { ok++; it.classList.add("ok"); fb.textContent = "✓ " + c[2]; } else { it.classList.add("bad"); fb.textContent = "✗ Es " + CLN[c[1]].toLowerCase() + ". " + c[2]; }
+      });
+      out.innerHTML = "Respondidas <b>" + done + "/" + CLAS.length + "</b> · correctas <b>" + ok + "</b>" + (done === CLAS.length ? (ok === CLAS.length ? " · <span class=okt>¡Todas bien!</span>" : " · revisa las marcadas en rojo") : "");
+    }
+    box.addEventListener("change", score); r.querySelector(".cbtn").addEventListener("click", draw); draw();
+  };
+
+  /* ---------- 2. Ecuación contable: análisis de transacciones ---------- */
+  var COLS = [["caja", "Caja", "A"], ["cli", "Clientes", "A"], ["ins", "Insumos", "A"], ["eq", "Equipos", "A"], ["prov", "Proveedores", "P"], ["pres", "Préstamo", "P"], ["cap", "Capital", "Pt"], ["res", "Ingresos − gastos", "Pt"], ["ret", "Retiros", "Pt"]];
+  var TRX = [
+    ["Los socios aportan $5.000.000 en efectivo", { caja: 5e6, cap: 5e6 }, "↑ Activo y ↑ Patrimonio: el aporte es capital, no ingreso."],
+    ["Compra de equipos por $1.800.000 al contado", { caja: -1.8e6, eq: 1.8e6 }, "Permutación de activos: sale caja y entran equipos. El total no cambia."],
+    ["Compra de insumos a crédito por $400.000", { ins: 4e5, prov: 4e5 }, "↑ Activo y ↑ Pasivo."],
+    ["Presta servicios y cobra al contado $1.200.000", { caja: 1.2e6, res: 1.2e6 }, "↑ Activo y ↑ Patrimonio vía ingreso."],
+    ["Presta servicios a crédito por $900.000", { cli: 9e5, res: 9e5 }, "El ingreso se reconoce al prestar el servicio (devengado), aunque no se haya cobrado."],
+    ["Paga sueldos del mes por $700.000", { caja: -7e5, res: -7e5 }, "↓ Activo y ↓ Patrimonio vía gasto."],
+    ["Paga $250.000 a proveedores", { caja: -2.5e5, prov: -2.5e5 }, "↓ Activo y ↓ Pasivo: pagar una deuda no es gasto."],
+    ["Cobra $500.000 a clientes", { caja: 5e5, cli: -5e5 }, "Permutación de activos: cobrar no es ingreso (el ingreso ya se reconoció)."],
+    ["Obtiene un préstamo bancario de $2.000.000", { caja: 2e6, pres: 2e6 }, "↑ Activo y ↑ Pasivo: un préstamo no es ingreso."],
+    ["Usa insumos por $150.000", { ins: -1.5e5, res: -1.5e5 }, "El consumo de insumos es gasto del período."],
+    ["Los socios retiran $300.000 para uso personal", { caja: -3e5, ret: -3e5 }, "↓ Activo y ↓ Patrimonio, pero no es gasto: es un retiro."]
+  ];
+  T.ecuacion = function (r) {
+    var hechos = [], bu = Z.uid("eu"), br = Z.uid("er");
+    r.innerHTML = Z.head("Ecuación contable", "Registra transacciones y mira cómo la ecuación siempre cuadra") +
+      '<p class="muted" style="font-size:.88rem">Servicios Cordillera SpA, primer mes. Toca las transacciones en el orden que quieras.</p><div class="filters trx">' + TRX.map(function (t, i) { return '<button type="button" class="fbtn" data-i="' + i + '">' + (i + 1) + ". " + t[0] + "</button>"; }).join("") + '</div><div class="acts">' + Z.btn(bu, "Deshacer", "ghost") + Z.btn(br, "Reiniciar", "ghost") + '</div><div class="out"></div>';
+    var out = r.querySelector(".out");
+    function draw() {
+      var S = {}; COLS.forEach(function (c) { S[c[0]] = 0; });
+      var filas = hechos.map(function (i) { var t = TRX[i]; COLS.forEach(function (c) { S[c[0]] += t[1][c[0]] || 0; }); return [String(i + 1)].concat(COLS.map(function (c) { var v = t[1][c[0]]; return v ? (v > 0 ? "+" : "") + Z.n(v) : ""; })); });
+      filas.push({ cls: "tot", c: ["Saldo"].concat(COLS.map(function (c) { return Z.n(S[c[0]]); })) });
+      var A = 0, P = 0, Pt = 0; COLS.forEach(function (c) { if (c[2] === "A") A += S[c[0]]; else if (c[2] === "P") P += S[c[0]]; else Pt += S[c[0]]; });
+      Array.prototype.forEach.call(r.querySelectorAll(".trx .fbtn"), function (b) { b.setAttribute("aria-pressed", hechos.indexOf(+b.dataset.i) >= 0 ? "true" : "false"); b.disabled = hechos.indexOf(+b.dataset.i) >= 0; });
+      var last = hechos.length ? TRX[hechos[hechos.length - 1]] : null;
+      out.innerHTML = Z.tab(["N°", "Caja", "Clientes", "Insumos", "Equipos", "Proveedores", "Préstamo", "Capital", "Ingr. − gastos", "Retiros"], filas, [1, 2, 3, 4, 5, 6, 7, 8, 9]) +
+        '<div class="res"><div><span>Activo</span><b>' + Z.m(A) + '</b></div><div><span>Pasivo</span><b>' + Z.m(P) + '</b></div><div><span>Patrimonio</span><b>' + Z.m(Pt) + '</b></div><div><span>Pasivo + patrimonio</span><b>' + Z.m(P + Pt) + "</b></div></div>" +
+        Z.verd(A === P + Pt, "Activo = Pasivo + Patrimonio" + (last ? ". Última: " + last[2] : ". Elige una transacción para empezar.")) +
+        (hechos.length ? '<p class="muted" style="font-size:.86rem">Resultado del período hasta ahora (ingresos − gastos): <b>' + Z.m(S.res) + "</b>. El patrimonio cambia por aportes, retiros y resultado; nada más.</p>" : "");
+    }
+    r.querySelector(".trx").addEventListener("click", function (e) { var b = e.target.closest(".fbtn"); if (!b || b.disabled) return; hechos.push(+b.dataset.i); draw(); });
+    r.querySelector("#" + bu).addEventListener("click", function () { hechos.pop(); draw(); });
+    r.querySelector("#" + br).addEventListener("click", function () { hechos = []; draw(); });
+    draw();
+  };
+
+  /* ---------- 3. Cargo y abono ---------- */
+  var CTAS = [
+    ["Caja", "A"], ["Banco", "A"], ["Clientes", "A"], ["Mercaderías", "A"], ["IVA crédito fiscal", "A"], ["Maquinarias", "A"], ["Seguros pagados por anticipado", "A"],
+    ["Depreciación acumulada", "CA"], ["Estimación deudores incobrables", "CA"],
+    ["Proveedores", "P"], ["Préstamos bancarios", "P"], ["IVA débito fiscal", "P"], ["Remuneraciones por pagar", "P"], ["Arriendos cobrados por anticipado", "P"],
+    ["Capital", "Pt"], ["Resultados acumulados", "Pt"], ["Retiros / Dividendos", "R"],
+    ["Ventas", "I"], ["Ingresos por servicios", "I"], ["Costo de ventas", "G"], ["Remuneraciones (gasto)", "G"], ["Depreciación del ejercicio", "G"], ["Gasto en arriendo", "G"]
+  ];
+  var TIPO = { A: "activo", CA: "cuenta complementaria de activo", P: "pasivo", Pt: "patrimonio", R: "cuenta de retiro (disminuye patrimonio)", I: "ingreso", G: "gasto o costo" };
+  var AUMD = { A: "D", CA: "H", P: "H", Pt: "H", R: "D", I: "H", G: "D" };
+  T.cargoabono = function (r) {
+    var sc = Z.uid("cc"), sm = Z.uid("cm"), mv = "sube";
+    r.innerHTML = Z.head("Cargo y abono", "¿Va al Debe o al Haber?") + '<div class="fields"><div class="field"><label for="' + sc + '">Cuenta</label><select id="' + sc + '">' + CTAS.map(function (c, i) { return '<option value="' + i + '">' + c[0] + "</option>"; }).join("") + "</select></div></div>" + Z.seg(sm, [["sube", "Aumenta"], ["baja", "Disminuye"]], mv) + '<div class="out"></div>';
+    var out = r.querySelector(".out");
+    function draw() {
+      var c = CTAS[+r.querySelector("#" + sc).value], t = c[1], lado = AUMD[t]; if (mv === "baja") lado = lado === "D" ? "H" : "D";
+      var normal = AUMD[t] === "D" ? "deudor" : "acreedor";
+      out.innerHTML = '<div class="res"><div><span>Tipo de cuenta</span><b style="font-family:var(--ui);font-size:.95rem">' + TIPO[t] + '</b></div><div><span>Se registra en el</span><b>' + (lado === "D" ? "DEBE (se carga)" : "HABER (se abona)") + '</b></div><div><span>Saldo normal</span><b>' + normal + "</b></div></div><p>" +
+        (t === "CA" ? "Las complementarias de activo (depreciación acumulada, estimación de incobrables) <b>restan</b> al activo que acompañan: aumentan por el Haber y tienen saldo acreedor." :
+          t === "R" ? "Los retiros y dividendos disminuyen el patrimonio, así que aumentan por el <b>Debe</b>; pero no son gastos y no van al estado de resultados." :
+            t === "G" ? "Los gastos y costos disminuyen el patrimonio: aumentan por el <b>Debe</b> y se cierran al final del ejercicio." :
+              t === "I" ? "Los ingresos aumentan el patrimonio: aumentan por el <b>Haber</b> y se cierran al final del ejercicio." :
+                t === "A" ? "Los activos están a la izquierda de la ecuación: aumentan por el <b>Debe</b> y disminuyen por el Haber." :
+                  "Pasivo y patrimonio están a la derecha de la ecuación: aumentan por el <b>Haber</b> y disminuyen por el Debe.") + "</p>";
+    }
+    r.querySelector("#" + sc).addEventListener("change", draw); Z.wireSeg(r, sm, function (k) { mv = k; draw(); }); draw();
+  };
+
+  /* ---------- 4. Arma el asiento ---------- */
+  var LISTA = ["Caja", "Banco", "Clientes", "Documentos por cobrar", "Mercaderías", "IVA crédito fiscal", "Muebles y útiles", "Vehículos", "Proveedores", "Documentos por pagar", "Préstamos bancarios", "IVA débito fiscal", "Remuneraciones por pagar", "Capital", "Ventas", "Ingresos por servicios", "Costo de ventas", "Remuneraciones", "Gasto en arriendo", "Retiros"];
+  var ASI = [
+    ["Se constituye la empresa: los socios depositan $8.000.000 en el banco.", [["Banco", 8e6, 0], ["Capital", 0, 8e6]]],
+    ["Paga con cheque el arriendo del mes: $600.000 (exento de IVA).", [["Gasto en arriendo", 6e5, 0], ["Banco", 0, 6e5]]],
+    ["Compra mercaderías a crédito: neto $1.000.000 + IVA.", [["Mercaderías", 1e6, 0], ["IVA crédito fiscal", 1.9e5, 0], ["Proveedores", 0, 1.19e6]]],
+    ["Vende mercaderías al contado (en efectivo): neto $1.500.000 + IVA.", [["Caja", 1.785e6, 0], ["Ventas", 0, 1.5e6], ["IVA débito fiscal", 0, 2.85e5]]],
+    ["Compra un vehículo en $9.000.000 (sin IVA recuperable): $3.000.000 con cheque y el saldo con un pagaré.", [["Vehículos", 9e6, 0], ["Banco", 0, 3e6], ["Documentos por pagar", 0, 6e6]]],
+    ["Paga con cheque a un proveedor $1.190.000.", [["Proveedores", 1.19e6, 0], ["Banco", 0, 1.19e6]]],
+    ["Un cliente firma una letra por $500.000 para documentar su deuda.", [["Documentos por cobrar", 5e5, 0], ["Clientes", 0, 5e5]]]
+  ];
+  T.asiento = function (r) {
+    var st = Z.uid("as"), k = 0;
+    r.innerHTML = Z.head("Arma el asiento", "Elige la cuenta de cada línea y revisa") + Z.seg(st, ASI.map(function (a, i) { return [i, "Transacción " + (i + 1)]; }), 0) + '<div class="out"></div>';
+    var out = r.querySelector(".out");
+    function draw() {
+      var a = ASI[k];
+      out.innerHTML = '<p class="qstem">' + a[0] + '</p><div class="tbl as"><table><thead><tr><th>Cuenta</th><th class="r">Debe</th><th class="r">Haber</th></tr></thead><tbody>' + a[1].map(function (l, i) {
+        return '<tr><td' + (l[2] ? ' class="hab"' : "") + '><select data-i="' + i + '" aria-label="Cuenta de la línea ' + (i + 1) + '"><option value="">Elige la cuenta…</option>' + LISTA.map(function (c) { return "<option>" + c + "</option>"; }).join("") + '</select></td><td class="n">' + (l[1] ? Z.m(l[1]) : "") + '</td><td class="n">' + (l[2] ? Z.m(l[2]) : "") + "</td></tr>";
+      }).join("") + '</tbody></table></div><div class="acts">' + Z.btn("chk" + st, "Revisar asiento") + Z.btn("sol" + st, "Ver solución", "ghost") + '</div><div class="fbk"></div>';
+      out.querySelector("#chk" + st).addEventListener("click", revisar);
+      out.querySelector("#sol" + st).addEventListener("click", function () { out.querySelector(".fbk").innerHTML = '<p class="muted" style="font-size:.86rem">Solución:</p>' + Z.asiento(a[1]); });
+    }
+    function revisar() {
+      var a = ASI[k], sel = out.querySelectorAll("select"), ok = 0;
+      Array.prototype.forEach.call(sel, function (s) { var i = +s.dataset.i, good = s.value === a[1][i][0]; s.style.borderColor = s.value ? (good ? "var(--ok)" : "var(--bad)") : ""; if (good) ok++; });
+      out.querySelector(".fbk").innerHTML = Z.verd(ok === a[1].length, ok === a[1].length ? "Asiento correcto. Total Debe = total Haber = " + Z.m(a[1].reduce(function (s, l) { return s + l[1]; }, 0)) + "." : ok + " de " + a[1].length + " líneas correctas. Pregúntate: ¿qué recibe la empresa (Debe) y qué entrega o debe (Haber)?");
+    }
+    Z.wireSeg(r, st, function (q) { k = +q; draw(); }); draw();
+  };
+
+  /* ---------- 5. Mayorización paso a paso ---------- */
+  T.mayor = function (r) {
+    var D = window.TZ_MAYOR || [], i = 0, bn = Z.uid("mn"), br = Z.uid("mr"), bt = Z.uid("mt");
+    r.innerHTML = Z.head("Libro mayor", "Traspasa cada asiento del Diario a sus cuentas T") + '<div class="acts">' + Z.btn(bn, "Mayorizar el siguiente asiento") + Z.btn(bt, "Mayorizar todo", "ghost") + Z.btn(br, "Reiniciar", "ghost") + '</div><div class="out"></div>';
+    var out = r.querySelector(".out");
+    function draw() {
+      var M = {}, orden = [];
+      D.slice(0, i).forEach(function (a) { a.l.forEach(function (l) { if (!M[l[0]]) { M[l[0]] = [[], []]; orden.push(l[0]); } if (l[1]) M[l[0]][0].push([a.n, l[1]]); if (l[2]) M[l[0]][1].push([a.n, l[2]]); }); });
+      var cur = i < D.length ? D[i] : null;
+      var html = '<p class="muted" style="font-size:.88rem">' + (cur ? "Siguiente: <b>asiento " + cur.n + "</b> · " + cur.g : "Todos los asientos están mayorizados.") + "</p>";
+      if (cur) html += Z.asiento(cur.l);
+      html += '<div class="taccs">' + orden.map(function (k) { return Z.tacc(k, M[k][0], M[k][1]); }).join("") + "</div>";
+      if (i === D.length && D.length) {
+        var tD = 0, tH = 0, sD = 0, sA = 0, filas = orden.map(function (k) { var d = M[k][0].reduce(function (s, x) { return s + x[1]; }, 0), h = M[k][1].reduce(function (s, x) { return s + x[1]; }, 0), s = d - h; tD += d; tH += h; if (s > 0) sD += s; else sA -= s; return [k, Z.m(d), Z.m(h), s > 0 ? Z.m(s) : "", s < 0 ? Z.m(-s) : ""]; });
+        filas.push({ cls: "tot", c: ["Totales", Z.m(tD), Z.m(tH), Z.m(sD), Z.m(sA)] });
+        html += '<p style="margin-top:.6rem"><b>Balance de comprobación de sumas y saldos</b></p>' + Z.tab(["Cuenta", "Débitos", "Créditos", "Saldo deudor", "Saldo acreedor"], filas, [1, 2, 3, 4]) + Z.verd(tD === tH && sD === sA, "Débitos = créditos (" + Z.m(tD) + ") y saldos deudores = saldos acreedores (" + Z.m(sD) + "). Cuadra.");
+      }
+      out.innerHTML = html;
+      r.querySelector("#" + bn).disabled = i >= D.length;
+    }
+    r.querySelector("#" + bn).addEventListener("click", function () { if (i < D.length) i++; draw(); });
+    r.querySelector("#" + bt).addEventListener("click", function () { i = D.length; draw(); });
+    r.querySelector("#" + br).addEventListener("click", function () { i = 0; draw(); });
+    draw();
+  };
+
+  /* ---------- 6. De saldos a estados financieros ---------- */
+  T.eeff = function (r) {
+    var D = window.TZ_EEFF || [];
+    var OPT = [["AC", "Activo corriente"], ["ANC", "Activo no corriente"], ["PC", "Pasivo corriente"], ["PNC", "Pasivo no corriente"], ["PT", "Patrimonio"], ["IN", "Ingreso (resultado)"], ["GA", "Gasto o costo (resultado)"]];
+    r.innerHTML = Z.head("Estados financieros", "Clasifica cada saldo y arma el balance y el estado de resultados") + '<div class="cases"></div><div class="acts">' + Z.btn(Z.uid("ef"), "Armar los estados") + '</div><div class="out"></div>';
+    var box = r.querySelector(".cases"), out = r.querySelector(".out");
+    box.innerHTML = D.map(function (c, i) { return '<div class="item" data-i="' + i + '"><span class="txt">' + c[0] + " · <b>" + Z.m(c[1]) + "</b> (saldo " + (c[3] === "CA" ? "acreedor, resta" : c[2]) + ')</span><select aria-label="Clasificación de ' + Z.esc(c[0]) + '"><option value="">Elige…</option>' + OPT.map(function (o) { return '<option value="' + o[0] + '">' + o[1] + "</option>"; }).join("") + '</select><span class="fb"></span></div>'; }).join("");
+    r.querySelector(".cbtn").addEventListener("click", function () {
+      var ok = 0, g = {}; OPT.forEach(function (o) { g[o[0]] = []; });
+      Array.prototype.forEach.call(box.querySelectorAll(".item"), function (it) { var c = D[+it.dataset.i], v = it.querySelector("select").value, fb = it.querySelector(".fb"); it.classList.remove("ok", "bad"); var good = v === c[4]; if (good) ok++; it.classList.add(good ? "ok" : "bad"); fb.textContent = good ? "✓" : "✗ Va en: " + OPT.filter(function (o) { return o[0] === c[4]; })[0][1]; g[c[4]].push(c); });
+      var sgn = function (c) { return c[3] === "CA" ? -c[1] : c[1]; }, sum = function (k) { return g[k].reduce(function (s, c) { return s + sgn(c); }, 0); };
+      var ing = sum("IN"), gas = sum("GA"), ut = ing - gas;
+      var lin = function (k) { return g[k].map(function (c) { return [c[0], Z.m(sgn(c))]; }); };
+      var esf = [{ cls: "ah", c: ["<b>ACTIVOS</b>", ""] }].concat([["<i>Activo corriente</i>", ""]], lin("AC"), [{ cls: "tot", c: ["Total activo corriente", Z.m(sum("AC"))] }], [["<i>Activo no corriente</i>", ""]], lin("ANC"), [{ cls: "tot", c: ["Total activo no corriente", Z.m(sum("ANC"))] }, { cls: "tot", c: ["<b>TOTAL ACTIVOS</b>", "<b>" + Z.m(sum("AC") + sum("ANC")) + "</b>"] }, { cls: "ah", c: ["<b>PASIVOS Y PATRIMONIO</b>", ""] }], lin("PC"), [{ cls: "tot", c: ["Total pasivo corriente", Z.m(sum("PC"))] }], lin("PNC"), [{ cls: "tot", c: ["Total pasivo no corriente", Z.m(sum("PNC"))] }], lin("PT"), [["Resultado del ejercicio", Z.m(ut)], { cls: "tot", c: ["Total patrimonio", Z.m(sum("PT") + ut)] }, { cls: "tot", c: ["<b>TOTAL PASIVOS Y PATRIMONIO</b>", "<b>" + Z.m(sum("PC") + sum("PNC") + sum("PT") + ut) + "</b>"] }]);
+      var er = lin("IN").concat([{ cls: "tot", c: ["Total ingresos", Z.m(ing)] }], g.GA.map(function (c) { return [c[0], "(" + Z.m(c[1]) + ")"]; }), [{ cls: "tot", c: ["<b>" + (ut >= 0 ? "Ganancia" : "Pérdida") + " del ejercicio</b>", "<b>" + Z.m(ut) + "</b>"] }]);
+      out.innerHTML = Z.verd(ok === D.length, ok + " de " + D.length + " bien clasificadas. Los estados se arman con la clasificación correcta:") + '<div class="two"><div><p><b>Estado de situación financiera</b></p>' + Z.tab(["", "$"], esf, [1]) + '</div><div><p><b>Estado de resultados</b></p>' + Z.tab(["", "$"], er, [1]) + "</div></div>" + '<p class="muted" style="font-size:.86rem">El resultado del ejercicio (' + Z.m(ut) + ") es el puente entre los dos estados: se suma al patrimonio y así el balance cuadra.</p>";
+    });
+  };
+
+  /* ---------- 7. Costo de ventas y margen ---------- */
+  T.costoventas = function (r) {
+    var ids = ["ii", "co", "fl", "dc", "dp", "if", "vt", "dv"].map(function (x) { return Z.uid(x); });
+    var V = [2400000, 9600000, 300000, 450000, 150000, 3100000, 15800000, 600000];
+    var L = ["Inventario inicial", "Compras brutas", "Fletes sobre compras", "Devoluciones de compras", "Descuentos por pronto pago obtenidos", "Inventario final (conteo físico)", "Ventas brutas", "Devoluciones de ventas"];
+    r.innerHTML = Z.head("Costo de ventas", "Inventario periódico: CV = II + compras netas − IF") + '<div class="fields">' + ids.map(function (id, i) { return Z.mon(id, L[i], V[i]); }).join("") + '</div><div class="out"></div>';
+    var out = r.querySelector(".out");
+    function draw() {
+      var v = ids.map(function (id) { return Z.vm(r, id); }), cn = v[1] + v[2] - v[3] - v[4], disp = v[0] + cn, cv = disp - v[5], vn = v[6] - v[7], mb = vn - cv;
+      out.innerHTML = Z.tab(["Concepto", "$"], [["Inventario inicial", Z.m(v[0])], ["+ Compras", Z.m(v[1])], ["+ Fletes sobre compras", Z.m(v[2])], ["− Devoluciones de compras", "(" + Z.m(v[3]) + ")"], ["− Descuentos por pronto pago", "(" + Z.m(v[4]) + ")"], { cls: "tot", c: ["= Compras netas", Z.m(cn)] }, { cls: "tot", c: ["= Mercadería disponible para la venta", Z.m(disp)] }, ["− Inventario final", "(" + Z.m(v[5]) + ")"], { cls: "tot", c: ["<b>= Costo de ventas</b>", "<b>" + Z.m(cv) + "</b>"] }], [1]) +
+        '<div class="res"><div><span>Ventas netas</span><b>' + Z.m(vn) + '</b></div><div><span>Costo de ventas</span><b>' + Z.m(cv) + '</b></div><div><span>Margen bruto</span><b>' + Z.m(mb) + '</b></div><div><span>Margen bruto %</span><b>' + (vn ? Z.p(100 * mb / vn) : "—") + "</b></div></div>" +
+        (cv < 0 ? Z.verd(false, "El inventario final no puede ser mayor que la mercadería disponible.") : '<p class="muted" style="font-size:.86rem">Si el inventario final se sobreestima en $100.000, el costo de ventas baja y la utilidad sube en $100.000 (y el año siguiente pasa lo contrario).</p>');
+    }
+    Z.on(r, "input", draw); draw();
+  };
+
+  /* ---------- 8. IVA ---------- */
+  T.iva = function (r) {
+    var sg = Z.uid("iv"), mo = "doc";
+    r.innerHTML = Z.head("IVA", "Débito fiscal, crédito fiscal y liquidación mensual") + Z.seg(sg, [["doc", "Un documento"], ["mes", "Liquidación del mes (F29)"]], mo) + '<div class="body"></div>';
+    var body = r.querySelector(".body");
+    function doc() {
+      var a = Z.uid("a"), t = Z.uid("t"), b = Z.uid("b"), f = Z.uid("f"), tipo = "venta", base = "neto", fpago = "cred";
+      body.innerHTML = '<div class="fields">' + Z.mon(a, "Monto", 1000000) + '</div>' + Z.seg(t, [["venta", "Venta (factura)"], ["compra", "Compra (factura)"], ["boleta", "Venta con boleta"]], tipo) + Z.seg(b, [["neto", "El monto es neto"], ["total", "El monto es total (con IVA)"]], base) + Z.seg(f, [["cred", "A crédito"], ["cont", "Al contado"]], fpago) + '<div class="out"></div>';
+      var o = body.querySelector(".out");
+      function d() {
+        var x = Z.vm(body, a), neto = base === "neto" ? x : Math.round(x / 1.19), iva = base === "neto" ? Math.round(x * 0.19) : x - Math.round(x / 1.19), tot = neto + iva, cta = fpago === "cont" ? "Caja" : (tipo === "compra" ? "Proveedores" : "Clientes"), lin;
+        if (tipo === "compra") lin = [["Mercaderías", neto, 0], ["IVA crédito fiscal", iva, 0], [cta, 0, tot]];
+        else lin = [[cta, tot, 0], ["Ventas", 0, neto], ["IVA débito fiscal", 0, iva]];
+        o.innerHTML = '<div class="res"><div><span>Neto</span><b>' + Z.m(neto) + '</b></div><div><span>IVA 19%</span><b>' + Z.m(iva) + '</b></div><div><span>Total</span><b>' + Z.m(tot) + "</b></div></div>" + Z.asiento(lin) + '<p class="muted" style="font-size:.86rem">' + (tipo === "compra" ? "El IVA de la compra es <b>crédito fiscal</b> (activo): se descontará del IVA de las ventas." : tipo === "boleta" ? "En la boleta el precio ya incluye IVA: neto = total ÷ 1,19. El IVA es <b>débito fiscal</b> (pasivo)." : "El IVA de la venta es <b>débito fiscal</b> (pasivo): no es ingreso, se le debe al Fisco.") + "</p>";
+      }
+      Z.wireSeg(body, t, function (k) { tipo = k; if (k === "boleta") { base = "total"; body.querySelectorAll("#" + b + " .sbtn").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.k === "total"); }); } d(); });
+      Z.wireSeg(body, b, function (k) { base = k; d(); }); Z.wireSeg(body, f, function (k) { fpago = k; d(); }); Z.on(body, "input", d); d();
+    }
+    function mes() {
+      var ids = ["v", "c", "rm", "pp"].map(function (x) { return Z.uid(x); });
+      body.innerHTML = '<div class="fields">' + Z.mon(ids[0], "Ventas netas afectas del mes", 12500000) + Z.mon(ids[1], "Compras netas afectas del mes", 9800000) + Z.mon(ids[2], "Remanente de crédito fiscal del mes anterior", 150000) + Z.fld(ids[3], "Tasa PPM (%)", "1") + '</div><div class="out"></div>';
+      var o = body.querySelector(".out");
+      function d() {
+        var v = Z.vm(body, ids[0]), c = Z.vm(body, ids[1]), rm = Z.vm(body, ids[2]), tp = Z.val(body, ids[3]) || 0, df = Math.round(v * 0.19), cf = Math.round(c * 0.19) + rm, dif = df - cf, ppm = Math.round(v * tp / 100);
+        var lin = dif >= 0 ? [["IVA débito fiscal", df, 0], ["IVA crédito fiscal", 0, cf], ["IVA por pagar", 0, dif]] : [["IVA débito fiscal", df, 0], ["Remanente crédito fiscal", -dif, 0], ["IVA crédito fiscal", 0, cf]];
+        o.innerHTML = Z.tab(["", "$"], [["Débito fiscal (19% de ventas)", Z.m(df)], ["Crédito fiscal del mes (19% de compras)", "(" + Z.m(Math.round(c * 0.19)) + ")"], ["Remanente del mes anterior", "(" + Z.m(rm) + ")"], { cls: "tot", c: [dif >= 0 ? "<b>IVA a pagar</b>" : "<b>Remanente para el mes siguiente</b>", "<b>" + Z.m(Math.abs(dif)) + "</b>"] }, ["PPM (" + Z.fx(tp, 2) + "% de ventas netas)", Z.m(ppm)], { cls: "tot", c: ["Total a pagar en el F29", Z.m(Math.max(dif, 0) + ppm)] }], [1]) +
+          '<p><b>Asiento de centralización del IVA</b></p>' + Z.asiento(lin) + '<p class="muted" style="font-size:.86rem">El IVA no es gasto ni ingreso: es un pasivo (débito) que se compensa con un activo (crédito). El PPM es un anticipo del impuesto a la renta (activo, «PPM por recuperar»), no es IVA.</p>';
+      }
+      Z.on(body, "input", d); d();
+    }
+    function draw() { if (mo === "doc") doc(); else mes(); }
+    Z.wireSeg(r, sg, function (k) { mo = k; draw(); }); draw();
+  };
+
+  /* ---------- 9. Ajustes por devengado ---------- */
+  var AJ = {
+    seg: { t: "Seguro pagado por anticipado", f: [["Prima pagada", 1200000], ["Meses de cobertura", 12], ["Meses transcurridos al cierre", 4]],
+      c: function (v) { var aj = Math.round(v[0] / v[1] * v[2]); return { aj: aj, lin: [["Gasto en seguros", aj, 0], ["Seguros pagados por anticipado", 0, aj]], txt: "Al pagar se registró un activo (Seguros pagados por anticipado). Al cierre, la parte ya consumida (" + v[2] + " de " + v[1] + " meses) pasa a gasto. Queda un activo de " + Z.m(v[0] - aj) + " por los meses futuros.", er: -aj, esf: "Activo: Seguros por anticipado " + Z.m(v[0] - aj) }; } },
+    arr: { t: "Arriendo cobrado por anticipado", f: [["Monto cobrado", 3000000], ["Meses que cubre", 6], ["Meses transcurridos al cierre", 2]],
+      c: function (v) { var aj = Math.round(v[0] / v[1] * v[2]); return { aj: aj, lin: [["Arriendos cobrados por anticipado", aj, 0], ["Ingresos por arriendo", 0, aj]], txt: "Al cobrar se registró un pasivo (la empresa debe el uso del inmueble). Al cierre, la parte ya prestada pasa a ingreso. Queda un pasivo de " + Z.m(v[0] - aj) + ".", er: aj, esf: "Pasivo: Arriendos cobrados por anticipado " + Z.m(v[0] - aj) }; } },
+    sue: { t: "Remuneraciones devengadas por pagar", f: [["Sueldo mensual total", 4500000], ["Días trabajados no pagados al cierre", 10], ["Días del mes (base)", 30]],
+      c: function (v) { var aj = Math.round(v[0] * v[1] / v[2]); return { aj: aj, lin: [["Remuneraciones", aj, 0], ["Remuneraciones por pagar", 0, aj]], txt: "El trabajo ya se recibió aunque se pague el próximo mes: el gasto pertenece a este período.", er: -aj, esf: "Pasivo: Remuneraciones por pagar " + Z.m(aj) }; } },
+    icob: { t: "Intereses devengados por cobrar (depósito a plazo)", f: [["Capital depositado", 10000000], ["Tasa de interés anual (%)", 6], ["Días transcurridos al cierre", 45]],
+      c: function (v) { var aj = Math.round(v[0] * v[1] / 100 * v[2] / 360); return { aj: aj, lin: [["Intereses por cobrar", aj, 0], ["Intereses ganados", 0, aj]], txt: "El interés se gana con el paso del tiempo (base 360 días). Aunque se cobre al vencimiento, lo devengado hasta el cierre es ingreso de este período.", er: aj, esf: "Activo: Intereses por cobrar " + Z.m(aj) }; } },
+    ipag: { t: "Intereses devengados por pagar (préstamo)", f: [["Préstamo", 20000000], ["Tasa de interés anual (%)", 9], ["Meses transcurridos sin pagar intereses", 3]],
+      c: function (v) { var aj = Math.round(v[0] * v[1] / 100 * v[2] / 12); return { aj: aj, lin: [["Intereses pagados (gasto financiero)", aj, 0], ["Intereses por pagar", 0, aj]], txt: "El costo del financiamiento se devenga mes a mes: hay que reconocer el gasto aunque los intereses se paguen al vencimiento.", er: -aj, esf: "Pasivo: Intereses por pagar " + Z.m(aj) }; } }
+  };
+  T.ajustes = function (r) {
+    var sg = Z.uid("aj"), k = "seg";
+    r.innerHTML = Z.head("Ajustes", "Calcula el asiento de ajuste al cierre") + Z.seg(sg, Object.keys(AJ).map(function (q) { return [q, AJ[q].t]; }), k) + '<div class="body"></div>';
+    var body = r.querySelector(".body");
+    function draw() {
+      var A = AJ[k], ids = A.f.map(function () { return Z.uid("f"); });
+      body.innerHTML = '<div class="fields">' + A.f.map(function (f, i) { return Z.mon(ids[i], f[0], f[1]); }).join("") + '</div><div class="out"></div>';
+      var o = body.querySelector(".out");
+      function d() { var v = ids.map(function (id) { return Z.vm(body, id); }), R = A.c(v); o.innerHTML = '<div class="res"><div><span>Monto del ajuste</span><b>' + Z.m(R.aj) + '</b></div><div><span>Efecto en el resultado</span><b>' + (R.er >= 0 ? "+" : "") + Z.m(R.er) + '</b></div><div><span>Saldo en el balance</span><b style="font-size:.85rem;font-family:var(--ui)">' + R.esf + "</b></div></div>" + Z.asiento(R.lin) + "<p>" + R.txt + "</p>"; }
+      Z.on(body, "input", d); d();
+    }
+    Z.wireSeg(r, sg, function (q) { k = q; draw(); }); draw();
+  };
+
+  /* ---------- 10. Depreciación lineal ---------- */
+  T.deprec = function (r) {
+    var ids = ["c", "vr", "vu", "mes"].map(function (x) { return Z.uid(x); });
+    r.innerHTML = Z.head("Depreciación lineal", "Tabla de depreciación con compra a mitad de año") + '<div class="fields">' + Z.mon(ids[0], "Costo del activo", 24000000) + Z.mon(ids[1], "Valor residual", 4000000) + Z.mon(ids[2], "Vida útil (años)", 5) + Z.mon(ids[3], "Mes de compra (1 a 12)", 4) + '</div><div class="out"></div>';
+    var out = r.querySelector(".out");
+    function draw() {
+      var c = Z.vm(r, ids[0]), vr = Z.vm(r, ids[1]), vu = Math.max(1, Math.round(Z.vm(r, ids[2]))), mes = Math.min(12, Math.max(1, Math.round(Z.vm(r, ids[3])))), anual = (c - vr) / vu, mensual = anual / 12;
+      var meses = vu * 12, usados = 0, da = 0, filas = [], y = 1, m1 = 13 - mes;
+      while (usados < meses) { var mm = Math.min(y === 1 ? m1 : 12, meses - usados), dep = Math.round(mensual * mm); if (usados + mm >= meses) dep = Math.round(c - vr - da); usados += mm; da += dep; filas.push(["Año " + y + " (" + mm + (mm === 1 ? " mes" : " meses") + ")", Z.m(dep), Z.m(da), Z.m(c - da)]); y++; }
+      out.innerHTML = '<div class="res"><div><span>Base depreciable</span><b>' + Z.m(c - vr) + '</b></div><div><span>Depreciación anual</span><b>' + Z.m(anual) + '</b></div><div><span>Depreciación mensual</span><b>' + Z.m(mensual) + '</b></div><div><span>Año 1 (' + m1 + ' meses)</span><b>' + Z.m(mensual * m1) + "</b></div></div>" + Z.tab(["Período", "Depreciación", "Dep. acumulada", "Valor libro"], filas, [1, 2, 3]) +
+        '<p><b>Asiento al cierre del año 1</b></p>' + Z.asiento([["Depreciación del ejercicio", Math.round(mensual * m1), 0], ["Depreciación acumulada", 0, Math.round(mensual * m1)]]) + '<p class="muted" style="font-size:.86rem">La depreciación no es una salida de caja: distribuye el costo del activo entre los períodos que lo usan. El valor libro (costo − depreciación acumulada) no es el valor de mercado.</p>';
+    }
+    Z.on(r, "input", draw); draw();
+  };
+
+  /* ---------- 11. Balance de 8 columnas ---------- */
+  T.ocho = function (r) {
+    var D = window.TZ_OCHO || [], paso = 0, bn = Z.uid("on"), br = Z.uid("or");
+    var PASOS = ["Sumas: débitos y créditos de cada cuenta (del mayor)", "Saldos: deudor si débitos > créditos; acreedor si no", "Inventario: saldos de cuentas de balance (activo / pasivo y patrimonio)", "Resultados: saldos de cuentas de resultado (pérdidas / ganancias)", "Resultado del ejercicio y cuadratura", "Asientos de cierre"];
+    r.innerHTML = Z.head("Balance de 8 columnas", "Complétalo columna por columna") + '<div class="acts">' + Z.btn(bn, "Siguiente paso") + Z.btn(br, "Reiniciar", "ghost") + '</div><p class="step"></p><div class="out"></div>';
+    var out = r.querySelector(".out"), stp = r.querySelector(".step");
+    function draw() {
+      var T8 = [0, 0, 0, 0, 0, 0, 0, 0], filas = D.map(function (c) {
+        var d = c[1], h = c[2], s = d - h, sd = s > 0 ? s : 0, sa = s < 0 ? -s : 0, bal = c[3] === "B", v = [d, h, sd, sa, bal ? sd : 0, bal ? sa : 0, bal ? 0 : sd, bal ? 0 : sa];
+        v.forEach(function (x, i) { T8[i] += x; });
+        return [c[0]].concat(v.map(function (x, i) { var col = Math.floor(i / 2); return col <= paso && (paso > 0 || col === 0) && x ? Z.n(x) : (col <= paso ? "" : "·"); }));
+      });
+      var u = T8[7] - T8[6], ui = T8[4] - T8[5];
+      filas.push({ cls: "tot", c: ["Sumas"].concat(T8.map(function (x, i) { return Math.floor(i / 2) <= paso ? Z.n(x) : ""; })) });
+      if (paso >= 4) {
+        filas.push({ cls: "ah", c: [u >= 0 ? "Utilidad del ejercicio" : "Pérdida del ejercicio", "", "", "", "", "", u >= 0 ? Z.n(u) : "", u < 0 ? Z.n(-u) : "", u >= 0 ? Z.n(u) : "", u < 0 ? Z.n(-u) : ""].slice(0, 1).concat(["", "", "", "", u < 0 ? Z.n(-u) : "", u >= 0 ? Z.n(u) : "", u >= 0 ? Z.n(u) : "", u < 0 ? Z.n(-u) : ""]) });
+        filas.push({ cls: "tot", c: ["Totales iguales", Z.n(T8[0]), Z.n(T8[1]), Z.n(T8[2]), Z.n(T8[3]), Z.n(T8[4] + (u < 0 ? -u : 0)), Z.n(T8[5] + (u >= 0 ? u : 0)), Z.n(T8[6] + (u >= 0 ? u : 0)), Z.n(T8[7] + (u < 0 ? -u : 0))] });
+      }
+      var html = '<div class="w8">' + Z.tab(["Cuenta", "Débitos", "Créditos", "Deudor", "Acreedor", "Activo", "Pasivo y Pat.", "Pérdidas", "Ganancias"], filas, [1, 2, 3, 4, 5, 6, 7, 8]) + "</div>";
+      if (paso >= 4) html += Z.verd(Math.abs(u - ui) < 1, "El resultado sale igual en las dos secciones: inventario (activo − pasivo y patrimonio = " + Z.n(ui) + ") y resultados (ganancias − pérdidas = " + Z.n(u) + "). " + (u >= 0 ? "La utilidad se anota en Pasivo y Pat. y en Pérdidas para que ambas columnas cuadren." : "La pérdida se anota en Activo y en Ganancias para cuadrar."));
+      if (paso >= 5) {
+        var ing = D.filter(function (c) { return c[3] === "R" && c[2] > c[1]; }), gas = D.filter(function (c) { return c[3] === "R" && c[1] > c[2]; });
+        var l1 = ing.map(function (c) { return [c[0], c[2] - c[1], 0]; }).concat([["Resultado del ejercicio", 0, ing.reduce(function (s, c) { return s + c[2] - c[1]; }, 0)]]);
+        var l2 = [["Resultado del ejercicio", gas.reduce(function (s, c) { return s + c[1] - c[2]; }, 0), 0]].concat(gas.map(function (c) { return [c[0], 0, c[1] - c[2]]; }));
+        var l3 = u >= 0 ? [["Resultado del ejercicio", u, 0], ["Resultados acumulados", 0, u]] : [["Resultados acumulados", -u, 0], ["Resultado del ejercicio", 0, -u]];
+        html += '<p><b>1. Cierre de ingresos</b></p>' + Z.asiento(l1) + '<p><b>2. Cierre de gastos y costos</b></p>' + Z.asiento(l2) + '<p><b>3. Traspaso del resultado al patrimonio</b></p>' + Z.asiento(l3) + '<p class="muted" style="font-size:.86rem">Después del cierre, todas las cuentas de resultado quedan con saldo cero y empiezan el ejercicio siguiente desde cero. Las de balance pasan con su saldo (asiento de apertura).</p>';
+      }
+      out.innerHTML = html; stp.innerHTML = "<b>Paso " + (paso + 1) + " de " + PASOS.length + ":</b> " + PASOS[paso];
+      r.querySelector("#" + bn).disabled = paso >= PASOS.length - 1;
+    }
+    r.querySelector("#" + bn).addEventListener("click", function () { paso = Math.min(PASOS.length - 1, paso + 1); draw(); });
+    r.querySelector("#" + br).addEventListener("click", function () { paso = 0; draw(); });
+    draw();
+  };
+
+  /* ---------- 12. Conciliación bancaria ---------- */
+  var TCO = [["dep", "Depósito en tránsito (está en libros, no en el banco)", "B", 1], ["chq", "Cheque girado y no cobrado (está en libros, no en el banco)", "B", -1], ["car", "Cargo del banco no registrado (comisión, cheque protestado)", "L", -1], ["abo", "Abono del banco no registrado (transferencia de cliente, intereses)", "L", 1], ["el+", "Error en libros: se registró de menos un depósito / de más un cheque", "L", 1], ["el-", "Error en libros: se registró de más un depósito / de menos un cheque", "L", -1]];
+  T.concilia = function (r) {
+    var sb = Z.uid("sb"), sl = Z.uid("sl");
+    var PRE = [["dep", 850000], ["chq", 1240000], ["car", 18500], ["abo", 640000], ["el+", 90000]];
+    r.innerHTML = Z.head("Conciliación bancaria", "Lleva el saldo del banco y el de libros al mismo saldo correcto") + '<div class="fields">' + Z.mon(sb, "Saldo según cartola del banco", 6147000) + Z.mon(sl, "Saldo según libros (cuenta Banco)", 5045500) + '</div><div class="rows"></div><div class="acts">' + Z.btn(Z.uid("ad"), "Agregar partida", "ghost") + '</div><div class="out"></div>';
+    var rows = r.querySelector(".rows"), out = r.querySelector(".out");
+    function fila(t, v) { var d = document.createElement("div"); d.className = "fields crow"; d.innerHTML = '<div class="field" style="grid-column:span 2"><label>Partida</label><select>' + TCO.map(function (x) { return '<option value="' + x[0] + '"' + (x[0] === t ? " selected" : "") + ">" + x[1] + "</option>"; }).join("") + '</select></div><div class="field"><label>Monto</label><input inputmode="numeric" value="' + v + '"></div>'; rows.appendChild(d); }
+    PRE.forEach(function (p) { fila(p[0], p[1]); });
+    function draw() {
+      var B = Z.vm(r, sb), Lb = Z.vm(r, sl), lb = [], ll = [], asi = [];
+      Array.prototype.forEach.call(rows.querySelectorAll(".crow"), function (c) { var t = c.querySelector("select").value, v = parseFloat(String(c.querySelector("input").value).replace(/\./g, "").replace(",", ".")) || 0, T0 = TCO.filter(function (x) { return x[0] === t; })[0]; if (!v) return; (T0[2] === "B" ? lb : ll).push([T0[1].split(" (")[0], T0[3] * v]); if (T0[2] === "L") asi.push([T0[0], v]); });
+      var Bj = B + lb.reduce(function (s, x) { return s + x[1]; }, 0), Lj = Lb + ll.reduce(function (s, x) { return s + x[1]; }, 0);
+      var tb = [["Saldo según banco", Z.m(B)]].concat(lb.map(function (x) { return [(x[1] > 0 ? "+ " : "− ") + x[0], Z.m(Math.abs(x[1]))]; }), [{ cls: "tot", c: ["<b>Saldo conciliado</b>", "<b>" + Z.m(Bj) + "</b>"] }]);
+      var tl = [["Saldo según libros", Z.m(Lb)]].concat(ll.map(function (x) { return [(x[1] > 0 ? "+ " : "− ") + x[0], Z.m(Math.abs(x[1]))]; }), [{ cls: "tot", c: ["<b>Saldo conciliado</b>", "<b>" + Z.m(Lj) + "</b>"] }]);
+      var lin = []; asi.forEach(function (a) { if (a[0] === "car") lin.push(["Gastos bancarios / Clientes (protesto)", a[1], 0], ["Banco", 0, a[1]]); else if (a[0] === "abo") lin.push(["Banco", a[1], 0], ["Clientes / Intereses ganados", 0, a[1]]); else if (a[0] === "el+") lin.push(["Banco", a[1], 0], ["Cuenta corregida (Clientes, Proveedores…)", 0, a[1]]); else lin.push(["Cuenta corregida (Clientes, Proveedores…)", a[1], 0], ["Banco", 0, a[1]]); });
+      out.innerHTML = '<div class="two"><div>' + Z.tab(["Lado del banco", "$"], tb, [1]) + "</div><div>" + Z.tab(["Lado de los libros", "$"], tl, [1]) + "</div></div>" + Z.verd(Bj === Lj, Bj === Lj ? "Ambos lados llegan a " + Z.m(Bj) + ": ese es el saldo que debe mostrar Banco en el balance." : "Los saldos conciliados no coinciden (diferencia " + Z.m(Bj - Lj) + "): falta una partida o hay un monto mal clasificado.") +
+        (lin.length ? "<p><b>Asientos de ajuste</b> (solo las partidas del lado de los libros; las del banco se corrigen solas cuando el banco las procese):</p>" + Z.asiento(lin) : "");
+    }
+    r.querySelector(".acts .cbtn").addEventListener("click", function () { fila("dep", 0); draw(); });
+    Z.on(r, "input", draw); r.addEventListener("change", draw); draw();
+  };
+
+  /* ---------- 13. Estimación de deudores incobrables ---------- */
+  T.incobrables = function (r) {
+    var sg = Z.uid("ib"), mo = "sal";
+    r.innerHTML = Z.head("Deudores incobrables", "Calcula la estimación y el asiento de ajuste") + Z.seg(sg, [["sal", "Antigüedad de saldos (% sobre cartera)"], ["ven", "% sobre ventas a crédito"]], mo) + '<div class="body"></div>';
+    var body = r.querySelector(".body");
+    function draw() {
+      var ids, html;
+      if (mo === "sal") {
+        var T0 = [["Por vencer", 18000000, 1], ["Vencidos 1–30 días", 6000000, 5], ["Vencidos 31–90 días", 3000000, 20], ["Vencidos más de 90 días", 1000000, 60]];
+        ids = T0.map(function () { return [Z.uid("s"), Z.uid("p")]; });
+        html = T0.map(function (t, i) { return '<div class="fields">' + Z.mon(ids[i][0], t[0] + " ($)", t[1]) + Z.fld(ids[i][1], "% incobrable", t[2]) + "</div>"; }).join("");
+      } else { ids = [[Z.uid("v"), Z.uid("p")]]; html = '<div class="fields">' + Z.mon(ids[0][0], "Ventas a crédito del año", 60000000) + Z.fld(ids[0][1], "% estimado incobrable", "1,5") + "</div>"; }
+      var sp = Z.uid("sp"), ss = Z.uid("ss");
+      body.innerHTML = html + '<div class="fields">' + Z.mon(sp, "Saldo actual de la estimación (antes del ajuste)", 300000) + '</div>' + Z.seg(ss, [["acr", "Saldo acreedor"], ["deu", "Saldo deudor (castigos mayores a lo estimado)"]], "acr") + '<div class="out"></div>';
+      var o = body.querySelector(".out"), lado = "acr";
+      function d() {
+        var req = 0, filas = [], cart = 0, saldo = Z.vm(body, sp) * (lado === "acr" ? 1 : -1), aj;
+        if (mo === "sal") { ids.forEach(function (p, i) { var s = Z.vm(body, p[0]), q = Z.val(body, p[1]) || 0, e = Math.round(s * q / 100); cart += s; req += e; filas.push([["Por vencer", "Vencidos 1–30 días", "Vencidos 31–90 días", "Vencidos más de 90 días"][i], Z.m(s), Z.fx(q, 2) + "%", Z.m(e)]); }); filas.push({ cls: "tot", c: ["Total", Z.m(cart), "", Z.m(req)] }); aj = req - saldo; }
+        else { var v = Z.vm(body, ids[0][0]), q = Z.val(body, ids[0][1]) || 0; aj = Math.round(v * q / 100); req = saldo + aj; }
+        o.innerHTML = (mo === "sal" ? Z.tab(["Tramo", "Saldo clientes", "%", "Estimación requerida"], filas, [1, 2, 3]) : "") +
+          '<div class="res"><div><span>' + (mo === "sal" ? "Saldo requerido de la estimación" : "Gasto del año (ventas × %)") + "</span><b>" + Z.m(mo === "sal" ? req : aj) + '</b></div><div><span>Saldo previo</span><b>' + Z.m(saldo) + '</b></div><div><span>Ajuste a registrar</span><b>' + Z.m(aj) + '</b></div><div><span>Saldo final estimación</span><b>' + Z.m(req) + "</b></div></div>" +
+          Z.asiento(aj >= 0 ? [["Gasto por deudores incobrables", aj, 0], ["Estimación deudores incobrables", 0, aj]] : [["Estimación deudores incobrables", -aj, 0], ["Gasto por deudores incobrables (reverso)", 0, -aj]]) +
+          '<p class="muted" style="font-size:.86rem">' + (mo === "sal" ? "Con el método de saldos, se calcula el saldo que <b>debe quedar</b> y se registra la diferencia con el saldo previo." : "Con el método de ventas, el porcentaje da directamente el <b>gasto del año</b>; el saldo final es el previo más el ajuste.") + " Clientes se muestra en el balance neto de la estimación (cuenta complementaria).</p>";
+      }
+      Z.wireSeg(body, ss, function (k) { lado = k; d(); }); Z.on(body, "input", d); d();
+    }
+    Z.wireSeg(r, sg, function (k) { mo = k; draw(); }); draw();
+  };
+
+  /* ---------- 14. Tarjeta de existencias: FIFO y PMP ---------- */
+  T.kardex = function (r) {
+    var sg = Z.uid("kx"), mo = "fifo";
+    var MV = [["01-03", "Inventario inicial", "C", 100, 1000], ["05-03", "Compra", "C", 200, 1150], ["10-03", "Venta", "V", 180, 0], ["18-03", "Compra", "C", 150, 1200], ["25-03", "Venta", "V", 200, 0]];
+    r.innerHTML = Z.head("Tarjeta de existencias", "FIFO y costo promedio ponderado (NIC 2)") + Z.seg(sg, [["fifo", "FIFO (primeras entradas, primeras salidas)"], ["pmp", "Costo promedio ponderado (móvil)"]], mo) +
+      '<div class="tbl"><table><thead><tr><th>Fecha</th><th>Movimiento</th><th class="r">Unidades</th><th class="r">Costo unitario compra</th></tr></thead><tbody class="mv">' + MV.map(function (x, i) { return '<tr><td>' + x[0] + "</td><td>" + x[1] + '</td><td class="n"><input data-i="' + i + '" data-k="u" inputmode="numeric" value="' + x[3] + '" style="width:5.5rem"></td><td class="n">' + (x[2] === "C" ? '<input data-i="' + i + '" data-k="c" inputmode="numeric" value="' + x[4] + '" style="width:6.5rem">' : "—") + "</td></tr>"; }).join("") + '</tbody></table></div><div class="out"></div>';
+    var out = r.querySelector(".out");
+    function run(met) {
+      var capas = [], filas = [], cv = 0, err = "";
+      MV.forEach(function (x, i) {
+        var u = parseFloat(r.querySelector('[data-i="' + i + '"][data-k="u"]').value) || 0;
+        if (x[2] === "C") {
+          var c = parseFloat(r.querySelector('[data-i="' + i + '"][data-k="c"]').value) || 0;
+          if (met === "fifo") capas.push([u, c]); else { var U = capas.length ? capas[0][0] : 0, V = capas.length ? capas[0][0] * capas[0][1] : 0; capas = [[U + u, (U + u) ? (V + u * c) / (U + u) : 0]]; }
+          filas.push([x[0], x[1], u + " × " + Z.m(c), "", saldoTxt(capas)]);
+        } else {
+          var falta = u, costo = 0, det = [];
+          while (falta > 0 && capas.length) { var q = Math.min(falta, capas[0][0]); costo += q * capas[0][1]; det.push(q + " × " + Z.m(capas[0][1])); capas[0][0] -= q; falta -= q; if (capas[0][0] <= 1e-9) capas.shift(); }
+          if (falta > 0) err = "No hay unidades suficientes para la venta del " + x[0] + ".";
+          cv += costo; filas.push([x[0], x[1], "", det.join(" + ") + " = " + Z.m(costo), saldoTxt(capas)]);
+        }
+      });
+      var U = capas.reduce(function (s, c) { return s + c[0]; }, 0), IF = capas.reduce(function (s, c) { return s + c[0] * c[1]; }, 0);
+      return { filas: filas, cv: cv, IF: IF, U: U, err: err };
+    }
+    function saldoTxt(capas) { var U = capas.reduce(function (s, c) { return s + c[0]; }, 0), V = capas.reduce(function (s, c) { return s + c[0] * c[1]; }, 0); return U + " u · " + Z.m(V) + (capas.length > 1 ? " (" + capas.map(function (c) { return c[0] + "×" + Z.n(c[1]); }).join(" + ") + ")" : capas.length ? " (" + Z.fx(capas[0][1], 2) + " c/u)" : ""); }
+    function draw() {
+      var A = run(mo), F = run("fifo"), P = run("pmp");
+      out.innerHTML = (A.err ? Z.verd(false, A.err) : "") + Z.tab(["Fecha", "Movimiento", "Entradas", "Salidas (costo)", "Saldo"], A.filas, []) +
+        '<div class="res"><div><span>Costo de ventas</span><b>' + Z.m(A.cv) + '</b></div><div><span>Inventario final</span><b>' + Z.m(A.IF) + '</b></div><div><span>Unidades finales</span><b>' + A.U + "</b></div></div>" +
+        Z.tab(["Método", "Costo de ventas", "Inventario final"], [["FIFO", Z.m(F.cv), Z.m(F.IF)], ["Costo promedio ponderado", Z.m(P.cv), Z.m(P.IF)]], [1, 2]) +
+        '<p class="muted" style="font-size:.86rem">Con precios al alza, FIFO deja el inventario final a los costos más recientes (más alto) y un costo de ventas más bajo, así que muestra más utilidad. La suma costo de ventas + inventario final es igual en ambos métodos. LIFO no está permitido por la NIC 2.</p>';
+    }
+    Z.wireSeg(r, sg, function (k) { mo = k; draw(); }); r.addEventListener("input", draw); draw();
+  };
+
+  /* ---------- 15. Propiedades, planta y equipo: métodos y venta ---------- */
+  T.ppe = function (r) {
+    var sg = Z.uid("pp"), mo = "lin", ids = ["c", "vr", "vu", "ut", "uy", "av", "pv"].map(function (x) { return Z.uid(x); });
+    r.innerHTML = Z.head("Propiedades, planta y equipo", "Compara métodos de depreciación y calcula la venta") + Z.seg(sg, [["lin", "Lineal"], ["uni", "Unidades de producción"], ["dd", "Saldo decreciente doble"], ["sd", "Suma de dígitos"]], mo) +
+      '<div class="fields">' + Z.mon(ids[0], "Costo", 50000000) + Z.mon(ids[1], "Valor residual", 5000000) + Z.mon(ids[2], "Vida útil (años)", 5) + Z.mon(ids[3], "Unidades totales estimadas", 900000) + '<div class="field"><label for="' + ids[4] + '">Unidades por año (separadas por ;)</label><input id="' + ids[4] + '" value="250000; 220000; 180000; 150000; 100000"></div></div><div class="fields">' + Z.mon(ids[5], "Se vende al terminar el año", 3) + Z.mon(ids[6], "Precio de venta", 20000000) + '</div><div class="out"></div>';
+    var out = r.querySelector(".out");
+    function tabla(met, c, vr, vu, ut, uy) {
+      var f = [], da = 0, vl = c;
+      for (var y = 1; y <= vu; y++) {
+        var d;
+        if (met === "lin") d = (c - vr) / vu;
+        else if (met === "uni") d = ut ? (c - vr) * (uy[y - 1] || 0) / ut : 0;
+        else if (met === "sd") d = (c - vr) * (vu - y + 1) / (vu * (vu + 1) / 2);
+        else { d = vl * 2 / vu; if (vl - d < vr) d = vl - vr; if (y === vu) d = vl - vr; }
+        d = Math.max(0, Math.round(d)); if (y === vu && met !== "uni") d = Math.round(c - vr - da);
+        da += d; vl = c - da; f.push([y, d, da, vl]);
+      }
+      return f;
+    }
+    function draw() {
+      var c = Z.vm(r, ids[0]), vr = Z.vm(r, ids[1]), vu = Math.max(1, Math.min(15, Math.round(Z.vm(r, ids[2])))), ut = Z.vm(r, ids[3]), uy = Z.lista(r.querySelector("#" + ids[4]).value), av = Math.round(Z.vm(r, ids[5])), pv = Z.vm(r, ids[6]);
+      var f = tabla(mo, c, vr, vu, ut, uy), fila = f[Math.min(f.length, Math.max(1, av)) - 1], da = fila[2], vl = fila[3], g = pv - vl;
+      out.innerHTML = Z.tab(["Año", "Depreciación", "Dep. acumulada", "Valor libro"], f.map(function (x) { return ["Año " + x[0], Z.m(x[1]), Z.m(x[2]), Z.m(x[3])]; }), [1, 2, 3]) +
+        '<p><b>Venta al final del año ' + fila[0] + "</b>: valor libro " + Z.m(vl) + " → " + (g >= 0 ? "ganancia" : "pérdida") + " de <b>" + Z.m(Math.abs(g)) + "</b>.</p>" +
+        Z.asiento([["Banco", pv, 0], ["Depreciación acumulada", da, 0], [g < 0 ? "Pérdida en venta de activo fijo" : "", g < 0 ? -g : 0, 0], ["Maquinaria", 0, c], [g > 0 ? "Ganancia en venta de activo fijo" : "", 0, g > 0 ? g : 0]]) +
+        '<p class="muted" style="font-size:.86rem">Al vender se dan de baja el costo y su depreciación acumulada. La ganancia o pérdida es la diferencia entre lo recibido y el valor libro, no entre lo recibido y el costo.</p>';
+    }
+    Z.wireSeg(r, sg, function (k) { mo = k; draw(); }); Z.on(r, "input", draw); draw();
+  };
+
+  /* ---------- 16. Dividendos ---------- */
+  T.dividendos = function (r) {
+    var ids = ["u", "p", "dp"].map(function (x) { return Z.uid(x); }), sg = Z.uid("dv"), tipo = "sa";
+    r.innerHTML = Z.head("Dividendos", "Provisión de dividendo mínimo (Ley 18.046)") + Z.seg(sg, [["sa", "Sociedad anónima abierta"], ["spa", "SpA / S.A. cerrada con pacto distinto"]], tipo) + '<div class="fields">' + Z.mon(ids[0], "Utilidad líquida del ejercicio", 120000000) + Z.fld(ids[1], "% mínimo a distribuir", "30") + Z.mon(ids[2], "Dividendos provisorios ya pagados con cargo a este ejercicio", 15000000) + '</div><div class="out"></div>';
+    var out = r.querySelector(".out");
+    function draw() {
+      var u = Z.vm(r, ids[0]), p = Z.val(r, ids[1]) || 0, dp = Z.vm(r, ids[2]), min = Math.round(u * p / 100), prov = Math.max(0, min - dp);
+      out.innerHTML = tipo === "sa" ? '<div class="res"><div><span>Dividendo mínimo</span><b>' + Z.m(min) + '</b></div><div><span>Ya pagado (provisorio)</span><b>' + Z.m(dp) + '</b></div><div><span>Provisión al cierre</span><b>' + Z.m(prov) + "</b></div></div>" + Z.asiento([["Resultados acumulados", prov, 0], ["Dividendos por pagar", 0, prov]]) +
+        "<p>En una S.A. abierta, salvo acuerdo unánime de los accionistas, hay que repartir al menos el 30% de la utilidad líquida. Como es una obligación legal, al cierre se reconoce un <b>pasivo</b> por la parte del mínimo aún no pagada. No es gasto: disminuye el patrimonio.</p>" :
+        "<p>En una SpA o S.A. cerrada manda el estatuto o el pacto de accionistas: si no obliga a repartir, no se provisiona nada hasta que la junta acuerde el dividendo. Al acordarlo:</p>" + Z.asiento([["Resultados acumulados", min, 0], ["Dividendos por pagar", 0, min]]) + Z.asiento([["Dividendos por pagar", min, 0], ["Banco", 0, min]], "Pago del dividendo");
+    }
+    Z.wireSeg(r, sg, function (k) { tipo = k; draw(); }); Z.on(r, "input", draw); draw();
+  };
+
+  /* ---------- 17. Flujo de efectivo: método indirecto ---------- */
+  T.efe = function (r) {
+    var L = [["u", "Utilidad del ejercicio", 8000000], ["dep", "Depreciación del ejercicio", 3000000], ["pv", "Pérdida (+) o ganancia (−) en venta de activo fijo", -500000], ["cli", "Aumento (−) / disminución (+) de clientes", -1200000], ["exi", "Aumento (−) / disminución (+) de existencias", 800000], ["prv", "Aumento (+) / disminución (−) de proveedores", 600000], ["inv", "Compra de activo fijo (−) y venta (+)", -6500000], ["fin", "Préstamos obtenidos (+), pagados (−) y dividendos pagados (−)", -1000000], ["e0", "Efectivo al inicio del año", 2500000]];
+    var ids = L.map(function (x) { return Z.uid(x[0]); });
+    r.innerHTML = Z.head("Estado de flujos de efectivo", "Método indirecto: de la utilidad al efectivo") + '<div class="fields">' + L.map(function (x, i) { return Z.mon(ids[i], x[1], x[2]); }).join("") + '</div><div class="out"></div>';
+    var out = r.querySelector(".out");
+    function draw() {
+      var v = ids.map(function (id) { return Z.vm(r, id); }), op = v[0] + v[1] + v[2] + v[3] + v[4] + v[5], inv = v[6], fin = v[7], vt = op + inv + fin;
+      out.innerHTML = Z.tab(["", "$"], [["Utilidad del ejercicio", Z.m(v[0])], ["+ Depreciación (no es salida de caja)", Z.m(v[1])], ["± Resultado en venta de activo fijo (se muestra en inversión)", Z.m(v[2])], ["± Variación de clientes", Z.m(v[3])], ["± Variación de existencias", Z.m(v[4])], ["± Variación de proveedores", Z.m(v[5])], { cls: "tot", c: ["<b>Flujo de actividades de operación</b>", "<b>" + Z.m(op) + "</b>"] }, { cls: "tot", c: ["<b>Flujo de actividades de inversión</b>", "<b>" + Z.m(inv) + "</b>"] }, { cls: "tot", c: ["<b>Flujo de actividades de financiamiento</b>", "<b>" + Z.m(fin) + "</b>"] }, { cls: "tot", c: ["Variación neta del efectivo", Z.m(vt)] }, ["Efectivo al inicio", Z.m(v[8])], { cls: "tot", c: ["<b>Efectivo al final</b>", "<b>" + Z.m(v[8] + vt) + "</b>"] }], [1]) +
+        '<p class="muted" style="font-size:.86rem">Un aumento de un activo corriente (clientes, existencias) consumió caja: se resta. Un aumento de un pasivo corriente (proveedores) es caja que no salió: se suma. La ganancia en venta de activo fijo se resta porque la caja completa de la venta va en inversión.</p>';
+    }
+    Z.on(r, "input", draw); draw();
+  };
+
+})();</script>
+<script>
+
+(function(){
+"use strict";
+var P="con-demo-";
+var LS={get:function(k,d){try{var v=localStorage.getItem(P+k);return v?JSON.parse(v):d}catch(e){return d}},set:function(k,v){try{localStorage.setItem(P+k,JSON.stringify(v))}catch(e){}}};
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+var TABS=$$('.tile').map(function(t){return t.dataset.tab});
+function showTab(id,scroll){
+  if(TABS.indexOf(id)<0)id=TABS[0];
+  $$('.tile').forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===id?'true':'false')});
+  TABS.forEach(function(t){document.getElementById(t).hidden=(t!==id)});
+  LS.set('tab',id);
+  if(scroll){var bar=$('.bar');var y=document.getElementById(id).getBoundingClientRect().top+window.scrollY-bar.offsetHeight-12;window.scrollTo({top:Math.max(0,y)})}
+}
+$$('.tile').forEach(function(t){t.addEventListener('click',function(){showTab(t.dataset.tab,true);t.scrollIntoView({block:'nearest',inline:'nearest'})})});
+$$('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();showTab(a.dataset.go,true)})});
+showTab(LS.get('tab',TABS[0]),false);
+var dom=LS.get('dom',{}),subs=$$('[data-sub]');
+function refreshDom(){var done=0;
+  TABS.forEach(function(t){var list=$$('#'+t+' [data-sub]');var d=list.filter(function(s){return dom[s.dataset.sub]}).length;var bar=$('.tile[data-tab="'+t+'"] .pg span');if(bar)bar.style.width=(list.length?Math.round(d/list.length*100):0)+'%'});
+  subs.forEach(function(s){var b=$('.dom',s);var on=!!dom[s.dataset.sub];if(on)done++;b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'Dominado ✓':'Marcar como dominado'});
+  $('#stDom').textContent=done+'/'+subs.length}
+subs.forEach(function(s){var h=$('.subh',s);if(h&&!$('.dom',h)){var b=document.createElement('button');b.className='dom';b.type='button';h.appendChild(b)}
+  $('.dom',s).addEventListener('click',function(){dom[s.dataset.sub]=!dom[s.dataset.sub];LS.set('dom',dom);refreshDom()})});
+refreshDom();
+$$('[data-tool]').forEach(function(el){var f=window.TZT&&window.TZT[el.dataset.tool];if(f){try{f(el)}catch(e){el.innerHTML='<p class="err">No se pudo cargar esta herramienta.</p>';if(window.console)console.error(e)}}});
+})();
+</script>
+</body></html>
