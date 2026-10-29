@@ -361,97 +361,38 @@ footer{border-top:1px solid var(--line); display:grid; gap:.5rem}
 
 <nav class="bar" aria-label="Temas">
   <div class="wrap tiles" role="tablist">
-    <button class="tile" role="tab" data-tab="metodo" aria-selected="true"><span class="z">1</span><span class="sym">Mc</span><span class="nm">Método</span><span class="pg"><span></span></span></button>
-    <button class="tile" role="tab" data-tab="ondas" aria-selected="false"><span class="z">2</span><span class="sym">On</span><span class="nm">Ondas EM</span><span class="pg"><span></span></span></button>
+    
+    
     <button class="tile" role="tab" data-tab="optica" aria-selected="false"><span class="z">3</span><span class="sym">Óp</span><span class="nm">Óptica</span><span class="pg"><span></span></span></button>
-    <button class="tile" role="tab" data-tab="cinem" aria-selected="false"><span class="z">4</span><span class="sym">Ci</span><span class="nm">Cinemática</span><span class="pg"><span></span></span></button>
-    <button class="tile" role="tab" data-tab="dinam" aria-selected="false"><span class="z">5</span><span class="sym">Di</span><span class="nm">Dinámica</span><span class="pg"><span></span></span></button>
-    <button class="tile" role="tab" data-tab="universo" aria-selected="false"><span class="z">6</span><span class="sym">Un</span><span class="nm">Universo</span><span class="pg"><span></span></span></button>
-    <button class="tile" role="tab" data-tab="tierra" aria-selected="false"><span class="z">7</span><span class="sym">Ti</span><span class="nm">Tierra</span><span class="pg"><span></span></span></button>
-    <button class="tile" role="tab" data-tab="elec" aria-selected="false"><span class="z">8</span><span class="sym">El</span><span class="nm">Electricidad</span><span class="pg"><span></span></span></button>
+    
+    
+    
+    
+    
     </div>
 </nav>
 
 <main class="wrap">
 
 <!-- ============ 1. MÉTODO ============ -->
-<section class="panel" id="metodo" role="tabpanel">
-  <div class="phead">
-    <span class="lab">Tema 1 de 8 · Transversal</span>
-    <h2>Método científico en física</h2>
-    <p>En física los experimentos casi siempre buscan una relación entre dos magnitudes medibles: largo y período, fuerza y estiramiento, voltaje y corriente. La PAES te muestra esos datos y te pregunta qué se puede concluir.</p>
-  </div>
-
-  <div class="sub" data-sub="m-comp">
-    <div class="subh"><h3>Partes de una investigación</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
-    <p>Ejemplo guía: <b>¿cómo depende el período de un péndulo de su largo?</b></p>
-    <div class="tbl"><table>
-      <thead><tr><th>Componente</th><th>En el ejemplo</th></tr></thead>
-      <tbody>
-        <tr><td><b>Pregunta</b></td><td>¿Cómo cambia el período de un péndulo al cambiar su largo?</td></tr>
-        <tr><td><b>Hipótesis</b></td><td>A mayor largo, mayor período, porque la masa recorre un arco más largo.</td></tr>
-        <tr><td><b>Predicción</b></td><td>Un péndulo de 1 m tardará más en oscilar que uno de 0,25 m.</td></tr>
-        <tr><td><b>Variable independiente</b></td><td>Largo del hilo (eje x).</td></tr>
-        <tr><td><b>Variable dependiente</b></td><td>Período (eje y).</td></tr>
-        <tr><td><b>Variables controladas</b></td><td>Masa, ángulo inicial pequeño, mismo lugar (misma g).</td></tr>
-        <tr><td><b>Resultado</b></td><td>0,25 m → 1,0 s; 1,00 m → 2,0 s.</td></tr>
-        <tr><td><b>Conclusión</b></td><td>El período aumenta con el largo, pero no en proporción directa: al cuadruplicar el largo, se duplica el período.</td></tr>
-      </tbody>
-    </table></div>
-    <div class="note key"><span class="lab">Tipos de relación que debes reconocer</span><p><b>Directamente proporcional:</b> recta que pasa por el origen (y/x constante): Hooke, Ohm. <b>Inversamente proporcional:</b> y·x constante (curva que baja): λ y f a rapidez constante. <b>Cuadrática:</b> parábola: x vs t en MRUA.</p></div>
-    <div class="tool">
+<div hidden aria-hidden="true"><div class="tool">
       <span class="lab">Herramienta · Disector de experimentos</span>
       <h4>Clasifica cada parte del experimento</h4>
       <div id="cases"></div>
       <div class="btnrow"><button class="btn" id="dsCheck">Revisar</button><button class="btn ghost" id="dsReset">Reiniciar</button></div>
       <p class="out" id="dsOut" aria-live="polite"></p>
-    </div>
-  
-    <div class="tool">
+    </div><div class="tool">
       <span class="lab">Herramienta · Relaciones entre variables</span>
       <h4>Directa, inversa o cuadrática</h4>
 <div class="seg" id="rvMode"></div><div class="seg" id="rvRel"></div><div class="range"><label for="rvK">Constante k: <b id="rvKv">2</b></label><input type="range" id="rvK" min="1" max="5" step="1" value="2"></div><div id="rvTab"></div><div class="x-cats" id="rvOpts"></div><div class="x-stage" id="rvStage"></div><div class="btnrow"><button class="btn ghost" id="rvNew" hidden>Otra tabla</button></div><div class="verdict ins" id="rvOut" aria-live="polite"></div>
-    </div>
-  </div>
-
-  <div class="sub" data-sub="m-medir">
-    <div class="subh"><h3>Medir bien</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
-    <ul class="plain">
-      <li><b>Reducir el error:</b> medir varias oscilaciones y dividir (10 períodos ÷ 10) reduce el efecto del tiempo de reacción.</li>
-      <li><b>Repetir y promediar:</b> disminuye el error aleatorio.</li>
-      <li><b>Instrumentos:</b> cinta o regla (longitud), cronómetro (tiempo), balanza (masa), dinamómetro (fuerza), amperímetro en serie (corriente), voltímetro en paralelo (voltaje).</li>
-      <li><b>Unidades SI:</b> m, kg, s, N (kg·m/s²), J (N·m), W (J/s), A, V, Ω.</li>
-    </ul>
-    <div class="note trap"><span class="lab">Trampa PAES</span><p>El amperímetro se conecta en <b>serie</b> (la corriente pasa por él) y el voltímetro en <b>paralelo</b> (mide la diferencia entre dos puntos).</p></div>
-  
-    <div class="tool">
+    </div><div class="tool">
       <span class="lab">Herramienta · Error de medición</span>
       <h4>¿Por qué medir 10 oscilaciones y dividir?</h4>
 <div id="erBox" class="x-stage"><svg id="erPend" class="x-svg" viewBox="0 0 340 140" role="img" aria-label="Péndulo oscilando"></svg></div><div class="btnrow"><button class="btn" id="erOne">Medir 1 oscilación</button><button class="btn" id="erTen">Medir 10 oscilaciones</button><button class="btn ghost" id="erClr">Borrar</button></div><div class="x-stage" id="erPlot"></div><div class="verdict ins" id="erOut" aria-live="polite"></div>
-    </div>
-  </div>
-
-  <div class="sub" data-sub="m-eval">
-    <div class="subh"><h3>Ley, teoría, modelo y evaluación</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
-    <ul class="plain">
-      <li><b>Ley:</b> describe una regularidad, a menudo con una ecuación (ley de Hooke, ley de Ohm, leyes de Newton y de Kepler).</li>
-      <li><b>Teoría:</b> explica un conjunto amplio de fenómenos (tectónica de placas, Big Bang).</li>
-      <li><b>Modelo:</b> representación simplificada (modelo geocéntrico, modelo físico del interior de la Tierra).</li>
-      <li><b>Validez:</b> una sola variable cambia a la vez. <b>Alcance:</b> no concluyas fuera del rango medido.</li>
-    </ul>
-    <div class="note"><span class="lab">Lente científica</span><p>Los modelos del universo son el mejor ejemplo de cómo cambia la ciencia: el geocéntrico se reemplazó cuando nuevas observaciones (las fases de Venus de Galileo) no podían explicarse con él.</p></div>
-  </div>
-</section>
+    </div></div>
 
 <!-- ============ 2. ONDAS ============ -->
-<section class="panel" id="ondas" role="tabpanel" hidden>
-  <div class="phead">
-    <span class="lab">Tema 2 de 8 · Ondas</span>
-    <h2>Ondas electromagnéticas</h2>
-    <p>Elementos de una onda, absorción, reflexión y refracción, espectro electromagnético, Doppler, interferencia, difracción y colores.</p>
-  </div>
-  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
-  <div hidden aria-hidden="true"><div class="tool">
+<div hidden aria-hidden="true"><div class="tool">
       <span class="lab">Herramienta · Onda en movimiento</span>
       <h4>Cambia amplitud, frecuencia y longitud de onda</h4>
 <div class="seg" id="wvT"></div><div class="range"><label for="wvA">Amplitud: <b id="wvAv">0.6</b> m</label><input type="range" id="wvA" min="0.2" max="1" step="0.1" value="0.6"></div><div class="range"><label for="wvF">Frecuencia: <b id="wvFv">1</b> Hz</label><input type="range" id="wvF" min="0.5" max="3" step="0.1" value="1"></div><div class="range"><label for="wvL">Longitud de onda λ: <b id="wvLv">2</b> m</label><input type="range" id="wvL" min="1" max="4" step="0.5" value="2"></div><div id="wvBox" class="x-stage"><svg id="wvSvg" class="x-svg" viewBox="0 0 340 160" role="img" aria-label="Onda en movimiento"></svg></div><div class="btnrow"><button class="btn ghost" id="wvPlay">Pausar</button></div><div class="res" id="wvRes"></div><div class="verdict ins" id="wvNote" aria-live="polite"></div>
@@ -485,17 +426,40 @@ footer{border-top:1px solid var(--line); display:grid; gap:.5rem}
       <h4>Enciende luces de colores y elige un objeto</h4>
 <div class="x-row"><button class="sbtn" id="cor">Luz roja</button><button class="sbtn" id="cog">Luz verde</button><button class="sbtn" id="cob">Luz azul</button></div><div class="seg" id="coObj"></div><div class="x-grid2"><div><div class="x-swatch" id="coL"></div><span class="x-title" id="coLn"></span></div><div><div class="x-swatch" id="coS"></div><span class="x-title" id="coSn"></span></div></div><div class="verdict ins" id="coOut" aria-live="polite"></div>
     </div></div>
-</section>
 
 <!-- ============ 3. ÓPTICA ============ -->
-<section class="panel" id="optica" role="tabpanel" hidden>
+<section class="panel" id="optica" role="tabpanel">
   <div class="phead">
     <span class="lab">Tema 3 de 8 · Ondas</span>
     <h2>Espejos, lentes y dispositivos</h2>
     <p>Formación de imágenes en espejos planos, cóncavos y convexos, y en lentes convergentes y divergentes. Funcionamiento de dispositivos tecnológicos.</p>
   </div>
-  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
-  <div hidden aria-hidden="true"><div class="tool">
+
+  <div class="sub" data-sub="p-espejos">
+    <div class="subh"><h3>Espejos</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Espejo</th><th>Objeto ubicado…</th><th>Imagen</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><b>Plano</b></td><td>Cualquier lugar</td><td>Virtual, derecha, igual tamaño, a la misma distancia detrás; invierte izquierda-derecha</td><td>Espejo de baño, periscopio</td></tr>
+        <tr><td rowspan="5"><b>Cóncavo</b> (convergente)</td><td>Más allá de C (2F)</td><td>Real, invertida, menor</td><td>Telescopio reflector</td></tr>
+        <tr><td>En C</td><td>Real, invertida, igual</td><td>—</td></tr>
+        <tr><td>Entre C y F</td><td>Real, invertida, mayor</td><td>Proyector</td></tr>
+        <tr><td>En F</td><td>No se forma (rayos paralelos)</td><td>Focos de auto, linternas</td></tr>
+        <tr><td>Entre F y el espejo</td><td>Virtual, derecha, mayor</td><td>Espejo de maquillaje</td></tr>
+        <tr><td><b>Convexo</b> (divergente)</td><td>Cualquier lugar</td><td>Virtual, derecha, menor; amplio campo visual</td><td>Retrovisores, espejos de seguridad</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note key"><span class="lab">Real vs. virtual</span><p><b>Real:</b> los rayos sí pasan por ella; se puede proyectar en una pantalla y siempre está invertida. <b>Virtual:</b> se forma con las prolongaciones de los rayos; no se proyecta y está derecha.</p></div>
+  </div>
+
+  <div class="sub" data-sub="p-lentes">
+    <div class="subh"><h3>Lentes y trazado de rayos</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
+    <ul class="plain">
+      <li><b>Convergente</b> (más gruesa al centro): se comporta como el espejo cóncavo. Con el objeto dentro de la distancia focal es una <b>lupa</b> (virtual, derecha, mayor). Corrige la <b>hipermetropía</b>.</li>
+      <li><b>Divergente</b> (más delgada al centro): siempre da imagen virtual, derecha y menor. Corrige la <b>miopía</b>.</li>
+      <li>El ojo, la cámara y el proyector usan lentes convergentes que forman imágenes reales.</li>
+    </ul>
+    <div class="tool">
       <span class="lab">Herramienta · Banco óptico</span>
       <h4>Elige el elemento y mueve el objeto</h4>
       <div class="seg" id="opEl" role="group" aria-label="Elemento óptico">
@@ -508,75 +472,51 @@ footer{border-top:1px solid var(--line); display:grid; gap:.5rem}
       <div class="range"><label for="opD">Distancia del objeto: <b id="opDv">2,5</b> f</label><input id="opD" type="range" min="0.3" max="3.6" step="0.05" value="2.5"></div>
       <svg class="chart" id="opSvg" viewBox="0 0 340 210" role="img" aria-label="Trazado de rayos con objeto e imagen"></svg>
       <div class="verdict" id="opOut" aria-live="polite"></div>
-    </div><div class="tool">
+    </div>
+  
+    <div class="tool">
       <span class="lab">Herramienta · El ojo y sus defectos</span>
       <h4>Compara visión normal, miopía e hipermetropía</h4>
 <div class="seg" id="eySeg"></div><label class="x-chk"><input type="checkbox" id="eyFix"><span>Poner lente correctora</span></label><div class="x-stage"><svg id="eySvg" class="x-svg" viewBox="0 0 340 180" role="img" aria-label="Rayos de luz entrando al ojo"></svg></div><div class="verdict ins" id="eyOut" aria-live="polite"></div>
-    </div><div class="tool">
+    </div>
+  </div>
+
+  <div class="sub" data-sub="p-disp">
+    <div class="subh"><h3>Dispositivos tecnológicos</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Dispositivo</th><th>Cómo funciona</th></tr></thead>
+      <tbody>
+        <tr><td><b>Radar</b></td><td>Emite microondas u ondas de radio y mide el tiempo del eco: <span class="f">d = c·t / 2</span>. Con el efecto Doppler mide la velocidad.</td></tr>
+        <tr><td><b>Fibra óptica</b></td><td>La luz viaja por un núcleo de vidrio por reflexión total interna. Internet de alta velocidad, endoscopios.</td></tr>
+        <tr><td><b>Láser</b></td><td>Luz monocromática (una sola λ), coherente y muy concentrada. Lectores, cirugía, comunicaciones.</td></tr>
+        <tr><td><b>Prismáticos</b></td><td>Lentes convergentes para ampliar y prismas que, por reflexión total interna, enderezan la imagen.</td></tr>
+        <tr><td><b>Telescopio refractor</b></td><td>Usa lentes (objetivo convergente). Sufre aberración cromática.</td></tr>
+        <tr><td><b>Telescopio reflector</b></td><td>Usa un espejo cóncavo primario (Newton). Permite espejos enormes.</td></tr>
+        <tr><td><b>Radiotelescopio</b></td><td>Antenas parabólicas que captan ondas de radio del espacio (ALMA, en el desierto de Atacama).</td></tr>
+        <tr><td><b>Radio, TV, celular, wifi</b></td><td>Comunicación inalámbrica con ondas de radio y microondas: AM y FM (radio), celulares y wifi (microondas).</td></tr>
+      </tbody>
+    </table></div>
+  
+    <div class="tool">
       <span class="lab">Herramienta · Radar</span>
       <h4>Calcula la distancia con el eco</h4>
 <div class="range"><label for="rdD">Distancia al avión: <b id="rdDv">60</b> km</label><input type="range" id="rdD" min="1" max="150" step="1" value="60"></div><div id="rdBox" class="x-stage"><svg id="rdSvg" class="x-svg" viewBox="0 0 340 130" role="img" aria-label="Radar y avión"></svg></div><div class="btnrow"><button class="btn" id="rdGo">Emitir pulso</button></div><div class="verdict ins" id="rdOut" aria-live="polite"><span>Emite un pulso de microondas y mide cuánto tarda el eco.</span></div>
-    </div><div class="tool">
+    </div>
+    <div class="tool">
       <span class="lab">Herramienta · Fibra óptica</span>
       <h4>Cambia el ángulo con que la luz choca con la pared</h4>
 <div class="range"><label for="foA">Ángulo de incidencia en la pared: <b id="foAv">80</b> °</label><input type="range" id="foA" min="40" max="89" step="1" value="80"></div><div class="x-stage"><svg id="foSvg" class="x-svg" viewBox="0 0 340 140" role="img" aria-label="Rayo de luz dentro de una fibra óptica"></svg></div><div class="verdict ins" id="foOut" aria-live="polite"></div>
-    </div></div>
+    </div>
+  </div>
+<div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1.4rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Esto es solo una parte del apunte</h3><p class="muted">En el aula del Intensivo Ciencias tienes el apunte completo, con 7 temas más: Método, Ondas EM, Cinemática, Dinámica, Universo, Tierra, Electricidad.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
 </section>
 
 <!-- ============ 4. CINEMÁTICA ============ -->
-<section class="panel" id="cinem" role="tabpanel" hidden>
-  <div class="phead">
-    <span class="lab">Tema 4 de 8 · Mecánica</span>
-    <h2>Cinemática</h2>
-    <p>Descripción del movimiento, MRU y MRUA con sus ecuaciones y gráficos, y relatividad de Galileo.</p>
-  </div>
-
-  <div class="sub" data-sub="c-desc">
-    <div class="subh"><h3>Describir el movimiento</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
-    <div class="tbl"><table>
-      <thead><tr><th>Concepto</th><th>Definición</th><th>Tipo</th></tr></thead>
-      <tbody>
-        <tr><td><b>Sistema de referencia</b></td><td>Punto y ejes desde donde se describe el movimiento. El movimiento es relativo a él.</td><td>—</td></tr>
-        <tr><td><b>Trayectoria</b></td><td>Camino que recorre el cuerpo.</td><td>—</td></tr>
-        <tr><td><b>Posición (x)</b></td><td>Ubicación respecto del origen.</td><td>Vector</td></tr>
-        <tr><td><b>Distancia recorrida</b></td><td>Largo de la trayectoria.</td><td>Escalar</td></tr>
-        <tr><td><b>Desplazamiento (Δx)</b></td><td>Posición final − posición inicial.</td><td>Vector</td></tr>
-        <tr><td><b>Rapidez media</b></td><td>Distancia ÷ tiempo.</td><td>Escalar</td></tr>
-        <tr><td><b>Velocidad media</b></td><td>Desplazamiento ÷ tiempo.</td><td>Vector</td></tr>
-        <tr><td><b>Velocidad instantánea</b></td><td>Velocidad en un instante (lo que marca el velocímetro, con dirección).</td><td>Vector</td></tr>
-        <tr><td><b>Aceleración</b></td><td>Cambio de velocidad ÷ tiempo: <span class="f">a = Δv / Δt</span> (m/s²).</td><td>Vector</td></tr>
-      </tbody>
-    </table></div>
-    <div class="note trap"><span class="lab">Trampa PAES</span><p>Una vuelta completa a una pista de 400 m: distancia 400 m, desplazamiento <b>0</b>, velocidad media <b>0</b>, pero rapidez media distinta de 0.</p></div>
-  </div>
-
-  <div class="sub" data-sub="c-mru">
-    <div class="subh"><h3>MRU</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
-    <ul class="plain">
-      <li>Velocidad constante, aceleración cero. Recorre distancias iguales en tiempos iguales.</li>
-      <li>Ecuación de itinerario: <span class="f">x(t) = x₀ + v·t</span></li>
-      <li><b>x–t:</b> recta; su <b>pendiente es la velocidad</b>. <b>v–t:</b> recta horizontal; el <b>área bajo ella es el desplazamiento</b>. <b>a–t:</b> línea en cero.</li>
-    </ul>
-  
-    <div class="tool">
+<div hidden aria-hidden="true"><div class="tool">
       <span class="lab">Herramienta · Encuentro de dos móviles</span>
       <h4>Elige posiciones y velocidades</h4>
 <div class="fields"><div class="field"><label for="mvXA">x₀ de A (m)</label><input id="mvXA" type="text" inputmode="decimal" value="0"></div><div class="field"><label for="mvVA">v de A (m/s)</label><input id="mvVA" type="text" inputmode="decimal" value="10"></div><div class="field"><label for="mvXB">x₀ de B (m)</label><input id="mvXB" type="text" inputmode="decimal" value="300"></div><div class="field"><label for="mvVB">v de B (m/s)</label><input id="mvVB" type="text" inputmode="decimal" value="-5"></div></div><div class="range"><label for="mvT">Tiempo: <b id="mvTv">0</b> s</label><input type="range" id="mvT" min="0" max="60" step="1" value="0"></div><div class="x-stage"><svg id="mvTrack" class="x-svg" viewBox="0 0 340 70" role="img" aria-label="Posición de los móviles en la pista"></svg></div><div class="x-stage" id="mvSvg"></div><div class="verdict ins" id="mvOut" aria-live="polite"></div>
-    </div>
-  </div>
-
-  <div class="sub" data-sub="c-mrua">
-    <div class="subh"><h3>MRUA</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
-    <div class="note key"><span class="lab">Ecuaciones</span>
-      <p><span class="f">x(t) = x₀ + v₀·t + ½·a·t²</span></p>
-      <p><span class="f">v(t) = v₀ + a·t</span> · <span class="f">v² = v₀² + 2·a·Δx</span></p>
-    </div>
-    <ul class="plain">
-      <li><b>x–t:</b> parábola. <b>v–t:</b> recta; la <b>pendiente es la aceleración</b> y el <b>área es el desplazamiento</b>. <b>a–t:</b> recta horizontal.</li>
-      <li><b>Acelerado:</b> v y a con el mismo signo (aumenta la rapidez). <b>Retardado:</b> signos opuestos (frena).</li>
-      <li><b>Caída libre:</b> MRUA con a = g ≈ 10 m/s² hacia abajo, sin roce del aire. Desde el reposo: v = 10·t; distancia = 5·t².</li>
-    </ul>
-    <div class="tool">
+    </div><div class="tool">
       <span class="lab">Herramienta · Simulador de movimiento</span>
       <h4>Elige condiciones iniciales y recorre el tiempo</h4>
       <div class="fields">
@@ -589,41 +529,18 @@ footer{border-top:1px solid var(--line); display:grid; gap:.5rem}
       <svg class="chart" id="kmV1" viewBox="0 0 340 160" role="img" aria-label="Gráfico velocidad versus tiempo con área sombreada"></svg>
       <div class="res" id="kmRes"></div>
       <div class="verdict" id="kmOut" aria-live="polite"></div>
-    </div>
-  
-    <div class="tool">
+    </div><div class="tool">
       <span class="lab">Herramienta · Caída libre</span>
       <h4>Suelta una pelota desde distintas alturas y planetas</h4>
 <div class="seg" id="cfPl"></div><div class="range"><label for="cfH">Altura: <b id="cfHv">45</b> m</label><input type="range" id="cfH" min="5" max="100" step="5" value="45"></div><div id="cfBox" class="x-stage"><div id="cfSvg"></div></div><div class="btnrow"><button class="btn" id="cfGo">Soltar</button></div><div class="verdict ins" id="cfOut" aria-live="polite"></div>
-    </div>
-  </div>
-
-  <div class="sub" data-sub="c-rel">
-    <div class="subh"><h3>Relatividad de Galileo</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
-    <p>La velocidad depende del sistema de referencia. Para movimientos rectilíneos uniformes, las velocidades se suman como vectores.</p>
-    <ul class="plain">
-      <li>Persona que camina a 2 m/s hacia adelante en un tren a 20 m/s: respecto del andén va a <b>22 m/s</b>; si camina hacia atrás, a <b>18 m/s</b>.</li>
-      <li>Dos autos en <b>sentidos opuestos</b> a 60 y 40 km/h: uno ve al otro a <b>100 km/h</b>. En el <b>mismo sentido</b>: a <b>20 km/h</b>.</li>
-      <li>Un pasajero sentado está en reposo respecto del tren, pero en movimiento respecto del andén.</li>
-    </ul>
-  
-    <div class="tool">
+    </div><div class="tool">
       <span class="lab">Herramienta · Relatividad de Galileo</span>
       <h4>Mira el mismo movimiento desde dos sistemas de referencia</h4>
 <div class="seg" id="grFr"></div><div class="range"><label for="grVt">Rapidez del tren: <b id="grVtv">20</b> m/s</label><input type="range" id="grVt" min="0" max="30" step="1" value="20"></div><div class="range"><label for="grVp">Persona caminando dentro del tren: <b id="grVpv">1.5</b> m/s</label><input type="range" id="grVp" min="-3" max="3" step="0.5" value="1.5"></div><div id="grBox" class="x-stage"><svg id="grSvg" class="x-svg" viewBox="0 0 340 170" role="img" aria-label="Tren con una persona caminando"></svg></div><div class="verdict ins" id="grOut" aria-live="polite"></div>
-    </div>
-  </div>
-</section>
+    </div></div>
 
 <!-- ============ 5. DINÁMICA ============ -->
-<section class="panel" id="dinam" role="tabpanel" hidden>
-  <div class="phead">
-    <span class="lab">Tema 5 de 8 · Mecánica</span>
-    <h2>Dinámica</h2>
-    <p>Leyes de Newton, diagrama de cuerpo libre, fuerzas peso, normal, tensión, elástica y de roce.</p>
-  </div>
-  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
-  <div hidden aria-hidden="true"><div class="tool">
+<div hidden aria-hidden="true"><div class="tool">
       <span class="lab">Herramienta · Segunda ley de Newton</span>
       <h4>Empuja un carro con distintas fuerzas y masas</h4>
 <div class="range"><label for="nwF">Fuerza neta: <b id="nwFv">20</b> N</label><input type="range" id="nwF" min="0" max="50" step="1" value="20"></div><div class="range"><label for="nwM">Masa: <b id="nwMv">4</b> kg</label><input type="range" id="nwM" min="1" max="20" step="1" value="4"></div><div id="nwBox" class="x-stage"><div id="nwSvg"></div></div><div class="btnrow"><button class="btn" id="nwGo">Empujar</button></div><div class="verdict ins" id="nwOut" aria-live="polite"></div>
@@ -655,17 +572,9 @@ footer{border-top:1px solid var(--line); display:grid; gap:.5rem}
       <svg class="chart" id="frSvg" viewBox="0 0 340 200" role="img" aria-label="Bloque con las fuerzas que actúan sobre él"></svg>
       <div class="verdict" id="frOut" aria-live="polite"></div>
     </div></div>
-</section>
 
 <!-- ============ 6. UNIVERSO ============ -->
-<section class="panel" id="universo" role="tabpanel" hidden>
-  <div class="phead">
-    <span class="lab">Tema 6 de 8 · Mecánica</span>
-    <h2>Modelos del sistema solar y del universo</h2>
-    <p>Modelos geocéntricos y heliocéntrico, aportes de Galileo y Kepler, y teorías sobre el origen y la evolución del universo.</p>
-  </div>
-  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
-  <div hidden aria-hidden="true"><div class="tool">
+<div hidden aria-hidden="true"><div class="tool">
       <span class="lab">Herramienta · Movimiento retrógrado de Marte</span>
       <h4>Por qué Marte parece retroceder en el cielo</h4>
 <div id="rtBox" class="x-stage"><svg id="rtSvg" class="x-svg" viewBox="0 0 340 200" role="img" aria-label="Órbitas de la Tierra y Marte y posición aparente de Marte"></svg></div><div class="btnrow"><button class="btn ghost" id="rtPlay">Pausar</button></div><div class="verdict ins" id="rtOut" aria-live="polite"></div>
@@ -688,17 +597,9 @@ footer{border-top:1px solid var(--line); display:grid; gap:.5rem}
       <h4>Recorre los grandes momentos desde el Big Bang</h4>
 <div class="x-stage"><svg id="tlSvg" class="x-svg" viewBox="0 0 340 90" role="img" aria-label="Línea de tiempo del universo"></svg></div><div id="tlStep"></div><div class="verdict ins" id="tlOut" aria-live="polite"></div>
     </div></div>
-</section>
 
 <!-- ============ 7. TIERRA ============ -->
-<section class="panel" id="tierra" role="tabpanel" hidden>
-  <div class="phead">
-    <span class="lab">Tema 7 de 8 · Energía – Tierra</span>
-    <h2>Geosfera y tectónica de placas</h2>
-    <p>Modelos del interior de la Tierra, deriva continental, tectónica de placas y sus consecuencias: sismos, volcanismo y relieve. Tema clave para Chile.</p>
-  </div>
-  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
-  <div hidden aria-hidden="true"><div class="tool">
+<div hidden aria-hidden="true"><div class="tool">
       <span class="lab">Herramienta · Capas de la Tierra</span>
       <h4>Toca cada capa y compara los dos modelos</h4>
 <div class="seg" id="lySeg"></div><label class="x-chk"><input type="checkbox" id="lyW"><span>Mostrar ondas S y su zona de sombra</span></label><div class="x-stage"><svg id="lySvg" class="x-svg" viewBox="0 0 340 200" role="img" aria-label="Corte de la Tierra"></svg></div><div class="verdict ins" id="lyOut" aria-live="polite"></div>
@@ -728,17 +629,9 @@ footer{border-top:1px solid var(--line); display:grid; gap:.5rem}
       <h4>Un sismo, distintas intensidades</h4>
 <div class="range"><label for="msM">Magnitud: <b id="msMv">88</b></label><input type="range" id="msM" min="40" max="95" step="1" value="88"></div><div class="range"><label for="msH">Profundidad del hipocentro: <b id="msHv">30</b> km</label><input type="range" id="msH" min="5" max="100" step="5" value="30"></div><div class="x-stage"><svg id="msSvg" class="x-svg" viewBox="0 0 340 190" role="img" aria-label="Corte con hipocentro, epicentro y ciudades"></svg></div><div id="msTab"></div><div class="verdict ins" id="msOut" aria-live="polite"></div>
     </div></div>
-</section>
 
 <!-- ============ 8. ELECTRICIDAD ============ -->
-<section class="panel" id="elec" role="tabpanel" hidden>
-  <div class="phead">
-    <span class="lab">Tema 8 de 8 · Electricidad</span>
-    <h2>Circuitos y energía eléctrica</h2>
-    <p>Corriente eléctrica, ley de Ohm en serie, paralelo y mixto, potencia, energía, eficiencia y la instalación eléctrica de una casa.</p>
-  </div>
-  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
-  <div hidden aria-hidden="true"><div class="tool">
+<div hidden aria-hidden="true"><div class="tool">
       <span class="lab">Herramienta · Corriente eléctrica</span>
       <h4>Mira cómo se mueven los electrones</h4>
 <div class="seg" id="ecSeg"></div><div class="range"><label for="ecV">Voltaje: <b id="ecVv">6</b> V</label><input type="range" id="ecV" min="1" max="12" step="1" value="6"></div><label class="x-chk"><input type="checkbox" id="ecConv"><span>Mostrar el sentido convencional</span></label><div id="ecBox" class="x-stage"><svg id="ecSvg" class="x-svg" viewBox="0 0 340 170" role="img" aria-label="Electrones moviéndose en un conductor"></svg></div><div class="btnrow"><button class="btn ghost" id="ecPlay">Pausar</button></div>
@@ -782,7 +675,6 @@ footer{border-top:1px solid var(--line); display:grid; gap:.5rem}
       <h4>Enciende artefactos y mira si salta el automático</h4>
 <div class="x-chks" id="tbList"></div><div class="x-stage"><svg id="tbSvg" class="x-svg" viewBox="0 0 340 70" role="img" aria-label="Corriente total frente al límite del automático"></svg></div><div class="verdict sat" id="tbOut" aria-live="polite"></div>
     </div></div>
-</section>
 
 
 
@@ -808,16 +700,16 @@ function nice(lo,hi){if(hi-lo<1e-9){lo-=1;hi+=1}var span=hi-lo,step=Math.pow(10,
 var st=document.createElement('style');st.textContent='.fill-ln-a{fill:var(--accent)}.fill-ln-s{fill:var(--sci)}.fill-ln-ink{fill:var(--ink)}.fill-ln-c2{fill:var(--c2)}.fill-ln-bad{fill:var(--bad)}.ln-bad{stroke:var(--bad)}.fill-ln-ok{fill:var(--ok)}.ln-ok{stroke:var(--ok)}';document.head.appendChild(st);
 
 /* ---------- Pestañas ---------- */
-var TABS=['metodo','ondas','optica','cinem','dinam','universo','tierra','elec'];
+var TABS=['optica'];
 function showTab(id,scroll){
-  if(TABS.indexOf(id)<0)id='metodo';
+  if(TABS.indexOf(id)<0)id='optica';
   $$('.tile').forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===id?'true':'false')});
   TABS.forEach(function(t){document.getElementById(t).hidden=(t!==id)});
   LS.set('fp-tab',id);
   if(scroll){var bar=$('.bar');var y=document.getElementById(id).getBoundingClientRect().top+window.scrollY-bar.offsetHeight-12;window.scrollTo({top:Math.max(0,y)})}
 }
 $$('.tile').forEach(function(t){t.addEventListener('click',function(){showTab(t.dataset.tab,true);t.scrollIntoView({block:'nearest',inline:'nearest'})})});
-var startTab=(location.hash||'').replace('#','');if(TABS.indexOf(startTab)<0)startTab=LS.get('fp-tab','metodo');showTab(startTab,false);
+var startTab=(location.hash||'').replace('#','');if(TABS.indexOf(startTab)<0)startTab=LS.get('fp-tab','optica');showTab(startTab,false);
 
 /* ---------- Dominado ---------- */
 var dom=LS.get('fp-dom',{});var subs=$$('[data-sub]');

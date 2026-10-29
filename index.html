@@ -1987,8 +1987,8 @@ renderTabs(); renderEjes(); renderPrices();
 
 /* ---------- vistas previas de los Intensivos ---------- */
 const PV_INT = {
-  MAT: { id: "TSZ-INT-MAT", base: "/intensivo/muestra/matematica", guia: "Guía Función lineal y afín · M1", nG: "las guías de M1 y M2", apunte: "Matemática M1", temas: "Números y Funciones" },
-  CIE: { id: "TSZ-INT-CIE", base: "/intensivo/muestra/ciencias", guia: "Guía Cinemática · Física", nG: "las guías de Física, Química y Biología", apunte: "Física", temas: "Método científico y Cinemática" } };
+  MAT: { id: "TSZ-INT-MAT", base: "/intensivo/muestra/matematica", guia: "Guía Función lineal y afín · M1", nG: "las guías de M1 y M2", apunte: "Matemática M2", temas: "Funciones" },
+  CIE: { id: "TSZ-INT-CIE", base: "/intensivo/muestra/ciencias", guia: "Guía Cinemática · Física", nG: "las guías de Física, Química y Biología", apunte: "Física", temas: "Óptica" } };
 function vistaInt(area, k) {
   const P = PV_INT[area], I = INTENSIVOS[P.id];
   const cuerpo = k === "guia"
@@ -1997,7 +1997,7 @@ function vistaInt(area, k) {
        <div class="pv-lock"><img src="${P.base}-guia-resto.jpg" alt="" aria-hidden="true" width="1275" height="1200">
        <div class="pv-cta"><div class="pv-card"><span class="ic" aria-hidden="true">${IC_LOCK}</span><h4>Para ver la guía completa necesitas el ${esc(I.nombre)}</h4><p>Trae ${esc(P.nG)}, con la solución de cada pregunta, sus ensayos PAES y 3 revisiones personalizadas.</p>
        <button class="btn int-btn" type="button" data-pvbuy="${P.id}">Quiero el ${esc(I.nombre)} · ${fmt(PRECIO_INT)}</button></div></div></div></div>`
-    : `<p class="muted" style="font-size:14px">Una parte del apunte interactivo de ${esc(P.apunte)}: puedes recorrer ${esc(P.temas)} y probar sus herramientas. Los demás temas están en el aula del ${esc(I.nombre)}.</p>
+    : `<p class="muted" style="font-size:14px">Una parte del apunte interactivo de ${esc(P.apunte)}: el tema ${esc(P.temas)}, con sus herramientas interactivas. El apunte completo está en el aula del ${esc(I.nombre)}.</p>
        <iframe src="${P.base}-apunte.html" title="Vista previa del apunte interactivo" loading="lazy" style="width:100%;height:min(72vh,760px);border:1px solid var(--line);border-radius:12px;background:#0B1628"></iframe>
        <button class="btn int-btn" type="button" data-pvbuy="${P.id}" style="align-self:flex-start">Quiero el ${esc(I.nombre)} · ${fmt(PRECIO_INT)}</button>`;
   showLayer(`<div class="panel" role="dialog" aria-modal="true" aria-labelledby="pviT" style="width:min(900px,100%)">
