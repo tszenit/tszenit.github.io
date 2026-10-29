@@ -928,18 +928,17 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
         <a href="#plan-dinamica" style="--ua:251, 146, 60"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="12" r="4.5"/><path d="M3 9h5M2 12h5M3 15h5"/></svg>Dinámica</a>
         <a href="#plan-quimica-ingenieria" style="--ua:45, 212, 191"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6.5L4.6 18.6A1.6 1.6 0 0 0 6 21h12a1.6 1.6 0 0 0 1.4-2.4L14 9.5V3"/><path d="M7.5 15h9"/></svg>Química para Ingeniería</a>
         <a href="#python" style="--ua:248, 113, 113"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/></svg>Python científico</a>
-        <a href="#uni-guias" style="--ua:216, 168, 120"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/></svg>Guías de Precálculo y Cálculo 1</a>
         <a href="#uni-clases" style="--ua:245, 165, 36"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5 21.5 7v10l-6-3.5"/></svg>Clases particulares</a>
       </nav>
       <div class="uni-intro">
         <div class="ui-txt">
           <p class="eyebrow">Qué es TS Zenit Universidad</p>
           <h2>El mismo sistema de TS Zenit, ahora para tus ramos de la U</h2>
-          <p>Si vienes de la PAES ya lo conoces: compras solo lo que vas a estudiar, lo resuelves y recibes feedback personal de cada error. Aquí está armado por ramo y por prueba, siguiendo el programa de la UC, para que compres la interrogación que viene o el semestre completo.</p>
+          <p>Estudias con material hecho para cada prueba, resuelves guías y recibes feedback personal de cada error. Cada ramo está ordenado por interrogación, según el programa de la UC: compras la prueba que viene o el semestre completo, y dentro de cada prueba puedes comprar más guías con revisión.</p>
         </div>
         <ol class="ui-pasos">
           <li><b>Apuntes y slides de cada prueba</b><span>Los contenidos de cada interrogación, ordenados como los ves en clases.</span></li>
-          <li><b>Guías revisadas por un tutor de la UC</b><span>Resuelves la guía, envías tu hoja de respuestas y un tutor de la UC la revisa.</span></li>
+          <li><b>Guías revisadas por un tutor de la UC</b><span>Resuelves la guía y envías tu hoja de respuestas. Cada prueba trae 3 revisiones gratis, y si quieres más, compras guías dentro del curso.</span></li>
           <li><b>Informe con tutor virtual</b><span>En cada error te explica qué pasó y cómo corregirlo, y te arma una guía de refuerzo con preguntas parecidas.</span></li>
           <li><b>Clases en vivo y videos</b><span>Para repasar con un tutor antes de cada prueba.</span></li>
         </ol>
@@ -952,11 +951,13 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
         <article class="pcal pt pcaldin" id="plan-dinamica"></article>
         <article class="pcal pt pcalqim" id="plan-quimica-ingenieria"></article>
       </div>
-      <div class="sec-head" id="uni-guias" style="margin-top:44px">
-        <h2>Precálculo y Cálculo 1</h2>
-        <p>Para tu primer año de universidad, con el mismo sistema: compra una guía suelta o el eje completo, resuélvela y recibe un informe personal con cada error explicado. Cada tema tiene una guía <b>normal</b> y una <b>avanzada ★</b>, con 20 preguntas de alternativas y 3 de desarrollo, y cada curso cierra con un <b>ensayo final</b>.</p>
+      <div id="uni-guias" hidden>
+        <div class="sec-head" style="margin-top:44px">
+          <h2>Tus guías de Precálculo y Cálculo 1</h2>
+          <p>Las guías y ejes que compraste antes siguen aquí. Las guías de Cálculo 1 ahora se compran dentro del Plan Cálculo 1, en la prueba que tengas.</p>
+        </div>
+        <div class="ejes" id="uniGrid"></div>
       </div>
-      <div class="ejes" id="uniGrid"></div>
       <div class="py-ruta" id="python">
         <div class="py-intro">
           <span class="py-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span>
@@ -1497,7 +1498,13 @@ function renderEjes() {
   try { renderPcal(); } catch (e) {}
   const p = PAES().find(x => x.id === current) || PAES()[0];
   $("#ejesGrid").innerHTML = p.ejes.map(ejeCard).join("");
-  const u = PRUEBAS.find(x => x.uni); if ($("#uniGrid") && u) $("#uniGrid").innerHTML = u.ejes.map(ejeCard).join("");
+  const u = PRUEBAS.find(x => x.uni), ug = $("#uniGrid");
+  if (ug && u) {   // ya no se venden aparte: solo se muestran a quien compró el eje o alguna de sus guías
+    const mios = u.ejes.filter(e => prods().includes(e.id) || e.guias.some(c => prods().includes(c)));
+    ug.innerHTML = mios.map(ejeCard).join("");
+    ug.querySelectorAll("[data-buyg], [data-buy], .eje-meta .price").forEach(x => x.remove());
+    $("#uni-guias").hidden = !mios.length;
+  }
   try { pintarIntensivos(); } catch (e) {}
   try { renderMat(); } catch (e) {}   // al cargar, MAT aún no existe: renderMat() se llama de nuevo más abajo
 }
@@ -1703,6 +1710,7 @@ function openCode() {
       const g = GUIAS[p], ej = g ? findGuia(p) : findEje(p);
       current = ej.p.id; abiertos.add(ej.e.id); renderTabs(); renderEjes();
       const ver = () => { const card = $("#eje-" + ej.e.id); if (card) card.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); };
+      if (g && /^TSZ-CAL-/.test(p)) return felicidades(g.titulo, "una guía", "Ir al aula", () => { location.href = PCAL_AULA; }, p);
       if (g) return felicidades(g.titulo, "una guía", "Ver guía", ver, p);
       felicidades(ej.e.nombre, "un eje completo", "Ver eje", ver);
     } catch (e) {
@@ -1830,6 +1838,10 @@ function openForm(code) {
 }
 
 renderTabs(); renderEjes(); renderPrices();
+/* Las guías universitarias se compran desde el aula del curso: el aula abre tszenit.cl/#comprar=CÓDIGO */
+(() => { const m = /^#comprar=([A-Z0-9-]+)$/.exec(location.hash); if (!m || !GUIAS[m[1]]) return;
+  try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  setTimeout(() => { try { openPay(null, m[1]); } catch (e) {} }, 0); })();
 
 /* ---------- clases particulares ---------- */
 const lb = $("#lbClase");

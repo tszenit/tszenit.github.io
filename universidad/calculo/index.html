@@ -296,6 +296,7 @@ const planDe = s => !D ? "" : (D.planes || []).find(p => p === "TSZ-PCAL-" + s) 
 const grupoDe = c => planDe(secDeGuia(c));   // producto cuyas revisiones usa la guía
 const matDeGuia = secDeGuia;
 const PRECIO_SEC = 9990, PRECIO_TODO = 19990;
+const PRECIO_GUIA = Date.now() < new Date("2027-01-01T00:00:00-03:00").getTime() ? 2490 : 5000;   // mismo precio que una guía suelta en la tienda
 const esENS = c => false;   // el Plan Cálculo 1 no tiene ensayos PAES
 
 /* ---------- sesión (la misma de la página principal) ---------- */
@@ -470,9 +471,9 @@ function renderGuias() {
     const st = env ? `<span class="chip ok">Enviada ${esc(fechaCorta(env.f))} · ${esc(ESTADO[env.e] || env.e)}</span>` : "";
     const libre = cupoLibre(c);
     return `<div class="grow"><div><div class="t">${esc(G.t)}</div><div class="m"><span class="chip${G.nv === "avanzada" ? " av" : ""}">${NIVEL[G.nv] || "Guía"}</span><span class="note">${G.n} preguntas</span>${st}</div></div>
-      <div class="acts"><button class="btn btn-sm btn-ghost" type="button" data-pdf="${c}">${IC.pdf}PDF</button>${env ? "" : `<button class="btn btn-sm ${libre ? "btn-ac" : "btn-ghost"}" type="button" data-env="${c}"${libre ? "" : " disabled"}>${IC.env}${libre ? (ens ? "Enviar y ver resultado" : "Enviar a corregir") : "Sin revisiones"}</button>`}</div></div>`;
+      <div class="acts"><button class="btn btn-sm btn-ghost" type="button" data-pdf="${c}">${IC.pdf}PDF</button>${env ? "" : libre ? `<button class="btn btn-sm btn-ac" type="button" data-env="${c}">${IC.env}${ens ? "Enviar y ver resultado" : "Enviar a corregir"}</button>` : `<a class="btn btn-sm btn-ac" href="/#comprar=${c}">Comprar · $${PRECIO_GUIA.toLocaleString("es-CL")}</a>`}</div></div>`;
   };
-  $("#pGuias").innerHTML = `<div class="sec-h"><h2>Guías de ${esc(m.nombre)}</h2><span class="note">${q === 1 ? "Te queda" : "Te quedan"} ${q} de ${cu.total} revisiones${g === "TSZ-PCAL" ? " de tu plan" : " de " + esc(m.corto)}. Las guías que compraste aparte no usan revisiones.</span></div>
+  $("#pGuias").innerHTML = `<div class="sec-h"><h2>Guías de ${esc(m.nombre)}</h2><span class="note">${q === 1 ? "Te queda" : "Te quedan"} ${q} de ${cu.total} revisiones${g === "TSZ-PCAL" ? " de tu plan" : " de " + esc(m.corto)}. Cuando se te acaben, puedes comprar más guías de esta prueba a $${PRECIO_GUIA.toLocaleString("es-CL")} cada una; las que compras no usan revisiones.</span></div>
     ${m.ejes.map((e, i) => `<details class="eje"${i < 1 ? " open" : ""}><summary>${IC.chev}<h3>${esc(e.nombre)}</h3><span class="c">${e.guias.length} ${e.guias.length === 1 ? "guía" : "guías"}</span></summary><p class="desc">${esc(e.desc)}</p>${e.guias.map(fila).join("")}</details>`).join("")}`;
 }
 function proximas() { const now = Date.now(); return (D.clases || []).filter(c => inicioDe(c).getTime() + (c.dur || 60) * 6e4 > now); }
