@@ -211,7 +211,7 @@ footer .wrap { padding-block: 34px; display: flex; justify-content: space-betwee
 footer svg { width: 130px; height: auto; }
 
 /* ---- capas (pago y formulario) ---- */
-.layer { position: fixed; inset: 0; z-index: 50; background: rgba(3, 7, 15, .78); display: grid; place-items: start center; overflow-y: auto; padding: calc(env(safe-area-inset-top, 0px) + 24px) max(12px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 24px) max(12px, env(safe-area-inset-left, 0px)); }
+.layer { position: fixed; inset: 0; z-index: 58; background: rgba(3, 7, 15, .78); display: grid; place-items: start center; overflow-y: auto; padding: calc(env(safe-area-inset-top, 0px) + 24px) max(12px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 24px) max(12px, env(safe-area-inset-left, 0px)); }
 .panel { width: min(720px, 100%); background: var(--bg); border: 1px solid #8A5B3C; border-radius: 18px; box-shadow: 0 30px 80px rgba(0, 0, 0, .6); overflow: hidden; }
 .panel.narrow { width: min(500px, 100%); }
 .panel-head { background: var(--cafe); padding: 18px 22px; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
@@ -830,7 +830,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
       <a href="#clases" class="nav-clase" data-clase>Agenda tu clase</a>
       <a href="#universidad" class="nav-uni"><span class="u-full">TS Zenit&nbsp;</span>Universidad</a>
       <a href="#como" class="hide-sm">Cómo funciona</a>
-      <a href="#ejes">Ejes</a>
+      <a href="#intensivo">Intensivos</a>
       <a href="#precios" class="hide-sm">Precios</a>
       <a href="#privacidad" class="hide-sm">Privacidad</a>
       <button class="btn btn-ghost btn-sm" id="navCode" type="button">Tengo un código</button>
@@ -844,7 +844,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
   <div class="menu-top"><b>Menú</b><button class="x" type="button" id="menuX" aria-label="Cerrar menú">×</button></div>
   <a class="menu-mis" href="#mis-productos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><span><b>Mis productos</b><small id="menuN">Lo que compraste en TS Zenit</small></span><i aria-hidden="true">›</i></a>
   <p class="menu-k">Atajos</p>
-  <a href="#inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg>Inicio</a><a href="#universidad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg>TS Zenit Universidad</a><a href="#intensivo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Intensivos PAES</a><a href="#ejes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>Guías y ejes PAES</a><a href="#material"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/></svg>Material PAES</a><a href="#clases"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5 21.5 7v10l-6-3.5"/></svg>Clases particulares</a><a href="#como"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></svg>Cómo funciona</a><a href="#precios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12 12 20l-8-8V4h8z"/><path d="M8 8h.01"/></svg>Precios</a><a href="#faq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Preguntas frecuentes</a><a href="#privacidad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Privacidad</a>
+  <a href="#inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg>Inicio</a><a href="#universidad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg>TS Zenit Universidad</a><a href="#intensivo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Intensivos PAES</a><a href="#material"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/></svg>Material PAES</a><a href="#clases"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5 21.5 7v10l-6-3.5"/></svg>Clases particulares</a><a href="#como"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></svg>Cómo funciona</a><a href="#precios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12 12 20l-8-8V4h8z"/><path d="M8 8h.01"/></svg>Precios</a><a href="#faq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Preguntas frecuentes</a><a href="#privacidad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Privacidad</a>
   <div class="menu-acts"><button class="btn btn-ghost btn-sm" type="button" id="menuCode">Tengo un código</button><button class="btn btn-ghost btn-sm" type="button" id="menuSes">Iniciar sesión</button></div>
 </nav>
 <section class="mp-view" id="misProd" hidden aria-labelledby="mpT">
@@ -935,7 +935,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <ul class="int-list">
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías de M1 y M2</b>Normales, avanzadas ★ y ensayos finales de cada eje, con la solución paso a paso en un QR. También las que se publiquen después.</span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Clases online en vivo y videos</b>Clases en vivo con los tutores de TS Zenit y videos de material PAES con los tutores y el tutor virtual. <em>Durante el Intensivo.</em></span></li>
-            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Los 10 ensayos PAES</b>Dos de M1 (65 preguntas), dos de M2 (55) y dos de Ciencias por mención Física, Química y Biología (80 c/u): uno de nivel avanzado y otro de nivel experto. Con puntaje y respuestas correctas al enviar, informe personal y ensayo de refuerzo. <em>Durante el Intensivo se suman más.</em></span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Los ensayos PAES de M1 y M2</b>Dos de M1 (65 preguntas) y dos de M2 (55): uno de nivel avanzado y otro de nivel experto, en tu aula de Matemática. Con puntaje y respuestas correctas al enviar, informe personal y ensayo de refuerzo. <em>Durante el Intensivo se suman más.</em></span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>3 revisiones personalizadas a elección</b>Informe con tutor virtual y guía de refuerzo en las guías que tú elijas, de M1 o de M2: por ejemplo, 2 de M2 y 1 de M1, o las 3 de M2.</span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Aula online de Matemática</b>Apuntes interactivos y slides de M1 y M2, tus revisiones, las clases en vivo y los videos, en un solo lugar. <a href="#material">Ver el material ↓</a></span></li>
           </ul>
@@ -950,7 +950,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Todas las guías de Ciencias</b>Física, Química y Biología: normales, avanzadas ★ y ensayos finales de cada eje, con la solución paso a paso en un QR. También las que se publiquen después.</span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Videos de clases</b>Clases grabadas de material PAES con los tutores de TS Zenit y el tutor virtual. <em>Durante el Intensivo.</em></span></li>
             <li class="no"><span class="int-ic" aria-hidden="true">–</span><span><b>Sin clases en vivo</b>Las clases online en vivo son parte del Intensivo Matemática.</span></li>
-            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Los 10 ensayos PAES</b>Dos de Ciencias por mención Física, Química y Biología (80 c/u), dos de M1 (65) y dos de M2 (55): uno de nivel avanzado y otro de nivel experto. Con puntaje y respuestas correctas al enviar, informe personal y ensayo de refuerzo. <em>Durante el Intensivo se suman más.</em></span></li>
+            <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Los ensayos PAES de Ciencias</b>Dos por mención Física, Química y Biología (80 preguntas c/u): uno de nivel avanzado y otro de nivel experto, en tu aula de Ciencias. Con puntaje y respuestas correctas al enviar, informe personal y ensayo de refuerzo. <em>Durante el Intensivo se suman más.</em></span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>3 revisiones personalizadas a elección</b>Informe con tutor virtual y guía de refuerzo en las guías de Ciencias que tú elijas: repártelas como quieras entre Física, Química y Biología.</span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Aula online de Ciencias</b>Apuntes interactivos con simuladores y slides de Física, Química y Biología, tus revisiones y los videos, en un solo lugar. <a href="#material">Ver el material ↓</a></span></li>
           </ul>
@@ -987,17 +987,6 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
     </div>
   </section>
 
-  <section class="band" id="ejes">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Catálogo</p>
-        <h2>Ejes disponibles</h2>
-        <p>Los 19 ejes del temario PAES. Cada tema tiene una guía <b>normal</b> y una <b>avanzada ★</b>, y cada eje cierra con un <b>ensayo final</b> que lo mezcla todo. Todas vienen en los <a href="#intensivo">Intensivos</a>: Matemática para M1 y M2, Ciencias para Física, Química y Biología.</p>
-      </div>
-      <div class="tabs" role="tablist" id="tabs" aria-label="Pruebas"></div>
-      <div class="ejes" id="ejesGrid"></div>
-    </div>
-  </section>
 
   <section class="band deep" id="universidad">
     <div class="wrap">
@@ -1100,7 +1089,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <div class="big">$19.990 <small>pago único</small></div>
           <ul>
             <li>Todas las guías de M1 y M2: normales, avanzadas ★ y ensayos finales, también las que se publiquen.</li>
-            <li>Los 10 ensayos PAES, con puntaje al enviar e informe personal.</li>
+            <li>Los 4 ensayos PAES de M1 y M2, con puntaje al enviar e informe personal.</li>
             <li>3 revisiones personalizadas a elección entre M1 y M2, con informe y guía de refuerzo.</li>
             <li>Clases online en vivo, videos y el aula con apuntes interactivos y slides.</li>
           </ul>
@@ -1112,7 +1101,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <div class="big">$19.990 <small>pago único</small></div>
           <ul>
             <li>Todas las guías de Física, Química y Biología, también las que se publiquen.</li>
-            <li>Los 10 ensayos PAES, con puntaje al enviar e informe personal.</li>
+            <li>Los 6 ensayos PAES de Ciencias (dos por mención), con puntaje al enviar e informe personal.</li>
             <li>3 revisiones personalizadas a elección entre Física, Química y Biología.</li>
             <li>Videos de clases y el aula con apuntes interactivos, simuladores y slides.</li>
           </ul>
@@ -1172,7 +1161,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
           <div class="sect" id="p-terminos"><h3>Términos de compra</h3><ul>
             <li>Las guías PAES se venden solo dentro de los Intensivos; ya no se venden ejes ni guías sueltas. Quien compró antes un eje o una guía la conserva en su cuenta, con su revisión. El precio que pagas es el que muestra la tienda al momento de la compra.</li>
             <li>Puedes descargar e imprimir las guías para tu estudio. No está permitido revenderlas ni publicarlas como material propio.</li>
-            <li>Hay dos Intensivos que se compran por separado, cada uno a $19.990 y con acceso hasta la PAES de admisión 2027: el Intensivo Matemática (guías de M1 y M2, clases online en vivo, videos, 3 revisiones a elección entre M1 y M2 y su aula con material) y el Intensivo Ciencias (guías de Física, Química y Biología, videos de clases grabadas sin clases en vivo, 3 revisiones a elección entre las tres asignaturas y su aula con material). Las revisiones adicionales se compran desde el aula. Ambos incluyen los 10 ensayos PAES (dos de M1, dos de M2 y dos de Ciencias por cada mención: Física, Química y Biología); enviar un ensayo no descuenta revisiones. No admiten códigos promocionales.</li>
+            <li>Hay dos Intensivos que se compran por separado, cada uno a $19.990 y con acceso hasta la PAES de admisión 2027: el Intensivo Matemática (guías de M1 y M2, clases online en vivo, videos, 3 revisiones a elección entre M1 y M2 y su aula con material) y el Intensivo Ciencias (guías de Física, Química y Biología, videos de clases grabadas sin clases en vivo, 3 revisiones a elección entre las tres asignaturas y su aula con material). Las revisiones adicionales se compran desde el aula. Cada uno incluye los ensayos PAES de su área en su aula: el de Matemática, dos de M1 y dos de M2; el de Ciencias, dos por cada mención (Física, Química y Biología). Enviar un ensayo no descuenta revisiones. No admiten códigos promocionales.</li>
             <li>El material de cada Intensivo (apuntes interactivos y slides) es de uso personal y se abre solo con la cuenta de Google que tiene ese Intensivo. No está permitido compartir la cuenta ni copiar o distribuir el material.</li>
             <li>El informe se envía dentro de 72 horas hábiles desde que recibimos tu hoja de respuestas.</li>
             <li>Si tienes cualquier problema con tu compra, escríbenos a trabajotszenit@gmail.com y lo resolvemos contigo.</li>
@@ -1219,8 +1208,8 @@ const IC_OPEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 const IC_LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
 const PRECIO_INT = 19990, INT_ID = "TSZ-INT-MAT";   // Intensivos (no admiten códigos promocionales)
 const INTENSIVOS = {
-  "TSZ-INT-MAT": { area: "MAT", nombre: "Intensivo Matemática", sub: "M1 + M2", res: ["Todas las guías de M1 y M2, también las que se publiquen", "Clases online en vivo y videos con tutores y tutor virtual", "Los 10 ensayos PAES (M1, M2 y Ciencias), con informe y ensayo de refuerzo", "3 revisiones personalizadas con tutor virtual, a elección entre M1 y M2", "Aula online con material exclusivo de M1 y M2"] },
-  "TSZ-INT-CIE": { area: "CIE", nombre: "Intensivo Ciencias", sub: "Física · Química · Biología", res: ["Todas las guías de Física, Química y Biología, también las que se publiquen", "Videos de clases grabadas (sin clases en vivo)", "Los 10 ensayos PAES (Ciencias, M1 y M2), con informe y ensayo de refuerzo", "3 revisiones personalizadas con tutor virtual, a elección entre Física, Química y Biología", "Aula online con material exclusivo de Ciencias"] }
+  "TSZ-INT-MAT": { area: "MAT", nombre: "Intensivo Matemática", sub: "M1 + M2", res: ["Todas las guías de M1 y M2, también las que se publiquen", "Clases online en vivo y videos con tutores y tutor virtual", "Los ensayos PAES de M1 y M2, con informe y ensayo de refuerzo", "3 revisiones personalizadas con tutor virtual, a elección entre M1 y M2", "Aula online con material exclusivo de M1 y M2"] },
+  "TSZ-INT-CIE": { area: "CIE", nombre: "Intensivo Ciencias", sub: "Física · Química · Biología", res: ["Todas las guías de Física, Química y Biología, también las que se publiquen", "Videos de clases grabadas (sin clases en vivo)", "Los ensayos PAES de Ciencias por mención, con informe y ensayo de refuerzo", "3 revisiones personalizadas con tutor virtual, a elección entre Física, Química y Biología", "Aula online con material exclusivo de Ciencias"] }
 };
 const areaDe = x => /^(TSZ-|MAT-)?M[12]-/.test(x) ? "MAT" : /^(TSZ-|MAT-)?(FIS|QUI|BIO)-/.test(x) ? "CIE" : "";
 const intDeArea = a => Object.keys(INTENSIVOS).find(k => INTENSIVOS[k].area === a);
@@ -1483,6 +1472,7 @@ function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = fal
 
 /* ---------- catálogo ---------- */
 function renderTabs() {
+  if (!$("#tabs")) return;   // el catálogo de ejes PAES ya no está en la portada
   $("#tabs").innerHTML = PAES().map(p => `<button class="tab" role="tab" id="tab-${p.id}" aria-selected="${p.id === current}" data-p="${p.id}">${esc(p.nombre)}</button>`).join("");
 }
 function guiaRow(code, open) {
@@ -1629,7 +1619,7 @@ function openTema(eid, k) {
 function renderEjes() {
   try { renderPcal(); } catch (e) {}
   const p = PAES().find(x => x.id === current) || PAES()[0];
-  $("#ejesGrid").innerHTML = p.ejes.map(ejeCard).join("");
+  if ($("#ejesGrid")) $("#ejesGrid").innerHTML = p.ejes.map(ejeCard).join("");
   const u = PRUEBAS.find(x => x.uni), ug = $("#uniGrid");
   if (ug && u) {   // ya no se venden aparte: solo se muestran a quien compró el eje o alguna de sus guías
     const mios = u.ejes.filter(e => prods().includes(e.id) || e.guias.some(c => prods().includes(c)));
@@ -1671,11 +1661,11 @@ function renderPrices() {
   PRUEBAS.forEach(p => p.ejes.forEach(e => { if (e.guias.length) rows.push(`<tr><td>${esc(p.nombre)} · ${esc(e.nombre)}</td><td class="r">${e.guias.length}</td><td class="r">${was(NORMAL_GUIA)}${fmt(PRECIO)} c/u</td><td class="r">${e.guias.length < 2 ? "—" : was(normalEje(e)) + fmt(packOf(e))}</td></tr>`); }));
   $("#priceTable tbody").innerHTML = rows.join("");
 }
-$("#tabs").addEventListener("click", ev => {
+$("#tabs") && $("#tabs").addEventListener("click", ev => {
   const b = ev.target.closest(".tab"); if (!b) return;
   current = b.dataset.p; renderTabs(); renderEjes();
 });
-$("#tabs").addEventListener("keydown", ev => {
+$("#tabs") && $("#tabs").addEventListener("keydown", ev => {
   if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") return;
   const L = PAES(), i = L.findIndex(p => p.id === current);
   const j = (i + (ev.key === "ArrowRight" ? 1 : L.length - 1)) % L.length;
@@ -1844,6 +1834,7 @@ function openCode() {
       if (INTENSIVOS[p]) { renderEjes(); return felicidades(INTENSIVOS[p].nombre, "el Intensivo", "Entrar al aula", () => { location.href = AULA[INTENSIVOS[p].area]; }); }
       if (EXTRAS[p]) { const ar = prods().some(x => INTS[x] === "CIE") && !prods().some(x => INTS[x] === "MAT" || INTS[x] === "*") ? "CIE" : "MAT"; return felicidades(EXTRAS[p].nombre, "una revisión extra", "Ir al aula", () => { location.href = AULA[ar]; }); }
       const g = GUIAS[p], ej = g ? findGuia(p) : findEje(p);
+      if (!ej.p.uni) { renderEjes(); return felicidades(g ? g.titulo : ej.e.nombre, g ? "una guía" : "un eje completo", "Ver mis productos", () => { location.hash = "#mis-productos"; }, g ? p : undefined); }
       current = ej.p.id; abiertos.add(ej.e.id); renderTabs(); renderEjes();
       const ver = () => { const card = $("#eje-" + ej.e.id); if (card) card.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); };
       if (g && /^TSZ-(CAL|PRE|CON)-/.test(p)) return felicidades(g.titulo, "una guía", "Ir al aula", () => { location.href = /^TSZ-PRE-/.test(p) ? PLAN_INFO.PRE.aula : /^TSZ-CON-/.test(p) ? PLAN_INFO.CON.aula : PCAL_AULA; }, p);
@@ -2239,6 +2230,7 @@ $("#menuSes").addEventListener("click", () => {
 });
 function irAEje(id) {
   const r = findEje(id); if (!r) return;
+  if (!r.p.uni) return showLayer(`<div class="panel tema-p" role="dialog" aria-modal="true" aria-labelledby="ejT"><div class="panel-head"><div><h3 id="ejT">${esc(r.e.nombre)}</h3><div class="sub">${esc(r.p.nombre)} · eje completo</div></div><button class="x" aria-label="Cerrar">×</button></div><div class="panel-body">${r.e.guias.map(c => guiaRow(c, true)).join("")}</div></div>`);
   current = r.p.id; abiertos.add(id); renderTabs(); renderEjes(); location.hash = r.p.uni ? "#universidad" : "#ejes";
   setTimeout(() => { const c = $("#eje-" + id); if (c) c.scrollIntoView({ block: "start" }); }, 60);
 }
@@ -2253,7 +2245,7 @@ function itemMis(p) {
   if (INTS[p] === "*") return { g: "Intensivos PAES", c: "#F5A524", t: "Intensivo PAES", d: "Matemática y Ciencias", a: A("Aula de Matemática", `href="${AULA.MAT}"`, "btn-cafe") + A("Aula de Ciencias", `href="${AULA.CIE}"`) };
   if (GUIAS[p]) { const r = findGuia(p), uni = r && r.p.uni, plan = n => prods().some(x => PCAL[x] && (PCAL[x].plan || "") === n), aula = /^TSZ-CAL-/.test(p) && plan("") ? PCAL_AULA : /^TSZ-PRE-/.test(p) && plan("PRE") ? PLAN_INFO.PRE.aula : /^TSZ-CON-/.test(p) && plan("CON") ? PLAN_INFO.CON.aula : "";
     return { g: "Guías", c: "#D8A878", t: GUIAS[p].titulo, d: r ? (uni ? "TS Zenit Universidad" : r.p.nombre || "PAES") + " · " + r.e.nombre : "Guía",
-      a: A("Descargar PDF", `data-mp-pdf="${p}"`, "btn-cafe") + (aula ? A("Ir al aula", `href="${aula}"`) : r ? A("Ver en su eje", `data-mp-eje="${r.e.id}"`) : "") }; }
+      a: A("Descargar PDF", `data-mp-pdf="${p}"`, "btn-cafe") + (aula ? A("Ir al aula", `href="${aula}"`) : r && !uni ? A("Enviar respuestas", `data-mp-form="${p}"`) : r ? A("Ver en su eje", `data-mp-eje="${r.e.id}"`) : "") }; }
   const r = findEje(p);
   if (r) return { g: "Ejes completos", c: "#8E96E0", t: r.e.nombre + " · eje completo", d: (r.p.uni ? "TS Zenit Universidad" : r.p.nombre || "PAES") + " · " + r.e.guias.length + (r.e.guias.length === 1 ? " guía" : " guías") + " y las que se publiquen", a: A("Ver guías", `data-mp-eje="${r.e.id}"`, "btn-cafe") };
   return { g: "Otros", c: "#94A3B8", t: p, d: "Producto activado en tu cuenta", a: "" };
@@ -2263,7 +2255,7 @@ function pintarMis() {
   const vacio = (h, p, acts) => `<div class="mp-empty">${IC_BOX}<h2>${h}</h2><p>${p}</p><div class="acts">${acts}</div></div>`;
   if (!(ses && ses.e)) { L.innerHTML = vacio("Inicia sesión para ver tus productos", "Tus compras quedan guardadas en tu cuenta de Google. Entra con la misma cuenta con que activaste tus códigos.", '<button class="btn btn-cafe" type="button" data-mp-login>Iniciar sesión</button>'); return; }
   const ps = prods();
-  if (!ps.length) { L.innerHTML = vacio("Aún no tienes ningún producto", "Cuando compres un curso, un Intensivo o una guía y actives tu código, aparecerá aquí.", '<a class="btn btn-cafe" href="#universidad">Ver cursos universitarios</a><a class="btn btn-ghost" href="#ejes">Ver guías PAES</a><button class="btn btn-ghost" type="button" data-mp-code>Tengo un código</button>'); return; }
+  if (!ps.length) { L.innerHTML = vacio("Aún no tienes ningún producto", "Cuando compres un curso, un Intensivo o una guía y actives tu código, aparecerá aquí.", '<a class="btn btn-cafe" href="#universidad">Ver cursos universitarios</a><a class="btn btn-ghost" href="#intensivo">Ver los Intensivos PAES</a><button class="btn btn-ghost" type="button" data-mp-code>Tengo un código</button>'); return; }
   const grupos = {}, orden = ["Cursos universitarios", "Intensivos PAES", "Ejes completos", "Guías", "Otros"];
   ps.forEach(p => { const it = itemMis(p); (grupos[it.g] = grupos[it.g] || []).push(it); });
   L.innerHTML = `<p class="muted" style="margin:0">${ps.length === 1 ? "Tienes 1 producto" : "Tienes " + ps.length + " productos"} en tu cuenta.</p>` + orden.filter(g => grupos[g]).map(g => `<div class="mp-g"><h2>${g}</h2>${grupos[g].map(it => `<div class="mp-it" style="--c:${it.c}"><span class="mp-dot" aria-hidden="true"></span><div><b>${esc(it.t)}</b><small>${esc(it.d)}</small></div><div class="mp-a">${it.a}</div></div>`).join("")}</div>`).join("")
@@ -2273,6 +2265,7 @@ const IC_BOX = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
 $("#mpList").addEventListener("click", ev => {
   const pdf = ev.target.closest("[data-mp-pdf]"); if (pdf) return descargar(pdf.dataset.mpPdf, pdf);
   const ej = ev.target.closest("[data-mp-eje]"); if (ej) return irAEje(ej.dataset.mpEje);
+  const fm = ev.target.closest("[data-mp-form]"); if (fm) return conLogin("Inicia sesión para enviar tus respuestas.", () => openForm(fm.dataset.mpForm));
   if (ev.target.closest("[data-mp-code]")) return openCode();
   if (ev.target.closest("[data-mp-login]")) return conLogin("Inicia sesión para ver tus productos", ruta);
 });
