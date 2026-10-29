@@ -1,0 +1,1523 @@
+<!doctype html><html lang="es" data-theme="dark"><head><meta name="robots" content="noindex"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vista previa · Física · Material Intensivo PAES · TS Zenit</title>
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style></head><body>
+<title>Física · Material Intensivo PAES · TS Zenit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: una columna de lectura (máx. 46rem) con fila pegajosa de casillas tipo tabla periódica; acento naranjo de banco óptico */
+:root{
+  --bg:#F2F4F6; --surface:#FFFFFF; --surface-2:#E6EAEE; --ink:#17202A; --muted:#566170; --line:#C9D1DA;
+  --accent:#B2520A; --accent-ink:#FFFFFF; --accent-soft:#F8E4D2;
+  --sci:#1C5D9C; --sci-soft:#DDE9F5;
+  --ok:#1D7648; --ok-soft:#DCF0E4; --bad:#B0281F; --bad-soft:#F7E0DD; --warn:#7E5200; --warn-soft:#FAEED3;
+  --c2:#7A3FA0;
+  --m-1:#EEF3F8; --m-2:#CFE3F3; --m-3:#B9D4EC; --m-4:#A7C3E6;
+  --sp-radio:#C9D3DD; --sp-micro:#B7C4D1; --sp-ir:#E8B4A6; --sp-uv:#C7B6E8; --sp-x:#A9B3C9; --sp-g:#8E97AE;
+  --t-sea:#BFDDF0; --t-oce:#6E7F91; --t-con:#C9A97C; --t-ast:#F0C08A; --t-mag:#D9542B;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10141A; --surface:#171C24; --surface-2:#212833; --ink:#E5EAF0; --muted:#9CA8B6; --line:#313A47;
+    --accent:#F59E52; --accent-ink:#1E1206; --accent-soft:#3A2412;
+    --sci:#80B9F0; --sci-soft:#16283A;
+    --ok:#62CC93; --ok-soft:#123024; --bad:#F2867E; --bad-soft:#3A1816; --warn:#E9B55A; --warn-soft:#33270F;
+    --c2:#C39BEA;
+    --m-1:#1A222C; --m-2:#1C3347; --m-3:#1F3B57; --m-4:#24456A;
+    --sp-radio:#3A4553; --sp-micro:#46525F; --sp-ir:#6E4036; --sp-uv:#4E4270; --sp-x:#46506A; --sp-g:#5A6380;
+    --t-sea:#24465C; --t-oce:#5A6878; --t-con:#7D6648; --t-ast:#7A5426; --t-mag:#E0663C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10141A; --surface:#171C24; --surface-2:#212833; --ink:#E5EAF0; --muted:#9CA8B6; --line:#313A47;
+  --accent:#F59E52; --accent-ink:#1E1206; --accent-soft:#3A2412;
+  --sci:#80B9F0; --sci-soft:#16283A;
+  --ok:#62CC93; --ok-soft:#123024; --bad:#F2867E; --bad-soft:#3A1816; --warn:#E9B55A; --warn-soft:#33270F;
+  --c2:#C39BEA;
+  --m-1:#1A222C; --m-2:#1C3347; --m-3:#1F3B57; --m-4:#24456A;
+  --sp-radio:#3A4553; --sp-micro:#46525F; --sp-ir:#6E4036; --sp-uv:#4E4270; --sp-x:#46506A; --sp-g:#5A6380;
+  --t-sea:#24465C; --t-oce:#5A6878; --t-con:#7D6648; --t-ast:#7A5426; --t-mag:#E0663C;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.55; -webkit-text-size-adjust:100%}
+.wrap{max-width:46rem; margin:0 auto; padding-inline:16px}
+h1,h2,h3{font-family:var(--display); font-weight:700; line-height:1.05; text-wrap:balance; margin:0}
+h1{font-size:2.6rem} h2{font-size:2.3rem} h3{font-size:1.45rem}
+p{margin:0}
+sub,sup{font-size:.72em; line-height:0}
+.f{font-family:var(--mono); font-size:.93em; white-space:nowrap}
+.muted{color:var(--muted)}
+.lab{font:600 .72rem/1.2 var(--body); letter-spacing:.08em; text-transform:uppercase}
+.intro{padding-block:1.4rem 1rem; display:grid; gap:.6rem}
+.intro .lab{color:var(--accent)}
+.intro p{max-width:62ch}
+.stats{display:flex; flex-wrap:wrap; gap:.5rem 1.2rem; font-size:.9rem; color:var(--muted)}
+.stats b{font-family:var(--mono); color:var(--ink); font-weight:500; font-variant-numeric:tabular-nums}
+.bar{position:sticky; top:env(safe-area-inset-top,0px); z-index:10; background:var(--bg); border-bottom:1px solid var(--line)}
+.tiles{display:flex; gap:.45rem; overflow-x:auto; padding-block:.6rem; scrollbar-width:none}
+.tiles::-webkit-scrollbar{display:none}
+.tile{flex:0 0 auto; width:4.4rem; height:4.7rem; display:grid; grid-template-rows:auto 1fr auto auto; gap:1px; padding:.28rem .38rem .3rem; text-align:left; border:1.5px solid var(--ink); border-radius:3px; background:var(--surface); color:var(--ink); cursor:pointer; font:inherit}
+.tile .z{font:500 .66rem/1 var(--mono)}
+.tile .sym{font:700 1.75rem/1 var(--display); align-self:center}
+.tile .nm{font:500 .58rem/1.1 var(--body); text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.tile .pg{height:3px; background:var(--surface-2); border-radius:2px; overflow:hidden}
+.tile .pg span{display:block; height:100%; width:0; background:var(--ok)}
+.tile[aria-selected="true"]{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.tile:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2.5px solid var(--sci); outline-offset:2px}
+main{padding-block:1.2rem 3rem}
+.panel{display:grid; gap:2.2rem}
+.phead{display:grid; gap:.5rem}
+.phead .lab{color:var(--muted)}
+.phead p{max-width:62ch}
+.sub{display:grid; gap:.9rem}
+.subh{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:.4rem .8rem; border-top:2px solid var(--ink); padding-top:.7rem}
+.dom{font:500 .78rem var(--body); border:1.5px solid var(--line); background:var(--surface); color:var(--muted); border-radius:999px; padding:.25rem .7rem; cursor:pointer}
+.dom[aria-pressed="true"]{background:var(--ok-soft); border-color:var(--ok); color:var(--ok)}
+.sub p,.sub li{max-width:66ch}
+ul.plain,ol.plain{margin:0; padding-left:1.2rem; display:grid; gap:.35rem}
+.note{padding:.8rem .95rem; border-radius:6px; background:var(--sci-soft); display:grid; gap:.35rem}
+.note .lab{color:var(--sci)}
+.note.trap{background:var(--warn-soft)} .note.trap .lab{color:var(--warn)}
+.note.key{background:var(--accent-soft)} .note.key .lab{color:var(--accent)}
+.tbl{overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:.9rem}
+th,td{padding:.5rem .65rem; text-align:left; vertical-align:top; border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{font:600 .7rem/1.2 var(--body); letter-spacing:.06em; text-transform:uppercase; color:var(--muted); background:var(--surface-2); white-space:nowrap}
+td.n{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td b{font-weight:600}
+.flow{display:flex; flex-wrap:wrap; align-items:center; gap:.4rem; font-size:.88rem}
+.flow .box{border:1.5px solid var(--ink); border-radius:4px; padding:.3rem .6rem; background:var(--surface)}
+.flow .arr{color:var(--accent); font-weight:600; font-family:var(--mono)}
+.tool{border:1.5px solid var(--sci); border-radius:8px; background:var(--surface); padding:.9rem; display:grid; gap:.8rem}
+.tool>.lab{color:var(--sci)}
+.tool h4{margin:0; font:700 1.2rem/1.1 var(--display)}
+.fields{display:grid; grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr)); gap:.6rem}
+.field{display:grid; gap:.2rem; min-width:0}
+.field label{font-size:.78rem; color:var(--muted)}
+.field input,.field select{font:500 1rem var(--mono); padding:.45rem .55rem; border:1.5px solid var(--line); border-radius:5px; background:var(--bg); color:var(--ink); width:100%; min-width:0}
+.field select{font-family:var(--body); font-size:.95rem}
+.out{display:grid; gap:.35rem; font-size:.92rem}
+.big{font:700 1.5rem/1.1 var(--display)}
+.err{color:var(--bad); font-size:.88rem}
+.btn{font:600 .88rem var(--body); padding:.5rem .95rem; border-radius:5px; border:1.5px solid var(--ink); background:var(--ink); color:var(--bg); cursor:pointer}
+.btn.ghost{background:transparent; color:var(--ink)}
+.btn:disabled{opacity:.4; cursor:default}
+.btnrow{display:flex; flex-wrap:wrap; gap:.5rem}
+.res{display:grid; grid-template-columns:repeat(auto-fit,minmax(7.2rem,1fr)); gap:.5rem}
+.res div{background:var(--surface-2); border-radius:5px; padding:.45rem .6rem; min-width:0}
+.res span{display:block; font-size:.72rem; color:var(--muted)}
+.res b{font:600 1.02rem var(--mono); font-variant-numeric:tabular-nums}
+.seg{display:flex; flex-wrap:wrap; gap:.35rem}
+.sbtn{font:500 .84rem var(--body); padding:.32rem .75rem; border-radius:999px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer}
+.sbtn[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--bg)}
+.range{display:grid; gap:.2rem}
+.range label{font-size:.82rem; color:var(--muted)}
+.range input{width:100%; accent-color:var(--accent)}
+.verdict{padding:.6rem .75rem; border-radius:5px; font-size:.92rem; background:var(--surface-2); display:grid; gap:.3rem}
+svg.chart{width:100%; height:auto; display:block}
+.ax{stroke:var(--muted); stroke-width:1}
+.axis{stroke:var(--ink); stroke-width:1; stroke-dasharray:5 4; opacity:.6}
+.grid{stroke:var(--line); stroke-width:1}
+.tick{fill:var(--muted); font:500 10px var(--mono)}
+.axl{fill:var(--muted); font:500 10.5px var(--body)}
+.svl{fill:var(--ink); font:600 11px var(--mono)}
+.svs{fill:var(--muted); font:500 10px var(--body)}
+.ln{fill:none; stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round}
+.ln-ink{stroke:var(--ink)} .ln-a{stroke:var(--accent)} .ln-s{stroke:var(--sci)} .ln-c2{stroke:var(--c2)}
+.dash{stroke-dasharray:5 4}
+.thin{stroke-width:1.5}
+.area{fill:var(--accent-soft)}
+.pt{fill:var(--accent); stroke:var(--surface); stroke-width:2}
+.cur{stroke:var(--accent); stroke-width:1.5}
+.case{display:grid; gap:.6rem; border-top:1px dashed var(--line); padding-top:.7rem}
+.case:first-of-type{border-top:0; padding-top:0}
+.case p{font-size:.93rem}
+.item{display:grid; gap:.3rem; padding:.55rem .6rem; border-radius:5px; background:var(--surface-2)}
+.item .txt{font-size:.9rem}
+.item select{font:500 .92rem var(--body); padding:.4rem .5rem; border:1.5px solid var(--line); border-radius:5px; background:var(--bg); color:var(--ink); width:100%}
+.item.ok{background:var(--ok-soft)} .item.bad{background:var(--bad-soft)}
+.item .fb{font-size:.8rem; font-weight:600}
+.item.ok .fb{color:var(--ok)} .item.bad .fb{color:var(--bad)}
+.filters{display:flex; flex-wrap:wrap; gap:.4rem}
+.fbtn{font:500 .82rem var(--body); padding:.32rem .7rem; border-radius:999px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer}
+.fbtn[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--bg)}
+.qcard{background:var(--surface); border:1.5px solid var(--ink); border-radius:8px; padding:1rem; display:grid; gap:.85rem}
+.qmeta{display:flex; flex-wrap:wrap; justify-content:space-between; gap:.4rem; font:500 .78rem var(--mono); color:var(--muted)}
+.qmeta .tp{color:var(--accent)}
+.qstem{font-size:1.02rem; font-weight:500}
+.opts{display:grid; gap:.45rem}
+.opt{display:grid; grid-template-columns:1.9rem 1fr; gap:.55rem; align-items:start; text-align:left; font:inherit; font-size:.95rem; color:var(--ink); background:var(--bg); border:1.5px solid var(--line); border-radius:6px; padding:.55rem .6rem; cursor:pointer}
+.opt .lt{font:600 .85rem var(--mono); width:1.7rem; height:1.7rem; display:grid; place-items:center; border:1.5px solid var(--line); border-radius:4px}
+.opt.ok{background:var(--ok-soft); border-color:var(--ok)} .opt.ok .lt{border-color:var(--ok); color:var(--ok)}
+.opt.bad{background:var(--bad-soft); border-color:var(--bad)} .opt.bad .lt{border-color:var(--bad); color:var(--bad)}
+.opt:disabled{cursor:default}
+.expl{padding:.7rem .85rem; border-radius:6px; background:var(--surface-2); font-size:.92rem; display:grid; gap:.25rem}
+.expl .lab.ok{color:var(--ok)} .expl .lab.bad{color:var(--bad)}
+.dots{display:flex; flex-wrap:wrap; gap:4px}
+.dot{width:10px; height:10px; border-radius:2px; background:var(--surface-2); border:1px solid var(--line)}
+.dot.ok{background:var(--ok); border-color:var(--ok)} .dot.bad{background:var(--bad); border-color:var(--bad)} .dot.cur{outline:2px solid var(--accent); outline-offset:1px}
+.tstats{display:grid; grid-template-columns:repeat(auto-fit,minmax(7.2rem,1fr)); gap:.5rem}
+.tstats div{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:.5rem .65rem}
+.tstats span{display:block; font-size:.74rem; color:var(--muted)}
+.tstats b{font:600 1.05rem var(--mono); font-variant-numeric:tabular-nums}
+.specbar{height:10px; border-radius:2px; background:linear-gradient(90deg,var(--sp-radio) 0 22%,var(--sp-micro) 22% 44%,var(--sp-ir) 44% 63%,#E5484D 63%,#F59E0B 64%,#EAD22A 64.6%,#3FAE5A 65.2%,#2F7FD8 65.8%,#7A45C9 66.4% 66.9%,var(--sp-uv) 66.9% 78%,var(--sp-x) 78% 89%,var(--sp-g) 89%)}
+footer{font-size:.8rem; color:var(--muted); padding-block:1rem 2rem; border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:no-preference){ .tile,.opt,.dom,.fbtn,.sbtn{transition:background-color .15s, border-color .15s, color .15s} }
+@media (max-width:420px){ h1{font-size:2.2rem} h2{font-size:2rem} .tile{width:4rem; height:4.4rem} .tile .sym{font-size:1.55rem} }
+
+/* Preguntas con gráficos y tablas */
+.qfig{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:.7rem;overflow-x:auto}
+.qfig svg{width:100%;max-width:560px;height:auto;display:block;margin:0 auto}
+.qfig table{font-size:.86rem;margin:0 auto}
+.qf-cap{font-size:.8rem;color:var(--muted);margin:.4rem 0 0;text-align:center}
+.qf-leg{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1rem;font-size:.8rem;margin-top:.35rem}
+.qf-leg i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:.35rem}
+.qf-b1{background:var(--accent)} .qf-b2{background:var(--sci)} .qf-b3{background:var(--warn)} .qf-b4{background:var(--ok)}
+.qf-ax{stroke:var(--muted);stroke-width:1}
+.qf-gr{stroke:var(--line);stroke-width:1}
+.qf-tk{fill:var(--muted);font:500 10px var(--mono)}
+.qf-lb{fill:var(--muted);font:500 10.5px var(--body)}
+.qf-tx{fill:var(--ink);font:600 10.5px var(--mono)}
+.qf-ln{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.qf-s1{stroke:var(--accent)} .qf-s2{stroke:var(--sci)} .qf-s3{stroke:var(--warn)} .qf-s4{stroke:var(--ok)} .qf-sm{stroke:var(--muted)}
+.qf-f1{fill:var(--accent)} .qf-f2{fill:var(--sci)} .qf-f3{fill:var(--warn)} .qf-f4{fill:var(--ok)}
+.qf-dash{stroke-dasharray:5 4}
+.qf-pt{stroke:var(--surface);stroke-width:1.5}
+.qf-ink{stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round}
+.qf-at{fill:var(--ink);font:600 14px var(--mono)}
+.qf-mol{fill:var(--ink);font:600 22px var(--mono)}
+.qf-num{fill:var(--accent);font:600 13px var(--mono)}
+.qf-bg2{fill:var(--surface-2)}
+/* Herramientas interactivas agregadas */
+.x-stage{border:1px solid var(--line);border-radius:6px;background:var(--bg);padding:.5rem;overflow-x:auto}
+.x-svg{width:100%;height:auto;display:block;max-width:560px;margin:0 auto}
+.x-gr{stroke:var(--line);stroke-width:1}
+.x-ax{stroke:var(--muted);stroke-width:1}
+.x-tk{fill:var(--muted);font:500 10px var(--mono)}
+.x-lb{fill:var(--muted);font:500 10.5px var(--body)}
+.x-tx{fill:var(--ink);font:600 10.5px var(--mono)}
+.x-tb{fill:var(--ink);font:500 11px var(--body)}
+.x-tm{fill:var(--muted);font:500 10px var(--body)}
+.x-ln{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.x-l1{stroke:var(--accent)} .x-l2{stroke:var(--sci)} .x-l3{stroke:var(--warn)} .x-l4{stroke:var(--ok)} .x-l5{stroke:var(--bad)} .x-lm{stroke:var(--muted)} .x-li{stroke:var(--ink)}
+.x-f1{fill:var(--accent)} .x-f2{fill:var(--sci)} .x-f3{fill:var(--warn)} .x-f4{fill:var(--ok)} .x-f5{fill:var(--bad)} .x-fm{fill:var(--muted)} .x-fi{fill:var(--ink)} .x-fs{fill:var(--surface)} .x-fs2{fill:var(--surface-2)} .x-fl{fill:var(--line)}
+.x-fa{fill:var(--accent-soft)} .x-fb{fill:var(--sci-soft)} .x-fok{fill:var(--ok-soft)} .x-fw{fill:var(--warn-soft)}
+.x-head{stroke-width:1}
+polygon.x-l1{fill:var(--accent)} polygon.x-l2{fill:var(--sci)} polygon.x-l3{fill:var(--warn)} polygon.x-l4{fill:var(--ok)} polygon.x-l5{fill:var(--bad)} polygon.x-li{fill:var(--ink)} polygon.x-lm{fill:var(--muted)}
+.x-dash{stroke-dasharray:5 4}
+.x-pt{stroke:var(--surface);stroke-width:1.5}
+.x-o{fill:none;stroke:var(--ink);stroke-width:1.5}
+.x-om{fill:none;stroke:var(--muted);stroke-width:1.2}
+[data-part]{cursor:pointer}
+[data-part]:hover{opacity:.85}
+.x-on{stroke:var(--accent)!important;stroke-width:3!important}
+.x-hl{filter:drop-shadow(0 0 3px var(--accent))}
+.x-step{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem}
+.x-dots{display:flex;flex-wrap:wrap;gap:5px;flex:1;justify-content:center}
+.x-dot{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface-2);padding:0;cursor:pointer}
+.x-dot.on{background:var(--accent);border-color:var(--accent)}
+.x-card{border:1.5px solid var(--ink);border-radius:8px;padding:.8rem .9rem;background:var(--surface);display:grid;gap:.3rem}
+.x-card p{font-size:1.02rem;font-weight:500;margin:0}
+.x-prog{font:500 .75rem var(--mono);color:var(--muted)}
+.x-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:.45rem}
+.x-cat{font:600 .9rem var(--body);padding:.6rem .5rem;border-radius:6px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.x-cat.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)} .x-cat.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.x-cat:disabled{cursor:default}
+.x-title{font:600 .95rem var(--body)}
+.x-q{font-size:.95rem;margin:0}
+.x-chk{display:flex;align-items:flex-start;gap:.5rem;font-size:.9rem;cursor:pointer}
+.x-chk input{width:1.05rem;height:1.05rem;margin-top:.15rem;accent-color:var(--accent);flex:0 0 auto}
+.x-chks{display:grid;gap:.4rem}
+.x-meter{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:.3rem}
+.x-meter span{display:block;height:100%;background:var(--ok)}
+.x-meter.mid span{background:var(--warn)} .x-meter.low span{background:var(--bad)}
+.x-leg{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1rem;font-size:.8rem}
+.x-leg i{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:middle;margin-right:.35rem}
+.x-swatch{width:100%;height:56px;border-radius:6px;border:1px solid var(--line)}
+.x-grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.6rem}
+.x-big{font:700 1.5rem/1.1 var(--display)}
+.x-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.x-list{margin:0;padding-left:1.1rem;display:grid;gap:.25rem;font-size:.92rem}
+.x-tbl{overflow-x:auto}
+.verdict.sat{background:var(--ok-soft)} .verdict.sob{background:var(--warn-soft)} .verdict.ins{background:var(--sci-soft)}
+.verdict b{font-weight:600}
+.x-cls{display:grid;gap:.7rem}
+.tool>*{min-width:0}
+.x-stage>*{max-width:100%}
+.panel>*,.sub>*{min-width:0}
+li .f{white-space:normal}
+
+/* ===== TS Zenit · ambientación del Material Intensivo PAES ===== */
+:root[data-theme="dark"]{
+  --bg:#0B1A33; --surface:#11264B; --surface-2:#17315C; --ink:#F2F4F9; --muted:#B7C3DA; --line:#2A4775;
+  --accent:#FB923C; --accent-ink:#0B1A33; --accent-soft:rgba(251, 146, 60, 0.15);
+  --sci:#D8A878; --sci-soft:rgba(216, 168, 120, .12);
+  --ok:#7FD4A8; --ok-soft:rgba(127, 212, 168, .14); --bad:#F2867E; --bad-soft:rgba(242, 134, 126, .14); --warn:#F2C46D; --warn-soft:rgba(242, 196, 109, .12);
+  --display:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --ui:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+html{background:var(--bg)}
+body{font-size:17px; -webkit-font-smoothing:antialiased}
+.wrap{max-width:48rem; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3,h4{letter-spacing:-.015em}
+h2{font-size:1.9rem} h3{font-size:1.22rem; font-weight:600}
+.lab,.btn,.sbtn,.fbtn,.dom,.tile .nm,th,.x-cat,.x-title,.field label,.range label,.item .fb,.expl .lab{font-family:var(--ui)!important}
+.lab{font-weight:600; letter-spacing:.14em}
+a{color:var(--sci)}
+
+/* cabecera de marca */
+.tz-top{border-bottom:1px solid var(--line); background:linear-gradient(180deg,#081428,var(--bg))}
+.tz-top .wrap{display:flex; align-items:center; justify-content:space-between; gap:12px; padding-block:12px; flex-wrap:wrap}
+.tz-brand{display:flex; align-items:center; gap:9px; font:700 15px/1 var(--ui); color:var(--ink); letter-spacing:.01em}
+.tz-brand svg{width:20px; height:20px; color:#F5A524}
+.tz-brand span{color:var(--muted); font-weight:500}
+.tz-pill{font:600 11px/1 var(--ui); letter-spacing:.14em; text-transform:uppercase; color:var(--accent); border:1px solid rgba(251, 146, 60, 0.42); background:var(--accent-soft); border-radius:999px; padding:7px 11px; display:inline-flex; gap:7px; align-items:center}
+.tz-pill i{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(251, 146, 60, 0.15)}
+
+/* portada */
+.intro{position:relative; margin-top:18px; padding:30px 22px 22px; border:1px solid var(--line); border-radius:22px; overflow:hidden; isolation:isolate;
+  background:radial-gradient(120% 130% at 100% 0%, rgba(251, 146, 60, 0.26), transparent 58%), linear-gradient(180deg, var(--surface), #0D1F3E)}
+.intro>*{position:relative; z-index:1}
+.intro .tz-art{position:absolute; z-index:0; right:-6px; top:4px; width:min(360px,62%); color:var(--accent); opacity:.32; pointer-events:none}
+.intro .tz-art svg{width:100%; height:auto; display:block}
+.intro .lab{color:var(--accent)}
+.intro h1{font-size:clamp(2.3rem, 7vw, 3.4rem); letter-spacing:-.025em; line-height:1}
+.intro h1 em{font-style:normal; color:var(--accent); display:block; font-size:.5em; letter-spacing:.02em; margin-top:.35em}
+.intro p{color:#DCE3F0}
+.stats{gap:8px}
+.stats span{background:rgba(8,20,40,.55); border:1px solid var(--line); border-radius:999px; padding:6px 13px; font-family:var(--ui); font-size:.82rem}
+.stats b{color:var(--accent)}
+.specbar{border-radius:999px; height:8px; opacity:.9}
+
+/* barra de temas */
+.bar{background:rgba(11,26,51,.9); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); margin-top:18px}
+.tiles{gap:8px; padding-block:10px}
+.tile{border:1px solid var(--line); border-radius:12px; background:var(--surface); width:4.6rem}
+.tile .sym{font:700 1.45rem/1 var(--display); letter-spacing:-.02em}
+.tile .z{color:var(--muted)}
+.tile:hover{border-color:rgba(251, 146, 60, 0.42)}
+.tile[aria-selected="true"]{background:var(--accent); border-color:var(--accent); color:var(--accent-ink); box-shadow:0 6px 18px -8px var(--accent)}
+.tile[aria-selected="true"] .z{color:var(--accent-ink)}
+.tile[aria-selected="true"] .pg{background:rgba(11,26,51,.25)}
+.tile[aria-selected="true"] .pg span{background:var(--accent-ink)}
+
+/* contenido */
+.subh{border-top:1px solid var(--line); position:relative; padding-top:.9rem}
+.subh::before{content:""; position:absolute; left:0; top:-2px; width:56px; height:3px; border-radius:3px; background:var(--accent)}
+.dom{border:1px solid var(--line); background:var(--surface)}
+.dom[aria-pressed="true"]{border-color:var(--ok)}
+.note{border-radius:14px; border:1px solid rgba(216,168,120,.25); border-left:3px solid var(--sci); padding:.9rem 1rem}
+.note.trap{border-color:rgba(242,196,109,.25); border-left-color:var(--warn)}
+.note.key{border-color:rgba(251, 146, 60, 0.42); border-left-color:var(--accent)}
+.tbl{border-radius:14px}
+th{background:#0F2245; letter-spacing:.08em}
+.flow .box{border:1px solid var(--line); border-radius:10px; background:var(--surface)}
+.tool{border:1px solid rgba(216,168,120,.4); border-radius:18px; padding:1.05rem; background:linear-gradient(180deg, var(--surface), rgba(17,38,75,.55))}
+.tool h4{font-family:var(--display); font-weight:700}
+.field input,.field select,.item select{border:1px solid var(--line); border-radius:10px}
+.btn{font-weight:600; border-radius:999px; padding:.55rem 1.1rem; border:1px solid var(--accent); background:var(--accent); color:var(--accent-ink)}
+.btn.ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--accent)}
+.sbtn,.fbtn{border:1px solid var(--line)}
+.sbtn[aria-pressed="true"],.fbtn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.res div,.item,.verdict,.expl{border-radius:10px}
+.x-stage,.qfig{border-radius:12px; background:#0A1830}
+.x-card{border:1px solid var(--line); border-radius:14px}
+.x-cat{border:1px solid var(--line); border-radius:10px}
+.qcard{border:1px solid var(--line); border-radius:18px; padding:1.15rem; box-shadow:0 18px 40px -28px rgba(0,0,0,.8)}
+.opt{border:1px solid var(--line); border-radius:12px}
+.opt:not(:disabled):hover{border-color:rgba(251, 146, 60, 0.42)}
+.opt .lt{border:1px solid var(--line); border-radius:8px}
+.tstats div{border-radius:12px}
+.tstats span,.res span{font-family:var(--ui)}
+.note.key{background:linear-gradient(90deg, rgba(251, 146, 60, 0.15), rgba(17,38,75,.35))}
+.note{background:linear-gradient(90deg, rgba(216,168,120,.10), rgba(17,38,75,.35))}
+.note.trap{background:linear-gradient(90deg, rgba(242,196,109,.11), rgba(17,38,75,.35))}
+.dot{border-radius:3px}
+footer{border-top:1px solid var(--line); display:grid; gap:.5rem}
+.tz-lic{font-family:var(--ui); font-size:.74rem; letter-spacing:.02em; color:var(--muted); display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+.tz-lic svg{width:14px; height:14px; color:#F5A524}
+@media (max-width:520px){ .tz-brand span{display:none} }
+@media (max-width:420px){ .intro{padding:24px 16px 18px; border-radius:18px} .tile{width:4.2rem} .tile .sym{font-size:1.3rem} h2{font-size:1.65rem} }
+</style>
+
+<header class="tz-top"><div class="wrap"><span class="tz-brand"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.6 6.3 6.8.5-5.2 4.4 1.6 6.6L12 16.8l-5.8 3.5 1.6-6.6-5.2-4.4 6.8-.5z" fill="currentColor"/></svg>TS Zenit <span>· Material Intensivo PAES</span></span><span class="tz-pill"><i></i>Exclusivo Intensivo</span></div></header>
+<div class="wrap intro">
+  <div class="tz-art" aria-hidden="true"><svg viewBox="0 0 320 90" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><polyline points="14.0,58.1 16.4,59.9 18.9,61.6 21.3,63.1 23.7,64.4 26.2,65.4 28.6,66.2 31.0,66.7 33.5,67.0 35.9,67.0 38.3,66.7 40.8,66.1 43.2,65.3 45.6,64.3 48.1,63.0 50.5,61.5 52.9,59.8 55.4,57.9 57.8,55.8 60.2,53.6 62.7,51.4 65.1,49.0 67.5,46.6 70.0,44.1 72.4,41.7 74.8,39.3 77.3,37.0 79.7,34.8 82.1,32.7 84.6,30.8 87.0,29.0 89.4,27.4 91.9,26.1 94.3,25.0 96.7,24.1 99.2,23.5 101.6,23.1 104.0,23.0 106.5,23.2 108.9,23.6 111.3,24.3 113.8,25.3 116.2,26.5 118.6,27.9 121.1,29.5 123.5,31.3 125.9,33.3 128.4,35.5 130.8,37.7 133.2,40.0 135.7,42.4 138.1,44.9 140.5,47.3 143.0,49.7 145.4,52.0 147.8,54.3 150.3,56.4 152.7,58.4 155.1,60.3 157.6,61.9 160.0,63.4 162.4,64.6 164.9,65.6 167.3,66.3 169.7,66.8 172.2,67.0 174.6,66.9 177.0,66.6 179.5,66.0 181.9,65.1 184.3,64.0 186.8,62.7 189.2,61.2 191.6,59.4 194.1,57.5 196.5,55.4 198.9,53.2 201.4,50.9 203.8,48.5 206.2,46.1 208.7,43.7 211.1,41.3 213.5,38.9 216.0,36.6 218.4,34.4 220.8,32.3 223.3,30.4 225.7,28.7 228.1,27.2 230.6,25.9 233.0,24.8 235.4,23.9 237.9,23.4 240.3,23.1 242.7,23.0 245.2,23.2 247.6,23.7 250.0,24.5 252.5,25.5 254.9,26.7 257.3,28.2 259.8,29.9 262.2,31.7 264.6,33.7 267.1,35.9 269.5,38.2 271.9,40.5 274.4,42.9 276.8,45.3 279.2,47.8 281.7,50.2 284.1,52.5 286.5,54.7 289.0,56.8 291.4,58.8 293.8,60.6 296.3,62.2 298.7,63.6 301.1,64.8 303.6,65.8 306.0,66.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><polyline points="14.0,55.5 16.4,54.2 18.9,52.6 21.3,50.8 23.7,48.7 26.2,46.5 28.6,44.3 31.0,42.1 33.5,40.0 35.9,38.0 38.3,36.3 40.8,34.9 43.2,33.9 45.6,33.2 48.1,33.0 50.5,33.2 52.9,33.8 55.4,34.7 57.8,36.1 60.2,37.7 62.7,39.6 65.1,41.7 67.5,43.9 70.0,46.2 72.4,48.4 74.8,50.5 77.3,52.4 79.7,54.0 82.1,55.3 84.6,56.3 87.0,56.8 89.4,57.0 91.9,56.7 94.3,56.1 96.7,55.0 99.2,53.6 101.6,51.9 104.0,49.9 106.5,47.8 108.9,45.6 111.3,43.3 113.8,41.2 116.2,39.1 118.6,37.3 121.1,35.7 123.5,34.4 125.9,33.6 128.4,33.1 130.8,33.0 133.2,33.4 135.7,34.1 138.1,35.3 140.5,36.8 143.0,38.5 145.4,40.5 147.8,42.7 150.3,44.9 152.7,47.1 155.1,49.3 157.6,51.3 160.0,53.1 162.4,54.6 164.9,55.8 167.3,56.6 169.7,57.0 172.2,56.9 174.6,56.5 177.0,55.6 179.5,54.4 181.9,52.9 184.3,51.1 186.8,49.0 189.2,46.8 191.6,44.6 194.1,42.4 196.5,40.2 198.9,38.3 201.4,36.5 203.8,35.1 206.2,34.0 208.7,33.3 211.1,33.0 213.5,33.1 216.0,33.7 218.4,34.6 220.8,35.9 223.3,37.5 225.7,39.4 228.1,41.4 230.6,43.6 233.0,45.9 235.4,48.1 237.9,50.2 240.3,52.1 242.7,53.8 245.2,55.2 247.6,56.2 250.0,56.8 252.5,57.0 254.9,56.8 257.3,56.2 259.8,55.2 262.2,53.8 264.6,52.1 267.1,50.2 269.5,48.1 271.9,45.9 274.4,43.6 276.8,41.4 279.2,39.4 281.7,37.5 284.1,35.9 286.5,34.6 289.0,33.7 291.4,33.1 293.8,33.0 296.3,33.3 298.7,34.0 301.1,35.1 303.6,36.5 306.0,38.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/><polyline points="14.0,65.6 16.4,64.2 18.9,62.8 21.3,61.3 23.7,59.7 26.2,58.2 28.6,56.6 31.0,54.9 33.5,53.3 35.9,51.6 38.3,50.0 40.8,48.3 43.2,46.7 45.6,45.0 48.1,43.4 50.5,41.8 52.9,40.2 55.4,38.7 57.8,37.2 60.2,35.8 62.7,34.4 65.1,33.1 67.5,31.8 70.0,30.6 72.4,29.5 74.8,28.4 77.3,27.4 79.7,26.5 82.1,25.7 84.6,24.9 87.0,24.3 89.4,23.7 91.9,23.2 94.3,22.8 96.7,22.5 99.2,22.2 101.6,22.1 104.0,22.0 106.5,22.0 108.9,22.2 111.3,22.3 113.8,22.6 116.2,23.0 118.6,23.4 121.1,23.9 123.5,24.5 125.9,25.2 128.4,25.9 130.8,26.6 133.2,27.5 135.7,28.4 138.1,29.3 140.5,30.3 143.0,31.3 145.4,32.4 147.8,33.5 150.3,34.6 152.7,35.8 155.1,37.0 157.6,38.2 160.0,39.4 162.4,40.6 164.9,41.8 167.3,43.0 169.7,44.2 172.2,45.4 174.6,46.6 177.0,47.7 179.5,48.9 181.9,50.0 184.3,51.0 186.8,52.1 189.2,53.1 191.6,54.0 194.1,54.9 196.5,55.8 198.9,56.6 201.4,57.4 203.8,58.1 206.2,58.7 208.7,59.3 211.1,59.8 213.5,60.3 216.0,60.7 218.4,61.0 220.8,61.3 223.3,61.5 225.7,61.7 228.1,61.8 230.6,61.8 233.0,61.7 235.4,61.6 237.9,61.5 240.3,61.3 242.7,61.0 245.2,60.6 247.6,60.3 250.0,59.8 252.5,59.3 254.9,58.8 257.3,58.2 259.8,57.6 262.2,56.9 264.6,56.2 267.1,55.5 269.5,54.7 271.9,53.9 274.4,53.1 276.8,52.3 279.2,51.4 281.7,50.5 284.1,49.7 286.5,48.8 289.0,47.9 291.4,47.0 293.8,46.1 296.3,45.3 298.7,44.4 301.1,43.5 303.6,42.7 306.0,41.9" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/><line x1="38.55751918948772" y1="14" x2="168.7875959474386" y2="14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/><path d="M162.5,17.0 L168.7875959474386,14 L162.5,11.0" fill="none" fill-opacity="1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/><line x1="168.7875959474386" y1="14" x2="38.55751918948772" y2="14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/><path d="M44.9,11.0 L38.55751918948772,14 L44.9,17.0" fill="none" fill-opacity="1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/><text x="103.67255756846316" y="10" font-size="13" text-anchor="middle" fill="currentColor" opacity="0.9" font-family="Georgia, serif" font-style="italic">λ</text></svg></div>
+  <span class="lab">PAES Ciencias · Módulo común · Física · Admisión 2027</span>
+  <h1>Física<em>PAES 2027</em></h1>
+  <div class="specbar" aria-hidden="true"></div>
+  <p>Todo el temario de física de la PAES con el método científico integrado. En el módulo común, la física es cerca de un tercio de las 54 preguntas (aprox. 18). Lee cada tema, usa los simuladores, marca lo que dominas y después practica con las guías TS Zenit de cada eje. Se usa g = 10 m/s² y c = 3 × 10⁸ m/s, como en la PAES.</p>
+  <div class="stats"><span>Temas dominados <b id="stDom">0/30</b></span></div>
+</div>
+
+<nav class="bar" aria-label="Temas">
+  <div class="wrap tiles" role="tablist">
+    <button class="tile" role="tab" data-tab="metodo" aria-selected="true"><span class="z">1</span><span class="sym">Mc</span><span class="nm">Método</span><span class="pg"><span></span></span></button>
+    <button class="tile" role="tab" data-tab="ondas" aria-selected="false"><span class="z">2</span><span class="sym">On</span><span class="nm">Ondas EM</span><span class="pg"><span></span></span></button>
+    <button class="tile" role="tab" data-tab="optica" aria-selected="false"><span class="z">3</span><span class="sym">Óp</span><span class="nm">Óptica</span><span class="pg"><span></span></span></button>
+    <button class="tile" role="tab" data-tab="cinem" aria-selected="false"><span class="z">4</span><span class="sym">Ci</span><span class="nm">Cinemática</span><span class="pg"><span></span></span></button>
+    <button class="tile" role="tab" data-tab="dinam" aria-selected="false"><span class="z">5</span><span class="sym">Di</span><span class="nm">Dinámica</span><span class="pg"><span></span></span></button>
+    <button class="tile" role="tab" data-tab="universo" aria-selected="false"><span class="z">6</span><span class="sym">Un</span><span class="nm">Universo</span><span class="pg"><span></span></span></button>
+    <button class="tile" role="tab" data-tab="tierra" aria-selected="false"><span class="z">7</span><span class="sym">Ti</span><span class="nm">Tierra</span><span class="pg"><span></span></span></button>
+    <button class="tile" role="tab" data-tab="elec" aria-selected="false"><span class="z">8</span><span class="sym">El</span><span class="nm">Electricidad</span><span class="pg"><span></span></span></button>
+    </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============ 1. MÉTODO ============ -->
+<section class="panel" id="metodo" role="tabpanel">
+  <div class="phead">
+    <span class="lab">Tema 1 de 8 · Transversal</span>
+    <h2>Método científico en física</h2>
+    <p>En física los experimentos casi siempre buscan una relación entre dos magnitudes medibles: largo y período, fuerza y estiramiento, voltaje y corriente. La PAES te muestra esos datos y te pregunta qué se puede concluir.</p>
+  </div>
+
+  <div class="sub" data-sub="m-comp">
+    <div class="subh"><h3>Partes de una investigación</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
+    <p>Ejemplo guía: <b>¿cómo depende el período de un péndulo de su largo?</b></p>
+    <div class="tbl"><table>
+      <thead><tr><th>Componente</th><th>En el ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td><b>Pregunta</b></td><td>¿Cómo cambia el período de un péndulo al cambiar su largo?</td></tr>
+        <tr><td><b>Hipótesis</b></td><td>A mayor largo, mayor período, porque la masa recorre un arco más largo.</td></tr>
+        <tr><td><b>Predicción</b></td><td>Un péndulo de 1 m tardará más en oscilar que uno de 0,25 m.</td></tr>
+        <tr><td><b>Variable independiente</b></td><td>Largo del hilo (eje x).</td></tr>
+        <tr><td><b>Variable dependiente</b></td><td>Período (eje y).</td></tr>
+        <tr><td><b>Variables controladas</b></td><td>Masa, ángulo inicial pequeño, mismo lugar (misma g).</td></tr>
+        <tr><td><b>Resultado</b></td><td>0,25 m → 1,0 s; 1,00 m → 2,0 s.</td></tr>
+        <tr><td><b>Conclusión</b></td><td>El período aumenta con el largo, pero no en proporción directa: al cuadruplicar el largo, se duplica el período.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note key"><span class="lab">Tipos de relación que debes reconocer</span><p><b>Directamente proporcional:</b> recta que pasa por el origen (y/x constante): Hooke, Ohm. <b>Inversamente proporcional:</b> y·x constante (curva que baja): λ y f a rapidez constante. <b>Cuadrática:</b> parábola: x vs t en MRUA.</p></div>
+    <div class="tool">
+      <span class="lab">Herramienta · Disector de experimentos</span>
+      <h4>Clasifica cada parte del experimento</h4>
+      <div id="cases"></div>
+      <div class="btnrow"><button class="btn" id="dsCheck">Revisar</button><button class="btn ghost" id="dsReset">Reiniciar</button></div>
+      <p class="out" id="dsOut" aria-live="polite"></p>
+    </div>
+  
+    <div class="tool">
+      <span class="lab">Herramienta · Relaciones entre variables</span>
+      <h4>Directa, inversa o cuadrática</h4>
+<div class="seg" id="rvMode"></div><div class="seg" id="rvRel"></div><div class="range"><label for="rvK">Constante k: <b id="rvKv">2</b></label><input type="range" id="rvK" min="1" max="5" step="1" value="2"></div><div id="rvTab"></div><div class="x-cats" id="rvOpts"></div><div class="x-stage" id="rvStage"></div><div class="btnrow"><button class="btn ghost" id="rvNew" hidden>Otra tabla</button></div><div class="verdict ins" id="rvOut" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="sub" data-sub="m-medir">
+    <div class="subh"><h3>Medir bien</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
+    <ul class="plain">
+      <li><b>Reducir el error:</b> medir varias oscilaciones y dividir (10 períodos ÷ 10) reduce el efecto del tiempo de reacción.</li>
+      <li><b>Repetir y promediar:</b> disminuye el error aleatorio.</li>
+      <li><b>Instrumentos:</b> cinta o regla (longitud), cronómetro (tiempo), balanza (masa), dinamómetro (fuerza), amperímetro en serie (corriente), voltímetro en paralelo (voltaje).</li>
+      <li><b>Unidades SI:</b> m, kg, s, N (kg·m/s²), J (N·m), W (J/s), A, V, Ω.</li>
+    </ul>
+    <div class="note trap"><span class="lab">Trampa PAES</span><p>El amperímetro se conecta en <b>serie</b> (la corriente pasa por él) y el voltímetro en <b>paralelo</b> (mide la diferencia entre dos puntos).</p></div>
+  
+    <div class="tool">
+      <span class="lab">Herramienta · Error de medición</span>
+      <h4>¿Por qué medir 10 oscilaciones y dividir?</h4>
+<div id="erBox" class="x-stage"><svg id="erPend" class="x-svg" viewBox="0 0 340 140" role="img" aria-label="Péndulo oscilando"></svg></div><div class="btnrow"><button class="btn" id="erOne">Medir 1 oscilación</button><button class="btn" id="erTen">Medir 10 oscilaciones</button><button class="btn ghost" id="erClr">Borrar</button></div><div class="x-stage" id="erPlot"></div><div class="verdict ins" id="erOut" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="sub" data-sub="m-eval">
+    <div class="subh"><h3>Ley, teoría, modelo y evaluación</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
+    <ul class="plain">
+      <li><b>Ley:</b> describe una regularidad, a menudo con una ecuación (ley de Hooke, ley de Ohm, leyes de Newton y de Kepler).</li>
+      <li><b>Teoría:</b> explica un conjunto amplio de fenómenos (tectónica de placas, Big Bang).</li>
+      <li><b>Modelo:</b> representación simplificada (modelo geocéntrico, modelo físico del interior de la Tierra).</li>
+      <li><b>Validez:</b> una sola variable cambia a la vez. <b>Alcance:</b> no concluyas fuera del rango medido.</li>
+    </ul>
+    <div class="note"><span class="lab">Lente científica</span><p>Los modelos del universo son el mejor ejemplo de cómo cambia la ciencia: el geocéntrico se reemplazó cuando nuevas observaciones (las fases de Venus de Galileo) no podían explicarse con él.</p></div>
+  </div>
+</section>
+
+<!-- ============ 2. ONDAS ============ -->
+<section class="panel" id="ondas" role="tabpanel" hidden>
+  <div class="phead">
+    <span class="lab">Tema 2 de 8 · Ondas</span>
+    <h2>Ondas electromagnéticas</h2>
+    <p>Elementos de una onda, absorción, reflexión y refracción, espectro electromagnético, Doppler, interferencia, difracción y colores.</p>
+  </div>
+  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
+  <div hidden aria-hidden="true"><div class="tool">
+      <span class="lab">Herramienta · Onda en movimiento</span>
+      <h4>Cambia amplitud, frecuencia y longitud de onda</h4>
+<div class="seg" id="wvT"></div><div class="range"><label for="wvA">Amplitud: <b id="wvAv">0.6</b> m</label><input type="range" id="wvA" min="0.2" max="1" step="0.1" value="0.6"></div><div class="range"><label for="wvF">Frecuencia: <b id="wvFv">1</b> Hz</label><input type="range" id="wvF" min="0.5" max="3" step="0.1" value="1"></div><div class="range"><label for="wvL">Longitud de onda λ: <b id="wvLv">2</b> m</label><input type="range" id="wvL" min="1" max="4" step="0.5" value="2"></div><div id="wvBox" class="x-stage"><svg id="wvSvg" class="x-svg" viewBox="0 0 340 160" role="img" aria-label="Onda en movimiento"></svg></div><div class="btnrow"><button class="btn ghost" id="wvPlay">Pausar</button></div><div class="res" id="wvRes"></div><div class="verdict ins" id="wvNote" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Refracción</span>
+      <h4>Cambia los medios y el ángulo</h4>
+      <div class="fields">
+        <div class="field"><label for="rfM1">Medio de incidencia</label><select id="rfM1"><option value="1.00">Aire (n = 1,00)</option><option value="1.33">Agua (n = 1,33)</option><option value="1.50">Vidrio (n = 1,50)</option><option value="2.42">Diamante (n = 2,42)</option></select></div>
+        <div class="field"><label for="rfM2">Segundo medio</label><select id="rfM2"><option value="1.00">Aire (n = 1,00)</option><option value="1.33" selected>Agua (n = 1,33)</option><option value="1.50">Vidrio (n = 1,50)</option><option value="2.42">Diamante (n = 2,42)</option></select></div>
+      </div>
+      <div class="range"><label for="rfA">Ángulo de incidencia: <b id="rfAv">40</b>°</label><input id="rfA" type="range" min="0" max="89" step="1" value="40"></div>
+      <svg class="chart" id="rfSvg" viewBox="0 0 340 220" role="img" aria-label="Rayo incidente, reflejado y refractado en una interfaz"></svg>
+      <div class="verdict" id="rfOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Explorador del espectro</span>
+      <h4>Mueve la frecuencia</h4>
+      <div class="range"><label for="spF">Frecuencia: <b id="spFv"></b></label><input id="spF" type="range" min="4" max="21" step="0.05" value="14.75"></div>
+      <svg class="chart" id="spSvg" viewBox="0 0 340 74" role="img" aria-label="Espectro electromagnético en escala logarítmica con marcador"></svg>
+      <div class="res" id="spRes"></div>
+      <div class="verdict" id="spOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Efecto Doppler</span>
+      <h4>Mueve la fuente y mira cómo se juntan las ondas</h4>
+<div class="range"><label for="dpV">Rapidez de la fuente: <b id="dpVv">50</b> % de la rapidez de la onda</label><input type="range" id="dpV" min="0" max="90" step="5" value="50"></div><div id="dpBox" class="x-stage"><svg id="dpSvg" class="x-svg" viewBox="0 0 340 180" role="img" aria-label="Frentes de onda de una fuente en movimiento"></svg></div><div class="btnrow"><button class="btn ghost" id="dpPlay">Pausar</button></div><div class="verdict ins" id="dpOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Superposición de ondas</span>
+      <h4>Cambia el desfase entre dos ondas</h4>
+<div class="range"><label for="suP">Desfase: <b id="suPv">0</b> °</label><input type="range" id="suP" min="0" max="360" step="10" value="0"></div><div class="range"><label for="suA">Amplitud de la onda 2: <b id="suAv">100</b> % de la onda 1</label><input type="range" id="suA" min="0" max="100" step="5" value="100"></div><div class="x-stage" id="suSvg"></div><div class="verdict ins" id="suOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Luz y color de los objetos</span>
+      <h4>Enciende luces de colores y elige un objeto</h4>
+<div class="x-row"><button class="sbtn" id="cor">Luz roja</button><button class="sbtn" id="cog">Luz verde</button><button class="sbtn" id="cob">Luz azul</button></div><div class="seg" id="coObj"></div><div class="x-grid2"><div><div class="x-swatch" id="coL"></div><span class="x-title" id="coLn"></span></div><div><div class="x-swatch" id="coS"></div><span class="x-title" id="coSn"></span></div></div><div class="verdict ins" id="coOut" aria-live="polite"></div>
+    </div></div>
+</section>
+
+<!-- ============ 3. ÓPTICA ============ -->
+<section class="panel" id="optica" role="tabpanel" hidden>
+  <div class="phead">
+    <span class="lab">Tema 3 de 8 · Ondas</span>
+    <h2>Espejos, lentes y dispositivos</h2>
+    <p>Formación de imágenes en espejos planos, cóncavos y convexos, y en lentes convergentes y divergentes. Funcionamiento de dispositivos tecnológicos.</p>
+  </div>
+  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
+  <div hidden aria-hidden="true"><div class="tool">
+      <span class="lab">Herramienta · Banco óptico</span>
+      <h4>Elige el elemento y mueve el objeto</h4>
+      <div class="seg" id="opEl" role="group" aria-label="Elemento óptico">
+        <button class="sbtn" data-e="concavo" aria-pressed="true">Espejo cóncavo</button>
+        <button class="sbtn" data-e="convexo" aria-pressed="false">Espejo convexo</button>
+        <button class="sbtn" data-e="plano" aria-pressed="false">Espejo plano</button>
+        <button class="sbtn" data-e="conv" aria-pressed="false">Lente convergente</button>
+        <button class="sbtn" data-e="div" aria-pressed="false">Lente divergente</button>
+      </div>
+      <div class="range"><label for="opD">Distancia del objeto: <b id="opDv">2,5</b> f</label><input id="opD" type="range" min="0.3" max="3.6" step="0.05" value="2.5"></div>
+      <svg class="chart" id="opSvg" viewBox="0 0 340 210" role="img" aria-label="Trazado de rayos con objeto e imagen"></svg>
+      <div class="verdict" id="opOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · El ojo y sus defectos</span>
+      <h4>Compara visión normal, miopía e hipermetropía</h4>
+<div class="seg" id="eySeg"></div><label class="x-chk"><input type="checkbox" id="eyFix"><span>Poner lente correctora</span></label><div class="x-stage"><svg id="eySvg" class="x-svg" viewBox="0 0 340 180" role="img" aria-label="Rayos de luz entrando al ojo"></svg></div><div class="verdict ins" id="eyOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Radar</span>
+      <h4>Calcula la distancia con el eco</h4>
+<div class="range"><label for="rdD">Distancia al avión: <b id="rdDv">60</b> km</label><input type="range" id="rdD" min="1" max="150" step="1" value="60"></div><div id="rdBox" class="x-stage"><svg id="rdSvg" class="x-svg" viewBox="0 0 340 130" role="img" aria-label="Radar y avión"></svg></div><div class="btnrow"><button class="btn" id="rdGo">Emitir pulso</button></div><div class="verdict ins" id="rdOut" aria-live="polite"><span>Emite un pulso de microondas y mide cuánto tarda el eco.</span></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Fibra óptica</span>
+      <h4>Cambia el ángulo con que la luz choca con la pared</h4>
+<div class="range"><label for="foA">Ángulo de incidencia en la pared: <b id="foAv">80</b> °</label><input type="range" id="foA" min="40" max="89" step="1" value="80"></div><div class="x-stage"><svg id="foSvg" class="x-svg" viewBox="0 0 340 140" role="img" aria-label="Rayo de luz dentro de una fibra óptica"></svg></div><div class="verdict ins" id="foOut" aria-live="polite"></div>
+    </div></div>
+</section>
+
+<!-- ============ 4. CINEMÁTICA ============ -->
+<section class="panel" id="cinem" role="tabpanel" hidden>
+  <div class="phead">
+    <span class="lab">Tema 4 de 8 · Mecánica</span>
+    <h2>Cinemática</h2>
+    <p>Descripción del movimiento, MRU y MRUA con sus ecuaciones y gráficos, y relatividad de Galileo.</p>
+  </div>
+
+  <div class="sub" data-sub="c-desc">
+    <div class="subh"><h3>Describir el movimiento</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Concepto</th><th>Definición</th><th>Tipo</th></tr></thead>
+      <tbody>
+        <tr><td><b>Sistema de referencia</b></td><td>Punto y ejes desde donde se describe el movimiento. El movimiento es relativo a él.</td><td>—</td></tr>
+        <tr><td><b>Trayectoria</b></td><td>Camino que recorre el cuerpo.</td><td>—</td></tr>
+        <tr><td><b>Posición (x)</b></td><td>Ubicación respecto del origen.</td><td>Vector</td></tr>
+        <tr><td><b>Distancia recorrida</b></td><td>Largo de la trayectoria.</td><td>Escalar</td></tr>
+        <tr><td><b>Desplazamiento (Δx)</b></td><td>Posición final − posición inicial.</td><td>Vector</td></tr>
+        <tr><td><b>Rapidez media</b></td><td>Distancia ÷ tiempo.</td><td>Escalar</td></tr>
+        <tr><td><b>Velocidad media</b></td><td>Desplazamiento ÷ tiempo.</td><td>Vector</td></tr>
+        <tr><td><b>Velocidad instantánea</b></td><td>Velocidad en un instante (lo que marca el velocímetro, con dirección).</td><td>Vector</td></tr>
+        <tr><td><b>Aceleración</b></td><td>Cambio de velocidad ÷ tiempo: <span class="f">a = Δv / Δt</span> (m/s²).</td><td>Vector</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note trap"><span class="lab">Trampa PAES</span><p>Una vuelta completa a una pista de 400 m: distancia 400 m, desplazamiento <b>0</b>, velocidad media <b>0</b>, pero rapidez media distinta de 0.</p></div>
+  </div>
+
+  <div class="sub" data-sub="c-mru">
+    <div class="subh"><h3>MRU</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
+    <ul class="plain">
+      <li>Velocidad constante, aceleración cero. Recorre distancias iguales en tiempos iguales.</li>
+      <li>Ecuación de itinerario: <span class="f">x(t) = x₀ + v·t</span></li>
+      <li><b>x–t:</b> recta; su <b>pendiente es la velocidad</b>. <b>v–t:</b> recta horizontal; el <b>área bajo ella es el desplazamiento</b>. <b>a–t:</b> línea en cero.</li>
+    </ul>
+  
+    <div class="tool">
+      <span class="lab">Herramienta · Encuentro de dos móviles</span>
+      <h4>Elige posiciones y velocidades</h4>
+<div class="fields"><div class="field"><label for="mvXA">x₀ de A (m)</label><input id="mvXA" type="text" inputmode="decimal" value="0"></div><div class="field"><label for="mvVA">v de A (m/s)</label><input id="mvVA" type="text" inputmode="decimal" value="10"></div><div class="field"><label for="mvXB">x₀ de B (m)</label><input id="mvXB" type="text" inputmode="decimal" value="300"></div><div class="field"><label for="mvVB">v de B (m/s)</label><input id="mvVB" type="text" inputmode="decimal" value="-5"></div></div><div class="range"><label for="mvT">Tiempo: <b id="mvTv">0</b> s</label><input type="range" id="mvT" min="0" max="60" step="1" value="0"></div><div class="x-stage"><svg id="mvTrack" class="x-svg" viewBox="0 0 340 70" role="img" aria-label="Posición de los móviles en la pista"></svg></div><div class="x-stage" id="mvSvg"></div><div class="verdict ins" id="mvOut" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="sub" data-sub="c-mrua">
+    <div class="subh"><h3>MRUA</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
+    <div class="note key"><span class="lab">Ecuaciones</span>
+      <p><span class="f">x(t) = x₀ + v₀·t + ½·a·t²</span></p>
+      <p><span class="f">v(t) = v₀ + a·t</span> · <span class="f">v² = v₀² + 2·a·Δx</span></p>
+    </div>
+    <ul class="plain">
+      <li><b>x–t:</b> parábola. <b>v–t:</b> recta; la <b>pendiente es la aceleración</b> y el <b>área es el desplazamiento</b>. <b>a–t:</b> recta horizontal.</li>
+      <li><b>Acelerado:</b> v y a con el mismo signo (aumenta la rapidez). <b>Retardado:</b> signos opuestos (frena).</li>
+      <li><b>Caída libre:</b> MRUA con a = g ≈ 10 m/s² hacia abajo, sin roce del aire. Desde el reposo: v = 10·t; distancia = 5·t².</li>
+    </ul>
+    <div class="tool">
+      <span class="lab">Herramienta · Simulador de movimiento</span>
+      <h4>Elige condiciones iniciales y recorre el tiempo</h4>
+      <div class="fields">
+        <div class="field"><label for="kmX">x₀ (m)</label><input id="kmX" type="text" inputmode="decimal" value="0"></div>
+        <div class="field"><label for="kmV">v₀ (m/s)</label><input id="kmV" type="text" inputmode="decimal" value="2"></div>
+        <div class="field"><label for="kmA">a (m/s²)</label><input id="kmA" type="text" inputmode="decimal" value="1"></div>
+      </div>
+      <div class="range"><label for="kmT">Tiempo: <b id="kmTv">4</b> s</label><input id="kmT" type="range" min="0" max="10" step="0.1" value="4"></div>
+      <svg class="chart" id="kmX1" viewBox="0 0 340 160" role="img" aria-label="Gráfico posición versus tiempo"></svg>
+      <svg class="chart" id="kmV1" viewBox="0 0 340 160" role="img" aria-label="Gráfico velocidad versus tiempo con área sombreada"></svg>
+      <div class="res" id="kmRes"></div>
+      <div class="verdict" id="kmOut" aria-live="polite"></div>
+    </div>
+  
+    <div class="tool">
+      <span class="lab">Herramienta · Caída libre</span>
+      <h4>Suelta una pelota desde distintas alturas y planetas</h4>
+<div class="seg" id="cfPl"></div><div class="range"><label for="cfH">Altura: <b id="cfHv">45</b> m</label><input type="range" id="cfH" min="5" max="100" step="5" value="45"></div><div id="cfBox" class="x-stage"><div id="cfSvg"></div></div><div class="btnrow"><button class="btn" id="cfGo">Soltar</button></div><div class="verdict ins" id="cfOut" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="sub" data-sub="c-rel">
+    <div class="subh"><h3>Relatividad de Galileo</h3><button class="dom" aria-pressed="false">Marcar como dominado</button></div>
+    <p>La velocidad depende del sistema de referencia. Para movimientos rectilíneos uniformes, las velocidades se suman como vectores.</p>
+    <ul class="plain">
+      <li>Persona que camina a 2 m/s hacia adelante en un tren a 20 m/s: respecto del andén va a <b>22 m/s</b>; si camina hacia atrás, a <b>18 m/s</b>.</li>
+      <li>Dos autos en <b>sentidos opuestos</b> a 60 y 40 km/h: uno ve al otro a <b>100 km/h</b>. En el <b>mismo sentido</b>: a <b>20 km/h</b>.</li>
+      <li>Un pasajero sentado está en reposo respecto del tren, pero en movimiento respecto del andén.</li>
+    </ul>
+  
+    <div class="tool">
+      <span class="lab">Herramienta · Relatividad de Galileo</span>
+      <h4>Mira el mismo movimiento desde dos sistemas de referencia</h4>
+<div class="seg" id="grFr"></div><div class="range"><label for="grVt">Rapidez del tren: <b id="grVtv">20</b> m/s</label><input type="range" id="grVt" min="0" max="30" step="1" value="20"></div><div class="range"><label for="grVp">Persona caminando dentro del tren: <b id="grVpv">1.5</b> m/s</label><input type="range" id="grVp" min="-3" max="3" step="0.5" value="1.5"></div><div id="grBox" class="x-stage"><svg id="grSvg" class="x-svg" viewBox="0 0 340 170" role="img" aria-label="Tren con una persona caminando"></svg></div><div class="verdict ins" id="grOut" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. DINÁMICA ============ -->
+<section class="panel" id="dinam" role="tabpanel" hidden>
+  <div class="phead">
+    <span class="lab">Tema 5 de 8 · Mecánica</span>
+    <h2>Dinámica</h2>
+    <p>Leyes de Newton, diagrama de cuerpo libre, fuerzas peso, normal, tensión, elástica y de roce.</p>
+  </div>
+  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
+  <div hidden aria-hidden="true"><div class="tool">
+      <span class="lab">Herramienta · Segunda ley de Newton</span>
+      <h4>Empuja un carro con distintas fuerzas y masas</h4>
+<div class="range"><label for="nwF">Fuerza neta: <b id="nwFv">20</b> N</label><input type="range" id="nwF" min="0" max="50" step="1" value="20"></div><div class="range"><label for="nwM">Masa: <b id="nwMv">4</b> kg</label><input type="range" id="nwM" min="1" max="20" step="1" value="4"></div><div id="nwBox" class="x-stage"><div id="nwSvg"></div></div><div class="btnrow"><button class="btn" id="nwGo">Empujar</button></div><div class="verdict ins" id="nwOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Acción y reacción</span>
+      <h4>Identifica cada par de fuerzas</h4>
+<div class="seg" id="arSeg"></div><div class="x-stage"><svg id="arSvg" class="x-svg" viewBox="0 0 340 190" role="img" aria-label="Par de fuerzas de acción y reacción"></svg></div><div class="x-leg"><span><i style="background:var(--accent)"></i>Acción</span><span><i style="background:var(--sci)"></i>Reacción</span></div><div class="verdict ins" id="arOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Ley de Hooke</span>
+      <h4>Cuelga masas de un resorte</h4>
+<div class="seg" id="hkM"></div><div class="range"><label for="hkK">Constante del resorte k: <b id="hkKv">40</b> N/m</label><input type="range" id="hkK" min="10" max="100" step="5" value="40"></div><div class="x-stage" id="hkSvg"></div><div class="verdict ins" id="hkOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Masa y peso</span>
+      <h4>Tu peso en otros astros</h4>
+<div class="range"><label for="plM">Masa: <b id="plMv">60</b> kg</label><input type="range" id="plM" min="1" max="100" step="1" value="60"></div><div class="x-stage" id="plSvg"></div><div class="verdict ins" id="plOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Diagrama de cuerpo libre</span>
+      <h4>Empuja un bloque sobre una superficie</h4>
+      <div class="seg" id="frSt" role="group" aria-label="Estado inicial del bloque">
+        <button class="sbtn" data-s="rest" aria-pressed="true">Parte en reposo</button>
+        <button class="sbtn" data-s="move" aria-pressed="false">Ya se está moviendo</button>
+      </div>
+      <div class="fields">
+        <div class="field"><label for="frM">Masa (kg)</label><input id="frM" type="text" inputmode="decimal" value="5"></div>
+        <div class="field"><label for="frS">μ estático</label><input id="frS" type="text" inputmode="decimal" value="0,5"></div>
+        <div class="field"><label for="frK">μ cinético</label><input id="frK" type="text" inputmode="decimal" value="0,3"></div>
+      </div>
+      <div class="range"><label for="frF">Fuerza aplicada: <b id="frFv">20</b> N</label><input id="frF" type="range" min="0" max="60" step="1" value="20"></div>
+      <svg class="chart" id="frSvg" viewBox="0 0 340 200" role="img" aria-label="Bloque con las fuerzas que actúan sobre él"></svg>
+      <div class="verdict" id="frOut" aria-live="polite"></div>
+    </div></div>
+</section>
+
+<!-- ============ 6. UNIVERSO ============ -->
+<section class="panel" id="universo" role="tabpanel" hidden>
+  <div class="phead">
+    <span class="lab">Tema 6 de 8 · Mecánica</span>
+    <h2>Modelos del sistema solar y del universo</h2>
+    <p>Modelos geocéntricos y heliocéntrico, aportes de Galileo y Kepler, y teorías sobre el origen y la evolución del universo.</p>
+  </div>
+  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
+  <div hidden aria-hidden="true"><div class="tool">
+      <span class="lab">Herramienta · Movimiento retrógrado de Marte</span>
+      <h4>Por qué Marte parece retroceder en el cielo</h4>
+<div id="rtBox" class="x-stage"><svg id="rtSvg" class="x-svg" viewBox="0 0 340 200" role="img" aria-label="Órbitas de la Tierra y Marte y posición aparente de Marte"></svg></div><div class="btnrow"><button class="btn ghost" id="rtPlay">Pausar</button></div><div class="verdict ins" id="rtOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Tercera ley de Kepler</span>
+      <h4>Distancia media al Sol → período</h4>
+      <div class="range"><label for="kpA">Distancia media: <b id="kpAv">1</b> UA</label><input id="kpA" type="range" min="0.3" max="40" step="0.1" value="5.2"></div>
+      <div class="res" id="kpRes"></div>
+      <p class="muted" style="font-size:.84rem">Mercurio 0,39 UA · Tierra 1 · Marte 1,52 · Júpiter 5,2 · Saturno 9,5 · Neptuno 30.</p>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Órbita elíptica</span>
+      <h4>Primera y segunda ley de Kepler en movimiento</h4>
+<div class="range"><label for="koE">Excentricidad: <b id="koEv">40</b></label><input type="range" id="koE" min="0" max="80" step="5" value="40"></div><div id="koBox" class="x-stage"><svg id="koSvg" class="x-svg" viewBox="0 0 340 200" role="img" aria-label="Órbita elíptica con áreas iguales"></svg></div><div class="btnrow"><button class="btn ghost" id="koPlay">Pausar</button></div><div class="verdict ins" id="koOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Universo en expansión</span>
+      <h4>Toca una galaxia para mirar desde ella</h4>
+<div class="range"><label for="huT">Expansión: <b id="huTv">40</b></label><input type="range" id="huT" min="0" max="100" step="5" value="40"></div><div class="x-stage"><svg id="huSvg" class="x-svg" viewBox="0 0 340 200" role="img" aria-label="Galaxias alejándose y gráfico velocidad versus distancia"></svg></div><div class="verdict ins" id="huOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Historia del universo</span>
+      <h4>Recorre los grandes momentos desde el Big Bang</h4>
+<div class="x-stage"><svg id="tlSvg" class="x-svg" viewBox="0 0 340 90" role="img" aria-label="Línea de tiempo del universo"></svg></div><div id="tlStep"></div><div class="verdict ins" id="tlOut" aria-live="polite"></div>
+    </div></div>
+</section>
+
+<!-- ============ 7. TIERRA ============ -->
+<section class="panel" id="tierra" role="tabpanel" hidden>
+  <div class="phead">
+    <span class="lab">Tema 7 de 8 · Energía – Tierra</span>
+    <h2>Geosfera y tectónica de placas</h2>
+    <p>Modelos del interior de la Tierra, deriva continental, tectónica de placas y sus consecuencias: sismos, volcanismo y relieve. Tema clave para Chile.</p>
+  </div>
+  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
+  <div hidden aria-hidden="true"><div class="tool">
+      <span class="lab">Herramienta · Capas de la Tierra</span>
+      <h4>Toca cada capa y compara los dos modelos</h4>
+<div class="seg" id="lySeg"></div><label class="x-chk"><input type="checkbox" id="lyW"><span>Mostrar ondas S y su zona de sombra</span></label><div class="x-stage"><svg id="lySvg" class="x-svg" viewBox="0 0 340 200" role="img" aria-label="Corte de la Tierra"></svg></div><div class="verdict ins" id="lyOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Deriva continental</span>
+      <h4>Retrocede en el tiempo hasta Pangea</h4>
+<div class="range"><label for="drT">Hace: <b id="drTv">200</b> millones de años</label><input type="range" id="drT" min="0" max="200" step="10" value="200"></div><div class="x-stage"><svg id="drSvg" class="x-svg" viewBox="0 0 340 190" role="img" aria-label="Sudamérica y África separándose"></svg></div><div class="verdict ins" id="drOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Tipos de borde</span>
+      <div class="seg" id="bdSeg" role="group" aria-label="Tipo de borde de placa">
+        <button class="sbtn" data-b="sub" aria-pressed="true">Convergente: subducción</button>
+        <button class="sbtn" data-b="col" aria-pressed="false">Convergente: colisión</button>
+        <button class="sbtn" data-b="div" aria-pressed="false">Divergente</button>
+        <button class="sbtn" data-b="tra" aria-pressed="false">Transformante</button>
+      </div>
+      <svg class="chart" id="bdSvg" viewBox="0 0 340 170" role="img" aria-label="Esquema del borde de placa seleccionado"></svg>
+      <div class="verdict" id="bdOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Comparar magnitudes</span>
+      <div class="fields">
+        <div class="field"><label for="sgA">Magnitud del sismo A</label><input id="sgA" type="text" inputmode="decimal" value="8,8"></div>
+        <div class="field"><label for="sgB">Magnitud del sismo B</label><input id="sgB" type="text" inputmode="decimal" value="6,8"></div>
+      </div>
+      <div class="verdict" id="sgOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Magnitud vs. intensidad</span>
+      <h4>Un sismo, distintas intensidades</h4>
+<div class="range"><label for="msM">Magnitud: <b id="msMv">88</b></label><input type="range" id="msM" min="40" max="95" step="1" value="88"></div><div class="range"><label for="msH">Profundidad del hipocentro: <b id="msHv">30</b> km</label><input type="range" id="msH" min="5" max="100" step="5" value="30"></div><div class="x-stage"><svg id="msSvg" class="x-svg" viewBox="0 0 340 190" role="img" aria-label="Corte con hipocentro, epicentro y ciudades"></svg></div><div id="msTab"></div><div class="verdict ins" id="msOut" aria-live="polite"></div>
+    </div></div>
+</section>
+
+<!-- ============ 8. ELECTRICIDAD ============ -->
+<section class="panel" id="elec" role="tabpanel" hidden>
+  <div class="phead">
+    <span class="lab">Tema 8 de 8 · Electricidad</span>
+    <h2>Circuitos y energía eléctrica</h2>
+    <p>Corriente eléctrica, ley de Ohm en serie, paralelo y mixto, potencia, energía, eficiencia y la instalación eléctrica de una casa.</p>
+  </div>
+  <div class="sub" style="border:1px dashed var(--line);border-radius:14px;padding:1.3rem 1.2rem;background:var(--surface);display:grid;gap:.55rem;margin-top:1rem"><span class="lab" style="color:var(--accent)">Vista previa</span><h3>Este tema está completo en el aula del Intensivo Ciencias</h3><p class="muted">Explicaciones, herramientas interactivas, ejemplos resueltos y preguntas tipo PAES. En esta vista previa puedes recorrer los temas Método científico y Cinemática de Física.</p><p><a href="https://tszenit.cl/#intensivo" target="_top" style="display:inline-block;background:var(--accent);color:var(--accent-ink,#fff);font:600 .95rem var(--display);padding:.6rem 1rem;border-radius:10px;text-decoration:none">Ver el Intensivo Ciencias · $19.990</a></p></div>
+  <div hidden aria-hidden="true"><div class="tool">
+      <span class="lab">Herramienta · Corriente eléctrica</span>
+      <h4>Mira cómo se mueven los electrones</h4>
+<div class="seg" id="ecSeg"></div><div class="range"><label for="ecV">Voltaje: <b id="ecVv">6</b> V</label><input type="range" id="ecV" min="1" max="12" step="1" value="6"></div><label class="x-chk"><input type="checkbox" id="ecConv"><span>Mostrar el sentido convencional</span></label><div id="ecBox" class="x-stage"><svg id="ecSvg" class="x-svg" viewBox="0 0 340 170" role="img" aria-label="Electrones moviéndose en un conductor"></svg></div><div class="btnrow"><button class="btn ghost" id="ecPlay">Pausar</button></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Ley de Ohm en el gráfico</span>
+      <h4>Cambia voltaje y resistencia</h4>
+<div class="range"><label for="ohV">Voltaje: <b id="ohVv">12</b> V</label><input type="range" id="ohV" min="0" max="24" step="1" value="12"></div><div class="range"><label for="ohR">Resistencia: <b id="ohRv">6</b> Ω</label><input type="range" id="ohR" min="1" max="20" step="1" value="6"></div><div class="x-stage" id="ohSvg"></div><div class="verdict ins" id="ohOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Calculadora de circuitos</span>
+      <div class="seg" id="ccT" role="group" aria-label="Tipo de circuito">
+        <button class="sbtn" data-t="serie" aria-pressed="false">Serie</button>
+        <button class="sbtn" data-t="par" aria-pressed="false">Paralelo</button>
+        <button class="sbtn" data-t="mix" aria-pressed="true">Mixto: R₁ + (R₂ ∥ R₃)</button>
+      </div>
+      <div class="fields">
+        <div class="field"><label for="ccV">Fuente (V)</label><input id="ccV" type="text" inputmode="decimal" value="12"></div>
+        <div class="field"><label for="ccR1">R₁ (Ω)</label><input id="ccR1" type="text" inputmode="decimal" value="2"></div>
+        <div class="field"><label for="ccR2">R₂ (Ω)</label><input id="ccR2" type="text" inputmode="decimal" value="6"></div>
+        <div class="field"><label for="ccR3">R₃ (Ω)</label><input id="ccR3" type="text" inputmode="decimal" value="3"></div>
+      </div>
+      <svg class="chart" id="ccSvg" viewBox="0 0 340 190" role="img" aria-label="Diagrama del circuito"></svg>
+      <div class="res" id="ccTot"></div>
+      <div class="tbl"><table><thead><tr><th>Resistor</th><th>R (Ω)</th><th>I (A)</th><th>V (V)</th><th>P (W)</th></tr></thead><tbody id="ccRows"></tbody></table></div>
+      <p class="muted" id="ccNote" style="font-size:.86rem" aria-live="polite"></p>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Ampolletas en serie y en paralelo</span>
+      <h4>Quita ampolletas y compara</h4>
+<div class="seg" id="buSeg"></div><div class="x-stage"><svg id="buSvg" class="x-svg" viewBox="0 0 340 200" role="img" aria-label="Circuito con tres ampolletas"></svg></div><div class="verdict ins" id="buOut" aria-live="polite"></div>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Consumo y costo</span>
+      <div class="fields">
+        <div class="field"><label for="enP">Potencia del artefacto (W)</label><input id="enP" type="text" inputmode="decimal" value="60"></div>
+        <div class="field"><label for="enH">Horas de uso al día</label><input id="enH" type="text" inputmode="decimal" value="5"></div>
+        <div class="field"><label for="enD">Días</label><input id="enD" type="text" inputmode="decimal" value="30"></div>
+        <div class="field"><label for="enC">Precio por kWh (CLP, ejemplo)</label><input id="enC" type="text" inputmode="decimal" value="200"></div>
+      </div>
+      <div class="res" id="enRes"></div>
+      <p class="muted" style="font-size:.84rem">El precio es un valor de ejemplo; revisa el de tu boleta. Prueba 60 W (incandescente) y luego 9 W (LED equivalente).</p>
+    </div><div class="tool">
+      <span class="lab">Herramienta · Tablero de la casa</span>
+      <h4>Enciende artefactos y mira si salta el automático</h4>
+<div class="x-chks" id="tbList"></div><div class="x-stage"><svg id="tbSvg" class="x-svg" viewBox="0 0 340 70" role="img" aria-label="Corriente total frente al límite del automático"></svg></div><div class="verdict sat" id="tbOut" aria-live="polite"></div>
+    </div></div>
+</section>
+
+
+
+</main>
+<footer class="wrap"><p>Basado en el temario oficial DEMRE de la PAES de Ciencias, Admisión 2027 (Física y habilidades científicas). Valores de profundidades, índices y precios aproximados, con fines didácticos.</p><p class="tz-lic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.6 6.3 6.8.5-5.2 4.4 1.6 6.6L12 16.8l-5.8 3.5 1.6-6.6-5.2-4.4 6.8-.5z" fill="currentColor"/></svg>Material exclusivo del Intensivo PAES de TS Zenit · Vista previa · Prohibida su copia o distribución.</p></footer>
+
+<script>
+(function(){
+"use strict";
+var LS={get:function(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function num(v){return parseFloat(String(v).replace(/\s/g,'').replace(',','.'))}
+function fx(x,d){if(d==null)d=2;return isFinite(x)?x.toLocaleString('es-CL',{maximumFractionDigits:d}):'—'}
+function sci(x){if(!isFinite(x)||x===0)return fx(x);var e=Math.floor(Math.log10(Math.abs(x)));if(e>=-2&&e<=4)return fx(x,3);var m=x/Math.pow(10,e);var sup=String(e).replace(/-/g,'⁻').replace(/\d/g,function(d){return '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]});return fx(m,2)+' × 10'+sup}
+function arrow(x1,y1,x2,y2,cls,w){var dx=x2-x1,dy=y2-y1,L=Math.sqrt(dx*dx+dy*dy);if(L<1)return '';var ux=dx/L,uy=dy/L,h=8,hx=x2-ux*h,hy=y2-uy*h;return '<line class="ln '+cls+'" x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+hx.toFixed(1)+'" y2="'+hy.toFixed(1)+'"'+(w?' style="stroke-width:'+w+'"':'')+'/><polygon points="'+x2.toFixed(1)+','+y2.toFixed(1)+' '+(hx-uy*4.5).toFixed(1)+','+(hy+ux*4.5).toFixed(1)+' '+(hx+uy*4.5).toFixed(1)+','+(hy-ux*4.5).toFixed(1)+'" class="fill-'+cls+'"/>'}
+function axes(o){var g='';o.xs.forEach(function(t){var x=o.sx(t[0]);g+='<line class="grid" x1="'+x+'" y1="'+o.Y1+'" x2="'+x+'" y2="'+o.Y0+'"/><text class="tick" x="'+x+'" y="'+(o.Y0+13)+'" text-anchor="middle">'+t[1]+'</text>'});
+  o.ys.forEach(function(t){var y=o.sy(t[0]);g+='<line class="grid" x1="'+o.X0+'" y1="'+y+'" x2="'+o.X1+'" y2="'+y+'"/><text class="tick" x="'+(o.X0-5)+'" y="'+(y+3.5)+'" text-anchor="end">'+t[1]+'</text>'});
+  g+='<line class="ax" x1="'+o.X0+'" y1="'+o.Y0+'" x2="'+o.X1+'" y2="'+o.Y0+'"/><line class="ax" x1="'+o.X0+'" y1="'+o.Y1+'" x2="'+o.X0+'" y2="'+o.Y0+'"/>';
+  if(o.xl)g+='<text class="axl" x="'+((o.X0+o.X1)/2)+'" y="'+(o.Y0+27)+'" text-anchor="middle">'+o.xl+'</text>';
+  if(o.yl)g+='<text class="axl" transform="translate(11,'+((o.Y0+o.Y1)/2)+') rotate(-90)" text-anchor="middle">'+o.yl+'</text>';return g}
+function nice(lo,hi){if(hi-lo<1e-9){lo-=1;hi+=1}var span=hi-lo,step=Math.pow(10,Math.floor(Math.log10(span/4)));[1,2,5,10].some(function(m){if(span/(step*m)<=5){step*=m;return true}});return {lo:Math.floor(lo/step)*step,hi:Math.ceil(hi/step)*step,step:step}}
+var st=document.createElement('style');st.textContent='.fill-ln-a{fill:var(--accent)}.fill-ln-s{fill:var(--sci)}.fill-ln-ink{fill:var(--ink)}.fill-ln-c2{fill:var(--c2)}.fill-ln-bad{fill:var(--bad)}.ln-bad{stroke:var(--bad)}.fill-ln-ok{fill:var(--ok)}.ln-ok{stroke:var(--ok)}';document.head.appendChild(st);
+
+/* ---------- Pestañas ---------- */
+var TABS=['metodo','ondas','optica','cinem','dinam','universo','tierra','elec'];
+function showTab(id,scroll){
+  if(TABS.indexOf(id)<0)id='metodo';
+  $$('.tile').forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===id?'true':'false')});
+  TABS.forEach(function(t){document.getElementById(t).hidden=(t!==id)});
+  LS.set('fp-tab',id);
+  if(scroll){var bar=$('.bar');var y=document.getElementById(id).getBoundingClientRect().top+window.scrollY-bar.offsetHeight-12;window.scrollTo({top:Math.max(0,y)})}
+}
+$$('.tile').forEach(function(t){t.addEventListener('click',function(){showTab(t.dataset.tab,true);t.scrollIntoView({block:'nearest',inline:'nearest'})})});
+var startTab=(location.hash||'').replace('#','');if(TABS.indexOf(startTab)<0)startTab=LS.get('fp-tab','metodo');showTab(startTab,false);
+
+/* ---------- Dominado ---------- */
+var dom=LS.get('fp-dom',{});var subs=$$('[data-sub]');
+function refreshDom(){var done=0;
+  TABS.forEach(function(t){var bar=$('.tile[data-tab="'+t+'"] .pg span');if(t==='practica'){bar.style.width=Math.round(correctCount()/QUIZ.length*100)+'%';return}
+    var list=$$('#'+t+' [data-sub]');var d=list.filter(function(s){return dom[s.dataset.sub]}).length;bar.style.width=(list.length?Math.round(d/list.length*100):0)+'%'});
+  subs.forEach(function(s){var b=$('.dom',s);var on=!!dom[s.dataset.sub];if(on)done++;b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'Dominado ✓':'Marcar como dominado'});
+  $('#stDom').textContent=done+'/'+subs.length}
+subs.forEach(function(s){$('.dom',s).addEventListener('click',function(){dom[s.dataset.sub]=!dom[s.dataset.sub];LS.set('fp-dom',dom);refreshDom()})});
+
+/* ---------- Disector ---------- */
+var ROLES=['Pregunta de investigación','Hipótesis','Predicción','Variable independiente','Variable dependiente','Variable controlada','Procedimiento','Resultado','Conclusión','Marco teórico'];
+var CASES=[
+ {t:'Péndulo',x:'Se cuelga la misma masa de hilos de 0,25 m, 0,50 m y 1,00 m. Se suelta desde un ángulo pequeño, se cronometran 10 oscilaciones y se divide por 10. Se obtienen 1,0 s; 1,4 s y 2,0 s.',i:[
+  ['¿Cómo depende el período de un péndulo de su largo?','Pregunta de investigación'],
+  ['Largo del hilo','Variable independiente'],
+  ['Período de oscilación','Variable dependiente'],
+  ['Masa colgada y ángulo inicial','Variable controlada'],
+  ['Cronometrar 10 oscilaciones y dividir por 10','Procedimiento'],
+  ['1,0 s; 1,4 s y 2,0 s','Resultado'],
+  ['El período aumenta con el largo: al cuadruplicar el largo, el período se duplica.','Conclusión']]},
+ {t:'Resorte',x:'Se cuelgan masas de 100, 200 y 300 g de un resorte y se mide su estiramiento: 2, 4 y 6 cm. Al graficar fuerza vs. estiramiento se obtiene una recta que pasa por el origen.',i:[
+  ['Ley de Hooke','Marco teórico'],
+  ['El estiramiento del resorte es proporcional a la fuerza aplicada.','Hipótesis'],
+  ['Con 400 g el resorte se estirará 8 cm.','Predicción'],
+  ['Fuerza aplicada (peso de las masas)','Variable independiente'],
+  ['Estiramiento del resorte','Variable dependiente'],
+  ['El estiramiento es proporcional a la fuerza; k = 50 N/m.','Conclusión']]},
+ {t:'Largo de un alambre',x:'Alambres de nicrom del mismo grosor y distinto largo se conectan, uno a la vez, a una pila de 3 V con un amperímetro en serie. A mayor largo, el amperímetro marca menos corriente.',i:[
+  ['¿Cómo influye el largo de un alambre en su resistencia eléctrica?','Pregunta de investigación'],
+  ['Largo del alambre','Variable independiente'],
+  ['Corriente medida','Variable dependiente'],
+  ['Voltaje de la pila, material y grosor del alambre','Variable controlada'],
+  ['A mayor largo, menor corriente','Resultado'],
+  ['La resistencia aumenta con el largo del alambre.','Conclusión'],
+  ['Ley de Ohm (V = I·R)','Marco teórico']]}
+];
+function buildCases(){var html='';CASES.forEach(function(c,ci){html+='<div class="case"><b>'+c.t+'</b><p>'+c.x+'</p>';c.i.forEach(function(it,ii){var id='ds-'+ci+'-'+ii;html+='<div class="item"><label class="txt" for="'+id+'">'+it[0]+'</label><select id="'+id+'" data-ans="'+it[1]+'"><option value="">Elige…</option>'+ROLES.map(function(r){return '<option>'+r+'</option>'}).join('')+'</select><span class="fb"></span></div>'});html+='</div>'});$('#cases').innerHTML=html}
+buildCases();
+$('#dsCheck').addEventListener('click',function(){var ok=0,tot=0,blank=0;$$('#cases select').forEach(function(s){tot++;var w=s.parentNode;w.classList.remove('ok','bad');var fb=$('.fb',w);if(!s.value){blank++;fb.textContent='';return}if(s.value===s.dataset.ans){ok++;w.classList.add('ok');fb.textContent='Correcto'}else{w.classList.add('bad');fb.textContent='Es: '+s.dataset.ans}});$('#dsOut').textContent=ok+' de '+tot+' correctas'+(blank?' · '+blank+' sin responder':'')+'.'});
+$('#dsReset').addEventListener('click',function(){buildCases();$('#dsOut').textContent=''});
+
+/* ---------- Refracción ---------- */
+var MNAME={'1.00':'aire','1.33':'agua','1.50':'vidrio','2.42':'diamante'},MFILL={'1.00':'--m-1','1.33':'--m-2','1.50':'--m-3','2.42':'--m-4'};
+function refr(){
+  var k1=$('#rfM1').value,k2=$('#rfM2').value,n1=+k1,n2=+k2,a=+$('#rfA').value;$('#rfAv').textContent=a;
+  var cx=170,cy=110,R=95,th=a*Math.PI/180,s2=n1*Math.sin(th)/n2,tir=s2>1;
+  var s='<rect x="0" y="0" width="340" height="110" fill="var('+MFILL[k1]+')"/><rect x="0" y="110" width="340" height="110" fill="var('+MFILL[k2]+')"/>';
+  s+='<line class="ax" x1="0" y1="110" x2="340" y2="110"/><line class="axis" x1="'+cx+'" y1="8" x2="'+cx+'" y2="212"/>';
+  s+='<text class="svs" x="8" y="20">'+MNAME[k1]+' · n = '+fx(n1)+'</text><text class="svs" x="8" y="210">'+MNAME[k2]+' · n = '+fx(n2)+'</text><text class="svs" x="'+(cx+4)+'" y="18">normal</text>';
+  var ix=cx-R*Math.sin(th),iy=cy-R*Math.cos(th);
+  s+=arrow(ix,iy,cx,cy,'ln-a');
+  var rx=cx+R*Math.sin(th),ry=cy-R*Math.cos(th);
+  s+=arrow(cx,cy,rx,ry,'ln-a',tir?2.5:1.2);
+  var out;
+  if(!tir){var t2=Math.asin(s2),tx=cx+R*Math.sin(t2),ty=cy+R*Math.cos(t2);s+=arrow(cx,cy,tx,ty,'ln-s');
+    var a2=t2*180/Math.PI;
+    out='<span>Ángulo de refracción: <b>'+fx(a2,1)+'°</b>. '+(n2>n1?'Pasa a un medio de mayor n (más lento): el rayo se <b>acerca</b> a la normal.':n2<n1?'Pasa a un medio de menor n (más rápido): el rayo se <b>aleja</b> de la normal.':'Mismo medio: no se desvía.')+'</span>';}
+  else out='<span><b>Reflexión total interna:</b> toda la luz se refleja. Así viaja la luz dentro de la fibra óptica.</span>';
+  var crit=n1>n2?'<span>Ángulo crítico: <b>'+fx(Math.asin(n2/n1)*180/Math.PI,1)+'°</b>. Sobre él hay reflexión total.</span>':'<span class="muted">De menor a mayor n no existe ángulo crítico.</span>';
+  out+='<span>Rapidez: '+sci(3e8/n1)+' → '+sci(3e8/n2)+' m/s. Si λ = 600 nm en el primer medio, en el segundo es '+fx(600*n1/n2,0)+' nm. La frecuencia no cambia.</span>'+crit;
+  $('#rfSvg').innerHTML=s;$('#rfOut').innerHTML=out;
+}
+['#rfM1','#rfM2','#rfA'].forEach(function(s){$(s).addEventListener('input',refr)});refr();
+
+/* ---------- Espectro ---------- */
+var REG=[
+ [4,8.48,'Radio','Radio AM y FM, televisión, radiotelescopios.','--sp-radio'],
+ [8.48,11.48,'Microondas','Hornos, celulares, wifi, radar, GPS.','--sp-micro'],
+ [11.48,14.6,'Infrarrojo','Controles remotos, cámaras térmicas, el calor que sentimos del Sol.','--sp-ir'],
+ [14.6,14.88,'Luz visible','Lo que percibe el ojo. Láser, fotografía, fibra óptica.',''],
+ [14.88,16.48,'Ultravioleta','Esterilización, bronceado y quemaduras solares, detección de billetes falsos. La capa de ozono filtra gran parte.','--sp-uv'],
+ [16.48,19.48,'Rayos X','Radiografías, control de equipaje. Ionizante.','--sp-x'],
+ [19.48,21,'Rayos gamma','Radioterapia contra el cáncer, esterilización de alimentos; emitidos por núcleos radiactivos. Muy ionizante.','--sp-g']];
+function fmtLen(m){var u=[[1e3,'km'],[1,'m'],[1e-2,'cm'],[1e-3,'mm'],[1e-6,'µm'],[1e-9,'nm'],[1e-12,'pm']];for(var i=0;i<u.length;i++){if(m>=u[i][0]*0.999)return fx(m/u[i][0],m/u[i][0]<10?2:0)+' '+u[i][1]}return sci(m)+' m'}
+function visColor(nm){return nm>620?'rojo':nm>590?'naranjo':nm>570?'amarillo':nm>495?'verde':nm>450?'azul':'violeta'}
+function spec(){
+  var lf=+$('#spF').value,f=Math.pow(10,lf),lam=3e8/f;
+  $('#spFv').textContent=sci(f)+' Hz';
+  var X0=6,X1=334,sx=function(v){return X0+(v-4)/17*(X1-X0)};
+  var s='';REG.forEach(function(r){if(r[4])s+='<rect x="'+sx(r[0]).toFixed(1)+'" y="10" width="'+(sx(r[1])-sx(r[0])).toFixed(1)+'" height="26" fill="var('+r[4]+')"/>'});
+  var vis=[['#E5484D',14.6],['#F59E0B',14.68],['#EAD22A',14.71],['#3FAE5A',14.74],['#2F7FD8',14.8],['#7A45C9',14.84]];
+  vis.forEach(function(v,i){var nx=i<vis.length-1?vis[i+1][1]:14.88;s+='<rect x="'+sx(v[1]).toFixed(1)+'" y="10" width="'+(sx(nx)-sx(v[1])+.3).toFixed(1)+'" height="26" fill="'+v[0]+'"/>'});
+  [4,8,12,16,20].forEach(function(e){s+='<text class="tick" x="'+sx(e)+'" y="50" text-anchor="middle">10'+String(e).replace(/\d/g,function(d){return '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]})+' Hz</text>'});
+  s+='<text class="svs" x="'+X0+'" y="68">← mayor λ, menor energía</text><text class="svs" x="'+X1+'" y="68" text-anchor="end">mayor f, mayor energía →</text>';
+  var mx=sx(lf);s+='<line x1="'+mx+'" y1="4" x2="'+mx+'" y2="40" stroke="var(--ink)" stroke-width="2.5"/><polygon points="'+(mx-5)+',2 '+(mx+5)+',2 '+mx+',8" fill="var(--ink)"/>';
+  $('#spSvg').innerHTML=s;
+  var reg=REG.filter(function(r){return lf>=r[0]&&lf<r[1]})[0]||REG[REG.length-1];
+  var name=reg[2];if(name==='Luz visible')name+=' ('+visColor(lam*1e9)+')';
+  $('#spRes').innerHTML='<div><span>Región</span><b>'+name+'</b></div><div><span>Longitud de onda λ = c/f</span><b>'+fmtLen(lam)+'</b></div><div><span>Período T = 1/f</span><b>'+sci(1/f)+' s</b></div>';
+  $('#spOut').innerHTML='<span>'+reg[3]+'</span>';
+}
+$('#spF').addEventListener('input',spec);spec();
+
+/* ---------- Banco óptico ---------- */
+var op={e:'concavo'};
+function optics(){
+  var e=op.e,d=+$('#opD').value;$('#opDv').textContent=fx(d,2);
+  var mirror=(e==='concavo'||e==='convexo'||e==='plano'),fs=(e==='concavo'||e==='conv')?1:-1;
+  var xe=mirror?250:170,s=mirror?40:34,ay=105,hp=30;
+  var di,m,inf=false;
+  if(e==='plano'){di=-d;m=1}else if(Math.abs(d-fs)<0.04){inf=true}else{di=fs*d/(d-fs);m=-di/d}
+  var xo=xe-d*s,ot=[xo,ay-hp];
+  var g='<defs><clipPath id="opClip"><rect x="0" y="6" width="340" height="198"/></clipPath></defs><g clip-path="url(#opClip)">';
+  g+='<line class="ax" x1="0" y1="'+ay+'" x2="340" y2="'+ay+'"/>';
+  if(mirror){if(e==='plano')g+='<line x1="'+xe+'" y1="30" x2="'+xe+'" y2="180" stroke="var(--ink)" stroke-width="3"/>';
+    else{var b=e==='concavo'?7:-7;g+='<path d="M'+(xe-b)+' 30 Q '+(xe+b)+' '+ay+' '+(xe-b)+' 180" fill="none" stroke="var(--ink)" stroke-width="3"/>'}
+    for(var k=34;k<180;k+=10)g+='<line x1="'+(xe+(e==='concavo'?5:e==='plano'?2:9))+'" y1="'+k+'" x2="'+(xe+(e==='concavo'?11:e==='plano'?8:15))+'" y2="'+(k+6)+'" stroke="var(--muted)" stroke-width="1"/>';}
+  else{g+='<line x1="'+xe+'" y1="32" x2="'+xe+'" y2="178" stroke="var(--ink)" stroke-width="2.5"/>';
+    if(e==='conv')g+='<polyline points="'+(xe-7)+',40 '+xe+',30 '+(xe+7)+',40" class="ln ln-ink"/><polyline points="'+(xe-7)+',170 '+xe+',180 '+(xe+7)+',170" class="ln ln-ink"/>';
+    else g+='<polyline points="'+(xe-7)+',28 '+xe+',36 '+(xe+7)+',28" class="ln ln-ink"/><polyline points="'+(xe-7)+',182 '+xe+',174 '+(xe+7)+',182" class="ln ln-ink"/>';}
+  function mark(x,l){return '<circle cx="'+x+'" cy="'+ay+'" r="3" fill="var(--ink)"/><text class="svl" x="'+x+'" y="'+(ay+16)+'" text-anchor="middle">'+l+'</text>'}
+  if(e!=='plano'){if(mirror){var fx1=xe-fs*s;g+=mark(fx1,'F')+mark(xe-fs*2*s,'C')}else{g+=mark(xe-s,'F')+mark(xe+s,'F′')+mark(xe-2*s,'2F')+mark(xe+2*s,'2F′')}}
+  g+=arrowObj(xo,ay,ay-hp,'ln-a',false);
+  var P=[[xe,ay-hp],[xe,ay]];
+  P.forEach(function(p){g+='<line class="ln ln-a thin" x1="'+ot[0]+'" y1="'+ot[1]+'" x2="'+p[0]+'" y2="'+p[1]+'"/>'});
+  var out;
+  if(inf){var Fp=mirror?[xe-s,ay]:[xe+s,ay],dx=Fp[0]-P[0][0],dy=Fp[1]-P[0][1];
+    P.forEach(function(p){g+='<line class="ln ln-a thin" x1="'+p[0]+'" y1="'+p[1]+'" x2="'+(p[0]+dx*20)+'" y2="'+(p[1]+dy*20)+'"/>'});
+    out='<span class="big">No se forma imagen</span><span>El objeto está en el foco: los rayos salen paralelos (imagen en el infinito). Así funcionan los focos de un auto: la ampolleta va en el foco del espejo.</span>';}
+  else{
+    var xi=mirror?xe-di*s:xe+di*s,it=[xi,ay-m*hp],real=di>0;
+    P.forEach(function(p){var dx,dy;if(real){dx=it[0]-p[0];dy=it[1]-p[1]}else{dx=p[0]-it[0];dy=p[1]-it[1]}var L=Math.sqrt(dx*dx+dy*dy)||1;
+      g+='<line class="ln ln-a thin" x1="'+p[0]+'" y1="'+p[1]+'" x2="'+(p[0]+dx/L*500).toFixed(1)+'" y2="'+(p[1]+dy/L*500).toFixed(1)+'"/>';
+      if(!real)g+='<line class="ln ln-a thin dash" x1="'+p[0]+'" y1="'+p[1]+'" x2="'+it[0].toFixed(1)+'" y2="'+it[1].toFixed(1)+'" style="opacity:.7"/>'});
+    g+=arrowObj(xi,ay,it[1],'ln-s',!real);
+    var am=Math.abs(m),size=am>1.05?'mayor':am<0.95?'menor':'de igual tamaño',ori=m<0?'invertida':'derecha';
+    var use='';
+    if(e==='plano')use='Igual distancia detrás del espejo; invierte izquierda y derecha.';
+    else if(e==='convexo')use='Siempre así: por eso se usa en retrovisores (más campo visual).';
+    else if(e==='div')use='Siempre así: lentes para la miopía.';
+    else if(!real)use=e==='conv'?'Objeto dentro de la distancia focal: funciona como lupa.':'Objeto entre F y el espejo: espejo de maquillaje.';
+    else if(d>2.04)use=e==='conv'?'Objeto más allá de 2F: así forman imagen el ojo y la cámara.':'Objeto más allá de C: telescopio reflector.';
+    else if(d>=1.96)use='Objeto en '+(mirror?'C':'2F')+': imagen a la misma distancia y del mismo tamaño.';
+    else use='Objeto entre '+(mirror?'C':'2F')+' y F: así funciona un proyector.';
+    out='<span class="big">'+(real?'Real':'Virtual')+', '+ori+', '+size+'</span><span>Distancia de la imagen: '+fx(Math.abs(di),2)+' f '+(mirror?(real?'delante del espejo':'detrás del espejo'):(real?'al otro lado de la lente':'del mismo lado que el objeto'))+' · aumento m = '+fx(m,2)+'.</span><span>'+use+'</span>'+(e==='plano'?'':'<span class="muted" style="font-size:.84rem">Ecuación: 1/f = 1/d<sub>o</sub> + 1/d<sub>i</sub>. La línea punteada es la prolongación de los rayos (imagen virtual).</span>');
+  }
+  g+='</g><text class="svs" x="8" y="198">objeto</text><text class="svs" x="332" y="198" text-anchor="end">imagen</text>';
+  $('#opSvg').innerHTML=g;$('#opOut').innerHTML=out;
+}
+function arrowObj(x,y0,y1,cls,dashed){var dir=y1<y0?1:-1;return '<line class="ln '+cls+(dashed?' dash':'')+'" x1="'+x.toFixed(1)+'" y1="'+y0+'" x2="'+x.toFixed(1)+'" y2="'+(y1+dir*6).toFixed(1)+'" style="stroke-width:3"/><polygon class="fill-'+cls+'" points="'+x.toFixed(1)+','+y1.toFixed(1)+' '+(x-5).toFixed(1)+','+(y1+dir*8).toFixed(1)+' '+(x+5).toFixed(1)+','+(y1+dir*8).toFixed(1)+'"/>'}
+$$('#opEl .sbtn').forEach(function(b){b.addEventListener('click',function(){op.e=b.dataset.e;$$('#opEl .sbtn').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});optics()})});
+$('#opD').addEventListener('input',optics);optics();
+
+/* ---------- Cinemática ---------- */
+function kin(){
+  var x0=num($('#kmX').value),v0=num($('#kmV').value),a=num($('#kmA').value),t=+$('#kmT').value;$('#kmTv').textContent=fx(t,1);
+  if(![x0,v0,a].every(isFinite)){$('#kmOut').innerHTML='<span class="err">Ingresa números válidos.</span>';return}
+  var X=function(tt){return x0+v0*tt+.5*a*tt*tt},V=function(tt){return v0+a*tt};
+  var xs=[],vs=[];for(var k=0;k<=100;k++){var tt=k/10;xs.push(X(tt));vs.push(V(tt))}
+  function chart(id,arr,val,lab,shade){
+    var r=nice(Math.min(0,Math.min.apply(null,arr)),Math.max(0,Math.max.apply(null,arr)));
+    var X0=46,X1=330,Y0=128,Y1=10,sx=function(q){return X0+q/10*(X1-X0)},sy=function(q){return Y0-(q-r.lo)/(r.hi-r.lo)*(Y0-Y1)};
+    var ys=[];for(var q=r.lo;q<=r.hi+1e-9;q+=r.step)ys.push([q,fx(q,1)]);
+    var s='';
+    if(shade){var pts=[sx(0)+','+sy(0)];for(var k=0;k<=Math.round(t*10);k++)pts.push(sx(k/10).toFixed(1)+','+sy(arr[k]).toFixed(1));pts.push(sx(t).toFixed(1)+','+sy(0));s+='<polygon class="area" points="'+pts.join(' ')+'"/>'}
+    s+=axes({X0:X0,X1:X1,Y0:Y0,Y1:Y1,sx:sx,sy:sy,xs:[[0,'0'],[2,'2'],[4,'4'],[6,'6'],[8,'8'],[10,'10 s']],ys:ys,yl:lab});
+    if(r.lo<0)s+='<line class="ax" x1="'+X0+'" y1="'+sy(0)+'" x2="'+X1+'" y2="'+sy(0)+'"/>';
+    s+='<polyline class="ln '+(shade?'ln-s':'ln-a')+'" points="'+arr.map(function(q,k){return sx(k/10).toFixed(1)+','+sy(q).toFixed(1)}).join(' ')+'"/>';
+    s+='<line class="cur" x1="'+sx(t)+'" y1="'+Y1+'" x2="'+sx(t)+'" y2="'+Y0+'"/><circle class="pt" cx="'+sx(t)+'" cy="'+sy(val)+'" r="5"/>';
+    $(id).innerHTML=s;
+  }
+  chart('#kmX1',xs,X(t),'x (m)',false);chart('#kmV1',vs,V(t),'v (m/s)',true);
+  var dx=X(t)-x0;
+  $('#kmRes').innerHTML='<div><span>Posición x(t)</span><b>'+fx(X(t),2)+' m</b></div><div><span>Velocidad v(t)</span><b>'+fx(V(t),2)+' m/s</b></div><div><span>Desplazamiento (área sombreada)</span><b>'+fx(dx,2)+' m</b></div>';
+  var tipo;if(a===0)tipo=v0===0?'<b>Reposo</b>: v = 0 y a = 0.':'<b>MRU</b>: x–t es una recta de pendiente '+fx(v0)+' m/s; v–t es horizontal.';
+  else{var vt=V(t);tipo='<b>MRUA</b>: x–t es una parábola; v–t es una recta de pendiente a = '+fx(a)+' m/s². '+(vt*a>0?'En este instante es <b>acelerado</b> (v y a con el mismo signo).':vt===0?'En este instante está detenido y cambia de sentido.':'En este instante es <b>retardado</b>: frena (v y a con signo opuesto).')}
+  $('#kmOut').innerHTML='<span>'+tipo+'</span><span class="muted" style="font-size:.84rem">x(t) = '+fx(x0)+' + '+fx(v0)+'·t + ½·'+fx(a)+'·t²</span>';
+}
+['#kmX','#kmV','#kmA','#kmT'].forEach(function(s){$(s).addEventListener('input',kin)});kin();
+
+/* ---------- Roce ---------- */
+var fr={st:'rest'};
+function fric(){
+  var m=num($('#frM').value),us=num($('#frS').value),uk=num($('#frK').value),F=+$('#frF').value;$('#frFv').textContent=F;
+  if(!(m>0&&us>=0&&uk>=0)){$('#frOut').innerHTML='<span class="err">Revisa masa y coeficientes.</span>';return}
+  var P=m*10,N=P,fmax=us*N,fk=uk*N,f,a,state;
+  if(fr.st==='rest'){if(F<=fmax){f=F;a=0;state='rest'}else{f=fk;a=(F-fk)/m;state='slide'}}
+  else{f=fk;a=(F-fk)/m;state='move'}
+  var maxF=Math.max(P,N,F,f,1),L=function(v){return v/maxF*62};
+  var bx=120,by=86,bw=100,bh=46,cx=bx+bw/2,cy=by+bh/2;
+  var s='<line class="ax" x1="10" y1="'+(by+bh)+'" x2="330" y2="'+(by+bh)+'"/>';
+  for(var k=14;k<330;k+=12)s+='<line x1="'+k+'" y1="'+(by+bh)+'" x2="'+(k-7)+'" y2="'+(by+bh+7)+'" stroke="var(--muted)" stroke-width="1"/>';
+  s+='<rect x="'+bx+'" y="'+by+'" width="'+bw+'" height="'+bh+'" rx="3" fill="var(--surface-2)" stroke="var(--ink)" stroke-width="1.5"/><text class="svl" x="'+cx+'" y="'+(cy+4)+'" text-anchor="middle">'+fx(m)+' kg</text>';
+  s+=arrow(cx,cy,cx,cy+L(P)+bh/2,'ln-ink')+'<text class="svl" x="'+(cx+6)+'" y="'+(cy+L(P)+bh/2-2)+'">P = '+fx(P)+' N</text>';
+  s+=arrow(cx,by,cx,by-L(N),'ln-s')+'<text class="svl" x="'+(cx+6)+'" y="'+(by-L(N)+10)+'">N = '+fx(N)+' N</text>';
+  if(F>0)s+=arrow(bx+bw,cy,bx+bw+L(F),cy,'ln-a')+'<text class="svl" x="'+(bx+bw+4)+'" y="'+(cy-8)+'">F = '+fx(F)+' N</text>';
+  if(f>0)s+=arrow(bx,cy+12,bx-L(f),cy+12,'ln-bad')+'<text class="svl" x="'+(bx-4)+'" y="'+(cy+4)+'" text-anchor="end">f = '+fx(f,1)+' N</text>';
+  $('#frSvg').innerHTML=s;
+  var msg;
+  if(state==='rest')msg='<b>No se mueve.</b> El roce estático iguala a la fuerza aplicada: f = '+fx(f,1)+' N (puede llegar hasta μ<sub>s</sub>·N = '+fx(fmax,1)+' N). Fuerza neta 0.';
+  else if(state==='slide')msg='<b>Desliza.</b> F supera el roce estático máximo ('+fx(fmax,1)+' N). Ahora actúa el roce cinético μ<sub>k</sub>·N = '+fx(fk,1)+' N. a = (F − f)/m = <b>'+fx(a,2)+' m/s²</b>.';
+  else msg=Math.abs(a)<1e-9?'<b>Velocidad constante.</b> F iguala al roce cinético: fuerza neta 0 (1ª ley de Newton).':a>0?'<b>Acelera</b> a '+fx(a,2)+' m/s²: F > roce cinético ('+fx(fk,1)+' N).':'<b>Frena</b> (a = '+fx(a,2)+' m/s²): el roce cinético ('+fx(fk,1)+' N) supera a F.';
+  $('#frOut').innerHTML='<span>'+msg+'</span><span class="muted" style="font-size:.84rem">P = m·g = '+fx(P)+' N. En superficie horizontal, N = P.</span>';
+}
+$$('#frSt .sbtn').forEach(function(b){b.addEventListener('click',function(){fr.st=b.dataset.s;$$('#frSt .sbtn').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});fric()})});
+['#frM','#frS','#frK','#frF'].forEach(function(s){$(s).addEventListener('input',fric)});fric();
+
+/* ---------- Kepler ---------- */
+function kep(){var a=+$('#kpA').value;$('#kpAv').textContent=fx(a,1);var T=Math.pow(a,1.5);
+  $('#kpRes').innerHTML='<div><span>Período T = a^1,5</span><b>'+fx(T,2)+' años</b></div><div><span>T² (años²)</span><b>'+fx(T*T,1)+'</b></div><div><span>a³ (UA³)</span><b>'+fx(a*a*a,1)+'</b></div>'}
+$('#kpA').addEventListener('input',kep);kep();
+
+/* ---------- Bordes de placa ---------- */
+var BD={
+ sub:['Convergente con subducción','La placa oceánica (más densa) se hunde bajo la continental. Se forma una fosa oceánica, una cordillera con volcanes y se producen sismos muy grandes. <b>Ejemplo: la placa de Nazca se subduce bajo la Sudamericana → cordillera de los Andes, volcanes y terremotos de Chile.</b>'],
+ col:['Convergente de colisión','Chocan dos placas continentales de densidad similar: ninguna se hunde fácilmente y la corteza se pliega y eleva. Ejemplo: India contra Asia → Himalaya.'],
+ div:['Divergente','Las placas se separan; el magma sube y forma nueva corteza oceánica en las dorsales. Sismos menores y volcanismo. Ejemplo: dorsal mesoatlántica, Islandia.'],
+ tra:['Transformante','Las placas se deslizan lateralmente una junto a la otra; no se crea ni se destruye corteza. Producen sismos. Ejemplo: falla de San Andrés (California). (Vista desde arriba.)']};
+var bd='sub';
+function border(){
+  var s='',W=340;
+  if(bd==='sub'){
+    s+='<rect x="0" y="120" width="'+W+'" height="50" fill="var(--t-ast)"/><text class="svs" x="8" y="162">astenosfera</text>';
+    s+='<polygon points="0,62 160,62 182,64 300,140 288,150 172,82 0,82" fill="var(--t-oce)"/>';
+    s+='<polygon points="0,44 160,44 160,62 0,62" fill="var(--t-sea)"/>';
+    s+='<polygon points="178,62 200,40 240,30 262,12 278,32 340,40 340,118 270,118 182,66" fill="var(--t-con)"/>';
+    s+='<path d="M262 12 L268 2" stroke="var(--t-mag)" stroke-width="3"/><path d="M270 118 C266 90 266 50 264 16" stroke="var(--t-mag)" stroke-width="2.5" fill="none" stroke-dasharray="4 3"/>';
+    s+=arrow(60,72,120,72,'ln-ink')+'<text class="svs" x="8" y="38">océano</text><text class="svs" x="20" y="100">placa oceánica (Nazca)</text><text class="svs" x="290" y="60" text-anchor="end">continente</text><text class="svs" x="166" y="56" text-anchor="middle">fosa</text><text class="svs" x="250" y="10" text-anchor="end">volcán</text>';
+  }else if(bd==='col'){
+    s+='<rect x="0" y="120" width="'+W+'" height="50" fill="var(--t-ast)"/><text class="svs" x="8" y="162">astenosfera</text>';
+    s+='<polygon points="0,70 130,70 150,40 170,18 190,36 210,70 340,70 340,118 0,118" fill="var(--t-con)"/>';
+    s+='<path d="M140 70 Q170 40 200 70 M150 90 Q170 66 190 90" stroke="var(--ink)" stroke-opacity=".4" fill="none"/>';
+    s+=arrow(30,95,100,95,'ln-ink')+arrow(310,95,240,95,'ln-ink')+'<text class="svs" x="170" y="12" text-anchor="middle">cordillera (Himalaya)</text>';
+  }else if(bd==='div'){
+    s+='<rect x="0" y="120" width="'+W+'" height="50" fill="var(--t-ast)"/><text class="svs" x="8" y="162">astenosfera</text>';
+    s+='<rect x="0" y="30" width="'+W+'" height="34" fill="var(--t-sea)"/>';
+    s+='<polygon points="0,64 150,64 162,52 162,110 0,110" fill="var(--t-oce)"/><polygon points="178,52 190,64 340,64 340,110 178,110" fill="var(--t-oce)"/>';
+    s+='<path d="M170 150 L170 56" stroke="var(--t-mag)" stroke-width="7"/>';
+    s+=arrow(130,88,60,88,'ln-ink')+arrow(210,88,280,88,'ln-ink')+'<text class="svs" x="170" y="24" text-anchor="middle">dorsal: magma crea corteza nueva</text>';
+  }else{
+    s+='<rect x="20" y="10" width="148" height="150" fill="var(--t-con)"/><rect x="172" y="10" width="148" height="150" fill="var(--t-oce)"/>';
+    s+='<line x1="170" y1="6" x2="170" y2="164" stroke="var(--bad)" stroke-width="2" stroke-dasharray="6 4"/>';
+    s+=arrow(94,140,94,40,'ln-ink')+arrow(246,40,246,140,'ln-ink')+'<text class="svs" x="178" y="168">falla</text>';
+  }
+  $('#bdSvg').innerHTML=s;$('#bdOut').innerHTML='<b>'+BD[bd][0]+'.</b><span>'+BD[bd][1]+'</span>';
+  $$('#bdSeg .sbtn').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.b===bd?'true':'false')});
+}
+$$('#bdSeg .sbtn').forEach(function(b){b.addEventListener('click',function(){bd=b.dataset.b;border()})});border();
+
+/* ---------- Magnitudes ---------- */
+function mag(){var A=num($('#sgA').value),B=num($('#sgB').value),o=$('#sgOut');
+  if(!isFinite(A)||!isFinite(B)){o.innerHTML='<span class="err">Ingresa dos magnitudes.</span>';return}
+  var d=A-B,big=d>=0?'A':'B',ad=Math.abs(d);
+  o.innerHTML=ad<1e-9?'<span>Misma magnitud: liberan la misma energía.</span>':'<span>El sismo <b>'+big+'</b> tiene <b>'+fx(ad,1)+'</b> grados más.</span><span>Amplitud de las ondas: ≈ <b>'+sci(Math.pow(10,ad))+'</b> veces mayor · Energía liberada: ≈ <b>'+sci(Math.pow(10,1.5*ad))+'</b> veces mayor.</span><span class="muted" style="font-size:.84rem">Escala logarítmica: un sismo de magnitud 8 no es «el doble» que uno de 4.</span>'}
+['#sgA','#sgB'].forEach(function(s){$(s).addEventListener('input',mag)});mag();
+
+/* ---------- Circuitos ---------- */
+var cc={t:'mix'};
+function zig(x1,x2,y){var n=6,w=(x2-x1)/n,p=[x1+','+y];for(var i=0;i<n;i++)p.push((x1+w*(i+.5)).toFixed(1)+','+(y+(i%2?6:-6)));p.push(x2+','+y);return '<polyline class="ln ln-a" points="'+p.join(' ')+'" style="stroke-width:2"/>'}
+function zigV(x,y1,y2){var n=6,h=(y2-y1)/n,p=[x+','+y1];for(var i=0;i<n;i++)p.push((x+(i%2?6:-6))+','+(y1+h*(i+.5)).toFixed(1));p.push(x+','+y2);return '<polyline class="ln ln-a" points="'+p.join(' ')+'" style="stroke-width:2"/>'}
+function wire(pts){return '<polyline class="ln ln-ink" points="'+pts.map(function(p){return p.join(',')}).join(' ')+'" style="stroke-width:1.8"/>'}
+function circuits(){
+  var V=num($('#ccV').value),R=[num($('#ccR1').value),num($('#ccR2').value),num($('#ccR3').value)];
+  var ok=isFinite(V)&&R.every(function(r){return r>0});
+  var L=30,Rt=310,T=40,B=150,s='';
+  s+=wire([[L,T],[L,88]])+wire([[L,100],[L,B]])+'<line x1="'+(L-14)+'" y1="88" x2="'+(L+14)+'" y2="88" stroke="var(--ink)" stroke-width="2.5"/><line x1="'+(L-7)+'" y1="100" x2="'+(L+7)+'" y2="100" stroke="var(--ink)" stroke-width="4"/><text class="svl" x="'+(L+14)+'" y="74">'+fx(V)+' V</text><text class="svs" x="'+(L-16)+'" y="86">+</text>';
+  function lab(x,y,i,anchor){return '<text class="svl" x="'+x+'" y="'+y+'" text-anchor="'+(anchor||'middle')+'">R'+'₁₂₃'[i]+' = '+fx(R[i])+' Ω</text>'}
+  if(cc.t==='serie'){s+=wire([[L,T],[60,T]])+zig(60,110,T)+wire([[110,T],[140,T]])+zig(140,190,T)+wire([[190,T],[220,T]])+zig(220,270,T)+wire([[270,T],[Rt,T],[Rt,B],[L,B]])+lab(85,T-14,0)+lab(165,T-14,1)+lab(245,T-14,2)}
+  else if(cc.t==='par'){s+=wire([[L,T],[290,T]])+wire([[L,B],[290,B]]);[130,210,290].forEach(function(x,i){s+=wire([[x,T],[x,70]])+zigV(x,70,120)+wire([[x,120],[x,B]])+lab(x-10,98,i,'end')})}
+  else{s+=wire([[L,T],[60,T]])+zig(60,120,T)+wire([[120,T],[290,T]])+lab(90,T-14,0)+wire([[L,B],[290,B]]);[200,290].forEach(function(x,i){s+=wire([[x,T],[x,70]])+zigV(x,70,120)+wire([[x,120],[x,B]])+lab(x-10,98,i+1,'end')})}
+  $('#ccSvg').innerHTML=s;
+  if(!ok){$('#ccTot').innerHTML='';$('#ccRows').innerHTML='';$('#ccNote').textContent='Ingresa un voltaje y resistencias mayores que 0.';return}
+  var Req,I,rows=[];
+  if(cc.t==='serie'){Req=R[0]+R[1]+R[2];I=V/Req;rows=R.map(function(r){return [r,I]});$('#ccNote').textContent='Serie: R = R₁ + R₂ + R₃ = '+fx(Req)+' Ω. La misma corriente pasa por todas; el voltaje se reparte.'}
+  else if(cc.t==='par'){Req=1/(1/R[0]+1/R[1]+1/R[2]);I=V/Req;rows=R.map(function(r){return [r,V/r]});$('#ccNote').textContent='Paralelo: 1/R = 1/R₁ + 1/R₂ + 1/R₃ → R = '+fx(Req)+' Ω (menor que la menor). Todas tienen '+fx(V)+' V; la corriente se reparte.'}
+  else{var Rp=R[1]*R[2]/(R[1]+R[2]);Req=R[0]+Rp;I=V/Req;var Vp=I*Rp;rows=[[R[0],I],[R[1],Vp/R[1]],[R[2],Vp/R[2]]];$('#ccNote').textContent='Primero el paralelo: R₂∥R₃ = '+fx(Rp)+' Ω. Luego la serie con R₁: R = '+fx(R[0])+' + '+fx(Rp)+' = '+fx(Req)+' Ω. Toda la corriente pasa por R₁ y luego se divide entre R₂ y R₃.'}
+  $('#ccTot').innerHTML='<div><span>R equivalente</span><b>'+fx(Req)+' Ω</b></div><div><span>Corriente total</span><b>'+fx(I)+' A</b></div><div><span>Potencia total</span><b>'+fx(V*I)+' W</b></div>';
+  $('#ccRows').innerHTML=rows.map(function(r,i){var v=r[1]*r[0];return '<tr><td>R'+'₁₂₃'[i]+'</td><td class="n">'+fx(r[0])+'</td><td class="n">'+fx(r[1])+'</td><td class="n">'+fx(v)+'</td><td class="n">'+fx(v*r[1])+'</td></tr>'}).join('');
+}
+$$('#ccT .sbtn').forEach(function(b){b.addEventListener('click',function(){cc.t=b.dataset.t;$$('#ccT .sbtn').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});circuits()})});
+['#ccV','#ccR1','#ccR2','#ccR3'].forEach(function(s){$(s).addEventListener('input',circuits)});circuits();
+
+/* ---------- Consumo ---------- */
+function energy(){var P=num($('#enP').value),h=num($('#enH').value),d=num($('#enD').value),c=num($('#enC').value),o=$('#enRes');
+  if(!(P>=0&&h>=0&&d>=0)){o.innerHTML='<div><span>Error</span><b>Revisa los datos</b></div>';return}
+  var kWh=P/1000*h*d,J=P*h*3600*d;
+  o.innerHTML='<div><span>Energía</span><b>'+fx(kWh,2)+' kWh</b></div><div><span>En joules</span><b>'+sci(J)+' J</b></div><div><span>Costo aprox.</span><b>$'+fx(kWh*(isFinite(c)?c:0),0)+'</b></div><div><span>Corriente a 220 V</span><b>'+fx(P/220,3)+' A</b></div>'}
+['#enP','#enH','#enD','#enC'].forEach(function(s){$(s).addEventListener('input',energy)});energy();
+
+refreshDom();
+})();
+</script>
+<script>
+/* Herramientas interactivas agregadas */
+(function(){
+"use strict";
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function el(id){return document.getElementById(id)}
+var RM=false;try{RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
+function nf(x,d){return isFinite(x)?x.toLocaleString('es-CL',{maximumFractionDigits:d==null?2:d}):'—'}
+function num(v){return parseFloat(String(v).replace(/\s/g,'').replace(',','.'))}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function rng(seed){var s=seed>>>0||1;return function(){s=(s*1664525+1013904223)>>>0;return s/4294967296}}
+function segs(id,items,cur,cb){var root=el(id);function draw(){root.innerHTML=items.map(function(it){return '<button class="sbtn" data-k="'+it[0]+'" aria-pressed="'+(String(it[0])===String(cur))+'">'+it[1]+'</button>'}).join('')}draw();root.addEventListener('click',function(e){var b=e.target.closest('.sbtn');if(!b)return;cur=b.dataset.k;draw();cb(cur)});return {get:function(){return cur}}}
+function stepper(id,n,cb){var root=el(id),i=0;root.className='x-step';root.innerHTML='<button class="btn ghost" data-a="-1">Anterior</button><span class="x-dots"></span><button class="btn" data-a="1">Siguiente</button>';function draw(){var d='';for(var k=0;k<n;k++)d+='<button class="x-dot'+(k===i?' on':'')+'" data-k="'+k+'" aria-label="Paso '+(k+1)+'"></button>';$('.x-dots',root).innerHTML=d;$('[data-a="-1"]',root).disabled=i===0;$('[data-a="1"]',root).disabled=i===n-1;cb(i)}root.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.a)i=Math.max(0,Math.min(n-1,i+(+b.dataset.a)));else if(b.dataset.k!=null)i=+b.dataset.k;draw()});draw();return {go:function(k){i=k;draw()},get:function(){return i}}}
+function anim(rootId,fn,btnId){var root=el(rootId),playing=!RM,last=null,acc=0,btn=btnId?el(btnId):null;function lbl(){if(btn)btn.textContent=playing?'Pausar':'Reproducir'}lbl();if(btn)btn.addEventListener('click',function(){playing=!playing;lbl()});function frame(ts){var dt=last==null?0:Math.min(0.05,(ts-last)/1000);last=ts;if(playing&&root.offsetParent!==null){acc+=dt;fn(acc,dt)}requestAnimationFrame(frame)}fn(0,0);requestAnimationFrame(frame);return {reset:function(){acc=0;fn(0,0)},time:function(){return acc},play:function(){playing=true;lbl()}}}
+function plot(o){var W=o.W||340,H=o.H||200,X0=o.L||46,X1=W-(o.R||12),Y1=o.T||12,Y0=H-(o.B||36);
+  var p={W:W,H:H,X0:X0,X1:X1,Y0:Y0,Y1:Y1};
+  p.sx=function(x){return X0+(x-o.xr[0])/(o.xr[1]-o.xr[0])*(X1-X0)};p.sy=function(y){return Y0-(y-o.yr[0])/(o.yr[1]-o.yr[0])*(Y0-Y1)};
+  p.axes=function(xt,yt,xl,yl){var g='';xt.forEach(function(t){var v=typeof t==='number'?t:t[0],l=typeof t==='number'?nf(t):t[1],x=p.sx(v);g+='<line class="x-gr" x1="'+x.toFixed(1)+'" y1="'+Y1+'" x2="'+x.toFixed(1)+'" y2="'+Y0+'"/><text class="x-tk" x="'+x.toFixed(1)+'" y="'+(Y0+13)+'" text-anchor="middle">'+l+'</text>'});
+    yt.forEach(function(t){var v=typeof t==='number'?t:t[0],l=typeof t==='number'?nf(t):t[1],y=p.sy(v);g+='<line class="x-gr" x1="'+X0+'" y1="'+y.toFixed(1)+'" x2="'+X1+'" y2="'+y.toFixed(1)+'"/><text class="x-tk" x="'+(X0-5)+'" y="'+(y+3.5).toFixed(1)+'" text-anchor="end">'+l+'</text>'});
+    g+='<line class="x-ax" x1="'+X0+'" y1="'+Y0+'" x2="'+X1+'" y2="'+Y0+'"/><line class="x-ax" x1="'+X0+'" y1="'+Y1+'" x2="'+X0+'" y2="'+Y0+'"/>';
+    if(xl)g+='<text class="x-lb" x="'+((X0+X1)/2)+'" y="'+(Y0+28)+'" text-anchor="middle">'+xl+'</text>';
+    if(yl)g+='<text class="x-lb" transform="translate(11,'+((Y0+Y1)/2)+') rotate(-90)" text-anchor="middle">'+yl+'</text>';return g};
+  p.path=function(pts){return pts.map(function(q,i){return (i?'L':'M')+p.sx(q[0]).toFixed(1)+' '+p.sy(q[1]).toFixed(1)}).join(' ')};
+  p.line=function(pts,c,extra){return '<path class="x-ln x-l'+(c||1)+(extra?' '+extra:'')+'" d="'+p.path(pts)+'"/>'};
+  p.dot=function(x,y,c,r){return '<circle class="x-pt x-f'+(c||1)+'" cx="'+p.sx(x).toFixed(1)+'" cy="'+p.sy(y).toFixed(1)+'" r="'+(r||4.5)+'"/>'};
+  p.svg=function(inner,label){return '<svg class="x-svg" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(label||'Gráfico')+'">'+inner+'</svg>'};
+  return p}
+function arrowHead(x1,y1,x2,y2,cls,sz){sz=sz||7;var dx=x2-x1,dy=y2-y1,L=Math.sqrt(dx*dx+dy*dy)||1,ux=dx/L,uy=dy/L,hx=x2-ux*sz,hy=y2-uy*sz;return '<line class="'+cls+'" x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+hx.toFixed(1)+'" y2="'+hy.toFixed(1)+'"/><polygon class="'+cls+' x-head" points="'+x2.toFixed(1)+','+y2.toFixed(1)+' '+(hx-uy*sz*0.55).toFixed(1)+','+(hy+ux*sz*0.55).toFixed(1)+' '+(hx+uy*sz*0.55).toFixed(1)+','+(hy-ux*sz*0.55).toFixed(1)+'"/>'}
+function classifier(rootId,sets,keys){var root=el(rootId),st={set:keys[0],i:0,ok:0,order:[],ans:null};
+  function start(){var s=sets[st.set];st.order=shuffle(s.items.map(function(_,i){return i}));st.i=0;st.ok=0;st.ans=null;draw()}
+  function draw(){var s=sets[st.set],h='';
+    if(keys.length>1)h+='<div class="seg">'+keys.map(function(k){return '<button class="sbtn" data-set="'+k+'" aria-pressed="'+(k===st.set)+'">'+sets[k].title+'</button>'}).join('')+'</div>';
+    if(st.i>=st.order.length){h+='<div class="verdict"><b>'+st.ok+' de '+st.order.length+' correctas.</b><span>'+(st.ok===st.order.length?'Perfecto: dominas esta clasificación.':'Repasa las que fallaste y vuelve a intentarlo.')+'</span></div><div class="btnrow"><button class="btn" data-again="1">Otra vez</button></div>';root.innerHTML=h;return}
+    var it=s.items[st.order[st.i]];
+    h+='<div class="x-card"><span class="x-prog">'+(st.i+1)+' de '+st.order.length+' · '+st.ok+' correctas</span><p>'+it[0]+'</p></div><div class="x-cats">'+s.cats.map(function(c){var cls='';if(st.ans!=null){if(c===it[1])cls=' ok';else if(c===st.ans)cls=' bad'}return '<button class="x-cat'+cls+'" data-c="'+c+'"'+(st.ans!=null?' disabled':'')+'>'+c+'</button>'}).join('')+'</div>';
+    if(st.ans!=null)h+='<div class="expl"><span class="lab '+(st.ans===it[1]?'ok':'bad')+'">'+(st.ans===it[1]?'Correcto':'Es: '+it[1])+'</span><span>'+it[2]+'</span></div><div class="btnrow"><button class="btn" data-next="1">Siguiente</button></div>';
+    root.innerHTML=h}
+  root.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.set){st.set=b.dataset.set;start()}else if(b.dataset.c&&st.ans==null){st.ans=b.dataset.c;if(st.ans===sets[st.set].items[st.order[st.i]][1])st.ok++;draw()}else if(b.dataset.next){st.i++;st.ans=null;draw()}else if(b.dataset.again)start()});
+  start()}
+function clickInfo(svgRootId,infoId,data,onSel){var root=el(svgRootId);root.addEventListener('click',function(e){var t=e.target.closest('[data-part]');if(!t)return;var k=t.getAttribute('data-part');$$('[data-part]',root).forEach(function(x){x.classList.toggle('x-on',x.getAttribute('data-part')===k)});el(infoId).innerHTML=data[k];if(onSel)onSel(k)})}
+
+/* ===== F1 · Relaciones entre variables ===== */
+(function(){
+var REL={dir:{n:'Directamente proporcional',f:function(x,k){return k*x},eq:'y = k·x',rec:'El cociente y/x es constante. Gráfico: recta que pasa por el origen.',ex:'Ley de Hooke (fuerza vs. estiramiento), ley de Ohm (voltaje vs. corriente), distancia vs. tiempo en MRU.',chk:function(x,y){return y/x}},
+ inv:{n:'Inversamente proporcional',f:function(x,k){return k*6/x},eq:'y = k/x',rec:'El producto x·y es constante. Si x se duplica, y se reduce a la mitad. Gráfico: curva que baja (hipérbola).',ex:'Longitud de onda vs. frecuencia (v = λ·f con v constante), tiempo vs. rapidez para una distancia fija.',chk:function(x,y){return x*y}},
+ cua:{n:'Cuadrática',f:function(x,k){return k*x*x/3},eq:'y = k·x²',rec:'El cociente y/x² es constante. Si x se duplica, y se cuadruplica. Gráfico: parábola.',ex:'Distancia vs. tiempo en caída libre desde el reposo (d = ½·g·t²), período² vs. largo del péndulo al revés.',chk:function(x,y){return y/(x*x)}}};
+var mode='exp',rel='dir',k=2,guess=null;
+function table(f,kk,hide){var h='<div class="x-tbl"><table><thead><tr><th>x</th>';for(var x=1;x<=5;x++)h+='<th>'+x+'</th>';h+='</tr></thead><tbody><tr><td><b>y</b></td>';for(var x2=1;x2<=5;x2++)h+='<td class="n">'+nf(f(x2,kk),2)+'</td>';return h+'</tr></tbody></table></div>'}
+function chart(f,kk){var ys=[];for(var x=0.5;x<=5.01;x+=0.1)ys.push([x,f(x,kk)]);var mx=Math.max.apply(null,[1,2,3,4,5].map(function(x){return f(x,kk)}));var top=Math.ceil(mx/5)*5||5;var p=plot({xr:[0,5],yr:[0,top],H:180});var g=p.axes([0,1,2,3,4,5],[0,top/2,top],'x','y');g+=p.line(ys.filter(function(q){return q[1]<=top*1.02}),1);[1,2,3,4,5].forEach(function(x){if(f(x,kk)<=top)g+=p.dot(x,f(x,kk),1,4)});return p.svg(g,'Gráfico y versus x')}
+function draw(){
+  el('rvK').parentNode.hidden=mode!=='exp';el('rvRel').hidden=mode!=='exp';el('rvNew').hidden=mode!=='gue';
+  if(mode==='exp'){var R=REL[rel];el('rvKv').textContent=k;el('rvTab').innerHTML=table(R.f,k);el('rvStage').innerHTML=chart(R.f,k);
+    var c=[1,2,3,4,5].map(function(x){return nf(R.chk(x,R.f(x,k)),2)});
+    el('rvOut').innerHTML='<b>'+R.n+' · '+R.eq+'</b><span>'+R.rec+' Compruébalo: '+(rel==='inv'?'x·y':rel==='cua'?'y/x²':'y/x')+' = '+c.join(', ')+'.</span><span><b>Ejemplos:</b> '+R.ex+'</span>';el('rvOpts').innerHTML=''}
+  else{if(!guess)newG();var G=guess;el('rvTab').innerHTML=table(REL[G.r].f,G.k);el('rvStage').innerHTML=G.ans?chart(REL[G.r].f,G.k):'<p class="muted" style="text-align:center;padding:1.5rem .5rem">El gráfico aparece cuando respondas.</p>';
+    el('rvOpts').innerHTML=Object.keys(REL).map(function(r){var cls='';if(G.ans){if(r===G.r)cls=' ok';else if(r===G.ans)cls=' bad'}return '<button class="x-cat'+cls+'" data-r="'+r+'"'+(G.ans?' disabled':'')+'>'+REL[r].n+'</button>'}).join('');
+    el('rvOut').innerHTML=G.ans?'<b>'+(G.ans===G.r?'Correcto':'Era: '+REL[G.r].n)+'</b><span>'+REL[G.r].rec+'</span>':'<span>¿Qué relación muestran los datos? Prueba calcular y/x, x·y o y/x² para cada columna.</span>'}}
+function newG(){var rs=Object.keys(REL);guess={r:rs[Math.floor(Math.random()*3)],k:1+Math.floor(Math.random()*4),ans:null}}
+segs('rvMode',[['exp','Explorar'],['gue','Adivina la relación']],mode,function(m){mode=m;draw()});
+segs('rvRel',Object.keys(REL).map(function(r){return [r,REL[r].n]}),rel,function(r){rel=r;draw()});
+el('rvK').addEventListener('input',function(){k=+this.value;draw()});
+el('rvOpts').addEventListener('click',function(e){var b=e.target.closest('[data-r]');if(b&&guess&&!guess.ans){guess.ans=b.dataset.r;draw()}});
+el('rvNew').addEventListener('click',function(){newG();draw()});draw();
+})();
+
+/* ===== F2 · Error de medición ===== */
+(function(){
+var M={one:[],ten:[]};
+function meas(n){var e=(Math.random()*0.2+0.1)-(Math.random()*0.2+0.1);var tot=2.0*n+e;return tot/n}
+function draw(t){var ang=0.45*Math.cos(2*Math.PI*t/2.0),px=170+120*Math.sin(ang),py=14+120*Math.cos(ang);
+  el('erPend').innerHTML='<line x1="110" y1="14" x2="230" y2="14" class="x-ln x-li"/><line x1="170" y1="14" x2="'+px.toFixed(1)+'" y2="'+py.toFixed(1)+'" class="x-ln x-lm" style="stroke-width:1.5"/><circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="10" class="x-f1"/><text class="x-tm" x="300" y="130" text-anchor="end">T real = 2,00 s</text>'}
+function plotM(){var p=plot({xr:[1.7,2.3],yr:[0,3],H:120,B:30,L:20,R:20});var g=p.axes([1.7,1.8,1.9,2.0,2.1,2.2,2.3],[],'Período medido (s)','');g+='<line x1="'+p.sx(2)+'" y1="'+p.Y1+'" x2="'+p.sx(2)+'" y2="'+p.Y0+'" class="x-ln x-l4" style="stroke-width:1.5"/>';
+  M.one.forEach(function(v){g+=p.dot(Math.max(1.7,Math.min(2.3,v)),2.1,1,4.5)});M.ten.forEach(function(v){g+=p.dot(v,0.9,2,4.5)});
+  g+='<text class="x-tm" x="'+(p.X0+2)+'" y="'+(p.sy(2.1)-8)+'">1 oscilación</text><text class="x-tm" x="'+(p.X0+2)+'" y="'+(p.sy(0.9)-8)+'">10 oscilaciones ÷ 10</text>';
+  el('erPlot').innerHTML=p.svg(g,'Mediciones del período');
+  function st(a){if(!a.length)return '—';var m=a.reduce(function(x,y){return x+y},0)/a.length,mn=Math.min.apply(null,a),mx=Math.max.apply(null,a);return 'promedio '+nf(m,3)+' s · rango '+nf(mn,2)+'–'+nf(mx,2)+' s'}
+  el('erOut').innerHTML='<span><b>1 oscilación</b> ('+M.one.length+' medidas): '+st(M.one)+'</span><span><b>10 oscilaciones</b> ('+M.ten.length+' medidas): '+st(M.ten)+'</span><span>Tu tiempo de reacción agrega un error de hasta ±0,2 s al partir y detener el cronómetro. Al medir 10 oscilaciones y dividir por 10, ese error se reparte: el período queda con un error 10 veces menor.</span>'}
+anim('erBox',function(t){draw(t)},null);
+el('erOne').addEventListener('click',function(){M.one.push(meas(1));if(M.one.length>10)M.one.shift();plotM()});
+el('erTen').addEventListener('click',function(){M.ten.push(meas(10));if(M.ten.length>10)M.ten.shift();plotM()});
+el('erClr').addEventListener('click',function(){M.one=[];M.ten=[];plotM()});plotM();
+})();
+
+/* ===== F3 · Onda viajera ===== */
+(function(){
+var type='tr';
+function P(){return {A:+el('wvA').value,f:+el('wvF').value,L:+el('wvL').value}}
+function info(){var p=P();el('wvAv').textContent=nf(p.A,1);el('wvFv').textContent=nf(p.f,1);el('wvLv').textContent=nf(p.L,1);
+  el('wvRes').innerHTML='<div><span>Rapidez v = λ·f</span><b>'+nf(p.L*p.f,2)+' m/s</b></div><div><span>Período T = 1/f</span><b>'+nf(1/p.f,2)+' s</b></div><div><span>Amplitud</span><b>'+nf(p.A,1)+' m</b></div>'}
+anim('wvBox',function(t){var p=P(),X0=20,X1=330,cy=80,sx=(X1-X0)/8,g='';t=t*0.6;
+  g+='<line x1="'+X0+'" y1="'+cy+'" x2="'+X1+'" y2="'+cy+'" class="x-ln x-lm x-dash" style="stroke-width:1"/>';
+  if(type==='tr'){var pts=[];for(var x=0;x<=8.001;x+=0.05){pts.push((X0+x*sx).toFixed(1)+','+(cy-p.A*40*Math.sin(2*Math.PI*(x/p.L-p.f*t))).toFixed(1))}g+='<polyline points="'+pts.join(' ')+'" class="x-ln x-l2"/>';
+    var yy=cy-p.A*40*Math.sin(2*Math.PI*(2/p.L-p.f*t));g+='<circle cx="'+(X0+2*sx)+'" cy="'+yy.toFixed(1)+'" r="6" class="x-f1"/><text class="x-tm" x="'+(X0+2*sx+10)+'" y="150">partícula del medio: solo sube y baja</text>';
+    var x0=((p.f*t*p.L)%p.L+p.L)%p.L+p.L/4;g+='<line x1="'+(X0+x0*sx).toFixed(1)+'" y1="20" x2="'+(X0+(x0+p.L)*sx).toFixed(1)+'" y2="20" class="x-ln x-l1" style="stroke-width:1.5"/><text class="x-tx" x="'+(X0+(x0+p.L/2)*sx).toFixed(1)+'" y="16" text-anchor="middle">λ</text>'}
+  else{for(var i=0;i<60;i++){var x2=i*8/60,d=p.A*0.35*Math.sin(2*Math.PI*(x2/p.L-p.f*t));var X=X0+(x2+d)*sx;g+='<line x1="'+X.toFixed(1)+'" y1="'+(cy-30)+'" x2="'+X.toFixed(1)+'" y2="'+(cy+30)+'" class="x-ln '+(i===15?'x-l1':'x-l2')+'" style="stroke-width:'+(i===15?3:1.5)+'"/>'}g+='<text class="x-tm" x="20" y="150">compresiones y expansiones: el medio vibra en la dirección de propagación</text>'}
+  g+=arrowHead(250,140,320,140,'x-ln x-lm',6)+'<text class="x-tm" x="250" y="134">propagación</text>';
+  el('wvSvg').innerHTML=g},'wvPlay');
+['wvA','wvF','wvL'].forEach(function(id){el(id).addEventListener('input',info)});info();
+segs('wvT',[['tr','Transversal (luz, cuerda)'],['lo','Longitudinal (sonido)']],type,function(k){type=k;el('wvNote').innerHTML=k==='tr'?'<span>En una onda transversal el medio vibra perpendicular a la propagación. Todas las ondas electromagnéticas son transversales.</span>':'<span>En una onda longitudinal el medio vibra en la misma dirección en que avanza la onda. El sonido es longitudinal y necesita un medio; la luz no.</span>'});
+el('wvNote').innerHTML='<span>En una onda transversal el medio vibra perpendicular a la propagación. Todas las ondas electromagnéticas son transversales.</span>';
+})();
+
+/* ===== F4 · Doppler ===== */
+(function(){
+var waves=[],lastE=0,sx=20;
+anim('dpBox',function(t,dt){var vs=+el('dpV').value/100,vw=60,f=1.4;el('dpVv').textContent=Math.round(vs*100);
+  sx+=vs*vw*dt;if(sx>320){sx=20;waves=[]}
+  if(t-lastE>1/f||t<lastE){waves.push({x:sx,t:t});lastE=t}
+  waves=waves.filter(function(w){return (t-w.t)*vw<360});
+  var g='';waves.forEach(function(w){g+='<circle cx="'+w.x.toFixed(1)+'" cy="90" r="'+((t-w.t)*vw).toFixed(1)+'" fill="none" stroke="var(--sci)" stroke-width="1.5" opacity="'+Math.max(0.15,1-(t-w.t)*vw/360).toFixed(2)+'"/>'});
+  g+='<circle cx="'+sx.toFixed(1)+'" cy="90" r="7" class="x-f1"/>'+arrowHead(sx+10,90,sx+28,90,'x-ln x-l1',6);
+  g+='<g transform="translate(332,90)"><circle r="7" class="x-f4"/><text class="x-tx" y="-12" text-anchor="end">observador B</text></g><g transform="translate(8,90)"><circle r="7" class="x-f3"/><text class="x-tx" y="-12">observador A</text></g>';
+  el('dpSvg').innerHTML=g;
+  var fa=f/(1+vs),fb=f/(1-vs);el('dpOut').innerHTML='<span>Fuente: '+nf(f,1)+' ondas/s. <b>B</b> (la fuente se acerca) recibe '+nf(fb,2)+' ondas/s: frecuencia <b>mayor</b>, ondas más juntas. <b>A</b> (la fuente se aleja) recibe '+nf(fa,2)+': frecuencia <b>menor</b>.</span><span>Con sonido: la sirena se oye más aguda al acercarse. Con luz: una galaxia que se aleja se ve corrida al rojo.</span>'},'dpPlay');
+})();
+
+/* ===== F5 · Superposición ===== */
+(function(){
+function draw(){var ph=+el('suP').value,a2=+el('suA').value/100;el('suPv').textContent=ph;el('suAv').textContent=Math.round(a2*100);var p=plot({xr:[0,4],yr:[-2.2,2.2],H:200,B:30});var g=p.axes([0,1,2,3,4],[-2,-1,0,1,2],'Posición (λ)','Desplazamiento');
+  var w1=[],w2=[],r=[];for(var x=0;x<=4.001;x+=0.02){var y1=Math.sin(2*Math.PI*x),y2=a2*Math.sin(2*Math.PI*x+ph*Math.PI/180);w1.push([x,y1]);w2.push([x,y2]);r.push([x,y1+y2])}
+  g+=p.line(w1,2,'x-dash')+p.line(w2,3,'x-dash')+p.line(r,1);el('suSvg').innerHTML=p.svg(g,'Superposición de dos ondas')+'<div class="x-leg"><span><i style="background:var(--sci)"></i>Onda 1</span><span><i style="background:var(--warn)"></i>Onda 2</span><span><i style="background:var(--accent)"></i>Resultante</span></div>';
+  var amp=Math.sqrt(1+a2*a2+2*a2*Math.cos(ph*Math.PI/180));var txt=ph<=20||ph>=340?'<b>Interferencia constructiva:</b> las crestas coinciden y las amplitudes se suman.':Math.abs(ph-180)<=20?'<b>Interferencia destructiva:</b> la cresta de una coincide con el valle de la otra y se anulan'+(a2>0.98?' por completo.':' en parte.'):'Interferencia parcial: la resultante queda entre ambos extremos.';
+  el('suOut').innerHTML='<span>Amplitud resultante: <b>'+nf(amp,2)+'</b> (onda 1 = 1)</span><span>'+txt+' Así se forman las franjas claras y oscuras de la doble rendija.</span>'}
+['suP','suA'].forEach(function(id){el(id).addEventListener('input',draw)});draw();
+})();
+
+/* ===== F6 · Color de los objetos ===== */
+(function(){
+var L={r:1,g:1,b:1},obj='r';
+var OBJ={r:['Rojo',[1,0,0]],g:['Verde',[0,1,0]],b:['Azul',[0,0,1]],y:['Amarillo',[1,1,0]],w:['Blanco',[1,1,1]],k:['Negro',[0,0,0]]};
+function name(c){var s=c.join('');return {'000':'negro','100':'rojo','010':'verde','001':'azul','110':'amarillo','101':'magenta','011':'cian','111':'blanco'}[s]}
+var FEM={negro:'negra',rojo:'roja',verde:'verde',azul:'azul',amarillo:'amarilla',magenta:'magenta',cian:'cian',blanco:'blanca'};function fem(n){return FEM[n]||n}
+function rgb(c){return 'rgb('+c.map(function(v){return v?235:28}).join(',')+')'}
+function draw(){var lc=[L.r,L.g,L.b],o=OBJ[obj][1],seen=[lc[0]&o[0],lc[1]&o[1],lc[2]&o[2]];
+  ['r','g','b'].forEach(function(k){el('co'+k).setAttribute('aria-pressed',L[k]?'true':'false')});
+  el('coL').style.background=rgb(lc);el('coS').style.background=rgb(seen);el('coLn').textContent='Luz '+fem(name(lc));el('coSn').textContent='Se ve: '+name(seen);
+  el('coOut').innerHTML='<span>Un objeto '+OBJ[obj][0].toLowerCase()+' refleja '+(obj==='k'?'ninguna luz':obj==='w'?'todos los colores':'la luz '+fem(name(o)))+' y absorbe el resto. Iluminado con luz '+fem(name(lc))+', se ve <b>'+name(seen)+'</b>.</span><span>Mezcla aditiva de luces: rojo + verde = amarillo; rojo + verde + azul = blanco.</span>'}
+['r','g','b'].forEach(function(k){el('co'+k).addEventListener('click',function(){L[k]=L[k]?0:1;draw()})});
+segs('coObj',Object.keys(OBJ).map(function(k){return [k,OBJ[k][0]]}),obj,function(k){obj=k;draw()});draw();
+})();
+
+/* ===== F7 · Ojo ===== */
+(function(){
+var mode='mio',fix=false;
+function draw(){var cx=200,cy=90,R=62,lensX=150;var retina={nor:cx+R-4,mio:cx+R+16,hip:cx+R-22}[mode];
+  var g='<ellipse cx="'+(cx+(mode==='mio'?10:mode==='hip'?-10:0))+'" cy="'+cy+'" rx="'+(R+(mode==='mio'?14:mode==='hip'?-14:0))+'" ry="'+R+'" class="x-o" style="fill:var(--surface)"/>';
+  var eyeR=cx+(mode==='mio'?10:mode==='hip'?-10:0)+R+(mode==='mio'?14:mode==='hip'?-14:0);
+  g+='<path d="M'+(eyeR-6)+' '+(cy-40)+' Q'+(eyeR+2)+' '+cy+' '+(eyeR-6)+' '+(cy+40)+'" class="x-ln x-l1" style="stroke-width:4"/><text class="x-tm" x="'+(eyeR-4)+'" y="'+(cy+56)+'" text-anchor="middle">retina</text>';
+  g+='<ellipse cx="'+lensX+'" cy="'+cy+'" rx="8" ry="26" class="x-fb" stroke="var(--sci)" stroke-width="1.5"/><text class="x-tm" x="'+lensX+'" y="'+(cy-32)+'" text-anchor="middle">cristalino</text>';
+  var focus=mode==='nor'||fix?eyeR-4:(mode==='mio'?eyeR-30:eyeR+28);
+  var cl=fix&&mode!=='nor';
+  [-18,-8,8,18].forEach(function(y0){var y=cy+y0,yl;if(cl){var s=mode==='mio'?0.18:-0.18;g+='<line x1="10" y1="'+y+'" x2="70" y2="'+y+'" class="x-ln x-l3" style="stroke-width:1.6"/>';yl=y+y0*s*(lensX-70)/18;g+='<line x1="70" y1="'+y+'" x2="'+lensX+'" y2="'+yl.toFixed(1)+'" class="x-ln x-l3" style="stroke-width:1.6"/>'}else{yl=y;g+='<line x1="10" y1="'+y+'" x2="'+lensX+'" y2="'+y+'" class="x-ln x-l3" style="stroke-width:1.6"/>'}
+    var ex=focus,ey=cy;var dx=ex-lensX,dy=ey-yl;var endX=Math.max(ex,eyeR-4),k=(endX-lensX)/dx;g+='<line x1="'+lensX+'" y1="'+yl.toFixed(1)+'" x2="'+endX.toFixed(1)+'" y2="'+(yl+dy*k).toFixed(1)+'" class="x-ln x-l3" style="stroke-width:1.6"/>'});
+  g+='<circle cx="'+focus+'" cy="'+cy+'" r="4" class="x-f5"/>';
+  if(cl){if(mode==='mio')g+='<path d="M64 '+(cy-30)+' Q72 '+cy+' 64 '+(cy+30)+' L76 '+(cy+30)+' Q68 '+cy+' 76 '+(cy-30)+' Z" class="x-fb" stroke="var(--ink)" stroke-width="1.2"/>';else g+='<ellipse cx="70" cy="'+cy+'" rx="7" ry="30" class="x-fb" stroke="var(--ink)" stroke-width="1.2"/>';g+='<text class="x-tm" x="70" y="'+(cy+46)+'" text-anchor="middle">lente '+(mode==='mio'?'divergente':'convergente')+'</text>'}
+  el('eySvg').innerHTML=g;
+  var T={nor:'<b>Visión normal:</b> la imagen de un objeto lejano se forma justo sobre la retina.',mio:fix?'<b>Miopía corregida:</b> la lente <b>divergente</b> separa un poco los rayos y el foco se mueve hasta la retina.':'<b>Miopía:</b> el ojo es más largo (o el cristalino converge demasiado) y la imagen se forma <b>antes</b> de la retina: se ve borroso de lejos.',hip:fix?'<b>Hipermetropía corregida:</b> la lente <b>convergente</b> junta los rayos antes de entrar y el foco llega a la retina.':'<b>Hipermetropía:</b> el ojo es más corto y la imagen se formaría <b>detrás</b> de la retina: cuesta ver de cerca.'};
+  el('eyOut').innerHTML='<span>'+T[mode]+'</span>'}
+segs('eySeg',[['nor','Ojo normal'],['mio','Miopía'],['hip','Hipermetropía']],mode,function(k){mode=k;draw()});
+el('eyFix').addEventListener('change',function(){fix=this.checked;draw()});draw();
+})();
+
+/* ===== F8 · Radar y fibra óptica ===== */
+(function(){
+var t0=null,now=0;
+var rdA=anim('rdBox',function(t){now=t;var d=+el('rdD').value;el('rdDv').textContent=d;var px=40+d/150*270;var g='<rect x="14" y="70" width="22" height="30" rx="3" class="x-fm"/><path d="M14 70 Q25 50 36 70" class="x-o"/><text class="x-tm" x="25" y="116" text-anchor="middle">radar</text>';
+  g+='<g transform="translate('+px.toFixed(1)+',70)"><path d="M-16 0 L16 0 M4 0 L-6 -11 M4 0 L-6 11 M-13 0 L-18 -7" class="x-ln x-li" style="stroke-width:3"/><text class="x-tm" y="-12" text-anchor="middle">avión</text></g>';
+  if(t0!=null){var dur=1.2+d/150*1.8,f=(t-t0)/dur;if(f<=1){var x=f<=0.5?36+(px-36)*f*2:px-(px-36)*(f-0.5)*2;g+='<circle cx="'+x.toFixed(1)+'" cy="72" r="6" class="'+(f<=0.5?'x-f1':'x-f2')+'"/>'}else{t0=null;var tt=2*d*1000/3e8;el('rdOut').innerHTML='<span>Eco recibido. Tiempo de ida y vuelta: <b>'+nf(tt*1e6,1)+' µs</b> (millonésimas de segundo).</span><span>d = c·t / 2 = 3×10⁸ · '+nf(tt*1e6,1)+'×10⁻⁶ / 2 = <b>'+d+' km</b>. Se divide por 2 porque la onda va y vuelve.</span>'}}
+  el('rdSvg').innerHTML=g},null);
+el('rdGo').addEventListener('click',function(){rdA.play();t0=now;el('rdOut').innerHTML='<span>Pulso de microondas en camino…</span>'});
+el('rdD').addEventListener('input',function(){t0=null});
+function fiber(){var a=+el('foA').value;el('foAv').textContent=a;var crit=Math.asin(1.46/1.50)*180/Math.PI;var g='<rect x="10" y="40" width="320" height="70" class="x-fb"/><rect x="10" y="26" width="320" height="14" class="x-fs2"/><rect x="10" y="110" width="320" height="14" class="x-fs2"/><text class="x-tm" x="16" y="36">revestimiento (n = 1,46)</text><text class="x-tm" x="16" y="78">núcleo (n = 1,50)</text>';
+  var x=10,y=75,dirY=-1,tA=Math.tan((90-a)*Math.PI/180),pts=[[x,y]],escaped=false;
+  while(x<330){var ty=dirY<0?40:110,dx=Math.abs(ty-y)/tA;if(x+dx>330){pts.push([330,y+dirY*(330-x)*tA]);break}x+=dx;y=ty;pts.push([x,y]);if(a<crit){pts.push([x+Math.abs(14)/tA*1.4,y+dirY*20]);escaped=true;break}dirY=-dirY}
+  g+='<polyline points="'+pts.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ')+'" class="x-ln x-l1"/>';
+  el('foSvg').innerHTML=g;el('foOut').innerHTML='<span>Ángulo crítico núcleo → revestimiento: <b>'+nf(crit,1)+'°</b>.</span><span>'+(escaped?'Con '+a+'° (menor que el crítico) parte de la luz se refracta y <b>escapa</b> del núcleo: la señal se pierde.':'Con '+a+'° (mayor que el crítico) hay <b>reflexión total interna</b>: la luz rebota y avanza por el núcleo sin salir.')+'</span>'}
+el('foA').addEventListener('input',fiber);fiber();
+})();
+
+/* ===== F9 · Encuentro de dos móviles ===== */
+(function(){
+function draw(){var xa=num(el('mvXA').value),va=num(el('mvVA').value),xb=num(el('mvXB').value),vb=num(el('mvVB').value),t=+el('mvT').value;el('mvTv').textContent=t;
+  if(![xa,va,xb,vb].every(isFinite)){el('mvOut').innerHTML='<span class="err">Ingresa números válidos.</span>';return}
+  var T=60,A=function(tt){return xa+va*tt},B=function(tt){return xb+vb*tt};var ys=[A(0),A(T),B(0),B(T)];var lo=Math.min.apply(null,ys.concat([0])),hi=Math.max.apply(null,ys.concat([10]));var st=Math.pow(10,Math.floor(Math.log10((hi-lo)/4||1)));[1,2,5,10].some(function(m){if((hi-lo)/(st*m)<=5){st*=m;return true}});lo=Math.floor(lo/st)*st;hi=Math.ceil(hi/st)*st;
+  var yt=[];for(var v=lo;v<=hi+1e-9;v+=st)yt.push(v);
+  var p=plot({xr:[0,T],yr:[lo,hi],H:200});var g=p.axes([0,10,20,30,40,50,60],yt,'Tiempo (s)','Posición (m)');g+=p.line([[0,A(0)],[T,A(T)]],1)+p.line([[0,B(0)],[T,B(T)]],2);
+  g+='<line x1="'+p.sx(t)+'" y1="'+p.Y1+'" x2="'+p.sx(t)+'" y2="'+p.Y0+'" class="x-ln x-lm" style="stroke-width:1"/>'+p.dot(t,A(t),1)+p.dot(t,B(t),2);
+  var tm=va!==vb?(xb-xa)/(va-vb):null;if(tm!=null&&tm>=0&&tm<=T)g+=p.dot(tm,A(tm),4,5.5);
+  el('mvSvg').innerHTML=p.svg(g,'Posición versus tiempo de A y B')+'<div class="x-leg"><span><i style="background:var(--accent)"></i>A</span><span><i style="background:var(--sci)"></i>B</span><span><i style="background:var(--ok)"></i>Encuentro</span></div>';
+  var tr=lo,trh=hi,sx=function(x){return 20+(x-tr)/(trh-tr)*300};el('mvTrack').innerHTML='<line x1="20" y1="30" x2="320" y2="30" class="x-ln x-lm"/><g transform="translate('+sx(A(t)).toFixed(1)+',22)"><rect x="-10" y="-6" width="20" height="10" rx="3" class="x-f1"/><text class="x-tx" y="-10" text-anchor="middle">A</text></g><g transform="translate('+sx(B(t)).toFixed(1)+',42)"><rect x="-10" y="-6" width="20" height="10" rx="3" class="x-f2"/><text class="x-tx" y="20" text-anchor="middle">B</text></g>';
+  var msg;if(va===vb)msg=xa===xb?'Van juntos todo el tiempo.':'Tienen la misma velocidad: nunca se encuentran (rectas paralelas).';else if(tm<0)msg='Las rectas se cruzarían en t = '+nf(tm,1)+' s, en el pasado: con estos datos ya no se encuentran.';else msg='Se encuentran en <b>t = '+nf(tm,2)+' s</b>, en <b>x = '+nf(A(tm),1)+' m</b>. Se obtiene igualando: '+nf(xa)+' + '+nf(va)+'·t = '+nf(xb)+' + '+nf(vb)+'·t.';
+  el('mvOut').innerHTML='<span>'+msg+'</span><span>En t = '+t+' s: A en '+nf(A(t),1)+' m, B en '+nf(B(t),1)+' m. La pendiente de cada recta es su velocidad.</span>'}
+['mvXA','mvVA','mvXB','mvVB','mvT'].forEach(function(id){el(id).addEventListener('input',draw)});draw();
+})();
+
+/* ===== F10 · Caída libre ===== */
+(function(){
+var g0={T:10,L:1.6,M:3.7},pl='T',t0=null,now=0;
+var cfA=anim('cfBox',function(t){now=t;var h=+el('cfH').value,g=g0[pl];el('cfHv').textContent=h;var tf=Math.sqrt(2*h/g),tt=t0==null?0:Math.min(tf,(t-t0)*0.5);
+  var Y0=14,Y1=186,sy=function(y){return Y0+(h-y)/h*(Y1-Y0)},s='<line x1="40" y1="'+Y1+'" x2="140" y2="'+Y1+'" class="x-ln x-li"/><text class="x-tm" x="34" y="'+(Y0+4)+'" text-anchor="end">'+h+' m</text><text class="x-tm" x="34" y="'+Y1+'" text-anchor="end">0</text>';
+  for(var k=0.5;k<tt-1e-9;k+=0.5){var y=h-0.5*g*k*k;s+='<circle cx="90" cy="'+sy(y).toFixed(1)+'" r="7" class="x-f1" opacity=".25"/>'}
+  var yNow=h-0.5*g*tt*tt;s+='<circle cx="90" cy="'+sy(yNow).toFixed(1)+'" r="8" class="x-f1"/>';
+  var p=plot({xr:[0,Math.ceil(tf)],yr:[0,Math.ceil(g*tf/5)*5],W:200,H:200,L:36,B:34});var xt=[];for(var i=0;i<=Math.ceil(tf);i+=Math.max(1,Math.ceil(tf/4)))xt.push(i);var vt=[0,Math.ceil(g*tf/5)*5/2,Math.ceil(g*tf/5)*5];
+  var gg=p.axes(xt,vt,'t (s)','v (m/s)')+p.line([[0,0],[tf,g*tf]],2,'x-dash')+p.line([[0,0],[tt,g*tt]],2)+p.dot(tt,g*tt,2);
+  el('cfSvg').innerHTML='<svg class="x-svg" viewBox="0 0 340 200" role="img" aria-label="Caída libre"><g>'+s+'</g><g transform="translate(140,0)">'+gg+'</g></svg>';
+  el('cfOut').innerHTML='<span>Tiempo de caída: <b>'+nf(tf,2)+' s</b> · rapidez al llegar: <b>'+nf(g*tf,1)+' m/s</b> (g = '+nf(g,1)+' m/s²). Ahora: t = '+nf(tt,2)+' s, altura '+nf(yNow,1)+' m.</span><span>Las imágenes cada 0,5 s quedan cada vez más separadas: la rapidez aumenta de manera uniforme (MRUA). Sin aire, una pluma y un martillo caen igual (la masa no importa).</span>'},null);
+el('cfGo').addEventListener('click',function(){cfA.play();t0=now});
+segs('cfPl',[['T','Tierra (g = 10)'],['L','Luna (g = 1,6)'],['M','Marte (g = 3,7)']],pl,function(k){pl=k;t0=null});
+el('cfH').addEventListener('input',function(){t0=null});
+})();
+
+/* ===== F11 · Relatividad de Galileo ===== */
+(function(){
+var fr='and';
+anim('grBox',function(t){var vt=+el('grVt').value,vp=+el('grVp').value;el('grVtv').textContent=vt;el('grVpv').textContent=vp;var sc=4,W=340;
+  var trainX=fr==='and'?((t*vt*sc)%(W+160))-160:90,pers=fr==='and'?trainX+60+((t*vp*sc)%100+100)%100:150+((t*vp*sc)%100+100)%100-50;
+  var off=fr==='tre'?((-t*vt*sc)%60+60)%60:0,g='';
+  for(var i=-1;i<8;i++){var x=i*60+off;g+='<line x1="'+x.toFixed(1)+'" y1="150" x2="'+(x+20).toFixed(1)+'" y2="150" class="x-ln x-lm"/><rect x="'+(x+30).toFixed(1)+'" y="130" width="6" height="20" class="x-fm"/>'}
+  g+='<rect x="'+trainX.toFixed(1)+'" y="60" width="180" height="60" rx="6" class="x-fb" stroke="var(--sci)" stroke-width="2"/><circle cx="'+(trainX+30).toFixed(1)+'" cy="124" r="7" class="x-fi"/><circle cx="'+(trainX+150).toFixed(1)+'" cy="124" r="7" class="x-fi"/>';
+  g+='<g transform="translate('+pers.toFixed(1)+',86)"><circle cy="-14" r="6" class="x-f1"/><line x1="0" y1="-8" x2="0" y2="12" class="x-ln x-l1"/><line x1="0" y1="12" x2="-6" y2="26" class="x-ln x-l1"/><line x1="0" y1="12" x2="6" y2="26" class="x-ln x-l1"/></g>';
+  g+='<text class="x-tm" x="10" y="20">'+(fr==='and'?'Observador en el andén: el tren avanza':'Observador en el tren: el andén retrocede')+'</text>';
+  el('grSvg').innerHTML=g;
+  el('grOut').innerHTML='<div class="res"><div><span>Persona respecto del tren</span><b>'+nf(vp)+' m/s</b></div><div><span>Tren respecto del andén</span><b>'+nf(vt)+' m/s</b></div><div><span>Persona respecto del andén</span><b>'+nf(vt+vp)+' m/s</b></div></div><span style="font-size:.9rem">v(persona/andén) = v(persona/tren) + v(tren/andén) = '+nf(vp)+' + '+nf(vt)+' = '+nf(vt+vp)+' m/s. '+(vp<0?'Camina hacia atrás: las velocidades se restan.':vp===0?'Si no camina, está en reposo respecto del tren pero se mueve respecto del andén.':'Camina hacia adelante: las velocidades se suman.')+'</span>'},null);
+segs('grFr',[['and','Visto desde el andén'],['tre','Visto desde el tren']],fr,function(k){fr=k});
+})();
+
+/* ===== F12 · Segunda ley y acción-reacción ===== */
+(function(){
+var t0=null,now=0;
+var nwA=anim('nwBox',function(t){now=t;var F=+el('nwF').value,m=+el('nwM').value;el('nwFv').textContent=F;el('nwMv').textContent=m;var a=F/m,tt=t0==null?0:Math.min(3,t-t0),x=0.5*a*tt*tt;
+  var px=30+Math.min(250,x*8),g='<line x1="10" y1="120" x2="330" y2="120" class="x-ln x-lm"/>';g+='<rect x="'+px.toFixed(1)+'" y="80" width="'+(30+m*1.5)+'" height="34" rx="4" class="x-fb" stroke="var(--sci)" stroke-width="2"/><text class="x-tx" x="'+(px+15+m*0.75).toFixed(1)+'" y="101" text-anchor="middle">'+m+' kg</text>';
+  if(F>0)g+=arrowHead(px-4-F*1.2,97,px-4,97,'x-ln x-l1',7)+'<text class="x-tx" x="'+(px-6-F*0.6).toFixed(1)+'" y="88" text-anchor="middle">'+F+' N</text>';
+  g+='<text class="x-tm" x="10" y="20">t = '+nf(tt,1)+' s · v = '+nf(a*tt,1)+' m/s · x = '+nf(x,1)+' m</text>';
+  var p=plot({xr:[0,50],yr:[0,50],W:150,H:140,L:30,B:30,T:30});var gg=p.axes([0,25,50],[0,25,50],'F (N)','a (m/s²)')+p.line([[0,0],[50,50/m]].map(function(q){return [q[0],Math.min(50,q[1])]}),2)+p.dot(F,Math.min(50,a),1);
+  el('nwSvg').innerHTML='<svg class="x-svg" viewBox="0 0 340 140" role="img" aria-label="Carro empujado y gráfico a versus F">'+g+'<g transform="translate(190,0)">'+gg+'</g></svg>';
+  el('nwOut').innerHTML='<span>a = F / m = '+F+' / '+m+' = <b>'+nf(a,2)+' m/s²</b>. Doble fuerza → doble aceleración; doble masa → mitad de aceleración.</span>'},null);
+el('nwGo').addEventListener('click',function(){nwA.play();t0=now});
+var SC={
+ muro:['Persona empuja un muro',function(){return '<rect x="250" y="30" width="30" height="120" class="x-fs2" stroke="var(--ink)"/><g transform="translate(200,60)"><circle cy="0" r="9" class="x-fi"/><line x1="0" y1="9" x2="0" y2="50" class="x-ln x-li"/><line x1="0" y1="20" x2="48" y2="24" class="x-ln x-li"/><line x1="0" y1="50" x2="-12" y2="85" class="x-ln x-li"/><line x1="0" y1="50" x2="12" y2="85" class="x-ln x-li"/></g>'+arrowHead(240,84,284,84,'x-ln x-l1',8)+arrowHead(244,96,200,96,'x-ln x-l2',8)},'La persona empuja el muro (rojo, actúa sobre el muro) y el muro empuja a la persona con igual fuerza en sentido contrario (azul, actúa sobre la persona).'],
+ cohete:['Cohete',function(){return '<path d="M150 40 L170 20 L190 40 L190 120 L150 120 Z" class="x-fs2" stroke="var(--ink)"/>'+arrowHead(170,128,170,176,'x-ln x-l1',8)+arrowHead(176,116,176,40,'x-ln x-l2',8)+'<text class="x-tm" x="198" y="160">gases</text>'},'El cohete empuja los gases hacia abajo (rojo, sobre los gases) y los gases empujan el cohete hacia arriba (azul, sobre el cohete). Funciona incluso en el vacío: no necesita aire donde apoyarse.'],
+ nada:['Nadador',function(){return '<path d="M20 120 Q60 112 100 120 T180 120 T260 120 T340 120" class="x-ln x-l2" style="stroke-width:1.5"/><g transform="translate(170,100)"><ellipse rx="40" ry="8" class="x-fs2" stroke="var(--ink)"/><circle cx="46" cy="-2" r="8" class="x-fi"/></g>'+arrowHead(130,112,80,112,'x-ln x-l1',8)+arrowHead(160,90,220,90,'x-ln x-l2',8)},'La mano empuja el agua hacia atrás (rojo, sobre el agua) y el agua empuja al nadador hacia adelante (azul, sobre el nadador).'],
+ libro:['Libro sobre la mesa',function(){return '<rect x="60" y="110" width="220" height="10" class="x-fs2" stroke="var(--ink)"/><rect x="140" y="86" width="60" height="24" class="x-fb" stroke="var(--sci)"/>'+arrowHead(160,98,160,150,'x-ln x-l1',8)+arrowHead(180,98,180,46,'x-ln x-l4',8)+'<text class="x-tx" x="152" y="164" text-anchor="end">peso</text><text class="x-tx" x="188" y="50">normal</text>'},'Trampa típica: el peso y la normal <b>no</b> son un par acción-reacción. Ambas actúan sobre el mismo libro y se equilibran. La reacción del peso es la fuerza con que el libro atrae a la Tierra; la reacción de la normal es la fuerza con que el libro empuja la mesa.'],
+ luna:['Tierra y Luna',function(){return '<circle cx="90" cy="95" r="40" class="x-fb" stroke="var(--sci)"/><circle cx="270" cy="95" r="14" class="x-fs2" stroke="var(--ink)"/>'+arrowHead(256,95,180,95,'x-ln x-l1',8)+arrowHead(134,105,210,105,'x-ln x-l2',8)},'La Tierra atrae a la Luna y la Luna atrae a la Tierra con fuerzas de <b>igual magnitud</b>. La Tierra se mueve menos porque su masa es mucho mayor (a = F/m).']};
+var sc='libro';
+function drawSc(){el('arSvg').innerHTML=SC[sc][1]();el('arOut').innerHTML='<span>'+SC[sc][2]+'</span>'}
+segs('arSeg',Object.keys(SC).map(function(k){return [k,SC[k][0]]}),sc,function(k){sc=k;drawSc()});drawSc();
+})();
+
+/* ===== F13 · Hooke y peso ===== */
+(function(){
+var m=200;
+function draw(){var k=+el('hkK').value;el('hkKv').textContent=k;var F=m/1000*10,dx=F/k;var Lp=40+dx*260,g='<line x1="40" y1="10" x2="140" y2="10" class="x-ln x-li" style="stroke-width:3"/>';
+  var pts=[[90,10]],n=14;for(var i=1;i<n;i++)pts.push([90+(i%2?-10:10),10+Lp*i/n]);pts.push([90,10+Lp]);g+='<polyline points="'+pts.map(function(q){return q[0]+','+q[1].toFixed(1)}).join(' ')+'" class="x-ln x-l2" style="stroke-width:2"/>';
+  if(m>0)g+='<rect x="74" y="'+(10+Lp).toFixed(1)+'" width="32" height="24" rx="3" class="x-f3"/><text class="x-tx" x="90" y="'+(26+Lp).toFixed(1)+'" text-anchor="middle" style="fill:var(--bg)">'+m+' g</text>';
+  g+='<line x1="120" y1="'+(10+40)+'" x2="120" y2="'+(10+Lp).toFixed(1)+'" class="x-ln x-l1" style="stroke-width:1.5"/><text class="x-tx" x="126" y="'+(14+40+dx*130).toFixed(1)+'">Δx = '+nf(dx*100,1)+' cm</text>';
+  var p=plot({xr:[0,0.5],yr:[0,5],W:160,H:200,L:30,B:34});var gg=p.axes([0,0.25,0.5],[0,2.5,5],'Δx (m)','F (N)')+p.line([[0,0],[Math.min(0.5,5/k),Math.min(5,0.5*k)]],2);[0,100,200,300,400,500].forEach(function(mm){var FF=mm/100;if(FF/k<=0.5)gg+=p.dot(FF/k,FF,mm===m?1:2,mm===m?5:3)});
+  el('hkSvg').innerHTML='<svg class="x-svg" viewBox="0 0 340 210" role="img" aria-label="Resorte con masa y gráfico F versus estiramiento">'+g+'<g transform="translate(175,4)">'+gg+'</g></svg>';
+  el('hkOut').innerHTML='<span>F = peso = m·g = '+nf(m/1000,1)+' · 10 = <b>'+nf(F,1)+' N</b> · Δx = F/k = <b>'+nf(dx*100,1)+' cm</b>. Los puntos de distintas masas forman una recta: F es proporcional a Δx, y la pendiente es k. Un resorte más duro (k mayor) se estira menos.</span>'}
+segs('hkM',[0,100,200,300,400,500].map(function(v){return [v,v+' g']}),m,function(k){m=+k;draw()});
+el('hkK').addEventListener('input',draw);draw();
+var PL=[['Mercurio',3.7],['Luna',1.6],['Marte',3.7],['Tierra',10],['Júpiter',24.8]];
+function wDraw(){var mm=+el('plM').value;el('plMv').textContent=mm;var p=plot({xr:[0,PL.length],yr:[0,2500],H:190,B:30});var g=p.axes([],[0,500,1000,1500,2000,2500],'','Peso (N)'),slot=(p.X1-p.X0)/PL.length;
+  PL.forEach(function(q,i){var w=mm*q[1],x=p.X0+slot*(i+.5),y=p.sy(Math.min(2500,w));g+='<rect x="'+(x-16).toFixed(1)+'" y="'+y.toFixed(1)+'" width="32" height="'+(p.Y0-y).toFixed(1)+'" class="'+(q[0]==='Tierra'?'x-f1':'x-f2')+'" rx="2"/><text class="x-tx" x="'+x.toFixed(1)+'" y="'+(y-4).toFixed(1)+'" text-anchor="middle">'+nf(w,0)+'</text><text class="x-tk" x="'+x.toFixed(1)+'" y="'+(p.Y0+13)+'" text-anchor="middle">'+q[0]+'</text>'});
+  el('plSvg').innerHTML=p.svg(g,'Peso en distintos astros');el('plOut').innerHTML='<span>La <b>masa</b> es '+mm+' kg en todos lados: es la cantidad de materia. El <b>peso</b> (P = m·g) cambia con la gravedad de cada astro. En la Luna pesarías '+nf(mm*1.6,0)+' N en vez de '+nf(mm*10,0)+' N.</span>'}
+el('plM').addEventListener('input',wDraw);wDraw();
+})();
+
+/* ===== F14 · Órbita de Kepler ===== */
+(function(){
+anim('koBox',function(t){var e=+el('koE').value/100;el('koEv').textContent=nf(e,2);var a=120,b=a*Math.sqrt(1-e*e),cx=170,cy=100,fx=cx-a*e;
+  function pos(M){var E=M;for(var i=0;i<12;i++)E=E-(E-e*Math.sin(E)-M)/(1-e*Math.cos(E));return [cx+a*Math.cos(E),cy+b*Math.sin(E)]}
+  var g='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+a+'" ry="'+b.toFixed(1)+'" class="x-om"/>';
+  [[0,'x-fa'],[Math.PI,'x-fb']].forEach(function(s){var pts=[[fx,cy]];for(var k=0;k<=20;k++)pts.push(pos(s[0]-0.35+0.7*k/20));g+='<polygon points="'+pts.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ')+'" class="'+s[1]+'" stroke="var(--line)"/>'});
+  g+='<circle cx="'+fx.toFixed(1)+'" cy="'+cy+'" r="11" class="x-f3"/><text class="x-tm" x="'+fx.toFixed(1)+'" y="'+(cy+26)+'" text-anchor="middle">Sol (foco)</text>';
+  var M=(t*0.6)%(2*Math.PI),P=pos(M),r=Math.sqrt((P[0]-fx)*(P[0]-fx)+(P[1]-cy)*(P[1]-cy))/a,v=Math.sqrt(2/r-1);
+  g+='<circle cx="'+P[0].toFixed(1)+'" cy="'+P[1].toFixed(1)+'" r="7" class="x-f2"/><text class="x-tm" x="'+(cx+a+4)+'" y="'+(cy-6)+'" text-anchor="end">perihelio</text><text class="x-tm" x="'+(cx-a-4)+'" y="'+(cy-6)+'">afelio</text>';
+  el('koSvg').innerHTML=g;var vp=Math.sqrt((1+e)/(1-e)),va=Math.sqrt((1-e)/(1+e));
+  el('koOut').innerHTML='<span>Rapidez ahora: <b>'+nf(v,2)+'</b> (1 = rapidez media). En el perihelio: '+nf(vp,2)+' · en el afelio: '+nf(va,2)+'.</span><span>Las dos zonas sombreadas se barren en el <b>mismo tiempo</b> y tienen la <b>misma área</b> (2ª ley): cerca del Sol el planeta recorre más arco porque va más rápido. La órbita de la Tierra tiene excentricidad 0,017: casi un círculo.</span>'},'koPlay');
+})();
+
+/* ===== F15 · Movimiento retrógrado ===== */
+(function(){
+var TE=1,TM=1.88,rE=48,rM=78,cx=95,cy=100;
+function lam(t){var ae=2*Math.PI*t/TE,am=2*Math.PI*t/TM;var ex=rE*Math.cos(ae),ey=rE*Math.sin(ae),mx=rM*Math.cos(am),my=rM*Math.sin(am);return Math.atan2(my-ey,mx-ex)}
+var hist=[];var prev=null,acc=0;for(var i=0;i<=440;i++){var tt=i*2.2/440,l=lam(tt);if(prev!=null){var d=l-prev;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;acc+=d}prev=l;hist.push([tt,acc*180/Math.PI])}
+anim('rtBox',function(t){var T=(t*0.25)%2.2,ae=2*Math.PI*T/TE,am=2*Math.PI*T/TM;var E=[cx+rE*Math.cos(ae),cy+rE*Math.sin(ae)],Mr=[cx+rM*Math.cos(am),cy+rM*Math.sin(am)];
+  var dx=Mr[0]-E[0],dy=Mr[1]-E[1],L=Math.sqrt(dx*dx+dy*dy);var far=[E[0]+dx/L*95,E[1]+dy/L*95];
+  var g='<circle cx="'+cx+'" cy="'+cy+'" r="'+rE+'" class="x-om"/><circle cx="'+cx+'" cy="'+cy+'" r="'+rM+'" class="x-om"/><circle cx="'+cx+'" cy="'+cy+'" r="9" class="x-f3"/>';
+  g+='<line x1="'+E[0].toFixed(1)+'" y1="'+E[1].toFixed(1)+'" x2="'+far[0].toFixed(1)+'" y2="'+far[1].toFixed(1)+'" class="x-ln x-lm x-dash" style="stroke-width:1"/><circle cx="'+E[0].toFixed(1)+'" cy="'+E[1].toFixed(1)+'" r="6" class="x-f2"/><circle cx="'+Mr[0].toFixed(1)+'" cy="'+Mr[1].toFixed(1)+'" r="5" class="x-f5"/>';
+  g+='<text class="x-tm" x="10" y="16">Vista desde arriba</text><text class="x-tm" x="'+(cx)+'" y="194" text-anchor="middle">Tierra (azul) · Marte (rojo)</text>';
+  var p=plot({xr:[0,2.2],yr:[Math.min.apply(null,hist.map(function(q){return q[1]})),Math.max.apply(null,hist.map(function(q){return q[1]}))],W:160,H:200,L:16,R:6,B:34});
+  var gg='<line x1="'+p.X0+'" y1="'+p.Y0+'" x2="'+p.X1+'" y2="'+p.Y0+'" class="x-ax"/><text class="x-lb" x="'+((p.X0+p.X1)/2)+'" y="'+(p.Y0+14)+'" text-anchor="middle">tiempo (años) →</text><text class="x-lb" x="'+((p.X0+p.X1)/2)+'" y="'+(p.Y0+28)+'" text-anchor="middle">posición de Marte en el cielo ↑</text>';
+  var seg=[];hist.forEach(function(q,i){if(i){var back=q[1]<hist[i-1][1];gg+='<line x1="'+p.sx(hist[i-1][0]).toFixed(1)+'" y1="'+p.sy(hist[i-1][1]).toFixed(1)+'" x2="'+p.sx(q[0]).toFixed(1)+'" y2="'+p.sy(q[1]).toFixed(1)+'" class="x-ln '+(back?'x-l1':'x-l2')+'" style="stroke-width:2.2"/>'}});
+  var idx=Math.min(hist.length-1,Math.round(T/2.2*440));gg+=p.dot(hist[idx][0],hist[idx][1],5,4.5);
+  el('rtSvg').innerHTML=g+'<g transform="translate(180,0)">'+gg+'</g>';
+  var back=idx>0&&hist[idx][1]<hist[idx-1][1];el('rtOut').innerHTML='<span>'+(back?'<b>Movimiento retrógrado:</b> la Tierra, más rápida, adelanta a Marte por dentro y Marte parece retroceder entre las estrellas (tramo naranjo).':'Marte avanza normalmente entre las estrellas (tramo azul).')+'</span><span>El modelo geocéntrico de Ptolomeo explicaba este retroceso con epiciclos. El heliocéntrico lo explica de forma simple: es un efecto de mirar desde un planeta que también se mueve.</span>'},'rtPlay');
+})();
+
+/* ===== F16 · Expansión y línea de tiempo ===== */
+(function(){
+var R=rng(5),G=[];for(var i=0;i<22;i++)G.push([R()*2-1,R()*2-1]);var ref=0;
+function draw(){var s=1+(+el('huT').value)/100;el('huTv').textContent=nf(s,2);var cx=110,cy=100,sc=60,r0=G[ref],g='';
+  G.forEach(function(q,i){var x=cx+(q[0]-r0[0])*sc*s,y=cy+(q[1]-r0[1])*sc*s;if(Math.abs(x-cx)>105||Math.abs(y-cy)>95)return;var x0=cx+(q[0]-r0[0])*sc,y0=cy+(q[1]-r0[1])*sc;if(i!==ref&&s>1.01)g+='<line x1="'+x0.toFixed(1)+'" y1="'+y0.toFixed(1)+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" class="x-ln x-l1" style="stroke-width:1.3"/>';g+='<circle data-g="'+i+'" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(i===ref?6:4)+'" class="'+(i===ref?'x-f2':'x-fi')+'" style="cursor:pointer"/>'});
+  g+='<rect x="5" y="5" width="210" height="190" fill="none" stroke="var(--line)"/>';
+  var p=plot({xr:[0,2],yr:[0,2],W:130,H:200,L:20,R:6,B:34});var gg=p.axes([0,1,2],[],'distancia','');gg+='<text class="x-lb" x="'+(p.X0+3)+'" y="'+(p.Y1+8)+'">velocidad</text>';
+  G.forEach(function(q,i){if(i===ref)return;var d=Math.sqrt(Math.pow(q[0]-r0[0],2)+Math.pow(q[1]-r0[1],2));if(d<=2)gg+=p.dot(d,d,1,3)});
+  gg+=p.line([[0,0],[2,2]],2,'x-dash');
+  el('huSvg').innerHTML=g+'<g transform="translate(212,0)">'+gg+'</g>';
+  el('huOut').innerHTML='<span>Toca cualquier galaxia para mirar desde ella: siempre ves que las demás se alejan, y las más lejanas lo hacen más rápido (velocidad ∝ distancia, ley de Hubble). No hay un centro: es el espacio el que se expande.</span>'}
+el('huSvg').addEventListener('click',function(e){var c=e.target.closest('[data-g]');if(c){ref=+c.getAttribute('data-g');draw()}});
+el('huT').addEventListener('input',draw);draw();
+var TL=[['0','Big Bang','El universo comienza en un estado extremadamente denso y caliente, y empieza a expandirse.'],['3 minutos','Primeros núcleos','Se forman núcleos de hidrógeno y helio (~75 % H y ~25 % He en masa): una de las evidencias del Big Bang.'],['380 000 años','Radiación de fondo','El universo se enfría lo suficiente para formar átomos y la luz viaja libre. Esa luz es hoy la radiación cósmica de fondo de microondas.'],['~200 millones de años','Primeras estrellas','La gravedad junta el gas en las primeras estrellas y galaxias.'],['~9 200 millones de años','Sistema solar','Se forman el Sol y la Tierra, hace unos 4 600 millones de años.'],['13 800 millones de años','Hoy','El universo sigue expandiéndose, y cada vez más rápido (energía oscura). Las galaxias lejanas muestran corrimiento al rojo.']];
+stepper('tlStep',TL.length,function(i){var g='<line x1="20" y1="40" x2="320" y2="40" class="x-ln x-lm"/>';TL.forEach(function(q,k){var x=20+k*60;g+='<circle cx="'+x+'" cy="40" r="'+(k===i?9:5)+'" class="'+(k<=i?'x-f1':'x-fl')+'"/>'});g+='<text class="x-tx" x="'+(20+i*60)+'" y="70" text-anchor="'+(i===0?'start':i===TL.length-1?'end':'middle')+'">'+TL[i][0]+'</text>';el('tlSvg').innerHTML=g;el('tlOut').innerHTML='<b>'+TL[i][1]+'</b><span>'+TL[i][2]+'</span>'});
+})();
+
+/* ===== F17 · Capas de la Tierra ===== */
+(function(){
+var CH=[['cor',0,70,'Corteza','5–70 km de espesor. Continental (granito, menos densa) y oceánica (basalto, más densa). Sólida.','x-f3'],['man',70,2900,'Manto','Hasta ~2 900 km de profundidad. Silicatos de hierro y magnesio. Sólido, aunque en parte se deforma muy lentamente.','x-f5'],['nuc',2900,6371,'Núcleo','Hierro y níquel. La parte externa es líquida y la interna, sólida.','x-f1']];
+var PH=[['lit',0,100,'Litosfera','0–100 km. Rígida y dividida en placas tectónicas (corteza + parte superior del manto).','x-f3'],['ast',100,400,'Astenosfera','~100–400 km. Plástica: sus corrientes de convección mueven las placas.','x-f5'],['mes',400,2900,'Mesosfera','~400–2 900 km. Sólida y muy caliente.','x-f2'],['nex',2900,5100,'Núcleo externo','~2 900–5 100 km. <b>Líquido</b>: su movimiento genera el campo magnético. Las ondas S no lo atraviesan.','x-f3'],['nin',5100,6371,'Núcleo interno','~5 100–6 371 km. Sólido por la enorme presión, aunque supera los 5 000 °C.','x-f4']];
+var mode='fis',sel='nex',waves=false;
+function rad(d){return d<=400?92-d/400*18:74-(d-400)/(6371-400)*74}
+function draw(){var L=mode==='qui'?CH:PH,cx=62,cy=100,g='';
+  L.forEach(function(q){var ro=rad(q[1]),ri=rad(q[2]);g+='<path data-l="'+q[0]+'" d="M'+cx+' '+(cy-ro).toFixed(1)+' A'+ro.toFixed(1)+' '+ro.toFixed(1)+' 0 0 1 '+cx+' '+(cy+ro).toFixed(1)+' L'+cx+' '+(cy+ri).toFixed(1)+(ri>0.5?' A'+ri.toFixed(1)+' '+ri.toFixed(1)+' 0 0 0 '+cx+' '+(cy-ri).toFixed(1):' L'+cx+' '+(cy-ri).toFixed(1))+' Z" class="'+q[5]+'" opacity="'+(q[0]===sel?1:.45)+'" stroke="var(--bg)" stroke-width="'+(q[0]===sel?2:1)+'" style="cursor:pointer"/>'});
+  if(waves){var R0=92;function pt(th){var a=th*Math.PI/180;return [cx+R0*Math.sin(a),cy-R0*Math.cos(a)]}var E=pt(0);
+    [35,65,95].forEach(function(th){var P2=pt(th),mx=(E[0]+P2[0])/2,my=(E[1]+P2[1])/2,dx=mx-cx,dy=my-cy,l=Math.sqrt(dx*dx+dy*dy)||1;var c=[mx-dx/l*26,my-dy/l*26];g+='<path d="M'+E[0].toFixed(1)+' '+E[1].toFixed(1)+' Q'+c[0].toFixed(1)+' '+c[1].toFixed(1)+' '+P2[0].toFixed(1)+' '+P2[1].toFixed(1)+'" fill="none" class="x-ln x-l2" style="stroke-width:1.4"/>'});
+    var A1=pt(104),A2=pt(180);g+='<path d="M'+A1[0].toFixed(1)+' '+A1[1].toFixed(1)+' A'+R0+' '+R0+' 0 0 1 '+A2[0].toFixed(1)+' '+A2[1].toFixed(1)+'" fill="none" stroke="var(--bad)" stroke-width="6" opacity=".75"/><circle cx="'+E[0].toFixed(1)+'" cy="'+E[1].toFixed(1)+'" r="5" class="x-f5"/><text class="x-tx" x="'+(cx+8)+'" y="'+(E[1]-3).toFixed(1)+'">sismo</text>'}
+  var it=L.filter(function(q){return q[0]===sel})[0]||L[0];
+  g+='<text class="x-tm" x="168" y="22">'+(mode==='qui'?'Modelo químico (composición)':'Modelo físico (comportamiento)')+'</text>';
+  L.forEach(function(q,i){g+='<rect x="168" y="'+(36+i*20)+'" width="9" height="9" class="'+q[5]+'"/><text class="x-tb" x="182" y="'+(45+i*20)+'" data-l="'+q[0]+'" style="cursor:pointer;'+(q[0]===it[0]?'font-weight:700':'')+'">'+q[3]+'</text>'});
+  if(waves)g+='<text class="x-tx" x="168" y="186" style="fill:var(--bad)">— zona de sombra de ondas S</text>';
+  g+='<text class="x-tm" x="6" y="196">Capas externas exageradas para que se vean.</text>';
+  el('lySvg').innerHTML=g;el('lyOut').innerHTML='<b>'+it[3]+'</b><span>'+it[4]+'</span>'+(waves?'<span>Las ondas S solo viajan por sólidos. Como no cruzan el núcleo externo, no llegan a la zona a más de ~104° del sismo: así se infiere que el núcleo externo es líquido.</span>':'')}
+segs('lySeg',[['fis','Modelo físico'],['qui','Modelo químico']],mode,function(k){mode=k;sel=k==='qui'?'man':'nex';draw()});
+el('lySvg').addEventListener('click',function(e){var t=e.target.closest('[data-l]');if(t){sel=t.getAttribute('data-l');draw()}});
+el('lyW').addEventListener('change',function(){waves=this.checked;draw()});draw();
+})();
+
+/* ===== F18 · Deriva continental ===== */
+(function(){
+var SA=[[0,0],[22,-6],[40,4],[44,26],[36,50],[24,74],[14,96],[6,100],[4,80],[-6,50],[-10,24],[-6,8]];
+var AF=[[-8,-30],[24,-34],[46,-20],[50,6],[40,30],[30,60],[16,70],[6,56],[0,30],[-14,14],[-26,-4],[-22,-22]];
+function poly(P,dx,dy,rot){var a=rot*Math.PI/180;return P.map(function(q){var x=q[0]*Math.cos(a)-q[1]*Math.sin(a),y=q[0]*Math.sin(a)+q[1]*Math.cos(a);return (x+dx).toFixed(1)+','+(y+dy).toFixed(1)}).join(' ')}
+function draw(){var ma=+el('drT').value;el('drTv').textContent=ma;var f=1-ma/200;var sep=f*120,mid=170;
+  var g='<rect x="0" y="0" width="340" height="190" class="x-fb"/>';
+  var nStripes=Math.floor(sep/8);for(var i=0;i<nStripes;i++){var w=sep/2/nStripes;[mid+i*w,mid-(i+1)*w].forEach(function(x){g+='<rect x="'+x.toFixed(1)+'" y="10" width="'+(w/2).toFixed(1)+'" height="170" class="x-fs2" opacity=".6"/>'})}
+  if(sep>4)g+='<line x1="'+mid+'" y1="8" x2="'+mid+'" y2="182" class="x-ln x-l5 x-dash" style="stroke-width:2"/>';
+  var saX=mid-36-sep/2,afX=mid+16+sep/2;
+  g+='<polygon points="'+poly(SA,saX,46,-8+f*12)+'" class="x-f4" opacity=".85" stroke="var(--ink)" stroke-width="1"/><polygon points="'+poly(AF,afX,70,f*-6)+'" class="x-f3" opacity=".85" stroke="var(--ink)" stroke-width="1"/>';
+  g+='<text class="x-tx" x="'+(saX+10).toFixed(1)+'" y="40" text-anchor="middle">Sudamérica</text><text class="x-tx" x="'+(afX+14).toFixed(1)+'" y="30" text-anchor="middle">África</text>';
+  [[saX+34,104],[afX-8,110]].forEach(function(q){g+='<text x="'+q[0].toFixed(1)+'" y="'+q[1]+'" class="x-tx" style="fill:var(--accent)" text-anchor="middle">◆</text>'});
+  el('drSvg').innerHTML=g;el('drOut').innerHTML='<span>'+(ma>=180?'Hace '+ma+' millones de años ambos continentes formaban parte de <b>Pangea</b>: las costas encajan y los fósiles de <i>Mesosaurus</i> (◆) quedan en una misma zona.':ma>0?'Hace '+ma+' millones de años: el océano Atlántico se va abriendo.':'<b>Hoy:</b> el Atlántico separa ambos continentes y sigue creciendo unos centímetros al año.')+'</span><span>En la dorsal (línea roja) sube magma y se forma fondo oceánico nuevo; las franjas a cada lado son simétricas (bandas magnéticas). Esa expansión del fondo oceánico fue el mecanismo que le faltó a Wegener.</span>'}
+el('drT').addEventListener('input',draw);draw();
+})();
+
+/* ===== F19 · Magnitud e intensidad ===== */
+(function(){
+var TOWNS=[['A',20],['B',80],['C',200],['D',400]];var ROM=['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
+function draw(){var M=+el('msM').value/10,h=+el('msH').value;el('msMv').textContent=nf(M,1);el('msHv').textContent=h;var g='<rect x="0" y="40" width="340" height="150" class="x-fs2"/><line x1="0" y1="40" x2="340" y2="40" class="x-ln x-li"/>';
+  var ex=22,hy=40+h*1.2;g+='<circle cx="'+ex+'" cy="'+hy.toFixed(1)+'" r="6" class="x-f5"/><text class="x-tx" x="'+(ex+10)+'" y="'+(hy+4).toFixed(1)+'">hipocentro ('+h+' km)</text><text class="x-tx" x="'+ex+'" y="30" text-anchor="middle">epicentro</text><line x1="'+ex+'" y1="40" x2="'+ex+'" y2="'+hy.toFixed(1)+'" class="x-ln x-lm x-dash" style="stroke-width:1"/>';
+  [1,2,3].forEach(function(k){g+='<circle cx="'+ex+'" cy="'+hy.toFixed(1)+'" r="'+(k*30)+'" fill="none" stroke="var(--bad)" stroke-width="1" opacity="'+(0.6/k).toFixed(2)+'"/>'});
+  var rows=TOWNS.map(function(t){var R=Math.sqrt(t[1]*t[1]+h*h),I=Math.max(1,Math.min(12,Math.round(1.5*M-2.5*Math.log10(R)+1)));var x=ex+t[1]*0.7;g+='<rect x="'+(x-8).toFixed(1)+'" y="24" width="16" height="16" class="x-f2"/><text class="x-tx" x="'+x.toFixed(1)+'" y="18" text-anchor="middle">'+t[0]+'</text><text class="x-tx" x="'+x.toFixed(1)+'" y="58" text-anchor="middle" style="fill:var(--bad)">'+ROM[I-1]+'</text>';return '<tr><td>'+t[0]+'</td><td class="n">'+t[1]+' km</td><td class="n"><b>'+ROM[I-1]+'</b></td></tr>'});
+  el('msSvg').innerHTML=g;el('msTab').innerHTML='<div class="x-tbl"><table><thead><tr><th>Ciudad</th><th>Distancia al epicentro</th><th>Intensidad (Mercalli)</th></tr></thead><tbody>'+rows.join('')+'</tbody></table></div>';
+  el('msOut').innerHTML='<span>La <b>magnitud</b> ('+nf(M,1)+') es una sola para el sismo: mide la energía liberada. La <b>intensidad</b> cambia en cada lugar: disminuye con la distancia y depende del suelo y las construcciones.</span><span class="muted">Intensidades calculadas con un modelo simplificado, solo para comparar.</span>'}
+['msM','msH'].forEach(function(id){el(id).addEventListener('input',draw)});draw();
+})();
+
+/* ===== F20 · Ampolletas en serie y paralelo ===== */
+(function(){
+var mode='ser',ok=[1,1,1],V=12,R=6;
+function draw(){var n=ok.filter(Boolean).length,I=[],Pw=[];
+  if(mode==='ser'){var broken=ok.indexOf(0)>=0;var it=broken?0:V/(3*R);ok.forEach(function(o){I.push(o?it:0);Pw.push(o?it*it*R:0)})}else{ok.forEach(function(o){var i=o?V/R:0;I.push(i);Pw.push(i*i*R)})}
+  var tot=mode==='ser'?I[0]:I.reduce(function(a,b){return a+b},0),g='',Pmax=V*V/R;
+  g+='<line x1="30" y1="60" x2="30" y2="160" class="x-ln x-li"/><line x1="18" y1="104" x2="42" y2="104" class="x-ln x-li" style="stroke-width:3"/><line x1="24" y1="114" x2="36" y2="114" class="x-ln x-li" style="stroke-width:5"/><text class="x-tx" x="46" y="112">12 V</text>';
+  var pos=mode==='ser'?[[110,40],[190,40],[270,40]]:[[130,100],[210,100],[290,100]];
+  if(mode==='ser')g+='<polyline points="30,60 30,40 310,40 310,160 30,160" class="x-o"/>';else{g+='<line x1="30" y1="60" x2="30" y2="40" class="x-o"/><line x1="30" y1="40" x2="290" y2="40" class="x-o"/><line x1="30" y1="160" x2="290" y2="160" class="x-o"/>';pos.forEach(function(p){g+='<line x1="'+p[0]+'" y1="40" x2="'+p[0]+'" y2="84" class="x-o"/><line x1="'+p[0]+'" y1="116" x2="'+p[0]+'" y2="160" class="x-o"/>'})}
+  pos.forEach(function(p,i){var b=Pw[i]/Pmax;g+='<g data-b="'+i+'" style="cursor:pointer"><circle cx="'+p[0]+'" cy="'+p[1]+'" r="24" fill="var(--warn)" opacity="'+(b*0.5).toFixed(2)+'"/><circle cx="'+p[0]+'" cy="'+p[1]+'" r="14" class="x-fs" stroke="var(--ink)" stroke-width="1.5"/>'+(ok[i]?'<path d="M'+(p[0]-6)+' '+(p[1]+4)+' q3 -12 6 0 q3 -12 6 0" class="x-ln x-l3" style="stroke-width:'+(1+b*2.5).toFixed(1)+'"/>':'<text class="x-tx" x="'+p[0]+'" y="'+(p[1]+4)+'" text-anchor="middle" style="fill:var(--bad)">✕</text>')+'<text class="x-tx" x="'+p[0]+'" y="'+(p[1]+(mode==='ser'?40:-22))+'" text-anchor="middle">'+nf(I[i],2)+' A</text></g>'});
+  el('buSvg').innerHTML=g;
+  el('buOut').innerHTML='<span>Corriente total: <b>'+nf(tot,2)+' A</b> · cada ampolleta: 6 Ω.</span><span>'+(mode==='ser'?(ok.indexOf(0)>=0?'<b>Serie:</b> al quitar una ampolleta se abre el único camino y <b>se apagan todas</b>.':'<b>Serie:</b> la misma corriente pasa por las tres y el voltaje se reparte (4 V cada una): brillan poco.'):'<b>Paralelo:</b> cada ampolleta tiene su propio camino con los 12 V completos: brillan al máximo y, si una se quita, las demás siguen encendidas. Por eso así se conecta una casa. Cada rama agrega corriente al total.')+'</span><span class="muted">Toca una ampolleta para quitarla o ponerla.</span>'}
+el('buSvg').addEventListener('click',function(e){var b=e.target.closest('[data-b]');if(b){var i=+b.getAttribute('data-b');ok[i]=ok[i]?0:1;draw()}});
+segs('buSeg',[['ser','En serie'],['par','En paralelo']],mode,function(k){mode=k;draw()});draw();
+})();
+
+/* ===== F21 · Tablero de la casa ===== */
+(function(){
+var A=[['her','Hervidor',2000],['mic','Microondas',1200],['pla','Plancha',1500],['est','Estufa eléctrica',2000],['sec','Secador de pelo',1600],['ref','Refrigerador',150],['tv','Televisor',100],['nb','Notebook',65],['led','5 ampolletas LED',50]];
+var on={ref:1,tv:1,led:1};
+function draw(){var P=0;A.forEach(function(a){if(on[a[0]])P+=a[2]});var I=P/220,lim=16,f=Math.min(1.25,I/lim);
+  el('tbList').innerHTML=A.map(function(a){return '<label class="x-chk"><input type="checkbox" data-a="'+a[0]+'"'+(on[a[0]]?' checked':'')+'><span>'+a[1]+' · '+a[2]+' W · '+nf(a[2]/220,2)+' A</span></label>'}).join('');
+  var g='<rect x="10" y="20" width="320" height="22" rx="4" class="x-fs2"/><rect x="10" y="20" width="'+(Math.min(1,I/20)*320).toFixed(1)+'" height="22" rx="4" class="'+(I>lim?'x-f5':I>lim*0.8?'x-f3':'x-f4')+'"/><line x1="'+(10+lim/20*320)+'" y1="12" x2="'+(10+lim/20*320)+'" y2="50" class="x-ln x-li" style="stroke-width:2"/><text class="x-tx" x="'+(10+lim/20*320)+'" y="62" text-anchor="middle">automático 16 A</text><text class="x-tx" x="10" y="12">0 A</text><text class="x-tx" x="330" y="12" text-anchor="end">20 A</text>';
+  el('tbSvg').innerHTML=g;
+  el('tbOut').className='verdict '+(I>lim?'sob':'sat');el('tbOut').innerHTML='<span>Potencia total: <b>'+nf(P,0)+' W</b> · corriente: I = P/V = '+nf(P,0)+' / 220 = <b>'+nf(I,1)+' A</b>.</span><span>'+(I>lim?'<b>Salta el automático:</b> la corriente supera los 16 A y el interruptor termomagnético corta el circuito para que los cables no se sobrecalienten.':'Todo funciona. Los artefactos están en <b>paralelo</b>: cada uno recibe 220 V y sus corrientes se suman.')+'</span>'}
+el('tbList').addEventListener('change',function(e){var k=e.target.dataset.a;if(k){on[k]=e.target.checked;draw()}});draw();
+})();
+
+/* ===== F22 · Corriente eléctrica ===== */
+(function(){
+var mode='dc',conv=false;
+anim('ecBox',function(t){var V=+el('ecV').value;el('ecVv').textContent=V;var g='<rect x="20" y="70" width="300" height="40" rx="20" class="x-fs2" stroke="var(--muted)"/>';var sp=V*3;
+  for(var i=0;i<26;i++){var base=20+i*12;var x=mode==='dc'?((base-t*sp)%300+300)%300+20:base+14*Math.sin(2*Math.PI*0.8*t)*V/12;g+='<circle cx="'+x.toFixed(1)+'" cy="'+(80+(i%3)*10)+'" r="3.5" class="x-f2"/>'}
+  g+='<text class="x-tx" x="20" y="132">'+(mode==='dc'?'Los electrones van del polo − al polo +':'Alterna: los electrones oscilan 50 veces por segundo')+'</text>';
+  if(mode==='dc'){g+=arrowHead(230,56,110,56,'x-ln x-l2',7)+'<text class="x-tx" x="170" y="46" text-anchor="middle">sentido real (electrones)</text>';if(conv)g+=arrowHead(110,156,230,156,'x-ln x-l1',7)+'<text class="x-tx" x="170" y="150" text-anchor="middle" style="fill:var(--accent)">sentido convencional</text>'}
+  g+='<text class="x-tx" x="10" y="30">−</text><text class="x-tx" x="322" y="30">+</text>';
+  el('ecSvg').innerHTML=g},'ecPlay');
+segs('ecSeg',[['dc','Continua (pila)'],['ac','Alterna (enchufe)']],mode,function(k){mode=k});
+el('ecConv').addEventListener('change',function(){conv=this.checked});
+})();
+
+/* ===== F23 · Ley de Ohm gráfica ===== */
+(function(){
+function draw(){var V=+el('ohV').value,R=+el('ohR').value;el('ohVv').textContent=V;el('ohRv').textContent=R;var I=V/R;var p=plot({xr:[0,24],yr:[0,24],H:200});var g=p.axes([0,4,8,12,16,20,24],[0,6,12,18,24],'Corriente (A)','Voltaje (V)');
+  [2,5,10,20].forEach(function(r){g+=p.line([[0,0],[Math.min(24,24/r),Math.min(24,24/r*r)]],0,'x-lm x-dash')});
+  g+=p.line([[0,0],[Math.min(24,24/R),24]],1)+p.dot(Math.min(24,I),V,1,5.5);
+  el('ohSvg').innerHTML=p.svg(g,'Gráfico voltaje versus corriente');el('ohOut').innerHTML='<span>I = V / R = '+V+' / '+R+' = <b>'+nf(I,2)+' A</b>. En el gráfico V–I, la <b>pendiente</b> de la recta es la resistencia: más empinada = más resistencia = menos corriente para el mismo voltaje. Las líneas punteadas son resistencias de 20, 10, 5 y 2 Ω (de más a menos empinada).</span>'}
+['ohV','ohR'].forEach(function(id){el(id).addEventListener('input',draw)});draw();
+})();
+
+})();
+</script>
+</body></html>

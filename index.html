@@ -671,6 +671,18 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
 .int-cie .btn.int-btn { background: linear-gradient(135deg, #7DF0DC, #2BB8A3); color: #04201b; box-shadow: 0 12px 28px -12px rgba(94, 234, 212, .7); }
 .int-cie .btn.int-btn:hover { background: linear-gradient(135deg, #9AF5E6, #36C9B3); }
 .int-acts { margin-top: 20px; display: grid; gap: 8px; }
+.int-prev { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; }
+.int-prev > span { font: 600 13px var(--f-display); color: var(--muted); margin-right: 2px; }
+.pv-g { border-radius: 12px; overflow: hidden; background: #fff; }
+.pv-g img { display: block; width: 100%; height: auto; }
+.pv-lock { position: relative; }
+.pv-cta { position: absolute; inset: 0; display: grid; place-items: center; padding: 18px; background: linear-gradient(180deg, rgba(11, 26, 51, 0) 0%, rgba(11, 26, 51, .55) 28%, rgba(11, 26, 51, .92) 70%); }
+.pv-card { max-width: 430px; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px 18px; display: grid; gap: 10px; justify-items: center; box-shadow: 0 20px 50px -20px rgba(0, 0, 0, .6); }
+.pv-card .ic { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgba(245, 165, 36, .14); color: #F5A524; }
+.pv-card .ic svg { width: 22px; height: 22px; }
+.pv-card h4 { font: 700 18px/1.25 var(--f-display); margin: 0; }
+.pv-card p { margin: 0; color: var(--muted); font-size: 15px; }
+
 .int-fine { margin: 0; font: 500 12.5px var(--f-display); color: var(--muted); }
 .int-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; align-content: start; }
 .int-list li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: rgba(8, 20, 40, .45); border: 1px solid rgba(255, 255, 255, .08); color: var(--muted); font-size: 14.5px; line-height: 1.5; }
@@ -939,6 +951,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>3 revisiones personalizadas a elección</b>Informe con tutor virtual y guía de refuerzo en las guías que tú elijas, de M1 o de M2: por ejemplo, 2 de M2 y 1 de M1, o las 3 de M2.</span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Aula online de Matemática</b>Apuntes interactivos y slides de M1 y M2, tus revisiones, las clases en vivo y los videos, en un solo lugar. <a href="#material">Ver el material ↓</a></span></li>
           </ul>
+          <div class="int-prev"><span>Vista previa:</span><button class="btn btn-ghost btn-sm" type="button" data-pvint="MAT|guia">Una guía</button><button class="btn btn-ghost btn-sm" type="button" data-pvint="MAT|apunte">El apunte interactivo</button></div>
           <div class="int-acts"><button class="btn int-btn" type="button" data-int="TSZ-INT-MAT">Quiero el Intensivo Matemática</button><p class="int-fine">No acumulable con códigos promocionales.</p></div>
         </article>
         <article class="int-card int-cie">
@@ -954,6 +967,7 @@ nav.main a.nav-uni:hover { color: var(--ink); border-color: var(--latte); backgr
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>3 revisiones personalizadas a elección</b>Informe con tutor virtual y guía de refuerzo en las guías de Ciencias que tú elijas: repártelas como quieras entre Física, Química y Biología.</span></li>
             <li><span class="int-ic" aria-hidden="true">✓</span><span><b>Aula online de Ciencias</b>Apuntes interactivos con simuladores y slides de Física, Química y Biología, tus revisiones y los videos, en un solo lugar. <a href="#material">Ver el material ↓</a></span></li>
           </ul>
+          <div class="int-prev"><span>Vista previa:</span><button class="btn btn-ghost btn-sm" type="button" data-pvint="CIE|guia">Una guía</button><button class="btn btn-ghost btn-sm" type="button" data-pvint="CIE|apunte">El apunte interactivo</button></div>
           <div class="int-acts"><button class="btn int-btn" type="button" data-int="TSZ-INT-CIE">Quiero el Intensivo Ciencias</button><p class="int-fine">No acumulable con códigos promocionales.</p></div>
         </article>
       </div>
@@ -1969,6 +1983,29 @@ renderTabs(); renderEjes(); renderPrices();
 (() => { const m = /^#comprar=([A-Z0-9-]+)$/.exec(location.hash); if (!m || !(GUIAS[m[1]] || EXTRAS[m[1]] || (PCAL[m[1]] && PCAL[m[1]].sec === "REV"))) return;
   try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
   setTimeout(() => { try { GUIAS[m[1]] ? openPay(null, m[1]) : openPay(m[1]); } catch (e) {} }, 0); })();
+
+
+/* ---------- vistas previas de los Intensivos ---------- */
+const PV_INT = {
+  MAT: { id: "TSZ-INT-MAT", base: "/intensivo/muestra/matematica", guia: "Guía Función lineal y afín · M1", nG: "las guías de M1 y M2", apunte: "Matemática M1", temas: "Números y Funciones" },
+  CIE: { id: "TSZ-INT-CIE", base: "/intensivo/muestra/ciencias", guia: "Guía Cinemática · Física", nG: "las guías de Física, Química y Biología", apunte: "Física", temas: "Método científico y Cinemática" } };
+function vistaInt(area, k) {
+  const P = PV_INT[area], I = INTENSIVOS[P.id];
+  const cuerpo = k === "guia"
+    ? `<p class="muted" style="font-size:14px">Las dos primeras preguntas de la ${esc(P.guia)}, con su código QR de solución paso a paso.</p>
+       <div class="pv-g"><img src="${P.base}-guia.jpg" alt="Primera página de la ${esc(P.guia)}: instrucciones, repaso y preguntas 1 y 2" width="1275" height="1290">
+       <div class="pv-lock"><img src="${P.base}-guia-resto.jpg" alt="" aria-hidden="true" width="1275" height="1200">
+       <div class="pv-cta"><div class="pv-card"><span class="ic" aria-hidden="true">${IC_LOCK}</span><h4>Para ver la guía completa necesitas el ${esc(I.nombre)}</h4><p>Trae ${esc(P.nG)}, con la solución de cada pregunta, sus ensayos PAES y 3 revisiones personalizadas.</p>
+       <button class="btn int-btn" type="button" data-pvbuy="${P.id}">Quiero el ${esc(I.nombre)} · ${fmt(PRECIO_INT)}</button></div></div></div></div>`
+    : `<p class="muted" style="font-size:14px">Una parte del apunte interactivo de ${esc(P.apunte)}: puedes recorrer ${esc(P.temas)} y probar sus herramientas. Los demás temas están en el aula del ${esc(I.nombre)}.</p>
+       <iframe src="${P.base}-apunte.html" title="Vista previa del apunte interactivo" loading="lazy" style="width:100%;height:min(72vh,760px);border:1px solid var(--line);border-radius:12px;background:#0B1628"></iframe>
+       <button class="btn int-btn" type="button" data-pvbuy="${P.id}" style="align-self:flex-start">Quiero el ${esc(I.nombre)} · ${fmt(PRECIO_INT)}</button>`;
+  showLayer(`<div class="panel" role="dialog" aria-modal="true" aria-labelledby="pviT" style="width:min(900px,100%)">
+    <div class="panel-head"><div><h3 id="pviT">Vista previa · ${k === "guia" ? esc(P.guia) : "Apunte interactivo"}</h3><div class="sub">${esc(I.nombre)}</div></div><button class="x" aria-label="Cerrar">×</button></div>
+    <div class="panel-body">${cuerpo}</div></div>`);
+  layer.querySelectorAll("[data-pvbuy]").forEach(b => b.addEventListener("click", () => { closeLayer(); openPay(b.dataset.pvbuy); }));
+}
+document.querySelectorAll("[data-pvint]").forEach(b => b.addEventListener("click", () => { const [a, k] = b.dataset.pvint.split("|"); vistaInt(a, k); }));
 
 /* ---------- clases particulares ---------- */
 const lb = $("#lbClase");
