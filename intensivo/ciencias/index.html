@@ -2,7 +2,7 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Aula Intensivo Ciencias · TS Zenit</title>
-<meta name="description" content="Aula del Intensivo Ciencias de TS Zenit: material, revisiones, clases en vivo y videos.">
+<meta name="description" content="Aula del Intensivo Ciencias de TS Zenit: material, guías, ensayos y revisiones.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#081428">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cpath d=%22M50 8 L58 42 L92 50 L58 58 L50 92 L42 58 L8 50 L42 42 Z%22 fill=%22%23F5A524%22/%3E%3C/svg%3E">
@@ -234,8 +234,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
   <div>
     <p class="eyebrow">Intensivo Ciencias · Física · Química · Biología</p>
     <h1>Aula del <em>Intensivo Ciencias</em></h1>
-    <p class="lead">Tu material de Física, Química y Biología, tus revisiones, las clases y los videos, en un solo lugar.</p>
-    <ul class="feats"><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Apuntes interactivos y slides</b>De Física, Química y Biología: elige la asignatura y ábrelos desde aquí.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>3 revisiones personalizadas a elección</b>Repártelas como quieras entre Física, Química y Biología, con informe y guía de refuerzo.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Videos de clases grabadas</b>Para repasar cuando quieras.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Clases</b>Si se programa una clase, aparece aquí con su link.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Todas las guías de Ciencias y sus 6 ensayos PAES</b>Descárgalas en PDF y envía tus respuestas.</span></li></ul>
+    <p class="lead">Tu material de Física, Química y Biología, tus guías, ensayos y revisiones, en un solo lugar.</p>
+    <ul class="feats"><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Apuntes interactivos y slides</b>De Física, Química y Biología: elige la asignatura y ábrelos desde aquí.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>3 revisiones personalizadas a elección</b>Repártelas como quieras entre Física, Química y Biología, con informe y guía de refuerzo.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Todas las guías de Ciencias y sus 6 ensayos PAES</b>Descárgalas en PDF y envía tus respuestas.</span></li></ul>
   </div>
   <aside class="gate" id="gate"></aside>
 </div></div></section>
@@ -250,8 +250,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
     <nav class="tabs" role="tablist" aria-label="Secciones del aula" id="tabs">
       <button role="tab" data-t="material" aria-selected="true">Material</button>
       <button role="tab" data-t="guias" aria-selected="false">Guías y revisiones</button>
-      <button role="tab" data-t="clases" aria-selected="false">Clases en vivo<span class="n" id="nCl" hidden></span></button>
-      <button role="tab" data-t="videos" aria-selected="false">Videos<span class="n" id="nVi" hidden></span></button>
+      <button role="tab" data-t="clases" aria-selected="false" hidden>Clases en vivo<span class="n" id="nCl" hidden></span></button>
+      <button role="tab" data-t="videos" aria-selected="false" hidden>Videos<span class="n" id="nVi" hidden></span></button>
     </nav>
   </div></div>
   <main class="wrap body">
@@ -429,6 +429,7 @@ function render() {
   const cls = proximas(), vids = D.videos || [];
   const nc = $("#nCl"), nv = $("#nVi"); nc.textContent = cls.length; nc.hidden = !cls.length; nv.textContent = vids.length; nv.hidden = !vids.length;
   document.querySelectorAll("#tabs [data-t]").forEach(b => b.setAttribute("aria-selected", b.dataset.t === tab));
+  if (tab === "clases" || tab === "videos") tab = "material";
   ["material", "guias", "clases", "videos"].forEach(t => $("#p" + t[0].toUpperCase() + t.slice(1)).hidden = t !== tab);
   $("#cupos").hidden = !(tab === "material" || tab === "guias");
   renderCupos(); renderMaterial(); renderGuias(); renderClases(); renderVideos();
@@ -621,7 +622,7 @@ function openForm(code) {
 /* ---------- eventos ---------- */
 $("#msw").addEventListener("click", ev => { const b = ev.target.closest("[data-m]"); if (!b) return; mat = b.dataset.m; try { localStorage.setItem("tsz_aula_" + A.area, mat); history.replaceState(null, "", "#" + mat.toLowerCase()); } catch (e) {} render(); });
 $("#tabs").addEventListener("click", ev => { const b = ev.target.closest("[data-t]"); if (!b) return; tab = b.dataset.t; render(); });
-$("#tabs").addEventListener("keydown", ev => { if (!/Arrow(Left|Right)/.test(ev.key)) return; const T = [...document.querySelectorAll("#tabs [data-t]")], i = T.findIndex(b => b.dataset.t === tab), n = T[(i + (ev.key === "ArrowRight" ? 1 : T.length - 1)) % T.length]; tab = n.dataset.t; render(); n.focus(); });
+$("#tabs").addEventListener("keydown", ev => { if (!/Arrow(Left|Right)/.test(ev.key)) return; const T = [...document.querySelectorAll("#tabs [data-t]:not([hidden])")], i = T.findIndex(b => b.dataset.t === tab), n = T[(i + (ev.key === "ArrowRight" ? 1 : T.length - 1)) % T.length]; tab = n.dataset.t; render(); n.focus(); });
 $("#vApp").addEventListener("click", ev => {
   const ej = ev.target.closest("[data-eje]"); if (ej) { const id = ej.dataset.eje; ejeSel[mat] = ejeSel[mat] === id ? "" : id; renderGuias(); const c = $("#ej-" + id); if (c && ejeSel[mat]) c.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); const b = $(`[data-eje="${id}"]`); if (b) b.focus({ preventScroll: true }); return; }
   const m = ev.target.closest("[data-mat]"); if (m) return abrirMaterial(m.dataset.mat, m);

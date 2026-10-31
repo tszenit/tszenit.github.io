@@ -232,7 +232,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
     <p class="eyebrow">TS Zenit Universidad · Plan Contabilidad (FEN)</p>
     <h1>Aula de <em>Contabilidad (FEN)</em></h1>
     <p class="lead">Tu material de la Solemne y el Examen, ordenado según el programa oficial de Contabilidad de la FEN (ENCON1005, U. de Chile), más el material complementario, tus guías, los Solemnes simulados y tus revisiones, en un solo lugar.</p>
-    <ul class="feats"><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Solemnes simulados</b>Uno por prueba, más difícil que la solemne real, con pauta y escala de notas.</span></li></ul>
+    <ul class="feats"><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Apuntes interactivos y slides</b>Uno por evaluación, Solemne y Examen, con el temario del programa 2026, y dos complementarios.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Guías con revisión personal</b>Descárgalas en PDF y envía tus respuestas: informe y guía de refuerzo.</span></li><li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Solemnes simulados</b>Uno por prueba, más difícil que la solemne real, con pauta y escala de notas.</span></li></ul>
   </div>
   <aside class="gate" id="gate"></aside>
 </div></div></section>
@@ -430,6 +430,7 @@ function render() {
   const cls = proximas(), vids = D.videos || [];
   const nc = $("#nCl"), nv = $("#nVi"); nc.textContent = cls.length; nc.hidden = !cls.length; nv.textContent = vids.length; nv.hidden = !vids.length;
   document.querySelectorAll("#tabs [data-t]").forEach(b => b.setAttribute("aria-selected", b.dataset.t === tab));
+  if (tab === "clases" || tab === "videos") tab = "material";
   ["material", "guias", "clases", "videos"].forEach(t => $("#p" + t[0].toUpperCase() + t.slice(1)).hidden = t !== tab);
   $("#cupos").hidden = !(tab === "material" || tab === "guias");
   renderCupos(); renderMaterial(); renderGuias(); renderClases(); renderVideos();
