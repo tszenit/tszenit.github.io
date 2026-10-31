@@ -621,7 +621,7 @@ function openForm(code) {
 /* ---------- eventos ---------- */
 $("#msw").addEventListener("click", ev => { const b = ev.target.closest("[data-m]"); if (!b) return; mat = b.dataset.m; try { sessionStorage.setItem("tsz_con_vio_" + mat, "1"); localStorage.setItem("tsz_aula_" + A.area, mat); history.replaceState(null, "", "#" + mat.toLowerCase()); } catch (e) {} render(); });
 $("#tabs").addEventListener("click", ev => { const b = ev.target.closest("[data-t]"); if (!b) return; tab = b.dataset.t; render(); });
-$("#tabs").addEventListener("keydown", ev => { if (!/Arrow(Left|Right)/.test(ev.key)) return; const T = [...document.querySelectorAll("#tabs [data-t]")], i = T.findIndex(b => b.dataset.t === tab), n = T[(i + (ev.key === "ArrowRight" ? 1 : T.length - 1)) % T.length]; tab = n.dataset.t; render(); n.focus(); });
+$("#tabs").addEventListener("keydown", ev => { if (!/Arrow(Left|Right)/.test(ev.key)) return; const T = [...document.querySelectorAll("#tabs [data-t]:not([hidden])")], i = T.findIndex(b => b.dataset.t === tab), n = T[(i + (ev.key === "ArrowRight" ? 1 : T.length - 1)) % T.length]; tab = n.dataset.t; render(); n.focus(); });
 $("#vApp").addEventListener("click", ev => {
   const m = ev.target.closest("[data-mat]"); if (m) return abrirMaterial(m.dataset.mat, m);
   const p = ev.target.closest("[data-pdf]"); if (p) return descargar(p.dataset.pdf, p);
