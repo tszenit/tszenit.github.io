@@ -210,6 +210,20 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
 
 .mswitch button.lk{opacity:.72}.mswitch button.lk svg{width:14px;height:14px}
 .cupos.lkd{display:none}
+.rv-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.rv-secs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px}
+.rv-sec{border:1px solid var(--line);border-left:4px solid var(--mc);background:var(--surface);border-radius:12px;padding:12px 14px;display:grid;gap:4px}
+.rv-sec b{font:700 15px var(--f-display)}
+.rv-sec span{font:500 13px var(--f-display);color:var(--muted)}
+.rv-sec.off{opacity:.55}
+.rv-list{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.rv-list .grow:first-child{border-top:0}
+.pick-g{display:grid;gap:8px;max-height:min(52vh,460px);overflow:auto;padding-right:2px}
+.pick-g h4{font:700 13px var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:10px 0 2px}
+.pick-g label{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;font:500 14.5px var(--f-display)}
+.pick-g label:has(input:checked){border-color:rgb(var(--ac));background:rgba(var(--ac),.08)}
+.pick-g label.dis{opacity:.5;cursor:not-allowed}
+.pick-g label small{display:block;color:var(--muted);font-size:12.5px}
 .lockbox{position:relative;overflow:hidden;border:1px solid var(--ml);border-radius:22px;background:linear-gradient(180deg,var(--ma),rgba(17,38,75,.75) 60%);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
 .lockbox .art{color:var(--mc);display:grid;place-items:center;padding:16px;border-right:1px solid var(--ml)}.lockbox .art svg{width:100%;max-width:340px}
 .lockbox .in2{padding:24px;display:grid;gap:10px;align-content:start}
@@ -246,7 +260,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
     <div class="mswitch" role="group" aria-label="Elige la evaluación" id="msw"></div>
     <nav class="tabs" role="tablist" aria-label="Secciones del aula" id="tabs">
       <button role="tab" data-t="material" aria-selected="true">Material</button>
-      <button role="tab" data-t="guias" aria-selected="false">Guías y revisiones</button>
+      <button role="tab" data-t="guias" aria-selected="false">Guías</button>
+      <button role="tab" data-t="revisiones" aria-selected="false">Revisiones<span class="n" id="nRv" hidden></span></button>
       <button role="tab" data-t="clases" aria-selected="false" hidden>Clases en vivo<span class="n" id="nCl" hidden></span></button>
       <button role="tab" data-t="videos" aria-selected="false" hidden>Clases grabadas<span class="n" id="nVi" hidden></span></button>
     </nav>
@@ -255,6 +270,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
     <div class="cupos" id="cupos" aria-live="polite"></div>
     <div id="pMaterial" role="tabpanel"></div>
     <div id="pGuias" role="tabpanel" hidden></div>
+    <div id="pRevisiones" role="tabpanel" hidden></div>
     <div id="pClases" role="tabpanel" hidden></div>
     <div id="pVideos" role="tabpanel" hidden></div>
   </main>
@@ -296,6 +312,14 @@ const planDe = s => !D ? "" : (D.planes || []).find(p => p === "TSZ-PCAL-" + s) 
 const grupoDe = c => planDe(secDeGuia(c));   // producto cuyas revisiones usa la guía
 const matDeGuia = secDeGuia;
 const PRECIO_SEC = 9990, PRECIO_TODO = 19990;
+const SECS_C = ["I1", "I2", "I3", "EX"];
+/* Una revisión por prueba: con el plan completo, una de cada prueba (4); con una prueba suelta, la de esa prueba. */
+function revLibre(sec) {
+  const p = planDe(sec); if (!p) return false;
+  const c = (D.cupos || {})[p] || { total: 0, usadas: 0 };
+  if (p === "TSZ-PCAL") return ((D.usadasSec || {})[sec] || 0) < 1 && c.usadas < c.total;
+  return c.usadas < c.total;
+}
 const PRECIO_GUIA = Date.now() < new Date("2027-01-01T00:00:00-03:00").getTime() ? 2490 : 5000;   // mismo precio que una guía suelta en la tienda
 const esENS = c => false;   // el Plan Cálculo 1 no tiene ensayos PAES
 
@@ -429,9 +453,11 @@ function render() {
   const nc = $("#nCl"), nv = $("#nVi"); nc.textContent = cls.length; nc.hidden = !cls.length; nv.textContent = vids.length; nv.hidden = !vids.length;
   document.querySelectorAll("#tabs [data-t]").forEach(b => b.setAttribute("aria-selected", b.dataset.t === tab));
   if (tab === "clases" || tab === "videos") tab = "material";
-  ["material", "guias", "clases", "videos"].forEach(t => $("#p" + t[0].toUpperCase() + t.slice(1)).hidden = t !== tab);
-  $("#cupos").hidden = !(tab === "material" || tab === "guias");
-  renderCupos(); renderMaterial(); renderGuias(); renderClases(); renderVideos();
+  document.querySelectorAll("#tabs [data-t]").forEach(b => b.setAttribute("aria-selected", b.dataset.t === tab));
+  ["material", "guias", "revisiones", "clases", "videos"].forEach(t => $("#p" + t[0].toUpperCase() + t.slice(1)).hidden = t !== tab);
+  $("#cupos").hidden = true; $("#msw").hidden = tab === "revisiones";
+  const nI = (D.informes || []).length, nR = $("#nRv"); nR.textContent = nI; nR.hidden = !nI;
+  renderMaterial(); renderGuias(); renderRevisiones(); renderClases(); renderVideos();
 }
 function renderCupos() {
   const C = D.cupos || {}, M = MATS[mat], p = planDe(mat);
@@ -462,20 +488,59 @@ const NIVEL = { normal: "Básica", avanzada: "Avanzada ★", ensayo: "Ensayo fin
 const ESTADO = { "Por revisar": "En revisión", "Enviado": "Informe enviado", "Repetida": "Repetida" };
 function enviadaDe(c) { return (D.enviadas || []).find(e => e.g === c); }
 function propia(c) { const p = (ses && ses.p) || []; if (p.includes(c)) return true; return A.mats.some(m => m.ejes.some(e => e.guias.includes(c) && p.includes(e.id))); }
-function cupoLibre(c) { if (esENS(c) || propia(c)) return true; const cu = (D.cupos || {})[grupoDe(c)]; return !cu || cu.usadas < cu.total; }
+function cupoLibre(c) { if (esENS(c) || propia(c)) return true; return revLibre(secDeGuia(c)); }
 function renderGuias() {
-  const m = MATS[mat], g = planDe(mat), cu = (D.cupos || {})[g] || { total: 0, usadas: 0 };
+  const m = MATS[mat];
   if (!tieneSec(mat)) { $("#pGuias").innerHTML = bloqueada(); return; }
-  const q = Math.max(0, cu.total - cu.usadas);
   const fila = c => {
-    const G = GUIAS[c], env = enviadaDe(c), ens = esENS(c);
-    const st = env ? `<span class="chip ok">Enviada ${esc(fechaCorta(env.f))} · ${esc(ESTADO[env.e] || env.e)}</span>` : "";
-    const libre = cupoLibre(c);
+    const G = GUIAS[c], env = enviadaDe(c);
+    const st = env ? `<span class="chip ok">Enviada a corregir${env.e ? " · " + esc(ESTADO[env.e] || env.e) : ""}</span>` : "";
     return `<div class="grow"><div><div class="t">${esc(G.t)}</div><div class="m"><span class="chip${G.nv === "avanzada" ? " av" : ""}">${NIVEL[G.nv] || "Guía"}</span><span class="note">${G.n} preguntas</span>${st}</div></div>
-      <div class="acts"><button class="btn btn-sm btn-ghost" type="button" data-pdf="${c}">${IC.pdf}PDF</button>${env ? "" : libre ? `<button class="btn btn-sm btn-ac" type="button" data-env="${c}">${IC.env}${ens ? "Enviar y ver resultado" : "Enviar a corregir"}</button>` : `<a class="btn btn-sm btn-ac" href="/#comprar=${c}">Comprar · $${PRECIO_GUIA.toLocaleString("es-CL")}</a>`}</div></div>`;
+      <div class="acts"><button class="btn btn-sm btn-ghost" type="button" data-pdf="${c}">${IC.pdf}Descargar PDF</button></div></div>`;
   };
-  $("#pGuias").innerHTML = `<div class="sec-h"><h2>Guías de ${esc(m.nombre)}</h2><span class="note">${q === 1 ? "Te queda" : "Te quedan"} ${q} de ${cu.total} revisiones${g === "TSZ-PCAL" ? " de tu plan" : " de " + esc(m.corto)}. Cuando se te acaben, puedes comprar más guías de esta prueba a $${PRECIO_GUIA.toLocaleString("es-CL")} cada una; las que compras no usan revisiones.</span></div>
+  $("#pGuias").innerHTML = `<div class="sec-h"><h2>Guías de ${esc(m.nombre)}</h2><span class="note">Descárgalas y resuélvelas. Para mandar una a corregir, ve a <button class="btn-link" type="button" data-tab="revisiones" style="background:none;border:0;padding:0;color:rgb(var(--ac));font:inherit;text-decoration:underline;cursor:pointer">Revisiones</button>.</span></div>
     ${m.ejes.map((e, i) => `<details class="eje"${i < 1 ? " open" : ""}><summary>${IC.chev}<h3>${esc(e.nombre)}</h3><span class="c">${e.guias.length} ${e.guias.length === 1 ? "guía" : "guías"}</span></summary><p class="desc">${esc(e.desc)}</p>${e.guias.map(fila).join("")}</details>`).join("")}`;
+}
+/* ---------- revisiones ---------- */
+function renderRevisiones() {
+  const todo = (D.planes || []).includes("TSZ-PCAL"), mias = SECS_C.filter(tieneSec);
+  const secCard = sec => { const m = MATS[sec], libre = revLibre(sec), env = (D.enviadas || []).filter(e => secDeGuia(e.g) === sec && e.plan).length;
+    return `<div class="rv-sec${libre ? "" : " off"}" style="--mc:${m.c}"><b>${esc(m.corto)}</b><span>${libre ? "1 revisión disponible" : env ? "Revisión usada" : "Sin revisión disponible"}</span></div>`; };
+  const libres = mias.filter(revLibre).length;
+  const infoDe = c => (D.informes || []).filter(x => x.g === c);
+  const filaEnv = e => { const G = GUIAS[e.g] || { t: e.g }, sec = secDeGuia(e.g), inf = infoDe(e.g);
+    return `<div class="grow"><div><div class="t">${esc(G.t)}</div><div class="m"><span class="chip">${esc((MATS[sec] || {}).corto || "")}</span><span class="note">Enviada el ${esc(fechaCorta(e.f))}</span><span class="chip${inf.length ? " ok" : ""}">${inf.length ? "Recorrección lista" : esc(ESTADO[e.e] || e.e)}</span></div></div>
+      <div class="acts">${inf.map(x => `<button class="btn btn-sm btn-ac" type="button" data-inf="${esc(x.id)}">${IC.pdf}Ver recorrección</button>`).join("")}</div></div>`; };
+  const env = [...(D.enviadas || [])].reverse(), sueltos = (D.informes || []).filter(x => !x.g || !env.some(e => e.g === x.g));
+  const filaInf = x => `<div class="grow"><div><div class="t">${esc(x.t)}</div><div class="m"><span class="chip ok">Recorrección</span><span class="note">${esc(fechaCorta(x.f))}</span>${x.nota ? `<span class="note">${esc(x.nota)}</span>` : ""}</div></div>
+      <div class="acts"><button class="btn btn-sm btn-ac" type="button" data-inf="${esc(x.id)}">${IC.pdf}Ver recorrección</button></div></div>`;
+  $("#pRevisiones").innerHTML = `<div class="rv-top"><div><h2 style="font-size:22px">Revisiones</h2><p class="note" style="margin-top:4px">${todo ? "Tu plan completo trae 4 revisiones: una de cada prueba." : "Cada prueba de tu plan trae 1 revisión."} Envías tu hoja de respuestas y te devolvemos la recorrección con informe y guía de refuerzo.</p></div>
+      <button class="btn btn-ac" type="button" id="rvGo"${libres ? "" : " disabled"}>${IC.env}Mandar a corregir</button></div>
+    <div class="rv-secs">${SECS_C.map(sec => tieneSec(sec) ? secCard(sec) : `<div class="rv-sec off" style="--mc:${MATS[sec].c}"><b>${esc(MATS[sec].corto)}</b><span>No está en tu plan</span></div>`).join("")}</div>
+    <div class="sec-h"><h2 style="font-size:18px">Tus revisiones</h2><span class="note">${env.length ? env.length + (env.length === 1 ? " guía enviada" : " guías enviadas") : ""}</span></div>
+    ${env.length || sueltos.length ? `<div class="rv-list">${env.map(filaEnv).join("")}${sueltos.map(filaInf).join("")}</div>` : `<div class="empty"><b>Aún no tienes revisiones</b><br>Elige una guía con «Mandar a corregir», marca tus respuestas y aquí verás su estado y tu recorrección.</div>`}`;
+}
+function elegirGuia() {
+  const mias = SECS_C.filter(tieneSec);
+  const opc = mias.map(sec => { const m = MATS[sec], libre = revLibre(sec);
+    const gs = m.ejes.flatMap(e => e.guias).filter((c, i, a) => a.indexOf(c) === i);
+    return `<h4>${esc(m.nombre)}${libre ? "" : " · revisión ya usada"}</h4>` + gs.map(c => { const G = GUIAS[c], env = enviadaDe(c), ok = !env && (libre || propia(c));
+      return `<label class="${ok ? "" : "dis"}"><input type="radio" name="rvG" value="${c}"${ok ? "" : " disabled"}><span>${esc(G.t)}<small>${env ? "Ya la enviaste" : NIVEL[G.nv] || "Guía"} · ${G.n} preguntas</small></span></label>`; }).join(""); }).join("");
+  showLayer(`<div class="panel" role="dialog" aria-modal="true" aria-labelledby="egT"><div class="ph"><div style="flex:1;min-width:0"><h3 id="egT">Mandar a corregir</h3><div class="sub">Elige la guía que resolviste. Cada prueba trae 1 revisión.</div></div><button class="x" aria-label="Cerrar">×</button></div>
+    <div class="pb"><div class="pick-g" role="radiogroup" aria-labelledby="egT">${opc}</div><p class="err" id="egErr" hidden>Elige una guía.</p></div>
+    <div class="pf"><span class="note">Luego marcas tus respuestas en la hoja.</span><button class="btn btn-ac" type="button" id="egGo">Continuar</button></div></div>`);
+  $("#egGo").addEventListener("click", () => { const c = layer.querySelector('input[name="rvG"]:checked'); if (!c) { $("#egErr").hidden = false; return; } closeLayer(); openForm(c.value); });
+}
+async function verInforme(id, btn) {
+  const txt = btn.innerHTML; btn.disabled = true; btn.textContent = "Abriendo…";
+  try {
+    const j = await conSesion({ tipo: "informe", id }, "Inicia sesión para ver tu recorrección.");
+    if (j.url) { window.open(j.url, "_blank", "noopener"); return; }
+    const url = URL.createObjectURL(new Blob([b64(j.b64)], { type: j.mime || "application/pdf" }));
+    const a = document.createElement("a"); a.href = url; a.download = j.nombre || "recorreccion.pdf"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  } catch (e) { if (e.message !== "cancelado") toast("No se pudo abrir la recorrección. Revisa tu conexión e inténtalo de nuevo."); }
+  finally { btn.disabled = false; btn.innerHTML = txt; }
 }
 function proximas() { const now = Date.now(); return (D.clases || []).filter(c => inicioDe(c).getTime() + (c.dur || 60) * 6e4 > now); }
 function renderClases() {
@@ -548,12 +613,12 @@ async function descargar(code, btn) {
 }
 const borr = {};
 function openForm(code) {
-  const g = GUIAS[code], ens = esENS(code), gr = grupoDe(code), cu = (D.cupos || {})[gr], q = cu ? Math.max(0, cu.total - cu.usadas) : 0;
+  const g = GUIAS[code], ens = esENS(code), gr = grupoDe(code), cu = (D.cupos || {})[gr], q = cu ? Math.max(0, cu.total - cu.usadas) : 0, secG = (MATS[secDeGuia(code)] || {}).corto || "";
   const usa = !ens && !propia(code);
   const rows = g.q.map((x, i) => `<div class="qrow"><span class="qn">${i + 1}</span><span class="qc">${esc(x[1])}</span><div class="opts" role="radiogroup" aria-label="Pregunta ${i + 1}">${"ABCDE".slice(0, x[0]).split("").map(L => `<label class="opt"><input type="radio" name="q${i}" value="${L}" id="q${i}${L}" aria-label="Pregunta ${i + 1}, alternativa ${L}"><span>${L}</span></label>`).join("")}</div></div>`).join("");
   showLayer(`<div class="panel" role="dialog" aria-modal="true" aria-labelledby="fT"><div class="ph"><div style="flex:1;min-width:0"><h3 id="fT">Hoja de respuestas · ${esc(g.t)}</h3><div class="sub">${g.n} preguntas, en el mismo orden que la guía</div></div><button class="x" aria-label="Cerrar">×</button></div>
     <form id="ansForm" novalidate><div class="pb">
-      <div class="box ac"><p style="font:600 14.5px var(--f-display)">${usa ? `Esta guía usa 1 de tus revisiones${gr === "TSZ-PCAL" ? " del plan" : " de " + esc((MATS[secDeGuia(code)] || {}).corto || "")}: te quedan ${q} y después ${q - 1}.` : "Esta guía la compraste aparte: no usa revisiones del plan."}</p></div>
+      <div class="box ac"><p style="font:600 14.5px var(--f-display)">${usa ? `Esta guía usa tu revisión de la ${esc(secG)}${gr === "TSZ-PCAL" ? ` (te quedan ${q} de 4 en tu plan, una por prueba)` : ""}.` : "Esta guía la compraste aparte: no usa revisiones del plan."}</p></div>
       <div class="row2"><div class="field"><label for="fName">Nombre y apellido</label><input class="in" id="fName" autocomplete="name" value="${esc(ses.n || "")}"></div>
         <div class="field"><label for="fSchool">Universidad y carrera <span class="muted">(opcional)</span></label><input class="in" id="fSchool" placeholder="Ej.: Ingeniería, primer año"></div></div>
       <p class="note">El informe llega a <b style="color:var(--ink)">${esc(ses.e)}</b>.</p>
@@ -594,7 +659,7 @@ function openForm(code) {
         apoderado: minor ? $("#gName").value.trim() : "", apoderadoCorreo: minor ? $("#gMail").value.trim() : "", respuestas: ans.join("") });
     } catch (e) {
       b.disabled = false; b.lastChild.textContent = "Enviar hoja de respuestas";
-      const M = { repetida: "Ya enviaste esta guía con tu cuenta. Cada guía se revisa una sola vez.", limite_int: "Ya no te quedan revisiones.", limite_plan: "Ya no te quedan revisiones de esta sección en tu plan.", sin_acceso: "Tu cuenta no tiene acceso a esta guía.", red: "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.", cancelado: "Para enviar tienes que iniciar sesión." };
+      const M = { repetida: "Ya enviaste esta guía con tu cuenta. Cada guía se revisa una sola vez.", limite_int: "Ya no te quedan revisiones.", limite_plan: "Ya usaste la revisión de esta prueba.", limite_seccion: "Ya usaste la revisión de esta prueba: tu plan trae una por prueba.", sin_acceso: "Tu cuenta no tiene acceso a esta guía.", red: "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.", cancelado: "Para enviar tienes que iniciar sesión." };
       return fail(M[e.message] || "No se pudo enviar. Inténtalo de nuevo o escríbenos.");
     }
     cargar();
@@ -624,6 +689,9 @@ $("#vApp").addEventListener("click", ev => {
   const m = ev.target.closest("[data-mat]"); if (m) return abrirMaterial(m.dataset.mat, m);
   const p = ev.target.closest("[data-pdf]"); if (p) return descargar(p.dataset.pdf, p);
   const e = ev.target.closest("[data-env]"); if (e) return openForm(e.dataset.env);
+  if (ev.target.closest("#rvGo")) return elegirGuia();
+  const inf = ev.target.closest("[data-inf]"); if (inf) return verInforme(inf.dataset.inf, inf);
+  const tb = ev.target.closest("[data-tab]"); if (tb) { tab = tb.dataset.tab; render(); window.scrollTo({ top: 0 }); return; }
   const v = ev.target.closest("[data-vid]"); if (v) return verVideo(v.dataset.vid);
 });
 setInterval(() => { if (D && tab === "clases" && layer.hidden) renderClases(); }, 60000);

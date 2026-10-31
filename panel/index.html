@@ -95,6 +95,7 @@ td.r,th.r{text-align:right}
   <div class="wrap"><nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-t="pagos" aria-selected="true">Pagos<span class="badge" id="bP" hidden></span></button>
     <button class="tab" role="tab" data-t="hojas">Hojas<span class="badge" id="bH" hidden></span></button>
+    <button class="tab" role="tab" data-t="revisiones">Revisiones</button>
     <button class="tab" role="tab" data-t="clases">Clases<span class="badge" id="bCl" hidden></span></button>
     <button class="tab" role="tab" data-t="aula">Aula<span class="badge" id="bAu" hidden></span></button>
     <button class="tab" role="tab" data-t="codigos">Códigos</button>
@@ -110,6 +111,23 @@ td.r,th.r{text-align:right}
 
     <section id="t-pagos" class="list"></section>
     <section id="t-hojas" class="list" hidden></section>
+    <section id="t-revisiones" hidden>
+      <p class="note" style="margin-bottom:12px">Carga aquí la recorrección de un alumno. Aparece en la sección «Revisiones» de su aula de Cálculo 1, solo para la cuenta de Google con ese correo. Si eliges la guía, su hoja pasa a «Enviado».</p>
+      <div class="box" style="margin-bottom:16px">
+        <h3 style="font-size:16px">Cargar una recorrección</h3>
+        <div class="grid2">
+          <div><label for="rvMail">Correo del alumno</label><input id="rvMail" type="email" list="rvMails" autocomplete="off" placeholder="alumno@gmail.com"><datalist id="rvMails"></datalist></div>
+          <div><label for="rvGuia">Guía</label><select id="rvGuia"><option value="">Sin guía (informe general)</option></select></div>
+          <div style="grid-column:1/-1"><label for="rvTit">Título (opcional)</label><input id="rvTit" autocomplete="off" placeholder="Si lo dejas vacío: «Informe · nombre de la guía»"></div>
+          <div><label for="rvFile">Archivo PDF</label><input id="rvFile" type="file" accept="application/pdf"></div>
+          <div><label for="rvUrl">… o link del informe</label><input id="rvUrl" type="url" autocomplete="off" placeholder="https://tszenit.cl/informes/…"></div>
+          <div style="grid-column:1/-1"><label for="rvNota">Nota para el alumno (opcional)</label><input id="rvNota" autocomplete="off"></div>
+          <div style="grid-column:1/-1"><label style="display:flex;gap:8px;align-items:center"><input id="rvAvisar" type="checkbox" checked style="width:auto;min-height:0"> Avisarle por correo que su recorrección está lista</label></div>
+        </div>
+        <div class="bar"><button class="btn" id="rvGo">Cargar recorrección</button><span class="note" id="rvInfo"></span></div>
+      </div>
+      <div class="list" id="lRv"></div>
+    </section>
     <section id="t-guias" hidden>
       <p class="note" style="margin-bottom:12px">Todas las guías publicadas, en PDF. Se descifran en este dispositivo con tu contraseña: no cuentan como venta ni usan códigos.</p>
       <div class="list" id="lGu"></div>
@@ -216,6 +234,7 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const fmt = n => "$" + Number(n || 0).toLocaleString("es-CL");
 const TE = new TextEncoder();
+let IN = [];
 let D = null, TOKEN = "", P = [], H = [], C = [], PR = [], PE = [], AB = [], CL = [], AU = [], VI = [], DESC_P = 10, COM_P = 20, editPe = "", editCl = 0, editAu = 0, editVi = 0, subiendo = false;
 const OFERTA = Date.now() < new Date("2027-01-01T00:00:00-03:00").getTime();   // precios de fin de año hasta el 31-12-2026
 const rebaja = v => OFERTA ? v / 2 - 10 : v;   // fin de año: 50 % menos, terminado en 90
@@ -292,7 +311,7 @@ function renderHojas() {
       <div class="meta"><span>${esc(D.guias[code] ? D.guias[code].t : code)}</span><span>${fecha(f)}</span><span>Folio ${esc(folio)}</span></div>
       <div class="meta"><span>${esc(mail)}</span>${cur ? `<span>${esc(cur)}</span>` : ""}${menor === "Sí" ? `<span>Menor · apoderado: ${esc(apo)} &lt;${esc(apoM)}&gt;</span>` : ""}</div>
       <details><summary class="note" style="cursor:pointer">${errs.length} errores · ver detalle</summary><div class="errs" style="margin-top:8px">${errs.map(esc).join("<br>") || "Sin errores"}</div></details>
-      <div class="acts"><button class="btn ghost sm" data-copy="${esc(txt)}">Copiar para el informe</button>
+      <div class="acts"><button class="btn ghost sm" data-copy="${esc(txt)}">Copiar para el informe</button><button class="btn sm" data-rvfrom="${esc(mail)}|${esc(code)}">Cargar recorrección</button>
         ${est === "Anulada" ? "" : est === "Enviado" ? `<button class="btn ghost sm" data-hest="${r.fila}" data-v="Por revisar">Volver a «Por revisar»</button>` : `<button class="btn sm" data-hest="${r.fila}" data-v="Enviado">Informe enviado</button>`}
         ${est === "Anulada" ? "" : `<button class="btn ghost sm" data-hest="${r.fila}" data-v="Anulada" title="La tienda rechaza una segunda hoja de la misma guía. Anula esta para permitir que la vuelva a enviar.">Permitir otra revisión</button>`}</div>
     </article>`; }).join("") : `<div class="empty">Aún no llegan hojas de respuestas.</div>`;
@@ -475,22 +494,58 @@ async function subirVideo(file, prog) {
   if (!drive) throw new Error("drive");
   return drive;
 }
-function render() { kpis(); renderClases(); renderAula(); renderPagos(); renderHojas(); renderCodigos(); renderPromos(); renderPersonas(); renderCuentas(); renderGuias(); }
+const nomGuia = c => D.guias[c] ? D.guias[c].t : c;
+function opcionesRv() {
+  const mail = $("#rvMail").value.trim().toLowerCase(), cur = $("#rvGuia").value;
+  const suyas = [...new Set(H.filter(r => String(r.v[4]).toLowerCase() === mail).map(r => String(r.v[2])))];
+  $("#rvGuia").innerHTML = '<option value="">Sin guía (informe general)</option>' + (suyas.length ? `<optgroup label="Guías que envió">${suyas.map(c => `<option value="${esc(c)}">${esc(nomGuia(c))}</option>`).join("")}</optgroup>` : "")
+    + `<optgroup label="Todas las guías">${Object.keys(D.guias).filter(c => !suyas.includes(c)).sort().map(c => `<option value="${esc(c)}">${esc(nomGuia(c))} (${esc(c)})</option>`).join("")}</optgroup>`;
+  if (cur) $("#rvGuia").value = cur;
+}
+function renderRev() {
+  $("#rvMails").innerHTML = [...new Set(H.map(r => String(r.v[4]).toLowerCase()).filter(Boolean))].map(m => `<option value="${esc(m)}">`).join("");
+  if (!$("#rvGuia").options.length || $("#rvGuia").options.length < 2) opcionesRv();
+  const L = [...IN].reverse();
+  $("#lRv").innerHTML = L.length ? L.map(r => { const [id, f, mail, g, t, drive, url, nota] = r.v;
+    return `<article class="item"><div class="row"><h3>${esc(t)}</h3><span class="chip o">${drive ? "PDF" : "Link"}</span></div>
+      <div class="meta"><span>${esc(mail)}</span>${g ? `<span>${esc(nomGuia(g))}</span>` : ""}<span>${fecha(f)}</span>${nota ? `<span>${esc(nota)}</span>` : ""}</div>
+      <div class="acts">${url ? `<a class="btn ghost sm" href="${esc(url)}" target="_blank" rel="noopener">Abrir link</a>` : ""}<button class="btn ghost sm" data-rvdel="${r.fila}" data-id="${esc(id)}">Borrar</button></div></article>`; }).join("") : `<div class="empty">Aún no cargas recorrecciones.</div>`;
+}
+function render() { kpis(); renderRev(); renderClases(); renderAula(); renderPagos(); renderHojas(); renderCodigos(); renderPromos(); renderPersonas(); renderCuentas(); renderGuias(); }
 
 async function cargar() {
   $("#sync").textContent = "Cargando datos de la hoja…";
-  try { const j = await api("listar"); P = j.pagos; H = j.hojas; C = j.canjes || []; CL = j.clases || []; AU = j.aula || []; VI = j.videos || []; PR = j.promos || []; PE = j.personas || []; AB = j.abonos || []; DESC_P = j.descuento || 10; COM_P = j.comision || 20; render(); $("#sync").textContent = "Actualizado " + new Date().toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit" }) + " · datos reales de «TS Zenit · envíos»"; if (j.v !== 10) $("#sync").innerHTML += ` · <span class="err">Apps Script tiene el código antiguo: pega el nuevo y publica una «Nueva versión» para usar el Plan Cálculo 1 (códigos por sección, material, revisiones, clases y videos).</span>`; }
+  try { const j = await api("listar"); P = j.pagos; H = j.hojas; C = j.canjes || []; CL = j.clases || []; AU = j.aula || []; VI = j.videos || []; IN = j.informes || []; PR = j.promos || []; PE = j.personas || []; AB = j.abonos || []; DESC_P = j.descuento || 10; COM_P = j.comision || 20; render(); $("#sync").textContent = "Actualizado " + new Date().toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit" }) + " · datos reales de «TS Zenit · envíos»"; if (j.v !== 11) $("#sync").innerHTML += ` · <span class="err">Apps Script tiene el código antiguo: pega el nuevo y publica una «Nueva versión» para cargar recorrecciones y usar las revisiones por prueba de Cálculo 1.</span>`; }
   catch (e) { $("#sync").innerHTML = `<span class="err">${e.message === "auth" ? "El receptor no reconoce la contraseña del panel. Vuelve a pegar el código nuevo en Apps Script y publica una versión nueva." : e.message === "version" ? "Apps Script sigue con el código antiguo: pega el código nuevo y en Implementar › Administrar implementaciones › lápiz elige «Nueva versión»." : "No se pudo conectar con Apps Script. Revisa tu conexión y toca «Actualizar»."}</span>`; render(); }
 }
+document.addEventListener("change", ev => { if (ev.target.id === "rvMail") opcionesRv(); });
 document.addEventListener("click", async ev => {
   const t = ev.target.closest("button"); if (!t) return;
-  if (t.dataset.t) { document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b === t)); ["pagos", "hojas", "clases", "aula", "codigos", "promos", "personas", "cuentas", "guias"].forEach(x => $("#t-" + x).hidden = x !== t.dataset.t); return; }
+  if (t.dataset.t) { document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b === t)); ["pagos", "hojas", "revisiones", "clases", "aula", "codigos", "promos", "personas", "cuentas", "guias"].forEach(x => $("#t-" + x).hidden = x !== t.dataset.t); return; }
   if (t.dataset.copy != null) { try { await navigator.clipboard.writeText(t.dataset.copy); toast("Copiado. Pégamelo en el chat para armar el informe."); } catch (e) { toast("No se pudo copiar"); } return; }
   const busy = async (fn, okMsg, errs) => { t.disabled = true; const x = t.textContent; t.textContent = "Enviando…"; try { await fn(); toast(okMsg); if (t.isConnected) { t.disabled = false; t.textContent = x; } await cargar(); return true; } catch (e) { t.disabled = false; t.textContent = x; delete t.dataset.sure; toast((errs || {})[e.message] || (e.message === "usado" ? "Ese pago ya tiene su código. Toca «Actualizar»." : e.message === "datos" || e.message === "accion" ? "Apps Script sigue con el código antiguo: pega el nuevo y publica una «Nueva versión»." : e.message === "auth" ? "Falta actualizar el código en Apps Script." : "No se pudo. Intenta de nuevo.")); return false; } };
   const sure = msg => { if (t.dataset.sure) return true; t.dataset.sure = 1; t.textContent = msg; return false; };
   const caja = t.closest(".box");
   const val = k => caja ? caja.querySelector(`[data-in="${k}"]`).value.trim() : "";
   const pesos = v => { const n = Number(String(v).replace(/[^\d-]/g, "")); return isFinite(n) ? n : NaN; };
+  if (t.dataset.rvfrom) {
+    const [mail, code] = t.dataset.rvfrom.split("|");
+    document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.t === "revisiones"));
+    ["pagos", "hojas", "revisiones", "clases", "aula", "codigos", "promos", "personas", "cuentas", "guias"].forEach(x => $("#t-" + x).hidden = x !== "revisiones");
+    $("#rvMail").value = mail; opcionesRv(); $("#rvGuia").value = code; $("#rvFile").focus(); window.scrollTo({ top: 0 }); return;
+  }
+  if (t.dataset.rvdel) { if (!sure("¿Borrar? Toca de nuevo")) return; return busy(() => api("informe_borrar", { fila: Number(t.dataset.rvdel), id: t.dataset.id }), "Recorrección borrada"); }
+  if (t.id === "rvGo") {
+    const correo = $("#rvMail").value.trim(), file = $("#rvFile").files[0], url = $("#rvUrl").value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) return toast("Escribe el correo del alumno.");
+    if (!file && !/^https:\/\//.test(url)) return toast("Elige el PDF o pega un link https://.");
+    if (file && file.size > 25 * 1024 * 1024) return toast("El PDF pesa más de 25 MB.");
+    let pdf = "";
+    if (file) pdf = await new Promise((ok, no) => { const fr = new FileReader(); fr.onload = () => ok(String(fr.result).split(",")[1]); fr.onerror = no; fr.readAsDataURL(file); });
+    return busy(() => api("informe", { correo, guia: $("#rvGuia").value, titulo: $("#rvTit").value.trim(), nota: $("#rvNota").value.trim(), avisar: $("#rvAvisar").checked, pdf, nombre: file ? file.name : "", url: file ? "" : url })
+      .then(() => { ["#rvTit", "#rvNota", "#rvUrl"].forEach(x => $(x).value = ""); $("#rvFile").value = ""; }),
+      "Recorrección cargada: ya aparece en su aula", { datos: "Revisa el correo y el archivo o link.", grande: "El PDF pesa más de 25 MB.", accion: "Falta pegar el código nuevo en Apps Script y publicar una versión nueva." });
+  }
   if (t.id === "clGo") {
     const x = datosCl();
     if (!diaDe(x.f) || !x.h) return toast("Elige un sábado o domingo y una hora.");
