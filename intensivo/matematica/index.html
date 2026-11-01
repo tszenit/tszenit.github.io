@@ -220,6 +220,32 @@ main.body{padding-block:24px 80px}
 .loading{display:grid;place-items:center;padding:80px 0;color:var(--muted);font:600 15px var(--f-display)}
 footer{border-top:1px solid var(--line);padding-block:26px;color:var(--muted);font:500 13.5px var(--f-display)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between}
+.rv-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.rv-secs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px}
+.rv-sec{border:1px solid var(--line);border-left:4px solid var(--mc);background:var(--surface);border-radius:12px;padding:12px 14px;display:grid;gap:4px;align-content:start}
+.rv-sec b{font:700 15px var(--f-display)}
+.rv-sec span{font:500 13px var(--f-display);color:var(--muted)}
+.rv-sec.off{opacity:.55}
+.rv-list{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.rv-list .grow:first-child{border-top:0}
+.cupos.rvb{display:block}
+.rv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;border:1px solid rgba(var(--ac),.55);box-shadow:0 0 0 1px rgba(var(--ac),.25) inset;background:var(--surface);border-radius:var(--r);padding:14px 18px}
+.rv-bar .big{font:800 34px/1 var(--f-display);color:rgb(var(--ac));font-variant-numeric:tabular-nums;min-width:28px;text-align:center}
+.rv-bar .tx{flex:1 1 240px;display:grid;gap:2px}
+.rv-bar .tx b{font:700 15px var(--f-display)}
+.rv-bar .tx span{font:500 13.5px var(--f-display);color:var(--muted)}
+.chip.rvok{color:rgb(var(--ac));border-color:rgba(var(--ac),.5);background:rgba(var(--ac),.08)}
+.rv-sec .btn{margin-top:6px;width:fit-content}
+.rv-g{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);margin-bottom:12px;overflow:hidden}
+.rv-g>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:15px 18px;font:700 16px var(--f-display)}
+.rv-g>summary::-webkit-details-marker{display:none}
+.rv-g>summary i{width:10px;height:10px;border-radius:50%;background:var(--mc);flex:none}
+.rv-g>summary .c{margin-left:auto;font:600 13px var(--f-display);color:var(--muted);text-align:right}
+.rv-g[open]>summary .c{color:rgb(var(--ac))}
+.rv-g .eh{margin:0;padding:12px 18px 6px;font:700 11.5px var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line)}
+.rv-g .eh+.grow{border-top:0}
+.rv-g .vacio{margin:0;padding:12px 18px 16px;border-top:1px solid var(--line)}
+.rv-otras>summary{cursor:pointer;padding:12px 18px;font:600 13.5px var(--f-display);color:var(--muted);border-top:1px solid var(--line)}
 </style>
 </head><body>
 <header class="top"><div class="wrap">
@@ -249,7 +275,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
     <div class="mswitch" role="group" aria-label="Elige la asignatura" id="msw"></div>
     <nav class="tabs" role="tablist" aria-label="Secciones del aula" id="tabs">
       <button role="tab" data-t="material" aria-selected="true">Material</button>
-      <button role="tab" data-t="guias" aria-selected="false">Guías y revisiones</button>
+      <button role="tab" data-t="guias" aria-selected="false">Guías</button>
+      <button role="tab" data-t="revisiones" aria-selected="false">Revisiones<span class="n" id="nRv" hidden></span></button>
       <button role="tab" data-t="clases" aria-selected="false" hidden>Clases en vivo<span class="n" id="nCl" hidden></span></button>
       <button role="tab" data-t="videos" aria-selected="false" hidden>Videos<span class="n" id="nVi" hidden></span></button>
     </nav>
@@ -258,6 +285,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
     <div class="cupos" id="cupos" aria-live="polite"></div>
     <div id="pMaterial" role="tabpanel"></div>
     <div id="pGuias" role="tabpanel" hidden></div>
+    <div id="pRevisiones" role="tabpanel" hidden></div>
     <div id="pClases" role="tabpanel" hidden></div>
     <div id="pVideos" role="tabpanel" hidden></div>
   </main>
@@ -430,16 +458,10 @@ function render() {
   const nc = $("#nCl"), nv = $("#nVi"); nc.textContent = cls.length; nc.hidden = !cls.length; nv.textContent = vids.length; nv.hidden = !vids.length;
   document.querySelectorAll("#tabs [data-t]").forEach(b => b.setAttribute("aria-selected", b.dataset.t === tab));
   if (tab === "clases" || tab === "videos") tab = "material";
-  ["material", "guias", "clases", "videos"].forEach(t => $("#p" + t[0].toUpperCase() + t.slice(1)).hidden = t !== tab);
-  $("#cupos").hidden = !(tab === "material" || tab === "guias");
-  renderCupos(); renderMaterial(); renderGuias(); renderClases(); renderVideos();
-}
-function renderCupos() {
-  const C = D.cupos || {}, c = C[A.area] || { total: 3, usadas: 0 }, q = Math.max(0, c.total - c.usadas), r = revQ();
-  const dots = `<div class="dots" aria-hidden="true">${Array.from({ length: c.total }, (_, i) => `<i class="${i < q ? "" : "u"}"></i>`).join("")}</div>`;
-  const por = A.mats.map(m => `${m.corto} ${(D.enviadas || []).filter(e => e.int && !esENS(e.g) && matDeGuia(e.g) === m.id).length}`).join(" · ");
-  $("#cupos").innerHTML = `<div class="cupo on"><span class="big">${q}<small>/${c.total}</small></span><b>Revisiones de tu Intensivo ${AREA_N}</b><span>${q ? `Repártelas como quieras entre ${REPARTE}: ${q === 1 ? "te queda 1" : "te quedan " + q}.` : `Ya usaste tus ${c.total} revisiones.`} Usadas: ${esc(por)}.</span>${dots}</div>`
-    + `<div class="cupo on"><span class="big">${r}</span><b>Revisiones extra</b><span>${r ? `Tienes ${r === 1 ? "1 revisión extra" : r + " revisiones extra"} para cualquier guía de tu Intensivo.` : `¿Quieres más? Cada revisión extra cuesta $${PRECIO_REV.toLocaleString("es-CL")} y sirve para cualquier guía de tu Intensivo.`}</span><a class="btn btn-sm btn-ac" href="/#comprar=${REV}" style="margin-top:8px;width:fit-content;grid-column:2">Comprar revisión extra · $${PRECIO_REV.toLocaleString("es-CL")}</a></div>`;
+  ["material", "guias", "revisiones", "clases", "videos"].forEach(t => $("#p" + t[0].toUpperCase() + t.slice(1)).hidden = t !== tab);
+  $("#cupos").hidden = !(tab === "material" || tab === "guias"); $("#msw").hidden = tab === "revisiones";
+  { const q = rvQuedan(), nR = $("#nRv"); nR.textContent = q; nR.hidden = !q; }
+  renderCupos(); renderMaterial(); renderGuias(); renderRevisiones(); renderClases(); renderVideos();
 }
 function renderMaterial() {
   const m = MATS[mat];
@@ -464,21 +486,83 @@ function renderGuias() {
     const libre = cupoLibre(c);
     const btn = env ? "" : libre ? `<button class="btn btn-sm btn-ac" type="button" data-env="${c}">${IC.env}${ens ? "Enviar y ver resultado" : "Enviar a corregir"}</button>`
       : `<a class="btn btn-sm btn-ghost" href="/#comprar=${REV}">${IC.env}Revisión extra · $${PRECIO_REV.toLocaleString("es-CL")}</a>`;
-    return `<div class="grow"><div><div class="t">${esc(G.t)}</div><div class="m">${ens ? '<span class="chip ens">Ensayo PAES · no usa revisiones</span>' : `<span class="chip${G.nv === "avanzada" ? " av" : ""}">${NIVEL[G.nv] || "Guía"}</span>`}<span class="note">${G.n} preguntas</span>${st}</div></div>
-      <div class="acts"><button class="btn btn-sm btn-ghost" type="button" data-pdf="${c}">${IC.pdf}PDF</button>${btn}</div></div>`;
+    return `<div class="grow"><div><div class="t">${esc(G.t)}</div><div class="m">${ens ? '<span class="chip ens">Ensayo PAES · no usa revisiones</span>' : `<span class="chip${G.nv === "avanzada" ? " av" : ""}">${NIVEL[G.nv] || "Guía"}</span>`}<span class="note">${G.n} preguntas</span>${st}${rvChip(c)}</div></div>
+      <div class="acts"><button class="btn btn-sm btn-ghost" type="button" data-pdf="${c}">${IC.pdf}PDF</button></div></div>`;
   };
   const sel = ejeSel[mat];
   const card = (e, i) => {
-    const a = arteDe(e.id), on = sel === e.id, env = e.guias.filter(c => enviadaDe(c)).length;
+    const a = arteDe(e.id), on = sel === e.id, env = e.guias.filter(c => enviadaDe(c)).length, nr = e.guias.filter(c => rvPuede(c) && !esENS(c)).length;
     const est = a ? ` style="--ax:${a.c};--ax-a:${a.a};--ax-b:${a.b};--ax-l:${a.l};--ax-g:${a.g}"` : "";
     return `<article class="ejc${on ? " on" : ""}" id="ej-${e.id}"${est}><button class="ejc-btn" type="button" data-eje="${e.id}" aria-expanded="${on}" aria-controls="ejl-${e.id}">
       ${a ? `<div class="ejc-art" aria-hidden="true"><span class="ejc-n">${String(i + 1).padStart(2, "0")}</span>${a.svg}</div>` : ""}
-      <div class="ejc-body"><div><h3>${esc(e.nombre)}</h3><p class="desc">${esc(e.desc)}</p><p class="cnt">${e.guias.length} ${e.guias.length === 1 ? (esENS(e.id) ? "ensayo" : "guía") : (esENS(e.id) ? "ensayos" : "guías")}${env ? ` · ${env} ${env === 1 ? "enviada" : "enviadas"}` : ""} · ${on ? "ocultar" : "ver " + (esENS(e.id) ? "ensayos" : "guías")}</p></div>
+      <div class="ejc-body"><div><h3>${esc(e.nombre)}</h3><p class="desc">${esc(e.desc)}</p><p class="cnt">${e.guias.length} ${e.guias.length === 1 ? (esENS(e.id) ? "ensayo" : "guía") : (esENS(e.id) ? "ensayos" : "guías")}${env ? ` · ${env} ${env === 1 ? "enviada" : "enviadas"}` : ""}${nr ? ` · ${nr} para revisar` : ""} · ${on ? "ocultar" : "ver " + (esENS(e.id) ? "ensayos" : "guías")}</p></div>
       <span class="ejc-chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M2 5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></button>
       ${on ? `<div id="ejl-${e.id}">${esENS(e.id) ? '<p class="eh">Ensayos completos: al enviarlos ves tu puntaje y las correctas. No usan revisiones.</p>' : ""}${e.guias.map(fila).join("")}</div>` : ""}</article>`;
   };
-  $("#pGuias").innerHTML = `<div class="sec-h"><h2>Guías de ${esc(m.nombre)}</h2><span class="note">Elige un eje para ver sus guías. Te ${q === 1 ? "queda 1 revisión" : "quedan " + q + " revisiones"} de ${cu.total} para repartir entre ${REPARTE}${r ? ` y ${r} extra` : ""}. Los ensayos PAES no usan revisiones.</span></div>
+  $("#pGuias").innerHTML = `<div class="sec-h"><h2>Guías de ${esc(m.nombre)}</h2><span class="note">Elige un eje para ver y descargar sus guías. Para mandar una a corregir (o enviar un ensayo), ve a <button class="btn-link" type="button" data-tab="revisiones" style="background:none;border:0;padding:0;color:rgb(var(--ac));font:inherit;text-decoration:underline;cursor:pointer">Revisiones</button>.</span></div>
     <div class="ejes">${m.ejes.map(card).join("")}</div>`;
+}
+const rvMias = () => A.mats;
+const rvC = () => (D.cupos || {})[A.area] || { total: 3, usadas: 0 };
+const rvQuedan = () => Math.max(0, rvC().total - rvC().usadas) + revQ();
+const rvTexto = () => `Tu Intensivo trae ${rvC().total} revisiones a elección para repartir como quieras entre ${REPARTE}. Elige la guía que resolviste, marca tus respuestas y te devolvemos la recorrección con informe, tutor virtual y guía de refuerzo. Los ensayos PAES no usan revisiones.`;
+const rvCards = () => { const c = rvC(), q = Math.max(0, c.total - c.usadas), r = revQ();
+  return [{ c: "rgb(var(--ac))", b: "Intensivo " + AREA_N, s: `${q} de ${c.total} disponibles · ${REPARTE}`, off: !q }]
+    .concat(A.mats.map(m => { const u = (D.enviadas || []).filter(e => e.int && !esENS(e.g) && matDeGuia(e.g) === m.id).length; return { c: m.c, b: m.corto, s: u ? (u === 1 ? "1 revisión usada" : u + " revisiones usadas") : "Sin revisiones usadas" }; }))
+    .concat([{ c: "#F5B43C", b: "Revisiones extra", s: r ? `${r} ${r === 1 ? "disponible" : "disponibles"} · para cualquier guía` : `$${PRECIO_REV.toLocaleString("es-CL")} cada una, para cualquier guía`, a: { href: "/#comprar=" + REV, t: "Comprar revisión extra" } }]); };
+const rvSin = m => "Ya usaste tus revisiones. Compra una revisión extra para mandar otra guía de " + m.corto + ".";
+const rvComprar = c => ({ href: "/#comprar=" + REV, t: "Revisión extra · $" + PRECIO_REV.toLocaleString("es-CL") });
+/* ---------- revisiones: las guías que te quedan para mandar a corregir ---------- */
+const guiasDeM = m => m.ejes.flatMap(e => e.guias).filter((c, i, a) => GUIAS[c] && a.indexOf(c) === i);
+const rvEnviable = c => !!GUIAS[c] && !enviadaDe(c) && GUIAS[c].nv !== "simulado";
+const rvPuede = c => rvEnviable(c) && cupoLibre(c);
+const rvPara = () => rvMias().flatMap(guiasDeM).filter(c => rvPuede(c) && !esENS(c));
+const rvChip = c => rvPuede(c) && !esENS(c) ? '<span class="chip rvok">Puedes mandarla a revisar</span>' : "";
+const nPreg = G => G.n + (G.nv === "vf" ? " afirmaciones" : " preguntas");
+function renderCupos() {
+  const q = rvQuedan(), n = rvPara().length;
+  $("#cupos").classList.add("rvb");
+  $("#cupos").innerHTML = `<div class="rv-bar"><span class="big">${q}</span><div class="tx"><b>${q === 1 ? "Te queda 1 revisión" : "Te quedan " + q + " revisiones"}</b><span>${n ? (n === 1 ? "1 guía" : n + " guías") + " que puedes mandar a corregir ahora." : "Ahora no tienes guías para mandar a corregir."}</span></div><button class="btn btn-sm btn-ac" type="button" data-tab="revisiones">${IC.env}${n ? "Ver guías para revisar" : "Ir a Revisiones"}</button></div>`;
+}
+function renderRevisiones() {
+  const mias = rvMias(), infoDe = c => (D.informes || []).filter(x => x.g === c);
+  const card = k => `<div class="rv-sec${k.off ? " off" : ""}" style="--mc:${k.c}"><b>${esc(k.b)}</b><span>${esc(k.s)}</span>${k.a ? `<a class="btn btn-sm btn-ac" href="${k.a.href}">${esc(k.a.t)}</a>` : ""}</div>`;
+  const tipo = c => { const G = GUIAS[c]; return esENS(c) ? '<span class="chip ens">Ensayo · no usa revisiones</span>' : `<span class="chip${G.nv === "avanzada" || G.nv === "vf" ? " av" : ""}">${NIVEL[G.nv] || "Guía"}</span>`; };
+  const filaOk = c => `<div class="grow"><div><div class="t">${esc(GUIAS[c].t)}</div><div class="m">${tipo(c)}<span class="note">${nPreg(GUIAS[c])}</span></div></div>
+      <div class="acts"><button class="btn btn-sm btn-ac" type="button" data-env="${c}">${IC.env}${esENS(c) ? "Enviar y ver resultado" : "Mandar a corregir"}</button></div></div>`;
+  const filaNo = c => { const b = rvComprar(c); return `<div class="grow"><div><div class="t">${esc(GUIAS[c].t)}</div><div class="m">${tipo(c)}<span class="note">${nPreg(GUIAS[c])}</span></div></div>
+      <div class="acts">${b ? `<a class="btn btn-sm btn-ghost" href="${b.href}">${esc(b.t)}</a>` : ""}</div></div>`; };
+  const conOk = m => guiasDeM(m).some(rvPuede), abre = (mias.find(m => m.id === mat && conOk(m)) || mias.find(conOk) || {}).id;
+  const grupo = m => {
+    const gs = guiasDeM(m), ok = gs.filter(rvPuede), no = gs.filter(c => rvEnviable(c) && !cupoLibre(c)), nOk = ok.filter(c => !esENS(c)).length;
+    const cuerpo = [...m.ejes].sort((x, y) => esENS(x.id) - esENS(y.id)).map(e => { const xs = e.guias.filter(c => ok.includes(c)); return xs.length ? `<p class="eh">${esc(e.nombre)}</p>${xs.map(filaOk).join("")}` : ""; }).join("");
+    return `<details class="rv-g" style="--mc:${m.c}"${m.id === abre || mias.length === 1 ? " open" : ""}><summary><i aria-hidden="true"></i>${esc(m.nombre)}<span class="c">${nOk ? nOk + (nOk === 1 ? " guía para revisar" : " guías para revisar") : "Sin revisiones disponibles"}</span></summary>
+      ${cuerpo || `<p class="note vacio">${esc(rvSin(m))}</p>`}
+      ${no.length ? `<details class="rv-otras"><summary>Otras guías de ${esc(m.corto)} sin revisión disponible · ${no.length}</summary>${no.map(filaNo).join("")}</details>` : ""}</details>`;
+  };
+  const filaEnv = e => { const G = GUIAS[e.g] || { t: e.g }, inf = infoDe(e.g), mm = A.mats.find(m => guiasDeM(m).includes(e.g));
+    return `<div class="grow"><div><div class="t">${esc(G.t)}</div><div class="m">${mm ? `<span class="chip">${esc(mm.corto)}</span>` : ""}<span class="note">Enviada el ${esc(fechaCorta(e.f))}</span><span class="chip${inf.length ? " ok" : ""}">${inf.length ? "Recorrección lista" : esc(ESTADO[e.e] || e.e)}</span></div></div>
+      <div class="acts">${inf.map(x => `<button class="btn btn-sm btn-ac" type="button" data-inf="${esc(x.id)}">${IC.pdf}Ver recorrección</button>`).join("")}</div></div>`; };
+  const env = [...(D.enviadas || [])].reverse(), sueltos = (D.informes || []).filter(x => !x.g || !env.some(e => e.g === x.g));
+  const filaInf = x => `<div class="grow"><div><div class="t">${esc(x.t)}</div><div class="m"><span class="chip ok">Recorrección</span><span class="note">${esc(fechaCorta(x.f))}</span>${x.nota ? `<span class="note">${esc(x.nota)}</span>` : ""}</div></div>
+      <div class="acts"><button class="btn btn-sm btn-ac" type="button" data-inf="${esc(x.id)}">${IC.pdf}Ver recorrección</button></div></div>`;
+  $("#pRevisiones").innerHTML = `<div class="rv-top"><div><h2 style="font-size:22px">Revisiones</h2><p class="note" style="margin-top:4px">${esc(rvTexto())}</p></div></div>
+    <div class="rv-secs">${rvCards().map(card).join("")}</div>
+    <div class="sec-h"><h2 style="font-size:18px">Guías que puedes mandar a corregir</h2><span class="note">Elige la guía que resolviste y marca tus respuestas en la hoja.</span></div>
+    ${mias.length ? mias.map(grupo).join("") : `<div class="empty"><b>Aún no tienes guías en tu plan</b></div>`}
+    <div class="sec-h" style="margin-top:26px"><h2 style="font-size:18px">Tus revisiones</h2><span class="note">${env.length ? env.length + (env.length === 1 ? " guía enviada" : " guías enviadas") : ""}</span></div>
+    ${env.length || sueltos.length ? `<div class="rv-list">${env.map(filaEnv).join("")}${sueltos.map(filaInf).join("")}</div>` : `<div class="empty"><b>Aún no tienes revisiones</b><br>Cuando mandes una guía a corregir, aquí verás su estado y tu recorrección.</div>`}`;
+}
+async function verInforme(id, btn) {
+  const txt = btn.innerHTML; btn.disabled = true; btn.textContent = "Abriendo…";
+  try {
+    const j = await conSesion({ tipo: "informe", id }, "Inicia sesión para ver tu recorrección.");
+    if (j.url) { window.open(j.url, "_blank", "noopener"); return; }
+    const url = URL.createObjectURL(new Blob([b64(j.b64)], { type: j.mime || "application/pdf" }));
+    const a = document.createElement("a"); a.href = url; a.download = j.nombre || "recorreccion.pdf"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  } catch (e) { if (e.message !== "cancelado") toast("No se pudo abrir la recorrección. Revisa tu conexión e inténtalo de nuevo."); }
+  finally { btn.disabled = false; btn.innerHTML = txt; }
 }
 function proximas() { const now = Date.now(); return (D.clases || []).filter(c => inicioDe(c).getTime() + (c.dur || 60) * 6e4 > now); }
 function renderClases() {
@@ -628,6 +712,8 @@ $("#vApp").addEventListener("click", ev => {
   const m = ev.target.closest("[data-mat]"); if (m) return abrirMaterial(m.dataset.mat, m);
   const p = ev.target.closest("[data-pdf]"); if (p) return descargar(p.dataset.pdf, p);
   const e = ev.target.closest("[data-env]"); if (e) return openForm(e.dataset.env);
+  const inf = ev.target.closest("[data-inf]"); if (inf) return verInforme(inf.dataset.inf, inf);
+  const tb = ev.target.closest("[data-tab]"); if (tb) { tab = tb.dataset.tab; render(); window.scrollTo({ top: 0 }); return; }
   const v = ev.target.closest("[data-vid]"); if (v) return verVideo(v.dataset.vid);
 });
 setInterval(() => { if (D && tab === "clases" && layer.hidden) renderClases(); }, 60000);

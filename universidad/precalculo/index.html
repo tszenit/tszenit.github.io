@@ -217,6 +217,32 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
 .lockbox .k{font:700 11.5px var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--mc)}
 .lockbox h2{font-size:26px}.lockbox p{color:var(--muted);font-size:15.5px}.lockbox .btn{justify-self:start;margin-top:6px;color:#0B1A33}
 @media (max-width:720px){.lockbox{grid-template-columns:minmax(0,1fr)}.lockbox .art{border-right:0;border-bottom:1px solid var(--ml);height:118px}}
+.rv-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.rv-secs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px}
+.rv-sec{border:1px solid var(--line);border-left:4px solid var(--mc);background:var(--surface);border-radius:12px;padding:12px 14px;display:grid;gap:4px;align-content:start}
+.rv-sec b{font:700 15px var(--f-display)}
+.rv-sec span{font:500 13px var(--f-display);color:var(--muted)}
+.rv-sec.off{opacity:.55}
+.rv-list{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.rv-list .grow:first-child{border-top:0}
+.cupos.rvb{display:block}
+.rv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;border:1px solid rgba(var(--ac),.55);box-shadow:0 0 0 1px rgba(var(--ac),.25) inset;background:var(--surface);border-radius:var(--r);padding:14px 18px}
+.rv-bar .big{font:800 34px/1 var(--f-display);color:rgb(var(--ac));font-variant-numeric:tabular-nums;min-width:28px;text-align:center}
+.rv-bar .tx{flex:1 1 240px;display:grid;gap:2px}
+.rv-bar .tx b{font:700 15px var(--f-display)}
+.rv-bar .tx span{font:500 13.5px var(--f-display);color:var(--muted)}
+.chip.rvok{color:rgb(var(--ac));border-color:rgba(var(--ac),.5);background:rgba(var(--ac),.08)}
+.rv-sec .btn{margin-top:6px;width:fit-content}
+.rv-g{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);margin-bottom:12px;overflow:hidden}
+.rv-g>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:15px 18px;font:700 16px var(--f-display)}
+.rv-g>summary::-webkit-details-marker{display:none}
+.rv-g>summary i{width:10px;height:10px;border-radius:50%;background:var(--mc);flex:none}
+.rv-g>summary .c{margin-left:auto;font:600 13px var(--f-display);color:var(--muted);text-align:right}
+.rv-g[open]>summary .c{color:rgb(var(--ac))}
+.rv-g .eh{margin:0;padding:12px 18px 6px;font:700 11.5px var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line)}
+.rv-g .eh+.grow{border-top:0}
+.rv-g .vacio{margin:0;padding:12px 18px 16px;border-top:1px solid var(--line)}
+.rv-otras>summary{cursor:pointer;padding:12px 18px;font:600 13.5px var(--f-display);color:var(--muted);border-top:1px solid var(--line)}
 </style>
 </head><body>
 <header class="top"><div class="wrap">
@@ -245,7 +271,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
     </div>
     <div class="mswitch" role="group" aria-label="Elige la evaluación" id="msw"></div>
     <nav class="tabs" role="tablist" aria-label="Secciones del aula" id="tabs">
-      <button role="tab" data-t="guias" aria-selected="true">Guías y revisiones</button>
+      <button role="tab" data-t="guias" aria-selected="true">Guías</button>
+      <button role="tab" data-t="revisiones" aria-selected="false">Revisiones<span class="n" id="nRv" hidden></span></button>
       <button role="tab" data-t="material" aria-selected="false">Material</button>
       <button role="tab" data-t="clases" aria-selected="false" hidden>Clases en vivo<span class="n" id="nCl" hidden></span></button>
       <button role="tab" data-t="videos" aria-selected="false" hidden>Videos<span class="n" id="nVi" hidden></span></button>
@@ -255,6 +282,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-bet
     <div class="cupos" id="cupos" aria-live="polite"></div>
     <div id="pMaterial" role="tabpanel" hidden></div>
     <div id="pGuias" role="tabpanel"></div>
+    <div id="pRevisiones" role="tabpanel" hidden></div>
     <div id="pClases" role="tabpanel" hidden></div>
     <div id="pVideos" role="tabpanel" hidden></div>
   </main>
@@ -429,16 +457,10 @@ function render() {
   const nc = $("#nCl"), nv = $("#nVi"); nc.textContent = cls.length; nc.hidden = !cls.length; nv.textContent = vids.length; nv.hidden = !vids.length;
   document.querySelectorAll("#tabs [data-t]").forEach(b => b.setAttribute("aria-selected", b.dataset.t === tab));
   if (tab === "clases" || tab === "videos") tab = "guias";
-  ["material", "guias", "clases", "videos"].forEach(t => $("#p" + t[0].toUpperCase() + t.slice(1)).hidden = t !== tab);
-  $("#cupos").hidden = !(tab === "material" || tab === "guias");
-  renderCupos(); renderMaterial(); renderGuias(); renderClases(); renderVideos();
-}
-function renderCupos() {
-  const C = D.cupos || {}, M = MATS[mat], p = planDe(mat);
-  const dots = c => `<div class="dots" aria-hidden="true">${Array.from({ length: c.total }, (_, i) => `<i class="${i < c.total - c.usadas ? "" : "u"}"></i>`).join("")}</div>`;
-  if (!p) { $("#cupos").innerHTML = ""; return; }
-  const c = C[p] || { total: 0, usadas: 0 }, q = Math.max(0, c.total - c.usadas), todo = p === "TSZ-PPRE";
-  $("#cupos").innerHTML = `<div class="cupo on"><span class="big">${q}<small>/${c.total}</small></span><b>Revisiones ${todo ? "de tu plan completo" : "de " + esc(M.corto)} disponibles</b><span>${q ? `Puedes enviar ${q === 1 ? "1 guía más" : q + " guías más"} a corregir${todo ? ", de cualquier sección" : ""}, con informe y guía de refuerzo.` : `Ya usaste tus ${c.total} revisiones${todo ? " del plan" : " de " + esc(M.corto)}.`}</span>${dots(c)}</div>`;
+  ["material", "guias", "revisiones", "clases", "videos"].forEach(t => $("#p" + t[0].toUpperCase() + t.slice(1)).hidden = t !== tab);
+  $("#cupos").hidden = !(tab === "material" || tab === "guias"); $("#msw").hidden = tab === "revisiones";
+  { const q = rvQuedan(), nR = $("#nRv"); nR.textContent = q; nR.hidden = !q; }
+  renderCupos(); renderMaterial(); renderGuias(); renderRevisiones(); renderClases(); renderVideos();
 }
 function bloqueada() {
   const m = MATS[mat];
@@ -450,7 +472,7 @@ function bloqueada() {
 function renderMaterial() {
   const m = MATS[mat];
   if (!tieneSec(mat)) { $("#pMaterial").innerHTML = bloqueada(); return; }
-  if (!m.ap) { $("#pMaterial").innerHTML = `<div class="sec-h"><h2>Material de ${esc(m.nombre)}</h2><span class="note">${esc(m.sum)}</span></div><div class="empty"><b>El apunte y las slides de ${esc(m.corto)} se publican pronto</b>Mientras tanto, tus guías ya están en «Guías y revisiones».</div>`; return; }
+  if (!m.ap) { $("#pMaterial").innerHTML = `<div class="sec-h"><h2>Material de ${esc(m.nombre)}</h2><span class="note">${esc(m.sum)}</span></div><div class="empty"><b>El apunte y las slides de ${esc(m.corto)} se publican pronto</b>Mientras tanto, tus guías ya están en «Guías».</div>`; return; }
   $("#pMaterial").innerHTML = `<div class="sec-h"><h2>Material de ${esc(m.nombre)}</h2><span class="note">${esc(m.sum)}</span></div>
     <div class="mat2" style="--mc:${m.c};--ma:${m.a};--ml:${m.l}">
       ${[["ap", "Apunte interactivo", "Abrir apunte"], ["sl", "Slides", "Ver slides"]].map(([k, t, b]) => `<article class="mcard"><div class="art">${m.svg}</div><div class="in2">
@@ -472,11 +494,72 @@ function renderGuias() {
     const G = GUIAS[c], env = enviadaDe(c), ens = esENS(c);
     const st = env ? `<span class="chip ok">Enviada ${esc(fechaCorta(env.f))} · ${esc(ESTADO[env.e] || env.e)}</span>` : "";
     const libre = cupoLibre(c);
-    return `<div class="grow"><div><div class="t">${esc(G.t)}</div><div class="m"><span class="chip${G.nv === "avanzada" ? " av" : ""}">${NIVEL[G.nv] || "Guía"}</span><span class="note">${G.n} preguntas</span>${st}</div></div>
-      <div class="acts"><button class="btn btn-sm btn-ghost" type="button" data-pdf="${c}">${IC.pdf}PDF</button>${env ? "" : libre ? `<button class="btn btn-sm btn-ac" type="button" data-env="${c}">${IC.env}${ens ? "Enviar y ver resultado" : "Enviar a corregir"}</button>` : `<a class="btn btn-sm btn-ac" href="/#comprar=${c}">Comprar · $${PRECIO_GUIA.toLocaleString("es-CL")}</a>`}</div></div>`;
+    return `<div class="grow"><div><div class="t">${esc(G.t)}</div><div class="m"><span class="chip${G.nv === "avanzada" ? " av" : ""}">${NIVEL[G.nv] || "Guía"}</span><span class="note">${G.n} preguntas</span>${st}${rvChip(c)}</div></div>
+      <div class="acts"><button class="btn btn-sm btn-ghost" type="button" data-pdf="${c}">${IC.pdf}PDF</button></div></div>`;
   };
-  $("#pGuias").innerHTML = `<div class="sec-h"><h2>Guías de ${esc(m.nombre)}</h2><span class="note">${q === 1 ? "Te queda" : "Te quedan"} ${q} de ${cu.total} revisiones${g === "TSZ-PPRE" ? " de tu plan" : " de " + esc(m.corto)}. Cuando se te acaben, puedes comprar más guías de esta prueba a $${PRECIO_GUIA.toLocaleString("es-CL")} cada una; las que compras no usan revisiones.</span></div>
+  $("#pGuias").innerHTML = `<div class="sec-h"><h2>Guías de ${esc(m.nombre)}</h2><span class="note">Descárgalas y resuélvelas. Para mandar una a corregir, ve a <button class="btn-link" type="button" data-tab="revisiones" style="background:none;border:0;padding:0;color:rgb(var(--ac));font:inherit;text-decoration:underline;cursor:pointer">Revisiones</button>.</span></div>
     ${m.ejes.map((e, i) => `<details class="eje"${i < 1 ? " open" : ""}><summary>${IC.chev}<h3>${esc(e.nombre)}</h3><span class="c">${e.guias.length} ${e.guias.length === 1 ? "guía" : "guías"}</span></summary><p class="desc">${esc(e.desc)}</p>${e.guias.map(fila).join("")}</details>`).join("")}`;
+}
+const rvMias = () => A.mats.filter(m => tieneSec(m.id));
+const rvProds = () => [...new Set(rvMias().map(m => planDe(m.id)).filter(Boolean))];
+const rvQ = p => { const c = (D.cupos || {})[p] || { total: 0, usadas: 0 }; return [Math.max(0, c.total - c.usadas), c.total]; };
+const rvQuedan = () => rvProds().reduce((s, p) => s + rvQ(p)[0], 0);
+const rvTexto = () => ((D.planes || []).includes("TSZ-PPRE") ? "Tu plan completo trae 12 revisiones para repartir entre todas las pruebas." : "Cada prueba de tu plan trae 3 revisiones a elección.") + " Elige la guía que resolviste, marca tus respuestas y te devolvemos la recorrección con informe y guía de refuerzo.";
+const rvCards = () => (D.planes || []).includes("TSZ-PPRE") ? [(([q, t]) => ({ c: A.mats[0].c, b: "Plan completo", s: `${q} de ${t} disponibles · para cualquier prueba`, off: !q }))(rvQ("TSZ-PPRE"))]
+  : A.mats.map(m => { if (!tieneSec(m.id)) return { c: m.c, b: m.corto, s: "No está en tu plan", off: 1 }; const [q, t] = rvQ(planDe(m.id)); return { c: m.c, b: m.corto, s: `${q} de ${t} disponibles`, off: !q }; });
+const rvSin = m => "Ya usaste las revisiones de " + m.corto + ". Si quieres mandar otra guía de esta prueba, puedes comprarla aparte.";
+const rvComprar = c => ({ href: "/#comprar=" + c, t: "Comprar esta guía · $" + PRECIO_GUIA.toLocaleString("es-CL") });
+/* ---------- revisiones: las guías que te quedan para mandar a corregir ---------- */
+const guiasDeM = m => m.ejes.flatMap(e => e.guias).filter((c, i, a) => GUIAS[c] && a.indexOf(c) === i);
+const rvEnviable = c => !!GUIAS[c] && !enviadaDe(c) && GUIAS[c].nv !== "simulado";
+const rvPuede = c => rvEnviable(c) && cupoLibre(c);
+const rvPara = () => rvMias().flatMap(guiasDeM).filter(c => rvPuede(c) && !esENS(c));
+const rvChip = c => rvPuede(c) && !esENS(c) ? '<span class="chip rvok">Puedes mandarla a revisar</span>' : "";
+const nPreg = G => G.n + (G.nv === "vf" ? " afirmaciones" : " preguntas");
+function renderCupos() {
+  const q = rvQuedan(), n = rvPara().length;
+  $("#cupos").classList.add("rvb");
+  $("#cupos").innerHTML = `<div class="rv-bar"><span class="big">${q}</span><div class="tx"><b>${q === 1 ? "Te queda 1 revisión" : "Te quedan " + q + " revisiones"}</b><span>${n ? (n === 1 ? "1 guía" : n + " guías") + " que puedes mandar a corregir ahora." : "Ahora no tienes guías para mandar a corregir."}</span></div><button class="btn btn-sm btn-ac" type="button" data-tab="revisiones">${IC.env}${n ? "Ver guías para revisar" : "Ir a Revisiones"}</button></div>`;
+}
+function renderRevisiones() {
+  const mias = rvMias(), infoDe = c => (D.informes || []).filter(x => x.g === c);
+  const card = k => `<div class="rv-sec${k.off ? " off" : ""}" style="--mc:${k.c}"><b>${esc(k.b)}</b><span>${esc(k.s)}</span>${k.a ? `<a class="btn btn-sm btn-ac" href="${k.a.href}">${esc(k.a.t)}</a>` : ""}</div>`;
+  const tipo = c => { const G = GUIAS[c]; return esENS(c) ? '<span class="chip ens">Ensayo · no usa revisiones</span>' : `<span class="chip${G.nv === "avanzada" || G.nv === "vf" ? " av" : ""}">${NIVEL[G.nv] || "Guía"}</span>`; };
+  const filaOk = c => `<div class="grow"><div><div class="t">${esc(GUIAS[c].t)}</div><div class="m">${tipo(c)}<span class="note">${nPreg(GUIAS[c])}</span></div></div>
+      <div class="acts"><button class="btn btn-sm btn-ac" type="button" data-env="${c}">${IC.env}${esENS(c) ? "Enviar y ver resultado" : "Mandar a corregir"}</button></div></div>`;
+  const filaNo = c => { const b = rvComprar(c); return `<div class="grow"><div><div class="t">${esc(GUIAS[c].t)}</div><div class="m">${tipo(c)}<span class="note">${nPreg(GUIAS[c])}</span></div></div>
+      <div class="acts">${b ? `<a class="btn btn-sm btn-ghost" href="${b.href}">${esc(b.t)}</a>` : ""}</div></div>`; };
+  const conOk = m => guiasDeM(m).some(rvPuede), abre = (mias.find(m => m.id === mat && conOk(m)) || mias.find(conOk) || {}).id;
+  const grupo = m => {
+    const gs = guiasDeM(m), ok = gs.filter(rvPuede), no = gs.filter(c => rvEnviable(c) && !cupoLibre(c)), nOk = ok.filter(c => !esENS(c)).length;
+    const cuerpo = [...m.ejes].sort((x, y) => esENS(x.id) - esENS(y.id)).map(e => { const xs = e.guias.filter(c => ok.includes(c)); return xs.length ? `<p class="eh">${esc(e.nombre)}</p>${xs.map(filaOk).join("")}` : ""; }).join("");
+    return `<details class="rv-g" style="--mc:${m.c}"${m.id === abre || mias.length === 1 ? " open" : ""}><summary><i aria-hidden="true"></i>${esc(m.nombre)}<span class="c">${nOk ? nOk + (nOk === 1 ? " guía para revisar" : " guías para revisar") : "Sin revisiones disponibles"}</span></summary>
+      ${cuerpo || `<p class="note vacio">${esc(rvSin(m))}</p>`}
+      ${no.length ? `<details class="rv-otras"><summary>Otras guías de ${esc(m.corto)} sin revisión disponible · ${no.length}</summary>${no.map(filaNo).join("")}</details>` : ""}</details>`;
+  };
+  const filaEnv = e => { const G = GUIAS[e.g] || { t: e.g }, inf = infoDe(e.g), mm = A.mats.find(m => guiasDeM(m).includes(e.g));
+    return `<div class="grow"><div><div class="t">${esc(G.t)}</div><div class="m">${mm ? `<span class="chip">${esc(mm.corto)}</span>` : ""}<span class="note">Enviada el ${esc(fechaCorta(e.f))}</span><span class="chip${inf.length ? " ok" : ""}">${inf.length ? "Recorrección lista" : esc(ESTADO[e.e] || e.e)}</span></div></div>
+      <div class="acts">${inf.map(x => `<button class="btn btn-sm btn-ac" type="button" data-inf="${esc(x.id)}">${IC.pdf}Ver recorrección</button>`).join("")}</div></div>`; };
+  const env = [...(D.enviadas || [])].reverse(), sueltos = (D.informes || []).filter(x => !x.g || !env.some(e => e.g === x.g));
+  const filaInf = x => `<div class="grow"><div><div class="t">${esc(x.t)}</div><div class="m"><span class="chip ok">Recorrección</span><span class="note">${esc(fechaCorta(x.f))}</span>${x.nota ? `<span class="note">${esc(x.nota)}</span>` : ""}</div></div>
+      <div class="acts"><button class="btn btn-sm btn-ac" type="button" data-inf="${esc(x.id)}">${IC.pdf}Ver recorrección</button></div></div>`;
+  $("#pRevisiones").innerHTML = `<div class="rv-top"><div><h2 style="font-size:22px">Revisiones</h2><p class="note" style="margin-top:4px">${esc(rvTexto())}</p></div></div>
+    <div class="rv-secs">${rvCards().map(card).join("")}</div>
+    <div class="sec-h"><h2 style="font-size:18px">Guías que puedes mandar a corregir</h2><span class="note">Elige la guía que resolviste y marca tus respuestas en la hoja.</span></div>
+    ${mias.length ? mias.map(grupo).join("") : `<div class="empty"><b>Aún no tienes guías en tu plan</b></div>`}
+    <div class="sec-h" style="margin-top:26px"><h2 style="font-size:18px">Tus revisiones</h2><span class="note">${env.length ? env.length + (env.length === 1 ? " guía enviada" : " guías enviadas") : ""}</span></div>
+    ${env.length || sueltos.length ? `<div class="rv-list">${env.map(filaEnv).join("")}${sueltos.map(filaInf).join("")}</div>` : `<div class="empty"><b>Aún no tienes revisiones</b><br>Cuando mandes una guía a corregir, aquí verás su estado y tu recorrección.</div>`}`;
+}
+async function verInforme(id, btn) {
+  const txt = btn.innerHTML; btn.disabled = true; btn.textContent = "Abriendo…";
+  try {
+    const j = await conSesion({ tipo: "informe", id }, "Inicia sesión para ver tu recorrección.");
+    if (j.url) { window.open(j.url, "_blank", "noopener"); return; }
+    const url = URL.createObjectURL(new Blob([b64(j.b64)], { type: j.mime || "application/pdf" }));
+    const a = document.createElement("a"); a.href = url; a.download = j.nombre || "recorreccion.pdf"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  } catch (e) { if (e.message !== "cancelado") toast("No se pudo abrir la recorrección. Revisa tu conexión e inténtalo de nuevo."); }
+  finally { btn.disabled = false; btn.innerHTML = txt; }
 }
 function proximas() { const now = Date.now(); return (D.clases || []).filter(c => inicioDe(c).getTime() + (c.dur || 60) * 6e4 > now); }
 function renderClases() {
@@ -625,6 +708,8 @@ $("#vApp").addEventListener("click", ev => {
   const m = ev.target.closest("[data-mat]"); if (m) return abrirMaterial(m.dataset.mat, m);
   const p = ev.target.closest("[data-pdf]"); if (p) return descargar(p.dataset.pdf, p);
   const e = ev.target.closest("[data-env]"); if (e) return openForm(e.dataset.env);
+  const inf = ev.target.closest("[data-inf]"); if (inf) return verInforme(inf.dataset.inf, inf);
+  const tb = ev.target.closest("[data-tab]"); if (tb) { tab = tb.dataset.tab; render(); window.scrollTo({ top: 0 }); return; }
   const v = ev.target.closest("[data-vid]"); if (v) return verVideo(v.dataset.vid);
 });
 setInterval(() => { if (D && tab === "clases" && layer.hidden) renderClases(); }, 60000);
