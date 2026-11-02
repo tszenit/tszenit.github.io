@@ -1048,7 +1048,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
       <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z"/><path d="M12 6v13.5"/></svg></span><span class="k">Aprender</span><h3>11 módulos con simulaciones</h3><p>Vectores que se arrastran, matrices que deforman el plano, broadcasting visual y una señal ECG que filtras tú.</p></div>
       <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></span><span class="k">Código comentado</span><h3>Toca cualquier línea</h3><p>Cada módulo trae un programa de ejemplo. Toca una línea o una palabra y ves qué hace; después lo ejecutas.</p></div>
       <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="m7 9.5 3 2.5-3 2.5M12.5 15H17"/></svg></span><span class="k">Consola</span><h3>Python real en el navegador</h3><p>Python 3.12 con NumPy, sin instalar nada. Prueba ideas, revisa errores y guarda variables entre ejecuciones.</p></div>
-      <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.3 2.6 2.6 5-5.4"/></svg></span><span class="k">Juez</span><h3>Problemas con casos de prueba</h3><p>Tu función se ejecuta con casos visibles y ocultos. Si falla, te dice dónde y cuál es el error típico que cometiste.</p></div>
+      <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.3 2.6 2.6 5-5.4"/></svg></span><span class="k">Sets</span><h3>Problemas con casos de prueba</h3><p>Tu función se ejecuta con casos visibles y ocultos. Si falla, te dice dónde y cuál es el error típico que cometiste.</p></div>
       <div class="u-feat ix"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span><span class="k">Interrogación evaluada</span><h3>Nota e informe personal</h3><p>Demuestra lo aprendido: recibes tu nota, la explicación de cada error y qué repasar.</p></div>
       <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10.2V5.5L12 3l7 2.5v5.3C19 16.6 12 21 12 21z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span><span class="k">Acceso</span><h3>Tuyo para siempre</h3><p>Pago único. Los módulos, sets e interrogaciones que se agreguen al curso quedan incluidos.</p></div>
     </div>
@@ -1126,7 +1126,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202611021227"></script>
+<script src="/config.js?v=202611021228"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -2154,7 +2154,7 @@ const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
 // Hasta el domingo 25 de octubre de 2026 (00:00, Chile) el curso se reserva; desde entonces se compra.
 const RESERVA = Date.now() < Date.UTC(2026, 9, 25, 3, 0, 0);
 const VERBO = RESERVA ? "Reservar" : "Comprar";
-const VER = "202611021227";
+const VER = "202611021228";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
@@ -2372,7 +2372,7 @@ function cargarU() { const d = store.get(UK(), null); return Object.assign({ don
 const saveU = () => store.set(UK(), U);
 
 /* ---------- curso ---------- */
-const TABS = [["tAprender", "Aprender"], ["tConsola", "Consola"], ["tJuez", "Juez"], ["tPruebas", "Interrogaciones"], ["tEnvios", "Mis envíos"], ["tProgreso", "Progreso"]];
+const TABS = [["tAprender", "Aprender"], ["tConsola", "Consola"], ["tJuez", "Sets"], ["tPruebas", "Interrogaciones"], ["tEnvios", "Mis envíos"], ["tProgreso", "Progreso"]];
 const cur = { tab: "tAprender", mod: "m0", set: "S1", prob: "1.1" };
 let MODS = [];
 function entrar() {
@@ -2402,7 +2402,7 @@ function puntaje() { return B.probs.reduce((s, p) => s + Math.round(100 * ((U.ju
 function paintHead() {
   const nd = U.done.filter(id => MODT.some(m => m[0] === id)).length;
   $("#cBar").style.width = (100 * nd / NMOD) + "%";
-  $("#cTxt").textContent = `${nd} de ${NMOD} módulos · juez ${puntaje()} de ${B.probs.length * 100} puntos`;
+  $("#cTxt").textContent = `${nd} de ${NMOD} módulos · sets ${puntaje()} de ${B.probs.length * 100} puntos`;
 }
 function paintCourse() {
   $("#ctabs").innerHTML = TABS.map(([id, l]) => `<button class="u-ctab" role="tab" type="button" aria-selected="${id === cur.tab}" data-tab="${id}"${id === "tPruebas" ? ' data-ix' : ""}>${tIco(id)}<span>${l}</span></button>`).join("");
@@ -2836,7 +2836,7 @@ function renderJudge() {
 function renderSets() {
   const tot = B.sets.reduce((x, S) => x + S.probs.length, 0), ac = B.sets.reduce((x, S) => x + acSet(S), 0);
   $("#tJuez").innerHTML = `<div class="jx-sets">
-    <div class="jx-intro"><div><span class="eyebrow">Juez de NumPy</span><h2>Elige un set</h2><p class="hint">Cada set trae un ejemplo resuelto y ${B.sets[0].probs.length} problemas que se corrigen solos con casos de prueba. Envíos ilimitados.</p></div><div class="jx-tot"><b>${puntaje()}</b><span>de ${tot * 100} puntos · ${ac} de ${tot} aceptados</span></div></div>
+    <div class="jx-intro"><div><span class="eyebrow">Sets de NumPy</span><h2>Elige un set</h2><p class="hint">Cada set trae un ejemplo resuelto y ${B.sets[0].probs.length} problemas que se corrigen solos con casos de prueba. Envíos ilimitados.</p></div><div class="jx-tot"><b>${puntaje()}</b><span>de ${tot * 100} puntos · ${ac} de ${tot} aceptados</span></div></div>
     ${B.sets.map(S => { const pts = puntajeSet(S), max = S.probs.length * 100, a = acSet(S), I = SET_INFO[S.id] || {}, pct = Math.round(100 * pts / max);
       return `<button type="button" class="jx-set" data-jset="${S.id}">
         <span class="jx-num" aria-hidden="true">${S.n}</span>
@@ -3382,9 +3382,9 @@ function recomendaciones(t, r) {
   const rec = [], RELP = {}, N = NUM(t); B.probs.forEach(p => { if (!RELP[p.modulo]) RELP[p.modulo] = p.id; });
   Object.entries(r.porMod).sort((a, b) => a[1].p / a[1].max - b[1].p / b[1].max).forEach(([m, v]) => {
     const pct = v.p / v.max;
-    if (pct < 0.6) rec.push(`<li>Repasa el <b>módulo ${m.slice(1)} · ${esc(modTit(m))}</b> (lograste ${Math.round(100 * pct)} %): vuelve a su simulación y a su ejemplo comentado.${RELP[m] ? ` Después resuelve el problema <b>${RELP[m]}</b> del juez.` : ""} <button class="btn btn-sm" type="button" data-gomod="${m}">Ir al módulo</button></li>`);
+    if (pct < 0.6) rec.push(`<li>Repasa el <b>módulo ${m.slice(1)} · ${esc(modTit(m))}</b> (lograste ${Math.round(100 * pct)} %): vuelve a su simulación y a su ejemplo comentado.${RELP[m] ? ` Después resuelve el problema <b>${RELP[m]}</b> de los sets.` : ""} <button class="btn btn-sm" type="button" data-gomod="${m}">Ir al módulo</button></li>`);
   });
-  if (!rec.length) rec.push(`<li>Lograste al menos 60 % en todos los contenidos evaluados. Sigue con los problemas del juez que te falten.</li>`);
+  if (!rec.length) rec.push(`<li>Lograste al menos 60 % en todos los contenidos evaluados. Sigue con los problemas de los sets que te falten.</li>`);
   r.B.forEach((b, i) => { if (b.verd !== "AC") rec.push(`<li>En el problema ${N[t.B[i].id]} tu código no pasó todos los casos. Vuelve a escribirlo en la consola y pruébalo hasta que funcione.</li>`); });
   return rec;
 }
@@ -3418,7 +3418,7 @@ document.addEventListener("click", e => { const b = e.target.closest("[data-gomo
 /* ---------- mis envíos ---------- */
 function renderEnvios() {
   const E = U.envios, host = $("#tEnvios");
-  if (!E.length) { host.innerHTML = `<div class="u-empty"><p>Todavía no envías ningún problema.</p><div class="u-actions" style="justify-content:center;margin-top:12px"><button class="btn btn-cafe" type="button" data-tab="tJuez">Ir al juez</button></div></div>`; return; }
+  if (!E.length) { host.innerHTML = `<div class="u-empty"><p>Todavía no envías ningún problema.</p><div class="u-actions" style="justify-content:center;margin-top:12px"><button class="btn btn-cafe" type="button" data-tab="tJuez">Ir a los sets</button></div></div>`; return; }
   host.innerHTML = `<div class="sec-head" style="margin-bottom:16px"><p class="eyebrow">Historial</p><h2>Mis envíos</h2><p>Cada envío queda guardado con su código y su informe. Usa «Recorregir» para cargarlo en el editor, mejorarlo y volver a enviarlo.</p></div>
     <div class="u-twrap"><table class="u-table"><thead><tr><th>Fecha</th><th>Problema</th><th>Resultado</th><th class="r">Puntos</th><th></th></tr></thead><tbody>${E.map(e => { const p = B.probs.find(x => x.id === e.pid); return `<tr><td>${fecha(e.fecha)}</td><td><b>${e.pid}</b> · ${esc(p ? p.titulo : "")}</td><td><span class="pill ${e.verd === "AC" ? "ok" : e.verd === "WA" ? "bad" : "warn"}">${VERD[e.verd]}</span></td><td class="r">${Math.round(100 * e.ok / e.tot)}</td><td><div class="u-actions" style="justify-content:flex-end;flex-wrap:nowrap"><button class="btn btn-sm" type="button" data-ver="${e.id}">Ver</button><button class="btn btn-sm btn-cafe" type="button" data-rec="${e.id}">Recorregir</button></div></td></tr><tr class="u-detail" id="d${e.id}" hidden><td colspan="5"></td></tr>`; }).join("")}</tbody></table></div>`;
   $$("[data-ver]", host).forEach(b => b.addEventListener("click", () => {
@@ -3439,11 +3439,11 @@ function renderProg() {
   const ac = B.probs.filter(p => (U.juez[p.id] || {}).ac).length;
   const next = MODT.find(m => !U.done.includes(m[0]));
   $("#tProgreso").innerHTML = `<div style="display:grid;gap:22px">
-    <div class="u-kpis"><div class="u-kpi"><b>${nd} / ${NMOD}</b>módulos completados</div><div class="u-kpi"><b>${puntaje()}</b>puntos de ${B.probs.length * 100} en el juez</div><div class="u-kpi"><b>${ac} / ${B.probs.length}</b>problemas aceptados</div><div class="u-kpi"><b>${U.envios.length}</b>envíos en total</div></div>
+    <div class="u-kpis"><div class="u-kpi"><b>${nd} / ${NMOD}</b>módulos completados</div><div class="u-kpi"><b>${puntaje()}</b>puntos de ${B.probs.length * 100} en los sets</div><div class="u-kpi"><b>${ac} / ${B.probs.length}</b>problemas aceptados</div><div class="u-kpi"><b>${U.envios.length}</b>envíos en total</div></div>
     ${next ? `<div class="u-rep"><span class="lab">Siguiente paso</span><p>Continúa con el módulo ${next[0].slice(1)}: ${esc(next[1])}.</p><div class="u-actions"><button class="btn btn-cafe btn-sm" type="button" data-gomod="${next[0]}">Ir al módulo</button></div></div>` : ""}
     <div class="u-card"><h3 style="margin:0;font-size:18px">Interrogaciones</h3>${B.tests.map(t => { const s = tst(t.id); return `<div class="u-row"><span>${esc(t.titulo)} · ${esc(t.sub)}</span><div class="u-meter ${s && s.res && s.res.nota >= 4 ? "ok" : ""}"><i style="width:${s && s.res ? Math.round(100 * s.res.pts / s.res.P) : 0}%"></i></div><span style="justify-self:end">${s && s.res ? coma(s.res.nota.toFixed(1)) : s ? "En curso" : "—"}</span></div>`; }).join("")}</div>
     <div class="u-card"><h3 style="margin:0;font-size:18px">Módulos</h3><div>${MODT.map(([id, t]) => { const d = U.done.includes(id); return `<div class="u-row"><span>${id.slice(1)} · ${esc(t)}</span><div class="u-meter ok"><i style="width:${d ? 100 : 0}%"></i></div><span class="pill ${d ? "ok" : ""}" style="justify-self:end">${d ? "Listo" : "Pendiente"}</span></div>`; }).join("")}</div></div>
-    ${B.sets.map(S => `<div class="u-card"><h3 style="margin:0;font-size:18px">Juez · Set ${S.n} · ${esc(S.titulo)} <span class="pill">${puntajeSet(S)} / ${S.probs.length * 100}</span></h3><div>${S.probs.map(p => { const s = U.juez[p.id] || {}; const v = Math.round(100 * (s.best || 0)); return `<div class="u-row"><span>${p.id} · ${esc(p.titulo)}</span><div class="u-meter ${s.ac ? "ok" : ""}"><i style="width:${v}%"></i></div><span style="justify-self:end;font-variant-numeric:tabular-nums">${v}</span></div>`; }).join("")}</div></div>`).join("")}
+    ${B.sets.map(S => `<div class="u-card"><h3 style="margin:0;font-size:18px">Set ${S.n} · ${esc(S.titulo)} <span class="pill">${puntajeSet(S)} / ${S.probs.length * 100}</span></h3><div>${S.probs.map(p => { const s = U.juez[p.id] || {}; const v = Math.round(100 * (s.best || 0)); return `<div class="u-row"><span>${p.id} · ${esc(p.titulo)}</span><div class="u-meter ${s.ac ? "ok" : ""}"><i style="width:${v}%"></i></div><span style="justify-self:end;font-variant-numeric:tabular-nums">${v}</span></div>`; }).join("")}</div></div>`).join("")}
   </div>`;
 }
 
