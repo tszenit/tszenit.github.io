@@ -626,9 +626,6 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
   .u-pbar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;margin-bottom:14px}
   .u-pbar .seg button{min-height:40px;padding:7px 14px}
   .u-judge:not([data-vista="normal"]){grid-template-columns:minmax(0,1fr)}
-  .u-judge:not([data-vista="normal"]) .u-plist{display:none}
-  .u-judge.lst:not([data-vista="normal"]) .u-plist{display:grid}
-  .u-judge[data-vista="normal"] #lstBtn{display:none}
   .u-judge[data-vista="split"] .u-pgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:22px}
   .u-judge[data-vista="split"] .u-pane{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);max-height:calc(100vh - 96px);overflow:auto;padding-right:6px;overscroll-behavior:contain}
   .u-judge[data-vista="split"] .u-exp-grid{grid-template-columns:minmax(0,1fr)}
@@ -639,7 +636,6 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
   .u-judge[data-vista="code"] .u-editor{min-height:58vh}
   .u-judge[data-vista="code"] .u-term{max-height:none}
 }
-@media (min-width:900px){ .u-judge.lst:not([data-vista="normal"]){grid-template-columns:270px minmax(0,1fr)} }
 #tJuez:fullscreen{background-color:var(--bg);overflow:auto;padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
 #tJuez:-webkit-full-screen{background-color:var(--bg);overflow:auto;padding:16px}
 #tJuez:fullscreen .u-judge[data-vista="split"] .u-pane{top:16px;max-height:calc(100vh - 100px)}
@@ -647,7 +643,6 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 #tJuez:fullscreen .u-plist{position:static}
 .u-pnav{display:flex;flex-wrap:wrap;gap:8px}
 .u-pnav .btn:disabled{opacity:.45;cursor:default}
-@media (min-width:700px){.u-judge[data-vista="normal"] #prevP,.u-judge[data-vista="normal"] #nextP{display:none}}
 
 /* ================= estética general ================= */
 :root{--ix:#F87171;--ix-2:#EF4444;--ix-3:#B91C1C;--ix-ink:#FEE2E2;--ix-mute:#FCA5A5;--ix-dim:#D9A3A8;--ix-line:rgba(248,113,113,.5);--ix-soft:rgba(239,68,68,.14)}
@@ -975,6 +970,49 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 .tc-tb{margin:6px 0 4px;padding:12px 14px;background:var(--code-bg);border:1px solid var(--line);border-radius:10px;font:13.5px/1.65 var(--f-mono);overflow-x:auto;white-space:pre;color:var(--ink)}
 .tc-tb .tb-k{color:var(--muted)} .tc-tb .tb-car{color:var(--bad)} .tc-tb .tb-exc{color:var(--bad);font-weight:700} .tc-tb .tb-msg{color:var(--ink)}
 .tc-det>*,.tc-fold,.tc-cmp{min-width:0;max-width:100%}
+
+/* juez en tres pantallas: sets → ejercicios → enunciado y código */
+.u-judge.jx{grid-template-columns:minmax(0,1fr)}
+.jx .u-pbar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;margin-bottom:14px}
+@media (max-width:699px){.jx .u-pbar .seg,.jx #fsBtn{display:none}.jx .u-pnav{width:100%}.jx #jxBack{flex:1 1 100%;justify-content:flex-start}.jx #prevP,.jx #nextP{flex:1}}
+#jxBack{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.jx-sets,.jx-lista{display:grid;gap:16px;min-width:0}
+.jx-intro,.jx-head{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:flex-end}
+.jx-intro h2,.jx-head h2{margin:2px 0 6px;font-size:clamp(24px,3vw,32px)}
+.jx-intro .hint,.jx-head .hint{margin:0;max-width:62ch}
+.jx-tot{display:grid;justify-items:end;text-align:right;font-family:var(--f-display)}
+.jx-tot b{font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.jx-tot span{font-size:13px;color:var(--muted)}
+.jx-set{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;width:100%;text-align:left;background:var(--black);border:1px solid var(--line);border-radius:18px;padding:20px 22px;color:var(--ink);cursor:pointer;font:inherit;transition:border-color .15s,transform .15s,box-shadow .15s}
+.jx-set:hover{border-color:var(--cafe-line);transform:translateY(-1px);box-shadow:0 14px 30px -22px rgba(0,0,0,.8)}
+.jx-set:focus-visible,.jx-p:focus-visible{outline:2px solid var(--latte);outline-offset:2px}
+.jx-num{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font:700 24px var(--f-display);background:var(--surface);border:1px solid var(--cafe-line);color:var(--latte);align-self:start}
+.jx-body{display:grid;gap:8px;min-width:0}
+.jx-k{font:600 12px var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.jx-t{font:700 clamp(20px,2.4vw,24px)/1.15 var(--f-display)}
+.jx-d{font-size:15.5px;line-height:1.5;color:var(--ink);opacity:.9}
+.jx-chips{display:flex;flex-wrap:wrap;gap:6px}
+.jx-facts{display:flex;flex-wrap:wrap;gap:4px 16px;font:13.5px var(--f-display);color:var(--muted)}
+.jx-facts b{color:var(--ink)}
+.jx-prog{display:grid;grid-template-columns:minmax(80px,220px) auto;gap:12px;align-items:center;font:13px var(--f-display);color:var(--muted);font-variant-numeric:tabular-nums}
+.jx-go{font:700 15px var(--f-display);color:var(--latte);white-space:nowrap}
+.jx-go span{font-size:20px;margin-left:4px}
+@media (max-width:640px){.jx-set{grid-template-columns:minmax(0,1fr);padding:18px 16px;gap:12px}.jx-num{width:40px;height:40px;font-size:19px;border-radius:12px}.jx-go{justify-self:start}.jx-prog{grid-template-columns:minmax(0,1fr)}.jx-tot{justify-items:start;text-align:left}}
+.jx-crumb{display:flex}
+.jx-probs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.jx-p{width:100%;display:grid;grid-template-columns:22px minmax(0,1fr) auto 16px;gap:14px;align-items:center;text-align:left;background:var(--black);border:1px solid var(--line);border-radius:14px;padding:14px 16px;color:var(--ink);cursor:pointer;font:inherit;min-height:60px}
+.jx-p:hover{border-color:var(--cafe-line);background:var(--surface)}
+.jx-ej{border-color:var(--cafe-line)}
+.jx-pt{display:grid;gap:3px;min-width:0;font-family:var(--f-display)}
+.jx-pt b{font-size:16px;line-height:1.3}
+.jx-pt span{font-size:13px;color:var(--muted)}
+.jx-pm{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.jx-pp{font-size:20px;color:var(--muted)}
+.jx-dif-f{border-color:#3E7A5E;color:var(--good)}
+.jx-dif-m{border-color:var(--warn);color:var(--warn)}
+.jx-dif-d{border-color:#E0866F;color:#F1A894}
+@media (max-width:640px){.jx-p{grid-template-columns:22px minmax(0,1fr) 12px;padding:12px}.jx-pm{grid-column:2;justify-content:flex-start}.jx-pp{grid-column:3;grid-row:1}}
+.jx-leg{display:flex;flex-wrap:wrap;gap:8px 18px;border-top:0;padding-top:0}
 </style></head><body>
 <header class="u-top">
   <div class="wrap u-topin">
@@ -1088,7 +1126,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202610280927"></script>
+<script src="/config.js?v=202611021227"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -2116,7 +2154,7 @@ const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
 // Hasta el domingo 25 de octubre de 2026 (00:00, Chile) el curso se reserva; desde entonces se compra.
 const RESERVA = Date.now() < Date.UTC(2026, 9, 25, 3, 0, 0);
 const VERBO = RESERVA ? "Reservar" : "Comprar";
-const VER = "202610280927";
+const VER = "202611021227";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
@@ -2778,33 +2816,80 @@ const setDe = id => B.sets.find(s => s.id === id);
 const puntajeSet = s => s.probs.reduce((x, p) => x + Math.round(100 * ((U.juez[p.id] || {}).best || 0)), 0);
 const VISTAS = [["normal", "Normal"], ["split", "Dividir"], ["enun", "Enunciado"], ["code", "Código"]];
 const vistaDef = () => U.vista || (window.innerWidth >= 1100 ? "split" : "normal");
+const SET_INFO = {
+  S1: { txt: "Crear arrays, sacar trozos con índices y slicing, filtrar con condiciones y operar elemento a elemento con broadcasting, sin escribir un solo for. Es la base de todo lo demás.", ideal: "recién empiezas con NumPy" },
+  S2: { txt: "Producto punto y normas para medir distancias y ángulos, matrices que rotan y escalan, y sistemas de ecuaciones resueltos con np.linalg.", ideal: "ya manejas arrays y quieres usarlos en álgebra lineal" },
+  S3: { txt: "Resumir tablas con agregaciones por eje, ordenar y agrupar datos, y analizar una señal real de electrocardiograma.", ideal: "quieres trabajar con datos reales" }
+};
+const DIFS = [["Fácil", "fácil", "fáciles"], ["Media", "media", "medias"], ["Desafío", "desafío", "desafíos"]];
+function difsDe(S) { return DIFS.map(([k, s, pl]) => { const n = S.probs.filter(p => p.dif === k).length; return n ? `${n} ${n === 1 ? s : pl}` : ""; }).filter(Boolean).join(" · "); }
+const modsDe = S => [...new Set(S.probs.map(p => p.modTitulo))];
+const acSet = S => S.probs.filter(p => (U.juez[p.id] || {}).ac).length;
+function jxTop() { const t = $("#tJuez"); const y = (t ? t.getBoundingClientRect().top + window.scrollY : 0) - 90; if (window.scrollY > y) window.scrollTo({ top: Math.max(0, y), behavior: "auto" }); }
+function irJuez(jv, extra) { Object.assign(cur, { jv }, extra || {}); renderJudge(); jxTop(); }
 function renderJudge() {
-  $("#tJuez").innerHTML = `<div class="u-judge" id="judge" data-vista="${vistaDef()}"><aside class="u-plist">
-    <div class="seg" role="tablist" aria-label="Sets de práctica" style="display:grid;grid-template-columns:repeat(${B.sets.length},1fr)">${B.sets.map(s => `<button type="button" role="tab" data-set="${s.id}" class="${s.id === cur.set ? "on" : ""}" aria-selected="${s.id === cur.set}">Set ${s.n}</button>`).join("")}</div>
-    <div class="u-sethead"><div><span class="eyebrow" id="setTit"></span><div class="hint" id="setDesc"></div></div><b id="setScore"></b></div><ol id="pList"></ol>
-    <div class="u-plegend"><span><span class="bub sol">★</span>Ejemplo resuelto</span><span><span class="bub on">✓</span>Aceptado</span><span><span class="bub half"></span>Algunos casos correctos</span><span><span class="bub bad">✗</span>Ningún caso correcto</span></div></aside>
+  if (!cur.jv) cur.jv = "sets";
+  if (cur.jv === "sets") return renderSets();
+  if (cur.jv === "lista") return renderLista();
+  renderTrabajo();
+}
+function renderSets() {
+  const tot = B.sets.reduce((x, S) => x + S.probs.length, 0), ac = B.sets.reduce((x, S) => x + acSet(S), 0);
+  $("#tJuez").innerHTML = `<div class="jx-sets">
+    <div class="jx-intro"><div><span class="eyebrow">Juez de NumPy</span><h2>Elige un set</h2><p class="hint">Cada set trae un ejemplo resuelto y ${B.sets[0].probs.length} problemas que se corrigen solos con casos de prueba. Envíos ilimitados.</p></div><div class="jx-tot"><b>${puntaje()}</b><span>de ${tot * 100} puntos · ${ac} de ${tot} aceptados</span></div></div>
+    ${B.sets.map(S => { const pts = puntajeSet(S), max = S.probs.length * 100, a = acSet(S), I = SET_INFO[S.id] || {}, pct = Math.round(100 * pts / max);
+      return `<button type="button" class="jx-set" data-jset="${S.id}">
+        <span class="jx-num" aria-hidden="true">${S.n}</span>
+        <span class="jx-body">
+          <span class="jx-k">Set ${S.n} · ${esc(S.mods)}</span>
+          <span class="jx-t">${esc(S.titulo)}</span>
+          <span class="jx-d">${esc(I.txt || S.desc)}</span>
+          <span class="jx-chips">${modsDe(S).map(m => `<span class="pill">${esc(m)}</span>`).join("")}</span>
+          <span class="jx-facts"><span><b>1</b> ejemplo resuelto</span><span><b>${S.probs.length}</b> problemas: ${difsDe(S)}</span>${I.ideal ? `<span>Ideal si: ${esc(I.ideal)}</span>` : ""}</span>
+          <span class="jx-prog"><span class="u-meter ${a === S.probs.length ? "ok" : ""}"><i style="width:${pct}%"></i></span><span>${pts} / ${max} pts · ${a} de ${S.probs.length} aceptados</span></span>
+        </span>
+        <span class="jx-go">${pts ? "Continuar" : "Empezar"} <span aria-hidden="true">›</span></span>
+      </button>`; }).join("")}
+  </div>`;
+  $$("[data-jset]").forEach(b => b.addEventListener("click", () => irJuez("lista", { set: b.dataset.jset })));
+  PYR.start().catch(() => {});
+}
+function renderLista() {
+  const S = setDe(cur.set), E = S.ejemplo, I = SET_INFO[S.id] || {}, pts = puntajeSet(S), max = S.probs.length * 100;
+  $("#tJuez").innerHTML = `<div class="jx-lista">
+    <div class="jx-crumb"><button class="btn btn-sm" type="button" id="jxSets">‹ Todos los sets</button></div>
+    <div class="jx-head"><div><span class="eyebrow">Set ${S.n} · ${esc(S.mods)}</span><h2>${esc(S.titulo)}</h2><p class="hint">${esc(I.txt || S.desc)}</p></div>
+      <div class="jx-tot"><b>${pts}</b><span>de ${max} puntos · ${acSet(S)} de ${S.probs.length} aceptados</span></div></div>
+    <ol class="jx-probs">
+      ${E ? `<li><button type="button" data-jprob="E${S.n}" class="jx-p jx-ej"><span class="bub sol" aria-hidden="true">★</span><span class="jx-pt"><b>Ejemplo resuelto</b><span>${esc(E.titulo)}</span></span><span class="jx-pm"><span class="pill">Empieza aquí</span><span class="pill">No suma puntos</span></span><span class="jx-pp" aria-hidden="true">›</span></button></li>` : ""}
+      ${S.probs.map(p => { const s = U.juez[p.id], v = Math.round(100 * ((s && s.best) || 0));
+        return `<li><button type="button" data-jprob="${p.id}" class="jx-p">${bubFor(s)}<span class="jx-pt"><b>${p.id} · ${esc(p.titulo)}</b><span>Módulo ${p.modulo.slice(1)} · ${esc(p.modTitulo)}</span></span><span class="jx-pm"><span class="pill jx-dif-${p.dif === "Fácil" ? "f" : p.dif === "Media" ? "m" : "d"}">${esc(p.dif)}</span><span class="pill ${s && s.ac ? "ok" : ""}">${v} / 100</span></span><span class="jx-pp" aria-hidden="true">›</span></button></li>`; }).join("")}
+    </ol>
+    <div class="u-plegend jx-leg"><span><span class="bub sol">★</span>Ejemplo resuelto</span><span><span class="bub on">✓</span>Aceptado</span><span><span class="bub half"></span>Algunos casos correctos</span><span><span class="bub bad">✗</span>Ningún caso correcto</span><span><span class="bub"></span>Sin enviar</span></div>
+  </div>`;
+  $("#jxSets").addEventListener("click", () => irJuez("sets"));
+  $$("[data-jprob]").forEach(b => b.addEventListener("click", () => irJuez("prob", { prob: b.dataset.jprob })));
+  PYR.start().catch(() => {});
+}
+function renderTrabajo() {
+  const S = setDe(cur.set);
+  if (!(cur.prob === "E" + S.n || S.probs.some(p => p.id === cur.prob))) cur.prob = S.probs[0].id;
+  $("#tJuez").innerHTML = `<div class="u-judge jx" id="judge" data-vista="${vistaDef()}">
     <div class="u-prob"><div class="u-pbar" role="toolbar" aria-label="Vista del ejercicio">
-      <div class="u-pnav"><button class="btn btn-sm" type="button" id="lstBtn" aria-pressed="false">Lista de problemas</button><button class="btn btn-sm" type="button" id="prevP" aria-label="Problema anterior">‹ Anterior</button><button class="btn btn-sm" type="button" id="nextP" aria-label="Problema siguiente">Siguiente ›</button></div>
+      <div class="u-pnav"><button class="btn btn-sm" type="button" id="jxBack">‹ Set ${S.n} · ${esc(S.titulo)}</button><button class="btn btn-sm" type="button" id="prevP" aria-label="Ejercicio anterior">‹ Anterior</button><button class="btn btn-sm" type="button" id="nextP" aria-label="Ejercicio siguiente">Siguiente ›</button></div>
       <div class="seg" role="group" aria-label="Vista">${VISTAS.map(([v, l]) => `<button type="button" data-v="${v}">${l}</button>`).join("")}</div>
       <button class="btn btn-sm" type="button" id="fsBtn">Pantalla completa</button></div>
       <div id="pView"></div></div></div>`;
   const J = $("#judge");
-  $$("[data-set]", J).forEach(b => b.addEventListener("click", () => {
-    cur.set = b.dataset.set; cur.prob = "E" + setDe(cur.set).n;
-    $$("[data-set]", J).forEach(x => { x.classList.toggle("on", x === b); x.setAttribute("aria-selected", x === b); });
-    paintPList(); renderProb(cur.prob);
-  }));
   $$("[data-v]", J).forEach(b => b.addEventListener("click", () => setVista(b.dataset.v)));
-  $("#lstBtn").addEventListener("click", () => { J.classList.toggle("lst"); $("#lstBtn").setAttribute("aria-pressed", J.classList.contains("lst")); });
+  $("#jxBack").addEventListener("click", () => { const d = document; if (d.fullscreenElement || d.webkitFullscreenElement) pantallaCompleta(); irJuez("lista"); });
   const tj = $("#tJuez");
   if (!(tj.requestFullscreen || tj.webkitRequestFullscreen)) $("#fsBtn").hidden = true;
   $("#fsBtn").addEventListener("click", pantallaCompleta);
-  const mover = d => { const ids = ["E" + setDe(cur.set).n, ...setDe(cur.set).probs.map(x => x.id)], i = ids.indexOf(cur.prob) + d; if (i < 0 || i >= ids.length) return; cur.prob = ids[i]; paintPList(); renderProb(cur.prob); };
+  const mover = d => { const ids = ["E" + S.n, ...S.probs.map(x => x.id)], i = ids.indexOf(cur.prob) + d; if (i < 0 || i >= ids.length) return; cur.prob = ids[i]; renderProb(cur.prob); jxTop(); };
   $("#prevP").addEventListener("click", () => mover(-1)); $("#nextP").addEventListener("click", () => mover(1));
   setVista(vistaDef(), false);
-  const S = setDe(cur.set);
-  if (!(cur.prob === "E" + S.n || S.probs.some(p => p.id === cur.prob))) cur.prob = S.probs[0].id;
-  paintPList(); renderProb(cur.prob); PYR.start().catch(() => {});
+  renderProb(cur.prob); PYR.start().catch(() => {});
 }
 function setVista(v, guardar = true) {
   const J = $("#judge"); if (!J) return;
@@ -2820,15 +2905,7 @@ function pantallaCompleta() {
   } catch (e) { toast("Tu navegador no permite pantalla completa aquí."); }
 }
 ["fullscreenchange", "webkitfullscreenchange"].forEach(ev => document.addEventListener(ev, () => { const b = $("#fsBtn"); if (b) b.textContent = (document.fullscreenElement || document.webkitFullscreenElement) ? "Salir de pantalla completa" : "Pantalla completa"; }));
-function paintPList() {
-  const S = setDe(cur.set), E = S.ejemplo;
-  $("#setTit").textContent = `Set ${S.n} · ${S.titulo}`;
-  $("#setDesc").textContent = `${S.mods} · ${S.probs.length} problemas · 100 puntos cada uno`;
-  $("#setScore").textContent = `${puntajeSet(S)} / ${S.probs.length * 100}`;
-  $("#pList").innerHTML = (E ? `<li><button type="button" data-prob="E${S.n}" class="${cur.prob === "E" + S.n ? "on" : ""}"><span class="bub sol" aria-hidden="true">★</span><span><b>Ejemplo resuelto</b> · ${esc(E.titulo)}</span><span class="pts"></span></button></li>` : "")
-    + S.probs.map(p => { const s = U.juez[p.id]; return `<li><button type="button" data-prob="${p.id}" class="${p.id === cur.prob ? "on" : ""}">${bubFor(s)}<span><b>${p.id}</b> · ${esc(p.titulo)}</span><span class="pts">${Math.round(100 * ((s && s.best) || 0))}</span></button></li>`; }).join("");
-  $$("#pList [data-prob]").forEach(b => b.addEventListener("click", () => { cur.prob = b.dataset.prob; paintPList(); renderProb(cur.prob); if (window.innerWidth < 900) $("#pView").scrollIntoView({ block: "start" }); }));
-}
+function paintPList() {}
 function partirArgs(s) {
   const out = []; let d = 0, q = null, cur = "";
   for (const ch of String(s)) {
@@ -3352,7 +3429,7 @@ function renderEnvios() {
   }));
   $$("[data-rec]", host).forEach(b => b.addEventListener("click", () => {
     const e = E.find(x => String(x.id) === b.dataset.rec); U.drafts[e.pid] = e.code; saveU();
-    cur.prob = e.pid; openTab("tJuez"); toast("Código cargado en el editor");
+    cur.prob = e.pid; cur.set = (B.sets.find(S => S.probs.some(p => p.id === e.pid)) || B.sets[0]).id; cur.jv = "prob"; openTab("tJuez"); toast("Código cargado en el editor");
   }));
 }
 
