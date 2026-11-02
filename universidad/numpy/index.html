@@ -2,7 +2,7 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>NumPy y álgebra lineal · TS Zenit Universidad</title>
-<meta name="description" content="Curso de NumPy para ciencia e investigación: 11 módulos con simulaciones, código comentado, consola de Python en el navegador, juez de problemas e interrogaciones con informe.">
+<meta name="description" content="Curso de NumPy para ciencia e investigación: 22 módulos con simulaciones, código comentado, consola de Python en el navegador, sets de problemas e interrogaciones con informe.">
 <link rel="canonical" href="https://tszenit.cl/universidad/numpy/">
 <meta name="theme-color" content="#0B1A33">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1017,6 +1017,13 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 @media (min-width:700px){
   .u-judge[data-vista="split"] .u-pane.u-pane-enun,#tJuez:fullscreen .u-judge[data-vista="split"] .u-pane.u-pane-enun,#tJuez:-webkit-full-screen .u-judge[data-vista="split"] .u-pane.u-pane-enun{position:static;max-height:none;overflow:visible;padding-right:0}
 }
+/* unidades en la lista de módulos y en el programa */
+.u-syl li.u-unit{display:block;border:0;padding:18px 4px 4px;font:700 11.5px var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--latte)}
+.u-mods li.u-unit{padding:14px 10px 4px;font:700 11px var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--latte)}
+.u-mods li.u-unit:first-child{padding-top:2px}
+@media (max-width:900px){.u-mods li.u-unit{display:none}}
+.seg.wrap{display:flex;flex-wrap:wrap;width:fit-content;max-width:100%}
+.seg.wrap button{flex:1 0 auto;border-bottom:1px solid var(--line);margin-bottom:-1px}
 </style></head><body>
 <header class="u-top">
   <div class="wrap u-topin">
@@ -1049,7 +1056,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
   <div class="wrap u-band" style="padding-top:20px">
     <div class="sec-head"><p class="eyebrow">Qué incluye</p><h2>Todo para aprender NumPy en serio</h2></div>
     <div class="u-land-grid">
-      <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z"/><path d="M12 6v13.5"/></svg></span><span class="k">Aprender</span><h3>11 módulos con simulaciones</h3><p>Vectores que se arrastran, matrices que deforman el plano, broadcasting visual y una señal ECG que filtras tú.</p></div>
+      <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z"/><path d="M12 6v13.5"/></svg></span><span class="k">Aprender</span><h3>22 módulos con simulaciones</h3><p>Vectores que se arrastran, matrices que deforman el plano, puntos de Monte Carlo, un espectro de Fourier que filtras tú y un PCA que persigue tus datos.</p></div>
       <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></span><span class="k">Código comentado</span><h3>Toca cualquier línea</h3><p>Cada módulo trae un programa de ejemplo. Toca una línea o una palabra y ves qué hace; después lo ejecutas.</p></div>
       <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="m7 9.5 3 2.5-3 2.5M12.5 15H17"/></svg></span><span class="k">Consola</span><h3>Python real en el navegador</h3><p>Python 3.12 con NumPy, sin instalar nada. Prueba ideas, revisa errores y guarda variables entre ejecuciones.</p></div>
       <div class="u-feat"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.3 2.6 2.6 5-5.4"/></svg></span><span class="k">Sets</span><h3>Problemas con casos de prueba</h3><p>Tu función se ejecuta con casos visibles y ocultos. Si falla, te dice dónde y cuál es el error típico que cometiste.</p></div>
@@ -1075,7 +1082,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
       <div class="u-card u-prog-card"><h3>Programa</h3>
         <p class="u-syl-h">Contenido del curso completo</p>
         <ul class="u-full"><li><b>22</b><span>módulos en 4 unidades: fundamentos, álgebra lineal, datos y señales, y NumPy avanzado</span></li><li><b>12</b><span>sets de práctica de 8 problemas, cada uno con ejemplo resuelto</span></li><li><b>6</b><span>sets de debugging: encuentra y corrige el error en 8 códigos</span></li><li><b>4</b><span>interrogaciones evaluadas de 8 problemas, con nota e informe</span></li><li><b>5</b><span>tareas aplicadas: imagen médica, Monte Carlo, PCA y SVD, ECG con FFT y proyecto final</span></li><li><b>22</b><span>presentaciones con diapositivas</span></li></ul>
-        <p class="u-syl-h">Módulos disponibles hoy</p><ol class="u-syl" id="syllabus"></ol>
+        <p class="u-syl-h">Los 22 módulos, en 4 unidades</p><ol class="u-syl" id="syllabus"></ol>
         <p class="u-syl-h">Práctica</p><ul class="u-syl u-syl-sets" id="sylSets"></ul>
         <div class="u-ixrow"><span class="ix-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/><path d="M7.75 4.75l8.5 4.5M16.25 4.75l-8.5 4.5M7.75 9.25v10M3.5 12 12 16.5M16.25 9.25v10M12 16.5 20.5 12" stroke-width="1" opacity=".75"/></svg></span><span class="ix-tx"><b>Interrogación evaluada</b><small>Examen integrador de todo el curso · 8 problemas de programación</small></span><span class="pill lock" id="ixLock"></span></div>
       </div>
@@ -1130,7 +1137,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202611021240"></script>
+<script src="/config.js?v=202611021309"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -1282,6 +1289,82 @@ function hl(code) {
   }
   return out + esc(code.slice(last));
 }
+
+/* ---------- diccionario: palabras de los módulos 11 a 21 ---------- */
+Object.assign(DICT, {
+  "not": ["not", "Invierte un valor lógico: not True es False. Con arrays de True/False se usa ~.", "not np.isclose(d, 0)"],
+  "abs": ["abs", "Valor absoluto de un número. En arrays, np.abs.", "abs(-3)  # 3"],
+  "np.nan": ["np.nan", "«Not a number»: marca un dato que falta. Cualquier cuenta con él da nan, y no es igual a nada, ni a sí mismo.", "np.array([1, np.nan, 3])"],
+  "np.inf": ["np.inf", "Infinito. Sirve como valor inicial o para excluir casillas de un mínimo.", "np.fill_diagonal(D, np.inf)"],
+  "np.isnan": ["np.isnan", "True donde el dato es NaN (falta). Es la única forma correcta de encontrarlos.", "np.isnan(x).sum()  # cuántos faltan"],
+  "np.nanmean": ["np.nanmean", "Promedio ignorando los NaN.", "np.nanmean([1, np.nan, 3])  # 2.0"],
+  "np.nanmedian": ["np.nanmedian", "Mediana ignorando los NaN.", "np.nanmedian(x)"],
+  "np.nanstd": ["np.nanstd", "Desviación estándar ignorando los NaN.", "np.nanstd(x)"],
+  "np.nanpercentile": ["np.nanpercentile", "Percentil ignorando los NaN.", "np.nanpercentile(x, 90)"],
+  "np.std": ["np.std", "Desviación estándar: cuánto se alejan los datos de su promedio. ddof=1 da la muestral (divide por N − 1).", "np.std([2, 4, 4, 4, 5, 5, 7, 9])  # 2.0"],
+  "np.var": ["np.var", "Varianza: el cuadrado de la desviación estándar.", "np.var(x)"],
+  "np.unique": ["np.unique", "Los valores distintos, ordenados. Con return_counts=True también dice cuántas veces aparece cada uno.", "np.unique([3, 1, 3, 2])  # array([1, 2, 3])"],
+  "np.histogram": ["np.histogram", "Cuenta cuántos datos caen en cada intervalo. Devuelve (conteos, bordes).", "np.histogram(x, bins=5)"],
+  "np.corrcoef": ["np.corrcoef", "Matriz de correlaciones. corrcoef(x, y)[0, 1] es la correlación entre x e y, de −1 a 1.", "np.corrcoef(x, y)[0, 1]"],
+  "np.isclose": ["np.isclose", "Compara decimales con una tolerancia. Úsalo en vez de == con números con coma.", "np.isclose(0.1 + 0.2, 0.3)  # True"],
+  "np.isin": ["np.isin", "True donde el valor está en la lista dada.", "np.isin([1, 2, 3], [2, 3])  # [False, True, True]"],
+  "np.fill_diagonal": ["np.fill_diagonal", "Escribe un valor en la diagonal de una matriz (modifica la matriz).", "np.fill_diagonal(D, np.inf)"],
+  "np.trace": ["np.trace", "La traza: suma de la diagonal. Es igual a la suma de los valores propios.", "np.trace(np.eye(3))  # 3.0"],
+  "np.fft.rfft": ["np.fft.rfft", "Transformada de Fourier de una señal real: cuánto hay de cada frecuencia. Devuelve n//2 + 1 números complejos.", "X = np.fft.rfft(x)"],
+  "np.fft.rfftfreq": ["np.fft.rfftfreq", "La frecuencia de cada casilla de rfft. Con d = 1/fs sale en Hz.", "np.fft.rfftfreq(x.size, d=1/fs)"],
+  "np.fft.irfft": ["np.fft.irfft", "Vuelve del espectro al tiempo. Pásale n para recuperar el largo original.", "np.fft.irfft(X, n=x.size)"],
+  "np.fft.fft": ["np.fft.fft", "Transformada de Fourier completa (también para señales complejas).", "np.fft.fft(x)"],
+  "np.angle": ["np.angle", "El ángulo (fase) de un número complejo.", "np.angle(1j)  # 1.5708"],
+  "np.newaxis": ["np.newaxis", "Agrega un eje de tamaño 1. Es lo mismo que escribir None dentro de los corchetes.", "a[:, np.newaxis].shape  # (3, 1)"],
+  "np.stack": ["np.stack", "Junta arrays de la misma shape creando un eje nuevo.", "np.stack([a, b]).shape  # (2, 3)"],
+  "np.column_stack": ["np.column_stack", "Junta vectores como columnas de una matriz.", "np.column_stack([x, y])  # (n, 2)"],
+  "np.split": ["np.split", "Divide un array en partes iguales.", "np.split(np.arange(6), 3)"],
+  "np.array_split": ["np.array_split", "Como split, pero acepta partes de distinto tamaño.", "np.array_split(np.arange(7), 3)"],
+  "np.expand_dims": ["np.expand_dims", "Agrega un eje de tamaño 1 en la posición indicada.", "np.expand_dims(x, 0)"],
+  "np.squeeze": ["np.squeeze", "Quita los ejes de tamaño 1.", "np.squeeze(np.zeros((1, 3, 1))).shape  # (3,)"],
+  "np.transpose": ["np.transpose", "Reordena los ejes. Sin más argumentos es la transpuesta.", "np.transpose(V, (2, 0, 1))"],
+  "np.shares_memory": ["np.shares_memory", "True si dos arrays comparten memoria, es decir, si uno es una vista del otro.", "np.shares_memory(A, A[1:3])  # True"],
+  "np.iinfo": ["np.iinfo", "El rango de un tipo entero.", "np.iinfo(np.uint8).max  # 255"],
+  "np.uint8": ["np.uint8", "Entero sin signo de 1 byte: de 0 a 255. Es el formato de las imágenes; si te pasas, da la vuelta.", "np.array([250], dtype=np.uint8) + 10  # [4]"],
+  "np.int8": ["np.int8", "Entero de 1 byte: de −128 a 127.", "dtype=np.int8"],
+  "np.int16": ["np.int16", "Entero de 2 bytes: de −32 768 a 32 767.", "img.astype(np.int16)"],
+  "np.int64": ["np.int64", "Entero de 8 bytes, el tipo entero por defecto.", "np.int64(3)"],
+  "np.float32": ["np.float32", "Decimal de 4 bytes (unos 7 dígitos). Usa la mitad de memoria que float64.", "x.astype(np.float32)"],
+  "np.float64": ["np.float64", "Decimal de 8 bytes (unos 16 dígitos), el tipo decimal por defecto.", "np.float64(0.1)"],
+  "np.linalg.matrix_rank": ["np.linalg.matrix_rank", "El rango: cuántas columnas (o filas) independientes tiene la matriz.", "np.linalg.matrix_rank([[1, 2], [2, 4]])  # 1"],
+  "np.linalg.eigh": ["np.linalg.eigh", "Valores y vectores propios de una matriz simétrica: siempre reales y ordenados de menor a mayor. Los vectores son las columnas.", "lam, V = np.linalg.eigh(A)"],
+  "np.linalg.eigvals": ["np.linalg.eigvals", "Solo los valores propios, sin los vectores.", "np.linalg.eigvals(A)"],
+  "np.linalg.svd": ["np.linalg.svd", "Descomposición en valores singulares: A = U · diag(s) · Vt. s viene ordenado de mayor a menor.", "U, s, Vt = np.linalg.svd(X, full_matrices=False)"],
+  "np.linalg.lstsq": ["np.linalg.lstsq", "Mínimos cuadrados: la x que hace A @ x lo más parecido posible a b. Devuelve 4 cosas; la solución es la primera.", "np.linalg.lstsq(A, b, rcond=None)[0]"],
+  "np.polyfit": ["np.polyfit", "Ajusta el polinomio de grado g que mejor pasa por los puntos. Devuelve los coeficientes, del mayor grado al menor.", "np.polyfit(x, y, 1)  # [pendiente, intercepto]"],
+  "np.polyval": ["np.polyval", "Evalúa un polinomio dado por sus coeficientes.", "np.polyval([2, 1], 3)  # 7"],
+  "np.ones_like": ["np.ones_like", "Un array de unos con la misma shape y tipo que otro.", "np.ones_like(x)"],
+  "np.gradient": ["np.gradient", "Derivada aproximada con diferencias centradas. Pásale también x.", "np.gradient(y, x)"],
+  "np.trapezoid": ["np.trapezoid", "Integral aproximada sumando trapecios. (En NumPy antiguo: np.trapz.)", "np.trapezoid(y, x)"],
+  "np.interp": ["np.interp", "Interpolación lineal: estima valores entre mediciones. x debe estar ordenado.", "np.interp(2.5, [2, 3], [10, 20])  # 15.0"],
+  "np.cumsum": ["np.cumsum", "Suma acumulada: cada casilla es la suma de todas las anteriores.", "np.cumsum([1, 2, 3])  # [1, 3, 6]"],
+  "np.clip": ["np.clip", "Recorta los valores a un rango.", "np.clip(x, 0, 100)"],
+  ".cumsum": [".cumsum", "Suma acumulada a lo largo de un eje.", "pasos.cumsum(axis=1)"],
+  ".sort": [".sort", "Ordena el mismo array (lo modifica y devuelve None). np.sort devuelve una copia.", "x.sort()"],
+  ".ravel": [".ravel", "Aplana a 1D (intenta no copiar).", "M.ravel()"],
+  ".squeeze": [".squeeze", "Quita los ejes de tamaño 1.", "M.squeeze()"],
+  ".itemsize": [".itemsize", "Bytes que ocupa cada elemento.", "np.zeros(3, dtype=np.uint8).itemsize  # 1"],
+  ".nbytes": [".nbytes", "Bytes que ocupa el array completo.", "img.nbytes"],
+  ".any": [".any", "True si al menos un elemento es True.", "(x > 100).any()"],
+  ".all": [".all", "True si todos los elementos son True.", "(x > 0).all()"],
+  ".prod": [".prod", "Producto de todos los elementos.", "np.array([2, 3, 4]).prod()  # 24"],
+  ".real": [".real", "La parte real de números complejos.", "np.linalg.eigvals(A).real"],
+  ".choice": [".choice", "Elige elementos al azar de una lista. replace=False para no repetir; p para dar probabilidades.", "rng.choice([-1, 1], size=10)"],
+  ".uniform": [".uniform", "Números al azar uniformes entre dos valores.", "rng.uniform(2, 5, size=3)"],
+  ".binomial": [".binomial", "Cuántos éxitos hay en n intentos con probabilidad p.", "rng.binomial(50, 0.5, size=1000)"],
+  ".permutation": [".permutation", "Los mismos elementos en orden aleatorio.", "rng.permutation(10)"],
+  "ddof": ["ddof", "Cuánto se resta a N al dividir: ddof=1 da la desviación estándar muestral.", "np.std(x, ddof=1)"],
+  "bins": ["bins", "En un histograma, cuántos intervalos o cuáles son sus bordes.", "np.histogram(x, bins=[0, 10, 20])"],
+  "return_counts": ["return_counts", "En np.unique, pide también cuántas veces aparece cada valor.", "np.unique(v, return_counts=True)"],
+  "replace": ["replace", "En rng.choice, si se puede elegir el mismo elemento más de una vez.", "rng.choice(100, size=10, replace=False)"],
+  "rcond": ["rcond", "En lstsq, el umbral para descartar valores singulares diminutos. Escribe rcond=None.", "np.linalg.lstsq(A, b, rcond=None)"],
+  "full_matrices": ["full_matrices", "En svd, False entrega las matrices en su tamaño reducido (lo que casi siempre quieres).", "np.linalg.svd(X, full_matrices=False)"]
+});
 
 function setCode(el, code) { el.dataset.src = code; el.innerHTML = hl(code); }
 function setOut(el, text) { el.dataset.src = text; el.textContent = text; }
@@ -2149,6 +2232,516 @@ function initSims() {
   update();
 })();
 
+/* ================= ayudas de los módulos 11 a 21 ================= */
+function segN(sel, items, onPick) {
+  const el = $(sel); el.innerHTML = "";
+  items.forEach(([v, l]) => { const b = document.createElement("button"); b.type = "button"; b.dataset.v = v; b.innerHTML = l; b.addEventListener("click", () => onPick(v)); el.appendChild(b); });
+  return v => $$("button", el).forEach(b => { const on = b.dataset.v === String(v); b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+}
+function celdas(vals, cols, cls, o = {}) {
+  const f = o.fmt || (v => v), rows = Math.ceil(vals.length / cols), ex = o.hdrR ? 1 : 0;
+  let h = "";
+  if (o.hdrC) { if (ex) h += `<div class="cell hdr"></div>`; o.hdrC.forEach(c => (h += `<div class="cell hdr">${c}</div>`)); }
+  for (let i = 0; i < rows; i++) {
+    if (ex) h += `<div class="cell hdr">${o.hdrR[i]}</div>`;
+    for (let j = 0; j < cols; j++) { const k = i * cols + j; if (k < vals.length) h += `<div class="cell ${cls(k)}">${f(vals[k], k)}</div>`; }
+  }
+  return `<div class="agrid" style="--c:${cols + ex}">${h}</div>`;
+}
+function nice(a, b, n) {
+  const raw = (b - a) / n, p = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p, step = (m < 1.5 ? 1 : m < 3.5 ? 2 : m < 7.5 ? 5 : 10) * p, out = [];
+  for (let v = Math.ceil(a / step - 1e-9) * step; v <= b + 1e-9; v += step) out.push(+v.toFixed(10));
+  return out;
+}
+function ejes(st, x0, x1, y0, y1, o = {}) {
+  const { ctx, w, h } = st, pad = Object.assign({ l: 44, r: 12, t: 12, b: 26 }, o.pad || {});
+  const X = x => pad.l + (x - x0) / (x1 - x0) * (w - pad.l - pad.r), Y = y => pad.t + (y1 - y) / (y1 - y0) * (h - pad.t - pad.b);
+  const line = cssv("--line"), muted = cssv("--muted"), mono = cssv("--f-mono");
+  const xt = o.xt || nice(x0, x1, w < 420 ? 4 : 6), yt = o.yt || nice(y0, y1, 4);
+  ctx.lineWidth = 1; ctx.strokeStyle = line; ctx.beginPath();
+  xt.forEach(v => { const p = Math.round(X(v)) + 0.5; ctx.moveTo(p, pad.t); ctx.lineTo(p, h - pad.b); });
+  yt.forEach(v => { const p = Math.round(Y(v)) + 0.5; ctx.moveTo(pad.l, p); ctx.lineTo(w - pad.r, p); });
+  ctx.stroke();
+  ctx.fillStyle = muted; ctx.font = `11px ${mono}`;
+  ctx.textAlign = "center"; ctx.textBaseline = "top"; xt.forEach(v => ctx.fillText(o.xf ? o.xf(v) : fmtN(v, 2), X(v), h - pad.b + 5));
+  ctx.textAlign = "right"; ctx.textBaseline = "middle"; yt.forEach(v => ctx.fillText(o.yf ? o.yf(v) : fmtN(v, 2), pad.l - 6, Y(v)));
+  ctx.strokeStyle = muted; ctx.beginPath();
+  if (y0 < 0 && y1 > 0) { const p = Math.round(Y(0)) + 0.5; ctx.moveTo(pad.l, p); ctx.lineTo(w - pad.r, p); }
+  if (x0 < 0 && x1 > 0) { const p = Math.round(X(0)) + 0.5; ctx.moveTo(p, pad.t); ctx.lineTo(p, h - pad.b); }
+  ctx.stroke();
+  if (o.xl) { ctx.textAlign = "right"; ctx.textBaseline = "bottom"; ctx.fillText(o.xl, w - pad.r - 2, h - pad.b - 3); }
+  if (o.yl) { ctx.textAlign = "left"; ctx.textBaseline = "top"; ctx.fillText(o.yl, pad.l + 5, pad.t + 3); }
+  return { X, Y, pad };
+}
+function polyline(ctx, xs, ys, X, Y, color, w = 2) {
+  ctx.strokeStyle = color; ctx.lineWidth = w; ctx.lineJoin = "round"; ctx.beginPath();
+  for (let i = 0; i < xs.length; i++) { const px = X(xs[i]), py = Y(ys[i]); i ? ctx.lineTo(px, py) : ctx.moveTo(px, py); }
+  ctx.stroke();
+}
+function gaussR(rnd) { const u = Math.max(1e-12, rnd()), v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+function reprB(vals, shape) {
+  const s = vals.map(v => (v ? " True" : "False"));
+  if (shape.length === 1) return "array([" + s.join(", ") + "])";
+  const [r, c] = shape, rows = [];
+  for (let i = 0; i < r; i++) rows.push("[" + s.slice(i * c, (i + 1) * c).join(", ") + "]");
+  return "array([" + rows.join(",\n       ") + "])";
+}
+const numStr = v => (Number.isInteger(v) ? String(v) : fmtN(v, 4));
+
+/* ================= M11: estadística ================= */
+(() => {
+  if (!$("#simST")) return;
+  const BASE = [5.2, 6.1, 4.5, 3.8, 5.9, 6.5, 4.9, 5.5, 6.8, 5.0];
+  const S = { op: "mean", out: false, nan: false, ign: false, p: 75 };
+  const mark = segN("#stOp", [["mean", "media"], ["median", "mediana"], ["std", "desv. estándar"], ["percentile", "percentil"]], v => { S.op = v; run(); });
+  [["stOut", "out"], ["stNan", "nan"], ["stIgn", "ign"]].forEach(([id, k]) => $("#" + id).addEventListener("change", e => { S[k] = e.target.checked; run(); }));
+  $("#stP").addEventListener("input", e => { S.p = +e.target.value; run(); });
+  const mean = a => a.reduce((s, v) => s + v, 0) / a.length;
+  const pct = (s, p) => { const i = p / 100 * (s.length - 1), lo = Math.floor(i), hi = Math.ceil(i); return s[lo] + (s[hi] - s[lo]) * (i - lo); };
+  const std = a => { const m = mean(a); return Math.sqrt(mean(a.map(v => (v - m) ** 2))); };
+  const medida = (vals, op, p) => { const s = vals.slice().sort((a, b) => a - b); return op === "mean" ? mean(vals) : op === "median" ? pct(s, 50) : op === "std" ? std(vals) : pct(s, p); };
+  function run() {
+    mark(S.op); $("#stPO").textContent = S.p; $("#stPctRow").hidden = S.op !== "percentile";
+    const x = BASE.slice(); if (S.nan) x[3] = NaN; if (S.out) x.push(1.0);
+    const valid = x.filter(v => !isNaN(v)), sorted = valid.slice().sort((a, b) => a - b);
+    const hasNan = x.some(v => isNaN(v)), cont = hasNan && !S.ign;
+    const r = cont ? NaN : medida(valid, S.op, S.p);
+    $("#stRaw").innerHTML = celdas(x, x.length, k => (isNaN(x[k]) ? "g1" : S.out && k === x.length - 1 ? "g2" : "g0"), { fmt: v => (isNaN(v) ? "nan" : fmtN(v, 1)) });
+    const pick = new Set();
+    if (!cont && (S.op === "median" || S.op === "percentile")) { const i = (S.op === "median" ? 50 : S.p) / 100 * (sorted.length - 1); pick.add(Math.floor(i)); pick.add(Math.ceil(i)); }
+    $("#stSorted").innerHTML = celdas(sorted, sorted.length, k => "g3" + (pick.has(k) ? " pick" : ""), { fmt: v => fmtN(v, 1) });
+    const fn = (S.ign ? "np.nan" : "np.") + { mean: "mean", median: "median", std: "std", percentile: "percentile" }[S.op] + (S.op === "percentile" ? `(x, ${S.p})` : "(x)");
+    setCode($("#stCode"), `x = np.array([${x.map(v => (isNaN(v) ? "np.nan" : fmtN(v, 1))).join(", ")}])\n${fn}`);
+    setOut($("#stOutp"), `>>> ${fn}\n${isNaN(r) ? "np.float64(nan)" : repr([r], [], true)}`);
+    const msg = $("#stMsg"), base = medida(BASE.filter((v, i) => !(S.nan && i === 3)), S.op, S.p);
+    if (cont) { msg.className = "status bad"; msg.innerHTML = "Hay un <b>NaN</b>: cualquier cuenta con él da <code>nan</code>. Activa «usar las funciones nan…» o sácalo con <code>x[~np.isnan(x)]</code>."; return; }
+    msg.className = "status " + (S.out && (S.op === "mean" || S.op === "std") ? "mid" : "ok");
+    const v = fmtN(r, 2), b = fmtN(base, 2);
+    if (S.op === "mean") msg.textContent = `Media = ${v}. ` + (S.out ? `Sin el 1,0 sería ${b}: un solo dato extremo la arrastra.` : "Activa el dato atípico y mira cuánto se mueve.");
+    else if (S.op === "median") msg.textContent = `Mediana = ${v}: el valor del medio de los datos ordenados${sorted.length % 2 ? "" : " (con un número par de datos, el promedio de los dos del medio)"}. ` + (S.out ? `Sin el 1,0 sería ${b}: casi no cambió.` : "");
+    else if (S.op === "std") msg.textContent = `Desviación estándar = ${v}: en promedio, cada nota se aleja unos ${v} puntos de la media. ` + (S.out ? `Sin el 1,0 sería ${b}: el dato atípico la infla.` : "");
+    else msg.textContent = `Percentil ${S.p} = ${v}: el ${S.p} % de las notas es menor o igual a este valor. Las casillas marcadas son las que NumPy usa para interpolar.`;
+  }
+  run();
+})();
+
+/* ================= M12: Monte Carlo ================= */
+(() => {
+  if (!$("#simMC")) return;
+  const NS = [10, 30, 100, 300, 1000, 3000, 10000, 30000, 100000];
+  const S = { k: 3, seed: 42 }; let D = null, p1, p2;
+  const nf = n => n.toLocaleString("es-CL");
+  $("#mcN").addEventListener("input", e => { S.k = +e.target.value; run(); });
+  $("#mcSeed").addEventListener("click", () => { S.seed = 1 + Math.floor(Math.random() * 9999); run(); });
+  function run() {
+    const N = NS[S.k], rnd = mulberry32(S.seed), x = new Float64Array(N), y = new Float64Array(N), ins = new Uint8Array(N);
+    let c = 0;
+    for (let i = 0; i < N; i++) { x[i] = rnd(); y[i] = rnd(); ins[i] = x[i] * x[i] + y[i] * y[i] <= 1 ? 1 : 0; c += ins[i]; }
+    const pts = []; let cc = 0, next = 1;
+    for (let i = 0; i < N; i++) { cc += ins[i]; if (i + 1 >= next || i === N - 1) { pts.push([i + 1, 4 * cc / (i + 1)]); next = Math.ceil((i + 1) * 1.05 + 0.5); } }
+    D = { N, x, y, ins, pts };
+    const pi = 4 * c / N, err = Math.abs(pi - Math.PI), ex = 1.642 / Math.sqrt(N);
+    $("#mcNO").textContent = nf(N); $("#mcSeedO").textContent = "semilla " + S.seed;
+    $("#mcIn").textContent = `${nf(c)} de ${nf(N)}`; $("#mcPi").textContent = pi.toFixed(4); $("#mcErr").textContent = err.toFixed(4); $("#mcExp").textContent = ex.toFixed(4);
+    const st = $("#mcSt"); st.className = "status " + (N < 1000 ? "mid" : "ok");
+    st.textContent = N < 1000 ? "Con pocos puntos la estimación salta mucho: cambia la semilla y da otra cosa." : "Para tener la mitad de error hay que lanzar 4 veces más puntos: el error baja como 1/√N.";
+    setCode($("#mcCode"), `rng = np.random.default_rng(${S.seed})\nN = ${N}\nx = rng.random(N)\ny = rng.random(N)\ndentro = x**2 + y**2 <= 1\npi_aprox = 4 * dentro.mean()`);
+    setOut($("#mcOut"), `>>> dentro.sum()\n${c}\n>>> pi_aprox\n≈ ${pi.toFixed(4)}\n\n# Estos números son de la simulación de esta\n# página. NumPy genera otros al azar, pero el\n# error es del mismo tamaño.`);
+    p1 && p1.render(); p2 && p2.render();
+  }
+  p1 = makePlane($("#cvMC"), { R: 1, aspect: 1, minH: 240, maxH: 360, draw(st) {
+    if (!D) return;
+    const { ctx, w, h } = st, L = Math.min(w, h) - 28, ox = (w - L) / 2, oy = (h + L) / 2;
+    ctx.fillStyle = cssv("--surface"); ctx.fillRect(ox, oy - L, L, L);
+    ctx.strokeStyle = cssv("--line"); ctx.lineWidth = 1; ctx.strokeRect(ox + 0.5, oy - L + 0.5, L, L);
+    const vi = cssv("--vi"), vj = cssv("--vj"), n = Math.min(D.N, 30000), r = D.N <= 300 ? 3 : D.N <= 3000 ? 1.8 : 1.1;
+    for (let i = 0; i < n; i++) { ctx.fillStyle = D.ins[i] ? vi : vj; ctx.fillRect(ox + D.x[i] * L - r / 2, oy - D.y[i] * L - r / 2, r, r); }
+    ctx.strokeStyle = cssv("--vk"); ctx.lineWidth = 2.4; ctx.beginPath(); ctx.arc(ox, oy, L, -Math.PI / 2, 0); ctx.stroke();
+    ctx.fillStyle = cssv("--muted"); ctx.font = `11px ${cssv("--f-mono")}`; ctx.textAlign = "center"; ctx.textBaseline = "top";
+    ctx.fillText("0", ox, oy + 4); ctx.fillText("1", ox + L, oy + 4); ctx.textAlign = "right"; ctx.textBaseline = "middle"; ctx.fillText("1", ox - 4, oy - L);
+  } });
+  p2 = makePlane($("#cvMC2"), { R: 1, aspect: 0.32, minH: 170, maxH: 240, draw(st) {
+    if (!D) return;
+    const { ctx } = st, lx = D.pts.map(p => Math.log10(p[0])), ys = D.pts.map(p => Math.max(2, Math.min(4.4, p[1])));
+    const { X, Y } = ejes(st, 0, 5, 2, 4.4, { xt: [0, 1, 2, 3, 4, 5], xf: v => nf(10 ** v), yt: [2.5, 3, 3.5, 4], xl: "N" });
+    const ex = [], lo = [], hi = []; for (let v = 0; v <= Math.log10(D.N) + 1e-9; v += 0.05) { ex.push(v); const e = 1.642 / Math.sqrt(10 ** v); lo.push(Math.max(2, Math.PI - e)); hi.push(Math.min(4.4, Math.PI + e)); }
+    ctx.setLineDash([4, 4]); polyline(ctx, ex, lo, X, Y, cssv("--muted"), 1.2); polyline(ctx, ex, hi, X, Y, cssv("--muted"), 1.2); ctx.setLineDash([]);
+    polyline(ctx, [0, 5], [Math.PI, Math.PI], X, Y, cssv("--vk"), 1.6);
+    polyline(ctx, lx, ys, X, Y, cssv("--accent"), 2.2);
+    tlabel(ctx, "π", X(4.75), Y(Math.PI) - 10, cssv("--vk"));
+  } });
+  run();
+})();
+
+/* ================= M13: FFT ================= */
+(() => {
+  if (!$("#simFT")) return;
+  const fs = 200, N = 200, K = N / 2 + 1, t = Float64Array.from({ length: N }, (_, i) => i / fs);
+  const rnd = mulberry32(11), G = Float64Array.from({ length: N }, () => gaussR(rnd));
+  const C = [], Sn = []; for (let k = 0; k < K; k++) { C.push(new Float64Array(N)); Sn.push(new Float64Array(N)); for (let n = 0; n < N; n++) { C[k][n] = Math.cos(2 * Math.PI * k * n / N); Sn[k][n] = Math.sin(2 * Math.PI * k * n / N); } }
+  const S = { f1: 3, f2: 25, a2: 0.5, no: 0.2, c: 10, fil: false }; let D = null, p1, p2;
+  [["ftF1", "f1"], ["ftF2", "f2"], ["ftA2", "a2"], ["ftNo", "no"], ["ftC", "c"]].forEach(([id, k]) => $("#" + id).addEventListener("input", e => { S[k] = +e.target.value; run(); }));
+  $("#ftFil").addEventListener("change", e => { S.fil = e.target.checked; run(); });
+  function run() {
+    ["ftF1", "ftF2", "ftA2", "ftNo", "ftC"].forEach(id => ($("#" + id + "O").textContent = $("#" + id).value));
+    const x = new Float64Array(N); for (let n = 0; n < N; n++) x[n] = Math.sin(2 * Math.PI * S.f1 * t[n]) + S.a2 * Math.sin(2 * Math.PI * S.f2 * t[n]) + S.no * G[n];
+    const re = new Float64Array(K), im = new Float64Array(K), amp = new Float64Array(K);
+    for (let k = 0; k < K; k++) { let a = 0, b = 0; for (let n = 0; n < N; n++) { a += x[n] * C[k][n]; b -= x[n] * Sn[k][n]; } re[k] = a; im[k] = b; amp[k] = Math.hypot(a, b) * (k === 0 || k === K - 1 ? 1 : 2) / N; }
+    const y = new Float64Array(N);
+    if (S.fil) for (let n = 0; n < N; n++) { let s = 0; for (let k = 0; k <= S.c && k < K; k++) { const wgt = k === 0 || k === K - 1 ? 1 : 2; s += wgt * (re[k] * C[k][n] - im[k] * Sn[k][n]); } y[n] = s / N; }
+    let dom = 1; for (let k = 1; k < K; k++) if (amp[k] > amp[dom]) dom = k;
+    D = { x, y, amp, dom };
+    $("#ftDom").textContent = `${dom} Hz (amplitud ${fmtN(amp[dom], 2)})`;
+    const st = $("#ftSt");
+    if (!S.fil) { st.className = "status mid"; st.textContent = "Cada onda es un pico limpio en su frecuencia. El ruido, en cambio, se reparte en todas: es el «pasto» bajo los picos."; }
+    else if (S.f1 > S.c) { st.className = "status bad"; st.textContent = `El corte (${S.c} Hz) quedó bajo f₁ = ${S.f1} Hz: también borraste la onda que querías conservar.`; }
+    else if (S.f2 > S.c && S.a2 > 0) { st.className = "status ok"; st.textContent = `El filtro borró f₂ = ${S.f2} Hz y casi todo el ruido: queda la onda lenta de ${S.f1} Hz.`; }
+    else { st.className = "status mid"; st.textContent = "f₂ quedó bajo el corte, así que el filtro la deja pasar. Sube f₂ o baja el corte."; }
+    setCode($("#ftCode"), `fs = 200\nt = np.arange(0, 1, 1/fs)\nx = np.sin(2*np.pi*${S.f1}*t) + ${S.a2}*np.sin(2*np.pi*${S.f2}*t) + ruido\nX = np.fft.rfft(x)\nf = np.fft.rfftfreq(x.size, d=1/fs)\namp = np.abs(X) * 2 / x.size\nf[amp.argmax()]` + (S.fil ? `\nX[f > ${S.c}] = 0\nx_filtrada = np.fft.irfft(X, n=x.size)` : ""));
+    setOut($("#ftOut"), `>>> X.shape\n(101,)\n>>> f[amp.argmax()]\nnp.float64(${dom}.0)\n>>> amp[f == ${S.f1}].round(2)\n≈ array([${fmtN(amp[S.f1], 2)}])`);
+    p1 && p1.render(); p2 && p2.render();
+  }
+  p1 = makePlane($("#cvFT1"), { R: 1, aspect: 0.3, minH: 170, maxH: 250, draw(st) {
+    if (!D) return;
+    let m = 0.5; for (let n = 0; n < N; n++) m = Math.max(m, Math.abs(D.x[n])); m = Math.ceil(m * 2) / 2;
+    const { X, Y } = ejes(st, 0, 1, -m, m, { xl: "tiempo (s)", yt: [-m, 0, m] });
+    polyline(st.ctx, Array.from(t), Array.from(D.x), X, Y, S.fil ? cssv("--muted") : cssv("--accent"), S.fil ? 1.2 : 1.8);
+    if (S.fil) polyline(st.ctx, Array.from(t), Array.from(D.y), X, Y, cssv("--vi"), 2.6);
+  } });
+  p2 = makePlane($("#cvFT2"), { R: 1, aspect: 0.3, minH: 170, maxH: 250, draw(st) {
+    if (!D) return;
+    const top = Math.max(1.1, ...D.amp) * 1.05, { ctx } = st, { X, Y } = ejes(st, 0, 100, 0, top, { xt: [0, 20, 40, 60, 80, 100], xf: v => v + " Hz", yt: [0, 0.5, 1], yl: "amplitud" });
+    const bw = Math.max(1.5, (X(1) - X(0)) * 0.7), acc = cssv("--accent"), mu = cssv("--line");
+    for (let k = 0; k < K; k++) { const off = S.fil && k > S.c; ctx.fillStyle = off ? mu : acc; ctx.fillRect(X(k) - bw / 2, Y(D.amp[k]), bw, Y(0) - Y(D.amp[k])); }
+    if (S.fil) { ctx.setLineDash([5, 4]); polyline(ctx, [S.c + 0.5, S.c + 0.5], [0, top], X, Y, cssv("--vk"), 1.8); ctx.setLineDash([]); tlabel(ctx, "corte", X(S.c + 0.5) + 5, Y(top) + 10, cssv("--vk")); }
+  } });
+  run();
+})();
+
+/* ================= M14: máscaras ================= */
+(() => {
+  if (!$("#simMK")) return;
+  const T = [14, 17, 22, 27, 30, 26, 11, 13, 18, 21, 24, 20, 19, 23, 28, 33, 35, 31], R = 3, Cc = 6;
+  const S = { cond: "gt", u: 25, op: "mask" };
+  const COND = { gt: ["T &gt; u", v => v > S.u, u => `T > ${u}`], lt: ["T &lt; u", v => v < S.u, u => `T < ${u}`], rg: ["entre u y u+5", v => v >= S.u && v <= S.u + 5, u => `(T >= ${u}) & (T <= ${u + 5})`] };
+  const mc = segN("#mkCond", Object.entries(COND).map(([k, v]) => [k, v[0]]), v => { S.cond = v; run(); });
+  const mo = segN("#mkOp", [["mask", "máscara"], ["sel", "T[m]"], ["where", "np.where(m, T, 0)"], ["set", "T[m] = u"], ["count", "m.sum(axis=1)"], ["pos", "np.where(m)"]], v => { S.op = v; run(); });
+  $("#mkU").addEventListener("input", e => { S.u = +e.target.value; run(); });
+  const hdr = { hdrR: ["ciudad 0", "ciudad 1", "ciudad 2"], hdrC: ["8 h", "10 h", "12 h", "14 h", "16 h", "18 h"] };
+  function run() {
+    mc(S.cond); mo(S.op); $("#mkUO").textContent = S.u;
+    const f = COND[S.cond][1], m = T.map(f), cond = COND[S.cond][2](S.u), n = m.filter(Boolean).length;
+    let vals = T, cls = k => (m[k] ? "g1 pick" : ""), out, code = `m = ${cond}\n`, msg;
+    if (S.op === "mask") { code += "m"; out = reprB(m, [R, Cc]); vals = m.map(v => (v ? "True" : "False")); msg = `La máscara tiene la misma shape que T (3, 6) y ${n} casillas True.`; }
+    else if (S.op === "sel") { const s = T.filter((v, k) => m[k]); code += "T[m]"; out = s.length ? repr(s, [s.length], false) : "array([], dtype=int64)"; msg = `T[m] saca los ${n} valores marcados, fila por fila, en un array 1D: se pierde la forma de la tabla.`; }
+    else if (S.op === "where") { vals = T.map((v, k) => (m[k] ? v : 0)); cls = k => (m[k] ? "g1 pick" : "g3"); code += "np.where(m, T, 0)"; out = repr(vals, [R, Cc], false); msg = "np.where conserva la shape: deja el valor de T donde se cumple y 0 donde no. T no cambia."; }
+    else if (S.op === "set") { vals = T.map((v, k) => (m[k] ? S.u : v)); code += `T2 = T.copy()\nT2[m] = ${S.u}\nT2`; out = repr(vals, [R, Cc], false); msg = `Asignar con máscara reemplaza en el mismo array. Aquí se usa una copia (T2) para no perder los datos originales.`; }
+    else if (S.op === "count") { const c = [0, 1, 2].map(i => m.slice(i * Cc, i * Cc + Cc).filter(Boolean).length); code += "m.sum(axis=1)"; out = repr(c, [R], false); msg = `True vale 1: sumar la máscara por fila cuenta cuántas horas cumple cada ciudad → ${c.join(", ")}.`; }
+    else { const rr = [], cc = []; m.forEach((v, k) => { if (v) { rr.push(Math.floor(k / Cc)); cc.push(k % Cc); } }); code += "filas, columnas = np.where(m)"; out = `>>> filas\n${rr.length ? repr(rr, [rr.length], false) : "array([], dtype=int64)"}\n>>> columnas\n${cc.length ? repr(cc, [cc.length], false) : "array([], dtype=int64)"}`; msg = "Con un solo argumento, np.where entrega las posiciones: un array de filas y otro de columnas. El primer True está en la fila " + (rr.length ? `${rr[0]}, columna ${cc[0]}.` : "… no hay ninguno."); }
+    $("#mkGrid").innerHTML = celdas(vals, Cc, cls, hdr);
+    setCode($("#mkCode"), `T = np.array([[14, 17, 22, 27, 30, 26],\n              [11, 13, 18, 21, 24, 20],\n              [19, 23, 28, 33, 35, 31]])\n` + code);
+    setOut($("#mkOut"), S.op === "pos" ? out : `>>> ${code.split("\n").pop()}\n${out}`);
+    const st = $("#mkMsg"); st.className = "status " + (n ? "ok" : "mid"); st.textContent = n ? msg : "Ninguna casilla cumple la condición: la máscara es todo False. Mueve el umbral.";
+  }
+  run();
+})();
+
+/* ================= M15: reshape y apilar ================= */
+(() => {
+  if (!$("#simRS")) return;
+  const SH = [["12", [12]], ["3,4", [3, 4]], ["4,3", [4, 3]], ["2,6", [2, 6]], ["6,2", [6, 2]], ["2,2,3", [2, 2, 3]], ["5,3", [5, 3]]];
+  const S = { sh: "3,4", T: false };
+  const mk = segN("#rsSh", SH.map(([k, s]) => [k, s.length === 1 ? "(12,)" : `(${s.join(", ")})`]), v => { S.sh = v; run(); });
+  $("#rsT").addEventListener("change", e => { S.T = e.target.checked; run(); });
+  const col = v => "g" + (Math.floor(v / 3) % 4);
+  const r3 = (vals, a, b, c) => { const w = Math.max(...vals.map(v => String(v).length)), f = v => String(v).padStart(w); const blk = []; for (let i = 0; i < a; i++) { const rows = []; for (let j = 0; j < b; j++) rows.push("[" + vals.slice(i * b * c + j * c, i * b * c + j * c + c).map(f).join(", ") + "]"); blk.push("[" + rows.join(",\n        ") + "]"); } return "array([" + blk.join(",\n\n       ") + "])"; };
+  function run() {
+    mk(S.sh); const sh = SH.find(x => x[0] === S.sh)[1], x = [...Array(12).keys()];
+    const call = sh.length === 1 ? "x.reshape(12)" : `x.reshape(${sh.join(", ")})`, st = $("#rsMsg");
+    let code = `x = np.arange(12)\nM = ${call}` + (S.T ? "\nM.T" : "\nM"), out, html;
+    if (sh[0] * (sh[1] || 1) * (sh[2] || 1) !== 12) {
+      html = celdas(x, 12, col); out = `ValueError: cannot reshape array of size 12 into shape (${sh.join(",")})`;
+      st.className = "status bad"; st.textContent = `5 × 3 = 15, pero hay 12 números: reshape no inventa ni borra datos.`;
+    } else if (sh.length === 3) {
+      let v = x, a = sh[0], b = sh[1], c = sh[2];
+      if (S.T) { v = []; for (let k = 0; k < c; k++) for (let j = 0; j < b; j++) for (let i = 0; i < a; i++) v.push(x[i * b * c + j * c + k]); [a, c] = [c, a]; }
+      html = `<div style="display:flex;gap:14px;flex-wrap:wrap">` + [...Array(a).keys()].map(i => `<div><div class="lab" style="color:var(--muted)">[${i}]</div>${celdas(v.slice(i * b * c, (i + 1) * b * c), c, k => col(v[i * b * c + k]))}</div>`).join("") + "</div>";
+      out = r3(v, a, b, c);
+      st.className = "status ok"; st.textContent = S.T ? `.T en 3D invierte el orden de todos los ejes: (2, 2, 3) → (3, 2, 2).` : "Tres dimensiones: 2 bloques, cada uno de 2 filas × 3 columnas. Así se guardan, por ejemplo, 2 imágenes pequeñas.";
+    } else {
+      let r = sh[0], c = sh[1] || 1, v = x;
+      if (sh.length === 1) { html = celdas(x, 12, col); out = repr(x, [12], false); st.className = "status mid"; st.textContent = S.T ? "En 1D, .T no hace nada: un vector no tiene filas ni columnas." : "La forma original: un vector de 12."; }
+      else {
+        if (S.T) { v = []; for (let j = 0; j < c; j++) for (let i = 0; i < r; i++) v.push(x[i * c + j]); [r, c] = [c, r]; }
+        html = celdas(v, c, k => col(v[k])); out = repr(v, [r, c], false);
+        st.className = "status ok";
+        st.textContent = S.T ? `.T da shape (${r}, ${c}): la fila 0 ahora es la columna 0. Compara con reshape(${r}, ${c}): misma shape, otro orden.` : `${r} filas de ${c}: se llenan por filas, leyendo los números en orden. -1 habría calculado la otra dimensión: x.reshape(${r}, -1).`;
+      }
+    }
+    $("#rsGrid").innerHTML = html; setCode($("#rsCode"), code); setOut($("#rsOut"), out.startsWith("ValueError") ? out : ">>> " + code.split("\n").pop() + "\n" + out);
+  }
+  run();
+})();
+(() => {
+  if (!$("#simSK")) return;
+  const a = [1, 2, 3, 4], b = [5, 6, 7, 8];
+  const OPS = [["c0", "concatenate axis=0"], ["c1", "concatenate axis=1"], ["vs", "vstack"], ["hs", "hstack"], ["s0", "stack axis=0"], ["s2", "stack axis=2"]];
+  const S = { op: "c0" }; const mk = segN("#skOp", OPS, v => { S.op = v; run(); });
+  const cl = v => (v <= 4 ? "g0" : "g1");
+  function run() {
+    mk(S.op); let html, shape, vals, code, msg;
+    if (S.op === "c0" || S.op === "vs") { vals = [...a, ...b]; shape = [4, 2]; html = celdas(vals, 2, k => cl(vals[k])); code = S.op === "c0" ? "np.concatenate([a, b], axis=0)" : "np.vstack([a, b])"; msg = "Una debajo de la otra: el eje 0 (las filas) crece de 2 a 4."; }
+    else if (S.op === "c1" || S.op === "hs") { vals = [1, 2, 5, 6, 3, 4, 7, 8]; shape = [2, 4]; html = celdas(vals, 4, k => cl(vals[k])); code = S.op === "c1" ? "np.concatenate([a, b], axis=1)" : "np.hstack([a, b])"; msg = "Una al lado de la otra: el eje 1 (las columnas) crece de 2 a 4."; }
+    else if (S.op === "s0") { vals = [...a, ...b]; shape = [2, 2, 2]; html = `<div style="display:flex;gap:14px;flex-wrap:wrap"><div><div class="lab" style="color:var(--muted)">[0]</div>${celdas(a, 2, () => "g0")}</div><div><div class="lab" style="color:var(--muted)">[1]</div>${celdas(b, 2, () => "g1")}</div></div>`; code = "np.stack([a, b], axis=0)"; msg = "stack crea un eje nuevo al principio: (2, 2, 2). El elemento [0] es a y el [1] es b, como un lote de 2 imágenes."; }
+    else { vals = [1, 5, 2, 6, 3, 7, 4, 8]; shape = [2, 2, 2]; html = `<div style="display:flex;gap:14px;flex-wrap:wrap"><div><div class="lab" style="color:var(--muted)">[0]</div>${celdas([1, 5, 2, 6], 2, k => cl([1, 5, 2, 6][k]))}</div><div><div class="lab" style="color:var(--muted)">[1]</div>${celdas([3, 7, 4, 8], 2, k => cl([3, 7, 4, 8][k]))}</div></div>`; code = "np.stack([a, b], axis=2)"; msg = "Con axis=2 el eje nuevo va al final: cada casilla guarda el par (valor de a, valor de b), como los canales de color de una imagen."; }
+    $("#skGrid").innerHTML = html;
+    const fmt = shape.length === 2 ? repr(vals, shape, false) : (() => { const r = []; for (let i = 0; i < 2; i++) r.push("[" + [0, 1].map(j => "[" + vals.slice(i * 4 + j * 2, i * 4 + j * 2 + 2).join(", ") + "]").join(",\n        ") + "]"); return "array([" + r.join(",\n\n       ") + "])"; })();
+    setCode($("#skCode"), `a = np.array([[1, 2],\n              [3, 4]])\nb = np.array([[5, 6],\n              [7, 8]])\nr = ${code}\nr.shape`);
+    setOut($("#skOut"), `>>> r\n${fmt}\n>>> r.shape\n(${shape.join(", ")})`);
+    const st = $("#skMsg"); st.className = "status ok"; st.textContent = msg;
+  }
+  run();
+})();
+
+/* ================= M16: dtype y vistas ================= */
+(() => {
+  if (!$("#simDT")) return;
+  const TY = { uint8: [0, 255, 1], int8: [-128, 127, 1], int16: [-32768, 32767, 2], float32: [null, null, 4], float64: [null, null, 8] };
+  const S = { p: 200, k: 80, t: "uint8" };
+  const mk = segN("#dtT", Object.keys(TY).map(k => [k, k]), v => { S.t = v; run(); });
+  $("#dtP").addEventListener("input", e => { S.p = +e.target.value; run(); }); $("#dtK").addEventListener("input", e => { S.k = +e.target.value; run(); });
+  function run() {
+    mk(S.t); $("#dtPO").textContent = S.p; $("#dtKO").textContent = S.k;
+    const [lo, hi, by] = TY[S.t], isF = lo === null, st = $("#dtSt");
+    $("#dtR").textContent = isF ? (S.t === "float32" ? "±3,4·10³⁸ (~7 dígitos)" : "±1,8·10³⁰⁸ (~16 dígitos)") : `${lo} a ${hi}`;
+    $("#dtB").textContent = by; $("#dtM").textContent = `${fmtN(by * 1e6 / 1048576, 1)} MB`;
+    const code = `p = np.array([${S.p}], dtype=np.${S.t})\np + ${S.k}`; setCode($("#dtCode"), code);
+    if (!isF && S.p > hi) { $("#dtV").textContent = "error"; st.className = "status bad"; st.textContent = `${S.p} no cabe en ${S.t} (${lo} a ${hi}): NumPy ni siquiera crea el array.`; setOut($("#dtOut"), `OverflowError: Python integer ${S.p} out of bounds for ${S.t}`); return; }
+    let r = S.p + S.k, wrap = false;
+    if (!isF && r > hi) { r = r - (hi - lo + 1); wrap = true; }
+    $("#dtV").textContent = r;
+    const dt = S.t === "float64" ? "" : `, dtype=${S.t}`;
+    setOut($("#dtOut"), `>>> p + ${S.k}\narray([${r}${isF ? "." : ""}]${dt})`);
+    if (wrap) { st.className = "status bad"; st.textContent = `${S.p} + ${S.k} = ${S.p + S.k}, pero ${S.t} llega hasta ${hi}: dio la vuelta y quedó en ${r}. En una imagen, un píxel casi blanco se vuelve casi negro.`; }
+    else if (isF) { st.className = "status ok"; st.textContent = `Con ${S.t} no hay vuelta: ${r}. A cambio, la imagen ocupa ${by} veces más que en uint8.`; }
+    else { st.className = "status ok"; st.textContent = `${r} cabe en ${S.t}. Sube k o p hasta pasar el límite.`; }
+  }
+  run();
+})();
+(() => {
+  if (!$("#simVC")) return;
+  const A0 = [0, 10, 20, 30, 40, 50];
+  const OPS = [["s", "A[1:4]", "vista", [1, 2, 3]], ["p", "A[::2]", "vista", [0, 2, 4]], ["r", "A.reshape(2, 3)", "vista", [0, 1, 2, 3, 4, 5]], ["f", "A[[1, 2, 3]]", "copia", [1, 2, 3]], ["m", "A[A > 20]", "copia", [3, 4, 5]], ["c", "A[1:4].copy()", "copia", [1, 2, 3]]];
+  const S = { op: "s" }; const mk = segN("#vcOp", OPS.map(o => [o[0], o[1]]), v => { S.op = v; run(); });
+  function run() {
+    mk(S.op); const [, how, tipo, idx] = OPS.find(o => o[0] === S.op), vista = tipo === "vista";
+    const A = A0.slice(), B = idx.map(i => A0[i]); B[0] = 99; if (vista) A[idx[0]] = 99;
+    const set = S.op === "r" ? "B[0, 0] = 99" : "B[0] = 99";
+    $("#vcA").innerHTML = celdas(A, 6, k => (vista && k === idx[0] ? "g1 pick" : idx.includes(k) ? "g0" : ""));
+    $("#vcB").innerHTML = S.op === "r" ? celdas(B, 3, k => (k === 0 ? "g1 pick" : "g0")) : celdas(B, B.length, k => (k === 0 ? "g1 pick" : "g0"));
+    setCode($("#vcCode"), `A = np.arange(6) * 10\nB = ${how}\n${set}\nA\nnp.shares_memory(A, B)`);
+    setOut($("#vcOut"), `>>> A\n${repr(A, [6], false)}\n>>> np.shares_memory(A, B)\n${vista ? "True" : "False"}`);
+    const st = $("#vcSt"); st.className = "status " + (vista ? "bad" : "ok");
+    st.textContent = vista ? `${how} es una vista: B mira la misma memoria que A. Cambiar B cambió A[${idx[0]}].` : `${how} es una copia: B tiene su propia memoria y A no cambió.`;
+  }
+  run();
+})();
+
+/* ================= M17: distancias ================= */
+(() => {
+  if (!$("#simDS")) return;
+  const st0 = { p0: [-3, 2], p1: [1, 3], p2: [3, -1], p3: [-1, -2], p4: [4, 2], p5: [-4, -3] }, keys = Object.keys(st0);
+  const S = { n: 4 }; let plane, D = [];
+  $("#dsN").addEventListener("input", e => { S.n = +e.target.value; update(); });
+  const COL = ["--vi", "--vj", "--vk", "--accent", "--good", "--bad"];
+  function update(fromDrag) {
+    const n = S.n, P = keys.slice(0, n).map(k => st0[k]);
+    $("#dsNO").textContent = n;
+    D = P.map(a => P.map(b => Math.hypot(a[0] - b[0], a[1] - b[1])));
+    const near = D.map((r, i) => { let j = -1, m = Infinity; r.forEach((v, k) => { if (k !== i && v < m) { m = v; j = k; } }); return j; });
+    [["dsS1", `(${n}, 2)`], ["dsS2", `(${n}, 1, 2)`], ["dsS3", `(1, ${n}, 2)`], ["dsS4", `(${n}, ${n}, 2)`], ["dsS5", `(${n}, ${n})`]].forEach(([id, t]) => ($("#" + id).textContent = t));
+    const flat = D.flat().map(v => +v.toFixed(2));
+    $("#dsGrid").innerHTML = celdas(flat, n, k => { const i = Math.floor(k / n), j = k % n; return i === j ? "g3" : near[i] === j ? "g1 pick" : ""; }, { fmt: v => fmtN(v, 2), hdrR: P.map((_, i) => "P" + i), hdrC: P.map((_, i) => "P" + i) });
+    setCode($("#dsCode"), `P = np.array([${P.map(p => `[${p[0]}, ${p[1]}]`).join(", ")}])\ndif = P[:, None, :] - P[None, :, :]\nD = np.sqrt((dif ** 2).sum(axis=-1))\nD.round(2)\nnp.fill_diagonal(D, np.inf)\nD.argmin(axis=1)`);
+    setOut($("#dsOut"), `>>> D.round(2)\n${repr(flat, [n, n], true)}\n>>> D.argmin(axis=1)\n${repr(near, [n], false)}`);
+    if (plane) plane.render(); S.near = near;
+  }
+  plane = makePlane($("#cvDS"), {
+    R: 5, aspect: 0.85,
+    draw(st) {
+      drawGrid(st); const { ctx } = st, n = S.n;
+      for (let i = 0; i < n; i++) { const j = S.near && S.near[i]; if (j == null || j < 0) continue; const a = st.px(...st0[keys[i]]), b = st.px(...st0[keys[j]]); ctx.setLineDash([5, 4]); ctx.strokeStyle = cssv(COL[i]); ctx.lineWidth = 1.8; ctx.beginPath(); ctx.moveTo(...a); ctx.lineTo(...b); ctx.stroke(); ctx.setLineDash([]); }
+      for (let i = 0; i < n; i++) { const [x, y] = st.px(...st0[keys[i]]); handle(ctx, x, y, cssv(COL[i])); tlabel(ctx, "P" + i, x + 10, y - 12, cssv(COL[i]), cssv("--surface-2")); }
+    },
+    drag: { pick: (st, x, y) => vecPick(st0, keys.slice(0, S.n))(st, x, y), move: vecMove(st0, () => update(true)) }
+  });
+  update();
+})();
+
+/* ================= M18: determinante ================= */
+(() => {
+  if (!$("#simDET")) return;
+  const S = { a1: [2, 0], a2: [1, 2] }; let plane;
+  const PRE = [["Identidad", [1, 0], [0, 1]], ["Estirar", [2, 0], [0, 3]], ["Cizalle", [1, 0], [1, 1]], ["Espejo", [0, 1], [1, 0]], ["Aplastar", [2, 1], [4, 2]]];
+  $("#detPre").innerHTML = PRE.map((p, i) => `<button class="chip" type="button" data-pre="${i}">${p[0]}</button>`).join("");
+  $$("#detPre [data-pre]").forEach(b => b.addEventListener("click", () => { const p = PRE[+b.dataset.pre]; S.a1 = p[1].slice(); S.a2 = p[2].slice(); update(); }));
+  function update() {
+    const [a, c] = S.a1, [b, d] = S.a2, det = a * d - b * c, rank = det !== 0 ? 2 : (a || b || c || d) ? 1 : 0;
+    $("#detA").textContent = `[[${a}, ${b}], [${c}, ${d}]]`; $("#detD").textContent = det; $("#detAr").textContent = Math.abs(det);
+    $("#detOr").textContent = det > 0 ? "se mantiene" : det < 0 ? "se da vuelta" : "—"; $("#detR").textContent = rank; $("#detI").textContent = det ? "sí" : "no";
+    const st = $("#detSt");
+    if (det > 0) { st.className = "status ok"; st.textContent = `Las áreas se multiplican por ${det} y la orientación se mantiene (e₂ sigue a la izquierda de e₁).`; }
+    else if (det < 0) { st.className = "status mid"; st.textContent = `Las áreas se multiplican por ${-det}, pero el plano se da vuelta como en un espejo: por eso el det es negativo.`; }
+    else if (rank === 1) { st.className = "status bad"; st.textContent = "Las columnas están alineadas: una es múltiplo de la otra. El plano se aplasta a una recta, det = 0, rango 1 y no hay inversa."; }
+    else { st.className = "status bad"; st.textContent = "Todo se aplasta al origen: rango 0."; }
+    setCode($("#detCode"), `A = np.array([[${a}, ${b}],\n              [${c}, ${d}]])\nnp.linalg.det(A)\nnp.linalg.matrix_rank(A)`);
+    setOut($("#detOut"), `>>> np.linalg.det(A)\n≈ ${det}.0\n>>> np.linalg.matrix_rank(A)\nnp.int64(${rank})` + (det ? "" : "\n>>> np.linalg.inv(A)\nLinAlgError: Singular matrix"));
+    plane && plane.render();
+  }
+  plane = makePlane($("#cvDET"), { R: 5, aspect: 0.85, draw(st) {
+    drawGrid(st); const { ctx } = st, O = st.px(0, 0), A1 = st.px(...S.a1), A2 = st.px(...S.a2), A3 = st.px(S.a1[0] + S.a2[0], S.a1[1] + S.a2[1]);
+    const det = S.a1[0] * S.a2[1] - S.a2[0] * S.a1[1];
+    ctx.setLineDash([4, 4]); ctx.strokeStyle = cssv("--muted"); ctx.lineWidth = 1.2; const u = st.px(1, 0), v = st.px(0, 1), w = st.px(1, 1); ctx.beginPath(); ctx.moveTo(...O); ctx.lineTo(...u); ctx.lineTo(...w); ctx.lineTo(...v); ctx.closePath(); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = cssv(det > 0 ? "--vi-soft" : det < 0 ? "--vj-soft" : "--bad-soft"); ctx.beginPath(); ctx.moveTo(...O); ctx.lineTo(...A1); ctx.lineTo(...A3); ctx.lineTo(...A2); ctx.closePath(); ctx.fill();
+    if (!det) { ctx.strokeStyle = cssv("--bad"); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(...O); ctx.lineTo(...A3); ctx.stroke(); }
+    arrow(ctx, ...O, ...A1, cssv("--vi")); arrow(ctx, ...O, ...A2, cssv("--vj"));
+    handle(ctx, ...A1, cssv("--vi")); handle(ctx, ...A2, cssv("--vj"));
+    tlabel(ctx, "columna 1", A1[0] + 9, A1[1] - 12, cssv("--vi"), cssv("--surface-2")); tlabel(ctx, "columna 2", A2[0] + 9, A2[1] - 12, cssv("--vj"), cssv("--surface-2"));
+  }, drag: { pick: vecPick(S, ["a1", "a2"]), move: vecMove(S, () => update()) } });
+  update();
+})();
+
+/* ================= M19: valores propios ================= */
+(() => {
+  if (!$("#simEIG")) return;
+  const S = { a: 2, b: 1, c: 1, d: 2 }; let plane, E = null, trail = [[Math.cos(2.4), Math.sin(2.4)]];
+  [["egA", "a"], ["egB", "b"], ["egC", "c"], ["egD", "d"]].forEach(([id, k]) => $("#" + id).addEventListener("input", e => { S[k] = +e.target.value; trail = [trail[0]]; update(); }));
+  $("#egPow").addEventListener("click", () => { const [x, y] = trail[trail.length - 1], nx = S.a * x + S.b * y, ny = S.c * x + S.d * y, L = Math.hypot(nx, ny); if (L < 1e-9) return; trail.push([nx / L, ny / L]); if (trail.length > 30) trail.shift(); update(); });
+  $("#egRes").addEventListener("click", () => { trail = [[Math.cos(2.4), Math.sin(2.4)]]; update(); });
+  const vecDe = (l) => { const { a, b, c, d } = S; let v = Math.abs(b) > 1e-9 ? [b, l - a] : Math.abs(c) > 1e-9 ? [l - d, c] : (Math.abs(l - a) < 1e-9 ? [1, 0] : [0, 1]); const L = Math.hypot(...v); return [v[0] / L, v[1] / L]; };
+  function update() {
+    ["egA", "egB", "egC", "egD"].forEach(id => ($("#" + id + "O").textContent = $("#" + id).value));
+    const { a, b, c, d } = S, tr = a + d, det = a * d - b * c, disc = tr * tr / 4 - det;
+    if (disc >= -1e-12) { const r = Math.sqrt(Math.max(0, disc)), l1 = tr / 2 + r, l2 = tr / 2 - r; E = { real: true, l: [l1, l2], v: [vecDe(l1), vecDe(l2)] }; if (Math.abs(b) < 1e-9 && Math.abs(c) < 1e-9) E.v = Math.abs(a - l1) < 1e-9 ? [[1, 0], [0, 1]] : [[0, 1], [1, 0]]; }
+    else E = { real: false, re: tr / 2, im: Math.sqrt(-disc) };
+    $("#egL").textContent = E.real ? `${fmtN(E.l[0], 3)}, ${fmtN(E.l[1], 3)}` : `${fmtN(E.re, 2)} ± ${fmtN(E.im, 2)}i`;
+    $("#egT").textContent = fmtN(tr, 2); $("#egDt").textContent = fmtN(det, 2); $("#egIt").textContent = `${trail.length - 1} veces`;
+    const st = $("#egSt");
+    if (!E.real) { st.className = "status mid"; st.textContent = "Valores propios complejos: A gira todas las direcciones, así que ninguna queda fija. El punto da vueltas y no converge."; }
+    else if (Math.abs(Math.abs(E.l[0]) - Math.abs(E.l[1])) < 1e-9) { st.className = "status mid"; st.textContent = "Los dos λ tienen el mismo tamaño: ninguna dirección domina y el punto no converge a una sola."; }
+    else { const k = Math.abs(E.l[0]) >= Math.abs(E.l[1]) ? 0 : 1, v = E.v[k], p = trail[trail.length - 1], ang = Math.acos(Math.min(1, Math.abs(v[0] * p[0] + v[1] * p[1]))) * 180 / Math.PI; st.className = "status ok"; st.textContent = `Dirección dominante: λ = ${fmtN(E.l[k], 3)}. El punto está a ${fmtN(ang, 1)}° de ella: aplica A unas veces más y se alinea.`; }
+    setCode($("#egCode"), `A = np.array([[${a}, ${b}],\n              [${c}, ${d}]])\nlam, V = np.linalg.eig(A)\nlam\nV[:, 0]          # vector propio de lam[0]\nnp.allclose(A @ V[:, 0], lam[0] * V[:, 0])`);
+    setOut($("#egOut"), E.real ? `>>> lam\n≈ array([${fmtN(E.l[0], 4)}, ${fmtN(E.l[1], 4)}])\n>>> V[:, 0]\n≈ array([${fmtN(E.v[0][0], 4)}, ${fmtN(E.v[0][1], 4)}])\n>>> np.allclose(...)\nTrue\n# El orden y el signo pueden variar.` : `>>> lam\n≈ array([${fmtN(E.re, 2)}+${fmtN(E.im, 2)}j, ${fmtN(E.re, 2)}-${fmtN(E.im, 2)}j])\n# Complejos: no hay direcciones reales que no giren.`);
+    plane && plane.render();
+  }
+  plane = makePlane($("#cvEIG"), { R: 4, aspect: 0.85, draw(st) {
+    drawGrid(st); const { ctx } = st, O = st.px(0, 0), mu = cssv("--muted"), acc = cssv("--accent"), lim = st.w / 2 / st.s;
+    ctx.strokeStyle = mu; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(O[0], O[1], st.s, 0, 7); ctx.stroke();
+    if (E && E.real) E.v.forEach((v, i) => { ctx.setLineDash([6, 5]); ctx.strokeStyle = cssv(i ? "--vj" : "--vi"); ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(...st.px(-v[0] * 9, -v[1] * 9)); ctx.lineTo(...st.px(v[0] * 9, v[1] * 9)); ctx.stroke(); ctx.setLineDash([]); });
+    for (let k = 0; k < 24; k++) {
+      const t = k * Math.PI / 12, x = Math.cos(t), y = Math.sin(t), ax = S.a * x + S.b * y, ay = S.c * x + S.d * y, L = Math.hypot(ax, ay), sc = L > lim * 0.95 ? lim * 0.95 / L : 1;
+      ctx.globalAlpha = 0.35; arrow(ctx, ...O, ...st.px(x, y), mu, 1.2); ctx.globalAlpha = 0.75; arrow(ctx, ...O, ...st.px(ax * sc, ay * sc), acc, 1.6); ctx.globalAlpha = 1;
+    }
+    if (E && E.real) E.v.forEach((v, i) => { const l = E.l[i], c = cssv(i ? "--vj" : "--vi"); arrow(ctx, ...O, ...st.px(v[0] * l, v[1] * l), c, 3); const q = st.px(v[0] * l * 1.05 + 0.15, v[1] * l * 1.05 + 0.3); tlabel(ctx, `λ${i ? "₂" : "₁"} = ${fmtN(l, 2)}`, Math.max(6, Math.min(st.w - 80, q[0])), Math.max(14, Math.min(st.h - 14, q[1])), c, cssv("--surface-2")); });
+    const vk = cssv("--vk"); trail.forEach((p, i) => { const q = st.px(...p); ctx.fillStyle = vk; ctx.globalAlpha = 0.3 + 0.7 * (i + 1) / trail.length; ctx.beginPath(); ctx.arc(q[0], q[1], i === trail.length - 1 ? 6 : 3.5, 0, 7); ctx.fill(); }); ctx.globalAlpha = 1;
+  } });
+  update();
+})();
+
+/* ================= M20: PCA y mínimos cuadrados ================= */
+(() => {
+  if (!$("#simPCA")) return;
+  const rnd = mulberry32(5), Z = Array.from({ length: 30 }, () => [gaussR(rnd), gaussR(rnd)]);
+  const S = { m: 0.6, r: 0.6, out: false, ls: true, pc: false, o: { p: [3, -3] } }; let plane, F = null;
+  [["pcM", "m"], ["pcR", "r"]].forEach(([id, k]) => $("#" + id).addEventListener("input", e => { S[k] = +e.target.value; update(); }));
+  [["pcAt", "out"], ["pcLS", "ls"], ["pcPC", "pc"]].forEach(([id, k]) => $("#" + id).addEventListener("change", e => { S[k] = e.target.checked; update(); }));
+  function update() {
+    $("#pcMO").textContent = fmtN(S.m, 1); $("#pcRO").textContent = fmtN(S.r, 1);
+    const P = Z.map(([a, b]) => { const x = 1.6 * a; return [x, S.m * x + S.r * b]; }); if (S.out) P.push(S.o.p.slice());
+    const n = P.length, mx = P.reduce((s, p) => s + p[0], 0) / n, my = P.reduce((s, p) => s + p[1], 0) / n;
+    let sxx = 0, sxy = 0, syy = 0; P.forEach(([x, y]) => { sxx += (x - mx) ** 2; sxy += (x - mx) * (y - my); syy += (y - my) ** 2; });
+    const m = sxy / sxx, c = my - m * mx, tr = sxx + syy, dt = sxx * syy - sxy * sxy, r = Math.sqrt(Math.max(0, tr * tr / 4 - dt)), l1 = tr / 2 + r, l2 = tr / 2 - r;
+    let v = Math.abs(sxy) > 1e-12 ? [sxy, l1 - sxx] : sxx >= syy ? [1, 0] : [0, 1]; const L = Math.hypot(...v); v = [v[0] / L, v[1] / L]; if (v[0] < 0) v = [-v[0], -v[1]];
+    F = { P, mx, my, m, c, v, l1, l2 };
+    const s1 = Math.sqrt(l1), s2 = Math.sqrt(Math.max(0, l2)), ve = l1 / (l1 + l2);
+    $("#pcS1").textContent = fmtN(m, 3); $("#pcS2").textContent = Math.abs(v[0]) < 1e-9 ? "vertical" : fmtN(v[1] / v[0], 3); $("#pcV").textContent = `${fmtN(100 * ve, 1)} %`; $("#pcSv").textContent = `${fmtN(s1, 2)}, ${fmtN(s2, 2)}`;
+    const st = $("#pcSt");
+    if (S.out) { st.className = "status mid"; st.textContent = "Un solo punto atípico tira la recta hacia él: los errores al cuadrado castigan mucho las distancias grandes."; }
+    else if (S.r < 0.15) { st.className = "status ok"; st.textContent = "Casi sin ruido, los datos están sobre una recta: la PC1 explica casi el 100 % y las dos pendientes coinciden."; }
+    else { st.className = "status ok"; st.textContent = "Mínimos cuadrados minimiza los errores verticales (predecir y desde x); la PC1 minimiza los perpendiculares (la dirección de mayor variación). Con ruido, la PC1 queda más inclinada."; }
+    setCode($("#pcCode"), `# x, y: los ${n} puntos del gráfico\nA = np.column_stack([x, np.ones_like(x)])\nm, c = np.linalg.lstsq(A, y, rcond=None)[0]\n\nX = np.column_stack([x, y])\nXc = X - X.mean(axis=0)\nU, s, Vt = np.linalg.svd(Xc, full_matrices=False)\ns**2 / (s**2).sum()\nVt[0]`);
+    setOut($("#pcOut"), `>>> m, c\n≈ (${fmtN(m, 3)}, ${fmtN(c, 3)})\n>>> s\n≈ array([${fmtN(s1, 3)}, ${fmtN(s2, 3)}])\n>>> s**2 / (s**2).sum()\n≈ array([${fmtN(ve, 3)}, ${fmtN(1 - ve, 3)}])\n>>> Vt[0]\n≈ array([${fmtN(v[0], 3)}, ${fmtN(v[1], 3)}])   # el signo puede variar`);
+    plane && plane.render();
+  }
+  plane = makePlane($("#cvPCA"), { R: 5, aspect: 0.85, draw(st) {
+    if (!F) return; drawGrid(st); const { ctx } = st, X = st.w / 2 / st.s + 1, { P, mx, my, m, c, v, l1, l2 } = F, n = P.length;
+    if (S.ls) { ctx.strokeStyle = cssv("--vj"); ctx.globalAlpha = 0.6; ctx.lineWidth = 1.2; P.forEach(([x, y]) => { ctx.beginPath(); ctx.moveTo(...st.px(x, y)); ctx.lineTo(...st.px(x, m * x + c)); ctx.stroke(); }); ctx.globalAlpha = 1; }
+    if (S.pc) { ctx.strokeStyle = cssv("--vi"); ctx.globalAlpha = 0.6; ctx.lineWidth = 1.2; P.forEach(([x, y]) => { const t = (x - mx) * v[0] + (y - my) * v[1]; ctx.beginPath(); ctx.moveTo(...st.px(x, y)); ctx.lineTo(...st.px(mx + t * v[0], my + t * v[1])); ctx.stroke(); }); ctx.globalAlpha = 1; }
+    ctx.strokeStyle = cssv("--vj"); ctx.lineWidth = 2.6; ctx.beginPath(); ctx.moveTo(...st.px(-X, m * -X + c)); ctx.lineTo(...st.px(X, m * X + c)); ctx.stroke();
+    ctx.setLineDash([7, 5]); ctx.strokeStyle = cssv("--vi"); ctx.lineWidth = 2.2; ctx.beginPath(); ctx.moveTo(...st.px(mx - v[0] * 12, my - v[1] * 12)); ctx.lineTo(...st.px(mx + v[0] * 12, my + v[1] * 12)); ctx.stroke(); ctx.setLineDash([]);
+    const d1 = Math.sqrt(l1 / n) * 2, d2 = Math.sqrt(Math.max(0, l2) / n) * 2, O = st.px(mx, my);
+    arrow(ctx, ...O, ...st.px(mx + v[0] * d1, my + v[1] * d1), cssv("--vi"), 3.2); arrow(ctx, ...O, ...st.px(mx - v[1] * d2, my + v[0] * d2), cssv("--vi"), 2.2);
+    const acc = cssv("--accent"); P.forEach(([x, y], i) => { const q = st.px(x, y); if (S.out && i === n - 1) handle(ctx, q[0], q[1], cssv("--vk")); else { ctx.fillStyle = acc; ctx.beginPath(); ctx.arc(q[0], q[1], 3.6, 0, 7); ctx.fill(); } });
+    tlabel(ctx, "PC1", ...st.px(mx + v[0] * d1 + 0.2, my + v[1] * d1 + 0.3), cssv("--vi"), cssv("--surface-2"));
+  }, drag: { pick: (st, x, y) => (S.out ? vecPick(S.o, ["p"])(st, x, y) : null), move: vecMove(S.o, () => update()) } });
+  update();
+})();
+
+/* ================= M21: cálculo numérico ================= */
+(() => {
+  if (!$("#simCN")) return;
+  const FN = {
+    sin: { lab: "sin(x)", py: "np.sin(x)", a: 0, b: Math.PI, f: Math.sin, d: Math.cos, I: 2, aPy: "0", bPy: "np.pi" },
+    sq: { lab: "x²", py: "x**2", a: 0, b: 2, f: x => x * x, d: x => 2 * x, I: 8 / 3, aPy: "0", bPy: "2" },
+    ga: { lab: "e^(−x²)", py: "np.exp(-x**2)", a: -2, b: 2, f: x => Math.exp(-x * x), d: x => -2 * x * Math.exp(-x * x), I: 1.7641627815248431, aPy: "-2", bPy: "2" }
+  };
+  const S = { mode: "int", fn: "sin", n: 4, x0: 0.4, h: 0.5 }; let plane;
+  const mm = segN("#cnMode", [["int", "Integral"], ["der", "Derivada"]], v => { S.mode = v; update(); });
+  const mf = segN("#cnF", Object.entries(FN).map(([k, v]) => [k, v.lab]), v => { S.fn = v; update(); });
+  [["cnN", "n"], ["cnX", "x0"], ["cnH", "h"]].forEach(([id, k]) => $("#" + id).addEventListener("input", e => { S[k] = +e.target.value; update(); }));
+  let R = null;
+  function update() {
+    mm(S.mode); mf(S.fn); const F = FN[S.fn], st = $("#cnSt");
+    $("#cnIntR").hidden = S.mode !== "int"; $("#cnDerR").hidden = S.mode !== "der";
+    $("#cnNO").textContent = S.n; $("#cnHO").textContent = fmtN(S.h, 2);
+    const x0 = F.a + S.x0 * (F.b - F.a); $("#cnXO").textContent = fmtN(x0, 2);
+    if (S.mode === "int") {
+      const xs = Array.from({ length: S.n + 1 }, (_, i) => F.a + (F.b - F.a) * i / S.n), ys = xs.map(F.f);
+      let ap = 0; for (let i = 0; i < S.n; i++) ap += (xs[i + 1] - xs[i]) * (ys[i] + ys[i + 1]) / 2;
+      const err = Math.abs(ap - F.I); R = { xs, ys };
+      $("#cnEx").textContent = fmtN(F.I, 6); $("#cnAp").textContent = fmtN(ap, 6); $("#cnEr").textContent = err.toExponential(2);
+      st.className = "status " + (err < 1e-3 ? "ok" : "mid"); st.textContent = S.n < 40 ? `Con ${S.n} trapecios el error es ${err.toExponential(1)}. Duplica los trapecios: el error baja unas 4 veces (es proporcional a h²).` : "Con 40 trapecios el error ya es diminuto: np.trapezoid con cientos de puntos es casi exacto.";
+      setCode($("#cnCode"), `x = np.linspace(${F.aPy}, ${F.bPy}, ${S.n + 1})   # ${S.n} trapecios\ny = ${F.py}\nnp.trapezoid(y, x)`);
+      setOut($("#cnOut"), `>>> np.trapezoid(y, x)\n≈ ${fmtN(ap, 6)}\n# valor exacto: ${fmtN(F.I, 6)}`);
+    } else {
+      const ex = F.d(x0), ap = (F.f(x0 + S.h) - F.f(x0 - S.h)) / (2 * S.h), err = Math.abs(ap - ex); R = { x0, ex, ap };
+      $("#cnEx").textContent = fmtN(ex, 6); $("#cnAp").textContent = fmtN(ap, 6); $("#cnEr").textContent = err.toExponential(2);
+      st.className = "status " + (err < 1e-3 ? "ok" : "mid"); st.textContent = `La recta naranja pasa por x₀ − h y x₀ + h; su pendiente aproxima la derivada. Con h = ${fmtN(S.h, 2)} el error es ${err.toExponential(1)}: achica h y la recta se pega a la tangente verde.`;
+      setCode($("#cnCode"), `f = lambda x: ${F.py}\nx0, h = ${fmtN(x0, 2)}, ${fmtN(S.h, 2)}\n(f(x0 + h) - f(x0 - h)) / (2 * h)\n\n# con un array completo:\nx = np.arange(${F.aPy}, ${F.bPy}, h)\nnp.gradient(f(x), x)   # la misma fórmula en cada punto`);
+      setOut($("#cnOut"), `>>> (f(x0 + h) - f(x0 - h)) / (2 * h)\n≈ ${fmtN(ap, 6)}\n# derivada exacta en x0: ${fmtN(ex, 6)}`);
+    }
+    plane && plane.render();
+  }
+  plane = makePlane($("#cvCN"), { R: 1, aspect: 0.7, minH: 240, maxH: 380, draw(st) {
+    if (!R) return; const F = FN[S.fn], { ctx } = st, N = 200, xs = Array.from({ length: N + 1 }, (_, i) => F.a + (F.b - F.a) * i / N), ys = xs.map(F.f);
+    let lo = Math.min(0, ...ys), hi = Math.max(...ys); if (S.mode === "der") { lo -= 0.5; hi += 0.5; } else hi *= 1.08;
+    const { X, Y } = ejes(st, F.a, F.b, lo, hi, { xl: "x" });
+    if (S.mode === "int") {
+      ctx.fillStyle = cssv("--vi-soft"); ctx.strokeStyle = cssv("--vi"); ctx.lineWidth = 1.4;
+      for (let i = 0; i < R.xs.length - 1; i++) { ctx.beginPath(); ctx.moveTo(X(R.xs[i]), Y(0)); ctx.lineTo(X(R.xs[i]), Y(R.ys[i])); ctx.lineTo(X(R.xs[i + 1]), Y(R.ys[i + 1])); ctx.lineTo(X(R.xs[i + 1]), Y(0)); ctx.closePath(); ctx.fill(); ctx.stroke(); }
+      polyline(ctx, xs, ys, X, Y, cssv("--accent"), 2.4);
+    } else {
+      polyline(ctx, xs, ys, X, Y, cssv("--accent"), 2.4);
+      const { x0, ex, ap } = R, y0 = F.f(x0), span = (F.b - F.a) * 0.35;
+      polyline(ctx, [x0 - span, x0 + span], [y0 - ex * span, y0 + ex * span], X, Y, cssv("--vi"), 2.2);
+      polyline(ctx, [x0 - span, x0 + span], [y0 - ap * span, y0 + ap * span], X, Y, cssv("--vj"), 2.2);
+      [x0 - S.h, x0 + S.h].forEach(x => { ctx.fillStyle = cssv("--vj"); ctx.beginPath(); ctx.arc(X(x), Y(F.f(x)), 5, 0, 7); ctx.fill(); });
+      ctx.fillStyle = cssv("--vi"); ctx.beginPath(); ctx.arc(X(x0), Y(y0), 5.5, 0, 7); ctx.fill();
+    }
+  } });
+  update();
+})();
+
 }
 /* ================= TS ZENIT UNIVERSIDAD · CURSO NUMPY ================= */
 const CFG = Object.assign({ endpoint: "", mp: {}, contacto: "", clientId: "", mpNumpy: "" }, window.TSZ_CONFIG || {});
@@ -2158,7 +2751,7 @@ const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
 // Hasta el domingo 25 de octubre de 2026 (00:00, Chile) el curso se reserva; desde entonces se compra.
 const RESERVA = Date.now() < Date.UTC(2026, 9, 25, 3, 0, 0);
 const VERBO = RESERVA ? "Reservar" : "Comprar";
-const VER = "202611021240";
+const VER = "202611021309";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
@@ -2174,7 +2767,8 @@ const TICO = {
 const tIco = id => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${TICO[id]}</svg>`;
 const LOCK = '<svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M5 7V5a3 3 0 1 1 6 0v2h.5A1.5 1.5 0 0 1 13 8.5v5A1.5 1.5 0 0 1 11.5 15h-7A1.5 1.5 0 0 1 3 13.5v-5A1.5 1.5 0 0 1 4.5 7H5Zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2Z"/></svg>';
 const PRINT_LOGO = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 100\" role=\"img\" aria-label=\"TS Zenit\"><g><path d=\"M10 86 A44 44 0 0 1 98 86\" fill=\"none\" stroke=\"#1B1F5E\" stroke-width=\"6\"/><rect x=\"33\" y=\"70\" width=\"9\" height=\"16\" rx=\"1.5\" fill=\"#6C74C9\"/><rect x=\"49.5\" y=\"60\" width=\"9\" height=\"26\" rx=\"1.5\" fill=\"#3E4596\"/><rect x=\"66\" y=\"56\" width=\"9\" height=\"30\" rx=\"1.5\" fill=\"#1B1F5E\"/><path d=\"M54 4 L58.6 19.4 L74 24 L58.6 28.6 L54 44 L49.4 28.6 L34 24 L49.4 19.4 Z\" fill=\"#F5A524\"/><rect x=\"2\" y=\"86\" width=\"104\" height=\"4.5\" rx=\"2.2\" fill=\"#1B1F5E\"/></g><text x=\"122\" y=\"61\" font-family=\"Poppins, Montserrat, 'TeX Gyre Adventor', 'DejaVu Sans', sans-serif\" font-size=\"46\" letter-spacing=\"2.5\" fill=\"#1B1F5E\"><tspan font-weight=\"500\">TS</tspan><tspan font-weight=\"700\" dx=\"10\">ZENIT</tspan></text><text x=\"124\" y=\"87\" font-family=\"Poppins, Montserrat, 'TeX Gyre Adventor', 'DejaVu Sans', sans-serif\" font-weight=\"600\" font-size=\"14.5\" letter-spacing=\"5.0\" fill=\"#E08E0B\">HAZLO REALIDAD</text></svg>";
-const MODT = [["m0", "Antes de partir"], ["m1", "Vectores"], ["m2", "Crear arrays"], ["m3", "Indexación y slicing"], ["m4", "Operaciones y broadcasting"], ["m5", "Producto punto y norma"], ["m6", "Multiplicación de matrices"], ["m7", "Matrices como transformaciones"], ["m8", "Sistemas lineales e inversa"], ["m9", "Agregaciones y axis"], ["m10", "Proyecto: señal ECG"]];
+const MODT = [["m0", "Antes de partir"], ["m1", "Vectores"], ["m2", "Crear arrays"], ["m3", "Indexación y slicing"], ["m4", "Operaciones y broadcasting"], ["m5", "Producto punto y norma"], ["m6", "Multiplicación de matrices"], ["m7", "Matrices como transformaciones"], ["m8", "Sistemas lineales e inversa"], ["m9", "Agregaciones y axis"], ["m10", "Proyecto: señal ECG"], ["m11", "Estadística, ordenar y datos faltantes"], ["m12", "Números aleatorios y Monte Carlo"], ["m13", "FFT y filtrado de señales"], ["m14", "Máscaras, np.where e indexación avanzada"], ["m15", "Cambiar la forma: reshape, apilar y dividir"], ["m16", "Tipos de datos, memoria, copias y vistas"], ["m17", "Broadcasting avanzado y vectorización"], ["m18", "Determinante, rango e independencia"], ["m19", "Valores y vectores propios"], ["m20", "SVD, PCA y mínimos cuadrados"], ["m21", "Cálculo numérico: derivar, integrar e interpolar"]];
+const UNIDADES = { m0: "Unidad 1 · Fundamentos", m5: "Unidad 2 · Álgebra lineal", m9: "Unidad 3 · Datos y señales", m14: "Unidad 4 · NumPy avanzado", chuleta: "Referencia" };
 const NMOD = MODT.length;
 function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => (t.hidden = true), 3200); }
 function fecha(ms) { try { return new Date(ms).toLocaleString("es-CL", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" }); } catch (e) { return ""; } }
@@ -2365,7 +2959,7 @@ async function arrancar() {
 function mostrarLanding(msg, neutro) {
   $("#vLanding").hidden = false; $("#vApp").hidden = true;
   $("#landMsg").innerHTML = msg ? `<div class="u-msg ${neutro ? "" : "bad"}">${msg}</div>` : "";
-  $("#syllabus").innerHTML = MODT.map(([id, t]) => `<li><span class="n">${id.slice(1)}</span><span>${esc(t)}</span><span class="pill lock">${LOCK}</span></li>`).join("");
+  $("#syllabus").innerHTML = MODT.map(([id, t]) => (UNIDADES[id] ? `<li class="u-unit">${UNIDADES[id]}</li>` : "") + `<li><span class="n">${id.slice(1)}</span><span>${esc(t)}</span><span class="pill lock">${LOCK}</span></li>`).join("");
   $("#sylSets").innerHTML = [["1", "Fundamentos"], ["2", "Álgebra lineal"], ["3", "Datos y señales"]].map(([n, t]) => `<li><span class="n">S${n}</span><span>Set ${n} · ${t}<small>Ejemplo resuelto y 8 problemas que se corrigen solos</small></span><span class="pill lock">${LOCK}</span></li>`).join("");
   $("#ixLock").innerHTML = LOCK;
 }
@@ -2426,7 +3020,7 @@ document.addEventListener("click", e => { const t = e.target.closest("[data-tab]
 function renderMods() {
   $("#modList").innerHTML = MODS.map(s => {
     const id = s.id, n = id.startsWith("m") ? id.slice(1) : "★", ok = U.done.includes(id);
-    return `<li><button type="button" data-mod="${id}" class="${id === cur.mod ? "on" : ""}" aria-current="${id === cur.mod}"><span class="n">${n}</span><span>${esc(s.dataset.title)}</span><span class="st">${ok ? "✓" : ""}</span></button></li>`;
+    return (UNIDADES[id] ? `<li class="u-unit" aria-hidden="true">${UNIDADES[id]}</li>` : "") + `<li><button type="button" data-mod="${id}" class="${id === cur.mod ? "on" : ""}" aria-current="${id === cur.mod}"><span class="n">${n}</span><span>${esc(s.dataset.title)}</span><span class="st">${ok ? "✓" : ""}</span></button></li>`;
   }).join("");
   showMod(cur.mod, false);
 }
