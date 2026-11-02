@@ -1013,6 +1013,10 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 .jx-dif-d{border-color:#E0866F;color:#F1A894}
 @media (max-width:640px){.jx-p{grid-template-columns:22px minmax(0,1fr) 12px;padding:12px}.jx-pm{grid-column:2;justify-content:flex-start}.jx-pp{grid-column:3;grid-row:1}}
 .jx-leg{display:flex;flex-wrap:wrap;gap:8px 18px;border-top:0;padding-top:0}
+/* vista dividida: el enunciado se desliza con la página; solo el código queda fijo con su propio deslizamiento */
+@media (min-width:700px){
+  .u-judge[data-vista="split"] .u-pane.u-pane-enun,#tJuez:fullscreen .u-judge[data-vista="split"] .u-pane.u-pane-enun,#tJuez:-webkit-full-screen .u-judge[data-vista="split"] .u-pane.u-pane-enun{position:static;max-height:none;overflow:visible;padding-right:0}
+}
 </style></head><body>
 <header class="u-top">
   <div class="wrap u-topin">
@@ -1126,7 +1130,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202611021233"></script>
+<script src="/config.js?v=202611021237"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -2154,7 +2158,7 @@ const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
 // Hasta el domingo 25 de octubre de 2026 (00:00, Chile) el curso se reserva; desde entonces se compra.
 const RESERVA = Date.now() < Date.UTC(2026, 9, 25, 3, 0, 0);
 const VERBO = RESERVA ? "Reservar" : "Comprar";
-const VER = "202611021233";
+const VER = "202611021237";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
