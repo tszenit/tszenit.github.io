@@ -11,7 +11,7 @@ window.TSZ_CONFIG = {
     4491: "https://mpago.la/2KLP4ai",   // ejes de 3 guías con código promocional (−10 %)
     4990: "https://mpago.la/25pgkpK",   // ejes de 3 guías
     8991: "https://mpago.la/19TwL7F",   // ejes de 5 guías con código promocional (−10 %)
-    9990: "https://mpago.la/1suTagJ",   // ejes de 5 guías
+    9990: "https://mpago.la/1suTagJ",   // Intensivo Matemática o Ciencias ($9.990), planes por prueba y ejes de 5 guías
     13491: "https://mpago.la/1dY6iZT",   // ejes de 7 guías con código promocional (−10 %)
     14990: "https://mpago.la/1REXuqc",   // ejes de 7 guías
     17991: "https://mpago.la/2iLMEmC",   // ejes de 9 guías con código promocional (−10 %)
