@@ -1139,7 +1139,7 @@ textarea.u-codein{width:100%;min-height:96px;font:13px/1.45 var(--f-mono);paddin
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
 
-<script src="/config.js?v=202611042233"></script>
+<script src="/config.js?v=202611050001"></script>
 <script src="nacl.min.js"></script>
 <script>
 (() => {
@@ -2753,7 +2753,7 @@ const PK = "J-6YJFNq2d0O5eJuCOBwpCUhb7swGTBcTqv4GtEYz54";
 // Hasta el domingo 25 de octubre de 2026 (00:00, Chile) el curso se reserva; desde entonces se compra.
 const RESERVA = Date.now() < Date.UTC(2026, 9, 25, 3, 0, 0);
 const VERBO = RESERVA ? "Reservar" : "Comprar";
-const VER = "202611042233";
+const VER = "202611050001";
 const PRODUCTO = "UNI-NUMPY";
 const TE = new TextEncoder();
 const clp = n => "$" + Number(n).toLocaleString("es-CL");
@@ -2784,7 +2784,17 @@ let lastFocus = null;
 function showLayer(html) { lastFocus = document.activeElement; const L = $("#layer"); L.innerHTML = html; L.hidden = false; document.body.style.overflow = "hidden"; const f = L.querySelector("input,textarea,.btn"); if (f) f.focus(); }
 function closeLayer() { const w = esperando; esperando = []; w.forEach(f => f.no(new Error("cancelado"))); const L = $("#layer"); L.hidden = true; L.innerHTML = ""; document.body.style.overflow = ""; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
 $("#layer").addEventListener("click", e => { if (e.target.id === "layer" || e.target.closest("[data-close]")) closeLayer(); });
-document.addEventListener("keydown", e => { if (e.key === "Escape") { if (!$("#layer").hidden) closeLayer(); hideTip(); } });
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape" || e.defaultPrevented) return;
+  if (!$("#layer").hidden) { closeLayer(); return; }
+  if (!$("#tip").hidden) { hideTip(); return; }
+  /* en el editor, el primer Esc solo suelta el cursor; el siguiente vuelve a la pantalla anterior */
+  const a = document.activeElement;
+  if (a && /^(TEXTAREA|INPUT|SELECT)$/.test(a.tagName)) { a.blur(); return; }
+  if (document.fullscreenElement || document.webkitFullscreenElement) return;
+  const h = history.state;
+  if (h && h.tsz && h.d > 1) { e.preventDefault(); history.back(); }
+});
 
 /* ---------- sesión TS Zenit (la misma cuenta de Google de tszenit.cl) ---------- */
 const LS = "tsz_ses";
@@ -2997,7 +3007,32 @@ function entrar() {
     tickPruebas(); setInterval(tickPruebas, 1000);
   }
   paintCourse();
+  try { const f = foto(); history.replaceState(Object.assign({}, f, { d: 0, base: true }), ""); history.pushState(Object.assign({}, f, { d: 1 }), ""); } catch (e) {}
 }
+/* historial del curso: «atrás» (botón del navegador, gesto del celular o Esc) vuelve a la pantalla anterior sin salir del curso */
+let restaurando = false;
+const CLAVES_H = ["tab", "jv", "set", "prob", "mod"];
+const foto = () => ({ tsz: 1, tab: cur.tab, jv: cur.jv || "sets", set: cur.set, prob: cur.prob, mod: cur.mod });
+function marcarHist(reemplazar) {
+  if (restaurando || !iniciado) return;
+  const f = foto(), h = history.state;
+  if (!h || !h.tsz) return;
+  if (CLAVES_H.every(k => h[k] === f[k])) return;
+  try { if (reemplazar) history.replaceState(Object.assign(f, { d: h.d }), ""); else history.pushState(Object.assign(f, { d: (h.d || 0) + 1 }), ""); } catch (e) {}
+}
+window.addEventListener("popstate", e => {
+  const s = e.state;
+  if (!iniciado || $("#vApp").hidden) return;
+  if (!s || !s.tsz) { if (!/^#activar=/.test(location.hash)) history.back(); return; }  /* entrada vieja de la misma página: se salta */
+  if (!$("#layer").hidden) closeLayer();
+  const d = document; if (d.fullscreenElement || d.webkitFullscreenElement) { try { (d.exitFullscreen || d.webkitExitFullscreen).call(d); } catch (er) {} }
+  restaurando = true;
+  try {
+    CLAVES_H.forEach(k => (cur[k] = s[k])); hideTip(); paintCourse();
+    const top = $(".u-chead"); if (top && window.scrollY > top.offsetTop) window.scrollTo({ top: top.offsetTop });
+  } finally { restaurando = false; }
+  if (s.base) toast("Vuelve a apretar «atrás» para salir del curso");
+});
 function puntaje() { return B.probs.reduce((s, p) => s + Math.round(100 * ((U.juez[p.id] || {}).best || 0)), 0); }
 function paintHead() {
   const nd = U.done.filter(id => MODT.some(m => m[0] === id)).length;
@@ -3015,7 +3050,7 @@ function paintCourse() {
   else if (cur.tab === "tEnvios") renderEnvios();
   else if (cur.tab === "tProgreso") renderProg();
 }
-function openTab(id) { cur.tab = id; hideTip(); paintCourse(); const top = $(".u-chead"); if (top && window.scrollY > top.offsetTop + top.offsetHeight) top.scrollIntoView(); }
+function openTab(id) { cur.tab = id; hideTip(); paintCourse(); marcarHist(); const top = $(".u-chead"); if (top && window.scrollY > top.offsetTop + top.offsetHeight) top.scrollIntoView(); }
 document.addEventListener("click", e => { const t = e.target.closest("[data-tab]"); if (t && B) openTab(t.dataset.tab); });
 
 /* módulos y ejemplos comentados */
@@ -3027,7 +3062,7 @@ function renderMods() {
   showMod(cur.mod, false);
 }
 function showMod(id, scroll = true) {
-  cur.mod = id;
+  cur.mod = id; if (scroll) marcarHist(true);
   const i = MODS.findIndex(s => s.id === id);
   MODS.forEach(s => (s.hidden = s.id !== id));
   const sec = MODS[i];
@@ -3442,7 +3477,7 @@ function difsDe(S) { return DIFS.map(([k, s, pl]) => { const n = S.probs.filter(
 const modsDe = S => [...new Set(S.probs.map(p => p.modTitulo))];
 const acSet = S => S.probs.filter(p => (U.juez[p.id] || {}).ac).length;
 function jxTop() { const t = $("#tJuez"); const y = (t ? t.getBoundingClientRect().top + window.scrollY : 0) - 90; if (window.scrollY > y) window.scrollTo({ top: Math.max(0, y), behavior: "auto" }); }
-function irJuez(jv, extra) { Object.assign(cur, { jv }, extra || {}); renderJudge(); jxTop(); }
+function irJuez(jv, extra) { Object.assign(cur, { jv }, extra || {}); renderJudge(); jxTop(); marcarHist(); }
 function renderJudge() {
   if (!cur.jv) cur.jv = "sets";
   if (cur.jv === "sets") return renderSets();
@@ -3502,7 +3537,7 @@ function renderTrabajo() {
   const tj = $("#tJuez");
   if (!(tj.requestFullscreen || tj.webkitRequestFullscreen)) $("#fsBtn").hidden = true;
   $("#fsBtn").addEventListener("click", pantallaCompleta);
-  const mover = d => { const ids = ["E" + S.n, ...S.probs.map(x => x.id)], i = ids.indexOf(cur.prob) + d; if (i < 0 || i >= ids.length) return; cur.prob = ids[i]; renderProb(cur.prob); jxTop(); };
+  const mover = d => { const ids = ["E" + S.n, ...S.probs.map(x => x.id)], i = ids.indexOf(cur.prob) + d; if (i < 0 || i >= ids.length) return; cur.prob = ids[i]; renderProb(cur.prob); jxTop(); marcarHist(true); };
   $("#prevP").addEventListener("click", () => mover(-1)); $("#nextP").addEventListener("click", () => mover(1));
   setVista(vistaDef(), false);
   renderProb(cur.prob); PYR.start().catch(() => {});
